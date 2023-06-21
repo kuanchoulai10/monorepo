@@ -1,4 +1,4 @@
 variable "project_id" {
-  type  = string
-  value = "kcl-advertising-data-sink"
+  type     = string
+  default = "kcl-advertising-data-sink"
 }
