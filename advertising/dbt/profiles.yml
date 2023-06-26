@@ -1,0 +1,15 @@
+# See https://docs.getdbt.com/docs/core/connect-data-platform/bigquery-setup for more information.
+
+advertising:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('DBT_ADVERTISING_DEV_PROJECT') }}"
+      dataset: "{{ env_var('DBT_ADVERTISING_DEV_DATASET') }}"
+      location: "{{ env_var('DBT_LOCATION') }}"
+      threads: 4
+      job_execution_timeout_seconds: 600
+      maximum_bytes_billed: 60000000000
+      keyfile: "{{ env_var('DBT_ADVERTISING_DEV_KEYFILE') }}"
