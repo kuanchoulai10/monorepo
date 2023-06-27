@@ -6,7 +6,8 @@ module "project_services" {
   disable_dependent_services  = false
   disable_services_on_destroy = false
   activate_apis = [
-    "iam.googleapis.com"
+    "iam.googleapis.com",
+    "cloudresourcemanager.googleapis.com"
   ]
 }
 
