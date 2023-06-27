@@ -37,13 +37,13 @@ module "project_iam" {
 
   bindings = {
     "roles/bigquery.resourceViewer" = [
-      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
+      "serviceAccount:${data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email}"
     ]
     "roles/bigquery.jobUser" = [
-      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
+      "serviceAccount:${data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email}"
     ]
     "roles/bigquery.dataViewer" = [
-      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
+      "serviceAccount:${data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email}"
     ]
   }
   depends_on = [
