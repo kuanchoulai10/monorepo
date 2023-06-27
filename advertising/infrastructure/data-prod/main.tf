@@ -12,8 +12,8 @@ module "project_services" {
 }
 
 module "dbt_sa" {
-  source  = "terraform-google-modules/service-accounts/google"
-  version = "~> 4.1.0"
+  source       = "terraform-google-modules/service-accounts/google"
+  version      = "~> 4.1.0"
   project_id   = var.project_id
   names        = ["dbt-sa"]
   display_name = "dbt Service Account"
@@ -35,15 +35,15 @@ module "project_iam" {
   projects = [var.project_id]
   mode     = "additive"
 
-  bindings             = {
+  bindings = {
     "roles/bigquery.resourceViewer" = [
-      
+      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
     ]
     "roles/bigquery.jobUser" = [
-
+      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
     ]
     "roles/bigquery.dataViewer" = [
-
+      data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email
     ]
   }
   depends_on = [
