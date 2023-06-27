@@ -23,6 +23,9 @@ module "dbt_sa" {
     "${var.project_id}=>roles/bigquery.jobUser",
     "${var.project_id}=>roles/bigquery.connectionAdmin",
   ]
+  depends_on = [
+    module.project_services
+  ]
 }
 
 module "project_iam" {
@@ -42,4 +45,7 @@ module "project_iam" {
 
     ]
   }
+  depends_on = [
+    module.project_services
+  ]
 }
