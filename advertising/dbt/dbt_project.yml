@@ -33,5 +33,26 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   advertising:
     # Config indicated by + and applies to all files under models/example/
+    +persist_docs:
+      relation: true
+      columns: true
+    +labels:
+      domain: advertising
+    +tags:
+      - advertising
+    +hours_to_expiration: "{{ 168 if target.name in ('dev') else None}}"
+
     example:
       +materialized: view
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  advertising:
+    +persist_docs:
+      relation: true
+      columns: true
+    +tags:
+      - seed
