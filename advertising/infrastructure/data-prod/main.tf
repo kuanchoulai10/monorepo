@@ -52,6 +52,21 @@ module "project_iam" {
   ]
 }
 
+module "cube" {
+  source  = "terraform-google-modules/cloud-storage/google"
+  version = "~> 4.0.0"
+  project_id  = var.project_id
+  names = ["cubestore-20230701"]
+  prefix = "kcl"
+  set_storage_admin_roles = true
+  storage_admins = [
+    module.dbt_sa.iam_email
+  ]
+  versioning = {
+    cubestore-20230701 = true
+  }
+}
+
 resource "google_data_catalog_tag_template" "product" {
   tag_template_id = "data_product"
 
