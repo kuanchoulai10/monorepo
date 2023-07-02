@@ -19,11 +19,11 @@ module "project_iam" {
   bindings = {
     "roles/bigquery.jobUser" = [
       "serviceAccount:${data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email}",
-      "${data.tfe_outputs.advertising_data_prod.values.dbt_sa.iam_email}"
+      "${data.tfe_outputs.advertising_data_prod.nonsensitive_values.dbt_sa_iam_email}"
     ]
     "roles/bigquery.dataViewer" = [
       "serviceAccount:${data.tfe_outputs.advertising_data_dev.nonsensitive_values.edisonlai_sa_email}",
-      "${data.tfe_outputs.advertising_data_prod.values.dbt_sa.iam_email}"
+      "${data.tfe_outputs.advertising_data_prod.nonsensitive_values.dbt_sa_iam_email}"
     ]
   }
   depends_on = [
