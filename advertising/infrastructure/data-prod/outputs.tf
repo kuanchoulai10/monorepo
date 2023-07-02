@@ -5,5 +5,4 @@ output "dbt_sa_key" {
 
 output "dbt_sa" {
   value = module.dbt_sa
-  sensitive = true
 }
