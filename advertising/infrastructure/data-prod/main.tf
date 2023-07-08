@@ -24,6 +24,7 @@ module "dbt_sa" {
     "${var.project_id}=>roles/bigquery.dataOwner",
     "${var.project_id}=>roles/bigquery.jobUser",
     "${var.project_id}=>roles/bigquery.connectionAdmin",
+    "${var.project_id}=>roles/storage.admin"
   ]
   depends_on = [
     module.project_services
