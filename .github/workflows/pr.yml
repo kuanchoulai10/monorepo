@@ -38,16 +38,16 @@ jobs:
             prod:
               - '/advertising/infrastructure/data-prod/**'
   
-  test:
-    name: TEST
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    needs: filters
-    if: ${{ needs.filters.outputs.sink == 'true' }}
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  # test:
+  #   name: TEST
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   needs: filters
+  #   if: ${{ needs.filters.outputs.sink == 'true' }}
+  #   steps:
+  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   # sink-terraform-plan:
   #   name: Sink Terraform Plan
   #   runs-on: ubuntu-latest
