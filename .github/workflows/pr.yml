@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - '/advertising/infrastructure/**'
+      - 'advertising/infrastructure/**'
 
 env:
   TF_ORGANIZATION: "kcl"
@@ -32,22 +32,23 @@ jobs:
         with:
           filters: |
             sink:
-              - '/advertising/infrastructure/data-sink/**'
+              - 'advertising/infrastructure/data-sink/**'
             dev:
-              - '/advertising/infrastructure/data-dev/**'
+              - 'advertising/infrastructure/data-dev/**'
             prod:
-              - '/advertising/infrastructure/data-prod/**'
+              - 'advertising/infrastructure/data-prod/**'
   
-  test:
-    name: TEST
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-    needs: filters
-    if: ${{ needs.filters.outputs.sink == 'true' }}
-    steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  # test:
+  #   name: TEST
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #   needs: filters
+  #   if: ${{ needs.filters.outputs.sink == 'true' }}
+  #   steps:
+  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
   # sink-terraform-plan:
   #   name: Sink Terraform Plan
   #   runs-on: ubuntu-latest
