@@ -1,0 +1,191 @@
+name: Advertising Infrastructure Pull Request Workflow
+run-name: advertising-infrastructure-pull-request-workflow
+
+on:
+  pull_request:
+    types: [opened]
+    branches:
+      - main
+    paths:
+      - '/advertising/infrastructure/**'
+
+env:
+  TF_ORGANIZATION: "kcl"
+  TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
+
+jobs:
+  filters:
+    name: Filters
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    permissions:
+      pull-requests: read
+    outputs:
+      sink: ${{ steps.filter.outputs.sink }}
+      dev: ${{ steps.filter.outputs.dev }}
+      prod: ${{ steps.filter.outputs.prod }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            sink:
+              - '/advertising/infrastructure/data-sink/**'
+            dev:
+              - '/advertising/infrastructure/data-dev/**'
+            prod:
+              - '/advertising/infrastructure/data-prod/**'
+  
+  test:
+    name: TEST
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: filters
+    if: ${{ needs.filters.outputs.sink == 'true' }}
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  # sink-terraform-plan:
+  #   name: Sink Terraform Plan
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #       working-directory: /advertising/infrastructure/data-sink/
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Upload Terraform Configuration
+  #       uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
+  #       id: terraform-configuration-upload
+  #       with:
+  #         speculative: true
+  #         directory: "advertising/infrastructure/"
+  #         workspace: "kcl-advertising-data-dev"
+
+  #     - name: Terraform Plan
+  #       uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
+  #       id: terraform-plan
+  #       with:
+  #         plan_only: true
+  #         workspace: "kcl-advertising-data-dev"
+  #         configuration_version: ${{ steps.terraform-configuration-upload.outputs.configuration_version_id }}
+      
+  #     - name: Get Terraform Plan Output
+  #       uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.0.0
+  #       id: terraform-plan-output
+  #       with:
+  #         plan: ${{ fromJSON(steps.terraform-plan.outputs.payload).data.relationships.plan.data.id }}
+      
+  #     - name: Comment Terraform Plan Output
+  #       uses: actions/github-script@v6
+  #       id: terraform-plan-comment
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         script: |
+  #           // 1. Retrieve existing bot comments for the PR
+  #           const { data: comments } = await github.rest.issues.listComments({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             issue_number: context.issue.number,
+  #           });
+  #           const botComment = comments.find(comment => {
+  #             return comment.user.type === 'Bot' && comment.body.includes('Terraform Cloud Plan Output')
+  #           });
+  #           const output = `#### Terraform Cloud Plan Output
+  #              \`\`\`
+  #              Plan: ${{ steps.terraform-plan-output.outputs.add }} to add, ${{ steps.terraform-plan-output.outputs.change }} to change, ${{ steps.terraform-plan-output.outputs.destroy }} to destroy.
+  #              \`\`\`
+  #              [Terraform Cloud Plan](${{ steps.terraform-plan.outputs.run_link }})
+  #              `;
+  #           // 3. Delete previous comment so PR timeline makes sense
+  #           if (botComment) {
+  #             github.rest.issues.deleteComment({
+  #               owner: context.repo.owner,
+  #               repo: context.repo.repo,
+  #               comment_id: botComment.id,
+  #             });
+  #           }
+  #           github.rest.issues.createComment({
+  #             issue_number: context.issue.number,
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             body: output
+  #           });
+  
+  # development-terraform-plan:
+  #   name: Development Terraform Plan
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     pull-requests: write
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+      
+  #     - name: Upload Terraform Configuration
+  #       uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
+  #       id: terraform-configuration-upload
+  #       with:
+  #         speculative: true
+  #         directory: "advertising/infrastructure/"
+  #         workspace: "kcl-advertising-data-dev"
+      
+  #     - name: Terraform Plan
+  #       uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
+  #       id: terraform-plan
+  #       with:
+  #         plan_only: true
+  #         workspace: "kcl-advertising-data-dev"
+  #         configuration_version: ${{ steps.terraform-configuration-upload.outputs.configuration_version_id }}
+      
+  #     - name: Get Terraform Plan Output
+  #       uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.0.0
+  #       id: terraform-plan-output
+  #       with:
+  #         plan: ${{ fromJSON(steps.terraform-plan.outputs.payload).data.relationships.plan.data.id }}
+      
+  #     - name: Comment Terraform Plan Output
+  #       uses: actions/github-script@v6
+  #       id: terraform-plan-comment
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         script: |
+  #           // 1. Retrieve existing bot comments for the PR
+  #           const { data: comments } = await github.rest.issues.listComments({
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             issue_number: context.issue.number,
+  #           });
+  #           const botComment = comments.find(comment => {
+  #             return comment.user.type === 'Bot' && comment.body.includes('Terraform Cloud Plan Output')
+  #           });
+  #           const output = `#### Terraform Cloud Plan Output
+  #              \`\`\`
+  #              Plan: ${{ steps.terraform-plan-output.outputs.add }} to add, ${{ steps.terraform-plan-output.outputs.change }} to change, ${{ steps.terraform-plan-output.outputs.destroy }} to destroy.
+  #              \`\`\`
+  #              [Terraform Cloud Plan](${{ steps.terraform-plan.outputs.run_link }})
+  #              `;
+  #           // 3. Delete previous comment so PR timeline makes sense
+  #           if (botComment) {
+  #             github.rest.issues.deleteComment({
+  #               owner: context.repo.owner,
+  #               repo: context.repo.repo,
+  #               comment_id: botComment.id,
+  #             });
+  #           }
+  #           github.rest.issues.createComment({
+  #             issue_number: context.issue.number,
+  #             owner: context.repo.owner,
+  #             repo: context.repo.repo,
+  #             body: output
+  #           });
+  
+  
