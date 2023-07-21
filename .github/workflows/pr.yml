@@ -1,5 +1,5 @@
-name: Advertising Infrastructure Pull Request Workflow
-run-name: advertising-infrastructure-pull-request-workflow
+name: Advertising PR Workflow
+run-name: advertising-pr-workflow
 
 on:
   pull_request:
@@ -7,15 +7,15 @@ on:
     branches:
       - main
     paths:
-      - 'advertising/infrastructure/**'
+      - 'advertising/**'
 
 env:
   TF_ORGANIZATION: "kcl"
   TF_API_TOKEN: "${{ secrets.TF_API_TOKEN }}"
 
 jobs:
-  filters:
-    name: Filters
+  changes:
+    name: Check Paths for Changed Files
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,6 +23,7 @@ jobs:
     permissions:
       pull-requests: read
     outputs:
+      dbt: ${{ steps.filter.outputs.dbt }}
       sink: ${{ steps.filter.outputs.sink }}
       dev: ${{ steps.filter.outputs.dev }}
       prod: ${{ steps.filter.outputs.prod }}
@@ -31,6 +32,8 @@ jobs:
         id: filter
         with:
           filters: |
+            dbt:
+              - 'advertising/dbt/**'
             sink:
               - 'advertising/infrastructure/data-sink/**'
             dev:
@@ -38,16 +41,78 @@ jobs:
             prod:
               - 'advertising/infrastructure/data-prod/**'
   
-  # test:
-  #   name: TEST
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       shell: bash
-  #   needs: filters
-  #   if: ${{ needs.filters.outputs.sink == 'true' }}
-  #   steps:
-  #     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+  dev-tf-plan:
+    name: Terraform Plan - Development
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: changes
+    if: ${{ needs.changes.outputs.dev == 'true' }}
+    steps:
+      - run: echo "Terraform Plan - Development"
+
+  dev-tf-apply:
+    name: Terraform Apply - Development
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: dev-tf-plan
+    steps:
+      - run: echo "Terraform Apply - Development"
+
+  prod-tf-plan:
+    name: Terraform Plan - Production
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: changes
+    if: ${{ needs.changes.outputs.prod == 'true' }}
+    steps:
+      - run: echo "Terraform Plan - Production"
+
+  sink-tf-plan:
+    name: Terraform Plan - Sink
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: changes
+    if: ${{ needs.changes.outputs.sink == 'true' }}
+    steps:
+      - run: echo "Terraform Plan - Sink"
+
+  sink-tf-apply:
+    name: Terraform Apply - Sink
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: sink-tf-plan
+    steps:
+      - run: echo "Terraform Apply - Sink"
+
+  sql-lint-check:
+    name: SQL Lint Check
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: [dev-tf-apply, sink-tf-apply]
+    steps:
+      - run: echo "SQL Lint Check"
+
+  dbt-ci-job:
+    name: dbt CI job
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    needs: sql-lint-check
+    steps:
+      - run: echo "dbt CI job"
 
   # sink-terraform-plan:
   #   name: Sink Terraform Plan
@@ -120,7 +185,8 @@ jobs:
   #             repo: context.repo.repo,
   #             body: output
   #           });
-  
+
+
   # development-terraform-plan:
   #   name: Development Terraform Plan
   #   runs-on: ubuntu-latest
