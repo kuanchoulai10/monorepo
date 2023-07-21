@@ -3,7 +3,6 @@ run-name: advertising-pr-workflow
 
 on:
   pull_request:
-    types: [opened]
     branches:
       - main
     paths:
