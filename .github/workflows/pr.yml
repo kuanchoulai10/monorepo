@@ -60,13 +60,13 @@ jobs:
         with:
           speculative: true
           directory: "advertising/infrastructure/data-dev/"
-          workspace: "kcl-advertising-data-dev"
+          workspace: "advertising-data-dev"
       - name: Run Terraform Plan
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
         id: tf-plan
         with:
           plan_only: true
-          workspace: "kcl-advertising-data-dev"
+          workspace: "advertising-data-dev"
           configuration_version: ${{ steps.tf-files-upload.outputs.configuration_version_id }}
       - name: Get Terraform Plan Output
         uses: hashicorp/tfc-workflows-github/actions/plan-output@v1.0.0
@@ -192,14 +192,14 @@ jobs:
   #       with:
   #         speculative: true
   #         directory: "advertising/infrastructure/"
-  #         workspace: "kcl-advertising-data-dev"
+  #         workspace: "advertising-data-dev"
 
   #     - name: Terraform Plan
   #       uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
   #       id: terraform-plan
   #       with:
   #         plan_only: true
-  #         workspace: "kcl-advertising-data-dev"
+  #         workspace: "advertising-data-dev"
   #         configuration_version: ${{ steps.tf-files-upload.outputs.configuration_version_id }}
       
   #     - name: Get Terraform Plan Output
