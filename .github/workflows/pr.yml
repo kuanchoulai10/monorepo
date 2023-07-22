@@ -77,7 +77,7 @@ jobs:
         id: tf-files-upload
         with:
           speculative: true
-          directory: "./advertising/infrastructure/data-dev/"
+          directory: "./"
           workspace: "advertising-data-dev"
       - name: Run Terraform Plan
         uses: hashicorp/tfc-workflows-github/actions/create-run@v1.0.0
