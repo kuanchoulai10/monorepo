@@ -69,8 +69,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "github.workspace: ${{ github.workspace }}"
-      - run: echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+      - run: echo ${{ github.workspace }}
+      - run: echo $GITHUB_WORKSPACE
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Upload Terraform Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
