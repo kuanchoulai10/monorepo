@@ -55,6 +55,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          sparse-checkout: |
+            advertising/infrastructure/data-dev/
       - run: pwd
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -66,6 +69,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: echo "github.workspace: ${{ github.workspace }}"
+      - run: echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Upload Terraform Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0

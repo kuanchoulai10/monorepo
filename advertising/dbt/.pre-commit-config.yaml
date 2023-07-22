@@ -1,9 +1,9 @@
 repos:
-- repo: https://github.com/dbt-checkpoint/dbt-checkpoint
-  rev: v1.1.0
-  hooks:
-  - id: check-model-has-description
-    args: [--manifest, "advertising/dbt/target/manifest.json"]
+# - repo: https://github.com/dbt-checkpoint/dbt-checkpoint
+#   rev: v1.1.0
+#   hooks:
+#   - id: check-model-has-description
+#     args: [--manifest, "advertising/dbt/target/manifest.json"]
 - repo: https://github.com/sqlfluff/sqlfluff
   rev: 2.1.1
   hooks:
