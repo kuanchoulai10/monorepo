@@ -54,7 +54,8 @@ jobs:
     if: ${{ needs.changes.outputs.dev == 'true' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3      
+        uses: actions/checkout@v3
+      - run: pwd
       - name: Upload Terraform Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: tf-files-upload
