@@ -59,6 +59,8 @@ jobs:
           sparse-checkout: |
             advertising/infrastructure/data-dev/
       - run: ls ${{ github.workspace }}
+      - run: ls ${{ github.workspace }}/advertising
+      - run: ls ${{ github.workspace }}/advertising/infrastructure
       - name: Upload Terraform Configuration
         uses: hashicorp/tfc-workflows-github/actions/upload-configuration@v1.0.0
         id: tf-files-upload
