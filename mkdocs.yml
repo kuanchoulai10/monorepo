@@ -5,13 +5,13 @@ edit_uri: edit/main/docs/
 nav:
   - Home: index.md
   - About: about.md
+  - Blog: 'blog/index.md'
 
 theme:
   name: material
   palette:
     primary: brown
     accent: amber
-  language: zh-TW
   icon:
     repo: fontawesome/brands/github
   features:
@@ -25,6 +25,9 @@ theme:
 plugins:
   - monorepo
   - search
+  - blog:
+      blog_dir: blog
+      blog_toc: true
   - git-revision-date-localized:
       type: iso_datetime
       timezone: Asia/Taipei
