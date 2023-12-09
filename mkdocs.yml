@@ -1,11 +1,18 @@
-site_name: Monorepo
+site_name: KCL
+site_url: https://example.com
 repo_url: https://github.com/kuanchoulai10/monorepo
 repo_name: GitHub
 edit_uri: edit/main/docs/
 nav:
-  - Home: index.md
+  - Home:
+    - index.md
+    - tags.md
   - About: about.md
-  - Blog: 'blog/index.md'
+  - Learning Plan:
+    - learning-plan/index.md
+    - learning-plan/2023.md
+  - Blog: 
+    - blog/index.md
 
 theme:
   name: material
@@ -23,25 +30,43 @@ theme:
     - content.action.edit
     - content.code.copy
     - content.tabs.link
+
 plugins:
   - monorepo
-  - search
+  - social
+  - tags:
+      tags_file: tags.md
+  - search:
+      jieba_dict: dict.txt.big
+      lang:
+        - en
+        - zh
   - blog:
       blog_dir: blog
       blog_toc: true
+      post_date_format: medium
+      post_url_format: "{slug}"
   - git-revision-date-localized:
-      type: iso_datetime
+      type: timeago
       timezone: Asia/Taipei
-      locale: zh
       enable_creation_date: true
       fallback_to_build_date: true
+  - git-committers:
+      repository: kuanchoulai10/monorepo
+      branch: main
+
 markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
   - abbr
+  - pymdownx.progressbar
   - pymdownx.details
-  # - pymdownx.superfences:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   # - pymdownx.snippets:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -51,3 +76,10 @@ markdown_extensions:
   - pymdownx.tasklist:
       clickable_checkbox: true
       custom_checkbox: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/kuanchoulai/
+    - icon: fontawesome/brands/github
+      link: https://github.com/kuanchoulai10

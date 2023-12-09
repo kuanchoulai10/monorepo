@@ -35,3 +35,4 @@ terraform.rc
 
 .vscode
 .DS_Store
+.cache
