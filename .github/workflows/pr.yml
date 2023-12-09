@@ -94,7 +94,7 @@ jobs:
             });
             const output = `#### Terraform Cloud Plan Output
                \`\`\`
-               Plan: ${{ steps.tf-plan-output.outputs.add }} to add, ${{ steps.tf-plan-output.outputs.change }} to change, ${{ steps.terraform-plan-output.outputs.destroy }} to destroy.
+               Plan: ${{ steps.tf-plan-output.outputs.add }} to add, ${{ steps.tf-plan-output.outputs.change }} to change, ${{ steps.tf-plan-output.outputs.destroy }} to destroy.
                \`\`\`
                [Terraform Cloud Plan](${{ steps.tf-plan.outputs.run_link }})
                `;
