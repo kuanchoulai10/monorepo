@@ -13,3 +13,8 @@ tags:
   - CSS
 ---
 # This is First Post
+
+add excerpt
+
+<!-- more -->
+content
