@@ -26,8 +26,10 @@ theme:
     - navigation.top
     - navigation.tracking
     - navigation.tabs
+    - navigation.footer
     - header.autohide
     - content.action.edit
+    - content.action.view
     - content.code.copy
     - content.tabs.link
 
@@ -83,3 +85,5 @@ extra:
       link: https://www.linkedin.com/in/kuanchoulai/
     - icon: fontawesome/brands/github
       link: https://github.com/kuanchoulai10
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:service@kcl10.com
