@@ -1,5 +1,5 @@
 site_name: KCL
-site_url: https://example.com
+site_url: https://github.com/kuanchoulai10/monorepo
 repo_url: https://github.com/kuanchoulai10/monorepo
 repo_name: GitHub
 edit_uri: edit/main/docs/
@@ -22,6 +22,8 @@ theme:
     accent: amber
   icon:
     repo: fontawesome/brands/github
+    edit: material/pencil 
+    view: material/eye
   features:
     - navigation.indexes
     - navigation.top
