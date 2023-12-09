@@ -33,3 +33,17 @@ plugins:
       fallback_to_build_date: true
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
+  - abbr
+  - pymdownx.details
+  # - pymdownx.superfences:
+  # - pymdownx.snippets:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      clickable_checkbox: true
+      custom_checkbox: true
