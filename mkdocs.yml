@@ -1,6 +1,7 @@
-site_name: Test
-repo_url: https://github.com/kuanchoulai10/data-mesh
-repo_name: Data Mesh Side Project
+site_name: Monorepo
+repo_url: https://github.com/kuanchoulai10/monorepo
+repo_name: GitHub
+edit_uri: edit/main/docs/
 nav:
   - Home: index.md
   - About: about.md
@@ -13,17 +14,22 @@ theme:
   language: zh-TW
   icon:
     repo: fontawesome/brands/github
-
+  features:
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - header.autohide
+    - content.action.edit
+    - content.code.copy
+    - content.tabs.link
 plugins:
+  - monorepo
+  - search
   - git-revision-date-localized:
+      type: iso_datetime
+      timezone: Asia/Taipei
+      locale: zh
       enable_creation_date: true
-
+      fallback_to_build_date: true
 markdown_extensions:
   - admonition
-  - pymdownx.arithmatex:
-      generic: true
-
-extra_javascript:
-  - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
