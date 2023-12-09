@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://example.com/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/about/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/about/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/tags/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/tags/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/this-is-first-post/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/this-is-first-post/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/this-is-second-post/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/this-is-second-post/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/learning-plan/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/learning-plan/2023/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/2023/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/learning-plan/2024/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/2024/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/archive/2023/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/archive/2023/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/category/wow/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/wow/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/category/hahaha/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/hahaha/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/category/search/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/search/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/blog/category/performance/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/performance/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/tags/</loc>
+         <loc>https://github.com/kuanchoulai10/monorepo/tags/</loc>
          <lastmod>2023-12-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
