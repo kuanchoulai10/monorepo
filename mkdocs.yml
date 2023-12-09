@@ -11,6 +11,7 @@ nav:
   - Learning Plan:
     - learning-plan/index.md
     - learning-plan/2023.md
+    - learning-plan/2024.md
   - Blog: 
     - blog/index.md
 
@@ -39,7 +40,6 @@ plugins:
   - tags:
       tags_file: tags.md
   - search:
-      jieba_dict: dict.txt.big
       lang:
         - en
         - zh
@@ -71,8 +71,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   # - pymdownx.snippets:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
