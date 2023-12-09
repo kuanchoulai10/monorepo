@@ -18,6 +18,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.tracking
+    - navigation.tabs
     - header.autohide
     - content.action.edit
     - content.code.copy
