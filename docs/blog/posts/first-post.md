@@ -11,6 +11,7 @@ tags:
   - HTML5
   - JavaScript
   - CSS
+comments: true
 ---
 # This is First Post
 

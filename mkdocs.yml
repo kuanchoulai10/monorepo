@@ -24,6 +24,7 @@ theme:
     repo: fontawesome/brands/github
     edit: material/pencil 
     view: material/eye
+  custom_dir: docs/overrides
   features:
     - navigation.indexes
     - navigation.top
@@ -35,6 +36,7 @@ theme:
     - content.action.view
     - content.code.copy
     - content.tabs.link
+    - toc.follow
 
 plugins:
   - monorepo
@@ -64,7 +66,9 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - abbr
-  - pymdownx.progressbar
+  - toc:
+      permalink: true
+      title: On This Page
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
