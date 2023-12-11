@@ -1,77 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/</loc>
+         <loc>https://www.kcl10.com/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/about/</loc>
+         <loc>https://www.kcl10.com/about/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/tags/</loc>
+         <loc>https://www.kcl10.com/tags/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/</loc>
+         <loc>https://www.kcl10.com/blog/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/this-is-first-post/</loc>
+         <loc>https://www.kcl10.com/learning-plan/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/this-is-second-post/</loc>
+         <loc>https://www.kcl10.com/learning-plan/2023/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/</loc>
+         <loc>https://www.kcl10.com/learning-plan/2024/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/2023/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/learning-plan/2024/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/archive/2023/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/wow/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/hahaha/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/search/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/blog/category/performance/</loc>
-         <lastmod>2023-12-11</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/kuanchoulai10/monorepo/tags/</loc>
+         <loc>https://www.kcl10.com/tags/</loc>
          <lastmod>2023-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
