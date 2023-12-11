@@ -1,5 +1,5 @@
 site_name: KCL
-site_url: https://github.com/kuanchoulai10/monorepo
+site_url: https://www.kcl10.com
 repo_url: https://github.com/kuanchoulai10/monorepo
 repo_name: GitHub
 edit_uri: edit/main/docs/
@@ -41,6 +41,7 @@ theme:
 plugins:
   - monorepo
   - social
+  - glightbox
   - tags:
       tags_file: tags.md
   - search:
@@ -51,7 +52,11 @@ plugins:
       blog_dir: blog
       blog_toc: true
       post_date_format: medium
-      post_url_format: "{slug}"
+      post_excerpt: required
+      post_url_format: "{file}"
+      categories_allowed:
+        - GCP
+      draft_if_future_date: true
   - git-revision-date-localized:
       type: timeago
       timezone: Asia/Taipei
