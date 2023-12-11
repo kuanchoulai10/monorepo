@@ -5,3 +5,4 @@ mkdocs-glightbox==0.3.5
 mkdocs-git-revision-date-localized-plugin==1.2.1
 mkdocs-git-authors-plugin==0.7.2
 mkdocs-git-committers-plugin-2==2.2.2
+neoteroi-mkdocs==1.0.4
