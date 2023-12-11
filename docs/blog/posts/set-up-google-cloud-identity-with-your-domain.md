@@ -40,6 +40,7 @@ comments: true
 Cloud Identity 註冊頁
 公司名稱 員工人數 地區
 
+
 <figure markdown>
   ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-1.png){ width=300 }
   <figcaption></figcaption>
