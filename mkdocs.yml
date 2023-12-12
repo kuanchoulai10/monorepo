@@ -96,6 +96,9 @@ extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
 
 extra:
+  analytics:
+    provider: google
+    property: ${{ secrets.MEASUREMENT_ID }}
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/kuanchoulai/
