@@ -29,7 +29,7 @@ comments: true
 我自己當初是在[GoDaddy](https://godaddy.com/)上購買網域(也就是你目前瀏覽的這個網域)，購買時也一併註冊了email服務，當作之後網站對外的電子信箱。
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/godaddy-my-products.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/godaddy-my-products.png){ width=600 }
   <figcaption>GoDaddy "My Products" Page</figcaption>
 </figure>
 
@@ -42,73 +42,73 @@ Cloud Identity 註冊頁
 
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-1.png){ width=300 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-1.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 姓名 目前的電子郵件地址
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-2.png){ width=300 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-2.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 網域名稱
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-3.png){ width=300 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-3.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 再次確定要使用這個網域設定帳戶
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-4.png){ width=300 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-4.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 登入身分
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-5.png){ width=300 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-5.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 我瞭解
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-6.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-6.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 保護
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-7.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-7.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-8.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-8.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-9.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-9.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-10.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-10.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-11.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-11.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-12.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-12.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/set-up-google-cloud-identity-with-your-domain/setup-13.png){ width=600 }
+  ![](../imgs/setup-google-cloud-identity-with-your-domain/setup-13.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
@@ -117,4 +117,4 @@ Cloud Identity 註冊頁
 3. 
 
 [Set up email with your domain]: https://support.google.com/cloudidentity/answer/7667994
-[Set up Cloud Identity as a Google Cloud admin]: https://cloud.google.com/identity/docs/set-up-cloud-identity-admin
+[Set up Cloud Identity as a Google Cloud admin]: https://cloud.google.com/identity/docs/setup-cloud-identity-admin

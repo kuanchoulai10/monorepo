@@ -56,6 +56,7 @@ plugins:
       post_url_format: "{file}"
       categories_allowed:
         - GCP
+        - Google Analytics
       draft_if_future_date: true
   - git-revision-date-localized:
       type: timeago
