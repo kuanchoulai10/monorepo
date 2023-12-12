@@ -98,7 +98,7 @@ extra_css:
 extra:
   analytics:
     provider: google
-    property: ${{ secrets.MEASUREMENT_ID }}
+    property: !ENV GA4_MEASUREMENT_ID
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/kuanchoulai/
