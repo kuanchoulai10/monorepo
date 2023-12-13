@@ -57,6 +57,7 @@ plugins:
       categories_allowed:
         - GCP
         - Google Analytics
+        - mkdocs
       draft_if_future_date: true
   - git-revision-date-localized:
       type: timeago
@@ -77,12 +78,13 @@ markdown_extensions:
       permalink: true
       title: On This Page
   - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  # - pymdownx.snippets:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -96,9 +98,6 @@ extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
 
 extra:
-  analytics:
-    provider: google
-    property: !ENV GA4_MEASUREMENT_ID
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/kuanchoulai/
@@ -106,3 +105,19 @@ extra:
       link: https://github.com/kuanchoulai10
     - icon: fontawesome/solid/paper-plane
       link: mailto:contact-me@kcl10.com
+  analytics:
+    provider: google
+    property: !ENV GA4_MEASUREMENT_ID
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
