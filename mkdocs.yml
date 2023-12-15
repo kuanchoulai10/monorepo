@@ -1,22 +1,31 @@
-site_name: KCL
-site_url: https://kuanchoulai10.github.io/monorepo/
+site_name: KC's Data Odyssey
+site_description: Learning Notes
+site_author: Lai
+site_url: https://kcl10.com
 repo_url: https://github.com/kuanchoulai10/monorepo
 repo_name: GitHub
 edit_uri: edit/main/docs/
 nav:
   - Home:
     - index.md
-    - tags.md
   - About: about.md
+  - Side Projects:
+    - side-projects/index.md
   - Learning Plan:
     - learning-plan/index.md
     - learning-plan/2023.md
     - learning-plan/2024.md
+  - Tags: tags.md
   - Blog: 
     - blog/index.md
 
 theme:
   name: material
+  favicon: images/avatar.png
+  logo: images/avatar.png
+  font:
+    text: Noto Serif TC
+    code: Noto Sans Mono
   palette:
     primary: brown
     accent: amber
