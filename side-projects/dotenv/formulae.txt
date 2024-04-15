@@ -1,0 +1,6 @@
+minikube
+gh
+zsh-autosuggestions
+awscli
+nvm
+yarn
