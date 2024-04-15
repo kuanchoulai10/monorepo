@@ -60,7 +60,7 @@ brew install --cask $(cat casks.txt)
 To activate the autosuggestions, add the following at the end of your `.zshrc`:
 
 ```bash
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+echo source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh >> ~/.zshrc
 ```
 
 ### [GitHub CLI](https://cli.github.com/)
