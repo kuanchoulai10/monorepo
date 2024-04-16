@@ -4,3 +4,6 @@ zsh-autosuggestions
 awscli
 nvm
 yarn
+pipx
+opa
+hashicorp/tap/terraform

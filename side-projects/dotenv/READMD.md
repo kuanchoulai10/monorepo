@@ -47,6 +47,11 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## Install Common Tools using Homebrew
 
+[hashicorp/homebrew-tap](https://github.com/hashicorp/homebrew-tap)
+```bash
+brew tap hashicorp/tap
+```
+
 ```bash
 brew install $(cat formulae.txt)
 ```
@@ -60,10 +65,47 @@ brew install --cask $(cat casks.txt)
 To activate the autosuggestions, add the following at the end of your `.zshrc`:
 
 ```bash
-echo source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh >> ~/.zshrc
+# zsh-autosuggestions.zsh
+# https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ```
 
 ### [GitHub CLI](https://cli.github.com/)
 ```bash
 gh auth login
+```
+
+### [nvm & Node.js](https://nodejs.org/en/download/package-manager/current)
+
+add to `~/.zshrc`
+```bash
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+```
+
+```bash
+nvm install --lts
+```
+
+### [`pipx`](https://pipx.pypa.io/stable/)
+
+確認`pipx`所下載的app其執行檔位置有被加入至`PATH`環境變數中，若沒有則會加進去。
+```
+pipx ensurepath
+```
+
+- [使用 pipx 管理基於 Python 的 Command-Line 工具](https://josix.tw/post/pipx-deep-dive/)
+
+### [`virtualenv`](https://virtualenv.pypa.io/en/latest/installation.html#via-pipx)
+
+[User Guide](https://virtualenv.pypa.io/en/latest/user_guide.html)
+
+```bash
+pipx install virtualenv
+mkdir ~/.venvs/
+cd ~/.venvs/
+virtualenv general --python python3.12
+source ~/.venvs/general/bin/activate
 ```
