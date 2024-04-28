@@ -1,0 +1,9 @@
+awscli
+gh
+hashicorp/tap/terraform
+minikube
+nvm
+opa
+pipx
+yarn
+zsh-autosuggestions
