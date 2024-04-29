@@ -9,3 +9,6 @@ pipx
 sqlfluff
 yarn
 zsh-autosuggestions
+bat
+fzf
+eza

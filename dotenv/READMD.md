@@ -111,3 +111,26 @@ source ~/.venvs/general/bin/activate
 ```
 
 ### [`isort`](https://pycqa.github.io/isort/)
+
+### [`bat`]
+
+`.zshrc`:
+```
+alias cat="bat"
+```
+
+### [`fzf`]
+
+`.zshrc`:
+
+```
+eval "$(fzf –zsh)"
+```
+
+### [`eza`]
+
+`.zshrc`:
+
+```
+alias ls 
+```
