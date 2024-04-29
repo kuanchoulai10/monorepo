@@ -20,4 +20,4 @@ spec:
     spec:
       containers:
         - name: worker-app
-          image: kodecloud/examplevotingapp_worker:v1
+          image: kodekloud/examplevotingapp_worker:v1
