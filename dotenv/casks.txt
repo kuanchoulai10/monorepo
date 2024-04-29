@@ -12,6 +12,7 @@ gather
 google-chrome
 google-cloud-sdk
 heptabase
+karabiner-elements
 kindle
 pgadmin4
 postman

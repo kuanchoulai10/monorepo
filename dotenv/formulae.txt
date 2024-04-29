@@ -1,9 +1,11 @@
 awscli
 gh
 hashicorp/tap/terraform
+helm
 minikube
 nvm
 opa
 pipx
+sqlfluff
 yarn
 zsh-autosuggestions
