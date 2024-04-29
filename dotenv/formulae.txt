@@ -1,4 +1,7 @@
 awscli
+bat
+eza
+fzf
 gh
 hashicorp/tap/terraform
 helm
@@ -9,6 +12,3 @@ pipx
 sqlfluff
 yarn
 zsh-autosuggestions
-bat
-fzf
-eza
