@@ -1,4 +1,4 @@
-mkdocs-material[imaging]==9.5.1
+mkdocs-material[imaging]==9.5.17
 mkdocs-monorepo-plugin==1.0.5
 mkdocs-jupyter==0.24.6
 mkdocs-glightbox==0.3.5
