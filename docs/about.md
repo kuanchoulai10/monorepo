@@ -1,3 +1,3 @@
 # About Me
 
-[timeline headings(docs/test.yml)]
+[timeline center alternate headings(docs/test.yml)]
