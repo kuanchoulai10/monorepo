@@ -5,6 +5,10 @@
 - title: Senior Data Engineer @TVBS
   sub_title: Mar. 2023 - Feb. 2024
   icon: ':material-television-classic:'
+  content: |
+    Improved data deployment efficiency by 30% by developing a streamlined DataOps workflow after facing constraints with limited human resources, which involved integrating CI/CD pipelines with dbt Cloud and Terraform Cloud using GitHub Actions.
+
+    - Analyzed approx. 600k news articles from 2018 to 2022 by using Topic Modeling technique (Latent Dirichlet Allocation), to know the reader preference transition over time to adjust business strategies.
 
 - title: Data Engineer @TVBS
   sub_title: Jun. 2021 - Mar. 2023
@@ -25,7 +29,7 @@
 - title: Master of Business Administration @NCCU
   sub_title: Jul. 2017 - May. 2023
   icon: ':material-school-outline:'
-  content: >
+  content: |
     - a
     - b
     - c
