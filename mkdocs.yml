@@ -21,6 +21,7 @@ nav:
     - Public Speakings:
       - about-me/public-speakings/index.md
   - Side Projects:
+    - "!include ./data-mesh/mkdocs.yml"
     - side-projects/index.md
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
