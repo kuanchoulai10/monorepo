@@ -8,16 +8,26 @@ edit_uri: edit/main/docs/
 nav:
   - Home:
     - index.md
-  - About: about.md
+  - About Me:
+    - about-me/index.md
+    - Work Experience:
+      - about-me/work-experience/ust.md
+      - about-me/work-experience/tvbs.md
+      - about-me/work-experience/ninox.md
+    - Education:
+      - about-me/education/nccu.md
+      - about-me/education/ccu.md
   - Side Projects:
     - side-projects/index.md
+    - side-projects/analytics-engineering.md
   - Learning Plan:
     - learning-plan/index.md
-    - learning-plan/2023.md
-    - learning-plan/2024.md
-  - Tags: tags.md
+    - learning-plan/2025.md
+  - Public Speakings:
+    - public-speakings.md
   - Blog: 
     - blog/index.md
+    - tags.md
 
 theme:
   name: material
@@ -51,6 +61,7 @@ plugins:
   - monorepo
   - social
   - glightbox
+  - drawio-exporter
   - tags:
       tags_file: tags.md
   - search:
@@ -67,6 +78,7 @@ plugins:
         - GCP
         - Google Analytics
         - mkdocs
+        - python
       draft_if_future_date: true
   - git-revision-date-localized:
       type: timeago

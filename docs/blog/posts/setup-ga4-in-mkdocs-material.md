@@ -26,7 +26,7 @@ comments: true
 首先，進到[Google Analytics](https://analytics.google.com/analytics/web/)介面點選「開始評估」：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-1.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-1.png)
   <figcaption></figcaption>
 </figure>
 
@@ -34,7 +34,7 @@ comments: true
 Google 產品和服務」、「根據輸入內容和業務洞察資料建立模型」、「技術支援」和「帳戶專家」：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-2.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-2.png)
   <figcaption></figcaption>
 </figure>
 
@@ -43,7 +43,7 @@ Google 產品和服務」、「根據輸入內容和業務洞察資料建立模�
 再來，根據個人偏好填入GA4資源名稱、報表時區和顯示貨幣：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-3.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-3.png)
   <figcaption></figcaption>
 </figure>
 
@@ -52,7 +52,7 @@ Google 產品和服務」、「根據輸入內容和業務洞察資料建立模�
 然後，根據你的目前現況填入產業類別和企業規模：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-4.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-4.png)
   <figcaption></figcaption>
 </figure>
 
@@ -61,12 +61,12 @@ Google 產品和服務」、「根據輸入內容和業務洞察資料建立模�
 填寫商家詳細資料後，再來就是根據你的業務需求，選擇業務目標。不同目標選擇會有不一樣的預設報表配置。詳情可以查看[[GA4] 業務目標集合](https://support.google.com/analytics/answer/12924488)。選擇完畢後請按「建立」，並接受Google Analytic和GDPR的合約：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-5.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-5.png)
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-6.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-6.png)
   <figcaption></figcaption>
 </figure>
 
@@ -77,21 +77,21 @@ Google 產品和服務」、「根據輸入內容和業務洞察資料建立模�
 填寫完一切資訊後，最後一步就是設定網站的GA4資料收集。由於我們是「網站」而非其它兩大平台應用程式，因此選擇「網站」：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-7.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-7.png)
   <figcaption></figcaption>
 </figure>
 
 再來，替GA4[新增網站資料串流]((https://support.google.com/analytics/answer/9304153#zippy=%2Cweb))。填寫網站網址和串流名稱後，點選「建立串流」。值得注意的是，GA4預設會開啟[加強型事件評估](https://support.google.com/analytics/answer/9216061)，收集網頁瀏覽、站內搜尋、影片參與等瀏覽行為：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-8.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-8.png)
   <figcaption></figcaption>
 </figure>
 
 新增網站資料串流後，GA4會自動替你生成一組「[串流ID](https://support.google.com/analytics/answer/12332343)」和「[評估ID](https://support.google.com/analytics/answer/12270356)」，將「評估ID」複製起來，待會會使用到：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-9.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-9.png)
   <figcaption></figcaption>
 </figure>
 
@@ -111,7 +111,7 @@ extra:
 先在GitHub對應的Repo裡設定名為`GA4_MEASUREMENT_ID`的Repo secrets：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-10.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-10.png)
   <figcaption></figcaption>
 </figure>
 
@@ -133,14 +133,14 @@ extra:
 設定完畢後再重新部署一次，接著前往Google Analytics操作介面進行測試。如果顯示綠色勾勾圖示的話就代表GA4設定成功！
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-11.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-11.png)
   <figcaption></figcaption>
 </figure>
 
 已啟用資料收集功能，即時在線人數為1 🎉：
 
 <figure markdown>
-  ![](../imgs/setup-ga4-in-mkdocs-material/setup-12.png)
+  ![](../../images/setup-ga4-in-mkdocs-material/setup-12.png)
   <figcaption></figcaption>
 </figure>
 

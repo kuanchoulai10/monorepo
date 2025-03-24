@@ -16,22 +16,22 @@ comments: true
 
 ## 註冊Search Console
 
-![Alt text](image.png)
+![Alt text](../../images/set-up-google-search-console/image.png)
 
-![Alt text](image-1.png)
+![Alt text](../../images/set-up-google-search-console/image-1.png)
 
-![Alt text](image-2.png)
+![Alt text](../../images/set-up-google-search-console/image-2.png)
 
 ## 連結Google Analytics 4和 Google Search Console
 
-![Alt text](image-3.png)
+![Alt text](../../images/set-up-google-search-console/image-3.png)
 
-![Alt text](image-4.png)
+![Alt text](../../images/set-up-google-search-console/image-4.png)
 
-![Alt text](image-5.png)
+![Alt text](../../images/set-up-google-search-console/image-5.png)
 
-![Alt text](image-6.png)
+![Alt text](../../images/set-up-google-search-console/image-6.png)
 
-![Alt text](image-7.png)
+![Alt text](../../images/set-up-google-search-console/image-7.png)
 
 
