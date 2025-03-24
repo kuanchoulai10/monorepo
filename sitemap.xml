@@ -21,12 +21,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kcl10.com/about-me/education/iii/</loc>
+         <lastmod>2025-03-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kcl10.com/about-me/education/nccu/</loc>
          <lastmod>2025-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/public-speakings/</loc>
+         <lastmod>2025-03-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/about-me/work-experience/itri/</loc>
          <lastmod>2025-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
