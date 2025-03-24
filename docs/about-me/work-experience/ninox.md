@@ -1,4 +1,4 @@
-# NinoX
+# ML Researcher, NinoX
 
 ## The obi-CTR model
 Developed the Online Bayesian Inference (OBI) algorithm for the Collaborative Topic Regression (CTR) model—a hybrid system combining Collaborative Filtering and Topic Modeling—using Python with robust OOP design, while leveraging NumPy and SciPy for scalable, real-time recommendations.
