@@ -22,6 +22,7 @@ nav:
       - about-me/public-speakings/index.md
   - Side Projects:
     - side-projects/index.md
+    - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
   - Learning Plan:
     - learning-plan/index.md
@@ -50,7 +51,6 @@ theme:
     - navigation.top
     - navigation.tracking
     - navigation.tabs
-    - navigation.footer
     - header.autohide
     - content.action.edit
     - content.action.view

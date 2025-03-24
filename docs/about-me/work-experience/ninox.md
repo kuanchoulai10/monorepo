@@ -19,3 +19,6 @@
     Established **CI/CD pipelines with TravisCI** for **automated unit tests and a docs-as-code workflow** using pytest and Sphinx, streamlining both development and documentation processes and ensuring consistent release quality
 
 ![](./ninox.drawio.svg)
+
+
+[About Me :material-page-previous-outline:](../index.md){ .md-button }

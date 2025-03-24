@@ -33,3 +33,5 @@
 !!! abstract
 
     Championed **an organization-wide experimentation mindset**, **engaged 60+ colleagues**, and **orchestrated 20+ A/B tests** via Google Optimize and Firebase within 6 months, boosting **mobile ad revenue by 27%** and **web pageviews by 6%**.
+
+[About Me :material-page-previous-outline:](../index.md){ .md-button }
