@@ -1,4 +1,4 @@
-site_name: KC’s Data & Life Notes
+site_name: KC's Data & Life Notes
 site_description: Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life.
 site_author: KC Lai
 site_url: https://kcl10.com
@@ -17,14 +17,14 @@ nav:
     - Education:
       - about-me/education/nccu.md
       - about-me/education/ccu.md
+    - Public Speakings:
+      - about-me/public-speakings/index.md
   - Side Projects:
     - side-projects/index.md
     - side-projects/sql-based-rag-application.md
   - Learning Plan:
     - learning-plan/index.md
     - learning-plan/2025.md
-  - Public Speakings:
-    - public-speakings.md
   - Blog: 
     - blog/index.md
     - tags.md

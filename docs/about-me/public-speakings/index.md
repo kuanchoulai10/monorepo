@@ -1,6 +1,6 @@
 # Public Speakings
 
-Sharing knowledge and ideas with others is something I value deeply. Here, you can find my past speaking engagements, talks, and presentations, along with topics I’m passionate about. I'm always open to new opportunities to connect and speak.
+Sharing knowledge and ideas with others is something I value deeply. Here, you can find my past speaking engagements, talks, and presentations, along with topics I'm passionate about. I'm always open to new opportunities to connect and speak.
 
 ## [Taipei dbt Meetup #27](https://www.meetup.com/taipei-dbt-meetup/events/302432145/)
 
