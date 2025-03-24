@@ -1,6 +1,6 @@
 # SQL-based RAG Application
 
-![](../diagrams/rag.drawio.svg)
+![](rag.drawio.svg)
 
 ## Create a Bucket in GCS and upload a pdf file
 
