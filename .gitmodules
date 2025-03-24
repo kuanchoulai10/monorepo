@@ -1,0 +1,3 @@
+[submodule "data-mesh"]
+	path = data-mesh
+	url = https://github.com/kuanchoulai10/data-mesh.git
