@@ -1,3 +1,3 @@
-# Analytics Engineering
+# SQL-based RAG Application
 
 ![](../diagrams/rag.drawio.svg)
