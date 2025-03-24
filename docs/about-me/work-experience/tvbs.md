@@ -25,11 +25,11 @@
 
 !!! abstract
 
-    Led the migration to GA4 and BigQuery to build a data lakehouse platform while maintaining a legacy event tracking pipeline (AWS Kinesis, MongoDB, PostgreSQL), saving $2M by retiring NoSQL database and ensuring real-time analytics for both anonymous and logged-in users.
+    Led **the migration to GA4 and BigQuery** to build a data lakehouse platform while maintaining a legacy event tracking pipeline (AWS Kinesis, MongoDB, PostgreSQL), **saving $2M** by retiring NoSQL database and **ensuring real-time analytics** for both anonymous and logged-in users.
 
 
 ## An organization-wide experimentation mindset
 
 !!! abstract
 
-    Championed an organization-wide experimentation mindset, engaged 60+ colleagues, and orchestrated 20+ A/B tests via Google Optimize and Firebase within 6 months, boosting mobile ad revenue by 27% and web pageviews by 6%.
+    Championed **an organization-wide experimentation mindset**, **engaged 60+ colleagues**, and **orchestrated 20+ A/B tests** via Google Optimize and Firebase within 6 months, boosting **mobile ad revenue by 27%** and **web pageviews by 6%**.
