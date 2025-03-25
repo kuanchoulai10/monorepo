@@ -2,92 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kcl10.com/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/tags/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/education/ccu/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/education/iii/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/education/nccu/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/public-speakings/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/itri/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/ninox/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/tvbs/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/ust/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/blog/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/learning-plan/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/learning-plan/2025/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/cross-cloud-unified-sql-data-pipelines/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/sql-based-rag-application/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/data-mesh/</loc>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/data-mesh/organization/</loc>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/data-mesh/section1/</loc>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/data-mesh/section1/page1/</loc>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/data-mesh/section1/page2/</loc>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://kcl10.com/tags/</loc>
-         <lastmod>2025-03-24</lastmod>
+         <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
