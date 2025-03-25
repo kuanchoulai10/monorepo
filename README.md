@@ -2,7 +2,7 @@
 
 Welcome to KC's Data & Life Notes, a personal knowledge hub where I share my projects, learning journey, and experiences in software engineering, data, and AI.
 
-Go to [my personal website](https://kcl10.com) for more!
+Go to [MY PERSONAL WEBSITE](https://kcl10.com) for more!
 
 ## Table of Contents
 
