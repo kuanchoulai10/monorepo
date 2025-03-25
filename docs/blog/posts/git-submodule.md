@@ -13,3 +13,5 @@ comments: true
 ---
 <!-- more -->
 - https://gist.github.com/gitaarik/8735255
+- https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#repository_dispatch
+- https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-dispatch-event
