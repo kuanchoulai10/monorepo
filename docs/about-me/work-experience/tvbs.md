@@ -1,5 +1,11 @@
 # Data Engineer, TVBS Media Inc.
 
+<!-- TODO: Introduce TVBS Media Inc. -->
+
+<!-- TODO: What did I do in TVBS Media Inc.?  -->
+
+<!-- TODO: What I've learned in TVBS Media Inc.?  -->
+
 ## Cost-effective, scalable ETL/ELT Modern Data Stack
 
 !!! abstract

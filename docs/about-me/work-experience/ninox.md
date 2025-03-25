@@ -1,5 +1,11 @@
 # ML Researcher, NinoX
 
+<!-- TODO: Introduce NinoX -->
+
+<!-- TODO: What did I do in NinoX?  -->
+
+<!-- TODO: What I've learned in NinoX?  -->
+
 ## The obi-CTR model
 
 !!! abstract
