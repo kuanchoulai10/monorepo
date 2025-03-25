@@ -30,7 +30,7 @@ nav:
     - learning-plans/2025.md
   - Blog: 
     - blog/index.md
-    - tags.md
+    - blog/tags.md
 
 theme:
   name: material
@@ -65,7 +65,7 @@ plugins:
   - glightbox
   - drawio-exporter
   - tags:
-      tags_file: tags.md
+      tags_file: blog/tags.md
   - search:
       lang:
         - en
@@ -78,6 +78,15 @@ plugins:
       post_url_format: "{file}"
       categories_allowed:
         - GCP
+        - AWS
+        - Azure
+        - Data Engineering
+        - Data Science
+        - AI
+        - Books
+        - Finance
+        - Tech
+        - Life
         - Google Analytics
         - mkdocs
         - python
