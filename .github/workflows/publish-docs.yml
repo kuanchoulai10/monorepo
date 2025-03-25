@@ -19,6 +19,18 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Update Submodules
+        run: |
+          git submodule update --remote --merge
+      - name: Commit and Push Submodule Updates
+        run: |
+          git add .
+          if ! git diff --cached --quiet; then
+              git commit -m "Update submodules to latest commit"
+              git push origin main
+          else
+              echo "No changes to commit"
+          fi
       - uses: actions/setup-python@v4
         with:
           python-version: 3.9
