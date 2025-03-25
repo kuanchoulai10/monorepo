@@ -6,3 +6,6 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
 
 [Side Projects](./side-projects/index.md){ .md-button .md-button--primary }
 
+[Learning Plans](./learning-plans/index.md){ .md-button .md-button--primary }
+
+[Blog](./blog/index.md){ .md-button .md-button--primary }

@@ -25,9 +25,9 @@ nav:
     - Data Mesh: "!include ./data-mesh/mkdocs.yml"
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
-  - Learning Plan:
-    - learning-plan/index.md
-    - learning-plan/2025.md
+  - Learning Plans:
+    - learning-plans/index.md
+    - learning-plans/2025.md
   - Blog: 
     - blog/index.md
     - tags.md
