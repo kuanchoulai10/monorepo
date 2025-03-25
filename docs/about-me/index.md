@@ -20,4 +20,4 @@ I'm a data-driven problem solver with experience in data engineering, machine le
 | Jul 2017 - May 2023  | M.B.A.                       | NCCU                | Taipei, Taiwan   | [:fontawesome-solid-arrow-pointer:](./education/nccu.md){ .md-button .md-button--primary } |
 | Sep 2013 - Jun 2017  | B.S. Psychology              | CCU                 | Chiayi, Taiwan   | [:fontawesome-solid-arrow-pointer:](./education/ccu.md){ .md-button .md-button--primary } |
 
-[Home :material-page-previous-outline:](../index.md){ .md-button }
+[Home :material-page-previous-outline:{ .lg .middle }](../index.md){ .md-button }
