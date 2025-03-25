@@ -6,11 +6,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kcl10.com/tags/</loc>
-         <lastmod>2025-03-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://kcl10.com/about-me/</loc>
          <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
@@ -61,6 +56,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kcl10.com/blog/tags/</loc>
+         <lastmod>2025-03-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kcl10.com/learning-plans/</loc>
          <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
@@ -96,7 +96,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kcl10.com/tags/</loc>
+         <loc>https://kcl10.com/blog/tags/</loc>
          <lastmod>2025-03-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
