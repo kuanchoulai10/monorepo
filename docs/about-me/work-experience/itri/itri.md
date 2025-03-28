@@ -18,4 +18,4 @@
 
     Systematized and summarized 100+ benchmark cases in the 4 major domains of IoT – water resources, air quality, earthquakes, and disaster prevention.
 
-[About Me :material-page-previous-outline:{ .lg .middle }](../index.md){ .md-button }
+[About Me :material-page-previous-outline:{ .lg .middle }](../../index.md){ .md-button }
