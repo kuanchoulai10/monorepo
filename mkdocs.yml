@@ -10,6 +10,7 @@ nav:
     - index.md
   - About Me:
     - about-me/index.md
+    - slides/demo1.md
     - Work Experience:
       - about-me/work-experience/ust.md
       - about-me/work-experience/tvbs.md
@@ -64,6 +65,7 @@ plugins:
   - social
   - glightbox
   - drawio-exporter
+  - slides
   - tags:
       tags_file: blog/tags.md
   - search:
