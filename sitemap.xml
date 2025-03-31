@@ -176,6 +176,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/rest-apis-with-flask/</loc>
+         <lastmod>2025-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kcl10.com/blog/tags/</loc>
          <lastmod>2025-03-31</lastmod>
          <changefreq>daily</changefreq>
