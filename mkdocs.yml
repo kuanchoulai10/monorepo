@@ -24,6 +24,7 @@ nav:
   - Side Projects:
     - side-projects/index.md
     - Data Mesh: "!include ./data-mesh/mkdocs.yml"
+    - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
   - Learning Plans:
