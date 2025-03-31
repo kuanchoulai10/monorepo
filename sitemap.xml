@@ -176,7 +176,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kcl10.com/side-projects/rest-apis-with-flask/</loc>
+         <loc>https://kcl10.com/side-projects/restful-apis-with-flask/</loc>
+         <lastmod>2025-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/restful-apis-with-flask/basics/section9/</loc>
+         <lastmod>2025-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/restful-apis-with-flask/docs/</loc>
          <lastmod>2025-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
