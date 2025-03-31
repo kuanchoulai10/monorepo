@@ -1,3 +1,6 @@
 [submodule "data-mesh"]
 	path = data-mesh
 	url = https://github.com/kuanchoulai10/data-mesh.git
+[submodule "restful-apis-with-flask"]
+	path = restful-apis-with-flask
+	url = https://github.com/kuanchoulai10/restful-apis-with-flask.git
