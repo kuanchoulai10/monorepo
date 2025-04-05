@@ -12,24 +12,28 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/restful-apis-with-flask/docs/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/restful-apis-with-flask/docs/basics/">
       
       
+        <link rel="prev" href="../../">
       
       
-      <link rel="icon" href="../../../images/avatar.png">
+        <link rel="next" href="../advanced/">
+      
+      
+      <link rel="icon" href="../../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
-        <title>Build RESTful APIs with Flask - KC's Data & Life Notes</title>
+        <title>Flask Basics - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,13 +52,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
-      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Build RESTful APIs with Flask - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Flask Basics - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/restful-apis-with-flask/docs/index.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/restful-apis-with-flask/docs/basics.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,19 +89,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/restful-apis-with-flask/docs/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/restful-apis-with-flask/docs/basics/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Build RESTful APIs with Flask - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Flask Basics - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/restful-apis-with-flask/docs/index.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/restful-apis-with-flask/docs/basics.png" >
       
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -108,7 +112,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-restful-apis-with-flask" class="md-skip">
+        <a href="#flask-basics" class="md-skip">
           Skip to content
         </a>
       
@@ -139,9 +143,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../images/avatar.png" alt="logo">
+  <img src="../../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -158,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build RESTful APIs with Flask
+              Flask Basics
             
           </span>
         </div>
@@ -241,7 +245,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../../../.." class="md-tabs__link">
           
   
     
@@ -261,7 +265,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about-me/" class="md-tabs__link">
+        <a href="../../../../about-me/" class="md-tabs__link">
           
   
     
@@ -277,11 +281,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -301,7 +307,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../learning-plans/" class="md-tabs__link">
+        <a href="../../../../learning-plans/" class="md-tabs__link">
           
   
     
@@ -321,7 +327,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../../../../blog/" class="md-tabs__link">
           
   
     
@@ -356,9 +362,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../images/avatar.png" alt="logo">
+  <img src="../../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -406,7 +412,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -468,7 +474,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/" class="md-nav__link ">
+            <a href="../../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -549,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -570,7 +576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -591,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -612,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -687,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/iii/" class="md-nav__link">
+      <a href="../../../../about-me/education/iii/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -708,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/nccu/" class="md-nav__link">
+      <a href="../../../../about-me/education/nccu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -729,7 +735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/ccu/" class="md-nav__link">
+      <a href="../../../../about-me/education/ccu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -779,7 +785,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -819,6 +825,8 @@
       
   
   
+    
+  
   
   
     
@@ -839,19 +847,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -862,13 +873,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -907,7 +918,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data-mesh/" class="md-nav__link ">
+            <a href="../../../data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -940,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-mesh/org/" class="md-nav__link">
+      <a href="../../../data-mesh/org/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,6 +977,8 @@
                 
   
   
+    
+  
   
   
     
@@ -975,22 +988,26 @@
           
         
       
+        
+      
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1000,15 +1017,176 @@
 
             </a>
             
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Restful APIs with Flask
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Flask Basics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Flask Basics
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-introduction-to-flask" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 3: Introduction to Flask
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-flask-restful-and-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 4: Flask-RESTful and JWT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-database-integration-with-sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 5: Database Integration with SQLite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-6-database-integration-with-sqlalchemy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 6: Database Integration with SQLAlchemy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-7-deploying-to-heroku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 7: Deploying to Heroku
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-8-deploying-to-digitalocean" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 8: Deploying to DigitalOcean
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-9-domain-and-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 9: Domain and HTTPS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-11-advanced-jwt-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 11: Advanced JWT Features
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced Flask Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
           </ul>
@@ -1026,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cross-cloud-unified-sql-data-pipelines/" class="md-nav__link">
+      <a href="../../../cross-cloud-unified-sql-data-pipelines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1047,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sql-based-rag-application/" class="md-nav__link">
+      <a href="../../../sql-based-rag-application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1098,7 +1276,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../learning-plans/" class="md-nav__link ">
+            <a href="../../../../learning-plans/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1131,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../learning-plans/2025/" class="md-nav__link">
+      <a href="../../../../learning-plans/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1184,7 +1362,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blog/" class="md-nav__link ">
+            <a href="../../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1217,7 +1395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../blog/tags/" class="md-nav__link">
+      <a href="../../../../blog/tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1238,7 +1416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,36 +1466,72 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#about-this-project" class="md-nav__link">
+  <a href="#section-3-introduction-to-flask" class="md-nav__link">
     <span class="md-ellipsis">
-      About This Project
+      Section 3: Introduction to Flask
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#section-4-flask-restful-and-jwt" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Section 4: Flask-RESTful and JWT
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use-this-repository" class="md-nav__link">
+  <a href="#section-5-database-integration-with-sqlite" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use This Repository
+      Section 5: Database Integration with SQLite
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
+  <a href="#section-6-database-integration-with-sqlalchemy" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting Started
+      Section 6: Database Integration with SQLAlchemy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-7-deploying-to-heroku" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 7: Deploying to Heroku
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-8-deploying-to-digitalocean" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 8: Deploying to DigitalOcean
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-9-domain-and-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 9: Domain and HTTPS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-11-advanced-jwt-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 11: Advanced JWT Features
     </span>
   </a>
   
@@ -1338,7 +1552,7 @@
                   
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/restful-apis-with-flask/restful-apis-with-flask/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/restful-apis-with-flask/restful-apis-with-flask/docs/basics.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -1347,50 +1561,69 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/restful-apis-with-flask/restful-apis-with-flask/docs/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/restful-apis-with-flask/restful-apis-with-flask/docs/basics.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
   
 
 
-<h1 id="build-restful-apis-with-flask">Build RESTful APIs with Flask<a class="headerlink" href="#build-restful-apis-with-flask" title="Permanent link">&para;</a></h1>
-<p>Welcome to the home page of my side project! This repository is a collection of work where I explore and build REST APIs using Flask, a lightweight and powerful Python web framework.</p>
-<h2 id="about-this-project">About This Project<a class="headerlink" href="#about-this-project" title="Permanent link">&para;</a></h2>
-<p>The goal of this project is to:
-- Learn and experiment with Flask for building RESTful APIs.
-- Understand best practices for API design and implementation.
-- Explore integrations with databases, authentication, and other web technologies.</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h1 id="flask-basics">Flask Basics<a class="headerlink" href="#flask-basics" title="Permanent link">&para;</a></h1>
+<h2 id="section-3-introduction-to-flask">Section 3: Introduction to Flask<a class="headerlink" href="#section-3-introduction-to-flask" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>RESTful API Design</strong>: Follows REST principles for clean and scalable APIs.</li>
-<li><strong>Flask Framework</strong>: Built using Flask for simplicity and flexibility.</li>
-<li><strong>Database Integration</strong>: Includes examples of working with databases like SQLite or SQLAlchemy.</li>
-<li><strong>Authentication</strong>: Demonstrates how to secure APIs with authentication mechanisms.</li>
-<li><strong>Error Handling</strong>: Implements robust error handling for better user experience.</li>
+<li>Introduction to the Flask web framework, using decorators to set up application routes.</li>
+<li>Understanding common HTTP request methods: GET, POST, PUT, DELETE.</li>
+<li>Understanding common HTTP status codes: 200, 201, 202, 401, 404.</li>
+<li>Understanding RESTful API design principles focusing on "resources" and statelessness.</li>
+<li>Implementing a RESTful API server application.</li>
+<li>Testing APIs using the Postman application.</li>
 </ul>
-<h2 id="how-to-use-this-repository">How to Use This Repository<a class="headerlink" href="#how-to-use-this-repository" title="Permanent link">&para;</a></h2>
-<p>Feel free to browse the code, read the documentation, and run the examples. If you're new to Flask or REST APIs, this project can serve as a learning resource.</p>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>Clone the repository:
-    <div class="highlight"><pre><span></span><code>gh<span class="w"> </span>repo<span class="w"> </span>clone<span class="w"> </span>your-username/rest-apis-with-flask
-<span class="nb">cd</span><span class="w"> </span>rest-apis-with-flask
-</code></pre></div></p>
-</li>
-<li>
-<p>Install dependencies:
-    <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div></p>
-</li>
-<li>
-<p>Run the application:
-    <div class="highlight"><pre><span></span><code>python<span class="w"> </span>app.py
-</code></pre></div></p>
-</li>
-</ol>
-<p>Thank you for visiting, and I hope you find this project helpful!</p>
+<h2 id="section-4-flask-restful-and-jwt">Section 4: Flask-RESTful and JWT<a class="headerlink" href="#section-4-flask-restful-and-jwt" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Implementing RESTful API server applications using <a href="https://pypi.org/project/Flask-RESTful/"><code>Flask-RESTful</code></a>.</li>
+<li>Implementing JSON Web Token (JWT) authentication using <a href="https://pypi.org/project/Flask-JWT/"><code>Flask-JWT</code></a>.</li>
+<li>Parsing user input JSON data using <code>RequestParser</code>.</li>
+</ul>
+<h2 id="section-5-database-integration-with-sqlite">Section 5: Database Integration with SQLite<a class="headerlink" href="#section-5-database-integration-with-sqlite" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Introducing <code>sqlite3</code> to store user and item information in a database.</li>
+<li>Implementing user registration functionality.</li>
+</ul>
+<h2 id="section-6-database-integration-with-sqlalchemy">Section 6: Database Integration with SQLAlchemy<a class="headerlink" href="#section-6-database-integration-with-sqlalchemy" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Introducing <a href="https://pypi.org/project/flask-sqlalchemy/"><code>Flask-SQLAlchemy</code></a> to interact with the database using ORM.</li>
+<li>Adding store information with a one-to-many relationship to items.</li>
+</ul>
+<h2 id="section-7-deploying-to-heroku">Section 7: Deploying to Heroku<a class="headerlink" href="#section-7-deploying-to-heroku" title="Permanent link">&para;</a></h2>
+<p>Deploying the Flask application to Heroku and using Heroku's PostgreSQL. Steps:
+1. Modify the project locally (e.g., add <code>Procfile</code>, <code>runtime.txt</code>, <code>uwsgi.ini</code>), then <code>commit</code> and <code>push</code> to the specified GitHub repo.
+2. Register on Heroku, create an application, connect it to the GitHub repo, and add the <code>heroku/python</code> buildpack and <code>Heroku Postgres</code> add-on.
+3. Install the Heroku CLI locally (see <a href="https://devcenter.heroku.com/articles/heroku-cli">here</a>) and log in using <code>heroku login</code>.
+4. Add a Heroku remote using <code>heroku git:remote -a &lt;app-name&gt;</code>.
+5. Deploy the project by pushing the <code>basics/section8</code> subdirectory to Heroku using <code>git subtree push --prefix basics/section8 heroku master</code>.</p>
+<p>Testing:
+Access <a href="http://rest-apis-with-flask.herokuapp.com/stores">here</a> to retrieve all stores and their items in the database, returned in JSON format.</p>
+<h2 id="section-8-deploying-to-digitalocean">Section 8: Deploying to DigitalOcean<a class="headerlink" href="#section-8-deploying-to-digitalocean" title="Permanent link">&para;</a></h2>
+<p>Deploying the Flask application to a DigitalOcean Droplet. Steps:
+1. Register on DigitalOcean, create a Droplet with Ubuntu 16.04, set up SSH, and connect using PuTTY.
+2. Create a new user on the operating system.
+3. Install and configure PostgreSQL, including creating a new user and database with appropriate permissions.
+4. Install and configure the Nginx server, including firewall settings, error pages, and uwsgi parameters.
+5. Set up a Python virtual environment, install required packages, and clone the project from GitHub.
+6. Configure an Ubuntu service to run the uwsgi server, including log directories, processes, and threads.</p>
+<p>Testing:
+Access <a href="http://64.225.122.125/stores">here</a> (created on 2020/05/30) to retrieve all stores and their items in the database, returned in JSON format.</p>
+<h2 id="section-9-domain-and-https">Section 9: Domain and HTTPS<a class="headerlink" href="#section-9-domain-and-https" title="Permanent link">&para;</a></h2>
+<p><a href="https://school-of-code.gitbooks.io/rest-apis-with-flask-and-python/content/domains-and-https/what-is-a-domain.html">Book</a>
+- Registering a domain and configuring DNS servers.
+- Obtaining an SSL certificate for HTTPS communication and configuring Nginx.</p>
+<h2 id="section-11-advanced-jwt-features">Section 11: Advanced JWT Features<a class="headerlink" href="#section-11-advanced-jwt-features" title="Permanent link">&para;</a></h2>
+<p>Introducing <a href="https://pypi.org/project/Flask-JWT-Extended/"><code>Flask-JWT-Extended</code></a>:
+- Implementing token-refreshing to improve user experience by avoiding frequent logins while requiring re-login for critical actions for security (using <code>@jwt_refresh_token_required</code>, <code>create_refresh_token()</code>, <code>create_access_token()</code>).
+- Responding with appropriate data based on user roles (visitor, user, admin) using <code>@jwt.user_claims_loader</code>, <code>@jwt_optional</code>, <code>get_jwt_claims()</code>.
+- Returning specific error messages for token-related issues using <code>@jwt.expired_token_loader</code>, <code>@jwt.invalid_token_loader</code>, <code>@jwt.needs_fresh_token_loader</code>.
+- Implementing a logout mechanism using a blacklist (with <code>@jwt.token_in_blacklist_loader</code>, <code>get_raw_jwt()</code>).</p>
+<p><a href="https://arac.tecladocode.com/">Book</a></p>
 
 
 
@@ -1413,7 +1646,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-01T07:09:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-05T12:03:18+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-05</span>
   </span>
 
     
@@ -1423,7 +1656,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-01T07:09:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-05-25T21:49:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-05-25</span>
   </span>
 
     
@@ -1553,16 +1786,16 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../../../../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../../assets/slides/js/slides.js"></script>
+        <script src="../../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>

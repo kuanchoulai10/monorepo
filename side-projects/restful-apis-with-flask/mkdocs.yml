@@ -2,3 +2,5 @@ site_name: side-projects/restful-apis-with-flask
 docs_dir: .
 nav:
   - README.md
+  - docs/basics.md
+  - docs/advanced.md
