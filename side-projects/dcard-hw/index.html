@@ -18,7 +18,7 @@
         <link rel="prev" href="../data-mesh/docs/org/">
       
       
-        <link rel="next" href="eda_evaluation/">
+        <link rel="next" href="docs/1-summary/">
       
       
       <link rel="icon" href="../../images/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>DCARD HW - KC's Data & Life Notes</title>
+        <title>2020 Dcard DE Intern - Take-home Test - KC's Data & Life Notes</title>
       
     
     
@@ -77,7 +77,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="DCARD HW - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="2020 Dcard DE Intern - Take-home Test - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
@@ -93,7 +93,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="DCARD HW - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="2020 Dcard DE Intern - Take-home Test - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dcard-hw" class="md-skip">
+        <a href="#2020-dcard-de-intern-take-home-test" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DCARD HW
+              2020 Dcard DE Intern - Take-home Test
             
           </span>
         </div>
@@ -1034,6 +1034,16 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -1073,6 +1083,111 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/1-summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    摘要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/2-eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    探索性資料分析 (EDA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/3-training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    特徵工程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/4-evaluation.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="docs/5-resampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 resampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1432,6 +1547,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      為什麼會有這份作業？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      訓練資料集
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      測試資料集
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1461,8 +1611,209 @@
   
 
 
-<h1 id="dcard-hw">DCARD HW<a class="headerlink" href="#dcard-hw" title="Permanent link">&para;</a></h1>
-<p>專案內容請參考 https://hackmd.io/@kcl10/dcard</p>
+<h1 id="2020-dcard-de-intern-take-home-test">2020 Dcard DE Intern - Take-home Test<a class="headerlink" href="#2020-dcard-de-intern-take-home-test" title="Permanent link">&para;</a></h1>
+<h2 id="_1">為什麼會有這份作業？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>2020年Dcard數據工程師實習計畫，面試前的作業</p>
+<p>在 Dcard 上,有一個很重要的版面叫熱門文章,每天會有許多的使用者會看這個列表來得知 Dcard 站上最火熱的討論話題是什
+麼。但身為做資料的人,我們也很想知道哪些文章是有潛力上熱門的,如果我們在推薦的時候考量這個因素進來也許能夠更快的讓
+使用者知道這是一篇好的文章。所以在這個作業裡面,我們希望能夠根據一些資料,來預測某一篇文章是不是有機會上到熱門文章區塊</p>
+<p>為了簡化問題複雜度,我們目前訂為在文章發出的 36 小時內愛心數 &gt;= 1000 就是熱門文章。實際測試的時候我們會去計算 36 小
+時內的某篇文章的愛心數是否超過 1000 來當做答案或是預測的基準。</p>
+<h2 id="_2">訓練資料集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>訓練集的文章涵蓋日期範圍從 2019 年的 4 月 1 日開始，持續到同年 10 月底，共 7 個月左右。總篇數有 79.4 萬篇左右，其中約有 2.32% 的文章是熱門文章，約莫是 1.8 萬篇。</p>
+<p>posts_train                總共有   793,751 筆資料和 3 個欄位
+post_shared_train          總共有   304,260 筆資料和 3 個欄位
+post_comment_created_train 總共有 2,372,228 筆資料和 3 個欄位
+post_liked_train           總共有 3,395,903 筆資料和 3 個欄位
+post_collected_train       總共有 1,235,126 筆資料和 3 個欄位</p>
+<p>posts_train</p>
+<ul>
+<li>post_key</li>
+<li>created_at_hour</li>
+<li>like_count_36_hour</li>
+</ul>
+<p>post_shared_train</p>
+<ul>
+<li>post_key</li>
+<li>created_at_hour</li>
+<li>count</li>
+</ul>
+<p>post_comment_created_train</p>
+<ul>
+<li>post_key</li>
+<li>created_at_hour</li>
+<li>count</li>
+</ul>
+<p>post_liked_train</p>
+<ul>
+<li>post_key</li>
+<li>created_at_hour</li>
+<li>count</li>
+</ul>
+<p>post_collected_train</p>
+<ul>
+<li>post_key</li>
+<li>created_at_hour</li>
+<li>count</li>
+</ul>
+<h2 id="_3">測試資料集<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>posts_test                 總共有   225,986 筆資料和 3 個欄位
+post_shared_test           總共有    83,376 筆資料和 3 個欄位
+post_comment_created_test  總共有   607,251 筆資料和 3 個欄位
+post_liked_test            總共有   908,910 筆資料和 3 個欄位
+post_collected_test        總共有   275,073 筆資料和 3 個欄位</p>
+<h1 id="evaluation-metrics">Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Permanent link">&para;</a></h1>
+<p>在做 offline evaluation 的時候只會使用每篇文章前 10 小時的資料當作是預測資料
+以 f1-score 為主</p>
+<h2 id="_4">回傳檔案要求<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>在完成作業後,你回傳的作業內容必須至少包含下列的 1 - 4 這四個檔案,未包含視同未完成。</p>
+<ol>
+<li>Report.pdf<ul>
+<li>怎麼使用你們的 code</li>
+<li>方法以及為什麼要這樣做</li>
+<li>Evaluate 在我們提供的 testing data 的結果</li>
+<li>實驗觀察</li>
+</ul>
+</li>
+<li>train.py</li>
+<li>predict.py</li>
+<li>requirement.txt 或 pipfile</li>
+<li>(Optional) 如果 predict 需要 model file 請務必附上 (我們不會幫你 train),並在 Report.pdf 裡說明如何執行</li>
+</ol>
+<p>我們對這個 Task 的程式會有一些要求,所有的程式的 package structure 請自行規劃。但希望繳交上來的程式可以符合下面的規
+格以利測試:
+- training
+    - 最外層用 train.py 包著
+    - 實際會執行 python train.py {database_host} {model_filepath}
+    - example: python train.py localhost:8080 ./model.h5</p>
+<ul>
+<li>predict<ul>
+<li>predict.py</li>
+<li>實際會執行 python predict.py {database_host} {model_filepath} {output_filepath}</li>
+<li>請告訴我們你的 model_filepath 放在哪裡</li>
+<li>example: python predict.py localhost:8080 ./model.h5 ./sample_output.csv</li>
+<li>你的程式最終在預測的時候要能夠做到下列兩件事情<ul>
+<li>從資料庫讀資料,資料的格式跟下一個 section 說的一樣,最後做 judgement 的時候我們會用自己做的另外的資料做測試。</li>
+<li>實際上我們會取另一個資料庫的 xxx_test tables 當測試集。所以 predict.py 裡面請吃這些 table當成是你的程式的 input。</li>
+<li>輸出成 CSV 格式,裡面有兩個 column 如下,需要輸出 header (請參照我們附上的 sample_output.csv)<ul>
+<li>post_key: string type</li>
+<li>is_trending: bool type</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="_5">使用方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h1>
+<p>環境：</p>
+<ul>
+<li>Operatig System: Uuntu 18.04 LTS Desktop</li>
+<li>Python version: Python 3.6.8</li>
+<li>Python 所需套件及其版本已整理至 <code>requirement.txt</code>。</li>
+</ul>
+<p>由於 <code>quiz.pdf</code> 裡所提到的繳交格式必須把格式寫死，例如連線至資料庫時的 <code>user</code>, <code>password</code> 等。<strong>為求慎重，命令列參數的傳遞格式有稍作修改，以符合使用需求</strong>。以下是 <code>training.py</code>, <code>predict.py</code> 的使用方法。</p>
+<h2 id="trainingpy"><code>training.py</code><a class="headerlink" href="#trainingpy" title="Permanent link">&para;</a></h2>
+<p><code>training.py</code> 的使用方法簡介如下：</p>
+<div class="highlight"><pre><span></span><code>usage: training.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
+                   [--port PORTNUMBER] [--protocol PROTOCOL]
+                   DATABASE OUTPUT_PATH
+</code></pre></div>
+<p>最低需求必須輸入「使用者名稱」、「密碼」、「主機IP位址」、「資料庫名稱」、「輸出路徑」五個參數。<strong>對 training set 訓練的使用方法如下</strong>：</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+<span class="w">                   </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+<span class="w">                   </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+<span class="w">                   </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+<span class="w">                   </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</code></pre></div>
+<p>預設連線至 PostgreSQL 資料庫，預設埠號為 5432。若有需求則可透過 <code>--protocol</code>, <code>--port</code> 選項更改，連線至其它資料庫如 MySQL：</p>
+<details class="note">
+<summary>Note</summary>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+<span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+<span class="w">                </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+<span class="w">                </span>--port<span class="w"> </span><span class="s2">&quot;3306&quot;</span><span class="se">\</span>
+<span class="w">                </span>--protocol<span class="w"> </span><span class="s2">&quot;mysql&quot;</span><span class="se">\</span>
+<span class="w">                </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+<span class="w">                </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</code></pre></div>
+</details>
+<p></br></p>
+<div class="admonition danger">
+<p class="admonition-title">注意</p>
+<p>由於訓練過後是產出「最佳模型」和「交叉驗證結果」兩份檔案，預設名稱分別為 <code>best_model.h5</code>, <code>cv_results.csv</code>（無法更改），因此在傳遞 <code>OUTPUT_PATH</code> 時，只需給定「資料夾名稱」即可。</p>
+</div>
+<p>更多詳細資訊可透過 <code>-h</code>, <code>--help</code> 查看：</p>
+<details class="note">
+<summary>Note</summary>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>training.py<span class="w"> </span>-h
+usage:<span class="w"> </span>training.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
+<span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span>
+<span class="w">                </span>DATABASE<span class="w"> </span>OUTPUT_PATH
+
+positional<span class="w"> </span>arguments:
+DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Best<span class="w"> </span>prediction<span class="w"> </span>model<span class="w"> </span>and<span class="w"> </span>cross<span class="w"> </span>validation
+<span class="w">                    </span>results<span class="w"> </span>outputs<span class="w"> </span>file<span class="w"> </span>path.
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
+-p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+--host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
+--port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
+--protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
+</code></pre></div>
+</details>
+<h2 id="predictpy"><code>predict.py</code><a class="headerlink" href="#predictpy" title="Permanent link">&para;</a></h2>
+<p><code>predict.py</code> 的使用方法簡介如下：</p>
+<div class="highlight"><pre><span></span><code>usage: predict.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
+                  [--port PORTNUMBER] [--protocol PROTOCOL] [-n]
+                  DATABASE MODEL_NAME OUTPUT_PATH
+</code></pre></div>
+<p>與 <code>training.py</code> 類似，必須輸入五個參數，額外加上用來預測熱門文章的「模型路徑」。<strong>對 public test set 預測的使用方法如下</strong>：</p>
+<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+<span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</code></pre></div>
+執行完成後，會輸出 <code>output.csv</code>（名稱無法更改）至指定的資料夾。必須注意的是，<code>MODEL_NAME</code> 選項必須帶入模型檔案名稱，而非資料夾路徑。</p>
+<p>「作業補充說明及更正」信中有提到，在 private test 的時候，<code>posts_test</code> table 當中是沒有 <code>like_count_36_hour</code> 欄位的。因此，需要多給定 <code>-n</code> 選項，用來代表資料集當中並沒有該欄位。<strong>對 private test set 預測的使用方法如下</strong>：</p>
+<p><div class="highlight"><pre><span></span><code>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+<span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span>-n<span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
+<span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</code></pre></div>
+若有需要也可以透過 <code>--port</code>, <code>--protocol</code> 選項更改資料庫。</p>
+<p>更多詳細資訊可透過 <code>-h</code>, <code>--help</code> 查看：</p>
+<details class="note">
+<summary>Note</summary>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>predict.py<span class="w"> </span>-h
+usage:<span class="w"> </span>predict.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
+<span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span>
+<span class="w">                </span>DATABASE<span class="w"> </span>MODEL_NAME<span class="w"> </span>OUTPUT_PATH
+
+positional<span class="w"> </span>arguments:
+DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+MODEL_NAME<span class="w">           </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Prediction<span class="w"> </span>model<span class="w"> </span>name.<span class="w"> </span>If<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+<span class="w">                    </span>current<span class="w"> </span>directory,<span class="w"> </span>please<span class="w"> </span>specify<span class="w"> </span>where<span class="w"> </span>it<span class="w"> </span>is.
+OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>File<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>predicted<span class="w"> </span>results.
+
+optional<span class="w"> </span>arguments:
+-h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+-u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
+-p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+--host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
+--port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
+--protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
+-n<span class="w">                   </span>No<span class="w"> </span>like_count_36_hour<span class="w"> </span>column<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>given.
+</code></pre></div>
+</details>
 
 
 
@@ -1485,7 +1836,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-06T08:11:36+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-06T14:11:48+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-06</span>
   </span>
 
     
