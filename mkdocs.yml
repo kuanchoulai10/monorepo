@@ -67,6 +67,7 @@ plugins:
   - glightbox
   - drawio-exporter
   - slides
+  - mkdocs-jupyter
   - tags:
       tags_file: blog/tags.md
   - search:
