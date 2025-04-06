@@ -181,6 +181,31 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/dcard-hw/</loc>
+         <lastmod>2025-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/dcard-hw/eda_evaluation/</loc>
+         <lastmod>2025-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/dcard-hw/predict/</loc>
+         <lastmod>2025-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/dcard-hw/preprocessing/</loc>
+         <lastmod>2025-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/dcard-hw/training/</loc>
+         <lastmod>2025-04-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/restful-apis-with-flask/</loc>
          <lastmod>2025-04-06</lastmod>
          <changefreq>daily</changefreq>

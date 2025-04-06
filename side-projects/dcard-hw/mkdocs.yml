@@ -1,0 +1,5 @@
+site_name: side-projects/dcard-hw
+docs_dir: .
+nav:
+  - README.md
+  - eda_evaluation.ipynb
