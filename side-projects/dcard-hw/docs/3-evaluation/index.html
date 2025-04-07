@@ -12,13 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/1-summary/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/3-evaluation/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../2-training/">
       
       
-        <link rel="next" href="../2-eda/">
+        <link rel="next" href="../4-resampling/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>摘要 - KC's Data & Life Notes</title>
+        <title>Results and Discussion - KC's Data & Life Notes</title>
       
     
     
@@ -77,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="摘要 - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Results and Discussion - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/1-summary.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/3-evaluation.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/1-summary/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/3-evaluation/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="摘要 - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Results and Discussion - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/1-summary.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/3-evaluation.png" >
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#results-and-discussion" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              摘要
+              Results and Discussion
             
           </span>
         </div>
@@ -1042,8 +1042,6 @@
       
         
       
-        
-      
     
     
       
@@ -1089,6 +1087,48 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exploratory Data Analysis (EDA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1101,15 +1141,173 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Results and Discussion
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    摘要
+    Results and Discussion
   </span>
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experimental Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resampler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resampler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classifier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-resampling-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Resampling Techniques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consider-other-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consider Other Evaluation Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-feature-transformations-and-classifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Feature Transformations and Classifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorporate-sequential-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incorporate Sequential Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-hyperparameter-optimization-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Hyperparameter Optimization Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorporate-text-data-and-user-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incorporate Text Data and User Behavior
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incorporate Text Data and User Behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tags-dcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      tags: dcard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1123,70 +1321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2-eda/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    探索性資料分析 (EDA)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-training/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    特徵工程
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4-evaluation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    結果與討論
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5-resampling/" class="md-nav__link">
+      <a href="../4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1557,6 +1692,140 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experimental Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resampler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resampler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classifier
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-directions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Directions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Directions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-resampling-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Resampling Techniques
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consider-other-evaluation-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consider Other Evaluation Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-feature-transformations-and-classifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Feature Transformations and Classifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorporate-sequential-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incorporate Sequential Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explore-other-hyperparameter-optimization-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explore Other Hyperparameter Optimization Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incorporate-text-data-and-user-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Incorporate Text Data and User Behavior
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Incorporate Text Data and User Behavior">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tags-dcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      tags: dcard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1570,7 +1839,7 @@
                   
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/1-summary.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/3-evaluation.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -1579,38 +1848,177 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/1-summary.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/3-evaluation.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
   
 
 
-<h1 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tree
-.
-├──<span class="w"> </span>eda_evaluation.ipynb：用來匯出圖示的筆記本
-├──<span class="w"> </span>outputs
-│<span class="w">   </span>├──<span class="w"> </span>best_model.h5：訓練過後得到的最佳模型
-│<span class="w">   </span>├──<span class="w"> </span>cv_results.csv：交叉驗證結果
-│<span class="w">   </span>└──<span class="w"> </span>output.csv：公開資料集的預測結果
-├──<span class="w"> </span>predict.py：預測用的<span class="w"> </span>utility
-├──<span class="w"> </span>preprocessing.py：兩個<span class="w"> </span>utilities<span class="w"> </span>共用的函式，包括資料庫連線、前處理等
-├──<span class="w"> </span>requirement.txt：Python<span class="w"> </span>所需套件及其版本清單
-└──<span class="w"> </span>training.py：訓練用的<span class="w"> </span>utility
+<h1 id="results-and-discussion">Results and Discussion<a class="headerlink" href="#results-and-discussion" title="Permanent link">&para;</a></h1>
+<h2 id="evaluation-metrics">Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permanent link">&para;</a></h2>
+<p>Before discussing the results, let us revisit some commonly used metrics for binary classification, explained using this assignment as an example:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Actual＼Predicted</th>
+<th style="text-align: center;">Negative</th>
+<th style="text-align: center;">Positive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Negative</strong></td>
+<td style="text-align: center;">$\color{red}{\text{TN}}$</td>
+<td style="text-align: center;">$\color{blue}{\text{FP}}$</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Positive</strong></td>
+<td style="text-align: center;">$\color{green}{\text{FN}}$</td>
+<td style="text-align: center;">$\color{orange}{\text{TP}}$</td>
+</tr>
+</tbody>
+</table>
+<p>$\text{Precision}$: Measures the proportion of articles predicted as popular that are actually popular. <strong>Higher values indicate greater trust in the model's predictions for popular articles.</strong> Formula:
+$$
+\text{Precision} = \frac{\color{orange}{\text{TP}}}{\color{blue}{\text{FP}} + \color{orange}{\text{TP}}}
+$$</p>
+<p>$\text{Recall}$: Measures the proportion of actual popular articles that are correctly predicted by the model. Also known as True Positive Rate (TPR) or Sensitivity. <strong>Higher values indicate the model's ability to capture actual popular articles.</strong> Formula:
+$$
+\text{Recall} = \dfrac{\color{orange}{\text{TP}}}{\color{green}{\text{FN}} + \color{orange}{\text{TP}}}
+$$ </p>
+<p>$\text{Specificity}$: Measures the proportion of actual non-popular articles that are correctly predicted by the model. Also known as True Negative Rate (TNR). <strong>Higher values indicate the model's ability to capture actual non-popular articles.</strong> Formula:
+$$
+\text{Specificity} = \dfrac{\color{red}{\text{TN}}}{\color{red}{\text{TN}}+\color{blue}{\text{FP}}}
+$$</p>
+<p>$\text{F1-score}$: A harmonic mean of $\text{Precision}$ and $\text{Recall}$, ranging from $0$ to $1$, with higher values being better. Formula:
+$$
+\text{F1-score} = \dfrac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+$$</p>
+<p>$\text{Balanced Acc.}$: A combined metric of $\text{TPR}$ and $\text{TNR}$, ranging from $0$ to $1$, with higher values being better. Formula:
+$$
+\text{Balanced Acc.} = \dfrac{\text{TNR} + \text{TPR}}{2}
+$$</p>
+<p>When using <code>GridSearchCV</code> to find the best parameter combination, we record these five metrics and select the best combination based on the f1-score. Example code:
+<div class="highlight"><pre><span></span><code><span class="n">scoring</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;precision&#39;</span><span class="p">:</span> <span class="s1">&#39;precision&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;recall&#39;</span><span class="p">:</span> <span class="s1">&#39;recall&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;specificity&#39;</span><span class="p">:</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">specificity_score</span><span class="p">),</span>
+    <span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">:</span> <span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;f1_score&#39;</span><span class="p">:</span> <span class="s1">&#39;f1&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">scoring</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="s1">&#39;f1_score&#39;</span><span class="p">,</span> 
+                           <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="experimental-results">Experimental Results<a class="headerlink" href="#experimental-results" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The best model is <code>AdaBoostClassifier</code> without any resampling, consisting of 100 decision trees with a maximum depth of 2. The average f1-score during cross-validation is 0.56, while the f1-score on the public test set is 0.53. Detailed prediction information is as follows:</p>
+</div>
+<p></br></p>
+<details class="note">
+<summary>Note</summary>
+<div class="highlight"><pre><span></span><code>===================GETTING CONNECTOR START!==================
+============================DONE!============================
+====================GETTING TABLES START!====================
+posts_test                 Total:   225,986 rows, 3 columns
+post_shared_test           Total:    83,376 rows, 3 columns
+post_comment_created_test  Total:   607,251 rows, 3 columns
+post_liked_test            Total:   908,910 rows, 3 columns
+post_collected_test        Total:   275,073 rows, 3 columns
+============================DONE!============================
+====================MERGING TABLES START!====================
+============================DONE!============================
+================PREPROCESSING TOTAL_DF START!================
+============================DONE!============================
+==================PREDICTING TESTSET START!==================
+f1-score     = 0.53
+balanced acc = 0.70
+
+            precision    recall  f1-score   support
+
+        0       0.99      1.00      0.99    221479
+        1       0.75      0.40      0.53      4507
+
+    accuracy                           0.99    225986
+macro avg       0.87      0.70      0.76    225986
+weighted avg       0.98      0.99      0.98    225986
+
+============================DONE!============================
 </code></pre></div>
-<p>訓練集的文章涵蓋日期範圍從 2019 年的 4 月 1 日開始，持續到同年 10 月底，共 7 個月左右。總篇數有 79.3 萬篇左右，其中約有 2.32% 的文章是熱門文章，約莫是 1.8 萬篇。透過探索性資料分析，我們發現變數之間的相關性普遍偏高，且在什麼時間點發文確實會影響熱門文章的比例，以及發文 36 小時內的愛心總數。</p>
-<p>我們決定以「不考慮序列資訊」的「二元分類模型」作為我們的主要內容，並且聚焦在不平衡資料集的處理、tree-based 集成模型和後續討論上。在訓練過程中，主要可分為三個階段：
-1. 重抽樣（resampling）
-2. 欄位轉換（column transformation）
-3. 分類（classification）</p>
-<p>經由嘗試，我們決定省略了「特徵轉換」階段，最終共有 108 種組合需要嘗試，透過 <code>GridSearchCV</code> 找尋最佳組合，設定 <code>cv=3</code>。</p>
-<p>以 f1-score 作為模型衡量指標，最佳模型是不做任何重抽樣的 <code>AdaBoostClassifier</code>，內部共有 100 棵樹深限制為 2 層的決策樹，交叉驗證的平均 f1-score 是 0.56。其在公開測試集的 f1-score 則是 0.53。實驗過程有幾個結論：
-- 不同的重抽樣策略確實會對 f1-score 造成影響。
-- 重抽樣策略確實能捕捉到實際上為熱門的文章，但取而代之的就是我們不太能相信它所預測的熱門文章，實際上確實也是熱門文章。
-- 在「SMOTE 重抽樣策略」以及「不做任何重抽樣」的情況底下，不同的分類器選擇並不會造成 f1-score 大幅度的變化。
-- 不同的分類器選擇對 f1-score 造成的影響並不大。</p>
-<p>最後我們也討論了幾個可能的未來方向，包括考慮其它重抽樣技術、其它衡量指標、序列資訊等。</p>
+</details>
+<p>Now, let us analyze the experimental results. (All figures below are based on cross-validation results, not the entire training set or public test set.)</p>
+<h4 id="resampler">Resampler<a class="headerlink" href="#resampler" title="Permanent link">&para;</a></h4>
+<p>First, let us examine how different resampling strategies affect the f1-score:
+<a class="glightbox" href="https://i.imgur.com/zEDEDf1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/zEDEDf1.png" height="350"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Different resampling strategies indeed affect the f1-score:</p>
+<ul>
+<li>NearMiss (undersampling) has the lowest f1-score, likely due to excessive removal of non-popular articles, losing too much majority class information.</li>
+<li>SMOTE (oversampling) achieves a moderate f1-score.</li>
+<li>No resampling achieves the highest f1-score.</li>
+</ul>
+</div>
+<p>Next, we investigate how these resampling strategies impact precision and recall:</p>
+<p><a class="glightbox" href="https://i.imgur.com/r24hqmW.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/r24hqmW.png" height="350"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<ul>
+<li>NearMiss and SMOTE significantly increase the model's focus on the minority class, resulting in excellent recall scores of 0.91 and 0.95, respectively. However, this comes at the cost of precision, which drops to 0.07 and 0.20, respectively.</li>
+<li>In other words, <strong>resampling strategies can capture actual popular articles but reduce the trustworthiness of the predicted popular articles.</strong></li>
+</ul>
+<p>We further explore whether resampling strategies interact with different classifiers to influence the f1-score:</p>
+<p><a class="glightbox" href="https://i.imgur.com/Ge3583B.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/Ge3583B.png" height="350"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Under "SMOTE" and "No Resampling" strategies, different classifiers do not significantly affect the f1-score.</li>
+<li>However, under the NearMiss strategy, <code>XGBClassifier</code> achieves the highest f1-score (0.18), while <code>AdaBoostClassifier</code> has the lowest (0.07).<ul>
+<li><code>AdaBoostClassifier</code> performs poorly because it relies on weak classifiers, which struggle with limited majority class information.</li>
+<li><code>XGBClassifier</code> outperforms <code>GradientBoostingClassifier</code> due to its optimized GBDT implementation.</li>
+</ul>
+</li>
+</ul>
+</div>
+<h4 id="classifier">Classifier<a class="headerlink" href="#classifier" title="Permanent link">&para;</a></h4>
+<p>Next, let us examine how different classifiers affect the f1-score:</p>
+<p><a class="glightbox" href="https://i.imgur.com/4mALiwb.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/4mALiwb.png" height="350"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Different classifiers have minimal impact on the f1-score. On average, <code>XGBClassifier</code> achieves the highest score (0.35), primarily due to its performance under the NearMiss strategy.</li>
+</ul>
+</div>
+<p>Finally, we analyze whether the number of internal classifiers in ensemble models affects the f1-score:</p>
+<p><a class="glightbox" href="https://i.imgur.com/GTb5KJq.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/GTb5KJq.png" height="350"></a></p>
+<p>Clearly, the number of classifiers has little impact. Similarly, the tree depth for <code>AdaBoostClassifier</code> and the learning rate for the other two models also have minimal impact on the f1-score (figures omitted).</p>
+<h2 id="future-directions">Future Directions<a class="headerlink" href="#future-directions" title="Permanent link">&para;</a></h2>
+<p>The experimental results are summarized above. Due to time constraints, additional attempts were not included. Potential future directions are outlined below:</p>
+<h4 id="explore-other-resampling-techniques">Explore Other Resampling Techniques<a class="headerlink" href="#explore-other-resampling-techniques" title="Permanent link">&para;</a></h4>
+<p>Resampling techniques can increase the model's focus on the minority class. Although the experimental results were not ideal, we can continue fine-tuning hyperparameters or exploring other resampling techniques. Refer to the <a href="https://imbalanced-learn.readthedocs.io/en/stable/over_sampling.html">"Over-sampling"</a> and <a href="https://imbalanced-learn.readthedocs.io/en/stable/under_sampling.html">"Under-sampling"</a> sections of the <code>imblearn</code> User Guide for potential directions.</p>
+<h4 id="consider-other-evaluation-metrics">Consider Other Evaluation Metrics<a class="headerlink" href="#consider-other-evaluation-metrics" title="Permanent link">&para;</a></h4>
+<p>The assignment requires using f1-score as the evaluation metric. However, if we use balanced accuracy instead, the best model would be a <code>GradientBoostingClassifier</code> trained with SMOTE, consisting of 120 classifiers and a learning rate of 0.1, achieving a balanced accuracy of 0.93.</p>
+<p>The impact of different resampling strategies on balanced accuracy is shown below:</p>
+<p><a class="glightbox" href="https://i.imgur.com/08MiKXf.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://i.imgur.com/08MiKXf.png" height="350"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>SMOTE achieves the highest balanced accuracy. If the goal is <strong>to preliminarily identify potentially popular articles for subsequent workflows</strong>, balanced accuracy might be a better evaluation metric.</p>
+</div>
+<h4 id="explore-other-feature-transformations-and-classifiers">Explore Other Feature Transformations and Classifiers<a class="headerlink" href="#explore-other-feature-transformations-and-classifiers" title="Permanent link">&para;</a></h4>
+<p>The experiment only considered tree-based ensemble models, which require minimal feature transformation. However, we could explore logistic regression, support vector machines, Poisson regression, etc., combined with effective feature transformations. For example, converting <code>weekday</code> and <code>hour</code> into circular coordinates (refer to <a href="https://stats.stackexchange.com/questions/245866/is-hour-of-day-a-categorical-variable">this post</a>) could improve model performance.</p>
+<h4 id="incorporate-sequential-information">Incorporate Sequential Information<a class="headerlink" href="#incorporate-sequential-information" title="Permanent link">&para;</a></h4>
+<p>The experiment ignored the "time trends" of shares, comments, likes, and collections within 10 hours of posting. One potential direction is to use recurrent neural networks (RNN, LSTM, GRU, etc.) to capture these trends and nonlinear relationships between variables.</p>
+<p>A simple approach is to combine the four count variables into a 4-dimensional vector (e.g., <code>[4, 23, 17, 0]</code> for 4 shares, 23 comments, etc.), with a sequence length of 10. Each article's sequential information would then be a <code>(10, 4)</code> matrix, which can be fed into the model for training.</p>
+<p>For details on LSTM models, refer to my <a href="https://hackmd.io/@kcl10/B1RoWCd0H">notes</a>.</p>
+<h4 id="explore-other-hyperparameter-optimization-methods">Explore Other Hyperparameter Optimization Methods<a class="headerlink" href="#explore-other-hyperparameter-optimization-methods" title="Permanent link">&para;</a></h4>
+<p>The experiment used <code>GridSearchCV</code> for hyperparameter optimization. However, <code>RandomizedSearchCV</code> might be a better choice for optimizing a large number of hyperparameter combinations. Refer to this <a href="http://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf">2012 JMLR paper</a> for details.</p>
+<p>Additionally, consider Bayesian optimization implementations provided by <a href="https://optuna.org/"><code>optuna</code></a> or <a href="http://hyperopt.github.io/hyperopt/"><code>hyperopt</code></a>. Watch this <a href="https://youtu.be/jtRPxRnOXnk">video</a> for details, and compare the two libraries in this <a href="https://towardsdatascience.com/optuna-vs-hyperopt-which-hyperparameter-optimization-library-should-you-choose-ed8564618151">article</a>.</p>
+<h4 id="incorporate-text-data-and-user-behavior">Incorporate Text Data and User Behavior<a class="headerlink" href="#incorporate-text-data-and-user-behavior" title="Permanent link">&para;</a></h4>
+<p>The assignment does not include text data or user behavior. Since the ultimate goal is to "recommend articles more accurately to users," consider incorporating Latent Dirichlet Allocation (LDA) topic modeling to enrich article topic information. Refer to my <a href="https://hackmd.io/@kcl10/topic_model">presentation</a> for details on LDA.</p>
+<p>Additionally, combining user behavior data could enable more refined personalized text recommendations. Refer to this <a href="https://www.youtube.com/watch?v=FkckgwMHP2s">video</a> and this <a href="https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi/ccd=r9lcr2/record?r1=1&amp;h1=0">paper</a> for details.</p>
+<h6 id="tags-dcard">tags: <code>dcard</code><a class="headerlink" href="#tags-dcard" title="Permanent link">&para;</a></h6>
 
 
 
@@ -1633,7 +2041,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-06T14:11:48+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-07T12:09:07+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-07</span>
   </span>
 
     

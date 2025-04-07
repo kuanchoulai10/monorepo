@@ -12,13 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/5-resampling/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/1-eda/">
       
       
-        <link rel="prev" href="../4-evaluation/">
+        <link rel="prev" href="../../">
       
       
-        <link rel="next" href="../../eda_evaluation/">
+        <link rel="next" href="../2-training/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Resampling - KC's Data & Life Notes</title>
+        <title>Exploratory Data Analysis (EDA) - KC's Data & Life Notes</title>
       
     
     
@@ -77,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Resampling - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Exploratory Data Analysis (EDA) - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/5-resampling.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/1-eda.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/5-resampling/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/1-eda/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Resampling - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Exploratory Data Analysis (EDA) - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/5-resampling.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/1-eda.png" >
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resampling" class="md-skip">
+        <a href="#exploratory-data-analysis-eda" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resampling
+              Exploratory Data Analysis (EDA)
             
           </span>
         </div>
@@ -1042,8 +1042,6 @@
       
         
       
-        
-      
     
     
       
@@ -1089,90 +1087,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../1-summary/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    摘要
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2-eda/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    探索性資料分析 (EDA)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-training/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    特徵工程
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4-evaluation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    結果與討論
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1189,7 +1103,7 @@
           
   
   <span class="md-ellipsis">
-    Resampling
+    Exploratory Data Analysis (EDA)
   </span>
   
 
@@ -1200,7 +1114,7 @@
         
   
   <span class="md-ellipsis">
-    Resampling
+    Exploratory Data Analysis (EDA)
   </span>
   
 
@@ -1224,20 +1138,80 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
+  <a href="#problem-definition" class="md-nav__link">
     <span class="md-ellipsis">
-      Over Sampling
+      Problem Definition
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
+  <a href="#linear-relationships-between-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Under Sampling
+      Linear Relationships Between Variables
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heatmaps-of-key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heatmaps of Key Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Heatmaps of Key Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#total-posts-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Total Posts by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popular-post-proportion-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Popular Post Proportion by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-likes-within-10-hours-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Average Likes Within 10 Hours by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-likes-within-36-hours-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Average Likes Within 36 Hours by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1245,6 +1219,69 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-evaluation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Results and Discussion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-resampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resampling
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1614,20 +1651,80 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#over-sampling" class="md-nav__link">
+  <a href="#problem-definition" class="md-nav__link">
     <span class="md-ellipsis">
-      Over Sampling
+      Problem Definition
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#under-sampling" class="md-nav__link">
+  <a href="#linear-relationships-between-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Under Sampling
+      Linear Relationships Between Variables
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heatmaps-of-key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heatmaps of Key Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Heatmaps of Key Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#total-posts-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Total Posts by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popular-post-proportion-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Popular Post Proportion by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-likes-within-10-hours-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Average Likes Within 10 Hours by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-likes-within-36-hours-by-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Average Likes Within 36 Hours by Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1646,7 +1743,7 @@
                   
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/5-resampling.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/1-eda.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -1655,16 +1752,122 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/5-resampling.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/1-eda.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
   
 
 
-<h1 id="resampling">Resampling<a class="headerlink" href="#resampling" title="Permanent link">&para;</a></h1>
-<h2 id="over-sampling">Over Sampling<a class="headerlink" href="#over-sampling" title="Permanent link">&para;</a></h2>
-<h2 id="under-sampling">Under Sampling<a class="headerlink" href="#under-sampling" title="Permanent link">&para;</a></h2>
+<h1 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permanent link">&para;</a></h1>
+<p>When we first receive a dataset, the initial step is to examine its details, including the number of records and columns in each table. Below is the dataset information as of the update on 2020/04/13:</p>
+<div class="highlight"><pre><span></span><code>posts_train                Contains 793,751 records and 3 columns
+post_shared_train          Contains 304,260 records and 3 columns
+post_comment_created_train Contains 2,372,228 records and 3 columns
+post_liked_train           Contains 3,395,903 records and 3 columns
+post_collected_train       Contains 1,235,126 records and 3 columns
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>posts_test                 Contains 225,986 records and 3 columns
+post_shared_test           Contains 83,376 records and 3 columns
+post_comment_created_test  Contains 607,251 records and 3 columns
+post_liked_test            Contains 908,910 records and 3 columns
+post_collected_test        Contains 275,073 records and 3 columns
+</code></pre></div>
+<p>The dataset is divided into training and testing sets. To avoid data leakage, only the training set is analyzed during EDA, leaving the testing set aside.</p>
+<p>The training set covers posts from April 1, 2019, to the end of October 2019, spanning approximately seven months with around 793,000 posts. The goal is to build a predictive model that uses 10-hour post metrics (e.g., shares, comments, likes, and saves) to predict whether a post will receive 1,000 likes within 36 hours, classifying it as a "popular post."</p>
+<p>Approximately 2.32% of the training posts are popular, equating to about 18,000 posts. This imbalance in the dataset necessitates techniques like over/undersampling during preprocessing and alternative evaluation metrics during model assessment.</p>
+<h2 id="problem-definition">Problem Definition<a class="headerlink" href="#problem-definition" title="Permanent link">&para;</a></h2>
+<p>The task can be approached in four ways, based on whether sequence information is considered and whether the problem is framed as regression or binary classification:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th>Regression</th>
+<th>Binary Classification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>With Sequence Info</strong></td>
+<td>RNNs (e.g., GRU), traditional time series models (e.g., ARMA, ARIMA)</td>
+<td>Same as left</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Without Sequence Info</strong></td>
+<td>Poisson regression, SVM, tree-based models, etc.</td>
+<td>Logistic regression, SVM, tree-based models, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>The ideal approach is "with sequence info" and "regression," leveraging the 10-hour metrics' trends to predict the 36-hour total likes, then classifying posts based on a threshold (e.g., ≥1,000 likes). However, for simplicity and time constraints, we focus on "without sequence info" and "binary classification," aggregating 10-hour metrics and building a binary classification model to predict popular posts. The focus will be on handling imbalanced data, tree-based models, and subsequent discussions.</p>
+<h2 id="linear-relationships-between-variables">Linear Relationships Between Variables<a class="headerlink" href="#linear-relationships-between-variables" title="Permanent link">&para;</a></h2>
+<p>We simplify the dataset to include total shares, comments, likes, and saves within 10 hours and use a heatmap to observe their relationships with the total likes within 36 hours:</p>
+<p><a class="glightbox" href="https://i.imgur.com/xvxqb6z.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://i.imgur.com/xvxqb6z.png" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Key observations from the heatmap:</p>
+<ul>
+<li>Total likes within 36 hours moderately correlate with total likes within 10 hours (.58), shares (.36), and saves (.36), but weakly with comments (.17).</li>
+<li>Total likes within 10 hours moderately correlate with shares (.63) and saves (.61).</li>
+<li>Shares and saves within 10 hours moderately correlate (.48).</li>
+</ul>
+</div>
+<p>In simple terms, posts with more likes within 10 hours tend to have more shares and saves. However, the strongest predictor of total likes within 36 hours is the likes within 10 hours. Comments show little correlation with total likes.</p>
+<h2 id="heatmaps-of-key-metrics">Heatmaps of Key Metrics<a class="headerlink" href="#heatmaps-of-key-metrics" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>To protect Dcard's proprietary information, color bars (<code>cbar=False</code>) are omitted, showing only relative relationships.</p>
+</div>
+<h3 id="total-posts-by-time">Total Posts by Time<a class="headerlink" href="#total-posts-by-time" title="Permanent link">&para;</a></h3>
+<p>We examine whether the number of posts varies across different time periods:</p>
+<p><a class="glightbox" href="https://i.imgur.com/LaPJRkL.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://i.imgur.com/LaPJRkL.png" /></a></p>
+<p>The x-axis represents 24 hours, and the y-axis represents days of the week.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Observations:</p>
+<ul>
+<li>Posts are concentrated during midday, afternoon, and evening (12:00–18:00), with weekdays slightly higher than weekends.</li>
+<li>The second-highest posting period is weekday mornings (05:00–12:00).</li>
+<li>Posts are relatively fewer during evenings (18:00–01:00) on both weekdays and weekends.</li>
+</ul>
+</div>
+<p>These trends are reasonable, as students primarily post during the day. The relatively high number of early morning posts might be due to companies posting content before students wake up.</p>
+<h3 id="popular-post-proportion-by-time">Popular Post Proportion by Time<a class="headerlink" href="#popular-post-proportion-by-time" title="Permanent link">&para;</a></h3>
+<p>Next, we analyze whether certain time periods have a higher proportion of popular posts:</p>
+<p><a class="glightbox" href="https://i.imgur.com/89isGTC.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://i.imgur.com/89isGTC.png" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Observations:</p>
+<ul>
+<li>Posts during late-night and early-morning hours on weekends have a higher likelihood of being popular, likely due to increased user activity during these times.</li>
+<li>The heatmap confirms that the proportion of popular posts varies by time.</li>
+</ul>
+</div>
+<h3 id="average-likes-within-10-hours-by-time">Average Likes Within 10 Hours by Time<a class="headerlink" href="#average-likes-within-10-hours-by-time" title="Permanent link">&para;</a></h3>
+<p>We then examine the average likes within 10 hours for posts made at different times:</p>
+<p><a class="glightbox" href="https://i.imgur.com/62gyK11.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://i.imgur.com/62gyK11.png" /></a></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Observations:</p>
+<ul>
+<li>Posts made between 21:00–11:00 generally receive more likes within 10 hours.</li>
+<li>Posts made between 11:00–21:00, especially during late afternoon and dinner hours, receive fewer likes on average.</li>
+</ul>
+</div>
+<p>This difference might be because students are less active during late afternoon and dinner hours but more active during the evening. Early morning posts are also visible to students the next day.</p>
+<h3 id="average-likes-within-36-hours-by-time">Average Likes Within 36 Hours by Time<a class="headerlink" href="#average-likes-within-36-hours-by-time" title="Permanent link">&para;</a></h3>
+<p>Finally, we analyze the average likes within 36 hours for posts made at different times:</p>
+<p><a class="glightbox" href="https://i.imgur.com/1gm3nvR.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://i.imgur.com/1gm3nvR.png" /></a></p>
+<p>The trends are consistent with the 10-hour analysis and are not elaborated further.</p>
+<h3 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Key takeaways:</p>
+<ul>
+<li>Variables are generally highly correlated. Polynomial transformations (<code>PolynomialFeatures</code>) may not yield significant improvements during feature engineering.</li>
+<li>Posting time significantly impacts the proportion of popular posts and the number of likes, and this information should be incorporated into the model.</li>
+</ul>
+</div>
 
 
 
@@ -1687,7 +1890,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-06T14:26:54+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-07T12:02:18+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-07</span>
   </span>
 
     

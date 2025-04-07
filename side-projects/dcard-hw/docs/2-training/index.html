@@ -12,13 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/3-training/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/dcard-hw/docs/2-training/">
       
       
-        <link rel="prev" href="../2-eda/">
+        <link rel="prev" href="../1-eda/">
       
       
-        <link rel="next" href="../4-evaluation/">
+        <link rel="next" href="../3-evaluation/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>特徵工程 - KC's Data & Life Notes</title>
+        <title>Feature Engineering - KC's Data & Life Notes</title>
       
     
     
@@ -77,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="特徵工程 - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Feature Engineering - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/3-training.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/2-training.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/3-training/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/dcard-hw/docs/2-training/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="特徵工程 - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Feature Engineering - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/3-training.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/dcard-hw/docs/2-training.png" >
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#feature-engineering" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              特徵工程
+              Feature Engineering
             
           </span>
         </div>
@@ -1042,8 +1042,6 @@
       
         
       
-        
-      
     
     
       
@@ -1092,32 +1090,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-summary/" class="md-nav__link">
+      <a href="../1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    摘要
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../2-eda/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    探索性資料分析 (EDA)
+    Exploratory Data Analysis (EDA)
   </span>
   
 
@@ -1147,7 +1124,7 @@
           
   
   <span class="md-ellipsis">
-    特徵工程
+    Feature Engineering
   </span>
   
 
@@ -1158,7 +1135,7 @@
         
   
   <span class="md-ellipsis">
-    特徵工程
+    Feature Engineering
   </span>
   
 
@@ -1182,13 +1159,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stage-1" class="md-nav__link">
+  <a href="#handling-imbalanced-datasets-stage-1" class="md-nav__link">
     <span class="md-ellipsis">
-      不平衡資料集的處理（STAGE 1）
+      Handling Imbalanced Datasets (STAGE 1)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="不平衡資料集的處理（STAGE 1）">
+    <nav class="md-nav" aria-label="Handling Imbalanced Datasets (STAGE 1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1215,22 +1192,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#one-hot-stage-2" class="md-nav__link">
+  <a href="#polynomial-transformation-and-one-hot-encoding-stage-2" class="md-nav__link">
     <span class="md-ellipsis">
-      多項式轉換和 One-hot 編碼（STAGE 2）
+      Polynomial Transformation and One-hot Encoding (STAGE 2)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tree-based-stage-3" class="md-nav__link">
+  <a href="#tree-based-ensemble-models-stage-3" class="md-nav__link">
     <span class="md-ellipsis">
-      Tree-based 集成模型（STAGE 3）
+      Tree-based Ensemble Models (STAGE 3)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tree-based 集成模型（STAGE 3）">
+    <nav class="md-nav" aria-label="Tree-based Ensemble Models (STAGE 3)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1292,7 +1269,7 @@
         <li class="md-nav__item">
   <a href="#hyperparameter-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      超參數優化（Hyperparameter Optimization）
+      Hyperparameter Optimization
     </span>
   </a>
   
@@ -1314,11 +1291,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-evaluation/" class="md-nav__link">
+      <a href="../3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    結果與討論
+    Results and Discussion
   </span>
   
 
@@ -1335,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-resampling/" class="md-nav__link">
+      <a href="../4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1713,13 +1690,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stage-1" class="md-nav__link">
+  <a href="#handling-imbalanced-datasets-stage-1" class="md-nav__link">
     <span class="md-ellipsis">
-      不平衡資料集的處理（STAGE 1）
+      Handling Imbalanced Datasets (STAGE 1)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="不平衡資料集的處理（STAGE 1）">
+    <nav class="md-nav" aria-label="Handling Imbalanced Datasets (STAGE 1)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1746,22 +1723,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#one-hot-stage-2" class="md-nav__link">
+  <a href="#polynomial-transformation-and-one-hot-encoding-stage-2" class="md-nav__link">
     <span class="md-ellipsis">
-      多項式轉換和 One-hot 編碼（STAGE 2）
+      Polynomial Transformation and One-hot Encoding (STAGE 2)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tree-based-stage-3" class="md-nav__link">
+  <a href="#tree-based-ensemble-models-stage-3" class="md-nav__link">
     <span class="md-ellipsis">
-      Tree-based 集成模型（STAGE 3）
+      Tree-based Ensemble Models (STAGE 3)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Tree-based 集成模型（STAGE 3）">
+    <nav class="md-nav" aria-label="Tree-based Ensemble Models (STAGE 3)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1823,7 +1800,7 @@
         <li class="md-nav__item">
   <a href="#hyperparameter-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      超參數優化（Hyperparameter Optimization）
+      Hyperparameter Optimization
     </span>
   </a>
   
@@ -1844,7 +1821,7 @@
                   
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/3-training.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/dcard-hw/dcard-hw/docs/2-training.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -1853,15 +1830,15 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/3-training.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/dcard-hw/dcard-hw/docs/2-training.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
   
 
 
-<h1 id="_1">特徵工程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>經過探索性資料分析後，我們對訓練集又更認識了些。在進行特徵工程前，我們會先將我們的訓練集初步整理成以下格式：
+<h1 id="feature-engineering">Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permanent link">&para;</a></h1>
+<p>After conducting exploratory data analysis (EDA), we gained a deeper understanding of the training dataset. Before diving into feature engineering, we first organize the training dataset into the following format:</p>
 <div class="highlight"><pre><span></span><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 793751 entries, 0 to 793750
 Data columns (total 8 columns):
@@ -1875,87 +1852,86 @@ hour               793751 non-null int64
 is_trending        793751 non-null int64
 dtypes: bool(1), int64(6), object(1)
 memory usage: 43.1+ MB
-</code></pre></div></p>
-<p>而在本節裡我們會談到整個 data pipeline 過程將會使用到的技術和模型，包括了 over/undersampling，多項式轉換、One-hot 編碼和 Tree-based 模型。</p>
+</code></pre></div>
+<p>In this section, we will discuss the techniques and models used throughout the data pipeline, including over/undersampling, polynomial transformations, one-hot encoding, and tree-based models.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>在訓練過程中，主要可分為三個階段：</p>
+<p>The training process can be divided into three main stages:</p>
 <ol>
-<li>重抽樣（resampling）</li>
-<li>欄位轉換（column transformation）</li>
-<li>分類（classification）</li>
+<li>Resampling</li>
+<li>Column Transformation</li>
+<li>Classification</li>
 </ol>
 </div>
-<p>實際上，我們可將上述的三個階段表示為以下的 <code>Pipeline</code> 實體：</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<p>These stages can be represented as the following <code>Pipeline</code> object:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
 <span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;resampler&#39;</span><span class="p">,</span> <span class="s1">&#39;passthrough&#39;</span><span class="p">),</span>
                        <span class="c1"># (&#39;columntransformer&#39;, &#39;passthrough&#39;),</span>
                        <span class="p">(</span><span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="s1">&#39;passthrough&#39;</span><span class="p">)],</span>
                 <span class="n">memory</span><span class="o">=</span><span class="n">cachedir</span><span class="p">)</span>
 </code></pre></div>
-在每個階段我們都會選擇兩到三種不同作法和幾組超參數設定，試圖找出最佳組合。</p>
-<h2 id="stage-1">不平衡資料集的處理（STAGE 1）<a class="headerlink" href="#stage-1" title="Permanent link">&para;</a></h2>
-<p>首先，考慮一個二元分類問題，不平衡資料集指的是分類目標（$y$）絕大多數屬於某種類別（稱為 majority），僅有少部分屬於另種類別（稱為 minority）。</p>
-<p>面對不平衡資料集時，若是不進行任何處理就直接進行訓練，則很有可能產出一個帶有偏見的（biased）模型，不分青紅皂白地預測絕大部分樣本為 majority 類別，而忽略了 minority 樣本的有用資訊。</p>
-<p>一種可能的解決辦法就是重抽樣（resampling），又可分為 oversampling 和 undersampling 兩種：</p>
+<p>For each stage, we experiment with two to three different approaches and several hyperparameter settings to identify the optimal combination.</p>
+<h2 id="handling-imbalanced-datasets-stage-1">Handling Imbalanced Datasets (STAGE 1)<a class="headerlink" href="#handling-imbalanced-datasets-stage-1" title="Permanent link">&para;</a></h2>
+<p>In a binary classification problem, an imbalanced dataset refers to a scenario where the target variable ($y$) is predominantly of one class (majority) with only a small proportion belonging to the other class (minority). </p>
+<p>Training a model on such a dataset without addressing the imbalance often results in a biased model that predicts most samples as the majority class, ignoring valuable information from the minority class.</p>
+<p>A potential solution is resampling, which can be categorized into oversampling and undersampling:</p>
 <ul>
-<li>Oversampling 是增加 minority 樣本在資料集的比例。</li>
-<li>Undersampling 則是減少 majority 樣本在資料集的比例。</li>
+<li><strong>Oversampling</strong>: Increases the proportion of minority samples in the dataset.</li>
+<li><strong>Undersampling</strong>: Reduces the proportion of majority samples in the dataset.</li>
 </ul>
-<p>兩種方法都能使得模型在訓練階段時，更聽取 minority 樣本的意見。最直觀的作法就是透過「隨機抽樣」，刪去 majority 樣本或增加 minority 樣本。</p>
-<p>實際上，<code>imblearn</code> 套件正提供了 <code>RandomOverSampler</code> 和 <code>RandomUnderSampler</code> 供我們使用。不僅如此，它也提供了其它的重抽樣方法的實作，其中我們會使用到 <code>SMOTE</code> 和 <code>NearMiss</code> 兩種。以下是簡介：</p>
+<p>Both methods help the model pay more attention to minority samples during training. The simplest approach is random sampling, where majority samples are removed, or minority samples are duplicated.</p>
+<p>The <code>imblearn</code> library provides implementations for various resampling techniques, including <code>RandomOverSampler</code> and <code>RandomUnderSampler</code>. Additionally, we utilize <code>SMOTE</code> and <code>NearMiss</code>. Below is a brief overview:</p>
 <h3 id="smote">SMOTE<a class="headerlink" href="#smote" title="Permanent link">&para;</a></h3>
-<p>SMOTE（Synthetic Minority Oversampling Technique）是 oversampling 技術的一種，它會在 minority 樣本之間合成新的 minority 樣本，從而增加 minority 類別的比例。示意圖如下所示：</p>
+<p>SMOTE (Synthetic Minority Oversampling Technique) is an oversampling method that synthesizes new minority samples between existing ones, increasing the proportion of the minority class. The following diagram illustrates this:</p>
 <p><a class="glightbox" href="https://taweihuang.hpd.io/wp-content/uploads/2018/12/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7-2019-01-06-%E4%B8%8B%E5%8D%8810%E3%80%8223%E3%80%8257.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://taweihuang.hpd.io/wp-content/uploads/2018/12/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7-2019-01-06-%E4%B8%8B%E5%8D%8810%E3%80%8223%E3%80%8257.png" /></a>
-<a href="https://taweihuang.hpd.io/2018/12/30/imbalanced-data-sampling-techniques/">圖片來源</a></p>
+<a href="https://taweihuang.hpd.io/2018/12/30/imbalanced-data-sampling-techniques/">Image Source</a></p>
 <h3 id="nearmiss">NearMiss<a class="headerlink" href="#nearmiss" title="Permanent link">&para;</a></h3>
-<p>NearMiss 則是 undersampling 技術的一種，共有三種版本，其中我們只提第一版。NearMiss-1 會計算所有 majority 樣本前 $k$ 個 minority nearest neighbors 的平均距離，刪去那些最靠近 minority 樣本的 majority 樣本，直到兩種類別的比例為 1：1。示意圖如下：
-<a class="glightbox" href="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" height="350"></a>
-<a href="https://imbalanced-learn.readthedocs.io/en/stable/under_sampling.html#mathematical-formulation">圖片來源</a></p>
-<h2 id="one-hot-stage-2">多項式轉換和 One-hot 編碼（STAGE 2）<a class="headerlink" href="#one-hot-stage-2" title="Permanent link">&para;</a></h2>
-<p>接著，我們透過 <code>sklearn</code> 的 <code>PolynomialFeatures</code> 和 <code>OneHotEncoder</code>，替不同欄位做特徵轉換：</p>
+<p>NearMiss is an undersampling method with three versions. We focus on NearMiss-1, which calculates the average distance of all majority samples to their $k$ nearest minority neighbors and removes the majority samples closest to the minority samples until the class ratio is 1:1. The following diagram illustrates this:</p>
+<p><a class="glightbox" href="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" height="350"></a>
+<a href="https://imbalanced-learn.readthedocs.io/en/stable/under_sampling.html#mathematical-formulation">Image Source</a></p>
+<h2 id="polynomial-transformation-and-one-hot-encoding-stage-2">Polynomial Transformation and One-hot Encoding (STAGE 2)<a class="headerlink" href="#polynomial-transformation-and-one-hot-encoding-stage-2" title="Permanent link">&para;</a></h2>
+<p>Next, we use <code>sklearn</code>'s <code>PolynomialFeatures</code> and <code>OneHotEncoder</code> to transform specific features:</p>
 <ul>
-<li>針對 <code>shared_count</code>, <code>comment_count</code>, <code>liked_count</code>, <code>collected_count</code> 四個特徵，我們會進行二次方的多項式轉換，試圖捕捉特徵的非線性關係和彼此之間的交互作用。</li>
-<li>針對 <code>weekday</code> 特徵，會從整數型態（<code>0</code> - <code>6</code>，依序代表星期一至星期六）轉換成 one-hot 格式，例如 <code>[1, 0, 0, 0, 0, 0, 0]</code> 代表的是星期一。</li>
+<li>For <code>shared_count</code>, <code>comment_count</code>, <code>liked_count</code>, and <code>collected_count</code>, we apply second-degree polynomial transformations to capture non-linear relationships and interactions between features.</li>
+<li>For the <code>weekday</code> feature, we convert integer values (<code>0</code> - <code>6</code>, representing Monday to Sunday) into one-hot encoded vectors, e.g., <code>[1, 0, 0, 0, 0, 0, 0]</code> for Monday.</li>
 </ul>
-<h2 id="tree-based-stage-3">Tree-based 集成模型（STAGE 3）<a class="headerlink" href="#tree-based-stage-3" title="Permanent link">&para;</a></h2>
-<p>最後，分類模型我們主要以 tree-based 的集成（ensemble）模型作為我們的主要選擇．這當中包括了 <code>AdaBoostClassifier</code>, <code>GradientBoostingClassifier</code> 和 <code>XGBClassifier</code>。主要有幾點考量：</p>
+<h2 id="tree-based-ensemble-models-stage-3">Tree-based Ensemble Models (STAGE 3)<a class="headerlink" href="#tree-based-ensemble-models-stage-3" title="Permanent link">&para;</a></h2>
+<p>For classification, we primarily use tree-based ensemble models, including <code>AdaBoostClassifier</code>, <code>GradientBoostingClassifier</code>, and <code>XGBClassifier</code>. These models are chosen for several reasons:</p>
 <ul>
-<li>對特徵的單調性轉換（monotonic transformation）具有不變性（invariant），因此可以減少許多特徵轉換的工作。</li>
-<li>也因為減少許多特徵轉換，因此模型的可解釋性高，對特徵的理解也相對好理解。</li>
-<li>面對大型且複雜的資料集時，模型成效好，時常是 Kaggle 的常勝軍（特指 <code>XGBoost</code>, <code>LightGBM</code>, <code>CatBoost</code> 套件）。</li>
+<li>They are invariant to monotonic transformations of features, reducing the need for extensive feature engineering.</li>
+<li>They offer high interpretability, making it easier to understand feature importance.</li>
+<li>They perform well on large and complex datasets and are often top performers in Kaggle competitions (e.g., <code>XGBoost</code>, <code>LightGBM</code>, <code>CatBoost</code>).</li>
 </ul>
-<p>集成學習（ensemble learning）主要可分為兩種：Bagging（bootstrap aggregating）和 Boosting。</p>
+<p>Ensemble learning can be categorized into Bagging (bootstrap aggregating) and Boosting.</p>
 <h3 id="bagging">Bagging<a class="headerlink" href="#bagging" title="Permanent link">&para;</a></h3>
-<p>Bagging 最有名的一種應用就是隨機森林（random forest），模型內會建立多顆決策樹，並透過自助式抽樣法（bootstrap sampling）和隨機挑選某幾個特徵欄位，讓每顆樹只學習到局部特徵，最後整合所有決策樹的觀點，做出最後預測結果。</p>
+<p>The most well-known Bagging application is Random Forest, which builds multiple decision trees using bootstrap sampling and random feature selection. Each tree learns a subset of features, and their predictions are aggregated for the final result.</p>
 <h3 id="boosting">Boosting<a class="headerlink" href="#boosting" title="Permanent link">&para;</a></h3>
 <h4 id="adaptive-boosting">Adaptive Boosting<a class="headerlink" href="#adaptive-boosting" title="Permanent link">&para;</a></h4>
-<p>Boosting 的應用相對 Bagging 則多了許多，最初期的就是 Adaptive boosting（AdaBoost），它的核心概念是依序建立 $T$ 個弱學習器（weak learner）$h_t(x)$，每個模型會更關注在前個模型分類錯誤的那些樣本上。不僅如此，每個模型都將會被賦予一個模型權重 $\alpha_t$，該權重必須反映兩件事：</p>
+<p>Adaptive Boosting (AdaBoost) sequentially builds $T$ weak learners $h_t(x)$, with each model focusing on samples misclassified by the previous one. Each model is assigned a weight $\alpha_t$ based on its performance:</p>
 <ul>
-<li>模型權重越高，代表該模型效果較好。</li>
-<li>模型權重越低，代表該模型效果較差。</li>
+<li>Higher weights indicate better performance.</li>
+<li>Lower weights indicate worse performance.</li>
 </ul>
-<p>如此一來，最終模型 $H(x)$ 就是蒐集這 $T$ 個弱學習器（weak learner）的觀點，做出最終分類。詳細內容可參考我過去所做的這篇<a href="https://hackmd.io/@kcl10/HyXNoqOL8">筆記</a>。</p>
+<p>The final model $H(x)$ aggregates the predictions of all $T$ weak learners. For more details, refer to this <a href="https://hackmd.io/@kcl10/HyXNoqOL8">note</a>.</p>
 <h4 id="gradient-boosting">Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permanent link">&para;</a></h4>
-<p>梯度提升技術通常會與決策樹搭配使用，它的核心概念是依序建立 $T$ 個模型 $h_t(x)$，每個階段的模型都是在預測前個階段所有樣本的梯度方向（虛擬殘差）。最終模型 $H(x)$ 就是將前幾個模型加總起來（additive model），做出最終分類。詳細數學式推導可參考我過去所做的這篇<a href="https://hackmd.io/@kcl10/B1GKRg9L8">筆記</a>。</p>
+<p>Gradient Boosting builds $T$ models $h_t(x)$ sequentially, where each model predicts the gradient (pseudo-residuals) of the previous model's errors. The final model $H(x)$ is the sum of all previous models. For mathematical derivations, refer to this <a href="https://hackmd.io/@kcl10/B1GKRg9L8">note</a>.</p>
 <h4 id="extreme-gradient-boosting">Extreme Gradient Boosting<a class="headerlink" href="#extreme-gradient-boosting" title="Permanent link">&para;</a></h4>
-<p>XGBoost 是基於梯度提升技術的一個套件，其中又做了相當多的優化，包括 weighted quantile sketch, parallel learning, cache-aware access 等。詳細內容可參考這篇<a href="https://www.kdd.org/kdd2016/papers/files/rfp0697-chenAemb.pdf">論文</a>。</p>
-<h2 id="hyperparameter-optimization">超參數優化（Hyperparameter Optimization）<a class="headerlink" href="#hyperparameter-optimization" title="Permanent link">&para;</a></h2>
-<p>大致上瞭解訓練過程將會使用的技術後，我們要開始設定每個階段可能的作法及其超參數組合。整理如下：</p>
+<p>XGBoost is an optimized implementation of Gradient Boosting with enhancements like weighted quantile sketch, parallel learning, and cache-aware access. For more details, refer to this <a href="https://www.kdd.org/kdd2016/papers/files/rfp0697-chenAemb.pdf">paper</a>.</p>
+<h2 id="hyperparameter-optimization">Hyperparameter Optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permanent link">&para;</a></h2>
+<p>After understanding the techniques used in each stage, we define the possible methods and hyperparameter combinations for each stage as follows:</p>
 <p><strong>Resampler</strong>
-- <code>passthrough</code>：不做任何重抽樣。
-- <code>NearMiss</code>：使用預設參數。
-- <code>SMOTE</code>：使用預設參數。</p>
+- <code>passthrough</code>: No resampling.
+- <code>NearMiss</code>: Default parameters.
+- <code>SMOTE</code>: Default parameters.</p>
 <p><strong>Column Transformer</strong>
-- <code>passthrough</code>：不做任何特徵轉換。
-- <code>col_trans</code>：針對不同欄位進行二項式轉換和 one-hot 編碼。</p>
+- <code>passthrough</code>: No feature transformation.
+- <code>col_trans</code>: Apply polynomial transformations and one-hot encoding.</p>
 <p><strong>Classifier</strong>
-- <code>AdaBoostClassifier</code>：使用預設參數，其中又會設定樹深限制在 <code>[1, 2, 3]</code> 層。
-- <code>GradientBoostingClassifier</code>, <code>XGBClassifier</code>：使用預設參數，其中又會設定學習率在 <code>[0.025, 0.05, 0.1]</code>。</p>
-<p>不論哪個分類器，我們都會設定其內部有 <code>[90, 100, 110 , 120]</code> 棵決策樹。並且另外設定細部的超參數：</p>
-<p>三個階段交叉下來共有 216 種組合需要嘗試，個數有點過多，我們時間並不夠。實驗下來，經過特徵轉換的模型普遍效果不好，初步推估是因為前面 EDA 所提到的，變數之間的相關性普遍偏高，經過二次方多項式轉換其實成效並不高，甚至有可能降低成效。</p>
-<p>因此，我們決定省略了「特徵轉換」階段，最終共有 <strong>108</strong> 種組合需要嘗試，透過 <code>GridSearchCV</code> 找尋最佳組合，設定 <code>cv=3</code>。</p>
-<p>參數組合的程式碼參考如下：
+- <code>AdaBoostClassifier</code>: Default parameters with tree depth limited to <code>[1, 2, 3]</code>.
+- <code>GradientBoostingClassifier</code>, <code>XGBClassifier</code>: Default parameters with learning rates <code>[0.025, 0.05, 0.1]</code>.</p>
+<p>For all classifiers, we set the number of decision trees to <code>[90, 100, 110, 120]</code> and tune additional hyperparameters.</p>
+<p>Initially, there are 216 combinations to test, which is too many given time constraints. Experiments show that models with feature transformations generally perform worse, likely due to high feature correlations identified during EDA. As a result, we omit the "Feature Transformation" stage, reducing the combinations to <strong>108</strong>. We use <code>GridSearchCV</code> with <code>cv=3</code> to find the best combination.</p>
+<p>The parameter grid is defined as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># poly_cols = [&#39;shared_count&#39;, &#39;comment_count&#39;, &#39;liked_count&#39;, &#39;collected_count&#39;]</span>
 <span class="c1"># col_trans = make_column_transformer((OneHotEncoder(dtype=&#39;int&#39;), [&#39;weekday&#39;]),</span>
 <span class="c1">#                                     (PolynomialFeatures(include_bias=False), poly_cols),</span>
@@ -1977,7 +1953,7 @@ memory usage: 43.1+ MB
     <span class="s1">&#39;classifier__learning_rate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
 <span class="p">}</span>
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">[</span><span class="n">param_grid_ada</span><span class="p">,</span> <span class="n">param_grid_gb</span><span class="p">]</span>
-</code></pre></div></p>
+</code></pre></div>
 
 
 
@@ -2000,7 +1976,7 @@ memory usage: 43.1+ MB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-06T14:11:48+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-07T12:07:10+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-07</span>
   </span>
 
     
