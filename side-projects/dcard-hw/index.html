@@ -1537,57 +1537,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Training Dataset">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#table-posts_train" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table: posts_train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#table-post_shared_train" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table: post_shared_train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#table-post_comment_created_train" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table: post_comment_created_train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#table-post_liked_train" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table: post_liked_train
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#table-post_collected_train" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table: post_collected_train
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1688,26 +1637,26 @@
 <p>To simplify the problem, <strong>we define a trending post as one that receives at least 1000 likes within 36 hours of being posted.</strong> During testing, we will calculate whether a post's like count exceeds 1000 within 36 hours to determine the ground truth or prediction benchmark.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tree
+<div class="highlight"><pre><span></span><code>$ tree
 .
-├──<span class="w"> </span>eda_evaluation.ipynb:<span class="w"> </span>A<span class="w"> </span>Jupyter<span class="w"> </span>notebook<span class="w"> </span>used<span class="w"> </span><span class="k">for</span><span class="w"> </span>generating<span class="w"> </span>visualizations.
-├──<span class="w"> </span>outputs
-│<span class="w">   </span>├──<span class="w"> </span>best_model.h5:<span class="w"> </span>The<span class="w"> </span>best<span class="w"> </span>model<span class="w"> </span>obtained<span class="w"> </span>after<span class="w"> </span>training.
-│<span class="w">   </span>├──<span class="w"> </span>cv_results.csv:<span class="w"> </span>Cross-validation<span class="w"> </span>results.
-│<span class="w">   </span>└──<span class="w"> </span>output.csv:<span class="w"> </span>Prediction<span class="w"> </span>results<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>public<span class="w"> </span>dataset.
-├──<span class="w"> </span>predict.py:<span class="w"> </span>A<span class="w"> </span>utility<span class="w"> </span>script<span class="w"> </span><span class="k">for</span><span class="w"> </span>making<span class="w"> </span>predictions.
-├──<span class="w"> </span>preprocessing.py:<span class="w"> </span>A<span class="w"> </span>shared<span class="w"> </span>utility<span class="w"> </span>script<span class="w"> </span><span class="k">for</span><span class="w"> </span>database<span class="w"> </span>connections,<span class="w"> </span>preprocessing,<span class="w"> </span>and<span class="w"> </span>other<span class="w"> </span>common<span class="w"> </span>functions.
-├──<span class="w"> </span>requirements.txt:<span class="w"> </span>A<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>required<span class="w"> </span>Python<span class="w"> </span>packages<span class="w"> </span>and<span class="w"> </span>their<span class="w"> </span>versions.
-└──<span class="w"> </span>training.py:<span class="w"> </span>A<span class="w"> </span>utility<span class="w"> </span>script<span class="w"> </span><span class="k">for</span><span class="w"> </span>training<span class="w"> </span>the<span class="w"> </span>model.
+├── requirements.txt: A list of required Python packages and their versions.
+├── preprocessing.py: A shared utility script for database connections, preprocessing, and other common functions.
+├── training.py: A utility script for training the model.
+├── predict.py: A utility script for making predictions.
+├── outputs
+│   ├── best_model.h5: The best model obtained after training.
+│   ├── cv_results.csv: Cross-validation results.
+│   └── output.csv: Prediction results for the public testing dataset.
+└── eda_evaluation.ipynb: A Jupyter notebook used for generating visualizations.
 </code></pre></div>
 <p>The training dataset includes articles spanning from April 1, 2019, to the end of October 2019, covering approximately seven months. The dataset contains around 793,000 articles, of which about 2.32% (approximately 18,000 articles) are classified as popular. Through exploratory data analysis, we observed high correlations among variables. Additionally, the timing of article publication significantly influences the proportion of popular articles and the total number of likes within the first 36 hours of posting.</p>
 <p>We decided to use a "binary classification model without considering sequential information" as our primary approach, focusing on handling imbalanced datasets, tree-based ensemble models, and subsequent discussions. The training process was divided into three main stages:</p>
 <ol>
 <li>Resampling</li>
-<li>Column Transformation</li>
+<li>Feature Transformation</li>
 <li>Classification</li>
 </ol>
-<p>After experimentation, we opted to omit the "feature transformation" stage. In total, 108 combinations were tested using <code>GridSearchCV</code> with <code>cv=3</code> to find the optimal configuration.</p>
+<p>After experimentation, we opted to omit the "Feature Transformation" stage. In total, 108 combinations were tested using <code>GridSearchCV</code> with <code>cv=3</code> to find the optimal configuration.</p>
 <p>Using the f1-score as the evaluation metric, the best-performing model was an <code>AdaBoostClassifier</code> without any resampling. This model consisted of 100 decision trees, each limited to a depth of 2. The average f1-score from cross-validation was 0.56, while the f1-score on the public test set was 0.53. Key findings from the experiments include:</p>
 <ul>
 <li>Different resampling strategies significantly impact the f1-score.</li>
@@ -1725,7 +1674,7 @@ post_comment_created_train Contains 2,372,228 records and 3 columns
 post_liked_train           Contains 3,395,903 records and 3 columns
 post_collected_train       Contains 1,235,126 records and 3 columns
 </code></pre></div>
-<h3 id="table-posts_train">Table: <code>posts_train</code><a class="headerlink" href="#table-posts_train" title="Permanent link">&para;</a></h3>
+<p>Table: <code>posts_train</code></p>
 <table>
 <thead>
 <tr>
@@ -1752,7 +1701,7 @@ post_collected_train       Contains 1,235,126 records and 3 columns
 </tr>
 </tbody>
 </table>
-<h3 id="table-post_shared_train">Table: <code>post_shared_train</code><a class="headerlink" href="#table-post_shared_train" title="Permanent link">&para;</a></h3>
+<p>Table: <code>post_shared_train</code></p>
 <table>
 <thead>
 <tr>
@@ -1779,7 +1728,7 @@ post_collected_train       Contains 1,235,126 records and 3 columns
 </tr>
 </tbody>
 </table>
-<h3 id="table-post_comment_created_train">Table: <code>post_comment_created_train</code><a class="headerlink" href="#table-post_comment_created_train" title="Permanent link">&para;</a></h3>
+<p>Table: <code>post_comment_created_train</code></p>
 <table>
 <thead>
 <tr>
@@ -1806,7 +1755,7 @@ post_collected_train       Contains 1,235,126 records and 3 columns
 </tr>
 </tbody>
 </table>
-<h3 id="table-post_liked_train">Table: <code>post_liked_train</code><a class="headerlink" href="#table-post_liked_train" title="Permanent link">&para;</a></h3>
+<p>Table: <code>post_liked_train</code></p>
 <table>
 <thead>
 <tr>
@@ -1833,7 +1782,7 @@ post_collected_train       Contains 1,235,126 records and 3 columns
 </tr>
 </tbody>
 </table>
-<h3 id="table-post_collected_train">Table: <code>post_collected_train</code><a class="headerlink" href="#table-post_collected_train" title="Permanent link">&para;</a></h3>
+<p>Table: <code>post_collected_train</code></p>
 <table>
 <thead>
 <tr>
@@ -1872,25 +1821,31 @@ post_collected_test        Contains 275,073 records and 3 columns
 <h2 id="submission-requirements">Submission Requirements<a class="headerlink" href="#submission-requirements" title="Permanent link">&para;</a></h2>
 <p>Upon completing the assignment, you must submit at least the following four files. Failure to include any of these will be considered incomplete.</p>
 <ol>
-<li>Report.pdf<ul>
+<li><code>Report.pdf</code><ul>
 <li>Instructions on how to use your code</li>
 <li>Methods and rationale</li>
 <li>Evaluation results on the provided testing data</li>
 <li>Experimental observations</li>
 </ul>
 </li>
-<li>train.py</li>
-<li>predict.py</li>
-<li>requirements.txt or Pipfile</li>
+<li><code>train.py</code></li>
+<li><code>predict.py</code></li>
+<li><code>requirements.txt</code> or Pipfile</li>
 <li>(Optional) If your prediction requires a model file, please include it (we will not train it for you) and explain how to use it in Report.pdf.</li>
 </ol>
-<p>We have some requirements for the program structure to facilitate testing:
-- Training
-    - The outermost layer should be wrapped in train.py.
-    - The program should be executable as <code>python train.py {database_host} {model_filepath}</code>.
-    - Example: <code>python train.py localhost:8080 ./model.h5</code></p>
+<p>We have some requirements for the program structure to facilitate testing:</p>
 <ul>
-<li>Prediction<ul>
+<li>
+<p>Training</p>
+<ul>
+<li>The outermost layer should be wrapped in train.py.</li>
+<li>The program should be executable as <code>python train.py {database_host} {model_filepath}</code>.</li>
+<li>Example: <code>python train.py localhost:8080 ./model.h5</code></li>
+</ul>
+</li>
+<li>
+<p>Prediction</p>
+<ul>
 <li>The program should be executable as <code>python predict.py {database_host} {model_filepath} {output_filepath}</code>.</li>
 <li>Specify where your model_filepath is located.</li>
 <li>Example: <code>python predict.py localhost:8080 ./model.h5 ./sample_output.csv</code></li>
@@ -1914,7 +1869,6 @@ post_collected_test        Contains 275,073 records and 3 columns
 <li>Python version: Python 3.6.8</li>
 <li>Required Python packages and their versions are listed in <code>requirements.txt</code>.</li>
 </ul>
-<p>As mentioned in <code>quiz.pdf</code>, the submission format must include hardcoded parameters such as <code>user</code> and <code>password</code> for database connections. <strong>To ensure clarity, the command-line argument format has been slightly modified to meet usage requirements.</strong> Below are the usage instructions for <code>training.py</code> and <code>predict.py</code>.</p>
 <h3 id="trainingpy"><code>training.py</code><a class="headerlink" href="#trainingpy" title="Permanent link">&para;</a></h3>
 <p>The usage of <code>training.py</code> is as follows:</p>
 <div class="highlight"><pre><span></span><code>usage: training.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
@@ -2037,7 +1991,7 @@ optional<span class="w"> </span>arguments:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-07T11:54:27+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-07T12:43:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-07</span>
   </span>
 
     
