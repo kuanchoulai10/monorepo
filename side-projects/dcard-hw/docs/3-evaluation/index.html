@@ -1061,7 +1061,7 @@
               
   
   <span class="md-ellipsis">
-    Boosting F1 Score in Popular Dcard Article Prediction
+    2020 Dcard Data Engineering Intern
   </span>
   
 
@@ -1077,7 +1077,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
-            Boosting F1 Score in Popular Dcard Article Prediction
+            2020 Dcard Data Engineering Intern
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1869,33 +1869,33 @@
 <tbody>
 <tr>
 <td style="text-align: center;"><strong>Negative</strong></td>
-<td style="text-align: center;">$\color{red}{\text{TN}}$</td>
-<td style="text-align: center;">$\color{blue}{\text{FP}}$</td>
+<td style="text-align: center;"><span class="arithmatex">\(\color{red}{\text{TN}}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\color{blue}{\text{FP}}\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;"><strong>Positive</strong></td>
-<td style="text-align: center;">$\color{green}{\text{FN}}$</td>
-<td style="text-align: center;">$\color{orange}{\text{TP}}$</td>
+<td style="text-align: center;"><span class="arithmatex">\(\color{green}{\text{FN}}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\color{orange}{\text{TP}}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>$\text{Precision}$: Measures the proportion of articles predicted as popular that are actually popular. <strong>Higher values indicate greater trust in the model's predictions for popular articles.</strong> Formula:
+<p><span class="arithmatex">\(\text{Precision}\)</span>: Measures the proportion of articles predicted as popular that are actually popular. <strong>Higher values indicate greater trust in the model's predictions for popular articles.</strong> Formula:
 $$
 \text{Precision} = \frac{\color{orange}{\text{TP}}}{\color{blue}{\text{FP}} + \color{orange}{\text{TP}}}
 $$</p>
-<p>$\text{Recall}$: Measures the proportion of actual popular articles that are correctly predicted by the model. Also known as True Positive Rate (TPR) or Sensitivity. <strong>Higher values indicate the model's ability to capture actual popular articles.</strong> Formula:
+<p><span class="arithmatex">\(\text{Recall}\)</span>: Measures the proportion of actual popular articles that are correctly predicted by the model. Also known as True Positive Rate (TPR) or Sensitivity. <strong>Higher values indicate the model's ability to capture actual popular articles.</strong> Formula:
 $$
 \text{Recall} = \dfrac{\color{orange}{\text{TP}}}{\color{green}{\text{FN}} + \color{orange}{\text{TP}}}
 $$ </p>
-<p>$\text{Specificity}$: Measures the proportion of actual non-popular articles that are correctly predicted by the model. Also known as True Negative Rate (TNR). <strong>Higher values indicate the model's ability to capture actual non-popular articles.</strong> Formula:
+<p><span class="arithmatex">\(\text{Specificity}\)</span>: Measures the proportion of actual non-popular articles that are correctly predicted by the model. Also known as True Negative Rate (TNR). <strong>Higher values indicate the model's ability to capture actual non-popular articles.</strong> Formula:
 $$
 \text{Specificity} = \dfrac{\color{red}{\text{TN}}}{\color{red}{\text{TN}}+\color{blue}{\text{FP}}}
 $$</p>
-<p>$\text{F1-score}$: A harmonic mean of $\text{Precision}$ and $\text{Recall}$, ranging from $0$ to $1$, with higher values being better. Formula:
+<p><span class="arithmatex">\(\text{F1-score}\)</span>: A harmonic mean of <span class="arithmatex">\(\text{Precision}\)</span> and <span class="arithmatex">\(\text{Recall}\)</span>, ranging from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(1\)</span>, with higher values being better. Formula:
 $$
 \text{F1-score} = \dfrac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 $$</p>
-<p>$\text{Balanced Acc.}$: A combined metric of $\text{TPR}$ and $\text{TNR}$, ranging from $0$ to $1$, with higher values being better. Formula:
+<p><span class="arithmatex">\(\text{Balanced Acc.}\)</span>: A combined metric of <span class="arithmatex">\(\text{TPR}\)</span> and <span class="arithmatex">\(\text{TNR}\)</span>, ranging from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(1\)</span>, with higher values being better. Formula:
 $$
 \text{Balanced Acc.} = \dfrac{\text{TNR} + \text{TPR}}{2}
 $$</p>
@@ -2189,6 +2189,12 @@ weighted avg       0.98      0.99      0.98    225986
         <script src="../../../../js/timeago.min.js"></script>
       
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
         <script src="../../../../assets/slides/js/slides.js"></script>
       

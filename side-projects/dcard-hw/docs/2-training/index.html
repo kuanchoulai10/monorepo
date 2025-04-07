@@ -1061,7 +1061,7 @@
               
   
   <span class="md-ellipsis">
-    Boosting F1 Score in Popular Dcard Article Prediction
+    2020 Dcard Data Engineering Intern
   </span>
   
 
@@ -1077,7 +1077,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
-            Boosting F1 Score in Popular Dcard Article Prediction
+            2020 Dcard Data Engineering Intern
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1872,7 +1872,7 @@ memory usage: 43.1+ MB
 </code></pre></div>
 <p>For each stage, we experiment with two to three different approaches and several hyperparameter settings to identify the optimal combination.</p>
 <h2 id="handling-imbalanced-datasets-stage-1">Handling Imbalanced Datasets (STAGE 1)<a class="headerlink" href="#handling-imbalanced-datasets-stage-1" title="Permanent link">&para;</a></h2>
-<p>In a binary classification problem, an imbalanced dataset refers to a scenario where the target variable ($y$) is predominantly of one class (majority) with only a small proportion belonging to the other class (minority). </p>
+<p>In a binary classification problem, an imbalanced dataset refers to a scenario where the target variable (<span class="arithmatex">\(y\)</span>) is predominantly of one class (majority) with only a small proportion belonging to the other class (minority). </p>
 <p>Training a model on such a dataset without addressing the imbalance often results in a biased model that predicts most samples as the majority class, ignoring valuable information from the minority class.</p>
 <p>A potential solution is resampling, which can be categorized into oversampling and undersampling:</p>
 <ul>
@@ -1886,7 +1886,7 @@ memory usage: 43.1+ MB
 <p><a class="glightbox" href="https://taweihuang.hpd.io/wp-content/uploads/2018/12/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7-2019-01-06-%E4%B8%8B%E5%8D%8810%E3%80%8223%E3%80%8257.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://taweihuang.hpd.io/wp-content/uploads/2018/12/%E8%9E%A2%E5%B9%95%E5%BF%AB%E7%85%A7-2019-01-06-%E4%B8%8B%E5%8D%8810%E3%80%8223%E3%80%8257.png" /></a>
 <a href="https://taweihuang.hpd.io/2018/12/30/imbalanced-data-sampling-techniques/">Image Source</a></p>
 <h3 id="nearmiss">NearMiss<a class="headerlink" href="#nearmiss" title="Permanent link">&para;</a></h3>
-<p>NearMiss is an undersampling method with three versions. We focus on NearMiss-1, which calculates the average distance of all majority samples to their $k$ nearest minority neighbors and removes the majority samples closest to the minority samples until the class ratio is 1:1. The following diagram illustrates this:</p>
+<p>NearMiss is an undersampling method with three versions. We focus on NearMiss-1, which calculates the average distance of all majority samples to their <span class="arithmatex">\(k\)</span> nearest minority neighbors and removes the majority samples closest to the minority samples until the class ratio is 1:1. The following diagram illustrates this:</p>
 <p><a class="glightbox" href="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img src="https://imbalanced-learn.readthedocs.io/en/stable/_images/sphx_glr_plot_illustration_nearmiss_0011.png" height="350"></a>
 <a href="https://imbalanced-learn.readthedocs.io/en/stable/under_sampling.html#mathematical-formulation">Image Source</a></p>
 <h2 id="polynomial-transformation-and-one-hot-encoding-stage-2">Polynomial Transformation and One-hot Encoding (STAGE 2)<a class="headerlink" href="#polynomial-transformation-and-one-hot-encoding-stage-2" title="Permanent link">&para;</a></h2>
@@ -1907,14 +1907,14 @@ memory usage: 43.1+ MB
 <p>The most well-known Bagging application is Random Forest, which builds multiple decision trees using bootstrap sampling and random feature selection. Each tree learns a subset of features, and their predictions are aggregated for the final result.</p>
 <h3 id="boosting">Boosting<a class="headerlink" href="#boosting" title="Permanent link">&para;</a></h3>
 <h4 id="adaptive-boosting">Adaptive Boosting<a class="headerlink" href="#adaptive-boosting" title="Permanent link">&para;</a></h4>
-<p>Adaptive Boosting (AdaBoost) sequentially builds $T$ weak learners $h_t(x)$, with each model focusing on samples misclassified by the previous one. Each model is assigned a weight $\alpha_t$ based on its performance:</p>
+<p>Adaptive Boosting (AdaBoost) sequentially builds <span class="arithmatex">\(T\)</span> weak learners <span class="arithmatex">\(h_t(x)\)</span>, with each model focusing on samples misclassified by the previous one. Each model is assigned a weight <span class="arithmatex">\(\alpha_t\)</span> based on its performance:</p>
 <ul>
 <li>Higher weights indicate better performance.</li>
 <li>Lower weights indicate worse performance.</li>
 </ul>
-<p>The final model $H(x)$ aggregates the predictions of all $T$ weak learners. For more details, refer to this <a href="https://hackmd.io/@kcl10/HyXNoqOL8">note</a>.</p>
+<p>The final model <span class="arithmatex">\(H(x)\)</span> aggregates the predictions of all <span class="arithmatex">\(T\)</span> weak learners. For more details, refer to this <a href="https://hackmd.io/@kcl10/HyXNoqOL8">note</a>.</p>
 <h4 id="gradient-boosting">Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permanent link">&para;</a></h4>
-<p>Gradient Boosting builds $T$ models $h_t(x)$ sequentially, where each model predicts the gradient (pseudo-residuals) of the previous model's errors. The final model $H(x)$ is the sum of all previous models. For mathematical derivations, refer to this <a href="https://hackmd.io/@kcl10/B1GKRg9L8">note</a>.</p>
+<p>Gradient Boosting builds <span class="arithmatex">\(T\)</span> models <span class="arithmatex">\(h_t(x)\)</span> sequentially, where each model predicts the gradient (pseudo-residuals) of the previous model's errors. The final model <span class="arithmatex">\(H(x)\)</span> is the sum of all previous models. For mathematical derivations, refer to this <a href="https://hackmd.io/@kcl10/B1GKRg9L8">note</a>.</p>
 <h4 id="extreme-gradient-boosting">Extreme Gradient Boosting<a class="headerlink" href="#extreme-gradient-boosting" title="Permanent link">&para;</a></h4>
 <p>XGBoost is an optimized implementation of Gradient Boosting with enhancements like weighted quantile sketch, parallel learning, and cache-aware access. For more details, refer to this <a href="https://www.kdd.org/kdd2016/papers/files/rfp0697-chenAemb.pdf">paper</a>.</p>
 <h2 id="hyperparameter-optimization">Hyperparameter Optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permanent link">&para;</a></h2>
@@ -2124,6 +2124,12 @@ memory usage: 43.1+ MB
         <script src="../../../../js/timeago.min.js"></script>
       
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
         <script src="../../../../assets/slides/js/slides.js"></script>
       
