@@ -26,7 +26,7 @@ nav:
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
     - Data Mesh: "!include ./data-mesh/mkdocs.yml"
-    - Boosting F1 Score in Popular Dcard Article Prediction : "!include ./dcard-hw/mkdocs.yml"
+    - 2020 Dcard Data Engineering Intern: "!include ./dcard-hw/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning Plans:
     - learning-plans/index.md
@@ -81,6 +81,7 @@ plugins:
       post_date_format: medium
       post_excerpt: required
       post_url_format: "{file}"
+      draft_if_future_date: true
       categories_allowed:
         - GCP
         - AWS
@@ -95,7 +96,6 @@ plugins:
         - Google Analytics
         - mkdocs
         - python
-      draft_if_future_date: true
   - git-revision-date-localized:
       type: timeago
       timezone: Asia/Taipei
@@ -131,6 +131,13 @@ markdown_extensions:
   - pymdownx.tasklist:
       clickable_checkbox: true
       custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
 extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
