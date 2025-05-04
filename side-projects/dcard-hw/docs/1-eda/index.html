@@ -342,6 +342,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -1532,8 +1549,6 @@
       
         
       
-        
-      
     
     
       
@@ -1582,27 +1597,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/tags.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    None
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../.." class="md-nav__link">
         
   
@@ -1620,6 +1614,26 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1764,12 +1778,12 @@
 <h1 id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Permanent link">&para;</a></h1>
 <p>The dataset is divided into training and testing sets. To avoid data leakage, only the training set is analyzed during EDA, leaving the testing set aside.</p>
 <p>When we first receive a dataset, the initial step is to examine its details, including the number of records and columns in each table. Below is the dataset information as of the update on 2020/04/13:</p>
-<div class="highlight"><pre><span></span><code>posts_train                Contains 793,751 records and 3 columns
-post_shared_train          Contains 304,260 records and 3 columns
-post_comment_created_train Contains 2,372,228 records and 3 columns
-post_liked_train           Contains 3,395,903 records and 3 columns
-post_collected_train       Contains 1,235,126 records and 3 columns
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>posts_train                Contains 793,751 records and 3 columns
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>post_shared_train          Contains 304,260 records and 3 columns
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>post_comment_created_train Contains 2,372,228 records and 3 columns
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>post_liked_train           Contains 3,395,903 records and 3 columns
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>post_collected_train       Contains 1,235,126 records and 3 columns
+</span></code></pre></div>
 <p>The training set covers posts from April 1, 2019, to the end of October 2019, spanning approximately seven months with around 793,000 posts. The goal is to build a predictive model that uses 10-hour post metrics (e.g., shares, comments, likes, and saves) to predict whether a post will receive 1,000 likes within 36 hours, classifying it as a "popular post."</p>
 <p>Approximately 2.32% of the training posts are popular, equating to about 18,000 posts. This imbalance in the dataset necessitates techniques like over/undersampling during preprocessing and alternative evaluation metrics during model assessment.</p>
 <h2 id="problem-definition">Problem Definition<a class="headerlink" href="#problem-definition" title="Permanent link">&para;</a></h2>

@@ -336,6 +336,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -1399,8 +1416,6 @@
       
         
       
-        
-      
     
     
       
@@ -1449,27 +1464,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/tags.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    None
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../.." class="md-nav__link">
         
   
@@ -1487,6 +1481,26 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1706,158 +1720,158 @@
 <h1 id="flask-ubuntu-1604-server">將 Flask 應用程式部署在 Ubuntu 16.04 Server<a class="headerlink" href="#flask-ubuntu-1604-server" title="Permanent link">&para;</a></h1>
 <p>首先，我們必須註冊 DigitalOcean 帳號並在上面租用一個虛擬主機，版本為 Ubuntu 16.04 Server。如何以 SSH 連線不是課程重點，因此我們在此先略過。連線後緊接著進行幾項事前準備：</p>
 <h3 id="_1">更新倉庫清單<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code># apt-get update
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># apt-get update
+</span></code></pre></div>
 <h3 id="os">在 OS 上創建新使用者<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code># adduser &lt;username&gt;
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># adduser &lt;username&gt;
+</span></code></pre></div>
 <h3 id="super-user">給予 super user 權限<a class="headerlink" href="#super-user" title="Permanent link">&para;</a></h3>
 <p>進入 <code>/etc/sudoers</code> 檔案：
-<div class="highlight"><pre><span></span><code># visudo
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># visudo
+</span></code></pre></div></p>
 <p>在 "User privilege specification" 下方替新使用者加入 super user 的權限：
-<div class="highlight"><pre><span></span><code>&lt;username&gt; ALL=(ALL:ALL) ALL
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;username&gt; ALL=(ALL:ALL) ALL
+</span></code></pre></div></p>
 <h2 id="1-postresql">1. 安裝並設定 PostreSQL 資料庫<a class="headerlink" href="#1-postresql" title="Permanent link">&para;</a></h2>
 <h3 id="postgresql">安裝 PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code># apt-get install postgresql postgresql-contrib
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a># apt-get install postgresql postgresql-contrib
+</span></code></pre></div>
 <h3 id="postgres">切換成 <code>postgres</code> 使用者<a class="headerlink" href="#postgres" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code># sudo -i -u postgres
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># sudo -i -u postgres
+</span></code></pre></div>
 <h3 id="postgresql_1">替新使用者，創建 PostgreSQL 當中的帳號和資料庫<a class="headerlink" href="#postgresql_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ createuser &lt;username&gt; -P
-$ createdb &lt;username&gt;
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ createuser &lt;username&gt; -P
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>$ createdb &lt;username&gt;
+</span></code></pre></div>
 <h3 id="postgresql_2">強制以密碼登入 PostgreSQL<a class="headerlink" href="#postgresql_2" title="Permanent link">&para;</a></h3>
 <p>進入 <code>pg_hba.conf</code> 配置檔：
-<div class="highlight"><pre><span></span><code>$ nano /etc/postgresql/10/main/pg_hba.conf
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ nano /etc/postgresql/10/main/pg_hba.conf
+</span></code></pre></div></p>
 <p>將
-<div class="highlight"><pre><span></span><code>local all all peer
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>local all all peer
+</span></code></pre></div>
 改為
-<div class="highlight"><pre><span></span><code>local all all md5
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>local all all md5
+</span></code></pre></div></p>
 <p>完成後跳出配置檔，接著改為新使用者來操作。</p>
 <h2 id="2-nginx">2. 安裝並設定 Nginx 伺服器<a class="headerlink" href="#2-nginx" title="Permanent link">&para;</a></h2>
 <h3 id="nginx">安裝 Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install nginx
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ sudo apt-get install nginx
+</span></code></pre></div>
 <h3 id="nginx-ssh">開啟防火牆並允許 <code>nginx</code> 和 <code>ssh</code><a class="headerlink" href="#nginx-ssh" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ sudo ufw enable
-$ sudo ufw allow &#39;Nginx HTTP&#39;
-$ sudo ufw allow ssh
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ sudo ufw enable
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>$ sudo ufw allow &#39;Nginx HTTP&#39;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>$ sudo ufw allow ssh
+</span></code></pre></div>
 <h3 id="flask-nginx">替我們的 Flask 應用程式加入 Nginx 配置檔<a class="headerlink" href="#flask-nginx" title="Permanent link">&para;</a></h3>
 <p>創建並進入 <code>items-rest.conf</code> 配置檔：
-<div class="highlight"><pre><span></span><code>$ sudo nano /etc/nginx/sites-available/items-rest.conf
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ sudo nano /etc/nginx/sites-available/items-rest.conf
+</span></code></pre></div></p>
 <p>輸入以下內容：
-<div class="highlight"><pre><span></span><code>server {
-    listen 80;
-    real_ip_header X-Forwarded-For;
-    set_real_ip_from 127.0.0.1;
-    server_name localhost;
-
-    location / {
-        include uwsgi_params;
-        uwsgi_pass unix:/var/www/html/items-rest/socket.sock;
-        uwsgi_modifier1 30;
-    }
-
-    error_page 404 /404.html;
-    location = 404.html {
-        root /usr/share/nginx/html;
-    }
-
-    error_page 500 502  503 504 50x.html;
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-}
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>server {
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    listen 80;
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    real_ip_header X-Forwarded-For;
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    set_real_ip_from 127.0.0.1;
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    server_name localhost;
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    location / {
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        include uwsgi_params;
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        uwsgi_pass unix:/var/www/html/items-rest/socket.sock;
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        uwsgi_modifier1 30;
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    }
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    error_page 404 /404.html;
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    location = 404.html {
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        root /usr/share/nginx/html;
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>    }
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>    error_page 500 502  503 504 50x.html;
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>    location = /50x.html {
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>        root /usr/share/nginx/html;
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>    }
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>}
+</span></code></pre></div></p>
 <p>完成後跳出配置檔，接著建立 soft link，啟用配置：
-<div class="highlight"><pre><span></span><code>$ sudo ln -s /etc/nginx/sites-available/items-rest.conf /etc/nginx/sites-enabled/
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$ sudo ln -s /etc/nginx/sites-available/items-rest.conf /etc/nginx/sites-enabled/
+</span></code></pre></div></p>
 <h2 id="3-flask">3. 設定 Flask 應用程式所需執行環境<a class="headerlink" href="#3-flask" title="Permanent link">&para;</a></h2>
 <h3 id="_2">創建專案目錄並給予適當權限<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ sudo mkdir /var/www/html/items-rest
-$ sudo chown &lt;username&gt;:&lt;username&gt; /var/www/html/items-rest
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>$ sudo mkdir /var/www/html/items-rest
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>$ sudo chown &lt;username&gt;:&lt;username&gt; /var/www/html/items-rest
+</span></code></pre></div>
 <p>完成後進入該目錄：
-<div class="highlight"><pre><span></span><code>$ cd /var/www/html/items-rest
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$ cd /var/www/html/items-rest
+</span></code></pre></div></p>
 <h3 id="_3">設定專案所需環境<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>下載專案內容並創建日誌檔目錄：
-<div class="highlight"><pre><span></span><code>$ git clone https://github.com/schoolofcode-me/stores-rest-api.git .
-$ mkdir log
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$ git clone https://github.com/schoolofcode-me/stores-rest-api.git .
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>$ mkdir log
+</span></code></pre></div></p>
 <p>建立虛擬環境並安裝所需套件：
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install python-pip python3-dev libpq-dev
-$ pip install virtualenv
-$ virtualenv venv --python=python3.6
-$ source venv/bin/activate
-(venv)$ pip install -r requirements.txt
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>$ sudo apt-get install python-pip python3-dev libpq-dev
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>$ pip install virtualenv
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>$ virtualenv venv --python=python3.6
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>$ source venv/bin/activate
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>(venv)$ pip install -r requirements.txt
+</span></code></pre></div></p>
 <h1 id="4-uwsgi">4. 設定 uWSGI 伺服器<a class="headerlink" href="#4-uwsgi" title="Permanent link">&para;</a></h1>
 <h3 id="uwsgi_items_restservice-ubuntu">創建 <code>uwsgi_items_rest.service</code> Ubuntu 服務<a class="headerlink" href="#uwsgi_items_restservice-ubuntu" title="Permanent link">&para;</a></h3>
 <p>創建並進入 <code>uwsgi_items_rest.service</code> 檔：
-<div class="highlight"><pre><span></span><code>$ sudo nano /etc/systemd/system/uwsgi_items_rest.service
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$ sudo nano /etc/systemd/system/uwsgi_items_rest.service
+</span></code></pre></div></p>
 <p>輸入以下內容：
-<div class="highlight"><pre><span></span><code>[Unit]
-Description=uWSGI items rest
-
-[Service]
-Environment=DATABASE_URL=postgres://jose:1234@localhost:5432/jose
-ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid jose --gid jose --logto /var/www/html/items-rest/log/emperor.log
-Restart=always
-KillSignal=SIGQUIT
-Type=notify
-NotifyAccess=all
-
-[Install]
-WantedBy=multi-user.target
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[Unit]
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>Description=uWSGI items rest
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>[Service]
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>Environment=DATABASE_URL=postgres://jose:1234@localhost:5432/jose
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid jose --gid jose --logto /var/www/html/items-rest/log/emperor.log
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>Restart=always
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>KillSignal=SIGQUIT
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>Type=notify
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>NotifyAccess=all
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>[Install]
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>WantedBy=multi-user.target
+</span></code></pre></div></p>
 <p>完成後跳出檔案。</p>
 <h3 id="uwsgiini">修改 <code>uwsgi.ini</code> 配置檔<a class="headerlink" href="#uwsgiini" title="Permanent link">&para;</a></h3>
 <p>進入專案內的 <code>uwsgi.ini</code> 配置檔：
-<div class="highlight"><pre><span></span><code>$ nano uwsgi.ini
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$ nano uwsgi.ini
+</span></code></pre></div></p>
 <p>輸入以下內容：
-<div class="highlight"><pre><span></span><code>[uwsgi]
-base = /var/www/html/items-rest
-app = run
-module = %(app)
-
-home = %(base)/venv
-pythonpath = %(base)
-
-socket = %(base)/socket.sock
-
-chmod-socket = 777
-
-processes = 8
-
-threads = 8
-
-harakiri = 15
-
-callable = app
-
-logto = /var/www/html/items-rest/log/%n.log
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>[uwsgi]
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>base = /var/www/html/items-rest
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>app = run
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>module = %(app)
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>home = %(base)/venv
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>pythonpath = %(base)
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>socket = %(base)/socket.sock
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>chmod-socket = 777
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>processes = 8
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>threads = 8
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>harakiri = 15
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>callable = app
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>logto = /var/www/html/items-rest/log/%n.log
+</span></code></pre></div></p>
 <p>完成後跳出配置檔。</p>
 <h1 id="5-flask">5. 啟動 Flask 應用程式<a class="headerlink" href="#5-flask" title="Permanent link">&para;</a></h1>
 <p>刪除 Nginx 預設配置檔，避免讀取錯誤的配置檔，接著 reload 並 restart：
-<div class="highlight"><pre><span></span><code>$ sudo rm /etc/nginx/sites-enabled/default
-$ sudo systemctl reload nginx 
-$ sudo systemctl restart nginx
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$ sudo rm /etc/nginx/sites-enabled/default
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>$ sudo systemctl reload nginx 
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>$ sudo systemctl restart nginx
+</span></code></pre></div></p>
 <p>啟動 <code>uwsgi_items_rest</code> 服務：
-<div class="highlight"><pre><span></span><code>$ sudo systemctl start uwsgi_items_rest
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$ sudo systemctl start uwsgi_items_rest
+</span></code></pre></div></p>
 <p>完成！</p>
 
 

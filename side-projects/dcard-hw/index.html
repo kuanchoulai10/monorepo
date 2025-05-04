@@ -342,6 +342,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -1412,8 +1429,6 @@
       
         
       
-        
-      
     
     
       
@@ -1462,27 +1477,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/tags.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    None
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         
   
@@ -1500,6 +1494,26 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1639,18 +1653,18 @@
 <p>To simplify the problem, <strong>we define a trending post as one that receives at least 1000 likes within 36 hours of being posted.</strong> During testing, we will calculate whether a post's like count exceeds 1000 within 36 hours to determine the ground truth or prediction benchmark.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<div class="highlight"><pre><span></span><code>$ tree
-.
-├── requirements.txt: A list of required Python packages and their versions.
-├── preprocessing.py: A shared utility script for database connections, preprocessing, and other common functions.
-├── training.py: A utility script for training the model.
-├── predict.py: A utility script for making predictions.
-├── outputs
-│   ├── best_model.h5: The best model obtained after training.
-│   ├── cv_results.csv: Cross-validation results.
-│   └── output.csv: Prediction results for the public testing dataset.
-└── eda_evaluation.ipynb: A Jupyter notebook used for generating visualizations.
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$ tree
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── requirements.txt: A list of required Python packages and their versions.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── preprocessing.py: A shared utility script for database connections, preprocessing, and other common functions.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── training.py: A utility script for training the model.
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── predict.py: A utility script for making predictions.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── outputs
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│   ├── best_model.h5: The best model obtained after training.
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── cv_results.csv: Cross-validation results.
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── output.csv: Prediction results for the public testing dataset.
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>└── eda_evaluation.ipynb: A Jupyter notebook used for generating visualizations.
+</span></code></pre></div>
 <p>The training dataset includes articles spanning from April 1, 2019, to the end of October 2019, covering approximately seven months. The dataset contains around 793,000 articles, of which about 2.32% (approximately 18,000 articles) are classified as popular. Through exploratory data analysis, we observed high correlations among variables. Additionally, the timing of article publication significantly influences the proportion of popular articles and the total number of likes within the first 36 hours of posting.</p>
 <p>We decided to use a "binary classification model without considering sequential information" as our primary approach, focusing on handling imbalanced datasets, tree-based ensemble models, and subsequent discussions. The training process was divided into three main stages:</p>
 <ol>
@@ -1670,12 +1684,12 @@
 </div>
 <h2 id="training-dataset">Training Dataset<a class="headerlink" href="#training-dataset" title="Permanent link">&para;</a></h2>
 <p>The training dataset covers posts from April 1, 2019, to the end of October 2019, approximately 7 months. It contains around 794,000 posts, of which about 2.32% (approximately 18,000 posts) are trending.</p>
-<div class="highlight"><pre><span></span><code>posts_train                Contains 793,751 records and 3 columns
-post_shared_train          Contains 304,260 records and 3 columns
-post_comment_created_train Contains 2,372,228 records and 3 columns
-post_liked_train           Contains 3,395,903 records and 3 columns
-post_collected_train       Contains 1,235,126 records and 3 columns
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>posts_train                Contains 793,751 records and 3 columns
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>post_shared_train          Contains 304,260 records and 3 columns
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>post_comment_created_train Contains 2,372,228 records and 3 columns
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>post_liked_train           Contains 3,395,903 records and 3 columns
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>post_collected_train       Contains 1,235,126 records and 3 columns
+</span></code></pre></div>
 <p>Table: <code>posts_train</code></p>
 <table>
 <thead>
@@ -1812,12 +1826,12 @@ post_collected_train       Contains 1,235,126 records and 3 columns
 </tbody>
 </table>
 <h2 id="testing-dataset">Testing Dataset<a class="headerlink" href="#testing-dataset" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>posts_test                 Contains 225,986 records and 3 columns
-post_shared_test           Contains 83,376 records and 3 columns
-post_comment_created_test  Contains 607,251 records and 3 columns
-post_liked_test            Contains 908,910 records and 3 columns
-post_collected_test        Contains 275,073 records and 3 columns
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>posts_test                 Contains 225,986 records and 3 columns
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>post_shared_test           Contains 83,376 records and 3 columns
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>post_comment_created_test  Contains 607,251 records and 3 columns
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>post_liked_test            Contains 908,910 records and 3 columns
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>post_collected_test        Contains 275,073 records and 3 columns
+</span></code></pre></div>
 <h2 id="evaluation-metrics">Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permanent link">&para;</a></h2>
 <p>For offline evaluation, only the first 10 hours of data for each post will be used as input for prediction. The primary evaluation metric is the F1-score.</p>
 <h2 id="submission-requirements">Submission Requirements<a class="headerlink" href="#submission-requirements" title="Permanent link">&para;</a></h2>
@@ -1873,28 +1887,28 @@ post_collected_test        Contains 275,073 records and 3 columns
 </ul>
 <h3 id="trainingpy"><code>training.py</code><a class="headerlink" href="#trainingpy" title="Permanent link">&para;</a></h3>
 <p>The usage of <code>training.py</code> is as follows:</p>
-<div class="highlight"><pre><span></span><code>usage: training.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
-                   [--port PORTNUMBER] [--protocol PROTOCOL]
-                   DATABASE OUTPUT_PATH
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>usage: training.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                   [--port PORTNUMBER] [--protocol PROTOCOL]
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                   DATABASE OUTPUT_PATH
+</span></code></pre></div>
 <p>At a minimum, you must provide five parameters: "username," "password," "host IP address," "database name," and "output path." <strong>To train on the training set, use the following command:</strong></p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
-<span class="w">                   </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
-<span class="w">                   </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
-<span class="w">                   </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
-<span class="w">                   </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">                   </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">                   </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">                   </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">                   </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</span></code></pre></div>
 <p>By default, the program connects to a PostgreSQL database on port 5432. If needed, you can use the <code>--protocol</code> and <code>--port</code> options to connect to other databases, such as MySQL:</p>
 <details class="note">
 <summary>Note</summary>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
-<span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
-<span class="w">                </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
-<span class="w">                </span>--port<span class="w"> </span><span class="s2">&quot;3306&quot;</span><span class="se">\</span>
-<span class="w">                </span>--protocol<span class="w"> </span><span class="s2">&quot;mysql&quot;</span><span class="se">\</span>
-<span class="w">                </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
-<span class="w">                </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>training.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">                </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">                </span>--port<span class="w"> </span><span class="s2">&quot;3306&quot;</span><span class="se">\</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">                </span>--protocol<span class="w"> </span><span class="s2">&quot;mysql&quot;</span><span class="se">\</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">                </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">                </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</span></code></pre></div>
 </details>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
@@ -1903,73 +1917,73 @@ post_collected_test        Contains 275,073 records and 3 columns
 <p>For more details, use the <code>-h</code> or <code>--help</code> options:</p>
 <details class="note">
 <summary>Note</summary>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>training.py<span class="w"> </span>-h
-usage:<span class="w"> </span>training.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
-<span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span>
-<span class="w">                </span>DATABASE<span class="w"> </span>OUTPUT_PATH
-
-positional<span class="w"> </span>arguments:
-DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
-OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Best<span class="w"> </span>prediction<span class="w"> </span>model<span class="w"> </span>and<span class="w"> </span>cross<span class="w"> </span>validation
-<span class="w">                    </span>results<span class="w"> </span>outputs<span class="w"> </span>file<span class="w"> </span>path.
-
-optional<span class="w"> </span>arguments:
--h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
--u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
--p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
---host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
---port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
---protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
-</code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>python<span class="w"> </span>training.py<span class="w"> </span>-h
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>usage:<span class="w"> </span>training.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">                </span>DATABASE<span class="w"> </span>OUTPUT_PATH
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>positional<span class="w"> </span>arguments:
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Best<span class="w"> </span>prediction<span class="w"> </span>model<span class="w"> </span>and<span class="w"> </span>cross<span class="w"> </span>validation
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">                    </span>results<span class="w"> </span>outputs<span class="w"> </span>file<span class="w"> </span>path.
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>optional<span class="w"> </span>arguments:
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>-h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>-u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>-p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>--host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>--port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>--protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
+</span></code></pre></div>
 </details>
 <h3 id="predictpy"><code>predict.py</code><a class="headerlink" href="#predictpy" title="Permanent link">&para;</a></h3>
 <p>The usage of <code>predict.py</code> is as follows:</p>
-<div class="highlight"><pre><span></span><code>usage: predict.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
-                  [--port PORTNUMBER] [--protocol PROTOCOL] [-n]
-                  DATABASE MODEL_NAME OUTPUT_PATH
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>usage: predict.py [-h] -u USERNAME -p PASSWORD --host HOSTNAME
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                  [--port PORTNUMBER] [--protocol PROTOCOL] [-n]
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>                  DATABASE MODEL_NAME OUTPUT_PATH
+</span></code></pre></div>
 <p>Similar to <code>training.py</code>, you must provide five parameters, with an additional parameter for the "model path" used to predict trending posts. <strong>To predict on the public test set, use the following command:</strong></p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
-<span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</span></code></pre></div>
 <p>After execution, the program outputs <code>output.csv</code> (filename cannot be changed) to the specified folder. Note that the <code>MODEL_NAME</code> option must include the model file name, not the folder path.</p>
 <p>As mentioned in the "Assignment Supplementary Notes and Corrections" email, the <code>posts_test</code> table in the private test set does not include the <code>like_count_36_hour</code> column. Therefore, you must use the <code>-n</code> option to indicate that this column is absent. <strong>To predict on the private test set, use the following command:</strong></p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
-<span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span>-n<span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
-<span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python<span class="w"> </span>predict.py<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;USERNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">                  </span>-p<span class="w"> </span><span class="s2">&quot;PASSWORD&quot;</span><span class="se">\</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">                  </span>--host<span class="w"> </span><span class="s2">&quot;HOSTNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">                  </span>-n<span class="se">\</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">                  </span><span class="s2">&quot;DATABASE&quot;</span><span class="se">\</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">                  </span><span class="s2">&quot;MODELNAME&quot;</span><span class="se">\</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">                  </span><span class="s2">&quot;OUTPUT_PATH&quot;</span>
+</span></code></pre></div>
 <p>If needed, you can also use the <code>--port</code> and <code>--protocol</code> options to connect to other databases.</p>
 <p>For more details, use the <code>-h</code> or <code>--help</code> options:</p>
 <details class="note">
 <summary>Note</summary>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python<span class="w"> </span>predict.py<span class="w"> </span>-h
-usage:<span class="w"> </span>predict.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
-<span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span>
-<span class="w">                </span>DATABASE<span class="w"> </span>MODEL_NAME<span class="w"> </span>OUTPUT_PATH
-
-positional<span class="w"> </span>arguments:
-DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
-MODEL_NAME<span class="w">           </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Prediction<span class="w"> </span>model<span class="w"> </span>name.<span class="w"> </span>If<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
-<span class="w">                    </span>current<span class="w"> </span>directory,<span class="w"> </span>please<span class="w"> </span>specify<span class="w"> </span>where<span class="w"> </span>it<span class="w"> </span>is.
-OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>File<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>predicted<span class="w"> </span>results.
-
-optional<span class="w"> </span>arguments:
--h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
--u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
--p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
---host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
---port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
---protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
--n<span class="w">                   </span>No<span class="w"> </span>like_count_36_hour<span class="w"> </span>column<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>given.
-</code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>python<span class="w"> </span>predict.py<span class="w"> </span>-h
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>usage:<span class="w"> </span>predict.py<span class="w"> </span><span class="o">[</span>-h<span class="o">]</span><span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>-p<span class="w"> </span>PASSWORD<span class="w"> </span>--host<span class="w"> </span>HOSTNAME
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">                </span><span class="o">[</span>--port<span class="w"> </span>PORTNUMBER<span class="o">]</span><span class="w"> </span><span class="o">[</span>--protocol<span class="w"> </span>PROTOCOL<span class="o">]</span><span class="w"> </span><span class="o">[</span>-n<span class="o">]</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">                </span>DATABASE<span class="w"> </span>MODEL_NAME<span class="w"> </span>OUTPUT_PATH
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>positional<span class="w"> </span>arguments:
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>DATABASE<span class="w">             </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Database<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>MODEL_NAME<span class="w">           </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Prediction<span class="w"> </span>model<span class="w"> </span>name.<span class="w"> </span>If<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>the
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">                    </span>current<span class="w"> </span>directory,<span class="w"> </span>please<span class="w"> </span>specify<span class="w"> </span>where<span class="w"> </span>it<span class="w"> </span>is.
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>OUTPUT_PATH<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>File<span class="w"> </span>path<span class="w"> </span>of<span class="w"> </span>predicted<span class="w"> </span>results.
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>optional<span class="w"> </span>arguments:
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>-h,<span class="w"> </span>--help<span class="w">           </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>-u<span class="w"> </span>USERNAME<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>User<span class="w"> </span><span class="k">for</span><span class="w"> </span>login<span class="w"> </span><span class="k">if</span><span class="w"> </span>not<span class="w"> </span>current<span class="w"> </span>user.
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>-p<span class="w"> </span>PASSWORD<span class="w">          </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Password<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>when<span class="w"> </span>connecting<span class="w"> </span>to<span class="w"> </span>server.
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>--host<span class="w"> </span>HOSTNAME<span class="w">      </span><span class="o">(</span>Required<span class="o">)</span><span class="w"> </span>Host<span class="w"> </span>address<span class="w"> </span>to<span class="w"> </span>connect.
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>--port<span class="w"> </span>PORTNUMBER<span class="w">    </span>Port<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="k">for</span><span class="w"> </span>connection<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span><span class="m">5432</span><span class="o">)</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>--protocol<span class="w"> </span>PROTOCOL<span class="w">  </span>Protocol<span class="w"> </span>to<span class="w"> </span>connect.<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>postgres<span class="o">)</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>-n<span class="w">                   </span>No<span class="w"> </span>like_count_36_hour<span class="w"> </span>column<span class="w"> </span>when<span class="w"> </span>the<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>given.
+</span></code></pre></div>
 </details>
 
 
