@@ -26,7 +26,7 @@ nav:
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
     - Data Mesh: "!include ./data-mesh/mkdocs.yml"
-    - 2020 Dcard Data Engineering Intern: "!include ./dcard-hw/mkdocs.yml"
+    - 2020 Dcard DE Intern: "!include ./dcard-hw/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning Plans:
     - learning-plans/index.md
@@ -68,9 +68,10 @@ plugins:
   - glightbox
   - drawio-exporter
   - slides
-  - mkdocs-jupyter
+  - mkdocs-jupyter:
+      include: ["*.ipynb"]
   - tags:
-      tags_file: blog/tags.md
+      tags_file: tags.md
   - search:
       lang:
         - en
@@ -96,14 +97,14 @@ plugins:
         - Google Analytics
         - mkdocs
         - python
+  - git-committers:
+      repository: kuanchoulai10/monorepo
+      branch: main
   - git-revision-date-localized:
       type: timeago
       timezone: Asia/Taipei
       enable_creation_date: true
       fallback_to_build_date: true
-  - git-committers:
-      repository: kuanchoulai10/monorepo
-      branch: main
 
 markdown_extensions:
   - admonition
@@ -141,6 +142,7 @@ extra_javascript:
 
 extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
 
 extra:
   social:
