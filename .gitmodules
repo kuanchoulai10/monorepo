@@ -7,3 +7,6 @@
 [submodule "dcard-hw"]
 	path = dcard-hw
 	url = https://github.com/kuanchoulai10/dcard-hw.git
+[submodule "data2ml-ops"]
+	path = data2ml-ops
+	url = https://github.com/kuanchoulai10/data2ml-ops.git
