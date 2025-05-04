@@ -101,25 +101,6 @@ To https://github.com/kuanchoulai10/monorepo.git
 --8<-- "https://raw.githubusercontent.com/kuanchoulai10/reusable-workflows/refs/heads/main/.github/workflows/trigger-monorepo-to-build-doc.yml"
 ```
 
-## Sub repo
-
-1. Setup secret: Personal Access Token
-    - The fine-grained token must have the following permission set: "Contents" repository permissions (write)
-2. write workflow to use reusable workflow
-
-```yaml
-name: Trigger Monorepo to Build Docs
-
-on:
-  ...
-
-jobs:
-  trigger_monorepo:
-    {==uses: kuanchoulai10/reusable-workflows/.github/workflows/trigger-monorepo-to-build-doc.yml@main==}
-    secrets:
-      PAT: {==${{ secrets.PAT }}==}
-```
-
 ## Monorepo
 
 ```yaml
@@ -132,6 +113,33 @@ jobs:
 
 ```yaml
 --8<-- "./.github/workflows/publish-docs.yml:submodules"
+```
+
+## Sub-repo
+
+1. Setup secret: Personal Access Token
+    - The fine-grained token must have the following permission set: "Contents" repository permissions (write)
+
+![](./static/cross-repo-docs-mkdocs-workflow/pat.png){ width=600 }
+
+2. set repo secrets
+
+![](./static/cross-repo-docs-mkdocs-workflow/repo-secret.png)
+
+
+3. write workflow to use reusable workflow
+
+```yaml
+name: Trigger Monorepo to Build Docs
+
+on:
+  ...
+
+jobs:
+  trigger_monorepo:
+    {==uses: kuanchoulai10/reusable-workflows/.github/workflows/trigger-monorepo-to-build-doc.yml@main==}
+    secrets:
+      PAT: {==${{ secrets.PAT }}==}
 ```
 
 
