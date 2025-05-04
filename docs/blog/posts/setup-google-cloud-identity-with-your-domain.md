@@ -27,7 +27,7 @@ comments: true
 在開始之前，你會需要先購買網域。網路上已經有很多資源教你如何購買了，這邊就不多說了，就挑一家網域註冊商來購買吧。我自己當初是在[GoDaddy](https://godaddy.com/)上購買網域(也就是你目前瀏覽的這個網域)：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/godaddy-my-products.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/godaddy-my-products.png){ width=600 }
   <figcaption>GoDaddy "My Products" Page</figcaption>
 </figure>
 
@@ -40,26 +40,26 @@ Cloud Identity有Free和Premium兩種版本，購買完網域後接著要進行�
 首先，進入[註冊頁](https://workspace.google.com/gcpidentity/signup?sku=identitybasic)開始註冊流程，填入公司名稱、員工人數和地區並點選「下一步」：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-1.png){ width=300 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-1.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 接著，填入聯絡資訊，包括姓名和電子信箱：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-2.png){ width=300 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-2.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 再來，填寫你要使用哪個網域設定Cloud Identity：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-3.png){ width=300 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-3.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-4.png){ width=300 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-4.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
@@ -68,14 +68,14 @@ Cloud Identity有Free和Premium兩種版本，購買完網域後接著要進行�
 確認完要使用哪個網域做設定後，接下來就是在Cloud Identity中建立第一位使用者，完成後請點擊「同意並繼續」：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-5.png){ width=300 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-5.png){ width=300 }
   <figcaption></figcaption>
 </figure>
 
 點選「我瞭解」以接受服務條款，系統會自動替你建立新帳號：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-6.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-6.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
@@ -84,19 +84,19 @@ Cloud Identity有Free和Premium兩種版本，購買完網域後接著要進行�
 最後，就是要來保護自有網域：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-7.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-7.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-8.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-8.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 前往網域註冊商所提供的DNS服務，並回到流程頁點選「繼續：前往步驟2」：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-9.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-9.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
@@ -105,24 +105,24 @@ Google Cloud Identity是透過在DNS服務中新增一筆`TXT`紀錄，保護你
 在Google Cloud Identity流程頁中複製驗證碼，接著前往DNS服務頁面新增一筆`TXT`紀錄。其中`@`指的是根網域。設定完成後請回至流程頁點選「保護網域」：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-10.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-10.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-11.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-11.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 完成後就可以在Google Admin操作介面看到網域「已驗證」的資訊，且已訂閱「Cloud Identity Free」：
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-12.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-12.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
 <figure markdown>
-  ![](../../images/setup-google-cloud-identity-with-your-domain/setup-13.png){ width=600 }
+  ![](./static/setup-google-cloud-identity-with-your-domain/setup-13.png){ width=600 }
   <figcaption></figcaption>
 </figure>
 
