@@ -7,14 +7,16 @@ date:
   updated: 2023-12-11
 categories:
   - GCP
-tags:
-  - GCP
 comments: true
 ---
 # 透過自有網域申請Google Cloud Identity
 
-!!! info "TL;DR"
-    Test
+!!! info "TLDR"
+    看完這篇文章，你可以
+    
+    - ABC
+    - STU
+    - XYZ
 
 <!-- more -->
 

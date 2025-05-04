@@ -6,14 +6,20 @@ date:
   created: 2023-12-12
   updated: 2023-12-12
 categories:
-  - python
+  - Python
 tags:
   - pyenvs
 comments: true
 ---
 # Python Environment Management
 
-Python environment management is the practice of creating isolated spaces for Python projects with their own dependencies, packages, and even Python versions. This isolation prevents conflicts between different projects requiring different versions of the same libraries or Python itself. Effective environment management is crucial for developers working on multiple projects, ensuring reproducibility, simplifying dependency management, and enabling smoother collaboration across teams.
+!!! info "TLDR"
+    看完這篇文章，你可以
+    
+    - ABC
+    - STU
+    - XYZ
+
 
 <!-- more -->
 

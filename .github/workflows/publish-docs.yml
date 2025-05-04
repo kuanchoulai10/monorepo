@@ -1,10 +1,12 @@
-name: publish-docs 
+name: publish-docs
+# --8<-- [start:on]
 on:
   push:
     branches:
       - main
   repository_dispatch:
     types: [update-submodules]
+# --8<-- [end:on]
 permissions:
   contents: write
 env:
@@ -13,14 +15,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # --8<-- [start:checkout]
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
+      # --8<-- [end:checkout]
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      # --8<-- [start:submodules]
       - name: Update Submodules
         run: |
           git submodule update --remote --merge
@@ -33,6 +38,7 @@ jobs:
           else
               echo "No changes to commit"
           fi
+      # --8<-- [end:submodules]
       - uses: actions/setup-python@v4
         with:
           python-version: 3.9

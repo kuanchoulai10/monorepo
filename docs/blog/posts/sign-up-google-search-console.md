@@ -8,9 +8,18 @@ date:
 categories:
   - GCP
 tags:
-  - GCP
+  - google-search-console
 comments: true
 ---
+
+# 申請Google Search Console
+
+!!! info "TLDR"
+    看完這篇文章，你可以
+    
+    - ABC
+    - STU
+    - XYZ
 
 <!-- more -->
 

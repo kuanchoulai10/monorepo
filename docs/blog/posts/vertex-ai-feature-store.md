@@ -6,15 +6,23 @@ date:
   created: 2025-04-11
   updated: 2025-04-11
 categories:
-  - python
+  - GCP
 tags:
-  - pyenvs
+  - vertex-ai
 comments: true
 ---
-<!-- more -->
 
 
 # Vertex AI Feature Store
+
+!!! info "TLDR"
+    看完這篇文章，你可以
+    
+    - ABC
+    - STU
+    - XYZ
+
+<!-- more -->
 
 - It streamlines your ML feature management and online serving processes by letting you manage your feature data in a BigQuery table or view. You can then serve features online directly from the BigQuery data source.
 - Vertex AI Feature Store provisions resources that let you set up online serving by specifying your feature data sources. It then acts as a metadata layer interfacing with the BigQuery data sources and serves the latest feature values directly from BigQuery for online predictions at low latencies.

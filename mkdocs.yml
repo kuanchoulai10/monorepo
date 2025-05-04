@@ -33,7 +33,7 @@ nav:
     - learning-plans/2025.md
   - Blog: 
     - blog/index.md
-    - blog/tags.md
+  - Tags: tags.md
 
 theme:
   name: material
@@ -87,16 +87,18 @@ plugins:
         - GCP
         - AWS
         - Azure
-        - Data Engineering
-        - Data Science
+        - Data
         - AI
+        - CI/CD
+        - K8S
         - Books
         - Finance
         - Tech
         - Life
         - Google Analytics
-        - mkdocs
-        - python
+        - MkDocs
+        - Python
+        - SEO
   - git-committers:
       repository: kuanchoulai10/monorepo
       branch: main
@@ -117,8 +119,18 @@ markdown_extensions:
       permalink: true
       title: On This Page
   - pymdownx.details
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      url_download: true
   - pymdownx.inlinehilite
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

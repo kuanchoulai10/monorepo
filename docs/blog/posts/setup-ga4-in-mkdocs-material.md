@@ -7,7 +7,7 @@ date:
   updated: 2023-12-12
 categories:
   - Google Analytics
-  - mkdocs
+  - MkDocs
 tags:
   - Google Analytics
   - mkdocs
@@ -16,7 +16,13 @@ comments: true
 
 # 建立GA4資源並在`mkdocs-material`建置的網站中使用
 
-!!! info "TL;DR"
+!!! info "TLDR"
+    看完這篇文章，你可以
+    
+    - ABC
+    - STU
+    - XYZ
+
     
 
 <!-- more -->
