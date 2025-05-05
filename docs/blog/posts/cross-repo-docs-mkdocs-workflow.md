@@ -245,7 +245,7 @@ plugins:
 
 已經完成所有的設置，最後就是要來測試和驗證了。假設我們現在繼續在`data2ml-ops`更新文件，並推送新的一版上GitHub。去到網頁可以看到確實觸發了gihhub actions workflow。
 
-![alt text](./static/cross-repo-docs-mkdocs-workflow/data2ml-ops-run-history.png)
+![](./static/cross-repo-docs-mkdocs-workflow/data2ml-ops-run-history.png)
 
 [`data2ml-ops` run history](https://github.com/kuanchoulai10/data2ml-ops/actions/runs/14824960685)
 
@@ -253,15 +253,17 @@ workflow裡頭會使用`reusable-workflows`的`trigger-monorepo-to-build-doc.yml
 
 切換到`monorepo`的網頁查看，也可以發現確實觸發了文件部署的流程
 
-![alt text](./static/cross-repo-docs-mkdocs-workflow/monorepo-run-history.png)
+![](./static/cross-repo-docs-mkdocs-workflow/monorepo-run-history.png)
 
 [`monorepo` run history](https://github.com/kuanchoulai10/monorepo/actions/runs/14824961637)
 
 從原本的`data2ml-ops @ 7369c16`更新成`data2ml-ops @ 887a9a0`了
 
-![alt text](./static/cross-repo-docs-mkdocs-workflow/monorepo-updated.png)
+![](./static/cross-repo-docs-mkdocs-workflow/monorepo-updated.png)
 
+實際去到我的個人網站，也確實看到我`data2ml-ops`個人專案的文件，也一併地被部署上去了！
 
+![](./static/cross-repo-docs-mkdocs-workflow/website-updates.png)
 
 ## References
 
