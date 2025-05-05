@@ -23,10 +23,11 @@ nav:
       - about-me/public-speakings/index.md
   - Side Projects:
     - side-projects/index.md
+    - Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
+    - 2020 Dcard DE Intern: "!include ./dcard-hw/mkdocs.yml"
     - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
     - Data Mesh: "!include ./data-mesh/mkdocs.yml"
-    - 2020 Dcard DE Intern: "!include ./dcard-hw/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning Plans:
     - learning-plans/index.md
@@ -40,11 +41,11 @@ theme:
   favicon: images/avatar.png
   logo: images/avatar.png
   font:
-    text: Noto Serif TC
-    code: Noto Sans Mono
+    text: IBM Plex Sans
+    code: IBM Plex Mono
   palette:
-    primary: brown
-    accent: amber
+    primary: white
+    accent: indigo
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
@@ -109,6 +110,8 @@ plugins:
       fallback_to_build_date: true
 
 markdown_extensions:
+  - def_list
+  - footnotes
   - admonition
   - attr_list
   - md_in_html
@@ -119,6 +122,8 @@ markdown_extensions:
       permalink: true
       title: On This Page
   - pymdownx.details
+  - pymdownx.smartsymbols
+  - pymdownx.blocks.caption
   - pymdownx.snippets:
       url_download: true
   - pymdownx.inlinehilite
@@ -141,6 +146,9 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       clickable_checkbox: true
       custom_checkbox: true
