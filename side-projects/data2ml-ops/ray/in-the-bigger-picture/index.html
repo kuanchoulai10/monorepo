@@ -1,0 +1,3390 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life.">
+      
+      
+        <meta name="author" content="KC Lai">
+      
+      
+        <link rel="canonical" href="https://kcl10.com/side-projects/data2ml-ops/ray/in-the-bigger-picture/">
+      
+      
+        <link rel="prev" href="../how-it-works/">
+      
+      
+        <link rel="next" href="../deployment/">
+      
+      
+      <link rel="icon" href="../../../../images/avatar.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>In the Bigger Picture - KC's Data & Life Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../../assets/slides/css/slides.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-7CL02RSKY4"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-7CL02RSKY4",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-7CL02RSKY4",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="In the Bigger Picture - KC's Data & Life Notes" >
+      
+        <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
+      
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/ray/in-the-bigger-picture.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/data2ml-ops/ray/in-the-bigger-picture/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="In the Bigger Picture - KC's Data & Life Notes" >
+      
+        <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
+      
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/ray/in-the-bigger-picture.png" >
+      
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#in-the-bigger-picture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+      
+  <img src="../../../../images/avatar.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KC's Data & Life Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              In the Bigger Picture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kuanchoulai10/monorepo" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../about-me/" class="md-tabs__link">
+          
+  
+    
+  
+  About Me
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Side Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../learning-plans/" class="md-tabs__link">
+          
+  
+    
+  
+  Learning Plans
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+      
+  <img src="../../../../images/avatar.png" alt="logo">
+
+    </a>
+    KC's Data & Life Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kuanchoulai10/monorepo" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../about-me/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    About Me
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            About Me
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Work Experience
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Work Experience
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/work-experience/ust/ust/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineer, UST Global
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineer, TVBS Media Inc.
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Researcher, NinoX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/work-experience/itri/itri/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Industry Analyst Intern, ITRI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Education
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Education
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/education/iii/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big Data Engineering Trainee, III
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/education/nccu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    M.B.A., NCCU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about-me/education/ccu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    B.S. Psychology, CCU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../about-me/public-speakings/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Public Speakings
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Public Speakings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Side Projects
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Side Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data2ML Ops
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data2ML Ops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    dbt
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            dbt
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt/what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How It Works?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt/in-the-bigger-picture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dbt/modeling-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Feast
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Feast
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feast/what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feast/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How It Works?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feast/in-the-bigger-picture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feast/modeling-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modeling Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feast/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Feast on Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_5" id="__nav_3_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MinIO
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            MinIO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../minio/what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../minio/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy MinIO on Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_6" id="__nav_3_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MLflow
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            MLflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlflow/what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlflow/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How It Works?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlflow/in-the-bigger-picture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlflow/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy MLflow on Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlflow/hpo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Track Hyperparameter Optimization with Optuna and MLflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_7" id="__nav_3_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ray
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Ray
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How It Works?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-current-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      History &amp; Current Status
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternatives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributed-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Data Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-hpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed HPO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Serving
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Ray Cluster on Kubernetes Using KubeRay
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ray-tune/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrate Ray Tune with Optuna, Imblearn, MLflow and MinIO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ray-job/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Submit a Ray Tune Job to Your Ray Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_8" id="__nav_3_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    KServe
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            KServe
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kserve/what-why-when/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What, Why, When
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kserve/how-it-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How It Works?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kserve/in-the-bigger-picture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    In the Bigger Picture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kserve/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Kserve in Serverless Mode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kserve/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Your Model on Kubernetes Using Kserve InferenceService
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/mlserver-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLServer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/optuna-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optuna introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/knative-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Knative
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/istio-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Istio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/cert-manager-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cert Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/grpc-introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grpc introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/rest-vs-grpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rest vs grpc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../dcard-hw/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    2020 Dcard DE Intern
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            2020 Dcard DE Intern
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dcard-hw/docs/1-eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exploratory Data Analysis (EDA)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dcard-hw/docs/2-training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feature Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dcard-hw/docs/3-evaluation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Results and Discussion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dcard-hw/docs/4-resampling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resampling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dcard-hw/eda_evaluation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    匯入相關套件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cross-cloud-unified-sql-data-pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cross Cloud Unified Sql Data Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sql-based-rag-application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL-based RAG Application
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../data-mesh/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Data Mesh
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Data Mesh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-mesh/docs/org/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Organization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../restful-apis-with-flask/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Restful APIs with Flask
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Restful APIs with Flask
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../restful-apis-with-flask/docs/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../learning-plans/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Learning Plans
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Plans
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../learning-plans/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#history-current-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      History &amp; Current Status
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alternatives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternatives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alternatives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributed-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Data Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-hpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed HPO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Serving
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data2ml-ops/docs/data2ml-ops/ray/in-the-bigger-picture.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data2ml-ops/docs/data2ml-ops/ray/in-the-bigger-picture.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
+    </a>
+  
+
+
+<h1 id="in-the-bigger-picture">In the Bigger Picture<a class="headerlink" href="#in-the-bigger-picture" title="Permanent link">&para;</a></h1>
+<h2 id="history-current-status">History &amp; Current Status<a class="headerlink" href="#history-current-status" title="Permanent link">&para;</a></h2>
+<p>Ray was originally developed by UC Berkeley's RISELab (formerly AMPLab) and was first open-sourced in September 2017.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> The project was designed to simplify distributed computing for machine learning and AI workloads. Later, the team spun off a company, Anyscale, Inc.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, to maintain and commercialize Ray. As of May 2025, Ray has over 37,000 stars on GitHub.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> In April 2024, Thoughtworks included Ray in the Trial phase of its Technology Radar, indicating it is a promising and maturing tool worth evaluating in real-world projects.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>The community is active and growing, with more than 10,000 members on Slack<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup> and over 1,100 contributors on GitHub. Ray is used by more than 23,000 developers and organizations worldwide, including OpenAI, Shopify, and Uber. An annual Ray Summit<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> brings the community together to share use cases, roadmap updates, and technical deep dives.</p>
+<figure>
+  <a class="glightbox" href="../static/use-cases.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/use-cases.png" /></a>
+  <em>Ray Use Cases</em><sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>
+</figure>
+<h2 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
+<h3 id="distributed-data-processing">Distributed Data Processing<a class="headerlink" href="#distributed-data-processing" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://api.star-history.com/svg?repos=ray-project/ray,apache/spark,dask/dask,Eventual-Inc/Daft&amp;type=Date?secret=Z2hwX3FGYVpvd1c2TmcwbGFFeUN6NjYzb0dOSWdGTENNczJHWHpTeQ" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ray-project/ray,apache/spark,dask/dask,Eventual-Inc/Daft&amp;type=Date?secret=Z2hwX3FGYVpvd1c2TmcwbGFFeUN6NjYzb0dOSWdGTENNczJHWHpTeQ" /></a></p>
+<p><em>(Generated by ChatGPT 4o Deep Research on 2025/05/20)</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="ray-data" name="__tabbed_1" type="radio" /><input id="apache-spark" name="__tabbed_1" type="radio" /><input id="dask" name="__tabbed_1" type="radio" /><input id="daft" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="ray-data">Ray Data</label><label for="apache-spark">Apache Spark</label><label for="dask">Dask</label><label for="daft">Daft</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>An open-source <strong>unified framework</strong> designed to scale Python and AI workloads (such as machine learning) across distributed environments.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Python-native distributed computing framework</strong> with a flexible and simple interface, avoiding the overhead of the JVM. Especially suitable for data science and ML workloads.</li>
+<li><strong>Comprehensive ecosystem</strong> including built-in libraries like Ray Tune, Ray Train, Ray Serve, and RLlib—helpful for building large-scale ML applications.</li>
+<li><strong>Abstracts distributed complexity</strong> by offering parallel computing primitives, enabling non-experts in distributed systems to easily get started.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Lacks high-level data processing interfaces</strong>: Ray Datasets only supports basic parallel processing; it lacks full ETL capabilities like rich querying, visualization, or aggregations. It's not positioned as a full data science ETL solution.</li>
+<li><strong>Scheduling overhead for many small tasks</strong>: Ray may incur non-trivial overhead when managing a large number of tiny tasks (batching is often needed). Compared to mature big data engines, its stability and tuning experience are still evolving.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Distributed Python computation / ML</strong>: Ideal when you need to scale arbitrary Python or ML pipelines (e.g., hyperparameter tuning, distributed training, reinforcement learning).</li>
+<li><strong>Heterogeneous resource scheduling</strong>: Suited for workloads requiring GPUs, TPUs, or managing multiple concurrent tasks like data preprocessing and training.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>A unified analytics engine for large-scale data processing. Offers APIs in Scala, Java, Python, and supports batch, streaming, and ML workloads.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Strong big data processing capabilities</strong>: Stable and battle-tested, Spark is the de facto standard for distributed computing on large datasets.</li>
+<li><strong>Robust ecosystem</strong>: A unified platform supporting SQL (Spark SQL), DataFrame APIs (pandas API on Spark), machine learning (MLlib), graph computation (GraphX), and streaming (Structured Streaming).</li>
+<li><strong>Widespread adoption and support</strong>: Large community and broad industry usage, with extensive third-party integrations and enterprise support.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Indirect Python support</strong>: Spark runs on the JVM, and PySpark uses serialization to move data between Python and the JVM. Heavy use of Python UDFs may introduce performance overhead. Also lacks the interactive, dynamic experience native Python users are used to.</li>
+<li><strong>High resource overhead</strong>: Cluster startup and scheduling can be expensive, especially for small-to-medium workloads. Lightweight alternatives may outperform Spark in such scenarios.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Massive-scale batch data processing</strong>: Best suited for terabyte-to-petabyte-scale jobs, especially if Hadoop/Spark infrastructure is already in place. Ideal for complex ETL, warehousing, and batch analytics.</li>
+<li><strong>All-in-one platform requirements</strong>: Excellent when you need a unified stack offering SQL, ML, and streaming in one platform.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>A flexible Python parallel computing library that extends the PyData ecosystem (like Pandas/NumPy) to handle distributed or out-of-core computation.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Familiar interface</strong>: Easy to adopt for Python users, with APIs that closely resemble Pandas. You can scale up existing Pandas/NumPy code with minimal changes.</li>
+<li><strong>Lightweight and flexible</strong>: Can run on a single machine and scale to a cluster. More suitable than Spark for medium-sized data workloads with lower deployment overhead.</li>
+<li><strong>General-purpose parallel computing</strong>: Supports not just DataFrames but also Dask Array, Dask Delayed, and Dask Futures—enabling parallelization of arbitrary Python code and numerical operations.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Limited scalability at extreme data volumes</strong>: For jobs over 1TB, memory management and scheduling can become difficult. Spark may outperform Dask in such scenarios. Also lacks a mature query optimizer for complex joins and aggregations.</li>
+<li><strong>Partial API limitations</strong>: Dask's data structures are immutable and do not support some in-place Pandas operations (like <code>.loc</code> assignment). You may need to use <code>map_partitions</code> and other patterns. Some Pandas edge behaviors may also differ, requiring a learning curve.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Data science in Python with medium-scale data</strong>: Ideal for datasets from a few GBs to several TBs, especially if you're already using Pandas/Numpy and want to speed up existing code with parallelism.</li>
+<li><strong>Flexible and custom computation</strong>: Useful for local development that later scales to clusters. Suitable when the workload involves custom Python functions and numerical computations, rather than pure SQL. Also great for scientific computing tasks that need fault tolerance and visualized scheduling.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>A new-generation unified data engine offering both Python DataFrame and SQL interfaces. Built in Rust for high performance, with seamless scaling from local to petabyte-scale distributed execution.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>High performance and unified interface</strong>: Supports both DataFrame-style operations and SQL queries. Built in Rust and based on Apache Arrow memory format for fast local processing. Scales to distributed clusters via integration with Ray. Benchmarks show significant performance gains over Spark and Dask.</li>
+<li><strong>Supports complex data types</strong>: Designed for multimodal data like images, videos, and embeddings, with built-in functions and type support to simplify processing of unstructured data.</li>
+<li><strong>Query optimization and cloud integration</strong>: Includes a built-in query optimizer (e.g., predicate pushdown, cost estimation). Integrates with data catalogs like Iceberg/Delta and cloud storage like S3, achieving fast I/O in cloud environments.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Immature ecosystem</strong>: Still in early (0.x) development stages. Community and ecosystem are limited compared to Spark or Dask. Lacks extensive tooling and production-grade stability.</li>
+<li><strong>Requires external tools for distributed execution</strong>: Daft focuses on data processing itself. Distributed resource management is delegated to Ray, which adds extra setup and operational complexity.</li>
+<li><strong>Incomplete feature set</strong>: Some advanced analytics features are still under development. API stability and error messaging could be improved compared to mature engines.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>High-performance Python workloads with complex data</strong>: Great for handling unstructured data like images, videos, and embeddings at scale, especially when you want to stay in the Python ecosystem.</li>
+<li><strong>Seamless local-to-distributed scaling</strong>: Ideal for teams looking to prototype locally using DataFrames and easily scale to clusters/cloud later. A good alternative to Spark/Dask for scenarios needing both SQL and Python transformations in a performant pipeline.</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="distributed-hpo">Distributed HPO<a class="headerlink" href="#distributed-hpo" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://api.star-history.com/svg?repos=ray-project/ray,kubeflow/katib&amp;type=Date" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ray-project/ray,kubeflow/katib&amp;type=Date" /></a></p>
+<p><em>(Generated by ChatGPT 4o Deep Research on 2025/05/20)</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="ray-tune" name="__tabbed_2" type="radio" /><input id="katib" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="ray-tune">Ray Tune</label><label for="katib">Katib</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>A Python library for experiment execution and hyperparameter tuning at any scale.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Wide algorithm support</strong>:Supports a wide range of state-of-the-art search algorithms (e.g. PBT, HyperBand/ASHA) and integrates with many optimization libraries like Optuna, HyperOpt, Ax, Nevergrad, etc. This allows users to leverage cutting-edge tuning methods easily.</li>
+<li><strong>Scalable and distributed</strong>:Can parallelize and distribute trials across multiple CPUs/GPUs and even multiple nodes using Ray's cluster architecture, often without any code changes. This makes it simple to scale up experiments from a laptop to a distributed cluster.</li>
+<li><strong>Easy integration</strong>:Provides a simple Python API that works seamlessly with popular ML frameworks (TensorFlow, PyTorch, scikit-learn, etc.). It also offers convenient tools (like TensorBoard logging) for monitoring experiments, lowering the learning curve for new users.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Kubernetes integration not native</strong>:Ray Tune is not built into Kubernetes; running it on K8s requires deploying a Ray cluster (e.g. via the KubeRay operator), which is extra overhead compared to a K8s-native solution.</li>
+<li><strong>Python-centric</strong>:It's primarily a Python library, so each trial runs in a Python process. This makes it less language-agnostic than a tool like Katib – non-Python workloads are not as straightforward to tune with Ray Tune.</li>
+<li><strong>Resource overhead</strong>: Using Ray introduces additional background processes and resource usage (for the Ray runtime). For very small-scale or simple hyperparameter searches, this added complexity can be overkill when a lightweight tool (like Optuna alone) might suffice.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li>Use Ray Tune when you want to perform hyperparameter search <strong>inside a Python workflow</strong> (e.g. in a Jupyter notebook or script) and <strong>easily scale</strong> it from local execution to distributed runs without changing your code.</li>
+<li>It is a good choice if you <strong>don't have a Kubernetes infrastructure</strong> or prefer not to rely on one. Ray Tune can manage distributed training on its own (on VMs or a Ray cluster) and thus suits scenarios where setting up Kubeflow/Katib would be too heavyweight.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>An open-source, Kubernetes-native hyperparameter tuning system that is framework-agnostic and supports AutoML features like early stopping and NAS.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Kubernetes-native</strong>: Designed to run as part of a K8s cluster, Katib treats hyperparameter tuning jobs as Kubernetes workloads. This tight integration makes it a natural fit for cloud-native environments and enables multi-tenant usage in production (multiple users can share the service). It seamlessly works with Kubeflow, allowing tuning to plug into pipelines and Kubernetes resource management.</li>
+<li><strong>Framework/language agnostic</strong>: Katib can tune any model training code in any language or framework, as long as it's containerized. It's not tied to a specific ML library – whether you use TensorFlow, PyTorch, R, or even a custom script, Katib can run it because it launches jobs in containers.</li>
+<li><strong>Rich algorithm library</strong>: Offers diverse hyperparameter search strategies out-of-the-box: random search, grid search, Bayesian optimization (via Skopt), Hyperband/ASHA, CMA-ES, Tree of Parzen Estimators (TPE), Population Based Training, and more. It's integrated with libraries like Hyperopt/Optuna to provide state-of-the-art optimization methods. Katib even supports advanced AutoML techniques such as neural architecture search (NAS) and early stopping criteria, which few other open-source tools provide.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Kubernetes dependency</strong>: Katib requires a Kubernetes environment (typically as part of Kubeflow) to run. This means it's not usable in a simple local setup and has a higher operational overhead if you don't already have a K8s cluster.</li>
+<li><strong>Higher learning curve</strong>: Configuring Katib experiments involves writing Kubernetes CRD (YAML) configurations for experiments, parameters, and metrics. Users must understand Kubernetes concepts and Katib's CRD schema, which can be less straightforward than using a Python library API. This complexity can slow down initial experimentation, especially for those new to K8s.</li>
+<li><strong>Beta-stage project</strong>: As of now, Katib is in beta status. While it is used in production by some, certain features or integrations may not be as mature or well-documented as more established libraries. It largely relies on the Kubeflow ecosystem, so using it outside of Kubeflow/Kubernetes contexts might not be practical.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li>Use Katib when you are working in a <strong>Kubernetes-based ML platform</strong> (especially with Kubeflow) and want a hyperparameter tuning service that integrates naturally with your cluster jobs and pipelines.</li>
+<li>It is the go-to choice if you need to <strong>tune heterogeneous workloads or non-Python applications</strong>. For example, if your training code is in R, Java, or any framework outside of Python, Katib's container-based approach allows you to optimize those just as easily. Similarly, if you have an existing training pipeline (e.g., a Kubeflow TFJob/PyTorchJob), Katib can hook into it to adjust hyperparameters.</li>
+<li>Choose Katib for <strong>large-scale or collaborative scenarios</strong>: it supports multi-user (multi-tenant) usage and distributed training jobs natively. If you require advanced AutoML features like NAS or want a centrally managed HPO service for your team or organization, Katib provides these capabilities in a cloud-native way.</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="model-serving">Model Serving<a class="headerlink" href="#model-serving" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://api.star-history.com/svg?repos=ray-project/ray,bentoml/BentoML,kserve/kserve,SeldonIO/seldon-core&amp;type=Date" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ray-project/ray,bentoml/BentoML,kserve/kserve,SeldonIO/seldon-core&amp;type=Date" /></a></p>
+<p><em>(Generated by ChatGPT 4o Deep Research on 2025/05/20)</em></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="ray-serve" name="__tabbed_3" type="radio" /><input id="bentoml" name="__tabbed_3" type="radio" /><input id="kserve" name="__tabbed_3" type="radio" /><input id="seldon-core" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="ray-serve">Ray Serve</label><label for="bentoml">BentoML</label><label for="kserve">KServe</label><label for="seldon-core">Seldon Core</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Ray Serve is an open-source, scalable model serving library built on Ray, allowing you to serve machine learning models (and arbitrary Python business logic) as high-performance, resilient web services. It's framework-agnostic and can run anywhere Ray can (from a laptop to a Kubernetes cluster) with minimal code changes.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Flexible model composition and Python-first workflow:</strong> You can deploy multiple models and custom business logic in a single pipeline, all in Python code, which makes it easy to develop and test locally before scaling up. Ray Serve's integration with FastAPI also simplifies turning your code into RESTful endpoints.</li>
+<li><strong>Scalable and resource-efficient:</strong> Built on the Ray distributed computing framework, it natively scales across CPU/GPU nodes and even multiple machines. It supports fine-grained resource control (e.g. fractional GPUs and auto-batching), enabling high throughput serving and efficient utilization of hardware. Ray's autoscaler can dynamically add or remove replicas based on load.</li>
+<li><strong>Kubernetes integration optional:</strong> Unlike purely Kubernetes-focused tools, Ray Serve doesn't <em>require</em> K8s – you can start on a local machine or VM and later use KubeRay (Ray's K8s operator) to deploy to a cluster without major code changes. This lowers the barrier to entry while still allowing cloud-native deployment when needed.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Not a full ML platform:</strong> Ray Serve focuses on serving and lacks built-in model lifecycle management features (no native model registry/versioning UI or advanced monitoring dashboards). You may need to implement or integrate external tools for model tracking, canary testing, or extensive metrics.</li>
+<li><strong>Operational overhead of Ray:</strong> Using Ray Serve means running a Ray cluster, which introduces additional complexity and resource overhead. Deploying on Kubernetes, for example, requires operating the Ray runtime (via an operator or manual setup), which can be overkill if you only need simple single-model serving. </li>
+<li><strong>Limited traffic-splitting out-of-the-box:</strong> There's no built-in canary or A/B traffic management API (unlike KServe or Seldon's declarative canary support). Achieving A/B tests would require custom logic in your application (e.g. routing requests between Ray Serve deployments manually).</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Dynamic or complex inference pipelines:</strong> Use Ray Serve when your application involves multiple models or steps that need to be composed and scaled together (for example, an ensemble or a workflow of preprocessing → model A → model B). Its ability to handle distributed workflows and call one deployment from another shines in these scenarios.</li>
+<li><strong>Scaling Python services from prototyping to production:</strong> If you want to prototype a model service locally (using pure Python) and later seamlessly scale it to a cluster or cloud environment without rewriting for a new serving stack, Ray Serve is an excellent choice. It's ideal for teams already using Ray for other tasks (training, tuning) who want to reuse that infrastructure for serving.</li>
+<li><strong>Resource-intensive models with custom logic:</strong> When you need fine-grained control over resource allocation (e.g. serving large models with fractional GPU sharing) or have custom Python logic alongside predictions, Ray Serve provides the flexibility and performance to meet those needs. It's well-suited if your use case doesn't fit the one-model-per-container paradigm of other frameworks.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>BentoML is an open-source platform that simplifies packaging and deploying ML models at scale. It provides a unified, framework-agnostic way to containerize models (into a self-contained “Bento” bundle) and deploy them to various environments with minimal coding, bridging the gap between model development and production deployment.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Easy and developer-friendly:</strong> BentoML offers a simple Python API to package models and serve them, which means you can deploy a model with just a few lines of code. It requires minimal setup and no deep Kubernetes knowledge to get started – great for small teams or startups to quickly ship models as microservices. The development workflow is very “pythonic” and supports local testing (e.g., you can run a Bento service locally like any Flask app).</li>
+<li><strong>Framework-agnostic &amp; portable:</strong> It supports a wide range of ML frameworks (TensorFlow, PyTorch, Scikit-learn, Hugging Face transformers, etc.) and can deploy to multiple targets – from Docker containers on your infrastructure to serverless platforms or Kubernetes via Bento's operator/Yatai service. This flexibility lets you use the same packaged model artifact across different environments, avoiding lock-in to a specific serving backend.</li>
+<li><strong>Built-in tooling for deployments:</strong> BentoML automatically generates REST/gRPC API servers for your model and includes basic observability features. For example, it has integrated logging and monitoring hooks – you can get inference metrics and logs, and even integrate with Prometheus/Grafana for live monitoring. It also supports versioning your models and services, which makes it possible to do A/B tests or canary releases by deploying multiple versions of a model and routing traffic accordingly.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Not ideal for extreme scale:</strong> While BentoML can handle moderate production workloads, it isn't as optimized for massive scale or ultra-low latency scenarios as some specialized serving systems. Horizontal scaling (e.g., running many replicas) isn't managed by BentoML itself – you'd rely on Kubernetes or an external orchestrator to scale out, which adds extra work. For very high-throughput or large numbers of models, the overhead of each Bento service and the absence of built-in autoscaling means it might not be the most resource-efficient choice.</li>
+<li><strong>Lacks native Kubernetes integration:</strong> Unlike KServe or Seldon, BentoML doesn't deploy via a Kubernetes CRD by default. You either use BentoML's CLI/Yatai to build a container and deploy it, or manually handle the Kubernetes deployment (e.g., create your own Kubernetes Deployment/Service for the Bento container). This means features like canary routing or auto-scaling must be set up through Kubernetes or other tools, not toggled via BentoML configs.</li>
+<li><strong>Limited built-in MLOps features:</strong> BentoML focuses on the serving container and basic logging/metrics. It doesn't natively provide advanced monitoring dashboards, data drift detection, or experiment tracking – you'd integrate external tools for those needs. Similarly, governance features (like role-based access, model approval workflows, etc.) are not part of the open-source BentoML, though some are offered in BentoCloud. In short, it's a lightweight serving tool rather than a full-fledged enterprise ML platform.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Rapid prototyping and small-to-medium deployments:</strong> Use BentoML when you want to go from a trained model to a deployed service quickly with minimal overhead – for instance, a small team that needs to frequently deploy models for different projects. It shines in early-stage production scenarios where simplicity and speed are favored over complex infrastructure.</li>
+<li><strong>Polyglot model environments:</strong> If your use case involves various model types (different frameworks or libraries) and you need a consistent way to package and deploy all of them, BentoML is a good fit. It provides one standardized workflow to containerize models from any framework and deploy to your environment of choice.</li>
+<li><strong>Customization and control in Python:</strong> When you require custom pre- or post-processing logic, or want to integrate business logic into your prediction service, BentoML allows you to write that logic in Python alongside model inference. This is useful in scenarios where alternative tools (which often auto-launch models in generic servers) don't easily support custom code. In BentoML, you have full control to define the request handling, which can be handy for experimental features or complex input/output handling.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>KServe (formerly KFServing) is a Kubernetes-native model serving platform that provides a Custom Resource Definition (CRD) called <code>InferenceService</code> to deploy ML models on Kubernetes in a standardized way. It focuses on “serverless” inference – automatically scaling model servers up and down (even to zero) based on traffic – and supports many popular ML frameworks out-of-the-box.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Deep Kubernetes integration:</strong> KServe defines an <code>InferenceService</code> CRD for model deployments, which makes it feel like a natural extension of Kubernetes. You can deploy models by simply specifying the model artifact (e.g., a URI to a saved model on cloud storage) and selecting an appropriate runtime (TensorFlow Serving, TorchServe, scikit-learn, XGBoost, etc.), without needing to write custom serving code. This declarative approach is convenient for teams already comfortable with <code>kubectl</code> and YAML.</li>
+<li><strong>Serverless autoscaling (Knative):</strong> KServe leverages Knative Serving under the hood to handle scaling. It can automatically scale up replicas based on request load and scale down to zero when no traffic is present. This on-demand scaling is efficient for cost and resource usage, and it works for CPU and GPU workloads alike. Built-in autoscaling metrics and concurrency controls help handle spikes in traffic.</li>
+<li><strong>Advanced deployment strategies:</strong> It supports canary deployments and traffic splitting natively. You can deploy a new version of a model and direct a percentage of traffic to it (for A/B testing or gradual rollouts) using simple CRD fields. KServe also introduced inference graphs, allowing you to chain models or have ensembles within a single <code>InferenceService</code> (though this is somewhat basic compared to Seldon's graphs). Additionally, KServe supports standard ML endpoint protocols (like KFServing V2 and even the OpenAI API schema for generative models) for interoperability.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>Setup complexity:</strong> Installing and managing KServe can be complex. It typically requires deploying Knative and Istio (for networking) on your Kubernetes cluster, which means extra moving parts. This overhead implies you need solid Kubernetes/cloud-native expertise to operate it. Teams without existing K8s infrastructure might find it heavyweight.</li>
+<li><strong>Limited flexibility for custom code:</strong> KServe excels at serving pretrained models with standard predictors, but if you need custom pre-processing, post-processing, or arbitrary Python logic, it's less straightforward. You often have to build a custom docker image implementing KServe's SDK interfaces for transformers or predictors. In comparison, tools like Seldon or BentoML (or writing your own service) may offer more flexibility for custom inference logic.</li>
+<li><strong>Fewer built-in MLOps features:</strong> While KServe covers the basics of scaling and canarying, it doesn't inherently provide some advanced features like data drift detection, out-of-the-box monitoring dashboards, or automatic logging of requests/responses – those would rely on integrating with other tools (e.g., Prometheus for metrics, Kubeflow or custom pipelines for data logging). In areas like explainability or outlier detection, KServe is more bare-bones than Seldon Core's extensive feature set.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Kubernetes-first organizations:</strong> Choose KServe if your team is already invested in Kubernetes (possibly also using Kubeflow) and you want a model serving solution that fits natively into that ecosystem. It's ideal when you prefer deploying models via Kubernetes manifests and want the control of K8s primitives (like using HPA, etc.) with the convenience of not writing a serving application from scratch.</li>
+<li><strong>Multiple models, multiple frameworks:</strong> KServe is well-suited when you have models in different frameworks and want a unified way to serve them. Because it provides built-in support for many framework servers, you can hand off a TensorFlow model or a PyTorch model to KServe in a similar fashion. This makes it easier to standardize deployment in a heterogeneous ML environment.</li>
+<li><strong>Auto-scaling API endpoints:</strong> If your use case demands elastic scaling (including scale-to-zero) to handle sporadic or bursty traffic patterns, and you want to pay for/use resources only on-demand, KServe's Knative-based design is a strong advantage. It also allows gradual rollouts of new model versions easily. In summary, use KServe for production scenarios where you need robust scaling and traffic management for your model APIs, and you're okay with the operational overhead of maintaining the KServe/Knative stack.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Seldon Core is an open-source MLOps framework for deploying, managing, and monitoring machine learning models at scale on Kubernetes. It converts your models into production-ready microservices and offers an advanced set of deployment features (from experiments and ensembles to explainers and outlier detectors) to support complex production ML use cases.</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li><strong>Rich feature set for production ML:</strong> Seldon Core provides many advanced capabilities out-of-the-box: you can do A/B testing and canary rollouts of models, incorporate explainability (e.g., SHAP values) and outlier detection in your deployments, and even define inference graphs to chain multiple models or preprocessing steps. These features make it possible to implement complex deployment strategies (multi-armed bandits, shadow deployments, etc.) with the framework's support rather than building those from scratch.</li>
+<li><strong>Scales to enterprise needs:</strong> Designed to handle deployments of potentially thousands of models, Seldon is built with scalability in mind . It uses a CRD (<code>SeldonDeployment</code>) to deploy models on Kubernetes, and can manage scaling via standard Kubernetes mechanisms (e.g., Horizontal Pod Autoscalers). It also supports numerous frameworks and languages (you can deploy models from TensorFlow, PyTorch, Scikit-learn, or even custom predictors in languages like Java) giving it versatility in complex organizations.</li>
+<li><strong>Integrated with monitoring and governance tools:</strong> Seldon has native integrations for metrics and logging – it works well with Prometheus/Grafana for monitoring and can emit detailed metrics about predictions. It also leverages Istio for traffic routing and security policies in Kubernetes. Moreover, it can integrate with workflow orchestrators (Airflow, Argo, Kubeflow Pipelines) and includes audit and logging components, which is useful for governance and compliance in enterprise settings.</li>
+</ul>
+<p><strong>Cons</strong></p>
+<ul>
+<li><strong>High complexity and setup overhead:</strong> Seldon Core's powerful features come at the cost of complexity. Setting up Seldon Core involves deploying its operators and (often) integrating with Istio for ingress, plus configuring all the CRD specs properly – this requires significant Kubernetes expertise. The learning curve is steep, and for small projects the resource overhead (multiple pods for controllers, sidecars for logging/metrics, etc.) can be heavy.</li>
+<li><strong>Documentation and usability challenges:</strong> Some of Seldon's more advanced features (like complex inference graphs or custom routers) are not trivial to implement and the documentation/examples can be lacking. This means that while those features exist, leveraging them may require considerable experimentation and community support. In contrast, simpler frameworks might get you from zero to serving faster if your needs are basic.</li>
+<li><strong>Potential overkill for simple use cases:</strong> If you just need to deploy one or two models with straightforward inference, Seldon can be over-engineered. The overhead of its components and the requirement to containerize your model to fit Seldon's runtime might slow you down unnecessarily. In such cases, a lighter-weight solution (like BentoML or a simple Flask app) could be more appropriate. Seldon really shines in more demanding scenarios, not one-off model deploys.</li>
+</ul>
+<p><strong>When to Use</strong></p>
+<ul>
+<li><strong>Enterprise-scale deployments with advanced requirements:</strong> Seldon Core is an excellent choice when you are dealing with large-scale ML systems in production – for example, a situation where you have many models or microservices and you need sophisticated routing (A/B tests, canaries) and monitoring on all of them. If reliability, traceability, and robust governance are top priorities (as in regulated industries or mission-critical ML), Seldon's comprehensive features are very valuable.</li>
+<li><strong>Need for out-of-the-box MLOps features:</strong> If your use cases demand things like real-time explainability of model decisions, automatic outlier or drift detection, or complex inference pipelines (ensembles, cascades of models) and you prefer having these capabilities ready-made, Seldon Core provides them built-in. It's a suitable framework when you want to avoid implementing these features from scratch and are willing to invest time in mastering Seldon's framework.</li>
+<li><strong>Kubernetes-heavy environments with expert DevOps:</strong> Use Seldon when you have a strong DevOps/MLOps team familiar with Kubernetes who can maintain the infrastructure. In scenarios where the ML platform is a first-class part of the engineering organization, Seldon Core gives a lot of control and can be tuned to very specific needs. It's often used in tandem with Kubeflow or other K8s tools in companies building out a full ML platform. If your team has the bandwidth to handle a more complex system for the sake of advanced functionality, Seldon is a top contender.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://www.ray.io/">Ray</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://www.anyscale.com/">Anyscale, Inc.</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://github.com/ray-project/ray">Ray | GitHub</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://www.thoughtworks.com/radar/languages-and-frameworks/ray">Ray | Technology Radar | Thoughtworks</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://www.ray.io/join-slack">Join Ray Slack | Ray</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://www.anyscale.com/ray-summit/2024">Ray Summit 2024</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://docs.ray.io/en/latest/data/comparisons.html">Comparing Ray Data to other systems | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://domino.ai/blog/spark-dask-ray-choosing-the-right-framework">Spark, Dask, and Ray: choosing the right framework</a>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://www.anyscale.com/blog/offline-batch-inference-comparing-ray-apache-spark-and-sagemaker">Offline Batch Inference: Comparing Ray, Apache Spark, and SageMaker</a>&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-21T16:33:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-21</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-19T15:41:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-19</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/kuanchoulai/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/kuanchoulai10" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:contact-me@kcl10.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="../../../../js/timeago.min.js"></script>
+      
+        <script src="../../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../assets/slides/js/slides.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
