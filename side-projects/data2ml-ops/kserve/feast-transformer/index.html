@@ -12,24 +12,28 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/data2ml-ops/dataset/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/data2ml-ops/kserve/feast-transformer/">
       
       
+        <link rel="prev" href="../transformer-advantages/">
       
       
-      <link rel="icon" href="../../../images/avatar.png">
+        <link rel="next" href="../deployment-with-transformer/">
+      
+      
+      <link rel="icon" href="../../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
-        <title>Dataset - KC's Data & Life Notes</title>
+        <title>Write a Custom KServe Transformer with Feast Integration - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,15 +52,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -75,11 +79,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Dataset - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Write a Custom KServe Transformer with Feast Integration - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/dataset.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/kserve/feast-transformer.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -87,19 +91,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/data2ml-ops/dataset/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/data2ml-ops/kserve/feast-transformer/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Dataset - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Write a Custom KServe Transformer with Feast Integration - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/dataset.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/kserve/feast-transformer.png" >
       
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -110,7 +114,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -127,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dataset" class="md-skip">
+        <a href="#write-a-custom-kserve-transformer-with-feast-integration" class="md-skip">
           Skip to content
         </a>
       
@@ -141,9 +145,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../images/avatar.png" alt="logo">
+  <img src="../../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -160,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dataset
+              Write a Custom KServe Transformer with Feast Integration
             
           </span>
         </div>
@@ -243,7 +247,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../../../.." class="md-tabs__link">
           
   
     
@@ -263,7 +267,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about-me/" class="md-tabs__link">
+        <a href="../../../../about-me/" class="md-tabs__link">
           
   
     
@@ -279,11 +283,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -303,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../learning-plans/" class="md-tabs__link">
+        <a href="../../../../learning-plans/" class="md-tabs__link">
           
   
     
@@ -323,7 +329,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../../../../blog/" class="md-tabs__link">
           
   
     
@@ -341,7 +347,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../tags/" class="md-tabs__link">
+      <a href="../../../../tags/" class="md-tabs__link">
         
   
     
@@ -375,9 +381,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../images/avatar.png" alt="logo">
+  <img src="../../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -425,7 +431,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -487,7 +493,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/" class="md-nav__link ">
+            <a href="../../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -568,7 +574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -589,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -610,7 +616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -631,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -706,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/iii/" class="md-nav__link">
+      <a href="../../../../about-me/education/iii/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -727,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/nccu/" class="md-nav__link">
+      <a href="../../../../about-me/education/nccu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -748,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about-me/education/ccu/" class="md-nav__link">
+      <a href="../../../../about-me/education/ccu/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -798,7 +804,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -838,6 +844,8 @@
       
   
   
+    
+  
   
   
     
@@ -862,19 +870,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -885,13 +896,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -904,6 +915,8 @@
                 
   
   
+    
+  
   
   
     
@@ -927,24 +940,22 @@
       
         
       
-        
-      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -961,7 +972,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Data2ML Ops
@@ -977,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../prerequisites/" class="md-nav__link">
+      <a href="../../prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -999,12 +1010,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1046,70 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dbt/what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dbt/how-it-works/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How It Works?
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dbt/in-the-bigger-picture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    In the Bigger Picture
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dbt/modeling-data/" class="md-nav__link">
+      <a href="../../dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1139,12 +1081,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1188,70 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../feast/what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../feast/how-it-works/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How It Works?
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../feast/in-the-bigger-picture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    In the Bigger Picture
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../feast/modeling-features/" class="md-nav__link">
+      <a href="../../feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../feast/deployment/" class="md-nav__link">
+      <a href="../../feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1302,8 +1175,6 @@
   
     
     
-      
-        
       
         
       
@@ -1345,28 +1216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../minio/what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../minio/deployment/" class="md-nav__link">
+      <a href="../../minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1396,12 +1246,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1445,70 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mlflow/what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mlflow/how-it-works/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How It Works?
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mlflow/in-the-bigger-picture/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    In the Bigger Picture
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mlflow/deployment/" class="md-nav__link">
+      <a href="../../mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1529,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mlflow/hpo/" class="md-nav__link">
+      <a href="../../mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1610,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/what-why-when/" class="md-nav__link">
+      <a href="../../ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1631,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/how-it-works/" class="md-nav__link">
+      <a href="../../ray/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1652,7 +1433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1673,7 +1454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/deployment/" class="md-nav__link">
+      <a href="../../ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1694,7 +1475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/ray-tune/" class="md-nav__link">
+      <a href="../../ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1715,7 +1496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ray/ray-job/" class="md-nav__link">
+      <a href="../../ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1741,8 +1522,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1756,17 +1539,23 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_8" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2_8" id="__nav_3_2_8_label" tabindex="0">
@@ -1780,7 +1569,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2_8">
             <span class="md-nav__icon md-icon"></span>
             KServe
@@ -1794,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kserve/what-why-when/" class="md-nav__link">
+      <a href="../what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1815,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kserve/how-it-works/" class="md-nav__link">
+      <a href="../how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1836,7 +1625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1857,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kserve/installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1878,23 +1667,15 @@
   
   
     <li class="md-nav__item">
-      <a href="../kserve/deployment/" class="md-nav__link">
+      <a href="../deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Deploy Your Model on Kubernetes Using Kserve InferenceService
+    Deploy Your Model on Kubernetes
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1906,70 +1687,121 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../transformer-advantages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Move Feature Retrieval to KServe Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
-    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
         
       
-        
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" >
-        
+        <label class="md-nav__link md-nav__link--active" for="__toc">
           
-          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
-    Others
+    Write a Custom KServe Transformer with Feast Integration
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2_9">
-            <span class="md-nav__icon md-icon"></span>
-            Others
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/mlserver-introduction/" class="md-nav__link">
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    MLServer
+    Write a Custom KServe Transformer with Feast Integration
   </span>
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#extend-the-kserve-model-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extend the KServe Model Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extend the KServe Model Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logic-of-the-preprocess-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logic of the preprocess() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-the-custom-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package the Custom Transformer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containerize-the-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containerize the Transformer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1982,116 +1814,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../others/optuna-introduction/" class="md-nav__link">
+      <a href="../deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Optuna introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/knative-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Knative
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/istio-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Istio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/cert-manager-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cert Manager
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/grpc-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Grpc introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../others/rest-vs-grpc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rest vs grpc
+    Deploy Your Model on Kubernetes with Feast Transformer
   </span>
   
 
@@ -2155,7 +1882,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dcard-hw/" class="md-nav__link ">
+            <a href="../../../dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2188,7 +1915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../../dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2209,7 +1936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../../dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2230,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../../dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2251,7 +1978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../../dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2272,7 +1999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../../dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2301,7 +2028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cross-cloud-unified-sql-data-pipelines/" class="md-nav__link">
+      <a href="../../../cross-cloud-unified-sql-data-pipelines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2322,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sql-based-rag-application/" class="md-nav__link">
+      <a href="../../../sql-based-rag-application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2366,7 +2093,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data-mesh/" class="md-nav__link ">
+            <a href="../../../data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2399,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-mesh/docs/org/" class="md-nav__link">
+      <a href="../../../data-mesh/docs/org/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2453,7 +2180,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../../restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2486,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../../restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2507,7 +2234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2566,7 +2293,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../learning-plans/" class="md-nav__link ">
+            <a href="../../../../learning-plans/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2599,7 +2326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../learning-plans/2025/" class="md-nav__link">
+      <a href="../../../../learning-plans/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2650,7 +2377,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../blog/" class="md-nav__link ">
+            <a href="../../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2683,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2711,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tags/" class="md-nav__link">
+      <a href="../../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2743,6 +2470,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2751,9 +2480,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dataset" class="md-nav__link">
+  <a href="#extend-the-kserve-model-class" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataset
+      Extend the KServe Model Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extend the KServe Model Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logic-of-the-preprocess-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logic of the preprocess() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-the-custom-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package the Custom Transformer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containerize-the-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containerize the Transformer
     </span>
   </a>
   
@@ -2774,7 +2536,7 @@
                   
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data2ml-ops/docs/data2ml-ops/dataset.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data2ml-ops/docs/data2ml-ops/kserve/feast-transformer.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
     </a>
@@ -2783,42 +2545,119 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data2ml-ops/docs/data2ml-ops/dataset.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data2ml-ops/docs/data2ml-ops/kserve/feast-transformer.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
     </a>
   
 
 
-  <h1>Dataset</h1>
+<h1 id="write-a-custom-kserve-transformer-with-feast-integration">Write a Custom KServe Transformer with Feast Integration<a class="headerlink" href="#write-a-custom-kserve-transformer-with-feast-integration" title="Permanent link">&para;</a></h1>
+<p>This guide demonstrates how to integrate Feast with KServe, enabling feature retrieval and transformation during inference.</p>
+<h2 id="extend-the-kserve-model-class">Extend the KServe Model Class<a class="headerlink" href="#extend-the-kserve-model-class" title="Permanent link">&para;</a></h2>
+<p><code>KServe.Model</code> base class mainly defines three handlers <code>preprocess</code>, <code>predict</code> and <code>postprocess</code>, these handlers are executed in sequence where the output of the <code>preprocess</code> handler is passed to the <code>predict</code> handler as the input.</p>
+<p>To create a custom transformer that retrieves features from Feast, you will extend the <code>KServe.Model</code> class and implement the <code>preprocess</code> method. This method will dynamically fetch features based on the input data and append them to the inference request.</p>
+<div class="language-py highlight"><span class="filename">feast_transformer.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+</span></code></pre></div>
+<h3 id="logic-of-the-preprocess-method">Logic of the <code>preprocess()</code> Method<a class="headerlink" href="#logic-of-the-preprocess-method" title="Permanent link">&para;</a></h3>
+<p>The <code>preprocess()</code> method plays a pivotal role in the inference pipeline by preparing the input data for prediction. It begins by parsing the payload to extract entity IDs (<code>extract_entity_ids()</code>), which are essential for querying the Feast feature store.</p>
+<p>Once the entity IDs are identified, the method sends a request to the Feast online feature server to fetch the corresponding features. </p>
+<p>Finally, it processes the response from Feast, transforming the retrieved features into a format that aligns with the requirements of the predictor (<code>create_inference_request</code>). This ensures a seamless flow of data, enabling accurate and efficient predictions.</p>
+<p>Since the transformer is designed to handle multiple protocols, the <code>preprocess()</code> method checks the request type and processes it accordingly. It supports REST v1, REST v2, and gRPC protocols, ensuring compatibility with various KServe deployments. Additionally, the method processes the response received from Feast based on the protocol used by the predictor. By tailoring both the incoming request handling and the outgoing response formatting, this Feast transformer becomes a highly versatile and adaptable component within the KServe ecosystem.</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll">
+</span></span></code></pre></div></td></tr></table></div>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="package-the-custom-transformer">Package the Custom Transformer<a class="headerlink" href="#package-the-custom-transformer" title="Permanent link">&para;</a></h2>
+<p>Packaging the custom transformer is essential to ensure it can be easily deployed and reused across different environments. By organizing the code into a well-defined structure and containerizing it, we create a portable and self-contained solution that can be seamlessly integrated into any KServe deployment. This approach not only simplifies dependency management but also ensures consistency and reliability, making it easier to scale and maintain the transformer in production.</p>
+<p>First, create a directory structure for your custom transformer:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>.
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>├── __init__.py
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>├── __main__.py
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>└── feast_transformer.py
+</span></code></pre></div>
+<p>Then, extend the <code>__main__.py</code> file to include custom arguments that allow us to easily inject Feast-related information into the KServe transformer. This makes it convenient to specify details like the Feast URL, entity ID, and feature service directly in the inference service YAML file. By doing so, we ensure that the transformer remains flexible and configurable, adapting seamlessly to different deployment environments.</p>
+<div class="language-py highlight"><span class="filename">__main__.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
+</span></code></pre></div>
+<p>When you run the transformer, you can specify the Feast URL, entity ID, and feature service as command-line arguments. This allows the transformer to dynamically connect to the Feast feature store and retrieve the necessary features for inference.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>feast_transformer<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--feast_url<span class="w"> </span>http://example.com:6565<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--feast_entity_id<span class="w"> </span>entity_id<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--feature-service<span class="w"> </span>fraud_detection_v1
+</span></code></pre></div>
+<p>After the arguments are parsed, the <code>main()</code> function initializes the KServe model with the provided Feast configuration and starts the model server.</p>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">__main__.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<p>Here's a sequence diagram when we start the KServe Model Server:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User as User
+    participant ModelServer as ModelServer
+    participant ModelRepo as Model Repository
+    participant RESTServer as REST Server
+    participant GRPCServer as GRPC Server
+    participant EventLoop as Event Loop
+    participant SignalHandler as Signal Handler
 
-<h2 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">&para;</a></h2>
-<p><a href="https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset">Bike Sharing</a></p>
-<p>This dataset contains the hourly and daily count of rental bikes between years 2011 and 2012 in Capital bikeshare system with the corresponding weather and seasonal information.</p>
-<p>Bike sharing systems are new generation of traditional bike rentals where whole process from membership, rental and return back has become automatic. Through these systems, user is able to easily rent a bike from a particular position and return back at another position. Currently, there are about over 500 bike-sharing programs around the world which is composed of over 500 thousands bicycles. Today, there exists great interest in these systems due to their important role in traffic, environmental and health issues. </p>
-<p>Apart from interesting real world applications of bike sharing systems, the characteristics of data being generated by these systems make them attractive for the research. Opposed to other transport services such as bus or subway, the duration of travel, departure and arrival position is explicitly recorded in these systems. This feature turns bike sharing system into a virtual sensor network that can be used for sensing mobility in the city. Hence, it is expected that most of important events in the city could be detected via monitoring these data.</p>
-<ul>
-<li>number of features: 13</li>
-<li>number of records: 17389</li>
-</ul>
-<p>Variable Name   Role    Type    Description Units   Missing Values
-instant ID  Integer record index        no
-dteday  Feature Date    date        no
-season  Feature Categorical 1:winter, 2:spring, 3:summer, 4:fall        no
-yr  Feature Categorical year (0: 2011, 1: 2012)     no
-mnth    Feature Categorical month (1 to 12)     no
-hr  Feature Categorical hour (0 to 23)      no
-holiday Feature Binary  weather day is holiday or not (extracted from http://dchr.dc.gov/page/holiday-schedule)     no
-weekday Feature Categorical day of the week     no
-workingday  Feature Binary  if day is neither weekend nor holiday is 1, otherwise is 0      no
-weathersit  Feature Categorical - 1: Clear, Few clouds, Partly cloudy, Partly cloudy        no
-temp    Feature Continuous  Normalized temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-8, t_max=+39 (only in hourly scale)   C   no
-atemp   Feature Continuous  Normalized feeling temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-16, t_max=+50 (only in hourly scale)  C   no
-hum Feature Continuous  Normalized humidity. The values are divided to 100 (max)        no
-windspeed   Feature Continuous  Normalized wind speed. The values are divided to 67 (max)       no
-casual  Other   Integer count of casual users       no
-registered  Other   Integer count of registered users       no
-cnt Target  Integer count of total rental bikes including both casual and registered        no</p>
+    User-&gt;&gt;ModelServer: Instantiate ModelServer
+    ModelServer-&gt;&gt;ModelRepo: Initialize Model Repository
+    ModelServer-&gt;&gt;EventLoop: Setup Event Loop
+    ModelServer-&gt;&gt;SignalHandler: Register Signal Handlers
+
+    User-&gt;&gt;ModelServer: Call start(models)
+    ModelServer-&gt;&gt;ModelRepo: Register Models
+    alt At least one model is ready
+        ModelServer-&gt;&gt;RESTServer: Start REST Server
+        RESTServer--&gt;&gt;ModelServer: REST Server Running
+        ModelServer-&gt;&gt;GRPCServer: Start GRPC Server
+        GRPCServer--&gt;&gt;ModelServer: GRPC Server Running
+    else No models are ready
+        ModelServer--&gt;&gt;User: Raise NoModelReady Exception
+    end
+    ModelServer-&gt;&gt;EventLoop: Run Event Loop
+
+    User-&gt;&gt;ModelServer: Call stop(sig)
+    ModelServer-&gt;&gt;RESTServer: Stop REST Server
+    RESTServer--&gt;&gt;ModelServer: REST Server Stopped
+    ModelServer-&gt;&gt;GRPCServer: Stop GRPC Server
+    GRPCServer--&gt;&gt;ModelServer: GRPC Server Stopped
+    ModelServer-&gt;&gt;ModelRepo: Unload Models
+    ModelRepo--&gt;&gt;ModelServer: Models Unloaded
+    ModelServer--&gt;&gt;User: Server Stopped</code></pre>
+<h2 id="containerize-the-transformer">Containerize the Transformer<a class="headerlink" href="#containerize-the-transformer" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kserve/docker
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>├── README.md
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>├── pyproject.toml
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>├── uv.lock
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>├── Dockerfile
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>├── .dockerignore
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>├── feast_transformer
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>│   ├── __init__.py
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>│   ├── __main__.py
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>└   └── feast_transformer.py
+</span></code></pre></div>
+<p>First, create a <code>pyproject.toml</code> file to define the dependencies for your custom transformer. This file will be used by the <code>uv</code> package manager to install the necessary libraries.</p>
+<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>
+</span></code></pre></div>
+<p>Next, use the <code>uv</code> package manager to install the dependencies and generate a lock file. The lock file ensures that the same versions of the dependencies are used across different environments, providing consistency and reliability.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>uv<span class="w"> </span>lock
+</span></code></pre></div>
+<p>Then, create a <code>Dockerfile</code> to build the custom transformer image. This Dockerfile uses a multi-stage build process to ensure that the final image is lightweight and contains only the necessary components.</p>
+<div class="language-dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>
+</span></code></pre></div>
+<p>The first stage (<code>builder</code>) uses the <code>uv</code> package manager to install all dependencies defined in the <code>pyproject.toml</code> file. It also caches dependencies to speed up subsequent builds and compiles Python bytecode for better performance. Additionally, it installs build tools like <code>gcc</code> and <code>python3-dev</code> to handle dependencies requiring compilation, such as <code>psutil</code>.</p>
+<p>The <code>uv sync</code> command is run twice in this stage. The first <code>uv sync</code> installs only the dependencies without the project files, ensuring that the dependency installation is cached and reused across builds. The second <code>uv sync</code> installs the project files and finalizes the environment. <strong>This two-step process minimizes rebuild times</strong> by leveraging cached dependencies while still ensuring the application code is up-to-date.</p>
+<p>The second stage creates the final image. It copies the application and its dependencies from the <code>builder</code> stage into a minimal Python base image. This ensures the final image is small and optimized for production use. The <code>PATH</code> environment variable is updated to include the virtual environment created by <code>uv</code>, and the entry point is set to run the transformer using the <code>python -m feast_transformer</code> command.</p>
+<p>This approach ensures a clean, efficient, and portable container image for deploying the Feast transformer.</p>
+<p>Finally, build the Docker image and load it into Minikube. This step is crucial for deploying the transformer in a local Kubernetes environment, allowing you to test and validate the integration with KServe and Feast.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span>-t<span class="w"> </span>feast-transformer:v0.1.0<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span>.
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>minikube<span class="w"> </span>image<span class="w"> </span>load<span class="w"> </span>feast-transformer:v0.1.0
+</span></code></pre></div>
 
 
 
@@ -2841,7 +2680,7 @@ cnt Target  Integer count of total rental bikes including both casual and regist
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-08T15:44:37+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-27T23:55:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-27</span>
   </span>
 
     
@@ -2851,7 +2690,7 @@ cnt Target  Integer count of total rental bikes including both casual and regist
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-04-08T15:44:37+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-04-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-24T14:21:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-24</span>
   </span>
 
     
@@ -2981,22 +2820,22 @@ cnt Target  Integer count of total rental bikes including both casual and regist
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../../../../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="../../../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../../assets/slides/js/slides.js"></script>
+        <script src="../../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
