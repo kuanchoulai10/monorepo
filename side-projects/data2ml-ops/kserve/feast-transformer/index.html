@@ -2557,18 +2557,318 @@
 <h2 id="extend-the-kserve-model-class">Extend the KServe Model Class<a class="headerlink" href="#extend-the-kserve-model-class" title="Permanent link">&para;</a></h2>
 <p><code>KServe.Model</code> base class mainly defines three handlers <code>preprocess</code>, <code>predict</code> and <code>postprocess</code>, these handlers are executed in sequence where the output of the <code>preprocess</code> handler is passed to the <code>predict</code> handler as the input.</p>
 <p>To create a custom transformer that retrieves features from Feast, you will extend the <code>KServe.Model</code> class and implement the <code>preprocess</code> method. This method will dynamically fetch features based on the input data and append them to the inference request.</p>
-<div class="language-py highlight"><span class="filename">feast_transformer.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+<div class="language-py highlight"><span class="filename">feast_transformer.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">FeastTransformer</span><span class="p">(</span><span class="n">kserve</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class object for the data handling activities of driver ranking</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">    Task and returns a KServe compatible response.</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="sd">        kserve (class object): The Model class from the KServe</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="sd">        module is passed here.</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">feast_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">feast_entity_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="n">feature_service</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">predictor_host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="n">predictor_protocol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="p">):</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize the model name, predictor host, Feast serving URL,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="sd">           entity IDs, and feature references</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="sd">        Args:</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="sd">            feast_url (str): URL for the Feast online feature server, in the name of &lt;host_name&gt;:&lt;port&gt;.</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="sd">            feast_entity_id (str): Name of the entity ID key for feature store lookups.</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="sd">            feature_service (str): Name of the feature service to retrieve from the feature store.</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="sd">            model_name (str): Name of the model used on the endpoint path (default is &quot;model&quot;).</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="sd">            predictor_host (str): Hostname for calling the predictor from the transformer (default is None).</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="sd">            predictor_protocol (str): Inference protocol for the predictor (default is &quot;v1&quot;).</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>            <span class="n">name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="n">predictor_config</span><span class="o">=</span><span class="n">PredictorConfig</span><span class="p">(</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>                <span class="n">predictor_host</span><span class="o">=</span><span class="n">predictor_host</span><span class="p">,</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>                <span class="n">predictor_protocol</span><span class="o">=</span><span class="n">predictor_protocol</span><span class="p">,</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>            <span class="p">)</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="p">)</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">feast_url</span> <span class="o">=</span> <span class="n">feast_url</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">feast_entity_id</span> <span class="o">=</span> <span class="n">feast_entity_id</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">feature_service</span> <span class="o">=</span> <span class="n">feature_service</span>
 </span></code></pre></div>
 <h3 id="logic-of-the-preprocess-method">Logic of the <code>preprocess()</code> Method<a class="headerlink" href="#logic-of-the-preprocess-method" title="Permanent link">&para;</a></h3>
 <p>The <code>preprocess()</code> method plays a pivotal role in the inference pipeline by preparing the input data for prediction. It begins by parsing the payload to extract entity IDs (<code>extract_entity_ids()</code>), which are essential for querying the Feast feature store.</p>
 <p>Once the entity IDs are identified, the method sends a request to the Feast online feature server to fetch the corresponding features. </p>
 <p>Finally, it processes the response from Feast, transforming the retrieved features into a format that aligns with the requirements of the predictor (<code>create_inference_request</code>). This ensures a seamless flow of data, enabling accurate and efficient predictions.</p>
 <p>Since the transformer is designed to handle multiple protocols, the <code>preprocess()</code> method checks the request type and processes it accordingly. It supports REST v1, REST v2, and gRPC protocols, ensuring compatibility with various KServe deployments. Additionally, the method processes the response received from Feast based on the protocol used by the predictor. By tailoring both the incoming request handling and the outgoing response formatting, this Feast transformer becomes a highly versatile and adaptable component within the KServe ecosystem.</p>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll">
-</span></span></code></pre></div></td></tr></table></div>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span>
+</span></span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">InferRequest</span><span class="p">],</span> <span class="n">headers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">InferRequest</span><span class="p">]:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Pre-process activity of the driver input data.</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="sd">        Args:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="sd">            payload (Dict|InferRequest): Body of the request, v2 endpoints pass InferRequest.</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="sd">            headers (Dict): Request headers.</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="sd">        Returns:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="sd">            output (Dict|InferRequest): Transformed payload to ``predict`` handler or return InferRequest for predictor call.</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Headers: </span><span class="si">{</span><span class="n">headers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Type of payload: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Payload: </span><span class="si">{</span><span class="n">payload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a>        <span class="c1"># Prepare and send a request for the Feast online feature server</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="hll">        <span class="n">entites</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_entity_ids</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</span></span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Extracted entities: </span><span class="si">{</span><span class="n">entites</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="hll">        <span class="n">feast_response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span></span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="hll">            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">feast_url</span><span class="si">}</span><span class="s2">/get-online-features&quot;</span><span class="p">,</span>
+</span></span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="hll">            <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+</span></span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="hll">                <span class="s2">&quot;feature_service&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">feature_service</span><span class="p">,</span>
+</span></span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="hll">                <span class="s2">&quot;entities&quot;</span><span class="p">:</span> <span class="n">entites</span>
+</span></span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="hll">            <span class="p">}),</span>
+</span></span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="hll">            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+</span></span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="hll">                <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+</span></span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="hll">                <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
+</span></span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="hll">            <span class="p">}</span>
+</span></span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="hll">        <span class="p">)</span>
+</span></span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31"></a>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32"></a>        <span class="c1"># Parse the response from the Feast online feature server</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33"></a>        <span class="k">if</span> <span class="n">feast_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34"></a>            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35"></a>                <span class="sa">f</span><span class="s2">&quot;Error fetching features from Feast: </span><span class="si">{</span><span class="n">feast_results</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37"></a>                <span class="sa">f</span><span class="s2">&quot;Error fetching features from Feast: </span><span class="si">{</span><span class="n">feast_results</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-38"><a id="__codelineno-1-38" name="__codelineno-1-38"></a>        <span class="n">feast_results</span> <span class="o">=</span> <span class="n">feast_response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span><span id="__span-1-39"><a id="__codelineno-1-39" name="__codelineno-1-39"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Feast results: </span><span class="si">{</span><span class="n">feast_results</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-40"><a id="__codelineno-1-40" name="__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="hll">        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_inference_request</span><span class="p">(</span><span class="n">feast_results</span><span class="p">)</span>
+</span></span><span id="__span-1-42"><a id="__codelineno-1-42" name="__codelineno-1-42"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Type of output: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-43"><a id="__codelineno-1-43" name="__codelineno-1-43"></a>        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output of preprocess: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span id="__span-1-44"><a id="__codelineno-1-44" name="__codelineno-1-44"></a>        <span class="k">return</span> <span class="n">output</span>
 </span></code></pre></div></td></tr></table></div>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="nf">extract_entity_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">InferRequest</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+</span></span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract entity IDs from the input payload.</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="sd">        This method processes the input payload to extract entity IDs based on the </span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="sd">        protocol (REST v1, REST v2, or gRPC v2) and returns them in a dictionary format.</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="sd">        Args:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="sd">            payload (Dict|InferRequest): The input payload containing entity IDs.</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="sd">        Returns:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="sd">            entites (Dict): A dictionary with the extracted entity IDs. For example:</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="sd">            {</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="sd">            &quot;entity_id&quot;: [&quot;v5zlw0&quot;, &quot;000q95&quot;]</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="sd">            }</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="c1"># The protocol here refers to the protocol used by the transformer deployment</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a>        <span class="c1"># v2</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll">        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">InferRequest</span><span class="p">):</span>
+</span></span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a>            <span class="n">infer_input</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a>            <span class="n">entity_ids</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a>                <span class="c1"># Decode each element based on the protocol: gRPC uses raw bytes, REST uses base64-encoded strings</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a>                <span class="n">d</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a>                    <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">payload</span><span class="o">.</span><span class="n">from_grpc</span> <span class="k">else</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a>                <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">infer_input</span><span class="o">.</span><span class="n">data</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a>            <span class="p">]</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a>        <span class="c1"># REST v1, type(payload) = Dict</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="hll">        <span class="k">else</span><span class="p">:</span>
+</span></span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a>            <span class="n">entity_ids</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a>                <span class="n">instance</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">feast_entity_id</span><span class="p">]</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a>                <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;instances&quot;</span><span class="p">]</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a>            <span class="p">]</span>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32"></a>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33"></a>        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">feast_entity_id</span><span class="p">:</span> <span class="n">entity_ids</span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">feast_transformer.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span>
+<span class="normal"><a href="#__codelineno-3-48">48</a></span>
+<span class="normal"><a href="#__codelineno-3-49">49</a></span>
+<span class="normal"><a href="#__codelineno-3-50">50</a></span>
+<span class="normal"><a href="#__codelineno-3-51">51</a></span>
+<span class="normal"><a href="#__codelineno-3-52">52</a></span>
+<span class="normal"><a href="#__codelineno-3-53">53</a></span>
+<span class="normal"><a href="#__codelineno-3-54">54</a></span>
+<span class="normal"><a href="#__codelineno-3-55">55</a></span>
+<span class="normal"><a href="#__codelineno-3-56">56</a></span>
+<span class="normal"><a href="#__codelineno-3-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="hll">    <span class="k">def</span><span class="w"> </span><span class="nf">create_inference_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feast_results</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">InferRequest</span><span class="p">]:</span>
+</span></span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the inference request for all entities and return it as a dict.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="sd">        Args:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="sd">            feast_results (Dict): entity feast_results extracted from the feature store</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="sd">        Returns:</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="sd">            output (Dict|InferRequest): Returns the entity ids with feast_results</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>        <span class="n">feature_names</span> <span class="o">=</span> <span class="n">feast_results</span><span class="p">[</span><span class="s2">&quot;metadata&quot;</span><span class="p">][</span><span class="s2">&quot;feature_names&quot;</span><span class="p">]</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>        <span class="n">results</span> <span class="o">=</span> <span class="n">feast_results</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>        <span class="n">num_datapoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;values&quot;</span><span class="p">])</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>        <span class="n">num_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>        <span class="c1"># for v1 predictor protocol, we can directly pass the dict</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="hll">        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span> <span class="o">==</span> <span class="n">PredictorProtocol</span><span class="o">.</span><span class="n">REST_V1</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+</span></span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>            <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>                <span class="s2">&quot;instances&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>                    <span class="p">{</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a>                        <span class="n">feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span> <span class="n">results</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;values&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_features</span><span class="p">)</span> <span class="k">if</span> <span class="n">feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;entity_id&quot;</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a>                    <span class="p">}</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a>                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_datapoints</span><span class="p">)</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a>                <span class="p">]</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a>            <span class="p">}</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>        <span class="c1"># for v2 predictor protocol, we need to build an InferRequest</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="hll">        <span class="k">else</span><span class="p">:</span>
+</span></span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a>            <span class="c1"># TODO: find a way to not hardcode the data types</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a>            <span class="n">type_map</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a>                <span class="s2">&quot;has_fraud_7d&quot;</span><span class="p">:</span> <span class="s2">&quot;BOOL&quot;</span><span class="p">,</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a>                <span class="s2">&quot;num_transactions_7d&quot;</span><span class="p">:</span> <span class="s2">&quot;INT64&quot;</span><span class="p">,</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a>                <span class="s2">&quot;credit_score&quot;</span><span class="p">:</span> <span class="s2">&quot;INT64&quot;</span><span class="p">,</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a>                <span class="s2">&quot;account_age_days&quot;</span><span class="p">:</span> <span class="s2">&quot;INT64&quot;</span><span class="p">,</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a>                <span class="s2">&quot;has_2fa_installed&quot;</span><span class="p">:</span> <span class="s2">&quot;BOOL&quot;</span><span class="p">,</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a>            <span class="p">}</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a>            <span class="n">map_datatype</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">feature_name</span><span class="p">:</span> <span class="n">type_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">feature_name</span><span class="p">,</span> <span class="s2">&quot;BYTES&quot;</span><span class="p">)</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36"></a>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37"></a>            <span class="n">output</span> <span class="o">=</span> <span class="n">InferRequest</span><span class="p">(</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38"></a>                <span class="n">model_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39"></a>                <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40"></a>                    <span class="s2">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;pd&quot;</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41"></a>                <span class="p">},</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42"></a>                <span class="n">infer_inputs</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43"></a>                    <span class="n">InferInput</span><span class="p">(</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44"></a>                        <span class="n">name</span><span class="o">=</span><span class="n">feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45"></a>                        <span class="n">datatype</span><span class="o">=</span><span class="n">map_datatype</span><span class="p">(</span><span class="n">feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46"></a>                        <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">num_datapoints</span><span class="p">],</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47"></a>                        <span class="n">data</span><span class="o">=</span><span class="p">[</span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48"></a>                            <span class="n">results</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;values&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49"></a>                            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_datapoints</span><span class="p">)</span>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50"></a>                        <span class="p">]</span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51"></a>                    <span class="p">)</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52"></a>                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_features</span><span class="p">)</span>
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53"></a>                    <span class="k">if</span> <span class="n">feature_names</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;entity_id&quot;</span>
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54"></a>                <span class="p">]</span>
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55"></a>            <span class="p">)</span>
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56"></a>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57"></a>        <span class="k">return</span> <span class="n">output</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="package-the-custom-transformer">Package the Custom Transformer<a class="headerlink" href="#package-the-custom-transformer" title="Permanent link">&para;</a></h2>
 <p>Packaging the custom transformer is essential to ensure it can be easily deployed and reused across different environments. By organizing the code into a well-defined structure and containerizing it, we create a portable and self-contained solution that can be seamlessly integrated into any KServe deployment. This approach not only simplifies dependency management but also ensures consistency and reliability, making it easier to scale and maintain the transformer in production.</p>
@@ -2579,7 +2879,25 @@
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>└── feast_transformer.py
 </span></code></pre></div>
 <p>Then, extend the <code>__main__.py</code> file to include custom arguments that allow us to easily inject Feast-related information into the KServe transformer. This makes it convenient to specify details like the Feast URL, entity ID, and feature service directly in the inference service YAML file. By doing so, we ensure that the transformer remains flexible and configurable, adapting seamlessly to different deployment environments.</p>
-<div class="language-py highlight"><span class="filename">__main__.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
+<div class="language-py highlight"><span class="filename">__main__.py</span><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="n">kserve</span><span class="o">.</span><span class="n">model_server</span><span class="o">.</span><span class="n">parser</span><span class="p">])</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="s2">&quot;--feast_url&quot;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;URL for the Feast online feature server, in the name of &lt;host_name&gt;:&lt;port&gt;&quot;</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">)</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="s2">&quot;--feast_entity_id&quot;</span><span class="p">,</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the entity ID key for feature store lookups.&quot;</span><span class="p">,</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="s2">&quot;--feature_service&quot;</span><span class="p">,</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the feature service to retrieve from the feature store.&quot;</span><span class="p">,</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">)</span>
 </span></code></pre></div>
 <p>When you run the transformer, you can specify the Feast URL, entity ID, and feature service as command-line arguments. This allows the transformer to dynamically connect to the Feast feature store and retrieve the necessary features for inference.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>feast_transformer<span class="w"> </span><span class="se">\</span>
@@ -2588,8 +2906,32 @@
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--feature-service<span class="w"> </span>fraud_detection_v1
 </span></code></pre></div>
 <p>After the arguments are parsed, the <code>main()</code> function initializes the KServe model with the provided Feast configuration and starts the model server.</p>
-<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">__main__.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>
-</span></code></pre></div></td></tr></table></div>
+<div class="language-py highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">__main__.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">configure_logging</span><span class="p">:</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>        <span class="n">logging</span><span class="o">.</span><span class="n">configure_logging</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">log_config_file</span><span class="p">)</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="n">transformer</span> <span class="o">=</span> <span class="n">FeastTransformer</span><span class="p">(</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>        <span class="n">feast_url</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">feast_url</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>        <span class="n">feast_entity_id</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">feast_entity_id</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a>        <span class="n">feature_service</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">feature_service</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>        <span class="n">model_name</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">model_name</span><span class="p">,</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>        <span class="n">predictor_host</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">predictor_host</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>        <span class="n">predictor_protocol</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">predictor_protocol</span><span class="p">,</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>    <span class="p">)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>    <span class="n">server</span> <span class="o">=</span> <span class="n">kserve</span><span class="o">.</span><span class="n">ModelServer</span><span class="p">()</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="hll">    <span class="n">server</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="n">transformer</span><span class="p">])</span>
+</span></span></code></pre></div></td></tr></table></div>
 <p>Here's a sequence diagram when we start the KServe Model Server:</p>
 <pre class="mermaid"><code>sequenceDiagram
     participant User as User
@@ -2638,13 +2980,65 @@
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>└   └── feast_transformer.py
 </span></code></pre></div>
 <p>First, create a <code>pyproject.toml</code> file to define the dependencies for your custom transformer. This file will be used by the <code>uv</code> package manager to install the necessary libraries.</p>
-<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>
+<div class="language-toml highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">[project]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;feast-transformer&quot;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Feast Transformer for KServe&quot;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">requires-python</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~=3.11&quot;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="n">authors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;kuanchoulai10@gmail.com&quot;</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">]</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="n">readme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;README.md&quot;</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="s2">&quot;kserve==0.15.1&quot;</span><span class="p">,</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="s2">&quot;requests&gt;=2.22.0&quot;</span><span class="p">,</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="s2">&quot;numpy&gt;=1.16.3&quot;</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">]</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="k">[build-system]</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&gt;=80.0.0&quot;</span><span class="p">]</span>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
 </span></code></pre></div>
 <p>Next, use the <code>uv</code> package manager to install the dependencies and generate a lock file. The lock file ensures that the same versions of the dependencies are used across different environments, providing consistency and reliability.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>uv<span class="w"> </span>lock
 </span></code></pre></div>
 <p>Then, create a <code>Dockerfile</code> to build the custom transformer image. This Dockerfile uses a multi-stage build process to ensure that the final image is lightweight and contains only the necessary components.</p>
-<div class="language-dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>
+<div class="language-dockerfile highlight"><span class="filename">Dockerfile</span><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c"># Stage 1: Dependency installation using uv</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c"># https://docs.astral.sh/uv/guides/integration/docker/#available-images</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c"># https://github.com/astral-sh/uv-docker-example/blob/main/multistage.Dockerfile</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">FROM</span><span class="w"> </span><span class="s">ghcr.io/astral-sh/uv:python3.11-bookworm-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">UV_COMPILE_BYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">UV_LINK_MODE</span><span class="o">=</span>copy<span class="w"> </span><span class="nv">UV_PYTHON_DOWNLOADS</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c"># Install build tools required for psutil</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span>gcc<span class="w"> </span>python3-dev<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span>apt-get<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/uv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span>--mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>uv.lock,target<span class="o">=</span>uv.lock<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">    </span>--mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>bind,source<span class="o">=</span>pyproject.toml,target<span class="o">=</span>pyproject.toml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">    </span>uv<span class="w"> </span>sync<span class="w"> </span>--locked<span class="w"> </span>--no-install-project<span class="w"> </span>--no-dev
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>cache,target<span class="o">=</span>/root/.cache/uv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span>uv<span class="w"> </span>sync<span class="w"> </span>--locked<span class="w"> </span>--no-dev
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="c"># Stage 2: Final image</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim-bookworm</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>--chown<span class="o">=</span>app:app<span class="w"> </span>/app<span class="w"> </span>/app
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/app/.venv/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="c"># Set the entry point for the container</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;feast_transformer&quot;</span><span class="p">]</span>
 </span></code></pre></div>
 <p>The first stage (<code>builder</code>) uses the <code>uv</code> package manager to install all dependencies defined in the <code>pyproject.toml</code> file. It also caches dependencies to speed up subsequent builds and compiles Python bytecode for better performance. Additionally, it installs build tools like <code>gcc</code> and <code>python3-dev</code> to handle dependencies requiring compilation, such as <code>psutil</code>.</p>
 <p>The <code>uv sync</code> command is run twice in this stage. The first <code>uv sync</code> installs only the dependencies without the project files, ensuring that the dependency installation is cached and reused across builds. The second <code>uv sync</code> installs the project files and finalizes the environment. <strong>This two-step process minimizes rebuild times</strong> by leveraging cached dependencies while still ensuring the application code is up-to-date.</p>
@@ -2680,7 +3074,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-27T23:55:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-05-28T00:02:02+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-05-28</span>
   </span>
 
     
