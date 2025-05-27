@@ -146,7 +146,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://kcl10.com/learning-plans/2025/</loc>
+         <loc>https://kcl10.com/learning-plans/202505/</loc>
+         <lastmod>2025-05-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://kcl10.com/learning-plans/template/</loc>
          <lastmod>2025-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -162,16 +167,6 @@
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/sql-based-rag-application/</loc>
-         <lastmod>2025-05-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kcl10.com/side-projects/data-mesh/</loc>
-         <lastmod>2025-05-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://kcl10.com/side-projects/data-mesh/docs/org/</loc>
          <lastmod>2025-05-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
