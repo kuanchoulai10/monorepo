@@ -10,7 +10,7 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
     Tools and workflows for bridging data engineering and machine learning.
 
-     [--> Data2ML Ops](./data2ml-ops/docs/README.md)
+     [--> Data2ML Ops](./data2ml-ops/index.md)
 
 -   :material-folder-heart:{ .lg .middle } __Trending Content Prediction__
 

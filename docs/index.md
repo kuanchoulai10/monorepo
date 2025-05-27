@@ -20,11 +20,11 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
 
     [:octicons-arrow-right-24:{ .middle } Side Projects](./side-projects/index.md)
 
--   :material-school:{ .lg .middle } __Learning Plans__
+-   :material-school:{ .lg .middle } __Learning in Progress__
 
     ---
 
-    A look into what I'm currently learning and planning to study next.
+    What I’m studying, building, and aiming For
 
     [:octicons-arrow-right-24:{ .middle } Learning Plans](./learning-plans/index.md)
 

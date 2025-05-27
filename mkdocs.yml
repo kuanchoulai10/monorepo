@@ -24,14 +24,14 @@ nav:
   - Side Projects:
     - side-projects/index.md
     - Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
-    - 2020 Dcard DE Intern: "!include ./dcard-hw/mkdocs.yml"
-    - side-projects/cross-cloud-unified-sql-data-pipelines.md
+    - Trending Content Prediction: "!include ./dcard-hw/mkdocs.yml"
+    # - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
-    - Data Mesh: "!include ./data-mesh/mkdocs.yml"
+    # - Data Mesh: "!include ./data-mesh/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
-  - Learning Plans:
-    - learning-plans/index.md
-    - learning-plans/2025.md
+  - Learning in Progress:
+    - learning-in-progress/index.md
+    - learning-in-progress/202505.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
