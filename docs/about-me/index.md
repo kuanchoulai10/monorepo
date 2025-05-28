@@ -14,10 +14,10 @@ I'm a data-driven problem solver with experience in data engineering, machine le
 
 ## Education
 
-| Period               | Role                         | Institution         | Location         | Link                                                                 |
-|----------------------|------------------------------|---------------------|------------------|----------------------------------------------------------------------|
-| Sep 2019 - Feb 2020  | Big Data Engineering Trainee | III                 | Taipei, Taiwan   | [:fontawesome-solid-arrow-pointer:](./education/iii.md){ .md-button } |
-| Jul 2017 - May 2023  | M.B.A.                       | NCCU                | Taipei, Taiwan   | [:fontawesome-solid-arrow-pointer:](./education/nccu.md){ .md-button } |
-| Sep 2013 - Jun 2017  | B.S. Psychology              | CCU                 | Chiayi, Taiwan   | [:fontawesome-solid-arrow-pointer:](./education/ccu.md){ .md-button } |
+| Period               | Role                         | Institution         | Location         |
+|----------------------|------------------------------|---------------------|------------------|
+| Sep 2019 - Feb 2020  | Big Data Engineering Trainee | III                 | Taipei, Taiwan   |
+| Jul 2017 - May 2023  | M.B.A.                       | NCCU                | Taipei, Taiwan   |
+| Sep 2013 - Jun 2017  | B.S. Psychology              | CCU                 | Chiayi, Taiwan   |
 
 [Home :material-page-previous-outline:{ .lg .middle }](../index.md){ .md-button }
