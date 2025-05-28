@@ -1,7 +1,6 @@
 ---
 hide:
   - feedback
-  - footer
   - toc
 ---
 # Learning in Progress
