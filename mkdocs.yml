@@ -110,7 +110,7 @@ plugins:
       repository: kuanchoulai10/monorepo
       branch: main
   - git-revision-date-localized:
-      enabled: !ENV [MKDOCS_GIT_REVISION_DATE_LOCALIZED, false]
+      enabled: !ENV [MKDOCS_GIT_REVISION_DATE_LOCALIZED, true]
       type: timeago
       timezone: Asia/Taipei
       enable_creation_date: true
