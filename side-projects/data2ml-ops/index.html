@@ -2304,18 +2304,6 @@
 
 
 <h1 id="fraud-detection-from-dataops-to-mlops">Fraud Detection: from DataOps to MLOps<a class="headerlink" href="#fraud-detection-from-dataops-to-mlops" title="Permanent link">&para;</a></h1>
-<p>In real-world machine learning projects, managing the workflow from <strong>data transformation to model deployment</strong> is often fragmented, error-prone, and hard to scale.</p>
-<p>This project demonstrates how to streamline and automate the entire lifecycle—<strong>from feature engineering to hyperparameter tuning, model tracking, and deployment</strong>—using modern open source tools and <strong>running fully on Kubernetes</strong>.</p>
-<p>The use case for this project is <strong>fraud detection</strong>, a high-impact and time-sensitive problem where <strong>real-time inference</strong> is critical. It serves as a practical demo of how to operationalize machine learning pipelines that are <strong>version-controlled</strong>, <strong>reproducible</strong>, and <strong>ready for production</strong>.</p>
-<p>It’s designed to be:</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Reproducible</strong> – All data transformations, features, and models are versioned via dbt, Feast, and MLflow</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Scalable</strong> – Built on Kubernetes, enabling distributed training and resource orchestration across services</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Modular</strong> – Each stage is decoupled and replaceable, promoting clear responsibility and reuse</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Open Source</strong> – Fully built on open source tools like dbt, Feast, Ray, Optuna, MLflow, and KServe</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Portable</strong> – Easily adapted to other use cases beyond fraud detection</li>
-</ul>
-<p>Whether you're a data engineer, ML practitioner, or platform builder, this project offers a clear, working example of how to <strong>bridge DataOps and MLOps</strong> on a scalable, production-ready foundation.</p>
 <h2 id="highlights">💡 Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="data--features" name="__tabbed_1" type="radio" /><input id="automl" name="__tabbed_1" type="radio" /><input id="orchestration--infrastructure" name="__tabbed_1" type="radio" /><input id="experiment-tracking" name="__tabbed_1" type="radio" /><input id="real-time-inference" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="data--features">Data &amp; Features</label><label for="automl">AutoML</label><label for="orchestration--infrastructure">Orchestration &amp; Infrastructure</label><label for="experiment-tracking">Experiment Tracking</label><label for="real-time-inference">Real-Time Inference</label></div>
 <div class="tabbed-content">
@@ -2372,6 +2360,19 @@
 </div>
 </div>
 </div>
+<hr />
+<p>In real-world machine learning projects, managing the workflow from <strong>data transformation to model deployment</strong> is often fragmented, error-prone, and hard to scale.</p>
+<p>This project demonstrates how to streamline and automate the entire lifecycle—<strong>from feature engineering to hyperparameter tuning, model tracking, and deployment</strong>—using modern open source tools and <strong>running fully on Kubernetes</strong>.</p>
+<p>The use case for this project is <strong>fraud detection</strong>, a high-impact and time-sensitive problem where <strong>real-time inference</strong> is critical. It serves as a practical demo of how to operationalize machine learning pipelines that are <strong>version-controlled</strong>, <strong>reproducible</strong>, and <strong>ready for production</strong>.</p>
+<p>It’s designed to be:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Reproducible</strong> – All data transformations, features, and models are versioned via dbt, Feast, and MLflow</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Scalable</strong> – Built on Kubernetes, enabling distributed training and resource orchestration across services</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Modular</strong> – Each stage is decoupled and replaceable, promoting clear responsibility and reuse</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Open Source</strong> – Fully built on open source tools like dbt, Feast, Ray, Optuna, MLflow, and KServe</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <strong>Portable</strong> – Easily adapted to other use cases beyond fraud detection</li>
+</ul>
+<p>Whether you're a data engineer, ML practitioner, or platform builder, this project offers a clear, working example of how to <strong>bridge DataOps and MLOps</strong> on a scalable, production-ready foundation.</p>
 <h2 id="architecture">🏗️ Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <figure>
     <a class="glightbox" href="architecture.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="architecture.drawio.svg" /></a>
