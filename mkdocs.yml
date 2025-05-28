@@ -109,12 +109,6 @@ plugins:
       enabled: !ENV [MKDOCS_GIT_COMMITTERS, false]
       repository: kuanchoulai10/monorepo
       branch: main
-  - git-revision-date-localized:
-      enabled: !ENV [MKDOCS_GIT_REVISION_DATE_LOCALIZED, true]
-      type: timeago
-      timezone: Asia/Taipei
-      enable_creation_date: true
-      fallback_to_build_date: true
 
 markdown_extensions:
   - def_list
