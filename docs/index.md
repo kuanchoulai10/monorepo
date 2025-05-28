@@ -4,14 +4,6 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
 
 <div class="grid cards" markdown>
 
--   :material-account-circle:{ .lg .middle } __About Me__
-
-    ---
-
-    Learn more about my background, including education, work experience, public speaking, and other activities.
-
-    [:octicons-arrow-right-24:{ .middle } About Me](./about-me/index.md)
-
 -   :material-rocket-launch:{ .lg .middle } __Side Projects__
 
     ---
@@ -35,3 +27,11 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
     Read my thoughts and insights on data, AI, books, and more.
 
     [:octicons-arrow-right-24:{ .middle } Blog](./blog/index.md)
+
+-   :material-account-circle:{ .lg .middle } __About Me__
+
+    ---
+
+    Learn more about my background, including education, work experience, public speaking, and other activities.
+
+    [:octicons-arrow-right-24:{ .middle } About Me](./about-me/index.md)

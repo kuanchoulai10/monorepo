@@ -1,26 +1,11 @@
 site_name: KC's Data & Life Notes
-site_description: Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC, a data engineer exploring tech and life.
+site_description: Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC Lai, a data engineer exploring tech and life.
 site_author: KC Lai
 site_url: https://kcl10.com
-repo_url: https://github.com/kuanchoulai10/monorepo
-repo_name: GitHub
 edit_uri: edit/main/docs/
 nav:
   - Home:
     - index.md
-  - About Me:
-    - about-me/index.md
-    - Work Experience:
-      - about-me/work-experience/ust/ust.md
-      - about-me/work-experience/tvbs/tvbs.md
-      - about-me/work-experience/ninox/ninox.md
-      - about-me/work-experience/itri/itri.md
-    - Education:
-      - about-me/education/iii.md
-      - about-me/education/nccu.md
-      - about-me/education/ccu.md
-    - Public Speakings:
-      - about-me/public-speakings/index.md
   - Side Projects:
     - side-projects/index.md
     - Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
@@ -35,6 +20,20 @@ nav:
   - Blog: 
     - blog/index.md
   - Tags: tags.md
+  - About Me:
+    - about-me/index.md
+    - Work Experience:
+      - about-me/work-experience/ust/ust.md
+      - about-me/work-experience/tvbs/tvbs.md
+      - about-me/work-experience/ninox/ninox.md
+      - about-me/work-experience/itri/itri.md
+    - Education:
+      - about-me/education/iii.md
+      - about-me/education/nccu.md
+      - about-me/education/ccu.md
+    - Public Speakings:
+      - about-me/public-speakings/index.md
+
 
 theme:
   name: material
