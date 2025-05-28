@@ -34,4 +34,4 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
     Exploring foundational concepts for efficient problem-solving in code.
 
-    [--> Data Structures & Algorithms](./learning-plans/index.md)
+    [--> Data Structures & Algorithms](./learning-in-progress/index.md)

@@ -18,7 +18,7 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
 
     What I’m studying, building, and aiming For
 
-    [:octicons-arrow-right-24:{ .middle } Learning Plans](./learning-plans/index.md)
+    [:octicons-arrow-right-24:{ .middle } Learning Plans](./learning-in-progress/index.md)
 
 -   :material-notebook-edit:{ .lg .middle } __Blog__
 
