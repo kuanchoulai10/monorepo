@@ -27,11 +27,3 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
     Building scalable APIs with Flask and Python for web applications.
 
     [--> Restful APIs with Flask](./restful-apis-with-flask/README.md)
-
--   :material-folder-heart:{ .lg .middle } __Data Structures & Algorithms__
-
-    ---
-
-    Exploring foundational concepts for efficient problem-solving in code.
-
-    [--> Data Structures & Algorithms](./learning-in-progress/index.md)
