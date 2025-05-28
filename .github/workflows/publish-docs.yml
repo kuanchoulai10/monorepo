@@ -11,6 +11,8 @@ permissions:
   contents: write
 env:
   GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
+  MKDOCS_GIT_COMMITTERS: ${{ vars.MKDOCS_GIT_COMMITTERS }}
+  MKDOCS_GIT_REVISION_DATE_LOCALIZED: ${{ vars.MKDOCS_GIT_REVISION_DATE_LOCALIZED }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
