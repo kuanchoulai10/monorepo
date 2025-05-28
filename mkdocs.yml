@@ -2,6 +2,7 @@ site_name: KC's Data & Life Notes
 site_description: Work experience, blog posts, and reflections on data science, AI, books, and finance — by KC Lai, a data engineer exploring tech and life.
 site_author: KC Lai
 site_url: https://kcl10.com
+repo_url: https://github.com/kuanchoulai10/monorepo
 edit_uri: edit/main/docs/
 nav:
   - Home:
@@ -61,6 +62,9 @@ theme:
     - content.code.copy
     - content.tabs.link
     - toc.follow
+    - navigation.footer
+    - header.autohide
+    - announce.dismiss
 
 plugins:
   - monorepo
@@ -68,10 +72,11 @@ plugins:
   - glightbox
   - drawio-exporter
   - slides
+  - meta:
+      meta_file: .meta.yml
   - mkdocs-jupyter:
       include: ["*.ipynb"]
-  - tags:
-      tags_file: tags.md
+  - tags
   - search:
       lang:
         - en
@@ -101,9 +106,11 @@ plugins:
         - SEO
         - Raycast
   - git-committers:
+      enabled: !ENV [MKDOCS_GIT_COMMITTERS, false]
       repository: kuanchoulai10/monorepo
       branch: main
   - git-revision-date-localized:
+      enabled: !ENV [MKDOCS_GIT_REVISION_DATE_LOCALIZED, false]
       type: timeago
       timezone: Asia/Taipei
       enable_creation_date: true
