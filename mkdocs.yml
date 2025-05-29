@@ -155,8 +155,10 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/katex.js
+  - javascripts/open-in-new-tabs.js
   - https://unpkg.com/katex@0/dist/katex.min.js
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
 
 extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
