@@ -17,6 +17,7 @@ nav:
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning in Progress:
     - learning-in-progress/index.md
+    - learning-in-progress/202506.md
     - learning-in-progress/202505.md
   - Blog: 
     - blog/index.md
