@@ -2529,6 +2529,19 @@
 <p>A list of articles, papers, courses, or videos I read/watched/completed:</p>
 <h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://medium.com/agoda-engineering/how-agoda-manages-1-8-trillion-events-per-day-on-kafka-1d6c3f4a7ad1">Agoda</a><ul>
+<li>Back to basics: simplifying how developers send data to Kafka. Agoda has 2 different approach to send data to Kafka: for sub-second latency scenarios, they send data directly to Kafka using the Kafka producer API; for analytics use cases, 10 seconds latency is acceptable, so they use 2-step logging approach.</li>
+<li>Thinking about Kafka Cluster Layouts: Multiple Smaller Kafka Clusters instead of 1 Large Kafka Cluster per Data Center</li>
+<li>Building Confidence - Kafka Monitoring and Auditing: Agoda do Kafka auditing by running a seperate thread in the background of the client libraries to aggregate the message counts and then pipe these audits into a different and dedicated Kafka cluster and then set up a monitoring and alerting system to monitor the audit messages</li>
+<li>Keeping up with growth - Knowing when to Scale Kafka Clusters: Agoda calculates cluster capacity by comparing each resource’s usage against its upper limit and taking the highest percentage to represent the dominant constraint at that moment.</li>
+<li>Ensuring Healthy Data Growth: Attributing cost back to teams</li>
+<li>Rite of Passage: Authentication and ACLs</li>
+<li>Not forgetting Operational Scalability: Automated Tooling</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://developer.paypal.com/community/blog/scaling-kafka-to-support-paypals-data-growth/">PayPal</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.linkedin.com/blog/engineering/data-streaming-processing/revolutionizing-real-time-streaming-processing--4-trillion-event">LinkedIn</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.confluent.io/blog/walmart-real-time-inventory-management-using-kafka/">Walmart</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://blog.kyomind.tw/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://lakefs.io/blog/dvc-vs-git-vs-dolt-vs-lakefs/">Data versioning as your ‘Get out of jail’ card – DVC vs. Git-LFS vs. dolt vs. lakeFS</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://github.com/unitycatalog/unitycatalog">Unity Catalog | GitHub</a></li>
@@ -2564,7 +2577,15 @@
 </ul>
 <h3 id="completed-courses">Completed Courses<a class="headerlink" href="#completed-courses" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://huggingface.co/learn/mcp-course/en/unit0/introduction">MCP Course</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://learn.duotify.com/courses/gh-copilot-pro">GitHub Copilot 進階開發實戰</a><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://code.visualstudio.com/docs/copilot/copilot-customization">Customize chat responses in VS Code</a><ul>
+<li>Instruction files and Prompt files are used to customize the chat responses in VS Code.</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://code.visualstudio.com/docs/copilot/chat/prompt-crafting">Prompt engineering for Copilot Chat</a></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://huggingface.co/learn/mcp-course/en/unit0/introduction">MCP Course</a></li>
 </ul>
 <h2 id="what-i-created-or-tried">What I Created or Tried<a class="headerlink" href="#what-i-created-or-tried" title="Permanent link">&para;</a></h2>
 <p>What I built, experimented with, or implemented:</p>
@@ -2584,6 +2605,50 @@
 <p>Soft-skill insights or workflow/communication/process reflections:</p>
 <h2 id="goals-for-next-month">Goals for Next Month<a class="headerlink" href="#goals-for-next-month" title="Permanent link">&para;</a></h2>
 <p>Set 2–3 simple goals to stay focused and accountable:</p>
+<p>you are good at data engineering; this is my repo.</p>
+<p>Your task is to implement a data processing pipeline using Spark, Kafka, and SQL. Follow these rules:</p>
+<ol>
+<li>Use Spark to process data. For example:</li>
+<li>Load data from a CSV file into a Spark DataFrame.</li>
+<li>
+<p>Perform aggregations, filtering, or joins using Spark APIs.</p>
+</li>
+<li>
+<p>Use Kafka to stream data. For example:</p>
+</li>
+<li>Produce messages to a Kafka topic from a Spark DataFrame.</li>
+<li>
+<p>Consume messages from a Kafka topic and process them using Spark.</p>
+</li>
+<li>
+<p>Use SQL to implement all data transformations. For example:</p>
+</li>
+<li>Write SQL queries to filter, aggregate, or transform data within Spark SQL.</li>
+</ol>
+<p>Break the task into smaller steps:
+1. Set up a Kafka topic and produce sample data to it.
+2. Write a Spark job to consume data from the Kafka topic.
+3. Transform the data using SQL queries in Spark.
+4. Write the transformed data back to another Kafka topic or save it to a file.</p>
+<p>Example:
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Step 1: Produce sample data to Kafka</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">kafka</span><span class="w"> </span><span class="kn">import</span> <span class="n">KafkaProducer</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">producer</span> <span class="o">=</span> <span class="n">KafkaProducer</span><span class="p">(</span><span class="n">bootstrap_servers</span><span class="o">=</span><span class="s1">&#39;localhost:9092&#39;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">producer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;example-topic&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;{&quot;key&quot;: &quot;value&quot;}&#39;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Step 2: Consume data from Kafka using Spark</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SparkSession</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;KafkaExample&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">readStream</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;kafka&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;kafka.bootstrap.servers&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost:9092&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;subscribe&quot;</span><span class="p">,</span> <span class="s2">&quot;example-topic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Step 3: Transform data using SQL</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">df</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;kafka_data&quot;</span><span class="p">)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">transformed_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT key, value FROM kafka_data WHERE key IS NOT NULL&quot;</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Step 4: Write transformed data back to Kafka</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">transformed_df</span><span class="o">.</span><span class="n">writeStream</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;kafka&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;kafka.bootstrap.servers&quot;</span><span class="p">,</span> <span class="s2">&quot;localhost:9092&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;topic&quot;</span><span class="p">,</span> <span class="s2">&quot;transformed-topic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</span></code></pre></div></p>
+<p>Make sure to document your process and reflect on what you learned.</p>
 
 
 
