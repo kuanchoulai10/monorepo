@@ -1,10 +1,9 @@
 ---
-draft: true
 authors:
   - kuanchoulai10
 date:
   created: 2025-05-05
-  updated: 2025-05-05
+  updated: 2025-06-02
 categories:
   - MkDocs
   - CI/CD
@@ -15,69 +14,73 @@ tags:
 comments: true
 ---
 
-
-# 如何使用MkDocs整合GitHub Actions與Git Submodule建立Cross-repo Docs
+# How to Use MkDocs to Integrate GitHub Actions and Git Submodule for Cross-repo Documentation
 
 !!! info "TLDR"
-    看完這篇文章，你可以學會如何
-    
-    - 使用**Git Submodule**統一管理多個專案的文件來源  
-    - 設定**GitHub Actions**跨專案自動觸發與整合流程  
-    - 使用**Reusable Workflows**重複利用CI/CD腳本、減少維護成本  
-    - 透過**MkDocs Monorepo Plugin**將多個專案文件合併為單一網站
+
+    After reading this article, you will learn how to:
+
+    - Use **Git Submodule** to centrally manage documentation sources across multiple projects  
+    - Configure **GitHub Actions** for cross-project automation and integration workflows  
+    - Utilize **Reusable Workflows** to reuse CI/CD scripts and reduce maintenance costs  
+    - Leverage **MkDocs Monorepo Plugin** to merge documentation from multiple projects into a single website
 
 <!-- more -->
 
-在你的組織中，是否有前端、後端、數據、機器學習、SRE 等不同團隊，各自擁有獨立的 Git Repository 與文件系統？雖然這樣的架構有助於職責劃分與專案管理，但當需要撰寫橫跨多個系統與團隊的整合性文件時，往往會陷入難以協作與資訊分散的困境。舉例來說，若你們正在開發一項涵蓋 API、資料同步與監控設定的新服務，相關文件可能散落在多個 Repo 裡，導致沒有人能一眼掌握整體架構與流程。這不僅拉高了文件維護成本，也拖慢了跨部門溝通效率。
+Ever tried hunting for that one crucial piece of documentation across five different repositories? It's like playing an exhausting game of hide-and-seek where the information you need is always in the *other* repo. Sound familiar?
 
-試著想像這個場景：一位新人剛加入團隊，卻得花上好幾天，在不同 Repo 之間搜尋資料、追問前輩、試著拼湊出整體架構——這樣的 Onboarding 體驗，效率低落、學習曲線陡峭，對團隊的產能與信心都是傷害。你應該很難不同意，若能有一個整合且清晰的文件平台，新人不僅能快速理解整個系統的設計與邏輯，還能更快上手、主動參與，團隊整體的運作也會更順暢。
+In many organizations, teams scatter their documentation across separate Git repositories like breadcrumbs in a forest. Frontend docs live here, backend knowledge sits there, and that critical ML pipeline explanation? Somewhere in yet another repository. While this approach keeps ownership clear and projects manageable, it creates a documentation nightmare that would make even the most patient developer pull their hair out.
 
-在過去的經驗中，我就曾面臨這樣的挑戰。當時我們雖然曾考慮導入 Monorepo 來解決問題，但考量到授權邊界、部署彈性與版本獨立性等因素，最終仍維持多 Repo 架構。為了彌補其缺點，我嘗試整合 Git Submodule、MkDocs Monorepo Plugin，以及 GitHub Actions，自動化構建一個集中式的文件平台。這篇文章將分享我如何一步步建立這套機制，過程中踩過的坑，以及最後總結出來的實用經驗。
+Picture this: a new team member joins your organization. Instead of a smooth onboarding experience, they embark on a treasure hunt across repositories, asking colleagues endless questions and trying to piece together how everything connects. It's like trying to assemble IKEA furniture with instructions scattered across different boxes – technically possible, but unnecessarily frustrating.
+
+I've been there too. While switching to a monorepo seemed tempting (like moving all your furniture to one room), we decided to keep our multi-repo structure for good reasons – authorization boundaries, deployment flexibility, and version independence. But I wasn't about to let scattered documentation continue being the thorn in our side.
+
+That's when I discovered the perfect recipe: combining Git Submodules (think of them as neat organizational folders), MkDocs Monorepo Plugin (the master chef that brings everything together), and GitHub Actions (your tireless automation assistant). The result? A centralized documentation platform that updates itself automatically. It's like having a personal librarian who keeps all your books organized and up-to-date!
 
 ![](./static/cross-repo-docs-mkdocs-workflow/flow.svg)
 
-具體來說，這次會有三個repos
+Specifically, this setup involves three repositories:
 
-- [`monorepo`](https://github.com/kuanchoulai10/monorepo)(Main Repo) 是我用來架設個人網站的Repo，使用MkDocs並部署於 GitHub Pages，內部已經有事先定義好的`publish-docs.yml`的GitHub Actions Workflow。
-- [`data2ml-ops`](https://github.com/kuanchoulai10/data2ml-ops)(Sub Repo) 則是我用來練習 DataOps 與 MLOps個人專案，裡頭也有使用MkDocs，用來建置文件。
-- [`reusable-workflows`](https://github.com/kuanchoulai10/reusable-workflows)，用於存放可重複使用的workflows
+- [`monorepo`](https://github.com/kuanchoulai10/monorepo) (Main Repo) is the repository I use to build my personal website, utilizing MkDocs and deployed on GitHub Pages. It already has a predefined `publish-docs.yml` GitHub Actions Workflow.
+- [`data2ml-ops`](https://github.com/kuanchoulai10/data2ml-ops) (Sub Repo) is my personal project for practicing DataOps and MLOps, which also uses MkDocs for documentation building.
+- [`reusable-workflows`](https://github.com/kuanchoulai10/reusable-workflows) is used to store reusable workflows.
 
-我希望將 [`data2ml-ops`](https://github.com/kuanchoulai10/data2ml-ops) 中的學習筆記整合進 [`monorepo`](https://github.com/kuanchoulai10/monorepo)，這樣就能在單一網站上呈現不同專案的內容與心得，讓維護與分享更集中、更有系統。
+My mission? Merge the learning notes from `data2ml-ops` into `monorepo` so I can showcase insights from different projects on one beautiful website. No more jumping between sites or wondering if documentation is outdated!
 
-實際完成後的自動化流程就會像是： `data2-mlops`有任何文件更新並推送至GitHub後，就會觸發`monorepo`的文件建置和部署流程，再也不必擔心跨專案的文件與線上實際在瀏覽的文件脫鉤。
+The magic happens like this: whenever `data2ml-ops` gets updated documentation and pushes to GitHub, it automatically triggers the documentation build and deployment in `monorepo`. It's like having a loyal assistant who immediately updates your main presentation whenever you make changes to your notes. No more worrying about documentation drift!
 
-本篇文章將一步步說明我如何完成這項整合，包括實作方式與注意事項。
+This article will explain step by step how I completed this integration, including implementation methods and considerations.
 
-1. **新增Submodule**  
-  在`monorepo`中新增`data2ml-ops`作為Git Submodule。
+1. **Add Submodule**  
+   Add `data2ml-ops` as a Git Submodule in `monorepo`.
 
-2. **建立文件部署流程**  
-  在`monorepo`中新增GitHub Actions Workflow，負責建置並部署文件到GitHub Pages。
+2. **Create Documentation Deployment Workflow**  
+   Add a GitHub Actions Workflow in `monorepo` responsible for building and deploying documentation to GitHub Pages.
 
-3. **建立可重複使用的Workflow**  
-  在`reusable-workflow`中建立Reusable Workflow，負責觸發第二步的文件部署流程。
+3. **Create Reusable Workflow**  
+   Create a Reusable Workflow in `reusable-workflows` responsible for triggering the documentation deployment process from step 2.
 
-4. **設定Sub-repo Workflow**  
-  在`data2ml-ops`中建立Workflow，使用第三步的Reusable Workflow，觸發`monorepo`的文件部署流程。
+4. **Configure Sub-repo Workflow**  
+   Create a Workflow in `data2ml-ops` that uses the Reusable Workflow from step 3 to trigger the documentation deployment process in `monorepo`.
 
-5. **整合MkDocs Monorepo Plugin**  
-  在`monorepo`中加入MkDocs Monorepo Plugin，整合多個文件來源。
+5. **Integrate MkDocs Monorepo Plugin**  
+   Add the MkDocs Monorepo Plugin to `monorepo` to integrate multiple documentation sources.
 
-6. **測試與驗證**  
-  提交新變更，測試整體流程是否正常運作，並檢查文件是否成功部署。
+6. **Testing and Verification**  
+   Submit new changes, test whether the overall process works properly, and check if documentation is successfully deployed.
 
 
-## 1. 新增Submodule
+## 1. Add Submodule
 
 !!! info "[kuanchoulai10/monorepo](https://github.com/kuanchoulai10/monorepo)"
 
-Git Submodule 是 Git 提供的一種功能，讓你能在一個儲存庫中嵌入另一個儲存庫（子模組），並將其當作子目錄來管理。每個子模組都有獨立的版本控制歷史[^1]。適合用於以下情境：
+Think of Git Submodules as your project's way of having roommates – you can live together in the same house (repository) while keeping your personal belongings (version history) completely separate[^1]. It's perfect for these scenarios:
 
-1.	模組化管理：可將大型專案拆分為多個獨立儲存庫，例如前端與後端分開維護，透過子模組統一整合。
-2.	版本獨立性：主儲存庫會鎖定子模組的特定 commit，不會受子模組的最新變更干擾，有助於穩定性控管。
-3.	重複利用：共用工具庫或框架可作為子模組嵌入多個專案，避免重複維護相同代碼。
+1. **Modular management**: Like having separate apartments for your frontend and backend teams, but with a shared lobby where they can meet and collaborate.
+2. **Version independence**: Your main repository acts like a strict landlord, locking onto specific versions of submodules. No surprise changes allowed!
+3. **Reusability**: That awesome utility library? Instead of copying it everywhere like a hoarder, just reference it as a submodule. Clean and efficient!
 
-首先，在`monorepo`中透過`git submodule add`加入`data2ml-ops`並查看有新增、修改了哪些檔案
+Let's invite `data2ml-ops` to move into our `monorepo` using the digital equivalent of a lease agreement:
 
 ```bash
 git submodule add https://github.com/kuanchoulai10/data2ml-ops.git data2ml-ops
@@ -111,17 +114,17 @@ Changes not staged for commit:
   (use "git restore <file>..." to discard changes in working directory)
 ```
 
-有兩個檔案新增、修改：
+Perfect! Git has thoughtfully created two essential files:
 
-1. `.gitmodules`：負責紀錄submodules要去哪裡找
+1. `.gitmodules` – Think of this as your address book, telling Git where to find each submodule:
     ```.gitmodules
     [submodule "data2ml-ops"]
       path = data2ml-ops
       url = https://github.com/kuanchoulai10/data2ml-ops.git
     ```
-2. `data2-mlops`：負責紀錄sub-module要指向 哪個repo的哪個commit
+2. `data2ml-ops` – This is like a bookmark that points to exactly which version (commit) of the submodule we're using.
 
-接著將這兩個檔案推上遠端。完成後，在GitHub就可以看到`data2ml-ops @ 7369c16`，點進去後就會進入到[kuanchoulai/data2ml-ops](https://github.com/kuanchoulai10/data2ml-ops/)。由於Git Submodule功能，只紀錄submodule的commit紀錄，並不是真的要在monorepo維護submodule的code，因此只是一個reference。
+Time to share our changes with the world! Push these files to the remote repository:
 
 ```bash
 git push
@@ -139,92 +142,102 @@ To https://github.com/kuanchoulai10/monorepo.git
    6c36b76..c1e29ff  main -> main
 ```
 
+Now when you visit GitHub, you'll see something magical: `data2ml-ops @ 7369c16`. Click on it, and voilà! It teleports you to the actual repository. It's like having a portal in your house that leads directly to your friend's place – the reference is there, but you're not actually storing their stuff in your garage.
+
 ![](./static/cross-repo-docs-mkdocs-workflow/submodule.png)
 
-## 2. 建立文件部署流程
+## 2. Create Documentation Deployment Workflow
 
 !!! info "[kuanchoulai10/monorepo](https://github.com/kuanchoulai10/monorepo)"
 
-第二步就是要來使用GitHub Actions，建立文件的部署流程。在Github public repo使用github actions是免費的[^2]。在 GitHub Actions 中，事件是觸發整個流程的開關，像是`Push`、`Pull Request`, `Merge`等都是一種事件類型；它會觸發一個workflow，也就是一系列自動化的執行任務。每個workflow由一或多個 jobs 組成；每個 job 都是一個獨立的執行單位，在一個 runner（即虛擬機或容器）中執行；而 steps 是 job 裡依序執行的操作，每個 step 共用同一個 runner 環境，彼此可共享檔案與狀態[^3]。
+Time to set up our documentation deployment pipeline! Think of GitHub Actions as your personal automation butler – and the best part? It works for free on public repositories[^2]. 
 
-不會著墨過多實際文件部署的github actions workflow怎麼寫，只針對跟git subomdules有關的。
+In the GitHub Actions universe, events are like doorbells that wake up your butler. Whether someone rings the `Push` doorbell, the `Pull Request` chime, or the `Merge` bell, each one triggers a workflow – basically a to-do list of automated tasks your butler follows religiously[^3].
 
-目前這個workflow的觸發點有兩個
+I won't bore you with every detail of writing deployment workflows (that's a whole other adventure), but let's focus on the Git submodules magic tricks.
 
-1. 第一個是`monorepo`有新的`push`時，就觸發文件部署的流程
-2. 另個則是listen update-submodules這類的`repository_dispatch` WebHook事件。`repository_dispatch`事件是由`monorepo`外部透過GitHub API觸發而產生，[^4][^5]。update-submodules可以自行定義。那什麼時候會有這種事件發生呢？我們打算在其它submodules的repo中的文件有變動時，就觸發這個文件部署流程
+Our workflow has two ears, always listening for:
 
+1. **New pushes to `monorepo`** – When the main house gets updates, rebuild everything!
+2. **Special `repository_dispatch` webhook events** – Think of these as secret knock patterns that external repositories can use to wake up our workflow[^4][^5]. When other submodule repos update their docs, they'll send this special signal saying "Hey, time to rebuild!"
 
 ```yaml linenums="1" hl_lines="5 6" title=".github/workflows/publish-docs.yml"
 --8<-- "./.github/workflows/publish-docs.yml:on"
 ```
 
-而這個workflow裡頭只有一個job，job的第一步通常會是先將codebase checkout到我們想要的狀態，在使用`actions/checkout@v4`時，記得加上`submodules: recursive`的設定，如果你的 repo 有 Git Submodules（子模組），就會遞迴地把所有子模組也一起 checkout 下來。沒這個選項的話，子模組資料夾會是空的。
+Our workflow is like a well-organized recipe with one main job. The first step? Always get all the ingredients (checkout the codebase). But here's the crucial part – when using `actions/checkout@v4`, you absolutely must add `submodules: recursive`. Without this magical incantation, your submodule folders would be as empty as a diet soda's promise of satisfaction!
 
 ```yaml linenums="1" hl_lines="4" title=".github/workflows/publish-docs.yml"
 --8<-- "./.github/workflows/publish-docs.yml:checkout"
 ```
 
-接下來，由於這個workflow有可能是由其它submodule的workflow觸發而產生，因此需要加上以下幾件事
+Since our workflow might be awakened by updates from submodule repositories (like a helpful neighbor calling to say they've cleaned their yard), we need to be polite guests and:
 
-1. 在monorepo中更新並合併 submodules，並嘗試把這些變更，合併到目前的`monorepo`中
-2. 如果有變更就 commit & push 回主 repo
+1. **Update all submodules** – Fetch the latest changes from our submodule neighbors
+2. **Commit and push changes** – If we found updates, we'll neatly file them away in our main repository
 
 ```yaml linenums="1" hl_lines="3 6-12" title=".github/workflows/publish-docs.yml"
 --8<-- "./.github/workflows/publish-docs.yml:submodules"
 ```
 
-如此一來，就可以每次在submodule有更新時，即時更新文件。完成後記得commit & push
+This creates a beautiful synchronization dance – whenever a submodule updates, our documentation stays fresh and current. Don't forget to commit and push these changes when you're done!
 
-## 3. 建立可重複使用的Workflow
+## 3. Create Reusable Workflow
 
 !!! info "[kuanchoulai10/reusable-workflows](https://github.com/kuanchoulai10/reusable-workflows)"
 
-第三步就是要來建立可以讓多個submodules重複使用的workflow。邏輯蠻簡單的，只有一個步驟：就是透過`curl`去觸發`monorepo`的 `repository_dispatch` webhook事件[^5]，並帶有`event_type`為`update-submodules`的data。由於是reusable workflow，所以觸發點為`workflow_call`事件[^6]
+Time to create our universal remote control! This reusable workflow is like that friend who's really good at getting everyone organized for group projects – simple, reliable, and saves everyone time.
+
+The logic is beautifully straightforward: use `curl` (the Swiss Army knife of web requests) to send a gentle tap on `monorepo`'s shoulder via the `repository_dispatch` webhook[^5]. It's like sending a text message that says "Hey, I updated my docs, could you refresh the website please?" The message includes `event_type: update-submodules` so our main repo knows exactly what kind of help we need.
+
+Since this is a reusable workflow (the automation equivalent of a recipe you can share with friends), it listens for `workflow_call` events[^6]:
 
 ```yaml linenums="1" hl_lines="4 6 19 21 22" title=".github/workflows/trigger-monorepo-to-build-doc.yml"
 --8<-- "https://raw.githubusercontent.com/kuanchoulai10/reusable-workflows/refs/heads/main/.github/workflows/trigger-monorepo-to-build-doc.yml"
 ```
 
-為什麼要用reusable workflow?以後要擴充workflow時，就不必去到每個sub repos去修改
+Why go through the trouble of creating reusable workflows? Imagine updating your automation process and having to visit each repository individually to make changes – it's like manually updating your address on every account when you move. With reusable workflows, you update once and everyone benefits. Smart and efficient!
 
-完成後記得commit & push
+Remember to commit and push when you're done setting up this automation masterpiece.
 
-## 4. 設定Sub-repo Workflow
+## 4. Configure Sub-repo Workflow
 
 !!! info "[kuanchoulai10/data2ml-ops](https://github.com/kuanchoulai10/data2ml-ops)"
 
-第四步則是要來真的建立呼叫reusable workflow的workflow了。首先要先去到GitHub右上角個人大頭貼 > Settings > Developer Settings > Personal access tokens > Fine-grained tokens 建立新PAT，目的是要用來讀取monorepo的metadata和讀寫code的push submodule的new commit，The fine-grained token must have the following permission set: "Contents" repository permissions (write)[^5]。建立完成後記得複製token
+Now comes the exciting part – teaching our sub-repository how to use that universal remote we just created! But first, we need to create a special key (Personal Access Token) that gives our automation the right permissions.
 
+Head over to GitHub's top-right corner: click your profile picture > Settings > Developer Settings > Personal access tokens > Fine-grained tokens. Think of this token as a VIP pass that allows reading metadata from the monorepo and pushing code with new submodule commits. Make sure to grant "Contents" repository permissions (write)[^5] – it's like giving your automation assistant the keys to the filing cabinet.
 
 ![](./static/cross-repo-docs-mkdocs-workflow/pat.png){ width=600 }
 
-回到`data2ml-ops`，建立repo secrets `PAT`，將剛剛複製的token貼上
+Once you've created your token (and copied it – this is important!), head back to `data2ml-ops` and create a repository secret called `PAT`. Paste your token there like you're hiding a spare key under a digital doormat.
 
 ![](./static/cross-repo-docs-mkdocs-workflow/repo-secret.png)
 
-
-完成後就來write workflow to call reusable workflow[^8]。只需要在job底下使用`uses`並指定workflow所在位置和分支即可
+Now for the grand finale – creating the workflow that calls our reusable workflow[^8]. It's surprisingly simple, like speed-dialing a friend. Just use `uses` in your job and point it to where your reusable workflow lives:
 
 ```yaml  linenums="1" hl_lines="4 6-8 12 14" title=".github/workflows/trigger-monorepo-to-build-doc.yml"
 --8<-- "https://raw.githubusercontent.com/kuanchoulai10/data2ml-ops/887a9a0361e4f4b4c2491f470c49d25bd28c7243/.github/workflows/trigger-monorepo-to-build-doc.yml"
 ```
 
-完成後記得git commit & push
+Commit and push these changes, and you've just created your first cross-repository communication channel!
 
-## 5. 整合MkDocs Monorepo Plugin
+## 5. Integrate MkDocs Monorepo Plugin
 
 !!! info "[kuanchoulai10/monorepo](https://github.com/kuanchoulai10/monorepo)"
 
-倒數第二步就是要來使用`mkdocs-monorepo-plugin`這個MkDocs套件，這是由Backstage團隊所開發出來的套件，專門用來整合多個codebases文件的Plugin。Backsstage是由spotify開源並在2020年進入CNCF的專案，是一個內部開發平台，用於集中呈現組織所有微服務、文檔、CI/CD 狀態、API等重要資訊，幫助軟體工程團隊更有效率地工作。
+Almost there! Time to add the secret sauce that makes multiple documentation sources sing in harmony. Enter `mkdocs-monorepo-plugin` – the conductor of our documentation orchestra, crafted by the brilliant minds at Backstage.
 
-首先先安裝`mkdocs-monorepo-plugin`
+Quick backstory: Backstage is Spotify's gift to the developer world (it joined CNCF in 2020). Think of it as the ultimate dashboard for your engineering organization – like a mission control center where you can see all your microservices, documentation, CI/CD pipelines, and APIs in one beautiful, organized view[^9].
+
+First, let's invite this plugin to the party:
 
 ```
 pip install mkdocs-monorepo-plugin
 ```
 
-安裝完後，只要在plugins加上`monorepo`，那麽在`nav` section就有新的語法`!include`，用來讀取sub repo的`mkdocs.yml`
+Once installed, the magic happens with just a few lines. Add `monorepo` to your plugins, and suddenly you have access to a powerful new syntax: `!include`. It's like having a magic wand that can summon documentation from other repositories:
+
 ```yaml
 ...
 
@@ -237,33 +250,39 @@ plugins:
   - monorepo
 ```
 
-完成後記得git commit & push
+This elegant little configuration tells MkDocs: "Hey, go grab the navigation structure from that submodule and weave it seamlessly into our main site." It's documentation magic at its finest!
 
-## 6. 測試與驗證
+Don't forget to commit and push these changes – we're almost ready for the big reveal!
+
+## 6. Testing and Verification
 
 !!! info "[kuanchoulai10/data2ml-ops](https://github.com/kuanchoulai10/data2ml-ops)"
 
-已經完成所有的設置，最後就是要來測試和驗證了。假設我們現在繼續在`data2ml-ops`更新文件，並推送新的一版上GitHub。去到網頁可以看到確實觸發了gihhub actions workflow。
+The moment of truth has arrived! Time to put our automation masterpiece to the test. Let's make some updates to the documentation in `data2ml-ops` and push them to GitHub, then sit back and watch our creation come to life.
+
+Check out the GitHub Actions workflow doing its thing:
 
 ![](./static/cross-repo-docs-mkdocs-workflow/data2ml-ops-run-history.png)
 
 [`data2ml-ops` run history](https://github.com/kuanchoulai10/data2ml-ops/actions/runs/14824960685)
 
-workflow裡頭會使用`reusable-workflows`的`trigger-monorepo-to-build-doc.yml`，實際透過`curl`去打GitHub API，在`monorepo`建立`repository_dispatch`事件，也接著因此觸發了`monorepo`的`publish-docs.yml`
+Behind the scenes, our workflow is using that reusable workflow like a well-oiled machine. It sends a polite `curl` request to the GitHub API, creating a `repository_dispatch` event in `monorepo`. This digital tap on the shoulder then wakes up the `publish-docs.yml` workflow – it's like watching a perfectly choreographed dance!
 
-切換到`monorepo`的網頁查看，也可以發現確實觸發了文件部署的流程
+Switch over to the `monorepo` page, and you'll see our documentation deployment process has indeed sprung into action:
 
 ![](./static/cross-repo-docs-mkdocs-workflow/monorepo-run-history.png)
 
 [`monorepo` run history](https://github.com/kuanchoulai10/monorepo/actions/runs/14824961637)
 
-從原本的`data2ml-ops @ 7369c16`更新成`data2ml-ops @ 887a9a0`了
+Look at that beautiful update! Our submodule reference has smoothly transitioned from `data2ml-ops @ 7369c16` to `data2ml-ops @ 887a9a0`. It's like watching your bookmark automatically update to point to the latest chapter of your favorite book.
 
 ![](./static/cross-repo-docs-mkdocs-workflow/monorepo-updated.png)
 
-實際去到我的個人網站，也確實看到我`data2ml-ops`個人專案的文件，也一併地被部署上去了！
+The final proof? Visit the actual website, and there it is – the documentation from my `data2ml-ops` project, freshly deployed and beautifully integrated! It's like watching all the pieces of a puzzle click into place.
 
 ![](./static/cross-repo-docs-mkdocs-workflow/website-updates.png)
+
+And just like that, we've created a self-updating documentation ecosystem that keeps everything in sync without manual intervention. No more documentation archaeology expeditions or wondering if what you're reading is current. Your cross-repository documentation now flows as smoothly as a well-conducted symphony!
 
 ## References
 
