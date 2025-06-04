@@ -2,290 +2,298 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kcl10.com/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/tags/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/public-speakings/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/itri/itri/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/ninox/ninox/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/tvbs/tvbs/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/about-me/work-experience/ust/ust/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/blog/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/blog/cross-repo-docs-mkdocs-workflow/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/blog/oltp-vs-olap-a-parquet-primer/</loc>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/learning-in-progress/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/learning-in-progress/202505/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/learning-in-progress/202506/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/learning-in-progress/template/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/cross-cloud-unified-sql-data-pipelines/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/sql-based-rag-application/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/courese-notes/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/prerequisites/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/dbt/how-it-works/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/dbt/in-the-bigger-picture/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/dbt/modeling-data/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/dbt/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/deployment/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/how-it-works/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/in-the-bigger-picture/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/modeling-features/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/vertex-ai-feature-store-implementation/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/vertex-ai-feature-store-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/feast/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/deployment-with-transformer/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/deployment/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/feast-transformer/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/how-it-works/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/in-the-bigger-picture/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/installation/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/transformer-advantages/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/kserve/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/minio/deployment/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/minio/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/mlflow/deployment/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/mlflow/how-it-works/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/mlflow/hpo/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/mlflow/in-the-bigger-picture/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/mlflow/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/cert-manager-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/grpc-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/istio-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/knative-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/mlserver-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/optuna-introduction/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/others/rest-vs-grpc/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/deployment/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/how-it-works/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/in-the-bigger-picture/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/ray-job/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/ray-tune/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/data2ml-ops/ray/what-why-when/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/eda_evaluation/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/docs/1-eda/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/docs/2-training/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/docs/3-evaluation/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/dcard-hw/docs/4-resampling/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/restful-apis-with-flask/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/restful-apis-with-flask/basics/section9/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/restful-apis-with-flask/docs/advanced/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/restful-apis-with-flask/docs/basics/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/blog/archive/2025/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/blog/category/data/</loc>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/blog/category/mkdocs/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
     <url>
          <loc>https://kcl10.com/blog/category/cicd/</loc>
-         <lastmod>2025-06-02</lastmod>
+         <lastmod>2025-06-04</lastmod>
     </url>
 </urlset>
