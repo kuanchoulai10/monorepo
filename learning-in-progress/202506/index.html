@@ -2713,16 +2713,22 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://medium.com/agoda-engineering/featurestore-at-agoda-how-we-optimized-dragonfly-for-high-performance-caching-4d28c584f612">Featurestore at Agoda: How We Optimized Dragonfly for High-Performance Caching</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://medium.com/agoda-engineering/how-agoda-manages-1-8-trillion-events-per-day-on-kafka-1d6c3f4a7ad1">How Agoda manages 1.8 trillion Events per day on Kafka</a><ul>
-<li>Back to basics: simplifying how developers send data to Kafka. Agoda has 2 different approach to send data to Kafka: for sub-second latency scenarios, they send data directly to Kafka using the Kafka producer API; for analytics use cases, 10 seconds latency is acceptable, so they use 2-step logging approach.</li>
-<li>Thinking about Kafka Cluster Layouts: Multiple Smaller Kafka Clusters instead of 1 Large Kafka Cluster per Data Center</li>
-<li>Building Confidence - Kafka Monitoring and Auditing: Agoda do Kafka auditing by running a seperate thread in the background of the client libraries to aggregate the message counts and then pipe these audits into a different and dedicated Kafka cluster and then set up a monitoring and alerting system to monitor the audit messages</li>
-<li>Keeping up with growth - Knowing when to Scale Kafka Clusters: Agoda calculates cluster capacity by comparing each resource’s usage against its upper limit and taking the highest percentage to represent the dominant constraint at that moment.</li>
-<li>Ensuring Healthy Data Growth: Attributing cost back to teams</li>
-<li>Rite of Passage: Authentication and ACLs</li>
-<li>Not forgetting Operational Scalability: Automated Tooling</li>
+<li>2-step logging approach.</li>
+<li>Multiple smaller Kafka clusters instead of 1 Large Kafka cluster per Data Center</li>
+<li>Agoda employs a robust Kafka auditing system by aggregating message counts via background threads in client libraries, routing audits to a dedicated Kafka cluster, and implementing monitoring and alerting mechanisms for audit messages.</li>
+<li>Agoda calculates cluster capacity by comparing each resource’s usage against its upper limit and taking the highest percentage to represent the dominant constraint at that moment.</li>
+<li>Agoda attributes cost back to teams, which transformed team mindsets, driving proactive cost management and accountability across Agoda</li>
+<li>The new auth system empowers the Kafka team to control access, manage credentials, and protect sensitive data through fine-grained ACLs</li>
+<li>Operational scalability is ensured through automated tooling that streamlines and simplifies system management.</li>
 </ul>
 </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://medium.com/paypal-tech/scaling-kafka-to-support-paypals-data-growth-a0b4da420fab">Scaling Kafka to Support PayPal’s Data Growth</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://medium.com/paypal-tech/scaling-kafka-to-support-paypals-data-growth-a0b4da420fab">Scaling Kafka to Support PayPal’s Data Growth</a><ul>
+<li>Cluster Management: Kafka Config Service, ACLs, PayPal Kafka Libraries, QA Environment</li>
+<li>Monitoring and Alerting</li>
+<li>Configuration Management</li>
+<li>Enhancements and Automation: Patching security vulnerabilities, Security Enhancements, Topic Onboarding, MirrorMaker Onboarding, Repartition Assignment Enhancements, </li>
+</ul>
+</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.linkedin.com/blog/engineering/data-streaming-processing/revolutionizing-real-time-streaming-processing--4-trillion-event">Revolutionizing Real-Time Streaming Processing: 4 Trillion Events Daily at LinkedIn</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://blog.kyomind.tw/pyright/">Pyright 上手指南：Python 型別檢查的新選擇</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://lakefs.io/blog/dvc-vs-git-vs-dolt-vs-lakefs/">Data versioning as your ‘Get out of jail’ card – DVC vs. Git-LFS vs. dolt vs. lakeFS</a></li>
