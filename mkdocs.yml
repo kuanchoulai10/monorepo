@@ -32,6 +32,8 @@ nav:
     - Public Speakings:
       - about-me/public-speakings/index.md
 
+not_in_nav: |
+  interview/
 
 theme:
   name: material
