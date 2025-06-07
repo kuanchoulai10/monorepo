@@ -10,3 +10,6 @@
 [submodule "data2ml-ops"]
 	path = data2ml-ops
 	url = https://github.com/kuanchoulai10/data2ml-ops.git
+[submodule "leetcode"]
+	path = leetcode
+	url = https://github.com/kuanchoulai10/leetcode.git
