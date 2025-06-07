@@ -2491,6 +2491,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2521,7 +2547,49 @@
   
 
 
-<h1 id="15-3sum">15. 3Sum<a class="headerlink" href="#15-3sum" title="Permanent link">&para;</a></h1>
+<h1 id="15-3sum"><a href="https://leetcode.com/problems/3sum/">15. 3Sum</a><a class="headerlink" href="#15-3sum" title="Permanent link">&para;</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jzZsG8n2R9A?si=Hul4XVnvqHHsmJUt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Solution Approach</th>
+<th>Explanation</th>
+<th>Time Complexity</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brute Force</td>
+<td>Iterate through all triplets and check if their sum is zero. This approach is straightforward but inefficient for large arrays.</td>
+<td><span class="arithmatex">\(O(n^3)\)</span> - three nested loops iterate through the array</td>
+<td><span class="arithmatex">\(O(1)\)</span> - no extra space used beyond input storage</td>
+</tr>
+<tr>
+<td>Two Pointers</td>
+<td>Sort the array first, then for each element, use two pointers from both ends to find pairs that sum to the target. Skip duplicates to avoid redundant triplets.</td>
+<td><span class="arithmatex">\(O(n^2)\)</span> - outer loop iterates <span class="arithmatex">\(n\)</span> times, inner two-pointer search takes <span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(1)\)</span> - only uses constant extra space for pointers and variables</td>
+</tr>
+<tr>
+<td>HashSet without Sorting</td>
+<td>Convert 3Sum to 2Sum for each element. Use sets for deduplication and avoid processing duplicate first elements. No array modification required.</td>
+<td><span class="arithmatex">\(O(n^2)\)</span> - outer loop iterates <span class="arithmatex">\(n\)</span> times, inner 2Sum takes <span class="arithmatex">\(O(n)\)</span></td>
+<td><span class="arithmatex">\(O(n)\)</span> - uses sets for storing seen elements and results</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+</span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
