@@ -11,6 +11,7 @@ nav:
     - side-projects/index.md
     - Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
     - Trending Content Prediction: "!include ./dcard-hw/mkdocs.yml"
+    - LeetCode: "!include ./leetcode/mkdocs.yml"
     # - side-projects/cross-cloud-unified-sql-data-pipelines.md
     - side-projects/sql-based-rag-application.md
     # - Data Mesh: "!include ./data-mesh/mkdocs.yml"

@@ -124,7 +124,11 @@ Perfect! Git has thoughtfully created two essential files:
     ```
 2. `data2ml-ops` – This is like a bookmark that points to exactly which version (commit) of the submodule we're using.
 
-Time to share our changes with the world! Push these files to the remote repository:
+Time to share our changes with the world! Commit and push these files to the remote repository:
+
+```bash
+git commit -m "Add data2ml-ops as submodule"
+```
 
 ```bash
 git push
