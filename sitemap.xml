@@ -353,6 +353,10 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/141-linked-list-cycle/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/1431-kids-with-the-greatest-number-of-candies/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
@@ -373,6 +377,10 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/15-3sum/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/151-reverse-words-in-a-string/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
@@ -386,6 +394,10 @@
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/leetcode/1657-determine-if-two-strings-are-close/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/167-two-sum-ii-input-array-is-sorted/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
@@ -418,6 +430,10 @@
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/leetcode/200-number-of-islands/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/202-happy-number/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
@@ -481,6 +497,10 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/24-swap-nodes-in-pairs/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/240-search-a-2d-matrix-ii/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
@@ -501,6 +521,18 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/287-find-the-duplicate-number/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/3-longest-substring-without-repeating-characters/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/303-range-sum-query-immutable/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/328-odd-even-linked-list/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
@@ -518,6 +550,14 @@
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/leetcode/345-reverse-vowels-of-a-string/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/347-top-k-frequent-elements/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/373-find-k-pairs-with-smallest-sums/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
@@ -557,7 +597,27 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/496-next-greater-element-i/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/525-contiguous-array/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/547-number-of-provinces/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/56-merge-intervals/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/560-subarray-sum-equals-k/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/57-insert-interval/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
@@ -613,7 +673,15 @@
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/leetcode/76-minimum-window-substring/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/leetcode/790-domino-and-tromino-tiling/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/84-largest-rectangle-in-histogram/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
@@ -630,6 +698,10 @@
     </url>
     <url>
          <loc>https://kcl10.com/side-projects/leetcode/901-online-stock-span/</loc>
+         <lastmod>2025-06-07</lastmod>
+    </url>
+    <url>
+         <loc>https://kcl10.com/side-projects/leetcode/92-reverse-linked-list-ii/</loc>
          <lastmod>2025-06-07</lastmod>
     </url>
     <url>
