@@ -2491,6 +2491,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2521,7 +2547,43 @@
   
 
 
-<h1 id="167-two-sum-ii-input-array-is-sorted">167. Two Sum II - Input Array Is Sorted<a class="headerlink" href="#167-two-sum-ii-input-array-is-sorted" title="Permanent link">&para;</a></h1>
+<h1 id="167-two-sum-ii-input-array-is-sorted"><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">167. Two Sum II - Input Array Is Sorted</a><a class="headerlink" href="#167-two-sum-ii-input-array-is-sorted" title="Permanent link">&para;</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cQ1Oz4ckceM?si=QtsQUpW4JzJmo8hO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Solution Approach</strong></th>
+<th><strong>Explanation (1-minute)</strong></th>
+<th><strong>Time Complexity</strong></th>
+<th><strong>Space Complexity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Naive Approach (Nested Loop)</strong></td>
+<td>Use two nested loops to try every possible pair of numbers. For each pair, check if their sum matches the target. Return the indices if a match is found.</td>
+<td><strong>O(n²)</strong>: The outer loop iterates over each element, and the inner loop checks all elements after it, resulting in quadratic time.</td>
+<td><strong>O(1)</strong>: Constant space since no extra data structures are used.</td>
+</tr>
+<tr>
+<td><strong>Two-pointer technique</strong></td>
+<td>Use two pointers on the sorted array, one starting at the beginning and the other at the end. Check the sum and adjust the pointers accordingly to find the solution in one pass.</td>
+<td><strong>O(n)</strong>: Linear scan as the two pointers converge towards the solution.</td>
+<td><strong>O(1)</strong>: Only pointers are used, with no extra space.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+</span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
