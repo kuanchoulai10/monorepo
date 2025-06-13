@@ -12,6 +12,7 @@
     - [x] Led **IaC implementation with Terraform** for over **500 cross-cloud data assets** (AWS, GCP, dbt Cloud, etc.) and conducted **internal DevOps workshops**, slashing provisioning lead time **from days to hours** by integrating **CI/CD pipelines** with GitHub Actions and improving team IaC adoption by **80% within 6 months**.
     - [x] Led **the migration to GA4 and BigQuery** to build a data lakehouse platform while maintaining a legacy event tracking pipeline (AWS Kinesis, MongoDB, PostgreSQL), **saving $2M** by retiring NoSQL database and **ensuring real-time analytics** for both anonymous and logged-in users.
     - [x] Championed **an organization-wide experimentation mindset**, **engaged 60+ colleagues**, and **orchestrated 20+ A/B tests** via Google Optimize and Firebase within 6 months, boosting **mobile ad revenue by 27%** and **web pageviews by 6%**.
+    - [x] Built a **cross-account** data lake architecture using **AWS Glue, Athena, S3, and DMS** to power supplier analytics dashboards in a fast-paced **e-commerce** domain.
 
 TVBS Media Inc. is a leading media company in Taiwan, known for its comprehensive news coverage and entertainment programming. The company operates multiple television channels, digital platforms, and mobile applications, reaching millions of viewers daily. TVBS is committed to delivering high-quality content and innovative media solutions, leveraging advanced technologies to enhance viewer engagement and experience.
 
