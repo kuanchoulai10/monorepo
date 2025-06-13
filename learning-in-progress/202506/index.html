@@ -2771,7 +2771,17 @@
 <p>A list of articles, papers, courses, or videos I read/watched/completed:</p>
 <h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li>[] <a href="https://www.onehouse.ai/blog/intro-to-hudi-and-flink">An Introduction to the Hudi and Flink Integration</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.ithome.com.tw/news/168961">Databricks將以10億美元買下開源雲端資料庫新創Neon</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.databricks.com/blog/what-is-a-lakebase">What Is a Lakebase?</a><ul>
+<li>Openness</li>
+<li>Separation of storage and compute (the most important feature imo)</li>
+<li>Serverless</li>
+<li>Modern development workflow</li>
+<li>Built for AI agents</li>
+<li>Lakehouse integration</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.onehouse.ai/blog/intro-to-hudi-and-flink">An Introduction to the Hudi and Flink Integration</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://nightlies.apache.org/flink/flink-cdc-docs-master/docs/connectors/flink-sources/tutorials/build-real-time-data-lake-tutorial">Building a Real-time Data Lake with Flink CDC</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.databricks.com/blog/2021/05/19/evolution-to-the-data-lakehouse.html">Evolution to the Data Lakehouse</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://docs.databricks.com/aws/en/lakehouse/">What is a data lakehouse? | Databricks Docs</a></li>
@@ -2819,6 +2829,32 @@
 </ul>
 <h3 id="watched">Watched<a class="headerlink" href="#watched" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=JD8AyRpp-R8">Data News: Snowflake/Databricks Announcements, Iceberg V3</a><ul>
+<li>Semantic Layer in Snowflake (<a href="https://docs.snowflake.com/en/user-guide/views-semantic/overview">Semantic Views</a>) and Databricks (<a href="https://docs.databricks.com/aws/en/metric-views/">Unity Catalog metric views</a>)</li>
+<li><a href="https://www.snowflake.com/en/product/features/openflow/">Snowflake Openflow</a></li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://youtu.be/L0nSZ9C2wBo?si=ed-LEh4y4KGHlpsQ">Data News: DuckLake, Confluent’s TableFlow, New Book!</a><ul>
+<li>Me, personally I think DuckLake is a game-changer for lakehouses, but the speaker didn't think so.</li>
+<li>Perceived benefits of DuckLake's pproach:<ul>
+<li>Eliminates separate catalog abstraction</li>
+<li>Offloads scan planning</li>
+<li>Easier to get started</li>
+</ul>
+</li>
+<li>Concerns and skepticism about DuckLake:<ul>
+<li>Reintroducing database overhead</li>
+<li>Scaling concerns:<ul>
+<li>Shared resources for scan planning</li>
+<li>Scalability of the central database</li>
+</ul>
+</li>
+<li>Limits innovation and discovery</li>
+<li>Unclear details on scan planning</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=mKEq_YaJjPI">How I build Agentic MCP Servers for Claude Code (Prompts CHANGE Everything)</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=0C8CLOzNVEU">Apache Iceberg V3 and Beyond</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=WpcrVlktSyE">Apache Iceberg V3 Ahead</a></li>
@@ -2856,7 +2892,8 @@
 <h2 id="what-i-created-or-tried">What I Created or Tried<a class="headerlink" href="#what-i-created-or-tried" title="Permanent link">&para;</a></h2>
 <p>What I built, experimented with, or implemented:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Completed a side project: A Unified SQL-based Data Pipeline</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Built a side project: <a href="https://github.com/kuanchoulai10/retail-lakehouse">Retail Lakehouse with Flink, Kafka, Iceberg, and Trino</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Built a side project: A Unified SQL-based Data Pipeline</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: <a href="../../blog/ducklake-the-next-big-thing/">The Lakehouse Series: DuckLake — The Next Big Thing?</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: <a href="../../blog/hudi-vs-iceberg-vs-delta-lake/">The Lakehouse Series: Hudi vs Iceberg vs Delta Lake — Format Wars Begin</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Published a blog post: <a href="../../blog/oltp-vs-olap-a-parquet-primer/">The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)</a></li>
@@ -2868,7 +2905,10 @@
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://duckdb.org/">DuckDB</a> and <a href="https://ducklake.select/">DuckLake</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://github.com/jlowin/fastmcp">FastMCP v2</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://github.com/GoogleCloudPlatform/kubectl-ai"><code>kubectl-ai</code></a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Experimented with <a href="https://github.com/GoogleCloudPlatform/kubectl-ai"><code>kubectl-ai</code></a><ul>
+<li>I've tried <code>kubectl-ai</code> as a MCP server to test the integration with VS Code Copilot Agent Mode, but nothing special happened.</li>
+</ul>
+</li>
 </ul>
 <h2 id="what-i-learned">What I Learned<a class="headerlink" href="#what-i-learned" title="Permanent link">&para;</a></h2>
 <p>Short reflections on what I actually learned or became more confident in:</p>
@@ -2877,6 +2917,8 @@
 <h2 id="goals-for-next-month">Goals for Next Month<a class="headerlink" href="#goals-for-next-month" title="Permanent link">&para;</a></h2>
 <p>Set 2–3 simple goals to stay focused and accountable:</p>
 <ul>
+<li><a href="https://discord.com/blog/how-discord-stores-trillions-of-messages">How Discord Stores Trillions of Messages</a></li>
+<li><a href="https://github.com/neondatabase/neon">Neon</a></li>
 <li><a href="https://github.com/mindsdb/mindsdb">MindsDB</a></li>
 <li>Data Catalog<ul>
 <li><a href="https://www.onehouse.ai/blog/comprehensive-data-catalog-comparison">Comprehensive Data Catalog Comparison</a></li>
