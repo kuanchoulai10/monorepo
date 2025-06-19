@@ -12,9 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/https-intro/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/oauth2/">
       
       
+        <link rel="prev" href="../deployment/">
+      
+      
+        <link rel="next" href="../faker/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Introduction to HTTPS in Trino - KC's Data & Life Notes</title>
+        <title>Configure OAuth 2.0 Authentication - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Introduction to HTTPS in Trino - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Configure OAuth 2.0 Authentication - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/https-intro.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/oauth2.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/https-intro/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/oauth2/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Introduction to HTTPS in Trino - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Configure OAuth 2.0 Authentication - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/https-intro.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/oauth2.png" >
       
     
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-to-https-in-trino" class="md-skip">
+        <a href="#configure-oauth-20-authentication" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction to HTTPS in Trino
+              Configure OAuth 2.0 Authentication
             
           </span>
         </div>
@@ -287,10 +291,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -486,6 +492,8 @@
       
   
   
+    
+  
   
   
     
@@ -510,14 +518,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -534,13 +545,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -1585,6 +1596,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1602,11 +1615,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
         
           
           
@@ -1629,7 +1642,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Retail Lakehouse
@@ -1642,8 +1655,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1661,11 +1676,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_4_2" id="__nav_2_4_2_label" tabindex="0">
@@ -1680,34 +1695,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4_2">
             <span class="md-nav__icon md-icon"></span>
             Trino
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1742,12 +1735,155 @@
         
   
   <span class="md-ellipsis">
-    Trino Cluster Deployment
+    Deployment
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configure OAuth 2.0 Authentication
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Configure OAuth 2.0 Authentication
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-tlshttps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure TLS/HTTPS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure TLS/HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-certificate-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Certificate Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount-the-tls-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mount the TLS Certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-and-expose-the-https-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable and Expose the HTTPS Endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secure-internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Internal Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-google-oauth-20-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Google OAuth 2.0 Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-oauth-20-authentication_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OAuth 2.0 Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1764,7 +1900,7 @@
         
   
   <span class="md-ellipsis">
-    Trino Faker Connector Guide
+    Faker Connector
     
   </span>
   
@@ -2847,54 +2983,78 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-are-tls-certificates" class="md-nav__link">
+  <a href="#configure-tlshttps" class="md-nav__link">
     <span class="md-ellipsis">
-      What are TLS certificates?
+      Configure TLS/HTTPS
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#certificate-authorities-cas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Certificate Authorities (CAs)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#self-signed-certificates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-signed certificates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-truststore" class="md-nav__link">
-    <span class="md-ellipsis">
-      What is a truststore?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#when-do-you-need-a-truststore" class="md-nav__link">
-    <span class="md-ellipsis">
-      When do you need a truststore?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Configure TLS/HTTPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#automated-certificate-generation" class="md-nav__link">
     <span class="md-ellipsis">
       Automated Certificate Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mount-the-tls-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mount the TLS Certificate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-and-expose-the-https-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable and Expose the HTTPS Endpoint
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secure-internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Internal Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-google-oauth-20-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Google OAuth 2.0 Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-oauth-20-authentication_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OAuth 2.0 Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -2916,7 +3076,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/https-intro.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/oauth2.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2925,105 +3085,339 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/https-intro.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/oauth2.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="introduction-to-https-in-trino">Introduction to HTTPS in Trino<a class="headerlink" href="#introduction-to-https-in-trino" title="Permanent link">&para;</a></h1>
-<p>When you connect to Trino over HTTPS, you're creating a secure, encrypted connection. This security relies on certificates and trust relationships.</p>
-<h2 id="what-are-tls-certificates">What are TLS certificates?<a class="headerlink" href="#what-are-tls-certificates" title="Permanent link">&para;</a></h2>
-<p>Think of a TLS certificate like a digital ID card for your Trino server. It proves the server is legitimate and allows encrypted communication. The certificate contains the server's public key and identifying information.</p>
-<h2 id="certificate-authorities-cas">Certificate Authorities (CAs)<a class="headerlink" href="#certificate-authorities-cas" title="Permanent link">&para;</a></h2>
-<p>A Certificate Authority is like a trusted notary that validates server identities. Well-known CAs include Let's Encrypt and DigiCert. If your Trino server has a certificate from a recognized CA, clients will trust it automatically.</p>
-<h2 id="self-signed-certificates">Self-signed certificates<a class="headerlink" href="#self-signed-certificates" title="Permanent link">&para;</a></h2>
-<p>Sometimes Trino servers use self-signed certificates (created by the server itself, not a CA). Your client won't trust these by default and you'll see SSL errors. To fix this, you need to explicitly tell your client to trust the certificate using a truststore.</p>
-<h2 id="what-is-a-truststore">What is a truststore?<a class="headerlink" href="#what-is-a-truststore" title="Permanent link">&para;</a></h2>
-<p>A truststore is simply a file containing certificates you trust. It's like a contact list of "safe" servers. Java applications use .jks files for truststores.</p>
-<h2 id="when-do-you-need-a-truststore">When do you need a truststore?<a class="headerlink" href="#when-do-you-need-a-truststore" title="Permanent link">&para;</a></h2>
-<p>You'll need to provide a truststore when:</p>
+<h1 id="configure-oauth-20-authentication">Configure OAuth 2.0 Authentication<a class="headerlink" href="#configure-oauth-20-authentication" title="Permanent link">&para;</a></h1>
+<p>Trino can be configured to enable OAuth 2.0 authentication over HTTPS for the Web UI and the JDBC driver. </p>
+<p>Using <strong>TLS and HTTPS for Trino Clients</strong> and a <strong>configured shared secret</strong> is required for OAuth 2.0 authentication.</p>
+<figure>
+  <a class="glightbox" href="../static/trino.diagram.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/trino.diagram.svg" width="500" /></a>
+</figure>
+<h2 id="configure-tlshttps">Configure TLS/HTTPS<a class="headerlink" href="#configure-tlshttps" title="Permanent link">&para;</a></h2>
+<p>Trino runs with no security by default. This allows you to connect to the server using URLs that specify the HTTP protocol when using the Trino CLI, the Web UI, or other clients.</p>
+<p>this is about Trino Client and Trino coordinator communication (blue lines) , not about the internal communication between Trino nodes.</p>
+<p>To configure Trino with TLS support, consider two alternative paths:</p>
 <ul>
-<li>Connecting to Trino over HTTPS</li>
-<li>The server uses a self-signed certificate</li>
-<li>You see "unable to find valid certification path" errors</li>
+<li>Use <strong>the load balancer or proxy</strong> at your site or cloud environment to terminate TLS/HTTPS. This approach is the simplest and strongly preferred solution.</li>
+<li>Secure <strong>the Trino server directly</strong>. This requires you to obtain a valid certificate, and add it to the Trino coordinator’s configuration.</li>
 </ul>
-<h2 id="automated-certificate-generation">Automated Certificate Generation<a class="headerlink" href="#automated-certificate-generation" title="Permanent link">&para;</a></h2>
+<p>Since we are deploying Trino in a local Kubernetes cluster, <strong>we will use the second approach and configure Trino to run with TLS/HTTPS directly with self-signed certificates</strong>.</p>
+<h3 id="automated-certificate-generation">Automated Certificate Generation<a class="headerlink" href="#automated-certificate-generation" title="Permanent link">&para;</a></h3>
 <p>Use the provided script to automatically generate all necessary certificates and files:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./generate-tls-certs.sh
 </span></code></pre></div>
 <p>The automated script performs the following steps. Each step can also be executed manually if needed:</p>
-<p><strong>Step 1: Generate Keystore (containing private key and certificate)</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
+<p><strong>Step 1: Create Private Key</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Step 1: Creating Private Key...&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span><span class="nv">$CERT_DIR</span>/private.key<span class="w"> </span><span class="m">2048</span>
 </span></code></pre></div>
 <p>What this does:</p>
 <ul>
-<li>Uses RSA algorithm to create a public-private key pair</li>
-<li>Creates a self-signed certificate in keystore.jks</li>
-<li>Sets CN=coordinator as the certificate hostname for TLS verification</li>
-<li>SAN (Subject Alternative Name) contains Kubernetes DNS names and IPs that this certificate can serve</li>
-<li>keystore.jks is used by Trino Coordinator when enabling HTTPS</li>
-<li>storepass sets the keystore access password</li>
+<li>Uses RSA algorithm to generate a 2048-bit private key</li>
+<li>Saves the private key to <code>.cert/private.key</code></li>
+<li>This private key will be used to create the self-signed certificate</li>
 </ul>
-<p><strong>Step 2: Export certificate from Keystore (without private key)</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>
+<p><strong>Step 2: Create Self-Signed Certificate</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Step 2: Creating Certificate...&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>openssl<span class="w"> </span>req<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>-new<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>-x509<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>-key<span class="w"> </span><span class="nv">$CERT_DIR</span>/private.key<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>-config<span class="w"> </span>openssl.cnf<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>-extensions<span class="w"> </span>v3_req<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>-out<span class="w"> </span><span class="nv">$CERT_DIR</span>/certificate.crt
 </span></code></pre></div>
 <p>What this does:</p>
 <ul>
-<li>Exports the server's public certificate from the keystore</li>
-<li>The exported .cer file is used by client applications (like Trino CLI) to create truststore</li>
+<li>Creates a new self-signed X.509 certificate using the private key</li>
+<li>Uses the OpenSSL configuration file (<code>openssl.cnf</code>) for certificate settings</li>
+<li>Certificate is valid for 365 days</li>
+<li>Applies <code>v3_req</code> extensions which include Subject Alternative Names (SAN)</li>
+<li>The certificate hostname and SAN entries are configured in <code>openssl.cnf</code></li>
+<li>Saves the certificate to <code>.cert/certificate.crt</code></li>
 </ul>
-<p><strong>Step 3: Create Truststore and import certificate</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+<div class="language-ini highlight"><span class="filename">openssl.cnf</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[req]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">default_bits</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">2048</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">prompt</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="na">default_md</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">sha256</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">req_extensions</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s">v3_req</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">distinguished_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dn</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">[dn]</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="na">C</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">TW</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="na">ST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Taipei</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="na">L</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">Taipei</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">O</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">Velano Collective</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="na">OU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Data Platform</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="na">CN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">trino.trino.svc.cluster.local</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">[v3_req]</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="na">subjectAltName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@alt_names</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">[alt_names]</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="na">DNS.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">localhost</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="na">IP.1</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
+</span></code></pre></div>
+<p><strong>Step 3: Combine Private Key and Certificate into PEM Format</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Step 3: Combining Private Key and Certificate...&quot;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cat<span class="w"> </span><span class="nv">$CERT_DIR</span>/private.key<span class="w"> </span><span class="nv">$CERT_DIR</span>/certificate.crt<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$CERT_DIR</span>/trino-dev.pem
 </span></code></pre></div>
 <p>What this does:</p>
 <ul>
-<li>Creates a new truststore.jks file (or imports into existing one)</li>
-<li>Adds the server's .cer certificate to the trust list</li>
-<li>This truststore is used by Trino CLI (or other clients) to trust the Trino Coordinator's HTTPS certificate</li>
+<li>Combines the private key and certificate into a single PEM file</li>
+<li>Creates <code>.cert/trino-dev.pem</code> containing both private key and certificate</li>
+<li>This combined PEM file is commonly used by applications that need both components</li>
+<li>Note: This file contains the private key and must be protected properly</li>
 </ul>
-<p><strong>Step 4: Convert keystore to PKCS12 format (cross-platform support)</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>
-</span></code></pre></div>
-<p>What this does:</p>
-<ul>
-<li>Converts Java-specific .jks format to .p12 (PKCS#12) format</li>
-<li>.p12 is cross-platform (OpenSSL, Nginx, Apache can all use it) encrypted certificate container</li>
-</ul>
-<p><strong>Step 5: Extract PEM format from PKCS12 (common for OpenSSL)</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
-</span></code></pre></div>
-<p>What this does:</p>
-<ul>
-<li>Extracts .p12 and outputs as .pem file (contains private key and certificate)</li>
-<li>This is useful for services that need PEM format (like Nginx)</li>
-<li>Note: This .pem contains private key, must be protected properly</li>
-</ul>
-<p><strong>Step 6: Convert .cer certificate to common .crt format</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>
-</span></code></pre></div>
-<p>What this does:</p>
-<ul>
-<li>Converts DER (binary format) certificate to PEM (text format) certificate .crt</li>
-<li>.crt and .pem are essentially the same format, just different extensions used by different systems</li>
-</ul>
-<p><strong>Step 7: Verify certificate contents</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>
-</span></code></pre></div>
-<p>What this does:</p>
-<ul>
-<li>Exports certificate from keystore (binary DER format) and converts to text format</li>
-<li>openssl x509 -text parses certificate content (validity dates, hostnames, SAN)</li>
-</ul>
-<p><strong>Step 8: Create Kubernetes secret manifest</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>
+<p><strong>Step 4: Create Kubernetes Secret Manifest</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Step 4: Creating Kubernetes secret...&quot;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>trino-tls-secret<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span>--from-file<span class="o">=</span>trino-dev.pem<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CERT_DIR</span><span class="s2">/trino-dev.pem&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CERT_DIR</span><span class="s2">/trino-tls-secret.yaml&quot;</span>
 </span></code></pre></div>
 <p>What this does:</p>
 <ul>
 <li>Generates a Kubernetes secret YAML manifest file</li>
-<li>Contains the keystore.jks file and password for deployment</li>
-<li>Can be applied directly to Kubernetes cluster</li>
+<li>Contains the <code>trino-dev.pem</code> file for deployment</li>
+<li>Uses <code>--dry-run=client</code> to generate the YAML without applying it to the cluster</li>
+<li>The secret can be applied directly to the Kubernetes cluster with <code>kubectl apply</code></li>
+</ul>
+<p>After running the script, you will find the generated files in the <code>.cert/</code> directory, the Kubernetes secret manifest file will be named <code>trino-tls-secret.yaml</code> and it should look like this:</p>
+<div class="language-yaml highlight"><span class="filename">trino-tls-secret.yaml</span><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">data</span><span class="p">:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="nt"><mark class="critic">trino-dev.pem</mark></span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+</span></code></pre></div>
+<h3 id="mount-the-tls-certificate">Mount the TLS Certificate<a class="headerlink" href="#mount-the-tls-certificate" title="Permanent link">&para;</a></h3>
+<p>To utilize the generated TLS certificate in your Trino deployment, create a Kubernetes secret and mount it to the coordinator's <code>/etc/trino/tls</code> directory.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.cert/trino-tls-secret.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
+</span></code></pre></div>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml coordinator</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
+</span></span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="hll"><span class="w">  </span><span class="nt">secretMounts</span><span class="p">:</span>
+</span></span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="hll"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls</span>
+</span></span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="hll"><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
+</span></span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="hll"><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/trino/tls</span>
+</span></span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">  </span><span class="nt">additionalExposedPorts</span><span class="p">:</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">    </span><span class="nt">https</span><span class="p">:</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">      </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Next, configure the coordinator to use the TLS certificate by specifying its location in the <code>http-server.https.keystore.path</code> setting:</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+</span></span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="hll"><span class="w">  </span><span class="nt">coordinatorExtraConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span></span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="no">http-server.https.enabled=true</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="no">http-server.https.port=8443</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="hll"><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
+</span></span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="enable-and-expose-the-https-endpoint">Enable and Expose the HTTPS Endpoint<a class="headerlink" href="#enable-and-expose-the-https-endpoint" title="Permanent link">&para;</a></h3>
+<p>To activate HTTPS in Trino, configure the <code>http-server.https.enabled</code> setting to <code>true</code> and specify the <code>http-server.https.port</code> (typically <code>8443</code>). Additionally, expose this port through the Kubernetes service configuration.</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+</span></span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="nt">coordinatorExtraConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="hll"><span class="w">    </span><span class="no">http-server.https.enabled=true</span>
+</span></span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="hll"><span class="w">    </span><span class="no">http-server.https.port=8443</span>
+</span></span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml coordinator</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
+</span></span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">  </span><span class="nt">secretMounts</span><span class="p">:</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/trino/tls</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="hll"><span class="w">  </span><span class="nt">additionalExposedPorts</span><span class="p">:</span>
+</span></span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="hll"><span class="w">    </span><span class="nt">https</span><span class="p">:</span>
+</span></span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="hll"><span class="w">      </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
+</span></span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="hll"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+</span></span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="hll"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
+</span></span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="hll"><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+</span></span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="secure-internal-communication">Secure Internal Communication<a class="headerlink" href="#secure-internal-communication" title="Permanent link">&para;</a></h2>
+<p>To enhance security, the Trino cluster supports secure internal communication (red lines) between nodes through authentication mechanisms, with optional TLS encryption for additional protection.</p>
+<p>Configure the shared secret by setting the same value in the config.properties file across all cluster nodes (both coordinator and workers):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>internal-communication.shared-secret=&lt;secret&gt;
+</span></code></pre></div>
+<p>A large random key is recommended, and can be generated with the following Linux command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>openssl rand 512 | base64
+</span></code></pre></div>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml additionalConfigProperties</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="hll"><span class="nt">additionalConfigProperties</span><span class="p">:</span>
+</span></span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="hll"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal-communication.shared-secret=$INTERNAL_SHARED_SECRET</span>
+</span></span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
+</span></code></pre></div></td></tr></table></div>
+<p>The configurations under <code>additionalConfigProperties</code> will impact all the nodes in the Trino Cluster.</p>
+<h2 id="create-google-oauth-20-client">Create Google OAuth 2.0 Client<a class="headerlink" href="#create-google-oauth-20-client" title="Permanent link">&para;</a></h2>
+<p>Since we're using Google as our OAuth2 provider, we'll need to set up a Google OAuth 2.0 client. This is a straightforward process, but there are a few specific configuration details to keep in mind for Trino.</p>
+<p>Here are the key configuration settings you'll need:</p>
+<ul>
+<li><strong>Application Type</strong>: Web application</li>
+<li><strong>Name</strong>: Trino (It will be only used in the Google Cloud Console for identification purposes)</li>
+<li><strong>Audience</strong>: Set to <strong>internal</strong> (Typically, Trino is used within an organization, so this setting is appropriate)</li>
+<li><strong>Authorized Redirect URIs</strong>: Add these two URLs:<ul>
+<li><code>https://127.0.0.1:8443/oauth2/callback</code></li>
+<li><code>https://127.0.0.1:8443/ui/logout/logout.html</code></li>
+</ul>
+</li>
+</ul>
+<p>After createing the OAuth 2.0 client, you will be provided with a <strong>client ID</strong> and a <strong>client secret</strong> and you will need to copy these values into the Trino configuration.</p>
+<h2 id="configure-oauth-20-authentication_1">Configure OAuth 2.0 Authentication<a class="headerlink" href="#configure-oauth-20-authentication_1" title="Permanent link">&para;</a></h2>
+<p>To enable OAuth 2.0 authentication in Trino, you will need to configure the OAuth2 properties in the Trino coordinator, which include the client ID, client secret, and authorization server URL. To enable OAuth 2.0 authentication for the Web UI, you also need to set the authentication type of the Web UI to <code>oauth2</code>.</p>
+<div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+</span></span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="hll"><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
+</span></span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="hll"><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
+</span></span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="hll"><span class="w">  </span><span class="nt">coordinatorExtraConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+</span></span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">    </span><span class="no">http-server.https.enabled=true</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">    </span><span class="no">http-server.https.port=8443</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="hll"><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
+</span></span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
+</span></span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
+</span></span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
+</span></span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="hll"><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span></span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Trino supports reading the Authorization Server configuration from the OIDC provider configuration metadata document. During coordinator startup, Trino retrieves this document and uses the provided values to set the corresponding OAuth2 authentication properties, eliminating the need for additional configuration setup.</p>
+<p>For Google configuration metadata document, see <a href="https://accounts.google.com/.well-known/openid-configuration">here</a>.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://trino.io/docs/current/security/tls.html">TLS and HTTPS</a></li>
+<li><a href="https://trino.io/docs/current/security/internal-communication.html">Secure internal communication</a></li>
+<li><a href="https://trino.io/docs/current/security/oauth2.html">OAuth 2.0 authentication</a></li>
 </ul>
 
 
@@ -3102,6 +3496,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../deployment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Deployment
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../faker/" class="md-footer__link md-footer__link--next" aria-label="Next: Faker Connector">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Faker Connector
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

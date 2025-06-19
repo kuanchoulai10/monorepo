@@ -793,6 +793,10 @@
          <lastmod>2025-06-19</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/catalogs/</loc>
+         <lastmod>2025-06-19</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/deployment/</loc>
          <lastmod>2025-06-19</lastmod>
     </url>
@@ -801,11 +805,15 @@
          <lastmod>2025-06-19</lastmod>
     </url>
     <url>
+         <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/fault-tolerant/</loc>
+         <lastmod>2025-06-19</lastmod>
+    </url>
+    <url>
          <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/how-it-works/</loc>
          <lastmod>2025-06-19</lastmod>
     </url>
     <url>
-         <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/https-intro/</loc>
+         <loc>https://kcl10.com/side-projects/retail-lakehouse/trino/oauth2/</loc>
          <lastmod>2025-06-19</lastmod>
     </url>
     <url>

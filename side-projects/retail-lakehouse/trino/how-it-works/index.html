@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/how-it-works/">
       
       
-        <link rel="prev" href="../what-why-when/">
+        <link rel="prev" href="../../">
       
       
         <link rel="next" href="../deployment/">
@@ -1706,28 +1706,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1935,7 +1913,29 @@
         
   
   <span class="md-ellipsis">
-    Trino Cluster Deployment
+    Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure OAuth 2.0 Authentication
     
   </span>
   
@@ -1957,7 +1957,7 @@
         
   
   <span class="md-ellipsis">
-    Trino Faker Connector Guide
+    Faker Connector
     
   </span>
   
@@ -3247,14 +3247,14 @@
 <p>A catalog contains one or more schemas, which in turn contain objects such as tables, views, or materialized views.</p>
 <h2 id="behind-the-scenes">Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Permanent link">&para;</a></h2>
 <h3 id="query-execution-model">Query Execution Model<a class="headerlink" href="#query-execution-model" title="Permanent link">&para;</a></h3>
-<p>A user starts by sending an SQL <em>statement</em> from a client tool—such as DBeaver, Superset, or a custom application—to the Trino cluster. This <em>statement</em> is a plain-text command like <code>SELECT region, COUNT(*) FROM sales GROUP BY region;</code>. It first arrives at the <em>coordinator</em>, which is the brain of the Trino system.</p>
-<p>The <em>coordinator</em> begins by parsing this <em>statement</em>, checking for syntax and semantic correctness. Once validated, the <em>statement</em> is transformed into a <em>query</em>. This <em>query</em> is more than just text—it’s a fully-formed plan that defines how the cluster will execute the user’s command. The <em>query</em> is broken down into a hierarchy of <em>stages</em>, forming a distributed execution plan. These <em>stages</em> form a tree-like structure, where each <em>stage</em> represents a logical step of the query, such as scanning data, performing aggregation, or returning final results.</p>
-<p>Although <em>stages</em> define what needs to be done, they don’t perform the actual computation. Instead, each <em>stage</em> is implemented through multiple <em>tasks</em>. These <em>tasks</em> are distributed across <em>worker</em> nodes in the cluster. Each <em>task</em> is responsible for executing a portion of its parent <em>stage</em>, and together, the tasks accomplish the overall goal of that stage.</p>
-<p>Each <em>task</em> works on specific chunks of data called <em>splits</em>. A <em>split</em> is a subset of the overall dataset—for example, a single Parquet file or a segment of rows. The <em>coordinator</em> asks the storage connector (such as the Hive connector) for a list of available <em>splits</em> for a given table and then assigns those <em>splits</em> to the <em>tasks</em> running on various workers.</p>
-<p>Within each <em>task</em>, the execution is further broken down into one or more <em>drivers</em>. A <em>driver</em> is essentially a data pipeline that runs in a single thread. Each <em>driver</em> consists of a series of <em>operators</em>. These <em>operators</em> perform concrete operations like scanning a table, filtering rows, applying functions, or aggregating values. You can think of a <em>driver</em> as a physical pipeline built from <em>operator</em> components.</p>
-<p>For example, a <em>driver</em> in this case might include a <em>table scan operator</em> that reads rows from the <code>sales</code> table, followed by a <em>filter operator</em> that removes NULL regions, and an <em>aggregation operator</em> that performs the <code>GROUP BY region</code> logic.</p>
-<p>As data flows upward from lower <em>stages</em> to higher ones, <em>exchanges</em> come into play. These are the network mechanisms that transfer data between nodes. When one <em>stage</em> finishes processing, it places its output into buffers. The next <em>stage</em> pulls data from these buffers using an <em>exchange client</em>, ensuring the distributed stages stay connected even across physical nodes.</p>
-<p>Once the root <em>stage</em> finishes aggregating the results from its child stages, the final output is assembled by the <em>coordinator</em> and returned to the client. What the user sees is a neatly formatted result set with regions and counts, but under the hood, that simple output is the product of a highly parallel and distributed pipeline involving <em>statements</em>, <em>queries</em>, <em>stages</em>, <em>tasks</em>, <em>splits</em>, <em>drivers</em>, <em>operators</em>, and <em>exchanges</em>.</p>
+<p>A user starts by sending an SQL <strong><em>statement</em></strong> from a client tool—such as DBeaver, Superset, or a custom application—to the Trino cluster. This <strong><em>statement</em></strong> is a plain-text command like <code>SELECT region, COUNT(*) FROM sales GROUP BY region;</code>. It first arrives at the <strong><em>coordinator</em></strong>, which is the brain of the Trino system.</p>
+<p>The <strong><em>coordinator</em></strong> begins by parsing this <strong><em>statement</em></strong>, checking for syntax and semantic correctness. Once validated, the <strong><em>statement</em></strong> is transformed into a <strong><em>query</em></strong>. This <strong><em>query</em></strong> is more than just text—it’s a fully-formed plan that defines how the cluster will execute the user’s command. The <strong><em>query</em></strong> is broken down into a hierarchy of <strong><em>stages</em></strong>, forming a distributed execution plan. These <strong><em>stages</em></strong> form a tree-like structure, where each <strong><em>stage</em></strong> represents a logical step of the query, such as scanning data, performing aggregation, or returning final results.</p>
+<p>Although <strong><em>stages</em></strong> define what needs to be done, they don’t perform the actual computation. Instead, each <strong><em>stage</em></strong> is implemented through multiple <strong><em>tasks</em></strong>. These <strong><em>tasks</em></strong> are distributed across <strong><em>worker</em></strong> nodes in the cluster. Each <strong><em>task</em></strong> is responsible for executing a portion of its parent <strong><em>stage</em></strong>, and together, the tasks accomplish the overall goal of that stage.</p>
+<p>Each <strong><em>task</em></strong> works on specific chunks of data called <strong><em>splits</em></strong>. A <strong><em>split</em></strong> is a subset of the overall dataset—for example, a single Parquet file or a segment of rows. The <strong><em>coordinator</em></strong> asks the storage connector (such as the Hive connector) for a list of available <strong><em>splits</em></strong> for a given table and then assigns those <strong><em>splits</em></strong> to the <strong><em>tasks</em></strong> running on various workers.</p>
+<p>Within each <strong><em>task</em></strong>, the execution is further broken down into one or more <strong><em>drivers</em></strong>. A <strong><em>driver</em></strong> is essentially a data pipeline that runs in a single thread. Each <strong><em>driver</em></strong> consists of a series of <strong><em>operators</em></strong>. These <strong><em>operators</em></strong> perform concrete operations like scanning a table, filtering rows, applying functions, or aggregating values. You can think of a <strong><em>driver</em></strong> as a physical pipeline built from <strong><em>operator</em></strong> components.</p>
+<p>For example, a <strong><em>driver</em></strong> in this case might include a <strong><em>table scan operator</em></strong> that reads rows from the <code>sales</code> table, followed by a <strong><em>filter operator</em></strong> that removes NULL regions, and an <strong><em>aggregation operator</em></strong> that performs the <code>GROUP BY region</code> logic.</p>
+<p>As data flows upward from lower <strong><em>stages</em></strong> to higher ones, <strong><em>exchanges</em></strong> come into play. These are the network mechanisms that transfer data between nodes. When one <strong><em>stage</em></strong> finishes processing, it places its output into buffers. The next <strong><em>stage</em></strong> pulls data from these buffers using an <strong><em>exchange client</em></strong>, ensuring the distributed stages stay connected even across physical nodes.</p>
+<p>Once the root <strong><em>stage</em></strong> finishes aggregating the results from its child stages, the final output is assembled by the <strong><em>coordinator</em></strong> and returned to the client. What the user sees is a neatly formatted result set with regions and counts, but under the hood, that simple output is the product of a highly parallel and distributed pipeline involving <strong><em>statements</em></strong>, <strong><em>queries</em></strong>, <strong><em>stages</em></strong>, <strong><em>tasks</em></strong>, <strong><em>splits</em></strong>, <strong><em>drivers</em></strong>, <strong><em>operators</em></strong>, and <strong><em>exchanges</em></strong>.</p>
 <h3 id="clients_1">Clients<a class="headerlink" href="#clients_1" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
@@ -3363,7 +3363,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../what-why-when/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What, Why, When">
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3373,20 +3373,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                What, Why, When
+                Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino
               </div>
             </div>
           </a>
         
         
           
-          <a href="../deployment/" class="md-footer__link md-footer__link--next" aria-label="Next: Trino Cluster Deployment">
+          <a href="../deployment/" class="md-footer__link md-footer__link--next" aria-label="Next: Deployment">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Trino Cluster Deployment
+                Deployment
               </div>
             </div>
             <div class="md-footer__button md-icon">

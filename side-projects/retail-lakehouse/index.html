@@ -18,7 +18,7 @@
         <link rel="prev" href="../data-mesh/rag/">
       
       
-        <link rel="next" href="trino/what-why-when/">
+        <link rel="next" href="trino/how-it-works/">
       
       
       <link rel="icon" href="../../images/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Retail Lakehouse with Flink, Kafka, Iceberg, and Trino - KC's Data & Life Notes</title>
+        <title>Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino - KC's Data & Life Notes</title>
       
     
     
@@ -77,7 +77,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Retail Lakehouse with Flink, Kafka, Iceberg, and Trino - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
@@ -93,7 +93,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Retail Lakehouse with Flink, Kafka, Iceberg, and Trino - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#retail-lakehouse-with-flink-kafka-iceberg-and-trino" class="md-skip">
+        <a href="#retail-lakehouse-with-debezium-kafka-iceberg-and-trino" class="md-skip">
           Skip to content
         </a>
       
@@ -192,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Retail Lakehouse with Flink, Kafka, Iceberg, and Trino
+              Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino
             
           </span>
         </div>
@@ -1707,28 +1707,6 @@
   
   
     <li class="md-nav__item">
-      <a href="trino/what-why-when/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What, Why, When
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="trino/how-it-works/" class="md-nav__link">
         
   
@@ -1755,7 +1733,29 @@
         
   
   <span class="md-ellipsis">
-    Trino Cluster Deployment
+    Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="trino/oauth2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure OAuth 2.0 Authentication
     
   </span>
   
@@ -1777,7 +1777,7 @@
         
   
   <span class="md-ellipsis">
-    Trino Faker Connector Guide
+    Faker Connector
     
   </span>
   
@@ -2878,15 +2878,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tech-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tech Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       Features
@@ -2927,54 +2918,15 @@
   
 
 
-<h1 id="retail-lakehouse-with-flink-kafka-iceberg-and-trino">Retail Lakehouse with Flink, Kafka, Iceberg, and Trino<a class="headerlink" href="#retail-lakehouse-with-flink-kafka-iceberg-and-trino" title="Permanent link">&para;</a></h1>
-<p>A streaming-first data pipeline that simulates a global e-commerce inventory system. This project uses <strong>Flink</strong> and <strong>Kafka</strong> to capture real-time changes (CDC) from multiple regional PostgreSQL databases and writes them into a unified <strong>Iceberg</strong> lakehouse table. <strong>Trino</strong> enables fast, federated SQL analytics on the evolving dataset.</p>
+<h1 id="retail-lakehouse-with-debezium-kafka-iceberg-and-trino">Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino<a class="headerlink" href="#retail-lakehouse-with-debezium-kafka-iceberg-and-trino" title="Permanent link">&para;</a></h1>
+<p>A streaming data pipeline that simulates a global e-commerce inventory system. This project uses <strong>Debezium</strong> and <strong>Kafka</strong> to capture real-time changes (CDC) from a PostgreSQL database and writes them into a unified <strong>Iceberg</strong> lakehouse table. <strong>Trino</strong> enables fast, federated SQL analytics on the evolving dataset.</p>
 <h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PostgreSQL (CDC)
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        ↓
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Flink + Kafka
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ↓
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Apache Iceberg (Lakehouse Table)
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        ↓
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>     Trino
-</span></code></pre></div>
+<p><a class="glightbox" href="architecture.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="architecture.drawio.svg" /></a></p>
 <h2 id="use-case-global-retail-inventory-sync">Use Case: Global Retail Inventory Sync<a class="headerlink" href="#use-case-global-retail-inventory-sync" title="Permanent link">&para;</a></h2>
 <p>Imagine an international e-commerce company with separate inventory databases per region (e.g., US, EU, ASIA). This system continuously syncs inventory changes into a central Iceberg table for analytics and reporting — without batch jobs.</p>
-<h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Layer</th>
-<th>Technology</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Change Capture</td>
-<td>Flink CDC, Kafka Connect</td>
-</tr>
-<tr>
-<td>Stream Processing</td>
-<td>Apache Flink</td>
-</tr>
-<tr>
-<td>Storage Format</td>
-<td>Apache Iceberg (local/HDFS/S3)</td>
-</tr>
-<tr>
-<td>Query Engine</td>
-<td>Trino</td>
-</tr>
-<tr>
-<td>Databases</td>
-<td>PostgreSQL (simulated CDC)</td>
-</tr>
-</tbody>
-</table>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Real-time inventory synchronization via <strong>Flink CDC</strong></li>
-<li>Append-only Iceberg table with full snapshot tracking</li>
+<li>Real-time inventory synchronization via <strong>Debezium</strong></li>
 <li>Query data instantly with <strong>Trino</strong> using ANSI SQL</li>
 <li>Pluggable catalog support (e.g., REST, Hive)</li>
 <li>Cloud-native deployment using Kubernetes</li>
@@ -3078,13 +3030,13 @@
         
         
           
-          <a href="trino/what-why-when/" class="md-footer__link md-footer__link--next" aria-label="Next: What, Why, When">
+          <a href="trino/how-it-works/" class="md-footer__link md-footer__link--next" aria-label="Next: How It Works?">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                What, Why, When
+                How It Works?
               </div>
             </div>
             <div class="md-footer__button md-icon">
