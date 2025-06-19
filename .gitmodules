@@ -13,3 +13,6 @@
 [submodule "leetcode"]
 	path = leetcode
 	url = https://github.com/kuanchoulai10/leetcode.git
+[submodule "retail-lakehouse"]
+	path = retail-lakehouse
+	url = https://github.com/kuanchoulai10/retail-lakehouse.git
