@@ -10,11 +10,10 @@ nav:
   - Side Projects:
     - side-projects/index.md
     - Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
+    - Unified SQL-based Data Pipelines: "!include ./data-mesh/mkdocs.yml"
     - Trending Content Prediction: "!include ./dcard-hw/mkdocs.yml"
     - LeetCode: "!include ./leetcode/mkdocs.yml"
-    # - side-projects/cross-cloud-unified-sql-data-pipelines.md
-    - side-projects/sql-based-rag-application.md
-    # - Data Mesh: "!include ./data-mesh/mkdocs.yml"
+    # - side-projects/sql-based-rag-application.md
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning in Progress:
     - learning-in-progress/index.md
