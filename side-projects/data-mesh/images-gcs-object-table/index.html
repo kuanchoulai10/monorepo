@@ -2838,7 +2838,10 @@
 </figure>
 <h2 id="create-a-cloud-storage-bucket-and-upload-images">Create a Cloud Storage Bucket and Upload Images<a class="headerlink" href="#create-a-cloud-storage-bucket-and-upload-images" title="Permanent link">&para;</a></h2>
 <p>Create a Google Cloud Storage bucket to store product images. The bucket should be in the <code>us</code> region and named <code>velano-collectives-n1y3</code>. You can use the following Terraform code to create the bucket:</p>
-<div class="language-terraform highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+<div class="language-terraform highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_storage_bucket&quot;</span><span class="w"> </span><span class="nv">&quot;velano_collectives&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="na">name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;velano-collectives-${random_string.velano_collectives_suffix.result}&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>After creating the bucket, upload your product images to it. You can use the <code>gsutil</code> command-line tool to copy images from your local machine to the Cloud Storage bucket:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gsutil<span class="w"> </span>cp<span class="w"> </span>velano-collectives/data/images/*.png<span class="w"> </span>gs://velano-collectives-n1y3/images/
@@ -2851,7 +2854,31 @@
 </span></code></pre></div>
 <h2 id="create-an-object-table">Create an Object Table<a class="headerlink" href="#create-an-object-table" title="Permanent link">&para;</a></h2>
 <p>Create a BigQuery connection to the Cloud Storage bucket containing the images:</p>
-<div class="language-terraform highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+<div class="language-terraform highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_bigquery_connection&quot;</span><span class="w"> </span><span class="nv">&quot;gcs&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="na">connection_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gcs&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="na">location</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nb">cloud_resource</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;bq_conn__gcs__project_iam&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-google-modules/iam/google//modules/projects_iam&quot;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;~&gt; 8.0&quot;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="na">projects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">module.project.project_id</span><span class="p">]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="na">mode</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;additive&quot;</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nb">bindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="s2">&quot;roles/storage.objectViewer&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="s2">&quot;serviceAccount:${google_bigquery_connection.gcs.cloud_resource[0].service_account_id}&quot;</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="s2">&quot;roles/serviceusage.serviceUsageConsumer&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="s2">&quot;serviceAccount:${google_bigquery_connection.gcs.cloud_resource[0].service_account_id}&quot;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="s2">&quot;roles/documentai.viewer&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">      </span><span class="s2">&quot;serviceAccount:${google_bigquery_connection.gcs.cloud_resource[0].service_account_id}&quot;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>The connection's service account must have the following roles:</p>
 <ul>
@@ -2870,7 +2897,11 @@
 <p><a class="glightbox" href="../static/images-table-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/images-table-2.png" /></a></p>
 <h2 id="create-a-remote-model">Create a Remote Model<a class="headerlink" href="#create-a-remote-model" title="Permanent link">&para;</a></h2>
 <p>Create a BigQuery connection to the Cloud Vision API:</p>
-<div class="language-terraform highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>
+<div class="language-terraform highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;google_bigquery_connection&quot;</span><span class="w"> </span><span class="nv">&quot;cloud_vision&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="na">connection_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;cloud-vision&quot;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="na">location</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;US&quot;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nb">cloud_resource</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <p>After creating the connection, you can create a remote model that uses the Cloud Vision API to annotate images:</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">`</span><span class="n">velano</span><span class="o">-</span><span class="n">collective</span><span class="o">-</span><span class="n">ac8f</span><span class="p">.</span><span class="n">products</span><span class="p">.</span><span class="n">vision</span><span class="o">`</span>
