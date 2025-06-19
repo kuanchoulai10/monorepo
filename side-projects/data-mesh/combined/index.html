@@ -12,24 +12,28 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/cross-cloud-unified-sql-data-pipelines/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/data-mesh/combined/">
       
       
+        <link rel="prev" href="../images-gcs-object-table/">
       
       
-      <link rel="icon" href="../../images/avatar.png">
+        <link rel="next" href="../rag/">
+      
+      
+      <link rel="icon" href="../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>Cross Cloud Unified Sql Data Pipelines - KC's Data & Life Notes</title>
+        <title>Analyze Visual Cues That Drive Purchases - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,13 +52,13 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Cross Cloud Unified Sql Data Pipelines - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Analyze Visual Cues That Drive Purchases - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/cross-cloud-unified-sql-data-pipelines.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data-mesh/combined.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,19 +89,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/cross-cloud-unified-sql-data-pipelines/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/data-mesh/combined/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Cross Cloud Unified Sql Data Pipelines - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Analyze Visual Cues That Drive Purchases - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/cross-cloud-unified-sql-data-pipelines.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data-mesh/combined.png" >
       
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -108,7 +112,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cross-cloud-unified-sql-data-pipelines" class="md-skip">
+        <a href="#analyze-visual-cues-that-drive-purchases" class="md-skip">
           Skip to content
         </a>
       
@@ -169,9 +173,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -188,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cross Cloud Unified Sql Data Pipelines
+              Analyze Visual Cues That Drive Purchases
             
           </span>
         </div>
@@ -271,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
     
@@ -287,11 +291,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -311,7 +317,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../learning-in-progress/" class="md-tabs__link">
+        <a href="../../../learning-in-progress/" class="md-tabs__link">
           
   
     
@@ -331,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -349,7 +355,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
     
@@ -368,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../about-me/" class="md-tabs__link">
+        <a href="../../../about-me/" class="md-tabs__link">
           
   
     
@@ -403,9 +409,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -453,7 +459,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -486,6 +492,8 @@
       
   
   
+    
+  
   
   
     
@@ -508,19 +516,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -532,13 +543,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -589,7 +600,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../data2ml-ops/" class="md-nav__link ">
+            <a href="../../data2ml-ops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -623,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/prerequisites/" class="md-nav__link">
+      <a href="../../data2ml-ops/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -688,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/dbt/modeling-data/" class="md-nav__link">
+      <a href="../../data2ml-ops/dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -763,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/feast/modeling-features/" class="md-nav__link">
+      <a href="../../data2ml-ops/feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/feast/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -858,7 +869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/minio/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -933,7 +944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/mlflow/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -955,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/mlflow/hpo/" class="md-nav__link">
+      <a href="../../data2ml-ops/mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1038,7 +1049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/what-why-when/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1060,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/how-it-works/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1082,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1104,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1126,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/ray-tune/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1148,7 +1159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/ray-job/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1235,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/what-why-when/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1257,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/how-it-works/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1279,7 +1290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1301,7 +1312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/installation/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1323,7 +1334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1345,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1367,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1389,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1407,6 +1418,177 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Unified SQL-based Data Pipelines
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Unified SQL-based Data Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products-s3-biglake-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amazon S3 BigLake External Table
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../images-gcs-object-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotate Product Images
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Analyze Visual Cues That Drive Purchases
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Applications
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1453,12 +1635,12 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../dcard-hw/" class="md-nav__link ">
+            <a href="../../dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1470,14 +1652,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             Trending Content Prediction
           </label>
@@ -1492,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1514,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1536,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1558,7 +1740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1580,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1626,12 +1808,12 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../leetcode/" class="md-nav__link ">
+            <a href="../../leetcode/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1644,8 +1826,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             LeetCode
           </label>
@@ -1656,28 +1838,6 @@
           </ul>
         </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sql-based-rag-application/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SQL-based RAG Application
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1715,7 +1875,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1749,7 +1909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1771,7 +1931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1833,7 +1993,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../learning-in-progress/" class="md-nav__link ">
+            <a href="../../../learning-in-progress/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1867,7 +2027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning-in-progress/202506/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202506/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,7 +2049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning-in-progress/202505/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202505/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1943,7 +2103,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../blog/" class="md-nav__link ">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2022,7 +2182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/archive/2025/" class="md-nav__link">
+      <a href="../../../blog/archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2101,7 +2261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/cicd/" class="md-nav__link">
+      <a href="../../../blog/category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2125,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/data/" class="md-nav__link">
+      <a href="../../../blog/category/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2149,7 +2309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/mkdocs/" class="md-nav__link">
+      <a href="../../../blog/category/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2186,7 +2346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2232,7 +2392,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/" class="md-nav__link ">
+            <a href="../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2315,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2337,7 +2497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2359,7 +2519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2381,7 +2541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2432,7 +2592,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2505,7 +2665,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/side-projects/cross-cloud-unified-sql-data-pipelines.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data-mesh/docs/data-mesh/combined.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2514,14 +2674,58 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/side-projects/cross-cloud-unified-sql-data-pipelines.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data-mesh/docs/data-mesh/combined.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="cross-cloud-unified-sql-data-pipelines">Cross Cloud Unified Sql Data Pipelines<a class="headerlink" href="#cross-cloud-unified-sql-data-pipelines" title="Permanent link">&para;</a></h1>
+<h1 id="analyze-visual-cues-that-drive-purchases">Analyze Visual Cues That Drive Purchases<a class="headerlink" href="#analyze-visual-cues-that-drive-purchases" title="Permanent link">&para;</a></h1>
+<figure>
+  <a class="glightbox" href="../static/combined.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/combined.drawio.svg" /></a>
+</figure>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">with</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="k">select</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="o">*</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="o">`</span><span class="n">velano</span><span class="o">-</span><span class="n">collective</span><span class="o">-</span><span class="n">ac8f</span><span class="p">.</span><span class="n">products_aws</span><span class="p">.</span><span class="n">products</span><span class="o">`</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">),</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">images_annotated</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="k">select</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="o">*</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">ml</span><span class="p">.</span><span class="n">annotate_image</span><span class="p">(</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">`</span><span class="n">velano</span><span class="o">-</span><span class="n">collective</span><span class="o">-</span><span class="n">ac8f</span><span class="p">.</span><span class="n">products</span><span class="p">.</span><span class="n">vision</span><span class="o">`</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">`</span><span class="n">velano</span><span class="o">-</span><span class="n">collective</span><span class="o">-</span><span class="n">ac8f</span><span class="p">.</span><span class="n">products</span><span class="p">.</span><span class="n">images</span><span class="o">`</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">struct</span><span class="p">([</span><span class="s1">&#39;LABEL_DETECTION&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">vision_features</span><span class="p">)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">),</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">images_anntotated_extracted</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="k">select</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">cast</span><span class="p">(</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">      </span><span class="n">split</span><span class="p">(</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="n">split</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;/&quot;</span><span class="p">)[</span><span class="k">offset</span><span class="p">(</span><span class="n">array_length</span><span class="p">(</span><span class="n">split</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">))</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)],</span><span class="w"> </span><span class="c1">-- 1.png</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="s1">&#39;.&#39;</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">      </span><span class="p">)[</span><span class="k">offset</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span><span class="w"> </span><span class="c1">-- 1</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">as</span><span class="w"> </span><span class="n">int64</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">product_id</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nb">array</span><span class="p">(</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">      </span><span class="k">select</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">struct</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="n">json_value</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$.description&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">description</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="k">cast</span><span class="p">(</span><span class="n">json_value</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$.score&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">float64</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">score</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="k">cast</span><span class="p">(</span><span class="n">json_value</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$.topicality&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">float64</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">topicality</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">      </span><span class="k">from</span><span class="w"> </span><span class="k">unnest</span><span class="p">(</span><span class="n">json_query_array</span><span class="p">(</span><span class="n">ml_annotate_image_result</span><span class="p">.</span><span class="n">label_annotations</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">entry</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">label_annotations</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="k">from</span><span class="w"> </span><span class="n">images_annotated</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="p">)</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">select</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="n">i</span><span class="p">.</span><span class="n">label_annotations</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">p</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">images_anntotated_extracted</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">i</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">product_id</span>
+</span></code></pre></div>
+<p><a class="glightbox" href="../static/joined.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/joined.png" /></a></p>
 
 
 
@@ -2532,36 +2736,6 @@
   
   
 
-
-  <aside class="md-source-file">
-    
-    
-    
-    
-      
-  <span class="md-source-file__fact">
-    
-      
-  <span class="md-icon" title="Contributors">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
-  </span>
-  <span>GitHub</span>
-
-    
-    <nav>
-      
-        <a href="https://github.com/kuanchoulai10" class="md-author" title="@kuanchoulai10">
-          
-          <img src="https://avatars.githubusercontent.com/u/39903885?v=4&size=72" alt="kuanchoulai10">
-        </a>
-      
-      
-      
-    </nav>
-  </span>
-
-    
-  </aside>
 
 
   
@@ -2630,6 +2804,44 @@
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../images-gcs-object-table/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotate Product Images">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Annotate Product Images
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../rag/" class="md-footer__link md-footer__link--next" aria-label="Next: RAG Applications">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                RAG Applications
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2687,20 +2899,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../../../javascripts/katex.js"></script>
       
-        <script src="../../javascripts/open-in-new-tabs.js"></script>
+        <script src="../../../javascripts/open-in-new-tabs.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../assets/slides/js/slides.js"></script>
+        <script src="../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
