@@ -1,6 +1,6 @@
 # Data
 
-!! question "What are The Similarities and Differences Between Apache Spark and Apache Flink?"
+!!! question "What are The Similarities and Differences Between Apache Spark and Apache Flink?"
 
     ??? tip "Answer"
 
@@ -13,7 +13,7 @@
         This means that **while both can handle streaming data, Flink often achieves lower latency**.
 
 
-!! question "What is Trigger Types in Apache Spark Structure Streaming"
+!!! question "What is Trigger Types in Apache Spark Structure Streaming"
 
     ??? tip "Answer"
 
