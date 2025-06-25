@@ -1,5 +1,26 @@
 # System Design Questions
 
+!!! question "System Design Trade-Offs"
+
+    ??? tip "Video"
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1nENigGr-a0?si=1sv2c336Cch7k43L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        - SQL vs NoSQL
+        - Normalization vs Denormalization
+        - Consistency vs Availability
+        - Strong Consistency vs Eventual Consistency
+        - Batch Processing vs Stream Processing
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2g1G8Jr88xU?si=njv5ki8NzLZq7N2F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
+        - Vertical Scaling vs Horizontal Scaling
+        - REST vs graphQL
+        - Stateful vs Stateless
+        - Read-through vs Write-through Caching
+        - Sync vs Async Processing
+
+
 !!! question "What is CAP Theorem?"
 
     ??? tip "Answer"
@@ -20,3 +41,70 @@
 
         Lastly, if we focus on **availability and partition tolerance (AP)**, that means the system will always give a response and keep working even if there's a network partition, but it might not always give you the most up-to-date data. This is what we often see in **eventually consistent **systems, like some NoSQL databases. An example of this would be a **social media platform** where you can still post updates and read posts even if some parts of the system are temporarily out of sync. These systems are designed to handle high traffic and ensure that users can always interact with the platform, even if it means that some data might not be perfectly consistent across all nodes at all times.
 
+
+!!! question "How to Scale Your Database?"
+
+    ??? tip "Video"
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_1IKwnbscQU?si=5gdpbjG31SPR1uP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        - Indexing
+        - Materialized Views
+        - Denormalization
+        - Vertical Scaling
+        - Horizontal Scaling
+        - Database Caching
+        - Replication
+        - Sharding
+
+
+!!! question "How to Improve API Performance?"
+
+    ??? tip "Video"
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/zvWKqUiovAM?si=0JIYNvFGLvZD2cpC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        - Caching
+        - Pagination
+        - Avoiding N+1 Queries
+        - Asynchronous Processing
+        - Connection Pooling
+        - Payload Compression
+        - JSON Serializers
+
+
+!!! question "What is gRPC?"
+
+    ??? tip "Answer"
+
+        gRPC
+
+        https://www.youtube.com/shorts/t0ONFCY6NWI
+
+
+!!! question "Distributed System Design Patterns"
+
+    ??? tip "Video"
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/nH4qjmP2KEE?si=8HI6aRVBxW5CtwOz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        - Ambassador
+        - Circuit Breaker
+        - CQRS
+        - Event Sourcing
+        - Leader Election
+        - Pub-Sub
+        - Sharding
+
+!!! question "What is OAuth 2.0?"
+
+    ??? tip "Answer"
+
+        OAuth 2.0 is an authorization framework that allows third-party applications to access a user's resources without exposing their credentials. It involves four main roles:
+        
+        - the resource owner (typically the user),
+        - the client (the app that wants access),
+        - the authorization server, and
+        - the resource server.
+        
+        The user gives permission to the client through the authorization server, which then issues an access token. This token is then used by the client to access the user's resources on the resource server. It keeps everything secure and user credentials safe!
