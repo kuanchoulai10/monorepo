@@ -12,7 +12,7 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/interview/data/">
+        <link rel="canonical" href="https://kcl10.com/interview/stats/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Data - KC's Data & Life Notes</title>
+        <title>Stat - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Data - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Stat - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/data.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/stats.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/interview/data/" >
+        <meta  property="og:url"  content="https://kcl10.com/interview/stats/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Data - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Stat - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/data.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/stats.png" >
       
     
     
@@ -125,7 +125,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data" class="md-skip">
+        <a href="#stat" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +188,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data
+              Stat
             
           </span>
         </div>
@@ -2854,7 +2854,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/data.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/stats.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2863,54 +2863,68 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/data.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/stats.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h1>
+<h1 id="stat">Stat<a class="headerlink" href="#stat" title="Permanent link">&para;</a></h1>
 <div class="admonition question">
-<p class="admonition-title">What are The Similarities and Differences Between Apache Spark and Apache Flink?</p>
+<p class="admonition-title">What is Variational Inference?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Apache Spark and Apache Flink are both powerful distributed data processing frameworks, but they have some key similarities and differences.</p>
-<p>In terms of <strong>similarities</strong>, both frameworks support batch and stream processing, and they both provide high-level APIs in multiple languages, like Java, Scala, and Python. They also focus on fault tolerance, scalability, and exactly-once processing semantics.</p>
-<p>When it comes to <strong>differences</strong>, One of the main differences is that <strong>Flink is often considered to have a more native stream processing capability</strong>, meaning it was designed from the ground up to handle real-time data streams with very low latency. Spark, on the other hand, started primarily as a batch processing framework and later introduced Structured Streaming, which provides micro-batch processing.</p>
-<p>This means that <strong>while both can handle streaming data, Flink often achieves lower latency</strong>.</p>
+<p>Variational inference is a technique used in machine learning and statistics to approximate complex probability distributions. Instead of trying to directly compute the distribution, which can be intractable, variational inference turns the problem into an optimization task. It involves selecting a simpler, known distribution and adjusting its parameters so that it closely approximates the complex distribution. This makes it easier and faster to perform inference in models that would otherwise be too complex to handle.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">What is Trigger Types in Apache Spark Structure Streaming</p>
+<p class="admonition-title">What's the relationship between variational inference and Bayesian statistics?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>In Apache Spark Structured Streaming, trigger types determine <strong>how often the streaming query processes data and produces results</strong>. There are a few different trigger types you can use:</p>
-<ul>
-<li><strong>Default Trigger</strong>: This is the default mode where Spark continuously processes data in <strong>micro-batches</strong> as soon as it arrives.</li>
-<li><strong>Fixed Interval Trigger</strong>: You can specify a fixed processing interval (for example, every 10 seconds). Spark will wait for that interval to pass before processing the next micro-batch.</li>
-<li><strong>One-Time Trigger</strong>: This trigger <strong>processes all available data once and then stops</strong>. It's useful for scenarios where you want to run a streaming job <strong>as a batch job</strong>.</li>
-<li><strong>Continuous Trigger</strong>: This is an <strong>experimental</strong> trigger where Spark processes data continuously <strong>with very low latency</strong>, though it's still in development</li>
-</ul>
+<p>Variational inference is actually closely related to Bayesian statistics because it provides a way to <strong>approximate the posterior distribution of a model's parameters</strong>. In Bayesian statistics, we start with <strong>a prior distribution that represents our initial beliefs about the parameters</strong>, and then <strong>we update that with observed data to get the posterior distribution</strong>. Often, the <strong>exact posterior is difficult or impossible to calculate</strong>, so variational inference steps in as an efficient way to approximate that posterior. So it's basically a practical tool within the Bayesian framework.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">What is Output Mode in Apache Spark Structured Streaming?</p>
+<p class="admonition-title">What is Markov Chain?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>In Apache Spark Structured Streaming, the output mode basically defines <strong>how the processed data is written to the output sink</strong>. There are three main output modes:</p>
-<ol>
-<li>
-<p><strong>Append Mode</strong>: <strong>Only the new rows that were added to the result table since the last trigger</strong> are written to the sink. This is the default mode for most sinks.</p>
-</li>
-<li>
-<p><strong>Complete Mode</strong>: <strong>The entire updated result table</strong> is written to the sink every time there's a trigger. This mode is useful for aggregations where you want to keep updating the whole result.</p>
-</li>
-<li>
-<p><strong>Update Mode</strong>: <strong>Only the rows that were updated since the last trigger</strong> are written to the sink. This is kind of a middle ground between Append and Complete modes.</p>
-</li>
-</ol>
 </details>
+<p>A Markov Chain is a mathematical system that undergoes transitions from one state to another within a finite or countably infinite set of states. The key property of a Markov Chain is that <strong>it follows the Markov property, which means that the probability of transitioning to the next state depends only on the current state and not on the sequence of states that came before it</strong>. Essentially, it's a <strong>memoryless process</strong>, which makes it simpler to analyze and model.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What are some common MCMC methods?</p>
+<details class="tip">
+<summary>Answer</summary>
+</details>
+<p>Some of the most common MCMC methods include the <strong>Metropolis-Hastings algorithm</strong>, which is a very general and flexible approach where you propose a new sample and then decide whether to accept it based on a certain acceptance probability.</p>
+<p>Another popular method is the <strong>Gibbs sampler</strong>, which <strong>is particularly useful when you can easily sample from the conditional distributions of each variable one at a time</strong>.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">what is p-value?</p>
+<details class="tip">
+<summary>Answer</summary>
+</details>
+<p>The p-value is a concept used in statistical hypothesis testing. It's basically a measure that helps you understand the strength of your evidence against a null hypothesis. So when you perform a test, the p-value tells you how likely it is to get your observed results, or something more extreme, if the null hypothesis is actually true. A smaller p-value means that your observed data is less likely under the null hypothesis, which often leads researchers to reject the null hypothesis.</p>
+<p>in hypothesis testing, the null hypothesis is kind of like the "innocent until proven guilty" principle. We start by assuming that the null hypothesis is true, just like we presume innocence. The evidence, or our data, has to be strong enough to reject that null hypothesis. If the p-value is small, it’s like having strong evidence in a trial, which means we might reject the null hypothesis. If the p-value is large, then the evidence isn't strong enough, and we continue to assume the null hypothesis is true, just like we would maintain someone's innocence in a legal context.</p>
+<p>if we think of hypothesis testing like a courtroom, the presumption of innocence means we start by assuming the defendant (or the null hypothesis) is innocent, or true. A Type I error would be like wrongly convicting an innocent person, which is rejecting the null hypothesis when it’s actually true. This is considered a serious error because it means we’re concluding there’s an effect or a difference when there really isn’t one. A Type II error would be like letting a guilty person go free, which means failing to reject the null hypothesis when it’s actually false. This is still an error, but often considered less severe than a Type I error, depending on the context. The presumption of innocence helps ensure that we only reject the null hypothesis when we have strong enough evidence, reducing the likelihood of those more costly Type I errors.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What are the differences and similarities between Frequentist and Bayesian statistics?</p>
+<details class="tip">
+<summary>Answer</summary>
+</details>
+<p>the main difference lies in <strong>how they interpret probability</strong>.</p>
+<p>Frequentist statistics <strong>views probability as the long-run frequency of events</strong>. Essentially, it's about <strong>how often something happens if you repeat an experiment over and over again</strong>. Bayesian statistics, on the other hand, <strong>interprets probability as a measure of belief or certainty about an event</strong>. <strong>It incorporates prior knowledge or prior beliefs, and then updates that belief as more evidence or data becomes available</strong>.</p>
+<p>As for similarities, both approaches <strong>use data to make inferences and predictions</strong>, and they both <strong>rely on likelihood functions</strong> to connect models with data. Ultimately, they just have different philosophies on what probability means and how to use it!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">what's the differences between sequential testing and Bayesian-based statistical method when talking about A-B testing?</p>
+<details class="tip">
+<summary>Answer</summary>
+</details>
+<p>both sequential testing and Bayesian methods can be used for A/B testing, but they have different approaches. Sequential testing usually follows a frequentist framework, where you analyze the data as it comes in and you can stop the test early if you reach a certain level of statistical significance. The main advantage here is efficiency, because you don't need to fix a sample size in advance.</p>
+<p>Bayesian A/B testing, on the other hand, involves updating your beliefs about which variation is better as new data comes in. Instead of focusing on p-values and significance thresholds, you look at the probability that one variant is better than the other. This approach is more flexible and intuitive for many people, because it provides a direct probability statement about your results. So, in summary, sequential testing is about efficiency in a frequentist framework, while Bayesian A/B testing focuses on continuously updating probabilities and beliefs.</p>
 </div>
 
 

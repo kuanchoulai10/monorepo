@@ -12,7 +12,7 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/interview/system-design/">
+        <link rel="canonical" href="https://kcl10.com/interview/data-engineering/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>System Design Questions - KC's Data & Life Notes</title>
+        <title>Data - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="System Design Questions - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Data - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/data-engineering.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/interview/system-design/" >
+        <meta  property="og:url"  content="https://kcl10.com/interview/data-engineering/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="System Design Questions - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Data - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/data-engineering.png" >
       
     
     
@@ -125,7 +125,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-design-questions" class="md-skip">
+        <a href="#data" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +188,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System Design Questions
+              Data
             
           </span>
         </div>
@@ -2840,6 +2840,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#apache-spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Spark
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-kafka" class="md-nav__link">
+    <span class="md-ellipsis">
+      Apache Kafka
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-lakehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lakehouse
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2854,7 +2889,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/data-engineering.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -2863,122 +2898,96 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/data-engineering.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="system-design-questions">System Design Questions<a class="headerlink" href="#system-design-questions" title="Permanent link">&para;</a></h1>
+<h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h1>
+<h2 id="apache-spark">Apache Spark<a class="headerlink" href="#apache-spark" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
-<p class="admonition-title">System Design Trade-Offs</p>
-<details class="tip">
-<summary>Video</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/1nENigGr-a0?si=1sv2c336Cch7k43L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-<ul>
-<li>SQL vs NoSQL</li>
-<li>Normalization vs Denormalization</li>
-<li>Consistency vs Availability</li>
-<li>Strong Consistency vs Eventual Consistency</li>
-<li>Batch Processing vs Stream Processing</li>
-</ul>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/2g1G8Jr88xU?si=njv5ki8NzLZq7N2F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-<ul>
-<li>Vertical Scaling vs Horizontal Scaling</li>
-<li>REST vs graphQL</li>
-<li>Stateful vs Stateless</li>
-<li>Read-through vs Write-through Caching</li>
-<li>Sync vs Async Processing</li>
-</ul>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is CAP Theorem?</p>
+<p class="admonition-title">What are The Similarities and Differences Between Apache Spark and Apache Flink?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>CAP theorem is a concept in distributed computing states that <strong>a distributed data store can't simultaneously provide all three of the following guarantees: consistency, availability, and partition tolerance</strong>. According to the theorem, <strong>a system can only guarantee two out of these three at the same time</strong>. It's a useful way to think about the trade-offs when choosing distributed systems.</p>
-<p>With the CAP theorem,</p>
-<ul>
-<li>the first part is <strong>consistency</strong>, which means that every time you read data, you get the most up-to-date information, or you get an error if it can't provide that up-to-date information.</li>
-<li>The second part is <strong>availability</strong>, which means that every request you make gets a response, even if it might not be the most up-to-date information.</li>
-<li>And the third part is <strong>partition tolerance</strong>, which means that the system continues to work even if there are network issues that split the system into separate parts.</li>
-</ul>
-<p>Let's go through three examples, each focusing on a different pair of the CAP theorem guarantees.</p>
-<p>First, if we consider a system that prioritizes <strong>consistency and availability (CA)</strong>, it means that every read will get the latest write, and the system will always respond to requests. However, if there's a network partition, the system might have to sacrifice partition tolerance because it will need to ensure that all nodes are perfectly in sync before responding. These systems are often used in environments where <strong>network partitions are either rare or not a big concern</strong>. <strong>A good example is a traditional relational database that runs on a single server or a cluster</strong> that doesn't usually face network issues. <strong>Banks or financial institutions</strong> often prefer CA systems because they need consistent and available data, and they can control the environment to reduce network partitions.</p>
-<p>Second, if we look at a system that ensures <strong>consistency and partition tolerance (CP)</strong>, that means it will always give you the most up-to-date data, and it will continue to function even if there's a network partition. But it might sacrifice availability because it could refuse to respond if it can't guarantee that consistency. An example of this would be a <strong>distributed database that uses strong consistency protocols, to ensure that most of the nodes agree on the data before responding, even if that means delaying responses</strong>. This is often important in industries like <strong>healthcare or finance</strong>, where data accuracy is critical, and you want to ensure that all parts of the system reflect the same data, even if that means sacrificing a bit of availability.</p>
-<p>Lastly, if we focus on <strong>availability and partition tolerance (AP)</strong>, that means the system will always give a response and keep working even if there's a network partition, but it might not always give you the most up-to-date data. This is what we often see in <strong>eventually consistent </strong>systems, like some NoSQL databases. An example of this would be a <strong>social media platform</strong> where you can still post updates and read posts even if some parts of the system are temporarily out of sync. These systems are designed to handle high traffic and ensure that users can always interact with the platform, even if it means that some data might not be perfectly consistent across all nodes at all times.</p>
+<p>Apache Spark and Apache Flink are both powerful distributed data processing frameworks, but they have some key similarities and differences.</p>
+<p>In terms of <strong>similarities</strong>, both frameworks support batch and stream processing, and they both provide high-level APIs in multiple languages, like Java, Scala, and Python. They also focus on fault tolerance, scalability, and exactly-once processing semantics.</p>
+<p>When it comes to <strong>differences</strong>, One of the main differences is that <strong>Flink is often considered to have a more native stream processing capability</strong>, meaning it was designed from the ground up to handle real-time data streams with very low latency. Spark, on the other hand, started primarily as a batch processing framework and later introduced Structured Streaming, which provides micro-batch processing.</p>
+<p>This means that <strong>while both can handle streaming data, Flink often achieves lower latency</strong>.</p>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">How to Scale Your Database?</p>
-<details class="tip">
-<summary>Video</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/_1IKwnbscQU?si=5gdpbjG31SPR1uP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-<ul>
-<li>Indexing</li>
-<li>Materialized Views</li>
-<li>Denormalization</li>
-<li>Vertical Scaling</li>
-<li>Horizontal Scaling</li>
-<li>Database Caching</li>
-<li>Replication</li>
-<li>Sharding</li>
-</ul>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">How to Improve API Performance?</p>
-<details class="tip">
-<summary>Video</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/zvWKqUiovAM?si=0JIYNvFGLvZD2cpC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-<ul>
-<li>Caching</li>
-<li>Pagination</li>
-<li>Avoiding N+1 Queries</li>
-<li>Asynchronous Processing</li>
-<li>Connection Pooling</li>
-<li>Payload Compression</li>
-<li>JSON Serializers</li>
-</ul>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is gRPC?</p>
+<p class="admonition-title">What is Trigger Types in Apache Spark Structure Streaming</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>gRPC</p>
-<p>https://www.youtube.com/shorts/t0ONFCY6NWI</p>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Distributed System Design Patterns</p>
-<details class="tip">
-<summary>Video</summary>
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/nH4qjmP2KEE?si=8HI6aRVBxW5CtwOz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p>In Apache Spark Structured Streaming, trigger types determine <strong>how often the streaming query processes data and produces results</strong>. There are a few different trigger types you can use:</p>
 <ul>
-<li>Ambassador</li>
-<li>Circuit Breaker</li>
-<li>CQRS</li>
-<li>Event Sourcing</li>
-<li>Leader Election</li>
-<li>Pub-Sub</li>
-<li>Sharding</li>
+<li><strong>Default Trigger</strong>: This is the default mode where Spark continuously processes data in <strong>micro-batches</strong> as soon as it arrives.</li>
+<li><strong>Fixed Interval Trigger</strong>: You can specify a fixed processing interval (for example, every 10 seconds). Spark will wait for that interval to pass before processing the next micro-batch.</li>
+<li><strong>One-Time Trigger</strong>: This trigger <strong>processes all available data once and then stops</strong>. It's useful for scenarios where you want to run a streaming job <strong>as a batch job</strong>.</li>
+<li><strong>Continuous Trigger</strong>: This is an <strong>experimental</strong> trigger where Spark processes data continuously <strong>with very low latency</strong>, though it's still in development</li>
 </ul>
 </details>
 </div>
 <div class="admonition question">
-<p class="admonition-title">What is OAuth 2.0?</p>
+<p class="admonition-title">What is Output Mode in Apache Spark Structured Streaming?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>OAuth 2.0 is an authorization framework that allows third-party applications to access a user's resources without exposing their credentials. It involves four main roles:</p>
-<ul>
-<li>the resource owner (typically the user),</li>
-<li>the client (the app that wants access),</li>
-<li>the authorization server, and</li>
-<li>the resource server.</li>
-</ul>
-<p>The user gives permission to the client through the authorization server, which then issues an access token. This token is then used by the client to access the user's resources on the resource server. It keeps everything secure and user credentials safe!</p>
+<p>In Apache Spark Structured Streaming, the output mode basically defines <strong>how the processed data is written to the output sink</strong>. There are three main output modes:</p>
+<ol>
+<li>
+<p><strong>Append Mode</strong>: <strong>Only the new rows that were added to the result table since the last trigger</strong> are written to the sink. This is the default mode for most sinks.</p>
+</li>
+<li>
+<p><strong>Complete Mode</strong>: <strong>The entire updated result table</strong> is written to the sink every time there's a trigger. This mode is useful for aggregations where you want to keep updating the whole result.</p>
+</li>
+<li>
+<p><strong>Update Mode</strong>: <strong>Only the rows that were updated since the last trigger</strong> are written to the sink. This is kind of a middle ground between Append and Complete modes.</p>
+</li>
+</ol>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What is Watermarking in Apache Spark Structured Streaming?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Watermarking in Apache Spark Structured Streaming is <strong>a way to handle late data</strong> in event-time based processing. Essentially, it allows you to define how late data can arrive and still be considered for processing. You set a watermark on an event-time column, and Spark will use that to <strong>manage state and clean up old data</strong>, ensuring that the system doesn't hold onto too much state for too long. It's really useful for managing streaming data efficiently.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What is Time Window in Apache Spark Structured Streaming?</p>
+<details class="tip">
+<summary>Answer</summary>
+</details>
+</div>
+<h2 id="apache-kafka">Apache Kafka<a class="headerlink" href="#apache-kafka" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">What is Apache Kafka?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Apache Kafka is an open-source distributed event streaming platform. It's designed to handle real-time data feeds, allowing you to publish, subscribe to, store, and process streams of records in a <strong>fault-tolerant</strong> way. It's often used for building <strong>real-time data pipelines</strong>, <strong>streaming applications</strong>, and <strong>event-driven architectures</strong>. It was originally developed by LinkedIn and later became part of the Apache Software Foundation.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What's the difference between Apache Kafka and the Message Queue?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Apache Kafka and traditional message queues, like RabbitMQ, both deal with messaging, but they have different architectures and use cases.</p>
+<p>Kafka is designed for high-throughput, distributed event streaming and can handle huge volumes of data with fault tolerance and scalability in mind. It uses a distributed log as its storage layer, which allows it to retain messages for a configurable amount of time, making it great for reprocessing and long-term storage of events.</p>
+<p>Traditional message queues, on the other hand, are usually designed for simpler point-to-point or pub-sub scenarios with a focus on delivering messages to consumers as quickly as possible, and they might not have the same level of built-in storage or scalability as Kafka.</p>
+</details>
+</div>
+<h2 id="data-lakehouse">Data Lakehouse<a class="headerlink" href="#data-lakehouse" title="Permanent link">&para;</a></h2>
+<div class="admonition question">
+<p class="admonition-title">What is Apache Iceberg?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Apache Iceberg is a high-performance Data Lakehouse table format designed for huge analytic datasets. It was originally developed by Netflix and later became an open-source Apache project. It supports features like <strong>schema evolution</strong>, <strong>hidden partitioning</strong>, and <strong>time travel</strong>, making it easier to manage large datasets efficiently!</p>
+<p>one cool feature of Apache Iceberg is <strong>schema evolution</strong>, which allows you to change your table's schema—like adding or renaming columns—without having to rewrite or recreate the table.</p>
+<p>Another feature is <strong>hidden partitioning</strong>, which means you can partition your data without having to expose those partitions in your query logic, making queries simpler and faster. Iceberg also supports <strong>partition evolution</strong> through hidden partitioning, which decouples logical columns from physical layout by tracking partition transforms in metadata.</p>
+<p>And then there's <strong>time travel</strong>, which lets you query historical versions of your data, so you can basically go back in time and see what the data looked like at any previous point.  A really common use case for time travel is data auditing and debugging.</p>
+<p>It's all about making data management a lot more flexible and efficient! </p>
 </details>
 </div>
 
