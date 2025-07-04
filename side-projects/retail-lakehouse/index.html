@@ -3181,27 +3181,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture-overview" class="md-nav__link">
+  <a href="#highlights" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture Overview
+      💡 Highlights
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-case-global-retail-inventory-sync" class="md-nav__link">
+  <a href="#solution-architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Use Case: Global Retail Inventory Sync
+      Solution Architecture Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#background" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Background
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#legacy-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems-and-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems and Challenges
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Requirements
     </span>
   </a>
   
@@ -3240,17 +3267,93 @@
 
 
 <h1 id="retail-lakehouse-with-debezium-kafka-iceberg-and-trino">Retail Lakehouse with Debezium, Kafka, Iceberg, and Trino<a class="headerlink" href="#retail-lakehouse-with-debezium-kafka-iceberg-and-trino" title="Permanent link">&para;</a></h1>
-<p>A streaming data pipeline that simulates a global e-commerce inventory system. This project uses <strong>Debezium</strong> and <strong>Kafka</strong> to capture real-time changes (CDC) from a PostgreSQL database and writes them into a unified <strong>Iceberg</strong> lakehouse table. <strong>Trino</strong> enables fast, federated SQL analytics on the evolving dataset.</p>
-<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
+<h2 id="highlights">💡 Highlights<a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="debezium-kafka-source-connector" name="__tabbed_1" type="radio" /><input id="kafka-cluster" name="__tabbed_1" type="radio" /><input id="iceberg-kafka-sink-connector" name="__tabbed_1" type="radio" /><input id="iceberg-data-lakehouse" name="__tabbed_1" type="radio" /><input id="trino" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="debezium-kafka-source-connector">Debezium Kafka Source Connector</label><label for="kafka-cluster">Kafka Cluster</label><label for="iceberg-kafka-sink-connector">Iceberg Kafka Sink Connector</label><label for="iceberg-data-lakehouse">Iceberg Data Lakehouse</label><label for="trino">Trino</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition success">
+<p class="admonition-title">Highlights</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Implemented <strong>real-time, event-driven data pipelines</strong> by capturing MySQL database change events (<strong>CDC</strong>) with <strong>Debezium</strong> and streaming them into <strong>Kafka</strong>, enabling downstream analytics.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Designed a <strong>non-intrusive CDC architecture</strong> leveraging MySQL/PostgreSQL binary logs, requiring <strong>no changes to source systems</strong> while ensuring <strong>exactly-once delivery</strong> and <strong>high fault tolerance</strong> via <strong>Kafka Connect</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Improved system <strong>resilience</strong> and <strong>observability</strong> through Debezium's <strong>offset tracking and recovery features</strong>, enabling <strong>resumable</strong> pipelines and reliable data integration across distributed environments.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition success">
+<p class="admonition-title">Highlights</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Provisioned a <strong>fault-tolerant</strong> <strong>Kafka cluster</strong> on <strong>Kubernetes</strong> using the <strong>Strimzi Operator</strong>, enabling declarative configuration and seamless lifecycle management</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Enabled <strong>KRaft</strong> (Kafka Raft Metadata mode) with a <strong>dual-role</strong> cluster, removing dependency on ZooKeeper and simplifying cluster architecture</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Designed for <strong>high availability</strong> by replicating Kafka topics and internal state across multiple brokers using <strong>replication factor</strong> and <strong>in-sync replicas (ISR)</strong>.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition success">
+<p class="admonition-title">Highlights</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Ensured <strong>centralized commit coordination</strong> for Apache Iceberg via the Kafka Sink Connector, enabling consistent and atomic writes across distributed systems.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Achieved <strong>exactly-once delivery semantics</strong> between Kafka and Iceberg tables, minimizing data duplication and ensuring data integrity.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Utilized <strong><code>DebeziumTransform</code> SMT</strong> to adapt Debezium CDC messages for compatibility with Iceberg's CDC feature, supporting real-time change propagation.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Enabled <strong>automatic table creation and schema evolution</strong>, simplifying integration and reducing operational overhead when ingesting data into Iceberg tables.</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition success">
+<p class="admonition-title">Highlights</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Adopted Apache Iceberg to bring ACID-compliant transactions and schema evolution to the data lake architecture.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Managed Iceberg tables using <strong>AWS Glue Data Catalog</strong> as the catalog layer and <strong>Amazon S3</strong> as the storage layer.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Enabled <strong>data debugging</strong> and <strong>auditability</strong> through Iceberg's time travel and snapshot rollback features.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Implemented branching and tagging (WAP) to support isolated writes, data validation, and safe promotion in production workflows</li>
+</ul>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition success">
+<p class="admonition-title">Highlights</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Integrated Trino to enable <strong>federated SQL queries</strong> across Apache Iceberg (S3) and external systems like BigQuery, <strong>improving analytical agility</strong>.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Simplified <strong>data access across multiple data sources without data duplication</strong>, enabling ad-hoc analytics and reporting from a unified SQL interface.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Integrated <strong>Google OAuth 2.0</strong> with Trino to enable <strong>token-based authentication</strong>, improving platform <strong>auditability</strong> and user <strong>accountability</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h2 id="solution-architecture-overview">Solution Architecture Overview<a class="headerlink" href="#solution-architecture-overview" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" href="architecture.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="architecture.drawio.svg" /></a></p>
-<h2 id="use-case-global-retail-inventory-sync">Use Case: Global Retail Inventory Sync<a class="headerlink" href="#use-case-global-retail-inventory-sync" title="Permanent link">&para;</a></h2>
-<p>Imagine an international e-commerce company with separate inventory databases per region (e.g., US, EU, ASIA). This system continuously syncs inventory changes into a central Iceberg table for analytics and reporting — without batch jobs.</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<p>You are a solution architect at a fast-growing e-commerce company that processes hundreds of thousands of transactions and user interactions daily.</p>
+<p>The current data setup is as follows:</p>
 <ul>
-<li>Real-time inventory synchronization via <strong>Debezium</strong></li>
-<li>Query data instantly with <strong>Trino</strong> using ANSI SQL</li>
-<li>Pluggable catalog support (e.g., REST, Hive)</li>
-<li>Cloud-native deployment using Kubernetes</li>
+<li>Order and transaction data is stored in <strong>AWS RDS (MySQL)</strong>.</li>
+<li>User behavioral data—such as product views, cart additions, and ad clicks—is collected via <strong>Google Analytics 4 (GA4)</strong> and streamed directly into <strong>BigQuery</strong>.</li>
+<li>The team is familiar with both <strong>AWS</strong> and <strong>Google Cloud</strong>, and <strong>Amazon S3</strong> is used as an intermediate storage layer for certain analytics workflows.</li>
+</ul>
+<h2 id="legacy-architecture">Legacy Architecture<a class="headerlink" href="#legacy-architecture" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Daily batch ETL jobs export data from RDS to feed internal reporting tools (e.g., Tableau or Google Looker Studio).</li>
+<li>GA4 user events are streamed into BigQuery in real time and queried for behavioral analytics.</li>
+<li>There is a clear <strong>data silo</strong> between MySQL and BigQuery, making it difficult to join and analyze user behavior alongside transactional data.</li>
+<li>Due to the large volume of data, the team prefers <strong>not to move data unnecessarily</strong> between systems to avoid latency and cost.</li>
+</ul>
+<h2 id="problems-and-challenges">Problems and Challenges<a class="headerlink" href="#problems-and-challenges" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Reporting <strong>latency is too high</strong> due to daily batch processing. Marketing teams cannot react in real time to campaign performance.</li>
+<li>There is <strong>no unified way to analyze</strong> both behavioral and transactional data together, which limits insight into user journeys and conversion paths.</li>
+<li><strong>Data duplication or migration across platforms is undesirable due to storage and operational costs</strong>.</li>
+<li>There is <strong>no centralized authentication or audit logging mechanism</strong> to track query access and ensure data governance across multiple clouds.</li>
+</ul>
+<h2 id="business-requirements">Business Requirements<a class="headerlink" href="#business-requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Marketing teams</strong> need real-time reports that combine website behavior and order data to quickly evaluate and adjust campaign performance.</li>
+<li><strong>Product managers</strong> want to track funnel metrics like impressions, clicks, and conversions without waiting for daily batch reports.</li>
+<li><strong>Data analysts</strong> need access to versioned, clean, and reliable data to support accurate ad-hoc analysis and troubleshoot issues when metrics look off.</li>
+<li><strong>IT and data governance teams</strong> require secure, auditable access to data, with clear control over who can query what.</li>
 </ul>
 
 
