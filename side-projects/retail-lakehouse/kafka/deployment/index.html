@@ -4936,6 +4936,8 @@
 </span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>iceberg-connector<span class="w">    </span>iceberg-connect-cluster<span class="w">    </span>org.apache.iceberg.connect.IcebergSinkConnector<span class="w">   </span><span class="m">1</span><span class="w">           </span>True
 </span></code></pre></div>
 <h3 id="verify-the-data-pipeline_1">Verify the Data Pipeline<a class="headerlink" href="#verify-the-data-pipeline_1" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../static/cdc-sync-s3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/cdc-sync-s3.png" /></a></p>
+<p><a class="glightbox" href="../static/cdc-sync-athena.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/cdc-sync-athena.png" /></a></p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>-it<span class="w"> </span>mysql-6b84fd947d-9g9lt<span class="w"> </span>--<span class="w"> </span>mysql<span class="w"> </span>-uroot<span class="w"> </span>-pdebezium
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>sql&gt;<span class="w"> </span>use<span class="w"> </span>inventory<span class="p">;</span>
@@ -4943,6 +4945,7 @@
 </span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a>VALUES<span class="w"> </span><span class="o">(</span><span class="s1">&#39;2016-03-01&#39;</span>,<span class="w"> </span><span class="m">1004</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">108</span><span class="o">)</span><span class="p">;</span>
 </span></code></pre></div>
 <h4 id="schema-evolution">Schema Evolution<a class="headerlink" href="#schema-evolution" title="Permanent link">&para;</a></h4>
+<p><a class="glightbox" href="../static/cdc-sync-schema-evolution.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/cdc-sync-schema-evolution.png" /></a></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>mysql&gt; ALTER TABLE orders ADD COLUMN shipping_address TEXT DEFAULT NULL;
 </span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>Query OK, 0 rows affected (0.30 sec)
 </span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>Records: 0  Duplicates: 0  Warnings: 0
@@ -4993,6 +4996,8 @@
 <ul>
 <li><a href="https://debezium.io/documentation//reference/stable/operations/kubernetes.html">Deploying Debezium on Kubernetes | Debezium Documentation</a></li>
 <li><a href="https://strimzi.io/docs/operators/latest/deploying">Deploying and Managing | Strimzi Documentation</a></li>
+<li><a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-format-iceberg.html">Using the Iceberg framework in AWS Glue | AWS</a></li>
+<li><a href="https://iceberg.apache.org/docs/latest/kafka-connect/">Iceberg Kafka Connector | Iceberg</a></li>
 </ul>
 
 
