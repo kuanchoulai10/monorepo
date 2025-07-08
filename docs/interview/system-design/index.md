@@ -1,25 +1,52 @@
 # System Design Questions
 
-**Core Concepts**
+## Core Concepts
 
 - [x] [CAP Theorem](./cap.md)
 - [x] [Consistent Hashing](./consistent-hashing.md)
 
 
-**Key Technologies**
+## Key Technologies
 
 - [x] [Apache Kafka](./kafka.md)
 - [x] [AWS DynamoDB](./dynamodb.md)
-- [x] [Apache Spark](./spark.md)
+- [ ] [Apache Spark](./spark.md)
 
-**Product**
+## Product System Design
+
+In these interviews, you'll be asked to design a system behind a product.
 
 - [x] [Design a Ride-Sharing Service Like Uber](./ride-sharing-service.md)
 
-**Infrastructure**
+## Infrastructure System Design
+
+In these interviews, you'll be asked to design a system that supports a particular infrastructure use case.
 
 - [x] [Design a Rate Limiter](./rate-limiter.md)
 - [ ] [Design a Distributed Message Queue](./distributed-message-queue.md)
+
+## Machine Learning System Design
+
+In these interviews, you'll be asked to design a system that supports a particular machine learning use case.
+
+## Data Pipeline Design
+
+In these interviews, you'll be asked to design a system that supports a particular data pipeline use case.
+
+## Data Modeling
+
+In these interviews, you'll be asked to design a data model for a particular use case.
+
+## Data Architecture
+
+In these interviews, you'll be asked to design a data architecture for a particular use case.
+
+### Core technologies
+
+- [x] [Apache Spark](./spark.md)
+
+---
+
 
 !!! question "System Design Trade-Offs"
 
