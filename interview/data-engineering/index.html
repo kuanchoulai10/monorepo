@@ -3168,24 +3168,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apache-spark" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apache Spark
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apache-kafka" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apache Kafka
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#data-lakehouse" class="md-nav__link">
     <span class="md-ellipsis">
       Data Lakehouse
@@ -3227,78 +3209,6 @@
 
 
 <h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h1>
-<h2 id="apache-spark">Apache Spark<a class="headerlink" href="#apache-spark" title="Permanent link">&para;</a></h2>
-<div class="admonition question">
-<p class="admonition-title">What are The Similarities and Differences Between Apache Spark and Apache Flink?</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>Apache Spark and Apache Flink are both powerful distributed data processing frameworks, but they have some key similarities and differences.</p>
-<p>In terms of <strong>similarities</strong>, both frameworks support batch and stream processing, and they both provide high-level APIs in multiple languages, like Java, Scala, and Python. They also focus on fault tolerance, scalability, and exactly-once processing semantics.</p>
-<p>When it comes to <strong>differences</strong>, One of the main differences is that <strong>Flink is often considered to have a more native stream processing capability</strong>, meaning it was designed from the ground up to handle real-time data streams with very low latency. Spark, on the other hand, started primarily as a batch processing framework and later introduced Structured Streaming, which provides micro-batch processing.</p>
-<p>This means that <strong>while both can handle streaming data, Flink often achieves lower latency</strong>.</p>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is Trigger Types in Apache Spark Structure Streaming</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>In Apache Spark Structured Streaming, trigger types determine <strong>how often the streaming query processes data and produces results</strong>. There are a few different trigger types you can use:</p>
-<ul>
-<li><strong>Default Trigger</strong>: This is the default mode where Spark continuously processes data in <strong>micro-batches</strong> as soon as it arrives.</li>
-<li><strong>Fixed Interval Trigger</strong>: You can specify a fixed processing interval (for example, every 10 seconds). Spark will wait for that interval to pass before processing the next micro-batch.</li>
-<li><strong>One-Time Trigger</strong>: This trigger <strong>processes all available data once and then stops</strong>. It's useful for scenarios where you want to run a streaming job <strong>as a batch job</strong>.</li>
-<li><strong>Continuous Trigger</strong>: This is an <strong>experimental</strong> trigger where Spark processes data continuously <strong>with very low latency</strong>, though it's still in development</li>
-</ul>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is Output Mode in Apache Spark Structured Streaming?</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>In Apache Spark Structured Streaming, the output mode basically defines <strong>how the processed data is written to the output sink</strong>. There are three main output modes:</p>
-<ol>
-<li>
-<p><strong>Append Mode</strong>: <strong>Only the new rows that were added to the result table since the last trigger</strong> are written to the sink. This is the default mode for most sinks.</p>
-</li>
-<li>
-<p><strong>Complete Mode</strong>: <strong>The entire updated result table</strong> is written to the sink every time there's a trigger. This mode is useful for aggregations where you want to keep updating the whole result.</p>
-</li>
-<li>
-<p><strong>Update Mode</strong>: <strong>Only the rows that were updated since the last trigger</strong> are written to the sink. This is kind of a middle ground between Append and Complete modes.</p>
-</li>
-</ol>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is Watermarking in Apache Spark Structured Streaming?</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>Watermarking in Apache Spark Structured Streaming is <strong>a way to handle late data</strong> in event-time based processing. Essentially, it allows you to define how late data can arrive and still be considered for processing. You set a watermark on an event-time column, and Spark will use that to <strong>manage state and clean up old data</strong>, ensuring that the system doesn't hold onto too much state for too long. It's really useful for managing streaming data efficiently.</p>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What is Time Window in Apache Spark Structured Streaming?</p>
-<details class="tip">
-<summary>Answer</summary>
-</details>
-</div>
-<h2 id="apache-kafka">Apache Kafka<a class="headerlink" href="#apache-kafka" title="Permanent link">&para;</a></h2>
-<div class="admonition question">
-<p class="admonition-title">What is Apache Kafka?</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>Apache Kafka is an open-source distributed event streaming platform. It's designed to handle real-time data feeds, allowing you to publish, subscribe to, store, and process streams of records in a <strong>fault-tolerant</strong> way. It's often used for building <strong>real-time data pipelines</strong>, <strong>streaming applications</strong>, and <strong>event-driven architectures</strong>. It was originally developed by LinkedIn and later became part of the Apache Software Foundation.</p>
-</details>
-</div>
-<div class="admonition question">
-<p class="admonition-title">What's the difference between Apache Kafka and the Message Queue?</p>
-<details class="tip">
-<summary>Answer</summary>
-<p>Apache Kafka and traditional message queues, like RabbitMQ, both deal with messaging, but they have different architectures and use cases.</p>
-<p>Kafka is designed for high-throughput, distributed event streaming and can handle huge volumes of data with fault tolerance and scalability in mind. It uses a distributed log as its storage layer, which allows it to retain messages for a configurable amount of time, making it great for reprocessing and long-term storage of events.</p>
-<p>Traditional message queues, on the other hand, are usually designed for simpler point-to-point or pub-sub scenarios with a focus on delivering messages to consumers as quickly as possible, and they might not have the same level of built-in storage or scalability as Kafka.</p>
-</details>
-</div>
 <h2 id="data-lakehouse">Data Lakehouse<a class="headerlink" href="#data-lakehouse" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
 <p class="admonition-title">What is Apache Iceberg?</p>
