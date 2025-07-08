@@ -4,13 +4,15 @@
 
 - [x] [CAP Theorem](./cap.md)
 - [x] [Consistent Hashing](./consistent-hashing.md)
-
+- [ ] [Geospatial Indexing](./geospatial-indexing.md)
+- [ ] [API Performance Optimization](./api-perf-opt.md)
+- [ ] [Database Performance Optimization](./db-perf-opt.md)
 
 ## Key Technologies
 
 - [x] [Apache Kafka](./kafka.md)
 - [x] [AWS DynamoDB](./dynamodb.md)
-- [ ] [Apache Spark](./spark.md)
+- [x] [Apache Spark](./spark.md)
 
 ## Product System Design
 
@@ -67,37 +69,6 @@ In these interviews, you'll be asked to design a data architecture for a particu
         - Stateful vs Stateless
         - Read-through vs Write-through Caching
         - Sync vs Async Processing
-
-
-!!! question "How to Scale Your Database?"
-
-    ??? tip "Video"
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_1IKwnbscQU?si=5gdpbjG31SPR1uP3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-        - Indexing
-        - Materialized Views
-        - Denormalization
-        - Vertical Scaling
-        - Horizontal Scaling
-        - Database Caching
-        - Replication
-        - Sharding
-
-
-!!! question "How to Improve API Performance?"
-
-    ??? tip "Video"
-
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/zvWKqUiovAM?si=0JIYNvFGLvZD2cpC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-        - Caching
-        - Pagination
-        - Avoiding N+1 Queries
-        - Asynchronous Processing
-        - Connection Pooling
-        - Payload Compression
-        - JSON Serializers
 
 
 !!! question "What is gRPC?"
