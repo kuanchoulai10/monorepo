@@ -17,6 +17,22 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
      [--> Data2ML Ops](./data2ml-ops/index.md)
 
+-   :material-folder-heart:{ .lg .middle } __Retail Lakehouse__
+
+    ---
+
+    Building a Data Lakehouse architecture for real-time retail analytics using Debezium, Apache Kafka, Apache Iceberg, AWS Glue and Trino.
+
+    [--> Retail Lakehouse](./retail-lakehouse/index.md)
+
+-   :material-folder-heart:{ .lg .middle } __Unified SQL-based Data Pipelines__
+
+    ---
+
+    Developing a unified SQL-based data pipeline architecture on BigQuery for cross-cloud data integration and analytics.
+
+    [--> Unified SQL-based Data Pipelines](./data-mesh/index.md)
+
 -   :material-folder-heart:{ .lg .middle } __Trending Content Prediction__
 
     ---
