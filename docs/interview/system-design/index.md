@@ -4,7 +4,8 @@
 
 - [x] [CAP Theorem](./cap.md)
 - [x] [Consistent Hashing](./consistent-hashing.md)
-- [ ] [Geospatial Indexing](./geospatial-indexing.md)
+- [ ] [Indexing](./indexing.md)
+- [ ] [Locking](./locking.md)
 - [ ] [API Performance Optimization](./api-perf-opt.md)
 - [ ] [Database Performance Optimization](./db-perf-opt.md)
 

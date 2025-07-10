@@ -13,4 +13,4 @@
 
     ??? tip "Answer"
 
-        Consistent hashing is a technique used to distribute data across a cluster of nodes in a way that minimizes data movement when nodes are added or removed. It allows for efficient scaling and load balancing in distributed systems.
+        Consistent hashing is a technique used to distribute data across a cluster of nodes in a way that **minimizes data movement** when nodes are added or removed. It allows for efficient scaling and load balancing in distributed systems.

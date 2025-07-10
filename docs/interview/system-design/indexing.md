@@ -1,4 +1,4 @@
-# Geospatial Indexing
+# Indexing
 
 !!! question "What is Geohashing?"
 
