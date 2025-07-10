@@ -13,12 +13,14 @@
 - [x] [Apache Kafka](./kafka.md)
 - [x] [AWS DynamoDB](./dynamodb.md)
 - [x] [Apache Spark](./spark.md)
+- [ ] [Redis](./redis.md)
 
 ## Product
 
 In these interviews, you'll be asked to design a system behind a product.
 
 - [x] [Design a Ride-Sharing Service Like Uber](./ride-sharing-service.md)
+- [ ] [Design a Ticket Booking Site Like Ticketmaster](./ticket-booking-site.md)
 
 ## Infrastructure
 
@@ -26,6 +28,7 @@ In these interviews, you'll be asked to design a system that supports a particul
 
 - [x] [Design a Rate Limiter](./rate-limiter.md)
 - [ ] [Design a Distributed Message Queue](./distributed-message-queue.md)
+- [ ] [Design a Key-Value Store](./key-value-store.md)
 
 ## Machine Learning
 

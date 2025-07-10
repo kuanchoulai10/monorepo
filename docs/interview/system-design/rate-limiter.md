@@ -4,9 +4,20 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SgWb6tWx3S8?si=1bpv6F1zIHVySY5x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Requirements
+!!! question "What is Rate Limiter?"
 
-### Functional Requirements
+    ??? tip "Answer"
 
-### Non-Functional Requirements
+        prevent overload
+        protect against DDoS attacks
+        fair usage
+        cost management
 
+        client-side
+        server-side
+        middleware
+
+        token bucket algorithm
+        leaky bucket algorithm
+        fixed window counter
+        sliding window log
