@@ -8,16 +8,21 @@
 
     ??? tip "Answer"
 
-        Apache Kafka is an open-source distributed event streaming platform. It's designed to handle real-time data feeds, allowing you to publish, subscribe to, store, and process streams of records in a **fault-tolerant** way. It's often used for building **real-time data pipelines**, **streaming applications**, and **event-driven architectures**. It was originally developed by LinkedIn and later became part of the Apache Software Foundation.
+        Apache Kafka is an **open-source distributed event streaming platform**. It's designed to handle real-time data feeds, allowing you to publish, subscribe to, store, and process streams of records in a **fault-tolerant** way. It's often used for building **real-time data pipelines**, **streaming applications**, and **event-driven architectures**. It was originally developed by LinkedIn and later became part of the Apache Software Foundation.
 
 
-!!! question "What's the difference between Apache Kafka and the Message Queue?"
+!!! question "What's the difference between Apache Kafka and RabbitMQ?"
 
     ??? tip "Answer"
 
-        Apache Kafka and traditional message queues, like RabbitMQ, both deal with messaging, but they have different architectures and use cases.
-        
-        Kafka is designed for high-throughput, distributed event streaming and can handle huge volumes of data with fault tolerance and scalability in mind. It uses a distributed log as its storage layer, which allows it to retain messages for a configurable amount of time, making it great for reprocessing and long-term storage of events.
-        
-        Traditional message queues, on the other hand, are usually designed for simpler point-to-point or pub-sub scenarios with a focus on delivering messages to consumers as quickly as possible, and they might not have the same level of built-in storage or scalability as Kafka.
+        There are quite a few differences between Kafka and **RabbitMQ**!
 
+        For starters, **Kafka** is a *distributed event streaming platform*, while **RabbitMQ** is a *traditional message broker*.
+
+        In terms of **storage**, **Kafka** is built around the concept of a *distributed commit log*, which means all the messages are stored on disk in a *durable*, *append-only* fashion. This design allows Kafka to *handle huge amounts of data* and retain messages for long periods, which is great for scenarios where you might want to *replay* or *reprocess* data. **RabbitMQ**, on the other hand, focuses more on transient message delivery, and while it does have persistent storage options, it's generally optimized for *ensuring that messages are delivered quickly to consumers rather than storing them for long-term replay*.
+
+        In terms of **fault tolerance**, **Kafka** is designed with *replication in mind*, so it can handle node failures gracefully. **RabbitMQ** also supports clustering and mirrored queues for fault tolerance, but *it's not as inherently scalable as Kafka*.
+
+        And when it comes to consuming messages, **Kafka** consumers **pull** messages from a partitioned log, which allows them to reprocess messages if needed. **RabbitMQ** consumers, however, typically get messages **pushed** to them, which can be more straightforward for certain use cases.
+
+        After a message is consumed, the behavior differs quite a bit between Kafka and RabbitMQ. In **Kafka**, consuming a message doesn't actually remove it from the queue. Instead, the message remains in the log for a configured retention period, and the consumer just keeps track of its own offset, which is basically a pointer to where it last read. This means that multiple consumers can read the same message at different times, and you can even rewind or reprocess messages if needed. In **RabbitMQ**, once a message is consumed and acknowledged, it's typically removed from the queue, so it's more of a one-time delivery model.

@@ -14,20 +14,20 @@
 - [x] [AWS DynamoDB](./dynamodb.md)
 - [x] [Apache Spark](./spark.md)
 
-## Product System Design
+## Product
 
 In these interviews, you'll be asked to design a system behind a product.
 
 - [x] [Design a Ride-Sharing Service Like Uber](./ride-sharing-service.md)
 
-## Infrastructure System Design
+## Infrastructure
 
 In these interviews, you'll be asked to design a system that supports a particular infrastructure use case.
 
 - [x] [Design a Rate Limiter](./rate-limiter.md)
 - [ ] [Design a Distributed Message Queue](./distributed-message-queue.md)
 
-## Machine Learning System Design
+## Machine Learning
 
 In these interviews, you'll be asked to design a system that supports a particular machine learning use case.
 
