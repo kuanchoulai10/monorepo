@@ -12,28 +12,24 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/learning-in-progress/202507/">
+        <link rel="canonical" href="https://kcl10.com/interview/system-design/key-value-store/">
       
       
-        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../202506/">
-      
-      
-      <link rel="icon" href="../../images/avatar.png">
+      <link rel="icon" href="../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>July 2025 - KC's Data & Life Notes</title>
+        <title>Design a Key-Value Store - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -77,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="July 2025 - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Design a Key-Value Store - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/202507.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/key-value-store.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,19 +85,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/learning-in-progress/202507/" >
+        <meta  property="og:url"  content="https://kcl10.com/interview/system-design/key-value-store/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="July 2025 - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Design a Key-Value Store - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/202507.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/key-value-store.png" >
       
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -112,7 +108,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -129,7 +125,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#july-2025" class="md-skip">
+        <a href="#design-a-key-value-store" class="md-skip">
           Skip to content
         </a>
       
@@ -173,9 +169,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -192,7 +188,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              July 2025
+              Design a Key-Value Store
             
           </span>
         </div>
@@ -275,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
     
@@ -295,7 +291,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../side-projects/" class="md-tabs__link">
+        <a href="../../../side-projects/" class="md-tabs__link">
           
   
     
@@ -311,13 +307,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../learning-in-progress/" class="md-tabs__link">
           
   
     
@@ -337,7 +331,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -355,7 +349,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
     
@@ -374,7 +368,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../about-me/" class="md-tabs__link">
+        <a href="../../../about-me/" class="md-tabs__link">
           
   
     
@@ -398,8 +392,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -411,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -461,7 +453,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -530,7 +522,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/" class="md-nav__link ">
+            <a href="../../../side-projects/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -599,7 +591,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/data2ml-ops/" class="md-nav__link ">
+            <a href="../../../side-projects/data2ml-ops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -633,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -698,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -773,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -795,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -943,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -965,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1048,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1070,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/how-it-works/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1092,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1114,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1158,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1245,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1267,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/how-it-works/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1289,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1311,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1333,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1377,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1399,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
+      <a href="../../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1466,7 +1458,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/data-mesh/" class="md-nav__link ">
+            <a href="../../../side-projects/data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1500,7 +1492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
+      <a href="../../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1522,7 +1514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
+      <a href="../../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data-mesh/combined/" class="md-nav__link">
+      <a href="../../../side-projects/data-mesh/combined/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1566,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/data-mesh/rag/" class="md-nav__link">
+      <a href="../../../side-projects/data-mesh/rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1623,7 +1615,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/retail-lakehouse/" class="md-nav__link ">
+            <a href="../../../side-projects/retail-lakehouse/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1700,7 +1692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/kafka/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/kafka/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1826,7 +1818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1848,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1870,7 +1862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1892,7 +1884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1914,7 +1906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1936,7 +1928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2023,7 +2015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2045,7 +2037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2067,7 +2059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2089,7 +2081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
+      <a href="../../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2158,7 +2150,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/dcard-hw/" class="md-nav__link ">
+            <a href="../../../side-projects/dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2192,7 +2184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2214,7 +2206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2236,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2258,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2280,7 +2272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2331,7 +2323,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/leetcode/" class="md-nav__link ">
+            <a href="../../../side-projects/leetcode/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2393,7 +2385,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2427,7 +2419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2449,7 +2441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2483,8 +2475,6 @@
       
   
   
-    
-  
   
   
     
@@ -2503,22 +2493,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../learning-in-progress/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2530,13 +2517,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Learning in Progress
@@ -2549,31 +2536,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    July 2025
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../learning-in-progress/202507/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2583,124 +2549,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On This Page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On This Page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#highlight-of-the-month" class="md-nav__link">
-    <span class="md-ellipsis">
-      Highlight of the Month
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-created-or-tried" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Created or Tried
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-learned" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Learned
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflections-beyond-just-tech" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflections – Beyond Just Tech
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-consumed" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Consumed
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="What I Consumed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#attended" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attended
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watched" class="md-nav__link">
-    <span class="md-ellipsis">
-      Watched
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#completed-courses" class="md-nav__link">
-    <span class="md-ellipsis">
-      Completed Courses
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#goals-for-next-month" class="md-nav__link">
-    <span class="md-ellipsis">
-      Goals for Next Month
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2713,7 +2561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../202506/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202506/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2735,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../202505/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202505/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2789,7 +2637,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../blog/" class="md-nav__link ">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2868,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/archive/2025/" class="md-nav__link">
+      <a href="../../../blog/archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2947,7 +2795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/cicd/" class="md-nav__link">
+      <a href="../../../blog/category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2971,7 +2819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/data/" class="md-nav__link">
+      <a href="../../../blog/category/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2995,7 +2843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/mkdocs/" class="md-nav__link">
+      <a href="../../../blog/category/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3032,7 +2880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3078,7 +2926,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/" class="md-nav__link ">
+            <a href="../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3161,7 +3009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3183,7 +3031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3205,7 +3053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3227,7 +3075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3278,7 +3126,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3323,8 +3171,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -3339,110 +3185,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On This Page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#highlight-of-the-month" class="md-nav__link">
-    <span class="md-ellipsis">
-      Highlight of the Month
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-created-or-tried" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Created or Tried
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-learned" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Learned
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reflections-beyond-just-tech" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reflections – Beyond Just Tech
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-i-consumed" class="md-nav__link">
-    <span class="md-ellipsis">
-      What I Consumed
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="What I Consumed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#attended" class="md-nav__link">
-    <span class="md-ellipsis">
-      Attended
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watched" class="md-nav__link">
-    <span class="md-ellipsis">
-      Watched
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#completed-courses" class="md-nav__link">
-    <span class="md-ellipsis">
-      Completed Courses
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#goals-for-next-month" class="md-nav__link">
-    <span class="md-ellipsis">
-      Goals for Next Month
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3454,12 +3196,10 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/learning-in-progress/202507.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/key-value-store.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3468,107 +3208,19 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/learning-in-progress/202507.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/key-value-store.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="july-2025">July 2025<a class="headerlink" href="#july-2025" title="Permanent link">&para;</a></h1>
-<h2 id="highlight-of-the-month">Highlight of the Month<a class="headerlink" href="#highlight-of-the-month" title="Permanent link">&para;</a></h2>
-<p>Summarize my biggest breakthrough, project, or insight in this month:</p>
-<blockquote></blockquote>
-<h2 id="what-i-created-or-tried">What I Created or Tried<a class="headerlink" href="#what-i-created-or-tried" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: How I evaluate a new tool</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: Lakebase / Neon</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: How Big Companies use Apache Kafka</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: How WISE uses Trino and Iceberg to build a data lake at scale</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: <a href="../../blog/ducklake-the-next-big-thing/">The Lakehouse Series: DuckLake — The Next Big Thing?</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Published a blog post: <a href="../../blog/hudi-vs-iceberg-vs-delta-lake/">The Lakehouse Series: Hudi vs Iceberg vs Delta Lake — Format Wars Begin</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://pyrefly.org/">Pyrefly</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://duckdb.org/">DuckDB</a> and <a href="https://ducklake.select/">DuckLake</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Experimented with <a href="https://github.com/jlowin/fastmcp">FastMCP v2</a></li>
+<h1 id="design-a-key-value-store">Design a Key-Value Store<a class="headerlink" href="#design-a-key-value-store" title="Permanent link">&para;</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6fOoXT1HYxk?si=yWeP-1dmcdI-EJmi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<ul>
+<li><a href="../redis/">Redis</a></li>
 </ul>
-<h2 id="what-i-learned">What I Learned<a class="headerlink" href="#what-i-learned" title="Permanent link">&para;</a></h2>
-<p>Short reflections on what I actually learned or became more confident in:</p>
-<h2 id="reflections-beyond-just-tech">Reflections – Beyond Just Tech<a class="headerlink" href="#reflections-beyond-just-tech" title="Permanent link">&para;</a></h2>
-<p>Soft-skill insights or workflow/communication/process reflections:</p>
-<h2 id="what-i-consumed">What I Consumed<a class="headerlink" href="#what-i-consumed" title="Permanent link">&para;</a></h2>
-<p>A list of articles, papers, courses, or videos I read/watched/completed:</p>
-<h3 id="attended">Attended<a class="headerlink" href="#attended" title="Permanent link">&para;</a></h3>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://kcd-taipei-2025.sessionize.com/schedule">Kubernetes Community Days Taipei 2025</a><ul>
-<li>Kepler</li>
-<li>Crossplane</li>
-<li>Envoy Gateway</li>
-</ul>
-</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> System Design Mock Interview with Kevin and Shirley<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Design a Rate Limiter</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Design a Ticket Master</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Design a Ride-Sharing Service like Uber</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Design a Distributed Message Queue</li>
-</ul>
-</li>
-</ul>
-<h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.hellointerview.com/learn/system-design/problem-breakdowns/uber">Design a Ride-Sharing Service Like Uber | Hello Interview</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.hellointerview.com/learn/system-design/deep-dives/consistent-hashing">Consistent Hashing | Hello Interview</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.hellointerview.com/learn/system-design/deep-dives/dynamodb">DynamoDB | Hello Interview</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.hellointerview.com/learn/system-design/deep-dives/kafka">Kafka | Hello Interview</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://debezium.io/blog/2020/02/25/lessons-learned-running-debezium-with-postgresql-on-rds/">Lessons Learned from Running Debezium with PostgreSQL on Amazon RDS</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://discord.com/blog/how-discord-stores-trillions-of-messages">How Discord Stores Trillions of Messages</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://github.com/neondatabase/neon">Neon</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://github.com/mindsdb/mindsdb">MindsDB</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.onehouse.ai/blog/comprehensive-data-catalog-comparison">Comprehensive Data Catalog Comparison</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-metastore-fully-managed-metadata-service">Introducing BigQuery metastore, a unified metadata service with Apache Iceberg support</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=WuUS73QPuZE">Running Trino as exabyte-scale data warehouse</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=rl4GLNEVkjo">Empowering self-serve data analytics with a text-to-SQL assistant at LinkedIn</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=dKQ2zShNlyQ">Best practices and insights when migrating to Apache Iceberg for data engineers</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=2qwBcKmQSn0">Many clusters and only one gateway - Starburst, Naver, and Bloomberg at Trino Summit 2023</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=idk0GMxs8vE">Visualizing Trino with Superset - Preset at Trino Summit 2023</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=qZejzyxT2fo">Trino workload management - Airbnb at Trino Summit 2023</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.onehouse.ai/blog/intro-to-hudi-and-flink">An Introduction to the Hudi and Flink Integration</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://nightlies.apache.org/flink/flink-cdc-docs-master/docs/connectors/flink-sources/tutorials/build-real-time-data-lake-tutorial">Building a Real-time Data Lake with Flink CDC</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.databricks.com/blog/2021/05/19/evolution-to-the-data-lakehouse.html">Evolution to the Data Lakehouse</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://docs.databricks.com/aws/en/lakehouse/">What is a data lakehouse? | Databricks Docs</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.dremio.com/blog/apache-iceberg-v3/">What’s New in Apache Iceberg Format Version 3?</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.databricks.com/blog/apache-icebergtm-v3-moving-ecosystem-towards-unification">Apache Iceberg™ v3: Moving the Ecosystem Towards Unification</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://github.com/humanlayer/12-factor-agents">12-Factor Agents</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://cookbook.openai.com/examples/partners/model_selection_guide/model_selection_guide">Practical Guide for Model Selection for Real‑World Use Cases</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://medium.com/agoda-engineering/featurestore-at-agoda-how-we-optimized-dragonfly-for-high-performance-caching-4d28c584f612">Featurestore at Agoda: How We Optimized Dragonfly for High-Performance Caching</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.linkedin.com/blog/engineering/data-streaming-processing/revolutionizing-real-time-streaming-processing--4-trillion-event">Revolutionizing Real-Time Streaming Processing: 4 Trillion Events Daily at LinkedIn</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://lakefs.io/blog/dvc-vs-git-vs-dolt-vs-lakefs/">Data versioning as your ‘Get out of jail’ card – DVC vs. Git-LFS vs. dolt vs. lakeFS</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://github.com/unitycatalog/unitycatalog">Unity Catalog | GitHub</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.dremio.com/blog/exploring-the-architecture-of-apache-iceberg-delta-lake-and-apache-hudi/">Exploring the Architecture of Apache Iceberg, Delta Lake, and Apache Hudi</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/">Hudi vs Iceberg vs Delta Lake: Data Lake Table Formats Compared</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://research.google/pubs/big-metadata-when-metadata-is-big-data/">Big Metadata: When Metadata is Big Data</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://research.google/pubs/vortex-a-stream-oriented-storage-engine-for-big-data-analytics/">Vortex: A Stream-oriented Storage Engine For Big Data Analytics</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://invariantlabs.ai/blog/mcp-github-vulnerability">GitHub MCP Exploited: Accessing private repositories via MCP</a></li>
-</ul>
-<h3 id="watched">Watched<a class="headerlink" href="#watched" title="Permanent link">&para;</a></h3>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=BHqjEjzAicA">CAP Theorem Simplified</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=1nENigGr-a0">System Design Was HARD - Until You Knew the Trade-Offs</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=Qd9tJ3H_hPE">7 System Design Concepts Explained in 10 Minutes</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://youtu.be/_HBUvBmhAt8?si=Dwc--1m1ZfuWIUvI">Supercharging Wise’s Data Lake with Apache Iceberg</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=mKEq_YaJjPI">How I build Agentic MCP Servers for Claude Code (Prompts CHANGE Everything)</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=0C8CLOzNVEU">Apache Iceberg V3 and Beyond</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=WpcrVlktSyE">Apache Iceberg V3 Ahead</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=Qx4wWAGuW2o">Architecting an Iceberg Lakehouse</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=1eEcWopaFqE">Tampa Bay DE Meetup: The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=R_tgEBaEDf0">Watch a Complete NOOB Try DuckDB and DuckLake for the first time</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="https://www.youtube.com/watch?v=zeonmOO9jm4">Introducing DuckLake</a><ul>
-<li>Next Steps: the ability to import and export from existing lakehouse formats like Iceberg and the ability to talk to more databases.</li>
-</ul>
-</li>
-</ul>
-<h3 id="completed-courses">Completed Courses<a class="headerlink" href="#completed-courses" title="Permanent link">&para;</a></h3>
-<h2 id="goals-for-next-month">Goals for Next Month<a class="headerlink" href="#goals-for-next-month" title="Permanent link">&para;</a></h2>
-<p>Set 2–3 simple goals to stay focused and accountable:</p>
 
 
 
@@ -3614,10 +3266,46 @@
   
 
 
-  
-    
-  
 
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
 
 
                 
@@ -3640,46 +3328,6 @@
       
         <footer class="md-footer">
   
-    
-      
-        
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learning in Progress">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Learning in Progress
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../202506/" class="md-footer__link md-footer__link--next" aria-label="Next: June 2025">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                June 2025
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -3738,20 +3386,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../../../javascripts/katex.js"></script>
       
-        <script src="../../javascripts/open-in-new-tabs.js"></script>
+        <script src="../../../javascripts/open-in-new-tabs.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../assets/slides/js/slides.js"></script>
+        <script src="../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
