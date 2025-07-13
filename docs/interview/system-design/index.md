@@ -6,6 +6,7 @@
 - [x] [Consistent Hashing](./consistent-hashing.md)
 - [ ] [Indexing](./indexing.md)
 - [ ] [Locking](./locking.md)
+- [ ] [Consensus Algorithms](./consensus-algorithms.md)
 - [ ] [API Performance Optimization](./api-perf-opt.md)
 - [ ] [Database Performance Optimization](./db-perf-opt.md)
 
@@ -15,6 +16,7 @@
 - [x] [AWS DynamoDB](./dynamodb.md)
 - [x] [Apache Spark](./spark.md)
 - [ ] [Redis](./redis.md)
+- [ ] [Elasticsearch](./elasticsearch.md)
 
 ## Product
 
