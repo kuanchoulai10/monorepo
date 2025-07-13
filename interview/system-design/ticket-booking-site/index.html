@@ -3223,6 +3223,22 @@
 <ul>
 <li><a href="https://www.hellointerview.com/learn/system-design/problem-breakdowns/ticketmaster">Design a Ticket Booking Site Like Ticketmaster | Hello Interview</a></li>
 </ul>
+<div class="admonition question">
+<p class="admonition-title">What is Dual-write Problem?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>The dual-write problem occurs when a system writes to two separate systems (e.g., a database and a message queue) in a <strong>non-atomic way</strong>. If one write succeeds and the other fails, the two systems become inconsistent, leading to data loss or duplication.</p>
+<p>For example, if a service writes to a database and then publishes a Kafka message, and the Kafka write fails, consumers might never know about the database change. Solving this requires <strong>atomicity across systems</strong>, often via <strong>distributed transactions</strong> or <strong>outbox patterns</strong>.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How to Handle Dual-write Problem?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>A common way to handle the dual-write problem is using the <strong>outbox pattern</strong>. Instead of writing to the database and message queue separately, <strong>the service writes both the main data and an event to the same database in a single transaction</strong>. <strong>A separate process (or CDC tool) then reads the outbox table and publishes the event to the message queue.</strong></p>
+<p>Another approach is using <strong>transactional message queues</strong> that support <strong>atomic writes with the database</strong>, like using Kafka with transactional producers or a distributed transaction coordinator (e.g., XA). However, these are complex and often less preferred due to performance and operational overhead.</p>
+</details>
+</div>
 
 
 

@@ -3185,6 +3185,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clarifying-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clarifying Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functional Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Functional Requirements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3221,6 +3256,85 @@
 <ul>
 <li><a href="../kafka/">Kafka</a></li>
 </ul>
+<h2 id="clarifying-questions">Clarifying Questions<a class="headerlink" href="#clarifying-questions" title="Permanent link">&para;</a></h2>
+<p>To better align the design with real-world use, I'd like to first ask some clarifying questions. This will help ensure I'm solving the right problem.</p>
+<ul>
+<li>What are the business scenarios that will rely on this system?</li>
+<li>What are the primary use cases for this message queue?</li>
+<li>
+<p>Who are the consumers of this system?</p>
+</li>
+<li>
+<p>What level of delivery guarantee is expected — at-most-once, at-least-once, or exactly-once?</p>
+</li>
+<li>
+<p>Do consumers need to receive messages in order (FIFO)?</p>
+</li>
+<li>
+<p>Should messages be persisted to disk for durability or just kept in memory?</p>
+</li>
+<li>How long should messages be retained in the system?</li>
+<li>Do we need the ability to replay or reprocess past messages?</li>
+</ul>
+<h2 id="functional-requirements">Functional Requirements<a class="headerlink" href="#functional-requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Producers should be able to send messages to the queue.</li>
+<li>Consumers should be able to read messages from the queue.</li>
+<li>The system should support multiple producers and consumers.</li>
+</ul>
+<h2 id="non-functional-requirements">Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Scalability: The system should handle a large number of messages and scale horizontally.</li>
+<li>Availability: The system should be fault-tolerant and ensure high availability.</li>
+<li>Delivery Guarantees: The system should provide at-least-once or exactly-once delivery semantics.</li>
+<li>Durability: Messages should be persisted to disk to prevent data loss.</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">What is Delivery Semantics?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Delivery semantics define how a messaging system guarantees the delivery of messages between producers and consumers. There are three main types:</p>
+<ol>
+<li>
+<p><strong>At most once</strong> – Messages are delivered at most one time, meaning some messages might be lost but never duplicated. It prioritizes <strong>speed</strong> over reliability.</p>
+</li>
+<li>
+<p><strong>At least once</strong> – Messages are delivered one or more times. There is a risk of duplicates, but no message is lost. <strong>The system retries until acknowledged</strong>.</p>
+</li>
+<li>
+<p><strong>Exactly once</strong> – Messages are delivered only once, with no duplicates or loss. It's the most complex and resource-intensive to implement, but ensures strong consistency.</p>
+</li>
+</ol>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What Is 2 Phase Commit (2PC)?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Two-phase commit (2PC) is a protocol used to <strong>ensure atomicity across multiple systems</strong> in a distributed transaction. It involves two steps:</p>
+<ol>
+<li><strong>Prepare phase</strong>: The coordinator asks all participants if they're ready to commit. Each participant replies "yes" (ready) or "no" (abort).</li>
+<li><strong>Commit phase</strong>: If all say "yes," the coordinator tells everyone to commit. If any say "no," it tells all to roll back.</li>
+</ol>
+<p>This ensures all participants either commit or abort together, maintaining consistency across systems.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Why Not Choose SQL and NoSQL as the Storage Layer?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>I wouldn't choose NoSQL or traditional SQL databases as the storage layer for a distributed message queue because <strong>neither is optimized for the core requirements of such systems</strong>. <strong>Message queues are designed around append-only, log-structured storage to support high-throughput writes, ordered reads, and offset-based consumption</strong>. NoSQL databases prioritize flexible schemas and random access, while SQL databases focus on transactional <strong>consistency—both introduce unnecessary overhead for sequential streaming workloads</strong>.</p>
+<p>Additionally, features like <strong>time-based retention, log compaction, and message replay would need to be manually implemented in a database setup</strong>, leading to higher complexity and lower performance. That's why purpose-built storage engines like Kafka's log segments or Pulsar's BookKeeper are preferred—they're specifically designed to handle the scale, efficiency, and durability that message queues demand.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What Is Leader Election in a Distributed System?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Leader election in a distributed system is the process of designating one node as the "leader" among a group of distributed nodes. <strong>The leader typically coordinates actions, manages state changes, or handles critical tasks like log replication in systems like Raft or ZooKeeper</strong>.</p>
+<p>It's essential for <strong>ensuring consistency and avoiding conflicts</strong> when multiple nodes compete to perform operations. The election must be <strong>fault-tolerant</strong>, meaning nodes must agree on the same leader even if there are network delays or failures. Techniques include timeouts, random backoffs, or consensus algorithms like <strong>Paxos</strong> or <strong>Raft</strong>.</p>
+</details>
+</div>
 
 
 

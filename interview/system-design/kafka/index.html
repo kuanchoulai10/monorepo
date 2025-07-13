@@ -3242,6 +3242,33 @@
 <p><strong>After a message is consumed</strong>, the behavior differs quite a bit between Kafka and RabbitMQ. In <strong>Kafka</strong>, consuming a message doesn't actually remove it from the queue. Instead, the message remains in the log for a configured retention period, and the consumer just keeps track of its own offset, which is basically a pointer to where it last read. This means that multiple consumers can read the same message at different times, and you can even rewind or reprocess messages if needed. In <strong>RabbitMQ</strong>, once a message is consumed and acknowledged, it's typically removed from the queue, so it's more of a one-time delivery model.</p>
 </details>
 </div>
+<div class="admonition question">
+<p class="admonition-title">What are the differences between Apache Kafka and Apache Pulsar?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Apache Kafka and Apache Pulsar differ mainly in architecture, message storage, and feature sets:</p>
+<p><strong>Kafka</strong> uses a monolithic architecture where brokers handle both storage and serving. It stores messages in local disk files and relies on tools like ZooKeeper (or KRaft) for metadata. <strong>Pulsar</strong>, in contrast, has a decoupled architecture: brokers handle ingestion and dispatch, while BookKeeper handles durable storage, enabling better scalability and tiered storage support out of the box.</p>
+<p><strong>Pulsar</strong> natively supports multi-tenancy, geo-replication, and topic-level message-level acknowledgment, while <strong>Kafka</strong> often requires external tools for those. However, Kafka has broader ecosystem support and is more mature in terms of community, integrations, and operational familiarity.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What Is 2 Phase Commit (2PC) in Kafka?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>In Kafka, <strong>the Two-Phase Commit (2PC) is used to achieve exactly-once semantics (EOS) across Kafka</strong> and an external system (like Flink or a database). Kafka supports this via its <strong>transactional API</strong>, which allows a producer to write to multiple partitions atomically.</p>
+<p><strong>Phase 1 (Prepare)</strong>: The producer sends data and marks it as part of a transaction. Kafka buffers these messages but <strong>doesn't expose them to consumers yet</strong>.</p>
+<p><strong>Phase 2 (Commit or Abort)</strong>: Once all messages are sent, the producer issues a commit or abort. Kafka then either makes all messages visible atomically or discards them.</p>
+<p>This mechanism ensures consistency but adds complexity and overhead, so it's used only when strict EOS is required.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What is in-sync replication (ISR) in Kafka?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>In Kafka, the In-Sync Replicas (ISR) are the set of replicas that are fully caught up with the leader for a given partition. They have received and acknowledged all messages the leader has committed. Kafka only considers a write successful when it's replicated to all brokers in the ISR set.</p>
+<p>ISR is critical for fault tolerance and exactly-once or at-least-once delivery guarantees. If the leader fails, Kafka will elect a new leader from the ISR to ensure no committed messages are lost. Replicas that fall behind too much are removed from the ISR until they catch up.</p>
+</details>
+</div>
 
 
 
