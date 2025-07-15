@@ -6,6 +6,8 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VzW41m4USGs?si=RQLSy4FHTVo8LMea" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+- [Design A Rate Limiter | ByteByteGo](https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter) 
+
 !!! question "What is Rate Limiter?"
 
     ??? tip "Answer"

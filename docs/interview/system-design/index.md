@@ -9,6 +9,8 @@
 - [ ] [Consensus Algorithms](./consensus-algorithms.md)
 - [ ] [API Performance Optimization](./api-perf-opt.md)
 - [ ] [Database Performance Optimization](./db-perf-opt.md)
+- [ ] [Scale From Zero To Millions Of Users](https://bytebytego.com/courses/system-design-interview/scale-from-zero-to-millions-of-users)
+- [ ] [Back-of-the-envelope Estimation](https://bytebytego.com/courses/system-design-interview/back-of-the-envelope-estimation)
 
 ## Key Technologies
 
