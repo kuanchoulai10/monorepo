@@ -32,7 +32,8 @@ In these interviews, you'll be asked to design a system behind a product.
 In these interviews, you'll be asked to design a system that supports a particular infrastructure use case.
 
 - [x] [Design a Rate Limiter](./rate-limiter.md)
-- [ ] [Design a Distributed Message Queue](./distributed-message-queue.md)
+- [x] [Design a Distributed Message Queue](./distributed-message-queue.md)
+- [ ] [Design a Scalable Notification Service](./notification-service.md)
 - [ ] [Design a Key-Value Store](./key-value-store.md)
 
 ## Machine Learning
