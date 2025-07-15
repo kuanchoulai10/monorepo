@@ -3224,6 +3224,14 @@
 <li><a href="https://www.hellointerview.com/learn/system-design/problem-breakdowns/top-k">Design YouTube's Top K Videos Feature</a></li>
 <li><a href="https://systemdesignschool.io/problems/topk/solution">Design Spotify Top K Songs</a></li>
 </ul>
+<div class="admonition question">
+<p class="admonition-title">What is Count-Min Sketch?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>Count-Min Sketch is a probabilistic data structure used to estimate the frequency of elements in a data stream using sublinear space. It trades off accuracy for memory efficiency.</p>
+<p>It works by hashing each incoming element with multiple hash functions and incrementing corresponding counters in a 2D array. To estimate the frequency of an element, it takes the <strong>minimum</strong> count across all its hash positions—hence the name. It's commonly used for approximate counting in streaming systems, like estimating top-k queries or detecting heavy hitters.</p>
+</details>
+</div>
 
 
 
