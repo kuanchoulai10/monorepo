@@ -35,7 +35,7 @@ In these interviews, you'll be asked to design a system that supports a particul
 - [x] [Design a Distributed Message Queue](./distributed-message-queue.md)
 - [ ] [Design a Scalable Notification Service](./notification-service.md)
 - [ ] [Design a Key-Value Store](./key-value-store.md)
-
+- [ ] [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters.md)
 ## Machine Learning
 
 In these interviews, you'll be asked to design a system that supports a particular machine learning use case.
