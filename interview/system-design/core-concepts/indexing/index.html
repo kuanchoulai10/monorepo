@@ -12,7 +12,7 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/interview/system-design/core-concept/consensus-algorithms/">
+        <link rel="canonical" href="https://kcl10.com/interview/system-design/core-concepts/indexing/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Consensus Algorithms - KC's Data & Life Notes</title>
+        <title>Indexing - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Consensus Algorithms - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Indexing - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/core-concept/consensus-algorithms/index.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/core-concepts/indexing/index.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/interview/system-design/core-concept/consensus-algorithms/" >
+        <meta  property="og:url"  content="https://kcl10.com/interview/system-design/core-concepts/indexing/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Consensus Algorithms - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Indexing - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/core-concept/consensus-algorithms/index.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/core-concepts/indexing/index.png" >
       
     
     
@@ -125,7 +125,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#consensus-algorithms" class="md-skip">
+        <a href="#indexing" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +188,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Consensus Algorithms
+              Indexing
             
           </span>
         </div>
@@ -3199,7 +3199,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/core-concept/consensus-algorithms/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/core-concepts/indexing/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3208,20 +3208,26 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/core-concept/consensus-algorithms/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/core-concepts/indexing/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="consensus-algorithms">Consensus Algorithms<a class="headerlink" href="#consensus-algorithms" title="Permanent link">&para;</a></h1>
+<h1 id="indexing">Indexing<a class="headerlink" href="#indexing" title="Permanent link">&para;</a></h1>
 <div class="admonition question">
-<p class="admonition-title">How Raft Work?</p>
+<p class="admonition-title">What is Geohashing?</p>
 <details class="tip">
 <summary>Answer</summary>
-<p>Raft is a consensus algorithm that <strong>ensures all nodes in a distributed system agree on a shared log, even with failures</strong>. It works by electing a leader, which handles all client requests and replicates log entries to followers. Followers apply entries once a majority (quorum) agrees.</p>
-<p>Raft has three main phases: <strong>Leader Election</strong>, <strong>Log Replication</strong>, and <strong>Safety</strong>. If a follower doesn't hear from a leader, it becomes a candidate and starts an election. Once elected, <strong>the leader sends periodic heartbeats to maintain authority</strong>. This design is easier to understand and implement compared to Paxos.</p>
+<p>Geohashing is a method of encoding geographic coordinates (latitude and longitude) into a compact string representation. It divides the world into a grid of cells, each identified by a unique alphanumeric code. This allows for efficient spatial indexing and querying of geographic data.</p>
+</details>
+</div>
+<div class="admonition question">
+<p class="admonition-title">What is Quadtree?</p>
+<details class="tip">
+<summary>Answer</summary>
+<p>A quadtree is a tree data structure used to partition a two-dimensional space by recursively subdividing it into four quadrants or regions. It is commonly used for spatial indexing, allowing efficient storage and retrieval of spatial data, such as points, rectangles, or polygons. Each node in the quadtree represents a region of space, and its children represent subdivisions of that region.</p>
 </details>
 </div>
 
