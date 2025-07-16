@@ -5,11 +5,11 @@
 | Date          | Candidate | Question                                                                         |
 | ------------- | --------- | -------------------------------------------------------------------------------- |
 | Jul. 23, 2025 | KC        | [Design FB Post Search](./infra/social-media-post-search/index.md)         |
-| Jul. 22, 2025 | KC        | [Design Dropbox](./top-k-heavy-hitters/index.md)                           |
-| Jul. 16, 2025 | KC        | [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters/index.md)     |
-| Jul. 15, 2025 | KC        | [✅ Design Ticketmaster](./ticket-booking-site/index.md)                      |
-| Jul. 12, 2025 | KC        | [✅ Design a Distributed Message Queue](./distributed-message-queue/index.md) |
-| Jyl.  9, 2025 | KC        | [✅ Design Uber](./ride-sharing-service/index.md)                             |
+| Jul. 22, 2025 | KC        | [Design Dropbox](./product/dropbox/index.md)                           |
+| Jul. 16, 2025 | KC        | [Design a Top K Heavy Hitters Service](./infra/top-k-heavy-hitters/index.md)     |
+| Jul. 15, 2025 | KC        | [✅ Design Ticketmaster](./product/ticket-booking-site/index.md)                      |
+| Jul. 12, 2025 | KC        | [✅ Design a Distributed Message Queue](./infra/distributed-message-queue/index.md) |
+| Jyl.  9, 2025 | KC        | [✅ Design Uber](./product/ride-sharing-service/index.md)                             |
 
 ## Core Concepts
 
