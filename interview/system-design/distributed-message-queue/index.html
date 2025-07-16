@@ -77,7 +77,7 @@
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/distributed-message-queue.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/distributed-message-queue/index.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -93,7 +93,7 @@
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/distributed-message-queue.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/distributed-message-queue/index.png" >
       
     
     
@@ -3201,18 +3201,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#functional-requirements" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Functional Requirements
+      Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-functional-requirements" class="md-nav__link">
+  <a href="#high-level-design-deep-dive" class="md-nav__link">
     <span class="md-ellipsis">
-      Non-Functional Requirements
+      High-Level Design &amp; Deep Dive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
     </span>
   </a>
   
@@ -3234,7 +3252,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/distributed-message-queue.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/distributed-message-queue/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3243,7 +3261,7 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/distributed-message-queue.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/distributed-message-queue/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
@@ -3254,7 +3272,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/x6eERV2WaR4?si=zyuIGHbip7pPSenX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 <ul>
-<li><a href="../kafka/">Kafka</a></li>
+<li><a href="./kafka.md">Kafka</a></li>
 </ul>
 <h2 id="clarifying-questions">Clarifying Questions<a class="headerlink" href="#clarifying-questions" title="Permanent link">&para;</a></h2>
 <p>To better align the design with real-world use, I'd like to first ask some clarifying questions. This will help ensure I'm solving the right problem.</p>
@@ -3276,19 +3294,13 @@
 <li>How long should messages be retained in the system?</li>
 <li>Do we need the ability to replay or reprocess past messages?</li>
 </ul>
-<h2 id="functional-requirements">Functional Requirements<a class="headerlink" href="#functional-requirements" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Producers should be able to send messages to the queue.</li>
-<li>Consumers should be able to read messages from the queue.</li>
-<li>The system should support multiple producers and consumers.</li>
-</ul>
-<h2 id="non-functional-requirements">Non-Functional Requirements<a class="headerlink" href="#non-functional-requirements" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Scalability: The system should handle a large number of messages and scale horizontally.</li>
-<li>Availability: The system should be fault-tolerant and ensure high availability.</li>
-<li>Delivery Guarantees: The system should provide at-least-once or exactly-once delivery semantics.</li>
-<li>Durability: Messages should be persisted to disk to prevent data loss.</li>
-</ul>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="assets/reqs.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/reqs.excalidraw.svg" /></a></p>
+<h2 id="high-level-design-deep-dive">High-Level Design &amp; Deep Dive<a class="headerlink" href="#high-level-design-deep-dive" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="high-level-design.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="high-level-design.excalidraw.svg" /></a></p>
+<h2 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="feedback.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="feedback.excalidraw.svg" /></a></p>
+<h2 id="questions">Questions<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
 <p class="admonition-title">What is Delivery Semantics?</p>
 <details class="tip">

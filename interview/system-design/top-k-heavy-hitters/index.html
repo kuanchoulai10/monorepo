@@ -77,7 +77,7 @@
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/top-k-heavy-hitters.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/interview/system-design/top-k-heavy-hitters/index.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -93,7 +93,7 @@
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/top-k-heavy-hitters.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/interview/system-design/top-k-heavy-hitters/index.png" >
       
     
     
@@ -3185,6 +3185,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-entites-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Entites &amp; APIs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Level Design
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Dive
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3199,7 +3252,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/top-k-heavy-hitters.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/interview/system-design/top-k-heavy-hitters/index.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3208,7 +3261,7 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/top-k-heavy-hitters.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/interview/system-design/top-k-heavy-hitters/index.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
@@ -3224,6 +3277,11 @@
 <li><a href="https://www.hellointerview.com/learn/system-design/problem-breakdowns/top-k">Design YouTube's Top K Videos Feature</a></li>
 <li><a href="https://systemdesignschool.io/problems/topk/solution">Design Spotify Top K Songs</a></li>
 </ul>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<h2 id="core-entites-apis">Core Entites &amp; APIs<a class="headerlink" href="#core-entites-apis" title="Permanent link">&para;</a></h2>
+<h2 id="high-level-design">High-Level Design<a class="headerlink" href="#high-level-design" title="Permanent link">&para;</a></h2>
+<h2 id="deep-dive">Deep Dive<a class="headerlink" href="#deep-dive" title="Permanent link">&para;</a></h2>
+<h2 id="questions">Questions<a class="headerlink" href="#questions" title="Permanent link">&para;</a></h2>
 <div class="admonition question">
 <p class="admonition-title">What is Count-Min Sketch?</p>
 <details class="tip">
