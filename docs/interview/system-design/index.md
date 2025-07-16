@@ -18,14 +18,15 @@
 - [x] [AWS DynamoDB](./dynamodb.md)
 - [x] [Apache Spark](./spark.md)
 - [ ] [Redis](./redis.md)
-- [ ] [Elasticsearch](./elasticsearch.md)
+- [x] [Elasticsearch](./elasticsearch.md)
 
 ## Product
 
 In these interviews, you'll be asked to design a system behind a product.
 
 - [x] [Design a Ride-Sharing Service Like Uber](./ride-sharing-service.md)
-- [ ] [Design a Ticket Booking Site Like Ticketmaster](./ticket-booking-site.md)
+- [x] [Design a Ticket Booking Site Like Ticketmaster](./ticket-booking-site.md)
+- [ ] [Design a Messaging Service Like WhatsApp](./messaging-service.md)
 
 ## Infrastructure
 
@@ -36,6 +37,8 @@ In these interviews, you'll be asked to design a system that supports a particul
 - [ ] [Design a Scalable Notification Service](./notification-service.md)
 - [ ] [Design a Key-Value Store](./key-value-store.md)
 - [ ] [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters.md)
+
+
 ## Machine Learning
 
 In these interviews, you'll be asked to design a system that supports a particular machine learning use case.
