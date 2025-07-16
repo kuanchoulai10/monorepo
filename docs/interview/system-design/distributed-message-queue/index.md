@@ -25,11 +25,11 @@ To better align the design with real-world use, I'd like to first ask some clari
 
 ## High-Level Design & Deep Dive
 
-![](high-level-design.excalidraw.svg)
+![](assets/high-level-design.excalidraw.svg)
 
 ## Feedback
 
-![](feedback.excalidraw.svg)
+![](assets/feedback.excalidraw.svg)
 
 ## Questions
 
