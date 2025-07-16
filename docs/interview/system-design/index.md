@@ -4,12 +4,12 @@
 
 | Date          | Candidate | Question                                                                         |
 | ------------- | --------- | -------------------------------------------------------------------------------- |
-| Jul. 23, 2025 | KC        | - [ ] [Design FB Post Search](./infra/social-media-post-search/index.md)         |
-| Jul. 22, 2025 | KC        | - [ ] [Design Dropbox](./top-k-heavy-hitters/index.md)                           |
-| Jul. 16, 2025 | KC        | - [ ] [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters/index.md)     |
-| Jul. 15, 2025 | KC        | - [x] [Design Ticketmaster](./ticket-booking-site/index.md)                      |
-| Jul. 12, 2025 | KC        | - [x] [Design a Distributed Message Queue](./distributed-message-queue/index.md) |
-| Jyl.  9, 2025 | KC        | - [x] [Design Uber](./ride-sharing-service/index.md)                             |
+| Jul. 23, 2025 | KC        | [Design FB Post Search](./infra/social-media-post-search/index.md)         |
+| Jul. 22, 2025 | KC        | [Design Dropbox](./top-k-heavy-hitters/index.md)                           |
+| Jul. 16, 2025 | KC        | [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters/index.md)     |
+| Jul. 15, 2025 | KC        | [✅ Design Ticketmaster](./ticket-booking-site/index.md)                      |
+| Jul. 12, 2025 | KC        | [✅ Design a Distributed Message Queue](./distributed-message-queue/index.md) |
+| Jyl.  9, 2025 | KC        | [✅ Design Uber](./ride-sharing-service/index.md)                             |
 
 ## Core Concepts
 
@@ -49,7 +49,6 @@ In these interviews, you'll be asked to design a system that supports a particul
 - [ ] [Design a Rate Limiter](./infra/rate-limiter/index.md)
 - [ ] [Design a Notification Service](./infra/notification-service/index.md)
 - [ ] [Design a Key-Value Store](./infra/key-value-store/index.md)
-
 
 ## Machine Learning
 
