@@ -1,63 +1,94 @@
 # System Design Questions
 
+## Schedule
+
+| Date          | Candidate | Question                                                                         |
+| ------------- | --------- | -------------------------------------------------------------------------------- |
+| Jul. 23, 2025 | KC        | - [ ] [Design FB Post Search](./infra/social-media-post-search/index.md)         |
+| Jul. 22, 2025 | KC        | - [ ] [Design Dropbox](./top-k-heavy-hitters/index.md)                           |
+| Jul. 16, 2025 | KC        | - [ ] [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters/index.md)     |
+| Jul. 15, 2025 | KC        | - [x] [Design Ticketmaster](./ticket-booking-site/index.md)                      |
+| Jul. 12, 2025 | KC        | - [x] [Design a Distributed Message Queue](./distributed-message-queue/index.md) |
+| Jyl.  9, 2025 | KC        | - [x] [Design Uber](./ride-sharing-service/index.md)                             |
+
 ## Core Concepts
 
-- [x] [CAP Theorem](./cap.md)
-- [x] [Consistent Hashing](./consistent-hashing.md)
-- [ ] [Indexing](./indexing.md)
-- [ ] [Locking](./locking.md)
-- [ ] [Consensus Algorithms](./consensus-algorithms.md)
-- [ ] [API Performance Optimization](./api-perf-opt.md)
-- [ ] [Database Performance Optimization](./db-perf-opt.md)
+- [x] [CAP Theorem](./core-concepts/cap/index.md)
+- [x] [Consistent Hashing](./core-concepts/consistent-hashing/index.md)
+- [ ] [Indexing](./core-concepts/indexing/index.md)
+- [ ] [Locking](./core-concepts/locking/index.md)
+- [ ] [Consensus Algorithms](./core-concepts/consensus-algorithms/index.md)
+- [ ] [API Performance Optimization](./core-concepts/api-perf-opt/index.md)
+- [ ] [Database Performance Optimization](./core-concepts/db-perf-opt/index.md)
 - [ ] [Scale From Zero To Millions Of Users](https://bytebytego.com/courses/system-design-interview/scale-from-zero-to-millions-of-users)
 - [ ] [Back-of-the-envelope Estimation](https://bytebytego.com/courses/system-design-interview/back-of-the-envelope-estimation)
 
 ## Key Technologies
 
-- [x] [Apache Kafka](./kafka.md)
-- [x] [AWS DynamoDB](./dynamodb.md)
-- [x] [Apache Spark](./spark.md)
-- [ ] [Redis](./redis.md)
-- [x] [Elasticsearch](./elasticsearch.md)
+- [x] [Kafka](./key-technologies/kafka/index.md)
+- [x] [Spark](./key-technologies/spark/index.md)
+- [ ] [Flink](./key-technologies/flink/index.md)
+- [ ] [DynamoDB](./key-technologies/dynamodb/index.md)
+- [ ] [Elasticsearch](./key-technologies/elasticsearch/index.md)
+- [ ] [Redis](./key-technologies/redis/index.md)
 
 ## Product
 
 In these interviews, you'll be asked to design a system behind a product.
 
-- [x] [Design a Ride-Sharing Service Like Uber](./ride-sharing-service.md)
-- [x] [Design a Ticket Booking Site Like Ticketmaster](./ticket-booking-site.md)
-- [ ] [Design a Messaging Service Like WhatsApp](./messaging-service.md)
+- [x] [Design a Ride-Sharing Service Like Uber](./product/ride-sharing-service/index.md)
+- [x] [Design a Ticket Booking Site Like Ticketmaster](./product/ticket-booking-site/index.md)
+- [ ] [Design a Messaging Service Like WhatsApp](./product/messaging-service/index.md)
 
 ## Infrastructure
 
 In these interviews, you'll be asked to design a system that supports a particular infrastructure use case.
 
-- [x] [Design a Rate Limiter](./rate-limiter.md)
-- [x] [Design a Distributed Message Queue](./distributed-message-queue/index.md)
-- [ ] [Design a Scalable Notification Service](./notification-service.md)
-- [ ] [Design a Key-Value Store](./key-value-store.md)
-- [ ] [Design a Top K Heavy Hitters Service](./top-k-heavy-hitters/index.md)
+- [x] [Design a Distributed Message Queue](./infra/distributed-message-queue/index.md)
+- [ ] [Design a Top K Heavy Hitters Service](./infra/top-k-heavy-hitters/index.md)
+- [ ] [Design a Rate Limiter](./infra/rate-limiter/index.md)
+- [ ] [Design a Notification Service](./infra/notification-service/index.md)
+- [ ] [Design a Key-Value Store](./infra/key-value-store/index.md)
 
 
 ## Machine Learning
 
 In these interviews, you'll be asked to design a system that supports a particular machine learning use case.
 
-## Data Pipeline Design
+- [ ] [Design an Instagram Ranking Model](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/design-instagram-feed-ranking-model)
+- [ ] [Deploy and Monitor an Instagram Ranking Model](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/deploy-and-monitor-instagram-feed-ranking-model)
+- [ ] [Design a Spotify Recommendation System](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/design-spotify-recommendation-system)
+- [ ] [Design Evaluation Framework for Ads Ranking System](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/design-evaluation-framework-for-ads-ranking)
+- [ ] [Design a System to Predict Netflix Watch Times](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/model-predict-netflix-watch-times)
+- [ ] [Train a Model to Detect Bots](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/train-model-detect-bots)
+- [ ] [Design a Landmark Recognition System](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/landmark-recognition)
+- [ ] [Design a System to Predict Youtube Ad Conversions](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/design-system-predict-youtube-ad-conversions)
+- [ ] [Design an ETA System for a Maps App](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/design-eta-system-maps-app)
+- [ ] [Design an App Suggestion System for Phones](https://www.tryexponent.com/courses/ml-engineer/ml-system-design/app-suggestion-system)
+
+## Data Pipeline
 
 In these interviews, you'll be asked to design a system that supports a particular data pipeline use case.
+
+- [ ] [Create a Data Pipeline for Netflix Clickstream Data](https://www.youtube.com/watch?v=YRTIpSuiFh8)
+- [ ] [Design an ETL Process for Student Interaction](https://www.youtube.com/watch?v=LEAlAC8KMLU)
+- [ ] [Design an ETL Pipeline for a ML Platform for AWS](https://www.youtube.com/watch?v=eAjMNExUXdk)
 
 ## Data Modeling
 
 In these interviews, you'll be asked to design a data model for a particular use case.
 
+- [ ] [Design a Data Warehouse Schema for a Ride-Sharing Service](https://www.tryexponent.com/courses/data-engineering/data-modeling-interviews/ride-sharing-data-model)
+- [ ] [Design a Data Warehouse Schema for Customer Support](https://www.tryexponent.com/courses/data-engineering/data-modeling-interviews/customer-support-data-model)
+- [ ] [Design a Data Warehouse Schema for Airbnb](https://www.tryexponent.com/courses/data-engineering/data-modeling-interviews/airbnb-data-model)
+- [ ] [Design a Data Warehouse Schema for Stripe](https://www.tryexponent.com/courses/data-engineering/data-modeling-interviews/stripe-data-model)
+- [ ] [Design a Data Warehouse Schema for Instagram](https://www.tryexponent.com/courses/data-engineering/data-modeling-interviews/instagram-data-model)
+
+
 ## Data Architecture
 
 In these interviews, you'll be asked to design a data architecture for a particular use case.
 
-### Core technologies
-
-- [x] [Apache Spark](./spark.md)
 
 ---
 
