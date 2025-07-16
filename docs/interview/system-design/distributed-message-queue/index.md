@@ -19,19 +19,19 @@ To better align the design with real-world use, I'd like to first ask some clari
 - How long should messages be retained in the system?
 - Do we need the ability to replay or reprocess past messages?
 
+## Requirements
 
-## Functional Requirements
+![](assets/reqs.excalidraw.svg)
 
-- Producers should be able to send messages to the queue.
-- Consumers should be able to read messages from the queue.
-- The system should support multiple producers and consumers.
+## High-Level Design & Deep Dive
 
-## Non-Functional Requirements
+![](high-level-design.excalidraw.svg)
 
-- Scalability: The system should handle a large number of messages and scale horizontally.
-- Availability: The system should be fault-tolerant and ensure high availability.
-- Delivery Guarantees: The system should provide at-least-once or exactly-once delivery semantics.
-- Durability: Messages should be persisted to disk to prevent data loss.
+## Feedback
+
+![](feedback.excalidraw.svg)
+
+## Questions
 
 !!! question "What is Delivery Semantics?"
 
@@ -55,7 +55,6 @@ To better align the design with real-world use, I'd like to first ask some clari
         2. **Commit phase**: If all say "yes," the coordinator tells everyone to commit. If any say "no," it tells all to roll back.
 
         This ensures all participants either commit or abort together, maintaining consistency across systems.
-
 
 
 !!! question "Why Not Choose SQL and NoSQL as the Storage Layer?"

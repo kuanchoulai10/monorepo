@@ -7,6 +7,15 @@
 - [Design YouTube's Top K Videos Feature](https://www.hellointerview.com/learn/system-design/problem-breakdowns/top-k)
 - [Design Spotify Top K Songs](https://systemdesignschool.io/problems/topk/solution)
 
+## Requirements
+
+## Core Entites & APIs
+
+## High-Level Design
+
+## Deep Dive
+
+## Questions
 
 !!! question "What is Count-Min Sketch?"
 
