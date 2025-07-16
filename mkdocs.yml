@@ -9,7 +9,7 @@ nav:
     - index.md
   - Side Projects:
     - side-projects/index.md
-    - Fraud Detection: Data2ML Ops: "!include ./data2ml-ops/mkdocs.yml"
+    - Fraud Detection (Data2ML Ops): "!include ./data2ml-ops/mkdocs.yml"
     - Retail Lakehouse: "!include ./retail-lakehouse/mkdocs.yml"
     - Unified SQL-based Data Pipelines: "!include ./data-mesh/mkdocs.yml"
     - Trending Content Prediction: "!include ./dcard-hw/mkdocs.yml"
