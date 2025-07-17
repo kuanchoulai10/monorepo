@@ -7,6 +7,21 @@
 
 - [Design a Ticket Booking Site Like Ticketmaster | Hello Interview](https://www.hellointerview.com/learn/system-design/problem-breakdowns/ticketmaster)
 
+## Requirements
+
+![](./assets/requirements.excalidraw.svg)
+
+## Core Entities & APIs
+
+![](./assets/core-entities-apis.excalidraw.svg)
+
+
+## System Design
+
+![](./assets/system-design.excalidraw.svg)
+
+## Questions
+
 !!! question "What is Dual-write Problem?"
 
     ??? tip "Answer"
