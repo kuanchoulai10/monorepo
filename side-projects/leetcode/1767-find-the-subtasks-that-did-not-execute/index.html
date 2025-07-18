@@ -12,28 +12,24 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/leetcode/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/leetcode/1767-find-the-subtasks-that-did-not-execute/">
       
       
-        <link rel="prev" href="../dcard-hw/eda_evaluation/">
       
       
-        <link rel="next" href="../restful-apis-with-flask/">
-      
-      
-      <link rel="icon" href="../../images/avatar.png">
+      <link rel="icon" href="../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>LeetCode Problem Lists - KC's Data & Life Notes</title>
+        <title>1767. Find The Subtasks That Did Not Execute - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,13 +48,13 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -77,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="LeetCode Problem Lists - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="1767. Find The Subtasks That Did Not Execute - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/leetcode/index.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/leetcode/1767-find-the-subtasks-that-did-not-execute/README.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,19 +85,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/leetcode/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/leetcode/1767-find-the-subtasks-that-did-not-execute/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="LeetCode Problem Lists - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="1767. Find The Subtasks That Did Not Execute - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/leetcode/index.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/leetcode/1767-find-the-subtasks-that-did-not-execute/README.png" >
       
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -112,7 +108,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -129,7 +125,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#leetcode-problem-lists" class="md-skip">
+        <a href="#1767-find-the-subtasks-that-did-not-execute" class="md-skip">
           Skip to content
         </a>
       
@@ -173,9 +169,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -192,7 +188,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              LeetCode Problem Lists
+              1767. Find The Subtasks That Did Not Execute
             
           </span>
         </div>
@@ -275,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../.." class="md-tabs__link">
+        <a href="../../.." class="md-tabs__link">
           
   
     
@@ -291,13 +287,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -317,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../learning-in-progress/" class="md-tabs__link">
+        <a href="../../../learning-in-progress/" class="md-tabs__link">
           
   
     
@@ -337,7 +331,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../blog/" class="md-tabs__link">
           
   
     
@@ -355,7 +349,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
     
@@ -374,7 +368,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../about-me/" class="md-tabs__link">
+        <a href="../../../about-me/" class="md-tabs__link">
           
   
     
@@ -409,9 +403,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../images/avatar.png" alt="logo">
+  <img src="../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -459,7 +453,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../.." class="md-nav__link ">
+            <a href="../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -492,8 +486,6 @@
       
   
   
-    
-  
   
   
     
@@ -518,22 +510,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -545,13 +534,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -602,7 +591,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../data2ml-ops/" class="md-nav__link ">
+            <a href="../../data2ml-ops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -636,7 +625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/prerequisites/" class="md-nav__link">
+      <a href="../../data2ml-ops/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -701,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/dbt/modeling-data/" class="md-nav__link">
+      <a href="../../data2ml-ops/dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/feast/modeling-features/" class="md-nav__link">
+      <a href="../../data2ml-ops/feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -798,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/feast/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -871,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/minio/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -946,7 +935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/mlflow/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -968,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/mlflow/hpo/" class="md-nav__link">
+      <a href="../../data2ml-ops/mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/what-why-when/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1073,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/how-it-works/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1095,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1117,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1139,7 +1128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/ray-tune/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1161,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/ray/ray-job/" class="md-nav__link">
+      <a href="../../data2ml-ops/ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1248,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/what-why-when/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1270,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/how-it-works/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1292,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1314,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/installation/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1336,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/deployment/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1358,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1380,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
+      <a href="../../data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1467,7 +1456,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../retail-lakehouse/" class="md-nav__link ">
+            <a href="../../retail-lakehouse/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1544,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/kafka/deployment/" class="md-nav__link">
+      <a href="../../retail-lakehouse/kafka/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1670,7 +1659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1714,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1736,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1758,7 +1747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1780,7 +1769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
+      <a href="../../retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1867,7 +1856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/trino/how-it-works/" class="md-nav__link">
+      <a href="../../retail-lakehouse/trino/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1889,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/trino/deployment/" class="md-nav__link">
+      <a href="../../retail-lakehouse/trino/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1911,7 +1900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/trino/oauth2/" class="md-nav__link">
+      <a href="../../retail-lakehouse/trino/oauth2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1933,7 +1922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retail-lakehouse/trino/faker/" class="md-nav__link">
+      <a href="../../retail-lakehouse/trino/faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2000,7 +1989,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../data-mesh/" class="md-nav__link ">
+            <a href="../../data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2034,7 +2023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mesh/products-s3-biglake-table/" class="md-nav__link">
+      <a href="../../data-mesh/products-s3-biglake-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2056,7 +2045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mesh/images-gcs-object-table/" class="md-nav__link">
+      <a href="../../data-mesh/images-gcs-object-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2078,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mesh/combined/" class="md-nav__link">
+      <a href="../../data-mesh/combined/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2100,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-mesh/rag/" class="md-nav__link">
+      <a href="../../data-mesh/rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2161,7 +2150,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../dcard-hw/" class="md-nav__link ">
+            <a href="../../dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2195,7 +2184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2217,7 +2206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2239,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2261,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2283,7 +2272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2310,8 +2299,6 @@
                 
   
   
-    
-  
   
   
     
@@ -2327,16 +2314,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2349,7 +2336,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             LeetCode
@@ -2398,7 +2385,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2432,7 +2419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2454,7 +2441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2518,7 +2505,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../learning-in-progress/" class="md-nav__link ">
+            <a href="../../../learning-in-progress/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2552,7 +2539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning-in-progress/202507/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202507/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2574,7 +2561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning-in-progress/202506/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202506/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2596,7 +2583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../learning-in-progress/202505/" class="md-nav__link">
+      <a href="../../../learning-in-progress/202505/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2650,7 +2637,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../blog/" class="md-nav__link ">
+            <a href="../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2729,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/archive/2025/" class="md-nav__link">
+      <a href="../../../blog/archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2808,7 +2795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/cicd/" class="md-nav__link">
+      <a href="../../../blog/category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2832,7 +2819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/data/" class="md-nav__link">
+      <a href="../../../blog/category/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2856,7 +2843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../blog/category/mkdocs/" class="md-nav__link">
+      <a href="../../../blog/category/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2893,7 +2880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2939,7 +2926,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/" class="md-nav__link ">
+            <a href="../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3022,7 +3009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3044,7 +3031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3066,7 +3053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3088,7 +3075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3139,7 +3126,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3198,6 +3185,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3212,7 +3225,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/leetcode/docs/leetcode/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/leetcode/docs/leetcode/1767-find-the-subtasks-that-did-not-execute/README.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3221,134 +3234,57 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/leetcode/docs/leetcode/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/leetcode/docs/leetcode/1767-find-the-subtasks-that-did-not-execute/README.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="leetcode-problem-lists">LeetCode Problem Lists<a class="headerlink" href="#leetcode-problem-lists" title="Permanent link">&para;</a></h1>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="leetcode-15-patterns" name="__tabbed_1" type="radio" /><input id="advanced-sql-50" name="__tabbed_1" type="radio" /><input id="grind-75" name="__tabbed_1" type="radio" /><input id="sql-50" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="leetcode-15-patterns">LeetCode 15 Patterns</label><label for="advanced-sql-50">Advanced SQL 50</label><label for="grind-75">Grind 75</label><label for="sql-50">SQL 50</label></div>
+<h1 id="1767-find-the-subtasks-that-did-not-execute"><a href="https://leetcode.com/problems/find-the-subtasks-that-did-not-execute">1767. Find The Subtasks That Did Not Execute</a><a class="headerlink" href="#1767-find-the-subtasks-that-did-not-execute" title="Permanent link">&para;</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NwZAYQSH81k?si=SsFQfdmn3UDwrIqZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<p>The solution uses a recursive Common Table Expression (CTE) to generate all possible subtasks for each task, then filters out the ones that were executed.</p>
+<p>The recursive CTE works in two parts:</p>
+<ol>
+<li><strong>Base case</strong>: Start with the original tasks table, which contains each task and its maximum subtask_id</li>
+<li><strong>Recursive case</strong>: For each task, generate all subtasks by decrementing the subtask_id until it reaches 1</li>
+</ol>
+<p>This creates a complete set of all possible (task_id, subtask_id) pairs. Finally, we use a NOT IN clause to exclude the subtasks that appear in the executed table, leaving only the subtasks that did not execute.</p>
+<p>See <a href="https://cloud.google.com/bigquery/docs/recursive-ctes">Work with recursive CTEs in BigQuery</a> for more details on recursive CTEs.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="postgresql" name="__tabbed_1" type="radio" /><input id="pandas" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="postgresql">PostgreSQL</label><label for="pandas">Pandas</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><iframe width="885" height="498" src="https://www.youtube.com/embed/DjYZk8nrXVY" title="LeetCode was HARD until I Learned these 15 Patterns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
-<p><strong>Two Pointers</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="1-two-sum/">1. Two Sum</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="167-two-sum-ii-input-array-is-sorted/">167. Two Sum II - Input Array Is Sorted</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="15-3sum/">15. 3Sum</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="11-container-with-most-water/">11. Container With Most Water</a></li>
-</ul>
-<p><strong>Overlapping Intervals</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="56-merge-intervals/">56. Merge Intervals</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="57-insert-interval/">57. Insert Interval</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="435-non-overlapping-intervals/">435. Non-overlapping Intervals</a></li>
-</ul>
-<p><strong>Sliding Window</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="643-maximum-average-subarray-i/">643. Maximum Average Subarray I</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="3-longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="76-minimum-window-substring/">76. Minimum Window Substring</a></li>
-</ul>
-<p><strong>Prefix Sum</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="303-range-sum-query-immutable/">303. Range Sum Query - Immutable</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="525-contiguous-array/">525. Contiguous Array</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="560-subarray-sum-equals-k/">560. Subarray Sum Equals K</a></li>
-</ul>
-<p><strong>Fast and Slow Pointers</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="141-linked-list-cycle/">141. Linked List Cycle</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="202-happy-number/">202. Happy Number</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="287-find-the-duplicate-number/">287. Find the Duplicate Number</a></li>
-</ul>
-<p><strong>Linked List In-place Reversal</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="206-reverse-linked-list/">206. Reverse Linked List</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="92-reverse-linked-list-ii/">92. Reverse Linked List II</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="24-swap-nodes-in-pairs/">24. Swap Nodes in Pairs</a></li>
-</ul>
-<p><strong>Monotonic Stack</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="496-next-greater-element-i/">496. Next Greater Element I</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="739-daily-temperatures/">739. Daily Temperatures</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="84-largest-rectangle-in-histogram/">84. Largest Rectangle in Histogram</a></li>
-</ul>
-<p><strong>Top K Elements</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="215-kth-largest-element-in-an-array/">215. Kth Largest Element in an Array</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="347-top-k-frequent-elements/">347. Top K Frequent Elements</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="373-find-k-pairs-with-smallest-sums/">373. Find K Pairs with Smallest Sums</a></li>
-</ul>
-<p><strong>Dynamic Programming</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="70-climbing-stairs/">70. Climbing Stairs</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="322-coin-change/">322. Coin Change</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="300-longest-increasing-subsequence/">300. Longest Increasing Subsequence</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="312-burst-balloons/">312. Burst Balloons</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="416-partition-equal-subset-sum/">416. Partition Equal Subset Sum</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="1143-longest-common-subsequence/">1143. Longest Common Subsequence</a></li>
-</ul>
-<p><strong>Backtracking</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="46-permutations/">46. Permutations</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="78-subsets/">78. Subsets</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="51-n-queens/">51. N-Queens</a></li>
-</ul>
-<p><strong>Binary Search</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="374-guess-number-higher-or-lower/">374. Guess Number Higher or Lower</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="2300-successful-pairs-of-spells-and-potions/">2300. Successful Pairs of Spells and Potions</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="162-find-peak-element/">162. Find Peak Element</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="875-koko-eating-bananas/">875. Koko Eating Bananas</a></li>
-</ul>
-<p><strong>Modified Binary Search</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="33-search-in-rotated-sorted-array/">33. Search in Rotated Sorted Array</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="153-find-minimum-in-rotated-sorted-array/">153. Find Minimum in Rotated Sorted Array</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="240-search-a-2d-matrix-ii/">240. Search a 2D Matrix II</a></li>
-</ul>
-<p><strong>Binary Tree Traversal</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="257-binary-tree-paths/">257. Binary Tree Paths</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="230-kth-smallest-element-in-a-bst/">230. Kth Smallest Element in a BST</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="124-binary-tree-maximum-path-sum/">124. Binary Tree Maximum Path Sum</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="107-binary-tree-level-order-traversal-ii/">107. Binary Tree Level Order Traversal II</a></li>
-</ul>
-<p><strong>DFS</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="133-clone-graph/">133. Clone Graph</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="113-path-sum-ii/">113. Path Sum II</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="210-course-schedule-ii/">210. Course Schedule II</a></li>
-</ul>
-<p><strong>BFS</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="102-binary-tree-level-order-traversal/">102. Binary Tree Level Order Traversal</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="994-rotting-oranges/">994. Rotting Oranges</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="127-word-ladder/">127. Word Ladder</a></li>
-</ul>
-<p><strong>Matrix Traversal</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="733-flood-fill/">733. Flood Fill</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="200-number-of-islands/">200. Number of Islands</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="130-surrounded-regions/">130. Surrounded Regions</a></li>
-</ul>
+<div class="language-SQL highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">with</span><span class="w"> </span><span class="k">recursive</span><span class="w"> </span><span class="n">task_subtasks</span><span class="w"> </span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span><span class="w"> </span><span class="n">subtask_id</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">select</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="o">*</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">tasks</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">union</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">select</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">task_id</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="n">subtask_id</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">task_subtasks</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">subtask_id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">select</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">task_id</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">subtask_id</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">from</span><span class="w"> </span><span class="n">task_subtasks</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="n">task_id</span><span class="p">,</span><span class="w"> </span><span class="n">subtask_id</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">select</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="o">*</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">executed</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="p">)</span>
+</span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><a href="https://leetcode.com/studyplan/premium-sql-50/"><strong>Advanced SQL 50</strong></a></p>
-<p><strong>Advanced Topics: Window Function and CTE</strong></p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="find-the-subtasks-that-did-not-execute/README.md">1767. Find The Subtasks That Did Not Execute</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="1225-report-contiguous-dates/">1225. Report Contiguous Dates</a></li>
-</ul>
-</div>
-<div class="tabbed-block">
-<p><a href="https://leetcode.com/problem-list/rab78cw1/"><strong>Grind 75</strong></a></p>
-</div>
-<div class="tabbed-block">
-<p><a href="https://leetcode.com/studyplan/top-sql-50/"><strong>SQL 50</strong></a></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
+</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -3430,44 +3366,6 @@
         <footer class="md-footer">
   
     
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../dcard-hw/eda_evaluation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 匯入相關套件">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                匯入相關套件
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../restful-apis-with-flask/" class="md-footer__link md-footer__link--next" aria-label="Next: RESTful APIs with Flask">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                RESTful APIs with Flask
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3525,20 +3423,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../../../javascripts/katex.js"></script>
       
-        <script src="../../javascripts/open-in-new-tabs.js"></script>
+        <script src="../../../javascripts/open-in-new-tabs.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../assets/slides/js/slides.js"></script>
+        <script src="../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
