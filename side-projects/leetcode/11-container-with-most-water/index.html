@@ -3256,13 +3256,13 @@
 </thead>
 <tbody>
 <tr>
-<td>Brute Force (Nested Loop)</td>
+<td><strong>Brute Force (Nested Loop)</strong></td>
 <td>Calculate the area for every possible pair of lines using nested loops. Keep track of the maximum area found. This approach is straightforward but inefficient.</td>
 <td><span class="arithmatex">\(O(n²)\)</span>: Double loop to check all pairs.</td>
 <td><span class="arithmatex">\(O(1)\)</span>: Constant space for variables only.</td>
 </tr>
 <tr>
-<td>Two-pointer technique</td>
+<td><strong>Two-pointer technique</strong></td>
 <td>Use two pointers, one at each end of the array, to represent the lines. Calculate the area and move the pointer with the shorter line inward to potentially find a larger area. Continue until the pointers meet. This approach is efficient and leverages the idea that a shorter line limits the maximum area.</td>
 <td><span class="arithmatex">\(O(n)\)</span>: Single pass as we move pointers inward.</td>
 <td><span class="arithmatex">\(O(1)\)</span>: Constant space with only two pointers.</td>

@@ -3256,19 +3256,19 @@
 </thead>
 <tbody>
 <tr>
-<td>Brute Force</td>
+<td><strong>Brute Force</strong></td>
 <td>Iterate through all triplets and check if their sum is zero. This approach is straightforward but inefficient for large arrays.</td>
 <td><span class="arithmatex">\(O(n^3)\)</span> - three nested loops iterate through the array</td>
 <td><span class="arithmatex">\(O(1)\)</span> - no extra space used beyond input storage</td>
 </tr>
 <tr>
-<td>Two Pointers</td>
+<td><strong>Two Pointers</strong></td>
 <td>Sort the array first, then for each element, use two pointers from both ends to find pairs that sum to the target. Skip duplicates to avoid redundant triplets.</td>
 <td><span class="arithmatex">\(O(n^2)\)</span> - outer loop iterates <span class="arithmatex">\(n\)</span> times, inner two-pointer search takes <span class="arithmatex">\(O(n)\)</span></td>
 <td><span class="arithmatex">\(O(1)\)</span> - only uses constant extra space for pointers and variables</td>
 </tr>
 <tr>
-<td>HashSet without Sorting</td>
+<td><strong>HashSet without Sorting</strong></td>
 <td>Convert 3Sum to 2Sum for each element. Use sets for deduplication and avoid processing duplicate first elements. No array modification required.</td>
 <td><span class="arithmatex">\(O(n^2)\)</span> - outer loop iterates <span class="arithmatex">\(n\)</span> times, inner 2Sum takes <span class="arithmatex">\(O(n)\)</span></td>
 <td><span class="arithmatex">\(O(n)\)</span> - uses sets for storing seen elements and results</td>
