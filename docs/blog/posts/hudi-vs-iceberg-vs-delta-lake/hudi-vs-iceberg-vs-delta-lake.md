@@ -197,7 +197,7 @@ great fit for the following use-cases:
 **Comparison**
 
 <figure markdown="span">
-  ![comparison](./static/hudi-vs-iceberg-vs-delta-lake/comparison.png)
+  ![comparison](./assets/comparison.png)
   [*Comparison Between COW and MOR Tables*](https://hudi.apache.org/docs/next/table_types/#comparison)
 </figure>
 
@@ -232,7 +232,7 @@ At its core, Iceberg treats every table state as an **immutable, versioned snaps
 ### Storage Layout
 
 <figure markdown="span">
-  ![iceberg architecture](./static/hudi-vs-iceberg-vs-delta-lake/iceberg.drawio.svg){width="600"}
+  ![iceberg architecture](./assets/iceberg.drawio.svg){width="600"}
   *Iceberg Architecture*
 </figure>
 
