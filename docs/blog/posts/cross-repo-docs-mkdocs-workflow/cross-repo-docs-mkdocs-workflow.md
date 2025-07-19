@@ -37,7 +37,7 @@ I've been there too. While switching to a monorepo seemed tempting (like moving 
 
 That's when I discovered the perfect recipe: combining Git Submodules (think of them as neat organizational folders), MkDocs Monorepo Plugin (the master chef that brings everything together), and GitHub Actions (your tireless automation assistant). The result? A centralized documentation platform that updates itself automatically. It's like having a personal librarian who keeps all your books organized and up-to-date!
 
-![](./static/cross-repo-docs-mkdocs-workflow/flow.svg)
+![](./assets/flow.svg)
 
 Specifically, this setup involves three repositories:
 
@@ -148,7 +148,7 @@ To https://github.com/kuanchoulai10/monorepo.git
 
 Now when you visit GitHub, you'll see something magical: `data2ml-ops @ 7369c16`. Click on it, and voilà! It teleports you to the actual repository. It's like having a portal in your house that leads directly to your friend's place – the reference is there, but you're not actually storing their stuff in your garage.
 
-![](./static/cross-repo-docs-mkdocs-workflow/submodule.png)
+![](./assets/submodule.png)
 
 ## 2. Create Documentation Deployment Workflow
 
@@ -212,11 +212,11 @@ Now comes the exciting part – teaching our sub-repository how to use that univ
 
 Head over to GitHub's top-right corner: click your profile picture > Settings > Developer Settings > Personal access tokens > Fine-grained tokens. Think of this token as a VIP pass that allows reading metadata from the monorepo and pushing code with new submodule commits. Make sure to grant "Contents" repository permissions (write)[^5] – it's like giving your automation assistant the keys to the filing cabinet.
 
-![](./static/cross-repo-docs-mkdocs-workflow/pat.png){ width=600 }
+![](./assets/pat.png){ width=600 }
 
 Once you've created your token (and copied it – this is important!), head back to `data2ml-ops` and create a repository secret called `PAT`. Paste your token there like you're hiding a spare key under a digital doormat.
 
-![](./static/cross-repo-docs-mkdocs-workflow/repo-secret.png)
+![](./assets/repo-secret.png)
 
 Now for the grand finale – creating the workflow that calls our reusable workflow[^8]. It's surprisingly simple, like speed-dialing a friend. Just use `uses` in your job and point it to where your reusable workflow lives:
 
@@ -266,7 +266,7 @@ The moment of truth has arrived! Time to put our automation masterpiece to the t
 
 Check out the GitHub Actions workflow doing its thing:
 
-![](./static/cross-repo-docs-mkdocs-workflow/data2ml-ops-run-history.png)
+![](./assets/data2ml-ops-run-history.png)
 
 [`data2ml-ops` run history](https://github.com/kuanchoulai10/data2ml-ops/actions/runs/14824960685)
 
@@ -274,17 +274,17 @@ Behind the scenes, our workflow is using that reusable workflow like a well-oile
 
 Switch over to the `monorepo` page, and you'll see our documentation deployment process has indeed sprung into action:
 
-![](./static/cross-repo-docs-mkdocs-workflow/monorepo-run-history.png)
+![](./assets/monorepo-run-history.png)
 
 [`monorepo` run history](https://github.com/kuanchoulai10/monorepo/actions/runs/14824961637)
 
 Look at that beautiful update! Our submodule reference has smoothly transitioned from `data2ml-ops @ 7369c16` to `data2ml-ops @ 887a9a0`. It's like watching your bookmark automatically update to point to the latest chapter of your favorite book.
 
-![](./static/cross-repo-docs-mkdocs-workflow/monorepo-updated.png)
+![](./assets/monorepo-updated.png)
 
 The final proof? Visit the actual website, and there it is – the documentation from my `data2ml-ops` project, freshly deployed and beautifully integrated! It's like watching all the pieces of a puzzle click into place.
 
-![](./static/cross-repo-docs-mkdocs-workflow/website-updates.png)
+![](./assets/website-updates.png)
 
 And just like that, we've created a self-updating documentation ecosystem that keeps everything in sync without manual intervention. No more documentation archaeology expeditions or wondering if what you're reading is current. Your cross-repository documentation now flows as smoothly as a well-conducted symphony!
 
