@@ -6,6 +6,7 @@
 
 
 - [Design a Ticket Booking Site Like Ticketmaster | Hello Interview](https://www.hellointerview.com/learn/system-design/problem-breakdowns/ticketmaster)
+- [System Design for Ticketmaster | System Design School](https://systemdesignschool.io/problems/ticketmaster/solution)
 
 ## Requirements
 
