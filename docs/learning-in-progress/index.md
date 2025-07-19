@@ -10,15 +10,32 @@ Staying curious is at the core of how I grow. I embrace challenges as chances to
 This roadmap keeps me accountable while inspiring others to start their own learning journeys. By sharing tools and insights, I aim to contribute to a community of lifelong learners eager to grow together.
 
 
-<div class="grid" markdown>
+<div class="grid cards" markdown>
 
-:books: __202507__
-{ .card }
+-   :material-book-open-variant:{ .lg .middle } __July 2025__
 
-:books: __202506__
-{ .card }
+    ---
 
-:books: __202505__
-{ .card }
+    Developing systems thinking and architectural design patterns for scalable solutions.
+    
+    [--> System Architect Thinking Month](./202507.md)
+    
+-   :material-book-open-variant:{ .lg .middle } __June 2025__
+
+    ---
+
+    Building modern data lakehouse architectures with unified analytics platforms.
+    
+    [--> Data Lakehouse Building Month](./202506.md)
+
+
+-   :material-book-open-variant:{ .lg .middle } __May 2025__
+
+    ---
+
+    Creating robust MLOps pipelines for automated machine learning workflows.
+    
+    [--> MLOps Pipeline Crafting Month](./202505.md)
+
 
 </div>
