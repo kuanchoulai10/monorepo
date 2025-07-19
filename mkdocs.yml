@@ -85,9 +85,8 @@ plugins:
   - blog:
       blog_dir: blog
       blog_toc: true
-      post_dir: "{blog}/posts"
-      post_url_date_format: yyyy/MM
-      post_url_format: "{date}/{file}"
+      post_dir: "{blog}/posts"      
+      post_url_format: "{file}"
       post_date_format: medium
       post_excerpt: required
       draft_if_future_date: true

@@ -65,7 +65,7 @@ Hanging out in the middle is **semi-structured data** like JSON and XML — the 
 Now, let's get specific about structured data layouts. Imagine we have a `users` table with 5 rows and 4 columns (age, gender, country, and average order value) — our guinea pig for this storage format experiment:
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/logical.drawio.svg){width="500"}
+  ![](./assets/logical.drawio.svg){width="500"}
 </figure>
 
 We can classify this logical structured data into two categories based on how the data is physically stored on disk.
@@ -77,7 +77,7 @@ Row-based formats store data like reading a book — line by line, left to right
 Since **data is stored row by row**, it's incredibly efficient for typical OLTP operations. Want to insert a new user? Easy — just append a new row. Need to update someone's profile? Find the row offset and boom, mission accomplished. Deleting a user? Same deal.
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/row-wise-physical.drawio.svg){width="500"}
+  ![](./assets/row-wise-physical.drawio.svg){width="500"}
 </figure>
 
 See how elegant it is? To delete the second row, we just need its offset — like having the exact address of a house. But here's the catch: if you want to analyze the average age of all users, you'd have to knock on every door in the neighborhood. Not exactly efficient!
@@ -89,7 +89,7 @@ Column-based formats flip the script entirely — instead of reading like a book
 This layout is **compression heaven**. That gender column with mostly "male" and "female" values? Column storage can compress it down to almost nothing, like vacuum-packing your winter clothes.
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/column-wise-physical.drawio.svg){width="500"}
+  ![](./assets/column-wise-physical.drawio.svg){width="500"}
 </figure>
 
 Need the average age? Just grab the age column and you're done — no need to wade through irrelevant data. But deleting a specific user? Now you're playing hide-and-seek across multiple columns. Not exactly OLTP's cup of tea!
@@ -101,7 +101,7 @@ What if I told you there's a storage format that's like having a sports car that
 Parquet emerged from the brilliant minds at Twitter and Cloudera back in 2012. By 2013, it had graduated to become a top-level Apache project, and the data world hasn't been the same since.
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/hybrid-physical.drawio.svg){width="675"}
+  ![](./assets/hybrid-physical.drawio.svg){width="675"}
 </figure>
 
 Here's the genius: Parquet organizes data into **row groups** (like small neighborhoods) that are then divided into **columns** (like sorting each neighborhood by house type). In our example, we have 2 row groups — the first contains rows 1-3, the second contains rows 4-5. Within each row group, columns live separately, enabling both row-wise convenience and column-wise efficiency.
@@ -112,7 +112,7 @@ It's like having the best of both worlds — you can quickly find a specific use
 **Parquet's Anatomy: A Peek Under the Hood**
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/parquet.drawio.svg){width="500"}
+  ![](./assets/parquet.drawio.svg){width="500"}
 </figure>
 
 A Parquet file is like a well-organized filing cabinet with some seriously smart features:
@@ -131,7 +131,7 @@ Efficient compression is a cornerstone of Parquet's design, enabling it to store
 
 
 <figure markdown="span">
-  ![](./static/oltp-vs-olap-a-parquet-primer/rle.drawio.svg){width="500"}
+  ![](./assets/rle.drawio.svg){width="500"}
 </figure>
 
 The image illustrates how Parquet efficiently compresses columnar data using **dictionary encoding**, followed by **run-length encoding (RLE)** and **bit-packing**. In the original column `["US", "TW", "FR", "JP", "JP", "KR", "CA", "CA", "CA"]`, dictionary encoding first replaces each unique string with a unique integer ID. For example, `"US"` becomes `0`, `"TW"` --> `1`, ..., `"CA"` --> `5`, resulting in the encoded sequence: `[0, 1, 2, 3, 3, 4, 5, 5, 5]`.
