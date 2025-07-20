@@ -79,7 +79,7 @@
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -95,7 +95,7 @@
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
       
     
     
@@ -3392,7 +3392,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3401,7 +3401,7 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
@@ -3446,34 +3446,34 @@
 <p>Hanging out in the middle is <strong>semi-structured data</strong> like JSON and XML — the cool kids who have some structure but refuse to be completely boxed in. They're like organized chaos, with key-value pairs that make sense but don't follow traditional table manners.</p>
 <p>Now, let's get specific about structured data layouts. Imagine we have a <code>users</code> table with 5 rows and 4 columns (age, gender, country, and average order value) — our guinea pig for this storage format experiment:</p>
 <figure>
-  <a class="glightbox" href="assets/logical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/logical.drawio.svg" width="500" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/logical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/logical.drawio.svg" width="500" /></a>
 </figure>
 <p>We can classify this logical structured data into two categories based on how the data is physically stored on disk.</p>
 <p><strong>Row-Based Storage: The Transaction Speedster</strong></p>
 <p>Row-based formats store data like reading a book — line by line, left to right. It's how traditional databases like PostgreSQL and MySQL organize their data, and for good reason!</p>
 <p>Since <strong>data is stored row by row</strong>, it's incredibly efficient for typical OLTP operations. Want to insert a new user? Easy — just append a new row. Need to update someone's profile? Find the row offset and boom, mission accomplished. Deleting a user? Same deal.</p>
 <figure>
-  <a class="glightbox" href="assets/row-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/row-wise-physical.drawio.svg" width="500" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/row-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/row-wise-physical.drawio.svg" width="500" /></a>
 </figure>
 <p>See how elegant it is? To delete the second row, we just need its offset — like having the exact address of a house. But here's the catch: if you want to analyze the average age of all users, you'd have to knock on every door in the neighborhood. Not exactly efficient!</p>
 <p><strong>Column-Based Storage: The Analytics Powerhouse</strong></p>
 <p>Column-based formats flip the script entirely — instead of reading like a book, they read like scanning a newspaper column. Each column lives together, creating some serious analytical superpowers.</p>
 <p>This layout is <strong>compression heaven</strong>. That gender column with mostly "male" and "female" values? Column storage can compress it down to almost nothing, like vacuum-packing your winter clothes.</p>
 <figure>
-  <a class="glightbox" href="assets/column-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/column-wise-physical.drawio.svg" width="500" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/column-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/column-wise-physical.drawio.svg" width="500" /></a>
 </figure>
 <p>Need the average age? Just grab the age column and you're done — no need to wade through irrelevant data. But deleting a specific user? Now you're playing hide-and-seek across multiple columns. Not exactly OLTP's cup of tea!</p>
 <h2 id="enter-parquet-the-best-of-both-worlds">Enter Parquet: The Best of Both Worlds<a class="headerlink" href="#enter-parquet-the-best-of-both-worlds" title="Permanent link">&para;</a></h2>
 <p>What if I told you there's a storage format that's like having a sports car that's also an SUV? Meet Parquet — the overachiever of the data storage world!</p>
 <p>Parquet emerged from the brilliant minds at Twitter and Cloudera back in 2012. By 2013, it had graduated to become a top-level Apache project, and the data world hasn't been the same since.</p>
 <figure>
-  <a class="glightbox" href="assets/hybrid-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/hybrid-physical.drawio.svg" width="675" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/hybrid-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/hybrid-physical.drawio.svg" width="675" /></a>
 </figure>
 <p>Here's the genius: Parquet organizes data into <strong>row groups</strong> (like small neighborhoods) that are then divided into <strong>columns</strong> (like sorting each neighborhood by house type). In our example, we have 2 row groups — the first contains rows 1-3, the second contains rows 4-5. Within each row group, columns live separately, enabling both row-wise convenience and column-wise efficiency.</p>
 <p>It's like having the best of both worlds — you can quickly find a specific user (row-wise operations) or analyze age patterns across thousands of users (column-wise operations) without breaking a sweat!</p>
 <p><strong>Parquet's Anatomy: A Peek Under the Hood</strong></p>
 <figure>
-  <a class="glightbox" href="assets/parquet.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/parquet.drawio.svg" width="500" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/parquet.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/parquet.drawio.svg" width="500" /></a>
 </figure>
 <p>A Parquet file is like a well-organized filing cabinet with some seriously smart features:</p>
 <ol>
@@ -3487,7 +3487,7 @@
 <p><strong>Efficient Compression in Parquet</strong></p>
 <p>Efficient compression is a cornerstone of Parquet's design, enabling it to store massive datasets while minimizing disk usage and maximizing query performance. By leveraging techniques like <strong>dictionary encoding</strong>, <strong>run-length encoding (RLE)</strong>, and <strong>bit-packing</strong>, Parquet achieves remarkable compression ratios without sacrificing speed. Let's explore how these methods work together to optimize columnar data storage.</p>
 <figure>
-  <a class="glightbox" href="assets/rle.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/rle.drawio.svg" width="500" /></a>
+  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/rle.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/rle.drawio.svg" width="500" /></a>
 </figure>
 <p>The image illustrates how Parquet efficiently compresses columnar data using <strong>dictionary encoding</strong>, followed by <strong>run-length encoding (RLE)</strong> and <strong>bit-packing</strong>. In the original column <code>["US", "TW", "FR", "JP", "JP", "KR", "CA", "CA", "CA"]</code>, dictionary encoding first replaces each unique string with a unique integer ID. For example, <code>"US"</code> becomes <code>0</code>, <code>"TW"</code> &rarr; <code>1</code>, ..., <code>"CA"</code> &rarr; <code>5</code>, resulting in the encoded sequence: <code>[0, 1, 2, 3, 3, 4, 5, 5, 5]</code>.</p>
 <p>To further reduce storage, Parquet applies RLE and bit-packing to the integer sequence. Run-length encoding compresses consecutive repeated values, such as <code>"JP"</code> <code>(3, 3)</code> and <code>"CA"</code> <code>(5, 5, 5)</code>, into pairs like <code>3,2</code> (meaning value 3 repeated 2 times) and <code>5,3</code>. Bit-packing then ensures each integer is stored using the minimum number of bits necessary (in this case, 3 bits for up to 6 dictionary values). This layered approach dramatically reduces data size and speeds up scan performance by enabling efficient decoding and skipping of unneeded values.</p>

@@ -79,7 +79,7 @@
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -95,7 +95,7 @@
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.png" >
       
     
     
@@ -3399,7 +3399,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/01-06/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3408,7 +3408,7 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/01-06/cross-repo-docs-mkdocs-workflow/cross-repo-docs-mkdocs-workflow.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
@@ -3433,7 +3433,7 @@
 <p>Picture this: a new team member joins your organization. Instead of a smooth onboarding experience, they embark on a treasure hunt across repositories, asking colleagues endless questions and trying to piece together how everything connects. It's like trying to assemble IKEA furniture with instructions scattered across different boxes – technically possible, but unnecessarily frustrating.</p>
 <p>I've been there too. While switching to a monorepo seemed tempting (like moving all your furniture to one room), we decided to keep our multi-repo structure for good reasons – authorization boundaries, deployment flexibility, and version independence. But I wasn't about to let scattered documentation continue being the thorn in our side.</p>
 <p>That's when I discovered the perfect recipe: combining Git Submodules (think of them as neat organizational folders), MkDocs Monorepo Plugin (the master chef that brings everything together), and GitHub Actions (your tireless automation assistant). The result? A centralized documentation platform that updates itself automatically. It's like having a personal librarian who keeps all your books organized and up-to-date!</p>
-<p><a class="glightbox" href="assets/flow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/flow.svg" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/flow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/flow.svg" /></a></p>
 <p>Specifically, this setup involves three repositories:</p>
 <ul>
 <li><a href="https://github.com/kuanchoulai10/monorepo"><code>monorepo</code></a> (Main Repo) is the repository I use to build my personal website, utilizing MkDocs and deployed on GitHub Pages. It already has a predefined <code>publish-docs.yml</code> GitHub Actions Workflow.</li>
@@ -3529,7 +3529,7 @@
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">   </span>6c36b76..c1e29ff<span class="w">  </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main
 </span></code></pre></div>
 <p>Now when you visit GitHub, you'll see something magical: <code>data2ml-ops @ 7369c16</code>. Click on it, and voilà! It teleports you to the actual repository. It's like having a portal in your house that leads directly to your friend's place – the reference is there, but you're not actually storing their stuff in your garage.</p>
-<p><a class="glightbox" href="assets/submodule.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/submodule.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/submodule.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/submodule.png" /></a></p>
 <h2 id="2-create-documentation-deployment-workflow">2. Create Documentation Deployment Workflow<a class="headerlink" href="#2-create-documentation-deployment-workflow" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title"><a href="https://github.com/kuanchoulai10/monorepo">kuanchoulai10/monorepo</a></p>
@@ -3652,9 +3652,9 @@
 </div>
 <p>Now comes the exciting part – teaching our sub-repository how to use that universal remote we just created! But first, we need to create a special key (Personal Access Token) that gives our automation the right permissions.</p>
 <p>Head over to GitHub's top-right corner: click your profile picture &gt; Settings &gt; Developer Settings &gt; Personal access tokens &gt; Fine-grained tokens. Think of this token as a VIP pass that allows reading metadata from the monorepo and pushing code with new submodule commits. Make sure to grant "Contents" repository permissions (write)<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup> – it's like giving your automation assistant the keys to the filing cabinet.</p>
-<p><a class="glightbox" href="assets/pat.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/pat.png" width="600" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/pat.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/pat.png" width="600" /></a></p>
 <p>Once you've created your token (and copied it – this is important!), head back to <code>data2ml-ops</code> and create a repository secret called <code>PAT</code>. Paste your token there like you're hiding a spare key under a digital doormat.</p>
-<p><a class="glightbox" href="assets/repo-secret.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/repo-secret.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/repo-secret.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/repo-secret.png" /></a></p>
 <p>Now for the grand finale – creating the workflow that calls our reusable workflow<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>. It's surprisingly simple, like speed-dialing a friend. Just use <code>uses</code> in your job and point it to where your reusable workflow lives:</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">.github/workflows/trigger-monorepo-to-build-doc.yml</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
@@ -3713,16 +3713,16 @@
 </div>
 <p>The moment of truth has arrived! Time to put our automation masterpiece to the test. Let's make some updates to the documentation in <code>data2ml-ops</code> and push them to GitHub, then sit back and watch our creation come to life.</p>
 <p>Check out the GitHub Actions workflow doing its thing:</p>
-<p><a class="glightbox" href="assets/data2ml-ops-run-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/data2ml-ops-run-history.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/data2ml-ops-run-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/data2ml-ops-run-history.png" /></a></p>
 <p><a href="https://github.com/kuanchoulai10/data2ml-ops/actions/runs/14824960685"><code>data2ml-ops</code> run history</a></p>
 <p>Behind the scenes, our workflow is using that reusable workflow like a well-oiled machine. It sends a polite <code>curl</code> request to the GitHub API, creating a <code>repository_dispatch</code> event in <code>monorepo</code>. This digital tap on the shoulder then wakes up the <code>publish-docs.yml</code> workflow – it's like watching a perfectly choreographed dance!</p>
 <p>Switch over to the <code>monorepo</code> page, and you'll see our documentation deployment process has indeed sprung into action:</p>
-<p><a class="glightbox" href="assets/monorepo-run-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/monorepo-run-history.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/monorepo-run-history.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/monorepo-run-history.png" /></a></p>
 <p><a href="https://github.com/kuanchoulai10/monorepo/actions/runs/14824961637"><code>monorepo</code> run history</a></p>
 <p>Look at that beautiful update! Our submodule reference has smoothly transitioned from <code>data2ml-ops @ 7369c16</code> to <code>data2ml-ops @ 887a9a0</code>. It's like watching your bookmark automatically update to point to the latest chapter of your favorite book.</p>
-<p><a class="glightbox" href="assets/monorepo-updated.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/monorepo-updated.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/monorepo-updated.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/monorepo-updated.png" /></a></p>
 <p>The final proof? Visit the actual website, and there it is – the documentation from my <code>data2ml-ops</code> project, freshly deployed and beautifully integrated! It's like watching all the pieces of a puzzle click into place.</p>
-<p><a class="glightbox" href="assets/website-updates.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/website-updates.png" /></a></p>
+<p><a class="glightbox" href="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/website-updates.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/cross-repo-docs-mkdocs-workflow/assets/website-updates.png" /></a></p>
 <p>And just like that, we've created a self-updating documentation ecosystem that keeps everything in sync without manual intervention. No more documentation archaeology expeditions or wondering if what you're reading is current. Your cross-repository documentation now flows as smoothly as a well-conducted symphony!</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <div class="footnote">
