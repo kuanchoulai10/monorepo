@@ -1,5 +1,4 @@
 ---
-draft: true
 authors:
   - kuanchoulai10
 date:
@@ -50,7 +49,7 @@ These pitfalls highlight the need for a more robust solution to manage and query
 
 ## The Emergence of Data Lakehouses
 
-Data lakehouses represent the natural evolution from traditional data lakes, addressing their inherent limitations while preserving their core benefits. In 2020, Databricks introduced the lakehouse concept as a hybrid architecture that **merges the flexible storage capabilities of data lakes with the structured management and transactional guarantees of data warehouses**. This convergence enables organizations to maintain their existing data lake investments while gaining enterprise-grade features previously exclusive to warehouse environments.
+Data lakehouses represent the natural evolution from traditional data lakes, addressing their inherent limitations while preserving their core benefits. In 2020, [Databricks introduced the lakehouse concept](https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html) as a hybrid architecture that **merges the flexible storage capabilities of data lakes with the structured management and transactional guarantees of data warehouses**. This convergence enables organizations to maintain their existing data lake investments while gaining enterprise-grade features previously exclusive to warehouse environments.
 
 The lakehouse architecture is characterized by several key capabilities:
 
@@ -89,9 +88,6 @@ I really enjoyed Alex Merced’s presentation on *"The Who, What and Why of Data
 ## References
 
 - [What Is a Lakehouse?](https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html)
-- [Exploring the Architecture of Apache Iceberg, Delta Lake, and Apache Hudi](https://www.dremio.com/blog/exploring-the-architecture-of-apache-iceberg-delta-lake-and-apache-hudi/)
-- [Comparison of Data Lake Table Formats (Apache Iceberg, Apache Hudi and Delta Lake)](https://www.dremio.com/blog/comparison-of-data-lake-table-formats-apache-iceberg-apache-hudi-and-delta-lake/)
-- [Table Format Governance and Community Contributions - Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-governance-and-community-contributions-apache-iceberg-apache-hudi-and-delta-lake/)
-- [Table Format Partitioning Comparison - Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-partitioning-comparison-apache-iceberg-apache-hudi-and-delta-lake/)
 - [Tampa Bay DE Meetup - The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)](https://www.youtube.com/watch?v=1eEcWopaFqE)
-- [Hudi vs Iceberg vs Delta Lake - Data Lake Table Formats Compared](https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/)
+- [The Forrester Wave™: Data Lakehouses, Q2 2024](https://www.forrester.com/report/the-forrester-wave-tm-data-lakehouses-q2-2024/RES180732)
+- [DuckLake: SQL as a Lakehouse Format](https://duckdb.org/2025/05/27/ducklake.html)
