@@ -3,8 +3,8 @@ draft: true
 authors:
   - kuanchoulai10
 date:
-  created: 2025-06-02
-  updated: 2025-06-02
+  created: 2025-07-29
+  updated: 2025-07-29
 categories:
   - Data
 tags:
@@ -12,7 +12,7 @@ tags:
 comments: true
 ---
 
-# The Lakehouse Series: DuckLake — The Next Big Thing?
+# The Lakehouse Series: DuckLake Overview
 
 !!! info "TLDR"
 
