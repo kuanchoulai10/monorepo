@@ -5,6 +5,12 @@ authors:
 date:
   created: 2025-07-01
   updated: 2025-07-01
+links:
+  - blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md
+  - blog/posts/2025/drafts/apache-iceberg-overview/apache-iceberg-overview.md
+  - blog/posts/2025/drafts/apache-hudi-overview/apache-hudi-overview.md
+  - blog/posts/2025/drafts/delta-lake-overview/delta-lake-overview.md
+  - blog/posts/2025/drafts/ducklake-overview/ducklake-overview.md
 categories:
   - Data
 tags:
@@ -18,57 +24,52 @@ comments: true
 
     After reading this article, you will learn:
 
-    - abc
-    - def
-    - ghi
-
+    - What limitations traditional data lakes face
+    - How data lakehouses merge the flexibility of data lakes with the structured management of data warehouses
+    - What enterprise-grade capabilities define lakehouse architecture
+    - What the major open-source lakehouse formats are
 
 <!-- more -->
-
-![Star History Chart](https://api.star-history.com/svg?repos=apache/hudi,apache/iceberg,delta-io/delta,duckdb/ducklake&type=Date)
-
-
-## From Data Lakes to Lakehouses
-
-### Common Pitfalls in Traditional Data Lakes
-
-Traditional data lakes often suffer from issues such as:
-
-- **Lack of ACID Transactions**: Without transactional guarantees, data corruption and inconsistencies can occur during concurrent writes or failures.
-- **Schema Management Challenges**: Evolving schemas can lead to compatibility issues and broken pipelines.
-- **Inefficient Query Performance**: Scanning large datasets without proper indexing or partitioning can result in slow query execution.
-- **Limited Interoperability**: Many data lakes are tightly coupled with specific engines, limiting flexibility in tool selection. 傳統的 data lake（如 Hive Metastore + HDFS）通常與 Spark 或 Hive 綁很緊。Delta Lake 剛推出時僅支援 Spark，也曾被批評 interoperability 不佳。Apache Hudi 初期也是 Spark-centric，後來才逐漸加強 Flink 與 Presto 支援。
-
-These pitfalls highlight the need for a more robust solution to manage and query data effectively.
-
-
-### Data Architecture Evolution
 
 <figure markdown="span">
   ![Data Lakehouse](https://www.databricks.com/wp-content/uploads/2020/01/data-lakehouse-new.png)
   [*Data Architecture Evolution*](https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html)
 </figure>
 
-Data lakes emerged as a solution to store vast amounts of raw data in its native format. However, as organizations sought to derive insights from this data, they encountered challenges in managing and querying it efficiently. This led to the evolution of the "lakehouse" paradigm, which combines the scalability of data lakes with the transactional capabilities of data warehouses. 2020年 databricks 首次提出 lakehouse 概念，旨在解決傳統 data lake 的問題。
 
-- Transaction support: In an enterprise lakehouse many data pipelines will often be reading and writing data concurrently. 
-- Schema enforcement and governance: The Lakehouse should have a way to support schema enforcement and evolution, supporting DW schema architectures such as star/snowflake-schemas
-- BI support: Lakehouses enable using BI tools directly on the source data. 
-- Storage is decoupled from compute: In practice this means storage and compute use separate clusters, thus these systems are able to scale to many more concurrent users and larger data sizes.
-- Openness: The storage formats they use are open and standardized, such as Parquet, and they provide an API so a variety of tools and engines, including machine learning and Python/R libraries, can efficiently access the data directly.
-- Support for diverse data types ranging from unstructured to structured data
-- Support for diverse workloads: including data science, machine learning, and SQL and analytics.
-- End-to-end streaming: Real-time reports are the norm in many enterprises. 
+## Challenges in Traditional Data Lakes
 
+In the 2010s, Data Lakes emerged as a revolutionary concept, enabling enterprises to store vast amounts of raw data for on-demand analysis. This "store everything in a pool and let users extract what they need" approach fundamentally differed from the traditional data warehouse paradigm of "ETL first, then store." While many companies implemented Data Lakes using Hadoop/HDFS, they still couldn't resolve critical issues around data governance, transactional support, and query performance. Over time, the limitations of Data Lakes became increasingly apparent, particularly in scenarios requiring efficient querying and robust data governance. Traditional data lakes often suffer from issues such as:
 
-Table formats play a pivotal role in enabling this transition by providing structure and governance to otherwise unstructured data.
+- **Absence of Transactional Support**: Data lakes cannot guarantee atomicity, consistency, isolation, and durability (ACID) properties, making it challenging to handle concurrent operations reliably.
+- **Poor Data Quality Enforcement**: Without built-in validation mechanisms, data lakes struggle to maintain data integrity and prevent the ingestion of corrupt or invalid data.
+- **Consistency and Isolation Issues**: The inability to properly isolate read and write operations creates conflicts when mixing batch processing, streaming workloads, and real-time queries.
+- **Limited Interoperability**: Data lakes are frequently bound to particular processing engines, restricting the choice of analytical tools and creating vendor lock-in situations. For instance, traditional data lake implementations (such as Hive Metastore with HDFS) were primarily designed for Spark or Hive ecosystems.
 
+These pitfalls highlight the need for a more robust solution to manage and query data effectively.
 
+## The Emergence of Data Lakehouses
 
-### The Role of Lakehouse Data Formats
+Data lakehouses represent the natural evolution from traditional data lakes, addressing their inherent limitations while preserving their core benefits. In 2020, Databricks introduced the lakehouse concept as a hybrid architecture that **merges the flexible storage capabilities of data lakes with the structured management and transactional guarantees of data warehouses**. This convergence enables organizations to maintain their existing data lake investments while gaining enterprise-grade features previously exclusive to warehouse environments.
 
-At the heart of this are data lakehouse table formats, which are metadata layers that allow tools to interact with data lake storage like a traditional database.
+The lakehouse architecture is characterized by several key capabilities:
 
+- **ACID Transactional Capabilities**: Enterprise lakehouses require robust support for concurrent read and write operations across multiple data pipelines without compromising data integrity.
+- **Data Structure Validation and Evolution**: The platform must enforce data schemas while allowing flexible evolution, accommodating traditional warehouse patterns like star and snowflake designs.
+- **Direct Business Intelligence Integration**: Lakehouses allow analytical tools to query source data directly without requiring intermediate data movement or transformation.
+- **Independent Scaling of Storage and Processing**: By separating storage from computational resources, the architecture can accommodate unlimited concurrent users and handle massive datasets efficiently.
+- **Standards-Based Accessibility**: Built on open formats like Parquet with standardized APIs, enabling seamless integration with diverse analytical tools, ML frameworks, and programming environments.
+- **Multi-Modal Data Handling**: Accommodates everything from raw, unstructured content to highly organized structured datasets within a unified platform.
+- **Versatile Processing Capabilities**: Supports varied analytical needs including data science workflows, machine learning model development, SQL analytics, and business reporting.
+- **Native Real-Time Data Processing**: Enables continuous data ingestion and immediate availability for live dashboards and real-time enterprise reporting requirements.
+
+Since Databricks introduced the Data Lakehouse concept in 2020, cloud providers have rapidly adopted and implemented these capabilities across their platforms. This widespread adoption reflects the growing recognition of lakehouses as the next evolution in data architecture. The momentum behind this shift is evidenced by Forrester Wave's 2024 [report](https://www.forrester.com/report/the-forrester-wave-tm-data-lakehouses-q2-2024/RES180732), which evaluated cloud vendors' Data Lakehouse offerings across 24 comprehensive dimensions. Based on assessments of both current capabilities and strategic vision, three companies emerged as Leaders: Databricks, Google, and Snowflake. **The report reinforces that Data Lakehouse represents an inevitable evolution in the data landscape.**
+
+In the open source realm, projects like [Apache Hudi](https://hudi.apache.org/), [Apache Iceberg](https://iceberg.apache.org/), and [Delta Lake](https://delta.io/) continue to evolve, providing their respective solutions to implement Data Lakehouse functionality. These projects are constantly enhancing their capabilities. Even in 2025, [DuckDB launched DuckLake](https://duckdb.org/2025/05/27/ducklake.html), attempting to define a new Data Lakehouse standard that uses databases for catalog and metadata management, rather than the blob storage management approach employed by the other three formats.
+
+## Data Lakehouse Open Formats
+
+![Star History Chart](https://api.star-history.com/svg?repos=apache/hudi,apache/iceberg,delta-io/delta,duckdb/ducklake&type=Date)
 
 Table formats like Apache Hudi, Apache Iceberg, and Delta Lake address these challenges by introducing:
 
@@ -77,19 +78,20 @@ Table formats like Apache Hudi, Apache Iceberg, and Delta Lake address these cha
 - **Efficient Metadata Management**: Leveraging manifest or log files to optimize query planning and execution.
 - **Multi-Engine Compatibility**: Enabling interoperability across various processing engines like Spark, Flink, and Trino.
 
-By bridging the gap between raw data storage and structured data management, lakehouse data formats empower organizations to build scalable, performant, and reliable lakehouse architectures.
+These lakehouse formats bridge the gap between raw data storage and structured data management, enabling organizations to build scalable, high-performance, and reliable lakehouse architectures.
 
-each lakehouse data format has its own design philosophy and its own implementation details, but they all share the common goal of addressing the limitations of traditional data lakes while providing a unified platform for data analytics and machine learning.
+While each format follows its own design philosophy and implementation approach, they all share a common goal: overcoming the limitations of traditional data lakes and providing a unified foundation for analytics and machine learning workloads.
 
+I really enjoyed Alex Merced’s presentation on *"The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)"*. As the co-author of [*"Apache Iceberg: The Definitive Guide"*](https://www.dremio.com/wp-content/uploads/2023/02/apache-iceberg-TDG_ER1.pdf), he offered a great overview of the three formats. You can watch the full talk below:
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1eEcWopaFqE?si=U7l83GtPmkNwYT-Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## References
 
-- [Apache Iceberg Copy-On-Write (COW) vs Merge-On-Read (MOR): A Deep Dive](https://estuary.dev/blog/apache-iceberg-cow-vs-mor/)
+- [What Is a Lakehouse?](https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html)
 - [Exploring the Architecture of Apache Iceberg, Delta Lake, and Apache Hudi](https://www.dremio.com/blog/exploring-the-architecture-of-apache-iceberg-delta-lake-and-apache-hudi/)
 - [Comparison of Data Lake Table Formats (Apache Iceberg, Apache Hudi and Delta Lake)](https://www.dremio.com/blog/comparison-of-data-lake-table-formats-apache-iceberg-apache-hudi-and-delta-lake/)
-- [Table Format Governance and Community Contributions: Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-governance-and-community-contributions-apache-iceberg-apache-hudi-and-delta-lake/)
-- [Table Format Partitioning Comparison: Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-partitioning-comparison-apache-iceberg-apache-hudi-and-delta-lake/)
-- [Tampa Bay DE Meetup: The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)](https://www.youtube.com/watch?v=1eEcWopaFqE)
-- [Hudi vs Iceberg vs Delta Lake: Data Lake Table Formats Compared](https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/)
-- [What Is a Lakehouse?](https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html)
+- [Table Format Governance and Community Contributions - Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-governance-and-community-contributions-apache-iceberg-apache-hudi-and-delta-lake/)
+- [Table Format Partitioning Comparison - Apache Iceberg, Apache Hudi, and Delta Lake](https://www.dremio.com/blog/table-format-partitioning-comparison-apache-iceberg-apache-hudi-and-delta-lake/)
+- [Tampa Bay DE Meetup - The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)](https://www.youtube.com/watch?v=1eEcWopaFqE)
+- [Hudi vs Iceberg vs Delta Lake - Data Lake Table Formats Compared](https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/)

@@ -310,6 +310,8 @@ Iceberg provides procedures to manage metadata files, including rewriting manife
 
 See [Spark Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/) for more details on the available procedures and their usage.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TsmhRZElPvM?si=vriCUbfU_dxfddey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## References
 
 - [Apache Iceberg Copy-On-Write (COW) vs Merge-On-Read (MOR): A Deep Dive](https://estuary.dev/blog/apache-iceberg-cow-vs-mor/)

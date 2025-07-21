@@ -31,17 +31,6 @@ Delta Lake's architecture is built around **simplicity and reliability**. At its
 
 ## Storage Layout
 
-!!! info "TLDR"
-
-    After reading this article, you will learn:
-
-    - abc
-    - def
-    - ghi
-
-
-<!-- more -->
-
 Ever wondered how Delta Lake keeps track of all your data without losing its mind? The secret sauce lies in its beautifully simple yet powerful architecture that revolves around one core principle: **everything goes through the transaction log**. Think of it as your data's personal accountant who never takes a day off!
 
 **The Transaction Log: Your Data's Single Source of Truth**

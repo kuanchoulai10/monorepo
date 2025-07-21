@@ -3,8 +3,8 @@ draft: true
 authors:
   - kuanchoulai10
 date:
-  created: 2025-04-11
-  updated: 2025-04-11
+  created: 2025-08-01
+  updated: 2025-08-01
 categories:
   - GCP
 tags:
