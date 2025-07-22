@@ -3568,7 +3568,10 @@
 <span class="normal"><a href="#__codelineno-8-20">20</a></span>
 <span class="normal"><a href="#__codelineno-8-21">21</a></span>
 <span class="normal"><a href="#__codelineno-8-22">22</a></span>
-<span class="normal"><a href="#__codelineno-8-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
 </span></span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
@@ -3587,10 +3590,13 @@
 </span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
-</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
-</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
-</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">  </span><span class="nt">additionalJVMConfig</span><span class="p">:</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--add-opens=java.base/java.nio=ALL-UNNAMED</span><span class="w"> </span><span class="c1"># https://trino.io/docs/current/connector/bigquery.html#arrow-serialization-support</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--sun-misc-unsafe-memory-access=allow</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Next, configure the coordinator to use the TLS certificate by specifying its location in the <code>http-server.https.keystore.path</code> setting:</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
@@ -3606,7 +3612,11 @@
 <span class="normal"><a href="#__codelineno-9-11">11</a></span>
 <span class="normal"><a href="#__codelineno-9-12">12</a></span>
 <span class="normal"><a href="#__codelineno-9-13">13</a></span>
-<span class="normal"><a href="#__codelineno-9-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -3617,9 +3627,13 @@
 </span></span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.principal-field=email</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="enable-and-expose-the-https-endpoint">Enable and Expose the HTTPS Endpoint<a class="headerlink" href="#enable-and-expose-the-https-endpoint" title="Permanent link">&para;</a></h3>
 <p>To activate HTTPS in Trino, configure the <code>http-server.https.enabled</code> setting to <code>true</code> and specify the <code>http-server.https.port</code> (typically <code>8443</code>). Additionally, expose this port through the Kubernetes service configuration.</p>
@@ -3636,7 +3650,11 @@
 <span class="normal"><a href="#__codelineno-10-11">11</a></span>
 <span class="normal"><a href="#__codelineno-10-12">12</a></span>
 <span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -3647,9 +3665,13 @@
 </span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
 </span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
 </span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
-</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
-</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
-</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.principal-field=email</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml coordinator</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
@@ -3673,7 +3695,10 @@
 <span class="normal"><a href="#__codelineno-11-20">20</a></span>
 <span class="normal"><a href="#__codelineno-11-21">21</a></span>
 <span class="normal"><a href="#__codelineno-11-22">22</a></span>
-<span class="normal"><a href="#__codelineno-11-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="nt">coordinator</span><span class="p">:</span>
 </span></span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
@@ -3692,10 +3717,13 @@
 </span></span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="hll"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
 </span></span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="hll"><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
 </span></span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="hll"><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span></span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
-</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
-</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
-</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
+</span></span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">  </span><span class="nt">additionalJVMConfig</span><span class="p">:</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--add-opens=java.base/java.nio=ALL-UNNAMED</span><span class="w"> </span><span class="c1"># https://trino.io/docs/current/connector/bigquery.html#arrow-serialization-support</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--sun-misc-unsafe-memory-access=allow</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
 </span></code></pre></div></td></tr></table></div>
 <h2 id="secure-internal-communication">Secure Internal Communication<a class="headerlink" href="#secure-internal-communication" title="Permanent link">&para;</a></h2>
 <p>To enhance security, the Trino cluster supports secure internal communication (red lines) between nodes through authentication mechanisms, with optional TLS encryption for additional protection.</p>
@@ -3706,11 +3734,9 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>openssl rand 512 | base64
 </span></code></pre></div>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml additionalConfigProperties</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="hll"><span class="nt">additionalConfigProperties</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="hll"><span class="nt">additionalConfigProperties</span><span class="p">:</span>
 </span></span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="hll"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal-communication.shared-secret=$INTERNAL_SHARED_SECRET</span>
-</span></span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
-</span></code></pre></div></td></tr></table></div>
+</span></span></code></pre></div></td></tr></table></div>
 <p>The configurations under <code>additionalConfigProperties</code> will impact all the nodes in the Trino Cluster.</p>
 <h2 id="create-google-oauth-20-client">Create Google OAuth 2.0 Client<a class="headerlink" href="#create-google-oauth-20-client" title="Permanent link">&para;</a></h2>
 <p>Since we're using Google as our OAuth2 provider, we'll need to set up a Google OAuth 2.0 client. This is a straightforward process, but there are a few specific configuration details to keep in mind for Trino.</p>
@@ -3741,7 +3767,11 @@
 <span class="normal"><a href="#__codelineno-15-11">11</a></span>
 <span class="normal"><a href="#__codelineno-15-12">12</a></span>
 <span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span>
+<span class="normal"><a href="#__codelineno-15-15">15</a></span>
+<span class="normal"><a href="#__codelineno-15-16">16</a></span>
+<span class="normal"><a href="#__codelineno-15-17">17</a></span>
+<span class="normal"><a href="#__codelineno-15-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="hll"><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span></span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="hll"><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -3752,9 +3782,13 @@
 </span></span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
 </span></span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
 </span></span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
-</span></span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="hll"><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
-</span></span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span></span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.principal-field=email</span>
+</span></span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Trino supports reading the Authorization Server configuration from the OIDC provider configuration metadata document. During coordinator startup, Trino retrieves this document and uses the provided values to set the corresponding OAuth2 authentication properties, eliminating the need for additional configuration setup.</p>
 <p>For Google configuration metadata document, see <a href="https://accounts.google.com/.well-known/openid-configuration">here</a>.</p>
