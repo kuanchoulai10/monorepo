@@ -12,13 +12,11 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/blog/oltp-vs-olap-a-parquet-primer/">
+        <link rel="canonical" href="https://kcl10.com/blog/apache-iceberg-overview/">
       
       
-        <link rel="prev" href="../cross-repo-docs-mkdocs-workflow/">
+        <link rel="prev" href="../apache-hudi-overview/">
       
-      
-        <link rel="next" href="../from-data-lakes-to-data-lakehouses/">
       
       
       <link rel="icon" href="../../images/avatar.png">
@@ -26,7 +24,7 @@
     
     
       
-        <title>The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer) - KC's Data & Life Notes</title>
+        <title>The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes</title>
       
     
     
@@ -77,11 +75,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer) - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,15 +87,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/blog/oltp-vs-olap-a-parquet-primer/" >
+        <meta  property="og:url"  content="https://kcl10.com/blog/apache-iceberg-overview/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer) - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.png" >
       
     
     
@@ -129,7 +127,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" class="md-skip">
+        <a href="#the-lakehouse-series-apache-iceberg-overview" class="md-skip">
           Skip to content
         </a>
       
@@ -192,7 +190,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
+              The Lakehouse Series: Apache Iceberg Overview
             
           </span>
         </div>
@@ -3207,28 +3205,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#oltp-vs-olap-the-data-processing-showdown" class="md-nav__link">
+  <a href="#storage-layout" class="md-nav__link">
     <span class="md-ellipsis">
-      OLTP vs. OLAP: The Data Processing Showdown
+      Storage Layout
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="OLTP vs. OLAP: The Data Processing Showdown">
+    <nav class="md-nav" aria-label="Storage Layout">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-is-oltp-the-speed-demon" class="md-nav__link">
+  <a href="#catalog" class="md-nav__link">
     <span class="md-ellipsis">
-      What is OLTP? (The Speed Demon)
+      Catalog
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-is-olap-the-deep-thinker" class="md-nav__link">
+  <a href="#metadata-files" class="md-nav__link">
     <span class="md-ellipsis">
-      What is OLAP? (The Deep Thinker)
+      Metadata Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snapshots
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manifest-list-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manifest List Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manifest-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manifest Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#putting-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting All Together
     </span>
   </a>
   
@@ -3240,29 +3274,62 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-storage-formats-matter" class="md-nav__link">
+  <a href="#query-types" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Storage Formats Matter
+      Query Types
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enter-parquet-the-best-of-both-worlds" class="md-nav__link">
+  <a href="#spark-procedures" class="md-nav__link">
     <span class="md-ellipsis">
-      Enter Parquet: The Best of Both Worlds
+      Spark Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spark Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snapshot-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Snapshot Management
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#beyond-parquet-the-next-evolution" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#metadata-management" class="md-nav__link">
     <span class="md-ellipsis">
-      Beyond Parquet: The Next Evolution
+      Metadata Management
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Migration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      Others
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3331,14 +3398,14 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-06-02 00:00:00+00:00" class="md-ellipsis">Jun 2, 2025</time>
+                        <time datetime="2025-07-15 00:00:00+00:00" class="md-ellipsis">Jul 15, 2025</time>
                       </div>
                     </li>
                     
                       <li class="md-nav__item">
                         <div class="md-nav__link">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
-                          <time datetime="2025-06-02 00:00:00+00:00" class="md-ellipsis">Jun 2, 2025</time>
+                          <time datetime="2025-07-15 00:00:00+00:00" class="md-ellipsis">Jul 15, 2025</time>
                         </div>
                       </li>
                     
@@ -3360,7 +3427,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              8 min read
+                              11 min read
                             
                           </span>
                         </div>
@@ -3380,6 +3447,27 @@
                   </div>
                   <nav class="md-nav">
                     <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oltp-vs-olap-a-parquet-primer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
                       
                         
                         
@@ -3414,27 +3502,6 @@
   
   <span class="md-ellipsis">
     The Lakehouse Series: Apache Hudi Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apache-iceberg-overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    The Lakehouse Series: Apache Iceberg Overview
     
   </span>
   
@@ -3507,6 +3574,12 @@
       
       
       
+        <a href="../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
+      
+    
+      
+      
+      
         <a href="../../tags/#tag:the-lakehouse-series" class="md-tag">The Lakehouse Series</a>
       
     
@@ -3514,7 +3587,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -3523,115 +3596,267 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="the-lakehouse-series-oltp-vs-olap-a-parquet-primer">The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)<a class="headerlink" href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" title="Permanent link">&para;</a></h1>
+<h1 id="the-lakehouse-series-apache-iceberg-overview">The Lakehouse Series: Apache Iceberg Overview<a class="headerlink" href="#the-lakehouse-series-apache-iceberg-overview" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">TLDR</p>
 <p>After reading this article, you will learn:</p>
 <ul>
-<li>The key differences between <strong>OLTP</strong> and <strong>OLAP</strong> workloads, and why storage format matters</li>
-<li>How <strong>Parquet</strong> organizes data internally and optimizes data storage using compression techniques like dictionary encoding and RLE</li>
-<li>Where Parquet falls short in today's data landscape</li>
+<li>Apache Iceberg's 3-tier metadata architecture (metadata files, manifest lists, and manifest files)</li>
+<li>How Iceberg catalogs work, including the REST catalog standard for multi-engine compatibility</li>
+<li>Query capabilities including time travel, incremental reads, and metadata queries</li>
+<li>Spark procedures for snapshot management, metadata maintenance, and table migration</li>
 </ul>
 </div>
 <!-- more -->
 
-<h2 id="oltp-vs-olap-the-data-processing-showdown">OLTP vs. OLAP: The Data Processing Showdown<a class="headerlink" href="#oltp-vs-olap-the-data-processing-showdown" title="Permanent link">&para;</a></h2>
-<p>Picture this: you're at a bustling coffee shop. The barista (OLTP) takes your order, processes payment, and updates inventory — all in seconds. Meanwhile, the shop owner (OLAP) sits in the back office, analyzing months of sales data to figure out which pastries sell best on rainy Tuesdays. Same data, completely different games!</p>
-<h3 id="what-is-oltp-the-speed-demon">What is OLTP? (The Speed Demon)<a class="headerlink" href="#what-is-oltp-the-speed-demon" title="Permanent link">&para;</a></h3>
-<p>OLTP stands for <strong>Online Transaction Processing</strong> — think of it as your data's personal speed trainer. It's obsessed with handling individual transactions faster than you can say "latte with oat milk."</p>
-<p>OLTP is like that friend who finishes your sentences before you're halfway through. It specializes in <strong>real-time data updates and retrievals</strong> with the patience of a caffeinated hummingbird. Here's where it shines:</p>
+<figure>
+  <a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Storage Layout" src="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" width="600" /></a>
+  <em>Iceberg Storage Layout</em>
+</figure>
+<p>Apache Iceberg was born at <strong>Netflix</strong> in <strong>2017</strong> from the brilliant minds of <a href="https://www.linkedin.com/in/rdblue/">Ryan Blue</a> and <a href="https://www.linkedin.com/in/daniel-weeks-a1946860/">Daniel Weeks</a>, who were wrestling with the limitations of Hive tables at Netflix's mind-boggling scale. When you're dealing with petabytes of data and schema evolution nightmares, you need something better than what existed. Open-sourced in 2018 and graduating to an Apache Software Foundation top-level project in 2020, Iceberg has become a heavyweight in the lakehouse arena. As of June 2025, the project boasts over <strong>7,500 GitHub</strong> stars with contributions from <strong>more than 600 developers</strong> worldwide, backed by industry giants like Netflix, Apple, Tabular, Dremio, and AWS.</p>
+<p>What sets Iceberg apart is its <strong>architectural elegance</strong>. Built on a sophisticated <strong>3-tier metadata hierarchy</strong>, Iceberg orchestrates <em>table-level metadata files</em> (<code>metadata.json</code>), <em>snapshot-level manifest lists</em> (<code>*.avro</code>), and <em>data-level manifest files</em> (<code>*.avro</code>) into a symphony of efficiency.</p>
+<p>Iceberg's design philosophy centers around <strong>hidden partitioning</strong> and <strong>schema evolution without the headaches</strong>. Forget about manually managing partitions or rewriting entire tables when your schema changes — Iceberg handles this behind the scenes like a data concierge. The format's <strong>storage-agnostic approach</strong> means true multi-engine compatibility through standardized APIs and REST-based catalogs, making it the diplomat of the lakehouse world.</p>
+<p>At its core, Iceberg treats every table state as an <strong>immutable, versioned snapshot</strong> with complete lineage tracking. This enables bulletproof <strong>concurrent reads and writes</strong>, <strong>automatic schema evolution</strong>, and <strong>surgical partition pruning</strong>. Built with both backward and forward compatibility in mind, Iceberg ensures your data infrastructure won't break when you upgrade.</p>
+<h2 id="storage-layout">Storage Layout<a class="headerlink" href="#storage-layout" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Storage Layout" src="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" width="600" /></a>
+  <em>Iceberg Storage Layout</em>
+</figure>
+<h3 id="catalog">Catalog<a class="headerlink" href="#catalog" title="Permanent link">&para;</a></h3>
+<p>The Iceberg catalog serves as the <strong>centralized metadata repository</strong> that manages table locations, schema information, and other table-level metadata. It integrates with existing metadata stores such as Hive Metastore, AWS Glue, or custom-built solutions, <strong>providing a unified interface for query engines like Spark, Trino, Flink, and others to discover and access table metadata efficiently</strong>. Before performing any operations with Apache Iceberg, the first step typically involves setting up and configuring a catalog — think of it as establishing the command center for your data infrastructure.</p>
+<p>A particularly exciting advancement in this area is the introduction of <strong>the REST catalog</strong> in Iceberg version 0.14.0, released in July 2022. This catalog acts as a standardized communication layer — essentially a universal translator — allowing query engines to interact with metadata through a common RESTful API, rather than relying on engine-specific logic embedded in catalog clients. In this model, the logic that handles metadata operations resides on the catalog server, and can be implemented in any language or backed by any technology, as long as it adheres to the <a href="https://github.com/apache/iceberg/blob/main/open-api/rest-catalog-open-api.yaml">Iceberg REST Open API specification</a>.</p>
+<p>One of the most significant benefits of the REST catalog is that <strong>it enables a single, lightweight client to communicate with a wide range of catalog backends</strong>. This decouples clients from the specific implementations of the catalog, <strong>reducing the need to manage multiple dependencies or worry about compatibility issues</strong>. Whether you're using Starburst, Athena, or any other engine that supports the Iceberg REST catalog, the interaction becomes seamless — much like using a single remote control that works across all your devices.</p>
+<p>The REST catalog itself is not a product, but <strong>an API standard</strong>. <strong>The actual server implementation must be built by developers or the community following the specification</strong>. Several open-source projects and products are working to implement or support REST-based catalogs for Iceberg, including <a href="https://projectnessie.org/">Project Nessie</a>, <a href="https://polaris.apache.org/">Apache Polaris</a>, <a href="https://gravitino.apache.org/">Apache Gravitino</a>, and <a href="https://docs.lakekeeper.io/">LakeKeeper</a>, etc.</p>
+<p><a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/catalog.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Catalog" src="../2025/07-12/apache-iceberg-overview/assets/catalog.excalidraw.svg" /></a></p>
+<p>For more details on Apache Iceberg catalogs, see the <a href="https://iceberg.apache.org/terms/#catalog">official documentation</a>.</p>
+<h3 id="metadata-files">Metadata Files<a class="headerlink" href="#metadata-files" title="Permanent link">&para;</a></h3>
+<p>Metadata files in Iceberg are <strong>JSON files</strong> stored at the <strong>table level</strong>, and they play a critical role in managing the table's structure, state, and data references. These files enable query engines to accurately interpret and interact with the table.</p>
+<p>Key components include:</p>
 <ul>
-<li><strong>Banking Scenario</strong>: When you withdraw cash, OLTP updates your balance faster than you can pocket the money. It's also the invisible hero when you update your address for that credit card application — boom, done, next!</li>
-<li><strong>E-commerce Scenario</strong>: Adding items to your cart, completing purchases, or deleting that embarrassing profile from your teenage years — OLTP handles it all with sub-second precision.</li>
+<li><strong>Schemas</strong>: Defines the structure of the table, including field names, types, and nullability. Iceberg <strong>retains all historical schemas</strong> - to support schema evolution without disrupting downstream systems.</li>
+<li><strong>Snapshots</strong>: Represent the state of the table at specific points in time. Each snapshot includes a timestamp, a list of data file manifests, and metadata about the change, enabling time travel and strong consistency guarantees.</li>
+<li><strong>Current Snapshot ID</strong>: Identifies the latest active snapshot that query engines should read from.</li>
+<li><strong>Partition Specs</strong>: Specify how data is partitioned, including transformations like bucketing and truncation. Multiple versions can coexist to support evolving partition strategies.</li>
+<li><strong>Location</strong>: Indicates the root path in storage where the table's metadata, manifest files, and data files are stored.</li>
 </ul>
-<p>The magic? OLTP focuses on <strong>processing individual rows of data</strong>, making it the perfect sprinter for workloads that demand instant gratification and rock-solid reliability.</p>
-<h3 id="what-is-olap-the-deep-thinker">What is OLAP? (The Deep Thinker)<a class="headerlink" href="#what-is-olap-the-deep-thinker" title="Permanent link">&para;</a></h3>
-<p>OLAP stands for <strong>Online Analytical Processing</strong> — imagine a brilliant detective who loves crunching numbers more than solving crimes. While OLTP races around handling transactions, OLAP sits in a cozy chair, analyzing patterns like Sherlock Holmes with a spreadsheet addiction.</p>
-<p>OLAP is your go-to when you need to <strong>analyze massive datasets and extract insights</strong>. It's less interested in individual records and more fascinated by <strong>the big picture across specific columns</strong>. Check out its superpowers:</p>
+<h3 id="snapshots">Snapshots<a class="headerlink" href="#snapshots" title="Permanent link">&para;</a></h3>
+<p>A snapshot captures the complete state of a table at a specific point in time, recording which data files were part of the table during that version.</p>
+<p>To efficiently manage large datasets, <strong>A snapshot's data files are organized into multiple manifest files, which are all referenced together in one manifest list file.</strong></p>
+<h3 id="manifest-list-files">Manifest List Files<a class="headerlink" href="#manifest-list-files" title="Permanent link">&para;</a></h3>
+<p>At the <strong>snapshot level</strong>, the <strong>manifest list file</strong> is an Avro-formatted file that records all the <strong>manifest files</strong> associated with a given snapshot.</p>
+<p>Each entry in the manifest list includes:</p>
 <ul>
-<li><strong>Banking Scenario</strong>: Need to know the average age of customers across different branches? OLAP dives into thousands of records, groups them by location, and serves up insights that would make a marketing manager weep with joy.</li>
-<li><strong>E-commerce Scenario</strong>: Those beautiful dashboards showing sales trends, customer demographics, and year-over-year growth? That's OLAP flexing its analytical muscles.</li>
+<li><code>manifest_path</code>: The file path of the manifest</li>
+<li><code>manifest_length</code>: The size of the manifest file</li>
+<li><code>partition_spec_id</code>: The ID of the partition spec used</li>
+<li><code>added_snapshot_id</code>: The snapshot ID in which the manifest was added</li>
+<li>A count of data files: added, existing, and deleted</li>
+<li>Partition-level statistics used for query pruning</li>
 </ul>
-<p>The secret sauce? OLAP excels at <strong>processing subsets of columns</strong> rather than individual rows, making it the marathon champion of data aggregation and business intelligence.</p>
-<h2 id="why-storage-formats-matter">Why Storage Formats Matter<a class="headerlink" href="#why-storage-formats-matter" title="Permanent link">&para;</a></h2>
-<p>Choosing the right data format is like picking the perfect tool for a job — use a hammer when you need a screwdriver, and you'll have a very bad time!</p>
-<p>Before we dive into the storage format showdown, let's map out the data landscape. Imagine data formats on a spectrum:</p>
-<p>At one end, we have <strong>unstructured data</strong> — the wild west of information. Think images, videos, and that chaotic folder of memes on your desktop. No rules, no schema, just pure digital chaos.</p>
-<p>At the other end sits <strong>structured data</strong> — the neat freak of the data world. CSV files fall here, with their obsessive love for rows and columns, following rules stricter than a Swiss train schedule.</p>
-<p>Hanging out in the middle is <strong>semi-structured data</strong> like JSON and XML — the cool kids who have some structure but refuse to be completely boxed in. They're like organized chaos, with key-value pairs that make sense but don't follow traditional table manners.</p>
-<p>Now, let's get specific about structured data layouts. Imagine we have a <code>users</code> table with 5 rows and 4 columns (age, gender, country, and average order value) — our guinea pig for this storage format experiment:</p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/logical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/logical.drawio.svg" width="500" /></a>
-</figure>
-<p>We can classify this logical structured data into two categories based on how the data is physically stored on disk.</p>
-<p><strong>Row-Based Storage: The Transaction Speedster</strong></p>
-<p>Row-based formats store data like reading a book — line by line, left to right. It's how traditional databases like PostgreSQL and MySQL organize their data, and for good reason!</p>
-<p>Since <strong>data is stored row by row</strong>, it's incredibly efficient for typical OLTP operations. Want to insert a new user? Easy — just append a new row. Need to update someone's profile? Find the row offset and boom, mission accomplished. Deleting a user? Same deal.</p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/row-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/row-wise-physical.drawio.svg" width="500" /></a>
-</figure>
-<p>See how elegant it is? To delete the second row, we just need its offset — like having the exact address of a house. But here's the catch: if you want to analyze the average age of all users, you'd have to knock on every door in the neighborhood. Not exactly efficient!</p>
-<p><strong>Column-Based Storage: The Analytics Powerhouse</strong></p>
-<p>Column-based formats flip the script entirely — instead of reading like a book, they read like scanning a newspaper column. Each column lives together, creating some serious analytical superpowers.</p>
-<p>This layout is <strong>compression heaven</strong>. That gender column with mostly "male" and "female" values? Column storage can compress it down to almost nothing, like vacuum-packing your winter clothes.</p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/column-wise-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/column-wise-physical.drawio.svg" width="500" /></a>
-</figure>
-<p>Need the average age? Just grab the age column and you're done — no need to wade through irrelevant data. But deleting a specific user? Now you're playing hide-and-seek across multiple columns. Not exactly OLTP's cup of tea!</p>
-<h2 id="enter-parquet-the-best-of-both-worlds">Enter Parquet: The Best of Both Worlds<a class="headerlink" href="#enter-parquet-the-best-of-both-worlds" title="Permanent link">&para;</a></h2>
-<p>What if I told you there's a storage format that's like having a sports car that's also an SUV? Meet Parquet — the overachiever of the data storage world!</p>
-<p>Parquet emerged from the brilliant minds at Twitter and Cloudera back in 2012. By 2013, it had graduated to become a top-level Apache project, and the data world hasn't been the same since.</p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/hybrid-physical.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/hybrid-physical.drawio.svg" width="675" /></a>
-</figure>
-<p>Here's the genius: Parquet organizes data into <strong>row groups</strong> (like small neighborhoods) that are then divided into <strong>columns</strong> (like sorting each neighborhood by house type). In our example, we have 2 row groups — the first contains rows 1-3, the second contains rows 4-5. Within each row group, columns live separately, enabling both row-wise convenience and column-wise efficiency.</p>
-<p>It's like having the best of both worlds — you can quickly find a specific user (row-wise operations) or analyze age patterns across thousands of users (column-wise operations) without breaking a sweat!</p>
-<p><strong>Parquet's Anatomy: A Peek Under the Hood</strong></p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/parquet.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/parquet.drawio.svg" width="500" /></a>
-</figure>
-<p>A Parquet file is like a well-organized filing cabinet with some seriously smart features:</p>
-<ol>
-<li><strong>Magic Number</strong>: Every Parquet file starts with "PAR1" — its digital signature that screams "I'm special!"</li>
-<li><strong>Row Groups</strong>: The main organizing principle, like having separate drawers for different categories of data</li>
-<li><strong>Column Chunks</strong>: Within each row group, columns get their own dedicated space — think individual folders within each drawer</li>
-<li><strong>Pages</strong>: The smallest storage unit, like individual documents within each folder</li>
-<li><strong>Footer</strong>: The master index at the end that contains all the metadata — like having a detailed table of contents that tells you exactly where everything is without opening every drawer</li>
-</ol>
-<p>This structure enables lightning-fast metadata reading and incredibly efficient data retrieval. It's like having a librarian who knows exactly where every book is without checking the shelves!</p>
-<p><strong>Efficient Compression in Parquet</strong></p>
-<p>Efficient compression is a cornerstone of Parquet's design, enabling it to store massive datasets while minimizing disk usage and maximizing query performance. By leveraging techniques like <strong>dictionary encoding</strong>, <strong>run-length encoding (RLE)</strong>, and <strong>bit-packing</strong>, Parquet achieves remarkable compression ratios without sacrificing speed. Let's explore how these methods work together to optimize columnar data storage.</p>
-<figure>
-  <a class="glightbox" href="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/rle.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../2025/01-06/oltp-vs-olap-a-parquet-primer/assets/rle.drawio.svg" width="500" /></a>
-</figure>
-<p>The image illustrates how Parquet efficiently compresses columnar data using <strong>dictionary encoding</strong>, followed by <strong>run-length encoding (RLE)</strong> and <strong>bit-packing</strong>. In the original column <code>["US", "TW", "FR", "JP", "JP", "KR", "CA", "CA", "CA"]</code>, dictionary encoding first replaces each unique string with a unique integer ID. For example, <code>"US"</code> becomes <code>0</code>, <code>"TW"</code> &rarr; <code>1</code>, ..., <code>"CA"</code> &rarr; <code>5</code>, resulting in the encoded sequence: <code>[0, 1, 2, 3, 3, 4, 5, 5, 5]</code>.</p>
-<p>To further reduce storage, Parquet applies RLE and bit-packing to the integer sequence. Run-length encoding compresses consecutive repeated values, such as <code>"JP"</code> <code>(3, 3)</code> and <code>"CA"</code> <code>(5, 5, 5)</code>, into pairs like <code>3,2</code> (meaning value 3 repeated 2 times) and <code>5,3</code>. Bit-packing then ensures each integer is stored using the minimum number of bits necessary (in this case, 3 bits for up to 6 dictionary values). This layered approach dramatically reduces data size and speeds up scan performance by enabling efficient decoding and skipping of unneeded values.</p>
-<h2 id="beyond-parquet-the-next-evolution">Beyond Parquet: The Next Evolution<a class="headerlink" href="#beyond-parquet-the-next-evolution" title="Permanent link">&para;</a></h2>
-<p>Even superheroes have kryptonite, and Parquet is no exception. Despite being the Swiss Army knife of data storage, it does have some Achilles' heels that can make you pull your hair out:</p>
+<p>This structure improves performance by allowing query engines to filter relevant manifests based on metadata without reading every manifest file in full.</p>
+<h3 id="manifest-files">Manifest Files<a class="headerlink" href="#manifest-files" title="Permanent link">&para;</a></h3>
+<p>At the <strong>data level</strong>, <strong>manifest files</strong> are Avro-formatted files that store metadata for each data file included in a snapshot.</p>
+<p>For each data file, a manifest records:</p>
 <ul>
-<li><strong>Subsecond latency</strong>: Parquet struggles with workloads requiring microsecond updates, such as high-frequency trading.</li>
-<li><strong>High-concurrency read-write</strong>: Maintaining consistency during concurrent operations is challenging.</li>
+<li><code>file_path</code>: The physical path to the file</li>
+<li><code>file_format</code>: The file format (e.g., Parquet, ORC, Avro)</li>
+<li><code>partition_data</code>: The partition values of the file</li>
+<li><code>record_count</code>: The number of records in the file</li>
+<li><code>file_size_in_bytes</code>: The size of the file</li>
+<li>Column-level statistics: including value counts, null value counts, and min/max values</li>
 </ul>
-<p>Parquet shines in OLAP systems where batch processing and read-heavy workloads dominate. However, as modern data applications grow more interactive and collaborative, expectations have shifted. Today's data platforms increasingly require features like:</p>
+<p>These metadata entries enable query engines to perform <strong>partition pruning</strong> and <strong>skip irrelevant files</strong> during query planning, improving performance.</p>
+<h3 id="putting-all-together">Putting All Together<a class="headerlink" href="#putting-all-together" title="Permanent link">&para;</a></h3>
+<div class="admonition question">
+<p class="admonition-title">What is the relationship between a snapshot and a manifest list file?</p>
+<p>In Apache Iceberg, each snapshot has a corresponding manifest list file. This file lists all the manifest files that belong to that snapshot.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Can one manifest list file include multiple manifest files?</p>
+<p>Yes. A single manifest list file can include multiple manifest files, each of which tracks a set of data files (e.g., Parquet, ORC, Avro) that belong to the snapshot.</p>
+<p>This design supports query optimization because query engines can use summary information from the manifest list to filter out irrelevant manifest files, reducing unnecessary scans and improving performance.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Do data files listed in manifest files within a single snapshot ever overlap?</p>
+<p>Under normal conditions, no. One of Iceberg's core design principles is that each data file is tracked only once within a single snapshot.</p>
+<p>The manifest files referenced in a snapshot's manifest list cover non-overlapping sets of data files. This ensures:</p>
 <ul>
-<li><strong>ACID transactions</strong>: Ensuring data reliability during concurrent operations.</li>
-<li><strong>Time travel queries</strong>: Accessing historical data snapshots.</li>
-<li><strong>Concurrent reads and writes</strong>: Supporting high-performance, multi-user environments.</li>
+<li>Efficient queries: Avoid redundant scans of the same data file.</li>
+<li>Data consistency: Ensure no duplicate records are counted or queried.</li>
+<li>Simplified metadata management: Easier updates and lower risk of errors.</li>
 </ul>
-<p>To address these needs, open formats like <strong>Apache Hudi</strong>, <strong>Iceberg</strong>, and <strong>Delta Lake</strong> have emerged. Built on top of Parquet, these formats extend its functionality to support advanced features, making them ideal for modern lakehouse architectures.</p>
-<p>Stay tuned for the next chapter in our Lakehouse series, where we'll explore how these formats are revolutionizing data processing!</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>I particularly enjoyed this talk by Boudewijn Braams, a senior software engineer at Databricks. He provided an insightful and engaging explanation of Parquet's internal structure and compression techniques, using vivid analogies that left a lasting impression. This presentation is not only suitable for beginners but also offers valuable insights and optimization tips for experienced data engineers.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1j8SdS7s_NY?si=ulnjMUoUbx_63vYt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Can a single metadata file (<code>metadata.json</code>) reference multiple manifest list files?</p>
+<p>Yes.</p>
+<p>Each <code>metadata.json</code> file represents one version of the table and tracks all snapshots belonging to that version.</p>
+<p>Since each snapshot has its own manifest list file, a single metadata file can reference multiple manifest list files, one for each snapshot.</p>
+</div>
+<h2 id="query-types">Query Types<a class="headerlink" href="#query-types" title="Permanent link">&para;</a></h2>
+<p>Apache Iceberg offers a range of query capabilities that, while not identical to Apache Hudi's, provide robust data management and analysis features:</p>
+<ul>
+<li><strong>Time Travel</strong>: Query historical snapshots of your data using SQL clauses like <code>TIMESTAMP AS OF</code> or <code>VERSION AS OF</code>. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#time-travel">Spark Time travel Queries</a> and <a href="https://trino.io/docs/current/connector/iceberg.html#time-travel-queries">Trino Time Travel Queries</a> for more details.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- time travel to October 26, 1986 at 01:21:00</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;1986-10-26 01:21:00&#39;</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">-- time travel to snapshot with id 10963874102873L</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="mi">10963874102873</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">-- time travel to the head snapshot of audit-branch</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;audit-branch&#39;</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">-- time travel to the snapshot referenced by the tag historical-snapshot</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;historical-snapshot&#39;</span><span class="p">;</span>
+</span></code></pre></div></li>
+<li><strong>Incremental Reads</strong>: Perform incremental data ingestion by scanning snapshots for added or removed files. This is particularly useful for change data capture (CDC) scenarios. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#incremental-read">Spark Incremental Reads</a> for more details (Trino doesn't support incremental reads).
+    <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// get the data added after start-snapshot-id (10963874102873L) until end-snapshot-id (63874143573109L)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">spark</span><span class="p">.</span><span class="na">read</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">     </span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;iceberg&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">     </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;start-snapshot-id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10963874102873&quot;</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">     </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;end-snapshot-id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;63874143573109&quot;</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">     </span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="s">&quot;path/to/table&quot;</span><span class="p">)</span><span class="w">    </span>
+</span></code></pre></div></li>
+<li><strong>Metadata Queries</strong>: Access metadata tables such as history, snapshots, and files to gain insights into table versions, schema changes, and data file statistics. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#inspecting-tables">Spark Metadata Queries</a> and <a href="https://trino.io/docs/current/connector/iceberg.html#metadata-tables">Trino Metadata Queries</a> for more details.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Spark SQL</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">history</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">metadata_log_entries</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">snapshots</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">entries</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">files</span><span class="p">;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">manifests</span><span class="p">;</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">partitions</span><span class="p">;</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">refs</span><span class="p">;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">TBLPROPERTIES</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">;</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">position_deletes</span><span class="p">;</span>
+</span></code></pre></div>
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- Trino SQL</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$history&quot;</span><span class="p">;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$metadata_log_entries&quot;</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$snapshots&quot;</span><span class="p">;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$entries&quot;</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$files&quot;</span><span class="p">;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$manifests&quot;</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$partitions&quot;</span><span class="p">;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$refs&quot;</span><span class="p">;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$properties&quot;</span><span class="p">;</span>
+</span></code></pre></div></li>
+</ul>
+<p>While Apache Hudi provides specialized query types like <a href="https://hudi.apache.org/docs/next/table_types/#query-types">Read Optimized and CDC Incremental queries</a> tailored for streaming data, Apache Iceberg's approach focuses on <strong>providing a consistent and flexible framework for both batch and streaming workloads, with strong support for schema and partition evolution and concurrent writes</strong>.</p>
+<h2 id="spark-procedures">Spark Procedures<a class="headerlink" href="#spark-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="snapshot-management">Snapshot Management<a class="headerlink" href="#snapshot-management" title="Permanent link">&para;</a></h3>
+<p>Snapshot management in Apache Iceberg is a powerful feature that allows users to manipulate table snapshots, enabling time travel, rollback, and other advanced operations. Spark provides a set of procedures to manage snapshots effectively.</p>
+<ul>
+<li><code>rollback_to_snapshot</code>: Roll back a table to a specific snapshot ID.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rollback_to_snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>rollback_to_timestamp</code>: Roll back a table to the snapshot that was current at some time.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rollback_to_timestamp</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2021-06-30 00:00:00.000&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>set_current_snapshot</code>: Sets the current snapshot ID for a table.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">set_current_snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">set_current_snapshot</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;s1&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>cherrypick_snapshot</code>: Cherry-picks changes from a snapshot into the current table state. Cherry-picking creates a new snapshot from an existing
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">cherrypick_snapshot</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">cherrypick_snapshot</span><span class="p">(</span><span class="n">snapshot_id</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;my_table&#39;</span><span class="w"> </span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>publish_changes</code>: Publish changes from a staged WAP ID into the current table state.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">publish_changes</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;wap_id_1&#39;</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">publish_changes</span><span class="p">(</span><span class="n">wap_id</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;wap_id_2&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;my_table&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>fast_forward</code>: Fast-forward the current snapshot of one branch to the latest snapshot of another.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">fast_forward</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;main&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;audit-branch&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+</ul>
+<h3 id="metadata-management">Metadata Management<a class="headerlink" href="#metadata-management" title="Permanent link">&para;</a></h3>
+<p>Iceberg provides procedures to manage metadata files, including rewriting manifests, removing orphan files, and expiring snapshots. These procedures help maintain the integrity and performance of Iceberg tables.</p>
+<ul>
+<li><code>expire_snapshots</code>: Remove older snapshots and their files which are no longer needed.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">hive_prod</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">expire_snapshots</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2021-06-30 00:00:00.000&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">CALL</span><span class="w"> </span><span class="n">hive_prod</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">expire_snapshots</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">snapshot_ids</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">(</span><span class="mi">123</span><span class="p">));</span>
+</span></code></pre></div></li>
+<li><code>remove_orphan_files</code>: Remove files which are not referenced in any metadata files of an Iceberg table and can thus be considered "orphaned".
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dry_run</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;tablelocation/data&#39;</span><span class="p">);</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix_mismatch_mode</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;IGNORE&#39;</span><span class="p">);</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix_mismatch_mode</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="p">);</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">equal_schemes</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;file1&#39;</span><span class="p">));</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">equal_authorities</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;ns1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ns2&#39;</span><span class="p">));</span>
+</span></code></pre></div></li>
+<li><code>rewrite_data_files</code>: Rewrite the data files of a table to optimize storage layout.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;id DESC NULLS LAST,name ASC NULLS FIRST&#39;</span><span class="p">);</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;zorder(c1,c2)&#39;</span><span class="p">);</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;min-input-files&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;remove-dangling-deletes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">));</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;id = 3 and name = &quot;foo&quot;&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>rewrite_manifests</code>: Rewrite manifests for a table to optimize scan planning.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_manifests</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_manifests</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>rewrite_position_delete_files</code>: Rewrite position delete files for a table to optimize storage layout.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;rewrite-all&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">));</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;min-input-files&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">));</span>
+</span></code></pre></div></li>
+</ul>
+<h3 id="table-migration">Table Migration<a class="headerlink" href="#table-migration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>snapshot</code>: Create a light-weight temporary copy of a table for testing, without changing the source table.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;db.snap&#39;</span><span class="p">);</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;db.snap&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/tmp/temptable/&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>migrate</code>: Replace a table with an Iceberg table, loaded with the source's data files. Table schema, partitioning, properties, and location will be copied from the source table.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">migrate</span><span class="p">(</span><span class="s1">&#39;spark_catalog.db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bar&#39;</span><span class="p">));</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">migrate</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>add_files</code>: Attempts to directly add files from a Hive or file based table into a given Iceberg table.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">add_files</span><span class="p">(</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">source_table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.src_tbl&#39;</span><span class="p">,</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="n">partition_filter</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;part_col_1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="p">);</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">add_files</span><span class="p">(</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="n">source_table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;`parquet`.`path/to/table`&#39;</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="p">);</span>
+</span></code></pre></div></li>
+<li><code>register_table</code>: Creates a catalog entry for a metadata.json file which already exists but does not have a corresponding catalog identifier.
+    <div class="language-sql highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">register_table</span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="n">metadata_file</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;path/to/metadata/file.json&#39;</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">);</span>
+</span></code></pre></div></li>
+</ul>
+<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ancestors_of</code>: Report the live snapshot IDs of parents of a specified snapshot</li>
+<li><code>create_changelog_view</code>: Creates a view that contains the changes from a given table.</li>
+<li><code>compute_table_stats</code>: Calculates the Number of Distinct Values (NDV) statistics for a specific table.</li>
+<li><code>rewrite_table_path</code>: Stages a copy of the Iceberg table's metadata files where every absolute path source prefix is replaced by the specified target prefix.</li>
+</ul>
+<p>See <a href="https://iceberg.apache.org/docs/latest/spark-procedures/">Spark Procedures</a> for more details on the available procedures and their usage.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TsmhRZElPvM?si=vriCUbfU_dxfddey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<p>For official documentation, you can refer to the <a href="https://parquet.apache.org/docs/file-format/">Parquet File Format</a> documentation, which provides a comprehensive overview of its structure and features.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://estuary.dev/blog/apache-iceberg-cow-vs-mor/">Apache Iceberg Copy-On-Write (COW) vs Merge-On-Read (MOR): A Deep Dive</a></li>
+<li><a href="https://www.dremio.com/blog/exploring-the-architecture-of-apache-iceberg-delta-lake-and-apache-hudi/">Exploring the Architecture of Apache Iceberg, Delta Lake, and Apache Hudi</a></li>
+<li><a href="https://www.dremio.com/blog/comparison-of-data-lake-table-formats-apache-iceberg-apache-hudi-and-delta-lake/">Comparison of Data Lake Table Formats (Apache Iceberg, Apache Hudi and Delta Lake)</a></li>
+<li><a href="https://www.dremio.com/blog/table-format-governance-and-community-contributions-apache-iceberg-apache-hudi-and-delta-lake/">Table Format Governance and Community Contributions: Apache Iceberg, Apache Hudi, and Delta Lake</a></li>
+<li><a href="https://www.dremio.com/blog/table-format-partitioning-comparison-apache-iceberg-apache-hudi-and-delta-lake/">Table Format Partitioning Comparison: Apache Iceberg, Apache Hudi, and Delta Lake</a></li>
+<li><a href="https://www.youtube.com/watch?v=1eEcWopaFqE">Tampa Bay DE Meetup: The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)</a></li>
+<li><a href="https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/">Hudi vs Iceberg vs Delta Lake: Data Lake Table Formats Compared</a></li>
+<li><a href="https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html">What Is a Lakehouse?</a></li>
+</ul>
 
 
 
@@ -3802,7 +4027,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../cross-repo-docs-mkdocs-workflow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How to Use MkDocs to Integrate GitHub Actions and Git Submodule for Cross-repo Documentation">
+          <a href="../apache-hudi-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Lakehouse Series: Apache Hudi Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3812,27 +4037,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                How to Use MkDocs to Integrate GitHub Actions and Git Submodule for Cross-repo Documentation
+                The Lakehouse Series: Apache Hudi Overview
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../from-data-lakes-to-data-lakehouses/" class="md-footer__link md-footer__link--next" aria-label="Next: The Lakehouse Series: From Data Lakes to Data Lakehouses">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                The Lakehouse Series: From Data Lakes to Data Lakehouses
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
