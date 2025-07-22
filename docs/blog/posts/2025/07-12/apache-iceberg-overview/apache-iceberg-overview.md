@@ -145,6 +145,9 @@ These metadata entries enable query engines to perform **partition pruning** and
     
     Since each snapshot has its own manifest list file, a single metadata file can reference multiple manifest list files, one for each snapshot.
 
+For a deeper dive into Apache Iceberg's Storage Layout, I recommend checking out Confluent's article on [What is Apache Iceberg™?](https://www.confluent.io/learn/what-is-apache-iceberg/), which provides detailed explanations, or the video below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TsmhRZElPvM?si=vriCUbfU_dxfddey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Query Types
 
@@ -316,8 +319,6 @@ Iceberg provides procedures to manage metadata files, including rewriting manife
 
 
 See [Spark Procedures](https://iceberg.apache.org/docs/latest/spark-procedures/) for more details on the available procedures and their usage.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TsmhRZElPvM?si=vriCUbfU_dxfddey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## References
 
