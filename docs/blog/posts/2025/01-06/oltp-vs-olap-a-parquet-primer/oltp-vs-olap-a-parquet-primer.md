@@ -4,6 +4,12 @@ authors:
 date:
   created: 2025-06-02
   updated: 2025-06-02
+links:
+  - blog/posts/2025/07-12/from-data-lakes-to-data-lakehouses/from-data-lakes-to-data-lakehouses.md
+  - blog/posts/2025/07-12/apache-hudi-overview/apache-hudi-overview.md
+  - blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md
+  - blog/posts/2025/drafts/delta-lake-overview/delta-lake-overview.md
+  - blog/posts/2025/drafts/ducklake-overview/ducklake-overview.md
 categories:
   - Data
 tags:

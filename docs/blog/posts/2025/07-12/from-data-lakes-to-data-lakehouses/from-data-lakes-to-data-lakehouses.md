@@ -7,7 +7,7 @@ date:
 links:
   - blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md
   - blog/posts/2025/07-12/apache-hudi-overview/apache-hudi-overview.md
-  - blog/posts/2025/drafts/apache-iceberg-overview/apache-iceberg-overview.md
+  - blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md
   - blog/posts/2025/drafts/delta-lake-overview/delta-lake-overview.md
   - blog/posts/2025/drafts/ducklake-overview/ducklake-overview.md
 categories:

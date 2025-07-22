@@ -1,5 +1,4 @@
 ---
-draft: true
 authors:
   - kuanchoulai10
 date:
@@ -7,6 +6,12 @@ date:
   updated: 2025-07-15
 categories:
   - Data
+links:
+  - blog/posts/2025/01-06/oltp-vs-olap-a-parquet-primer/oltp-vs-olap-a-parquet-primer.md
+  - blog/posts/2025/07-12/from-data-lakes-to-data-lakehouses/from-data-lakes-to-data-lakehouses.md
+  - blog/posts/2025/07-12/apache-hudi-overview/apache-hudi-overview.md
+  - blog/posts/2025/drafts/delta-lake-overview/delta-lake-overview.md
+  - blog/posts/2025/drafts/ducklake-overview/ducklake-overview.md
 tags:
   - The Lakehouse Series
   - Apache Iceberg
@@ -19,19 +24,20 @@ comments: true
 
     After reading this article, you will learn:
 
-    - abc
-    - def
-    - ghi
+    - Apache Iceberg's 3-tier metadata architecture (metadata files, manifest lists, and manifest files)
+    - How Iceberg catalogs work, including the REST catalog standard for multi-engine compatibility
+    - Query capabilities including time travel, incremental reads, and metadata queries
+    - Spark procedures for snapshot management, metadata maintenance, and table migration
 
 
 <!-- more -->
 
 <figure markdown="span">
-  ![Iceberg Architecture](./assets/iceberg.drawio.svg){width="600"}
-  *Iceberg Architecture*
+  ![Iceberg Storage Layout](./assets/iceberg.drawio.svg){width="600"}
+  *Iceberg Storage Layout*
 </figure>
 
-Apache Iceberg was born at Netflix in 2017 from the brilliant minds of [Ryan Blue](https://www.linkedin.com/in/rdblue/) and [Daniel Weeks](https://www.linkedin.com/in/daniel-weeks-a1946860/), who were wrestling with the limitations of Hive tables at Netflix's mind-boggling scale. When you're dealing with petabytes of data and schema evolution nightmares, you need something better than what existed. Open-sourced in 2018 and graduating to an Apache Software Foundation top-level project in 2020, Iceberg has become a heavyweight in the lakehouse arena. As of June 2025, the project boasts over **7,500 GitHub** stars with contributions from **more than 600 developers** worldwide, backed by industry giants like Netflix, Apple, Tabular, Dremio, and AWS.
+Apache Iceberg was born at **Netflix** in **2017** from the brilliant minds of [Ryan Blue](https://www.linkedin.com/in/rdblue/) and [Daniel Weeks](https://www.linkedin.com/in/daniel-weeks-a1946860/), who were wrestling with the limitations of Hive tables at Netflix's mind-boggling scale. When you're dealing with petabytes of data and schema evolution nightmares, you need something better than what existed. Open-sourced in 2018 and graduating to an Apache Software Foundation top-level project in 2020, Iceberg has become a heavyweight in the lakehouse arena. As of June 2025, the project boasts over **7,500 GitHub** stars with contributions from **more than 600 developers** worldwide, backed by industry giants like Netflix, Apple, Tabular, Dremio, and AWS.
 
 What sets Iceberg apart is its **architectural elegance**. Built on a sophisticated **3-tier metadata hierarchy**, Iceberg orchestrates *table-level metadata files* (`metadata.json`), *snapshot-level manifest lists* (`*.avro`), and *data-level manifest files* (`*.avro`) into a symphony of efficiency.
 
@@ -42,8 +48,8 @@ At its core, Iceberg treats every table state as an **immutable, versioned snaps
 ## Storage Layout
 
 <figure markdown="span">
-  ![Iceberg Architecture](./assets/iceberg.drawio.svg){width="600"}
-  *Iceberg Architecture*
+  ![Iceberg Storage Layout](./assets/iceberg.drawio.svg){width="600"}
+  *Iceberg Storage Layout*
 </figure>
 
 ### Catalog
@@ -194,7 +200,7 @@ Apache Iceberg offers a range of query capabilities that, while not identical to
     SELECT * FROM "test_table$properties";
     ```
 
-While Apache Hudi provides specialized query types like incremental and snapshot queries tailored for streaming data, Apache Iceberg's approach focuses on providing a consistent and flexible framework for both batch and streaming workloads, with strong support for schema evolution and concurrent writes.
+While Apache Hudi provides specialized query types like [Read Optimized and CDC Incremental queries](https://hudi.apache.org/docs/next/table_types/#query-types) tailored for streaming data, Apache Iceberg's approach focuses on **providing a consistent and flexible framework for both batch and streaming workloads, with strong support for schema and partition evolution and concurrent writes**.
 
 ## Spark Procedures
 
