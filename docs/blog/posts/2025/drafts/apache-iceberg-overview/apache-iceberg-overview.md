@@ -9,6 +9,7 @@ categories:
   - Data
 tags:
   - The Lakehouse Series
+  - Apache Iceberg
 comments: true
 ---
 
