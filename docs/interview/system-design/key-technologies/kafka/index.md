@@ -6,6 +6,9 @@
 
 - [Kafka | Hello Interview](https://www.hellointerview.com/learn/system-design/deep-dives/kafka)
 
+[Why is Kafka so fast? How does it work?](https://blog.bytebytego.com/p/why-is-kafka-so-fast-how-does-it)
+
+
 !!! question "What is Apache Kafka?"
 
     ??? tip "Answer"
