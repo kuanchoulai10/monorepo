@@ -67,3 +67,22 @@
 
     On the international stage, TVBS has been recognized by the Reuters Institute at Oxford University. According to their Digital News Report 2025, TVBS has been ranked as the most trusted commercial TV news brand in Taiwan for eight years in a row, and the most-used broadcast news media for nine consecutive years.
 
+
+??? question "Ask"
+
+    1. What's the most challenging thing you face recently?
+    3. What are the big things that Treasure Data is working on right now?
+    2. What is process after this meeting?
+
+??? question "Strength"
+
+    I'd say my strengths fall into two main areas.
+
+    First, from a technical perspective, I’ve shown that I can take the initiative and drive projects forward without needing much direction. Whether it’s side projects or work-related tasks, I’ve been able to work independently and deliver results—even when I’m not familiar with 90% of the tools or concepts at the beginning. I enjoy figuring things out step by step and building complex systems from scratch.
+
+    I also have a solid foundation in both machine learning and data engineering. For example, I’ve worked on projects involving CDP (Customer Data Platform) integration, used Kafka to move data from databases into a Lakehouse, and explored many areas in the ML and data space. So I’d say my technical range is quite broad and hands-on.
+
+    Second, on the personal side, one of my biggest strengths is that I love challenging myself. I’m comfortable working in uncertain or unclear situations and still getting things done. But I don’t just struggle on my own—I actively reach out to others, ask questions, and then take ownership to follow through and deliver.
+
+??? question "Product"
+
