@@ -1,8 +1,27 @@
 # Previous Job Questions
 
+??? question "Intro"
+
+    Hi I'm KC from Taiwan, thanks for having me. I was working as a data engineer for over three years. 
+
+    During that time, I had the opportunity to take the initiative on several impactful projects. One of the most significant ones was at TVBS, a leading media company in Taiwan.
+
+    When I was working there, I led the redesign of our data architecture using tools like BigQuery, dbt, Airbyte and Airflow . We handled terabytes of data daily with over 20 million events from massive amount of different sources. We also built over 300 data models and over 600 quality tests, supporting over 200 users across 7 departments. Despite being a lean data team of 6, we cut cloud costs by 63% and delivered over 30 data products that empowered decision-making across the organization.
+
+    In recent months, I also challenged myself with personal projects to explore technologies I wasn't yet familiar with.
+
+    One of them was building a real-time data lakehouse using Debezium, Kafka, Iceberg, and Trino. I set up CDC pipelines with exactly-once semantics.
+
+    Another project focused on real-time fraud detection, where I built an end-to-end MLOps pipeline using MLflow, Ray, and KServe. I also worked on handling imbalanced datasets and applied Bayesian optimization with Optuna, deploying the models through gRPC and REST APIs.
+
+    Back at TVBS, I was also involved in introducing mParticle CDP to the company. That was a really interesting experience where I learned a lot about user identities across different devices (ADID, IDFV, IDFA) and how identity resolution works in practice.
+
+    If any of these projects sound interesting, I'd be happy to dive deeper into them. Or if there's anything on my resume you'd like to discuss, I'm more than happy to chat about it.
+
+
 ??? question "Why did you leave your last job?"
 
-    My previous role was at UST Global, where I worked on a server monitoring solution for our client, Microsoft. I joined the project at the end of May. Unfortunately, in July, there was a major global outage involving Microsoft's operating systems—specifically on July 19th—which had a direct impact on our project.
+    My previous role was at UST Global, where I worked on a server monitoring solution for our client, Microsoft. I joined the project at the end of May. Unfortunately, in July, there was a major global outage involving Microsoft's operating systems which had a direct impact on our project.
 
     As a result, the project was put on hold. There were plans to reassign me to another project, but due to the overall situation at the time, that didn't happen. Eventually, I decided to company in September.
 
@@ -36,8 +55,15 @@
 
     Also, I'm really interested in areas like marketing technology and CDP, especially identity resolution and identity graphs. I had some hands-on experience with these topics when I helped TVBS introduce mParticle, so it's something I'd love to go deeper into.
 
-    Second, from a **personal and career** perspective, I hope to build my career overseas, especially in Canada. Back when I was dancing, I met some people from Canada who really encouraged me to explore opportunities in Canada. They shared how diverse and beautiful the environment is, especially in Vancouver. After visiting once, I realized how much I really enjoy being in Vancouver. So I hope to build a long-term life and career in Vancouver as part of my bigger life plan. So I'm open to any opportunities that can help me achieve that.
+    Second, from a **personal and career** perspective, I hope to build my career in Canada, especially in Vancouver. Back when I was dancing, I met some people from Canada who really encouraged me to explore opportunities in Canada. They shared how diverse and beautiful the environment is, especially in Vancouver. After visiting once, I realized how much I really enjoy being in Vancouver. So I hope to build a long-term life and career in Vancouver as part of my bigger life plan. So I'm open to any opportunities that can help me achieve that.
 
-??? question " Tell me about TVBS"
+??? question "Tell me about TVBS"
 
-    
+    TVBS is the leading media group in Taiwan, with over 1,400 employees. Around 60 of them work in software development.
+
+    Every month, we have around 20 million users visiting our website and mobile apps.
+
+    We run more than 30 YouTube channels and over 30 Facebook pages, covering a wide range of topics like news, food, cars, entertainment, and health.
+
+    On the international stage, TVBS has been recognized by the Reuters Institute at Oxford University. According to their Digital News Report 2025, TVBS has been ranked as the most trusted commercial TV news brand in Taiwan for eight years in a row, and the most-used broadcast news media for nine consecutive years.
+
