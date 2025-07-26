@@ -18,9 +18,17 @@ nav:
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
   - Learning in Progress:
     - learning-in-progress/index.md
-    - learning-in-progress/202507.md
-    - learning-in-progress/202506.md
-    - learning-in-progress/202505.md
+    - Monthly Recaps:
+      - learning-in-progress/recaps/202507.md
+      - learning-in-progress/recaps/202506.md
+      - learning-in-progress/recaps/202505.md
+    - Tech Notes:
+      - SQLMesh:
+        - learning-in-progress/tech-notes/sqlmesh/sqlmesh-vs-dbt-core.md
+      - Streaming Processing:
+        - learning-in-progress/tech-notes/streaming-processing-window-types.md
+      - RisingWave:
+        - learning-in-progress/tech-notes/risingwave/index.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
