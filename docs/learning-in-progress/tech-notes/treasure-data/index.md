@@ -1,6 +1,6 @@
 # Treasure Data
 
-![Treasure Data | NotebookLM](https://notebooklm.google.com/notebook/2bdc1ccd-6c59-4675-ac74-6a8ecda93643)
+[Treasure Data | NotebookLM](https://notebooklm.google.com/notebook/2bdc1ccd-6c59-4675-ac74-6a8ecda93643)
 
 
 ## Metrics
@@ -22,6 +22,7 @@ In 2023, Treasure Data currently serves over **700 accounts** and **more than 6,
 
 ## Tech Stack
 
+- [Wvlet](https://github.com/wvlet/wvlet), similar to BigQuery's [pipe query syntax](https://cloud.google.com/bigquery/docs/pipe-syntax-guide)
 - Trino
 - Hive 4 ([Hive 4.0.x comes with Iceberg 1.4.3 included.](https://iceberg.apache.org/docs/latest/hive/#feature-support))
 - Plazma (Closed Source)
@@ -34,6 +35,10 @@ In 2023, Treasure Data currently serves over **700 accounts** and **more than 6,
 
 ![Hive Table scan optimization](https://api-docs.treasuredata.com/static/f28b686ba570ef76e5e4598f687a8131/c6bbc/plazma-architecture.png)
 
+<figure markdown="span">
+  ![](./assets/tobias-mao-pipe-syntax.png)
+  [LinkedIn Post](https://www.linkedin.com/posts/toby-mao_sqlglot-python-oss-activity-7340421595162734594-ox1J)
+</figure>
 
 ## Data Architecture
 
@@ -67,3 +72,7 @@ In 2023, Treasure Data currently serves over **700 accounts** and **more than 6,
 
 - Data Lakehouse Architecture? proprietary ([MPC1](https://api-docs.treasuredata.com/blog/hive-table-scan-optimization/))
 - How to deal with dbt Core? ([dbt Fusion](https://www.getdbt.com/blog/new-code-new-license-understanding-the-new-license-for-the-dbt-fusion-engine))
+- SQLMesh
+
+
+![](./assets/architecture.excalidraw.svg)
