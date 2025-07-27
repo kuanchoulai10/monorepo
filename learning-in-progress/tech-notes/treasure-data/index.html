@@ -3596,7 +3596,7 @@
 
 
 <h1 id="treasure-data">Treasure Data<a class="headerlink" href="#treasure-data" title="Permanent link">&para;</a></h1>
-<p><a class="glightbox" href="https://notebooklm.google.com/notebook/2bdc1ccd-6c59-4675-ac74-6a8ecda93643" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Treasure Data | NotebookLM" src="https://notebooklm.google.com/notebook/2bdc1ccd-6c59-4675-ac74-6a8ecda93643" /></a></p>
+<p><a href="https://notebooklm.google.com/notebook/2bdc1ccd-6c59-4675-ac74-6a8ecda93643">Treasure Data | NotebookLM</a></p>
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
 <p>In 2023, Treasure Data currently serves over <strong>700 accounts</strong> and <strong>more than 6,000 users</strong>. Since 2022, platform usage has doubled. Each day, the system handles <strong>2.5 million+ Trino queries</strong> and over <strong>100,000 Hive queries</strong>. It processes more than <strong>200 trillion rows daily</strong> and <strong>performs over 10 billion S3 GET requests per day to read partition data from AWS S3</strong>.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
@@ -3610,6 +3610,7 @@
 </figure>
 <h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="https://github.com/wvlet/wvlet">Wvlet</a>, similar to BigQuery's <a href="https://cloud.google.com/bigquery/docs/pipe-syntax-guide">pipe query syntax</a></li>
 <li>Trino</li>
 <li>Hive 4 (<a href="https://iceberg.apache.org/docs/latest/hive/#feature-support">Hive 4.0.x comes with Iceberg 1.4.3 included.</a>)</li>
 <li>Plazma (Closed Source)<ul>
@@ -3625,6 +3626,10 @@
 <li><a href="https://github.com/embulk/embulk">embulk</a>: <a href="https://api-docs.treasuredata.com/blog/embulk-in-td/">Data Connector and Result Export</a></li>
 </ul>
 <p><a class="glightbox" href="https://api-docs.treasuredata.com/static/f28b686ba570ef76e5e4598f687a8131/c6bbc/plazma-architecture.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Hive Table scan optimization" src="https://api-docs.treasuredata.com/static/f28b686ba570ef76e5e4598f687a8131/c6bbc/plazma-architecture.png" /></a></p>
+<figure>
+  <a class="glightbox" href="assets/tobias-mao-pipe-syntax.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/tobias-mao-pipe-syntax.png" /></a>
+  <a href="https://www.linkedin.com/posts/toby-mao_sqlglot-python-oss-activity-7340421595162734594-ox1J">LinkedIn Post</a>
+</figure>
 <h2 id="data-architecture">Data Architecture<a class="headerlink" href="#data-architecture" title="Permanent link">&para;</a></h2>
 <figure>
   <a class="glightbox" href="assets/architecture-2021.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Data Architecture 2021" src="assets/architecture-2021.png" /></a>
@@ -3650,7 +3655,9 @@
 <ul>
 <li>Data Lakehouse Architecture? proprietary (<a href="https://api-docs.treasuredata.com/blog/hive-table-scan-optimization/">MPC1</a>)</li>
 <li>How to deal with dbt Core? (<a href="https://www.getdbt.com/blog/new-code-new-license-understanding-the-new-license-for-the-dbt-fusion-engine">dbt Fusion</a>)</li>
+<li>SQLMesh</li>
 </ul>
+<p><a class="glightbox" href="assets/architecture.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="assets/architecture.excalidraw.svg" /></a></p>
 
 
 
