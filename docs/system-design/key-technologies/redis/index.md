@@ -1,3 +1,8 @@
+---
+tags:
+  - Redis
+---
+
 # Redis
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fmT5nlEkl3U?si=BqTnQ0eP-Nj3GOGD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
