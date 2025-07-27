@@ -6,6 +6,8 @@ tags:
 ---
 # Streaming Processing Window Types
 
+![Star History](https://www.star-history.com/#apache/spark&apache/flink&risingwavelabs/risingwave&apache/storm&Date)
+
 ## time
 
 - Event time
