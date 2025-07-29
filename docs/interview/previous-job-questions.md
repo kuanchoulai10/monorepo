@@ -2,7 +2,13 @@
 
 ??? question "Intro"
 
-    Hi I'm KC from Taiwan, thanks for having me. I was working as a data engineer for over three years. 
+    Hi I'm KC from Taiwan, Thanks for having me and I'm really excited to have this opportunity to interview with you today.
+    
+    I worked as a data engineer for over three years.
+
+    I believe you've already seen my resume, so before we dive into the more technical parts or specific projects I've worked on, I'd like to take a moment to **share a bit more about myself, things that might not be obvious just from my resume**.
+
+    I would describe myself as someone who truly enjoys challenging myself. Over the years, across different projects and stages of my career, I’ve consistently taken on work that pushed me outside of my comfort zone.
 
     During that time, I had the opportunity to take the initiative on several impactful projects. One of the most significant ones was at TVBS, a leading media company in Taiwan.
 
@@ -10,7 +16,7 @@
 
     In recent months, I also challenged myself with personal projects to explore technologies I wasn't yet familiar with.
 
-    One of them was building a real-time data lakehouse using Debezium, Kafka, Iceberg, and Trino. I set up CDC pipelines with exactly-once semantics.
+    One of them was **building a real-time data lakehouse using Debezium, Kafka, Iceberg, and Trino**. I set up CDC pipelines with exactly-once semantics.
 
     Another project focused on real-time fraud detection, where I built an end-to-end MLOps pipeline using MLflow, Ray, and KServe. I also worked on handling imbalanced datasets and applied Bayesian optimization with Optuna, deploying the models through gRPC and REST APIs.
 
@@ -18,20 +24,22 @@
 
     If any of these projects sound interesting, I'd be happy to dive deeper into them. Or if there's anything on my resume you'd like to discuss, I'm more than happy to chat about it.
 
+    I understand that **strong communication and collaboration** are especially important for this role. I just want to highlight that I really **enjoy working with others** and **being part of a team**. In my previous job, I consistently showed up, actively participated in team discussions, and made sure to stay aligned with everyone. My manager even described me as a reliable team player who always communicates clearly and takes initiative to support the team. If there are any concerns about collaboration, I'd be happy to share more examples of how I've worked closely with cross-functional teams in the past.
+
 
 ??? question "Why did you leave your last job?"
 
-    My previous role was at UST Global, where I worked on a server monitoring solution for our client, Microsoft. I joined the project at the end of May. Unfortunately, in July, there was a major global outage involving Microsoft's operating systems which had a direct impact on our project.
+    My previous role was at **UST Global**, where I worked on a **server monitoring solution** for our client, Microsoft. I joined the project at the end of May. Unfortunately, in July, there was a **major global outage involving Microsoft's operating systems** which had a direct impact on our project.
 
-    As a result, the project was put on hold. There were plans to reassign me to another project, but due to the overall situation at the time, that didn't happen. Eventually, I decided to company in September.
+    As a result, the project was **put on hold**. **There were plans to reassign me to another project**, but due to the overall situation at the time, that didn't happen. Eventually, **I decided to leave the company in September**.
 
-    After that, I started seriously considering working abroad. I did a lot of research on visa options and decided to move to Canada because I've always wanted to live and build a career there. I arrived in early March.
+    After that, I started seriously considering **working abroad**. I did a lot of research on **visa options** and decided to move to Canada because I've always wanted to live and **build a career there**. I arrived in early March.
 
-    However, shortly after landing—around the eighth day—I received news that my father had been diagnosed with cancer during a health checkup in March. I returned to Taiwan in early April to take care of him.
+    But, shortly after landing, I received news that **my dad had been diagnosed with cancer** during a health checkup in March. So I decided to **come back to Taiwan** to take care of him in early April.
 
-    Between April and June, I focused on supporting my family and managing household matters. At the same time, I worked on several personal projects that I found quite interesting and fulfilling. Thankfully, my father's health has improved significantly, and he's now recovering well.
+    Between April and June, I focused on supporting my family and managing household matters. At the same time, I worked on several **personal projects** that I found quite challenging yet interesting and fulfilling. Thankfully, my dad's health has improved significantly, and he's now recovering well.
 
-    So I've decided it's the right time for me to re-enter the job market.
+    So **I thought it's the right time for me to re-enter the job market**.
 
     To answer your question directly: I left my last job because I was laid off due to unforeseen project cancellation.
 
@@ -70,19 +78,22 @@
 
 ??? question "Ask"
 
-    1. What's the most challenging thing you face recently?
-    3. What are the big things that Treasure Data is working on right now?
+    1. What's the most challenging thing the team face recently?
     2. What is process after this meeting?
+    3. What are the big things that your team is working on right now?
+    4. What are some of the key strategic initiatives or growth directions in the near future? both company-wide and team-specific?
+    5. How does this team usually work with other teams? What does a typical cross-team collaboration look like?
+
 
 ??? question "Strength"
 
     I'd say my strengths fall into two main areas.
 
-    First, from a technical perspective, I’ve shown that I can take the initiative and drive projects forward without needing much direction. Whether it’s side projects or work-related tasks, I’ve been able to work independently and deliver results—even when I’m not familiar with 90% of the tools or concepts at the beginning. I enjoy figuring things out step by step and building complex systems from scratch.
+    First, from a technical perspective, I've shown that I can take the initiative and drive projects forward without needing much direction. Whether it's side projects or work-related tasks, I've been able to work independently and deliver results—even when I'm not familiar with 90% of the tools or concepts at the beginning. I enjoy figuring things out step by step and building complex systems from scratch.
 
-    I also have a solid foundation in both machine learning and data engineering. For example, I’ve worked on projects involving CDP (Customer Data Platform) integration, used Kafka to move data from databases into a Lakehouse, and explored many areas in the ML and data space. So I’d say my technical range is quite broad and hands-on.
+    I also have a solid foundation in both machine learning and data engineering. For example, I've worked on projects involving CDP (Customer Data Platform) integration, used Kafka to move data from databases into a Lakehouse, and explored many areas in the ML and data space. So I'd say my technical range is quite broad and hands-on.
 
-    Second, on the personal side, one of my biggest strengths is that I love challenging myself. I’m comfortable working in uncertain or unclear situations and still getting things done. But I don’t just struggle on my own—I actively reach out to others, ask questions, and then take ownership to follow through and deliver.
+    Second, on the personal side, one of my biggest strengths is that I love challenging myself. I'm comfortable working in uncertain or unclear situations and still getting things done. But I don't just struggle on my own—I actively reach out to others, ask questions, and then take ownership to follow through and deliver.
 
 ??? question "Product"
 

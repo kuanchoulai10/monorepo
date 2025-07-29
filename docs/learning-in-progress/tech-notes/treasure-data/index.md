@@ -76,3 +76,5 @@ In 2023, Treasure Data currently serves over **700 accounts** and **more than 6,
 
 
 ![](./assets/architecture.excalidraw.svg)
+
+https://www.linkedin.com/in/pramodmanjappa/
