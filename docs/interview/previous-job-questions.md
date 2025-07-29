@@ -8,7 +8,7 @@
 
     I believe you've already seen my resume, so before we dive into the more technical parts or specific projects I've worked on, I'd like to take a moment to **share a bit more about myself, things that might not be obvious just from my resume**.
 
-    I would describe myself as someone who truly enjoys challenging myself. Over the years, across different projects and stages of my career, I’ve consistently taken on work that pushed me outside of my comfort zone.
+    I would describe myself as someone who truly enjoys challenging myself. Over the years, across different projects and stages of my career, I've consistently taken on work that pushed me outside of my comfort zone.
 
     During that time, I had the opportunity to take the initiative on several impactful projects. One of the most significant ones was at TVBS, a leading media company in Taiwan.
 
@@ -96,4 +96,11 @@
     Second, on the personal side, one of my biggest strengths is that I love challenging myself. I'm comfortable working in uncertain or unclear situations and still getting things done. But I don't just struggle on my own—I actively reach out to others, ask questions, and then take ownership to follow through and deliver.
 
 ??? question "Product"
+
+
+Actually, I often get questioned about whether my technical skills are strong enough, mainly because my past experience doesn't always clearly show deep technical expertise on paper. That's something I've been facing throughout my journey — whether it was during grad school, my first job, or even my internship.
+
+But I think one of my biggest strengths is that I **learn really fast** and I'm someone who **takes initiative and actively figures out what the company needs me to learn** — and I just go for it. Outside of work, **I also enjoy diving into new topics and exploring unfamiliar tools or technologies**. I really enjoy the process, especially when it's something totally new or challenging. I'm pretty comfortable with that kind of situation.
+
+For example, when I introduced the Modern Data Stack at TVBS, my manager actually told me that my thinking already felt like that of a senior data engineer. He said I was always thinking about how to build processes that the organization could keep benefiting from, and how to create long-term value for the business.
 
