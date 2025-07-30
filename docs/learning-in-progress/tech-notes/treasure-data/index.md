@@ -75,6 +75,10 @@ In 2023, Treasure Data currently serves over **700 accounts** and **more than 6,
 - SQLMesh
 
 
+[Amazon S3 Parquet Export Integration](https://docs.treasuredata.com/articles/#!int/amazon-s3-parquet-export-integration)
+[Amazon Elastic MapReduce Integration](https://docs.treasuredata.com/articles/#!int/amazon-elastic-mapreduce)
+
+
 ![](./assets/architecture.excalidraw.svg)
 
 https://www.linkedin.com/in/pramodmanjappa/

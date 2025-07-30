@@ -29,6 +29,19 @@ nav:
         - learning-in-progress/tech-notes/streaming-processing-window-types.md
       - RisingWave:
         - learning-in-progress/tech-notes/risingwave/index.md
+      - Treasure Data:
+        - learning-in-progress/tech-notes/treasure-data/index.md
+      - Hive:
+        - learning-in-progress/tech-notes/hive/architecture.md
+      - Iceberg:
+        - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
+        - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
+        - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
+        - learning-in-progress/tech-notes/iceberg/migration.md
+        - learning-in-progress/tech-notes/iceberg/resources.md
+      - Polaris:
+        - learning-in-progress/tech-notes/polaris/policy.md
+        - learning-in-progress/tech-notes/polaris/resources.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
