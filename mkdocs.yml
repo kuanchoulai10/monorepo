@@ -25,6 +25,8 @@ nav:
     - Tech Notes:
       - SQLMesh:
         - learning-in-progress/tech-notes/sqlmesh/sqlmesh-vs-dbt-core.md
+      - dbt:
+        - learning-in-progress/tech-notes/dbt/index.md
       - Streaming Processing:
         - learning-in-progress/tech-notes/streaming-processing-window-types.md
       - RisingWave:
@@ -34,11 +36,11 @@ nav:
       - Hive:
         - learning-in-progress/tech-notes/hive/architecture.md
       - Iceberg:
+        - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
         - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
-        - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
-        - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/resources.md
+        - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
       - Polaris:
         - learning-in-progress/tech-notes/polaris/policy.md
         - learning-in-progress/tech-notes/polaris/resources.md

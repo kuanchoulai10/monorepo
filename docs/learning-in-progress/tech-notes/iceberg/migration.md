@@ -1,5 +1,7 @@
 # Migrate from Hive to Iceberg
 
+![](./assets/hive-migration.excalidraw.svg)
+
 ## [Migrating existing tables to Apache Iceberg | AWS ](https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/table-migration.html)
 
 - In-place migration
