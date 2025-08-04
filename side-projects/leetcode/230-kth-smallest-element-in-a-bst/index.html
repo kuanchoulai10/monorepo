@@ -4061,6 +4061,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4092,7 +4118,88 @@
 
 
 <h1 id="230-kth-smallest-element-in-a-bst"><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/">230. Kth Smallest Element in a BST</a><a class="headerlink" href="#230-kth-smallest-element-in-a-bst" title="Permanent link">&para;</a></h1>
-<p><a href="https://youtu.be/5LUXSvjmGCw">NeetCode</a></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5LUXSvjmGCw?si=yKs0ACc9-wx4LzgE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Solution Approach</strong></th>
+<th><strong>Explanation (1-minute)</strong></th>
+<th><strong>Time Complexity</strong></th>
+<th><strong>Space Complexity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Recursive In-Order</strong></td>
+<td>Use DFS with in-order traversal to visit nodes in sorted order. Count visited nodes and return value when counter equals <span class="arithmatex">\(k\)</span>.</td>
+<td><span class="arithmatex">\(O(H + k)\)</span></td>
+<td><span class="arithmatex">\(O(H)\)</span></td>
+</tr>
+<tr>
+<td><strong>Iterative In-Order</strong></td>
+<td>Use stack to simulate in-order traversal iteratively. Process left subtree, visit node, then right subtree until kth element found.</td>
+<td><span class="arithmatex">\(O(H + k)\)</span></td>
+<td><span class="arithmatex">\(O(H)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Time Complexity Explanation</strong>: <span class="arithmatex">\(O(H + k)\)</span> where <span class="arithmatex">\(H\)</span> is tree height. We traverse at most <span class="arithmatex">\(H\)</span> nodes to reach leftmost node, then visit <span class="arithmatex">\(k\)</span> nodes in sorted order.</p>
+<p><strong>Space Complexity Explanation</strong>: <span class="arithmatex">\(O(H)\)</span> where <span class="arithmatex">\(H\)</span> is tree height. Recursive approach uses call stack of depth <span class="arithmatex">\(H\)</span>. Iterative approach uses explicit stack that can grow up to <span class="arithmatex">\(H\)</span> nodes in worst case (skewed tree).</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="javascript" name="__tabbed_1" type="radio" /><input id="go" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="javascript">JavaScript</label><label for="go">Go</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><span class="filename">Recursive</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">kthSmallest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TreeNode</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="n">ans</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>            <span class="k">nonlocal</span> <span class="n">ans</span><span class="p">,</span> <span class="n">counter</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                <span class="k">return</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                <span class="n">ans</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">val</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                <span class="k">return</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">dfs</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="k">return</span> <span class="n">ans</span>
+</span></code></pre></div>
+<div class="language-python highlight"><span class="filename">Iterative</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">kthSmallest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">TreeNode</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        <span class="n">current_node</span> <span class="o">=</span> <span class="n">root</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="k">while</span> <span class="n">current_node</span> <span class="ow">or</span> <span class="n">stack</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>            <span class="k">while</span> <span class="n">current_node</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>                <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">left</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>            <span class="n">current_node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>            <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="n">k</span><span class="p">:</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                <span class="k">return</span> <span class="n">current_node</span><span class="o">.</span><span class="n">val</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>            <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">right</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="k">return</span> 
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-go highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+</span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
