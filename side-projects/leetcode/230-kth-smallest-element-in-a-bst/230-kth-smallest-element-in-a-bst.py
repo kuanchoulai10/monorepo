@@ -12,17 +12,18 @@ class Solution:
         counter = 0
         def dfs(node: TreeNode, k: int) -> None:
             nonlocal ans, counter
-            if node is None:
-                return
 
-            dfs(node.left, k)
-
+            if node.left:
+                dfs(node.left, k)
+            
             counter += 1
             if counter == k:
                 ans = node.val
                 return
-
-            dfs(node.right, k)
+            
+            if node.right:
+                dfs(node.right, k)
+            
         dfs(root, k)
         return ans
 # --8<-- [end: recursive]
