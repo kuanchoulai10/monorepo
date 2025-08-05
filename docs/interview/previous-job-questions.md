@@ -185,15 +185,41 @@
     
     So yes, I'm familiar with both **remote work** and **cross-regional collaboration** and I actually enjoy working in this kind of setup.
 
+??? question "Treasure Data Feeling"
+
+    Thank you for being so **open** in sharing detailed information about the company.
+    
+    Throughout the interview process with Treasure Data, I really appreciated **how open and transparent everyone has been**, from Kelly, Ansel, to Akama and you. As a candidate, **that kind of openness is truly reassuring**. I really like the culture of **transparency and honesty** that Treasure Data promotes. **I really want to be part of a team member and make a contribution to the team**.
+
 ??? question "Ask"
 
-    - What qualities do you value the most in someone joining your team?
-    - What's the most challenging thing your team face recently?
-    - What is process after this meeting?
+    - **What qualities do you value the most in someone joining your team?**
+    - **What's the most challenging thing your team face recently?**
+    - **What is process after this meeting?**
+
     - What are some of the key strategic initiatives or growth directions in the near future? both company-wide and team-specific?
+
     - How does this team usually work with other teams? What does a typical cross-team collaboration look like?
-    - I know your company mainly uses technology A, so I'm curious — would you be interested in migrating to technology B?
-    - Has there been any discussion within the company about migrating to Iceberg? Just curious — I'd love to hear your thoughts.
     - Could you share what the typical collaboration process looks like between this team and other teams? For example, how do you usually align on goals or coordinate work?
     - I'm curious about how the Vancouver team collaborates with other teams, and also how you and I might potentially work together.
 
+    - I know your company mainly uses technology A, so I'm curious — would you be interested in migrating to technology B?
+    - Has there been any discussion within the company about migrating to Iceberg? Just curious — I'd love to hear your thoughts.
+
+
+??? tip
+
+    Thanks for sharing that. I really appreciate the clarity. **I believe those are also values I personally resonate with**.
+
+    In my previous experiences, I've always strived to __________________________.
+    
+    So **I'd say this sounds like a great fit**, and I'd be excited to contribute in a way that aligns with what you're looking for.
+
+
+??? tip
+
+    That definitely sounds like a meaningful challenge — thanks for sharing.
+
+    I've worked on similar situations before, especially around ______________, so **I can definitely see how I could add value here**.
+
+    It's actually the kind of challenge **I'd be excited to help tackle**.
