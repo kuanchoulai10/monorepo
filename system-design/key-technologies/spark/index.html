@@ -4061,6 +4061,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure-streaming" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structure Streaming
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4109,6 +4126,12 @@
 <p>When it comes to <strong>differences</strong>, One of the main differences is that <strong>Flink is often considered to have a more native stream processing capability</strong>, meaning it was designed from the ground up to handle real-time data streams with very low latency. Spark, on the other hand, started primarily as a batch processing framework and later introduced Structured Streaming, which provides micro-batch processing.</p>
 <p>This means that <strong>while both can handle streaming data, Flink often achieves lower latency</strong>.</p>
 </details>
+<details class="question">
+<summary>when you execution a query in spark, how does it work behind the scene?</summary>
+<p>When you run a query in Spark, it first goes through a <strong>few logical and physical planning phases</strong>. Spark builds a logical plan from your code, optimizes it into a physical plan, and then breaks it into stages and tasks. Those tasks are distributed across worker nodes by the driver.</p>
+<p>Each stage corresponds to a set of transformations that can be pipelined together, and between stages, data is <strong>shuffled</strong> if needed. Spark uses <strong>DAG scheduling</strong> to manage dependencies, and <strong>executors</strong> on <strong>worker nodes</strong> run the tasks and return results back to the driver.</p>
+</details>
+<h2 id="structure-streaming">Structure Streaming<a class="headerlink" href="#structure-streaming" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>What is Trigger Types in Apache Spark Structure Streaming</summary>
 <p>In Apache Spark Structured Streaming, trigger types determine <strong>how often the streaming query processes data and produces results</strong>. There are a few different trigger types you can use:</p>

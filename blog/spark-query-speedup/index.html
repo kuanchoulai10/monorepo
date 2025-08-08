@@ -12,13 +12,11 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/blog/apache-iceberg-overview/">
+        <link rel="canonical" href="https://kcl10.com/blog/spark-query-speedup/">
       
       
-        <link rel="prev" href="../apache-hudi-overview/">
+        <link rel="prev" href="../apache-iceberg-overview/">
       
-      
-        <link rel="next" href="../spark-query-speedup/">
       
       
       <link rel="icon" href="../../images/avatar.png">
@@ -26,7 +24,7 @@
     
     
       
-        <title>The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes</title>
+        <title>5 Practical Ways to Speed Up Your Apache Spark Queries - KC's Data & Life Notes</title>
       
     
     
@@ -77,11 +75,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="5 Practical Ways to Speed Up Your Apache Spark Queries - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/drafts/spark-query-speedup/spark-query-speedup.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,15 +87,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/blog/apache-iceberg-overview/" >
+        <meta  property="og:url"  content="https://kcl10.com/blog/spark-query-speedup/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="The Lakehouse Series: Apache Iceberg Overview - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="5 Practical Ways to Speed Up Your Apache Spark Queries - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2025/drafts/spark-query-speedup/spark-query-speedup.png" >
       
     
     
@@ -129,7 +127,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-lakehouse-series-apache-iceberg-overview" class="md-skip">
+        <a href="#5-practical-ways-to-speed-up-your-apache-spark-queries" class="md-skip">
           Skip to content
         </a>
       
@@ -192,7 +190,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Lakehouse Series: Apache Iceberg Overview
+              5 Practical Ways to Speed Up Your Apache Spark Queries
             
           </span>
         </div>
@@ -4083,138 +4081,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#storage-layout" class="md-nav__link">
+  <a href="#filter-early-before-joins" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage Layout
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Storage Layout">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#catalog" class="md-nav__link">
-    <span class="md-ellipsis">
-      Catalog
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metadata-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metadata Files
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#snapshots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Snapshots
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manifest-list-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manifest List Files
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manifest-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manifest Files
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#putting-all-together" class="md-nav__link">
-    <span class="md-ellipsis">
-      Putting All Together
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#query-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Query Types
+      Filter Early Before Joins
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#spark-procedures" class="md-nav__link">
+  <a href="#avoid-premature-collect-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Spark Procedures
+      Avoid Premature collect() Actions
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Spark Procedures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#snapshot-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Snapshot Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metadata-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metadata Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#table-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Table Migration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#others" class="md-nav__link">
-    <span class="md-ellipsis">
-      Others
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#use-built-in-functions-over-udfs" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Use Built-in Functions Over UDFs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choose-broadcast-joins-for-small-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Choose Broadcast Joins for Small Tables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimize-duplicate-removal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize Duplicate Removal
     </span>
   </a>
   
@@ -4276,14 +4181,14 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2025-07-15 00:00:00+00:00" class="md-ellipsis">Jul 15, 2025</time>
+                        <time datetime="2025-08-07 00:00:00+00:00" class="md-ellipsis">Aug 7, 2025</time>
                       </div>
                     </li>
                     
                       <li class="md-nav__item">
                         <div class="md-nav__link">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
-                          <time datetime="2025-07-15 00:00:00+00:00" class="md-ellipsis">Jul 15, 2025</time>
+                          <time datetime="2025-08-07 00:00:00+00:00" class="md-ellipsis">Aug 7, 2025</time>
                         </div>
                       </li>
                     
@@ -4305,7 +4210,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              11 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -4333,95 +4238,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../oltp-vs-olap-a-parquet-primer/" class="md-nav__link">
+      <a href="https://www.instaclustr.com/education/apache-spark/7-pillars-of-apache-spark-performance-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../from-data-lakes-to-data-lakehouses/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    The Lakehouse Series: From Data Lakes to Data Lakehouses
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../apache-hudi-overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    The Lakehouse Series: Apache Hudi Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../delta-lake-overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    The Lakehouse Series: Delta Lake Overview
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-                      
-                        
-                        
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ducklake-overview/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    The Lakehouse Series: DuckLake Overview
+    7 pillars of Apache Spark performance tuning
     
   </span>
   
@@ -4452,20 +4273,14 @@
       
       
       
-        <a href="../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
-      
-    
-      
-      
-      
-        <a href="../../tags/#tag:the-lakehouse-series" class="md-tag">The Lakehouse Series</a>
+        <a href="../../tags/#tag:apache-spark" class="md-tag">Apache Spark</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2025/drafts/spark-query-speedup/spark-query-speedup.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4474,268 +4289,125 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/07-12/apache-iceberg-overview/apache-iceberg-overview.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2025/drafts/spark-query-speedup/spark-query-speedup.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="the-lakehouse-series-apache-iceberg-overview">The Lakehouse Series: Apache Iceberg Overview<a class="headerlink" href="#the-lakehouse-series-apache-iceberg-overview" title="Permanent link">&para;</a></h1>
+<h1 id="5-practical-ways-to-speed-up-your-apache-spark-queries">5 Practical Ways to Speed Up Your Apache Spark Queries<a class="headerlink" href="#5-practical-ways-to-speed-up-your-apache-spark-queries" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<p>After reading this article, you will learn how to:</p>
 <ul>
-<li>Apache Iceberg's 3-tier metadata architecture (metadata files, manifest lists, and manifest files)</li>
-<li>How Iceberg catalogs work, including the REST catalog standard for multi-engine compatibility</li>
-<li>Query capabilities including time travel, incremental reads, and metadata queries</li>
-<li>Spark procedures for snapshot management, metadata maintenance, and table migration</li>
+<li>Apply filters before joins to reduce data shuffling</li>
+<li>Avoid premature <code>collect()</code> actions that cause memory bottlenecks</li>
+<li>Replace UDFs with built-in functions for better performance</li>
+<li>Optimize duplicate removal using efficient methods</li>
+<li>Implement broadcast joins for small table operations</li>
 </ul>
 </div>
 <!-- more -->
 
-<figure>
-  <a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Storage Layout" src="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" width="600" /></a>
-  <em>Iceberg Storage Layout</em>
-</figure>
-<p>Apache Iceberg was born at <strong>Netflix</strong> in <strong>2017</strong> from the brilliant minds of <a href="https://www.linkedin.com/in/rdblue/">Ryan Blue</a> and <a href="https://www.linkedin.com/in/daniel-weeks-a1946860/">Daniel Weeks</a>, who were wrestling with the limitations of Hive tables at Netflix's mind-boggling scale. When you're dealing with petabytes of data and schema evolution nightmares, you need something better than what existed. Open-sourced in 2018 and graduating to an Apache Software Foundation top-level project in 2020, Iceberg has become a heavyweight in the lakehouse arena. As of June 2025, the project boasts over <strong>7,500 GitHub</strong> stars with contributions from <strong>more than 600 developers</strong> worldwide, backed by industry giants like Netflix, Apple, Tabular, Dremio, and AWS.</p>
-<p>What sets Iceberg apart is its <strong>architectural elegance</strong>. Built on a sophisticated <strong>3-tier metadata hierarchy</strong>, Iceberg orchestrates <em>table-level metadata files</em> (<code>metadata.json</code>), <em>snapshot-level manifest lists</em> (<code>*.avro</code>), and <em>data-level manifest files</em> (<code>*.avro</code>) into a symphony of efficiency.</p>
-<p>Iceberg's design philosophy centers around <strong>hidden partitioning</strong> and <strong>schema evolution without the headaches</strong>. Forget about manually managing partitions or rewriting entire tables when your schema changes — Iceberg handles this behind the scenes like a data concierge. The format's <strong>storage-agnostic approach</strong> means true multi-engine compatibility through standardized APIs and REST-based catalogs, making it the diplomat of the lakehouse world.</p>
-<p>At its core, Iceberg treats every table state as an <strong>immutable, versioned snapshot</strong> with complete lineage tracking. This enables bulletproof <strong>concurrent reads and writes</strong>, <strong>automatic schema evolution</strong>, and <strong>surgical partition pruning</strong>. Built with both backward and forward compatibility in mind, Iceberg ensures your data infrastructure won't break when you upgrade.</p>
-<h2 id="storage-layout">Storage Layout<a class="headerlink" href="#storage-layout" title="Permanent link">&para;</a></h2>
-<figure>
-  <a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Storage Layout" src="../2025/07-12/apache-iceberg-overview/assets/iceberg.drawio.svg" width="600" /></a>
-  <em>Iceberg Storage Layout</em>
-</figure>
-<h3 id="catalog">Catalog<a class="headerlink" href="#catalog" title="Permanent link">&para;</a></h3>
-<p>The Iceberg catalog serves as the <strong>centralized metadata repository</strong> that manages table locations, schema information, and other table-level metadata. It integrates with existing metadata stores such as Hive Metastore, AWS Glue, or custom-built solutions, <strong>providing a unified interface for query engines like Spark, Trino, Flink, and others to discover and access table metadata efficiently</strong>. Before performing any operations with Apache Iceberg, the first step typically involves setting up and configuring a catalog — think of it as establishing the command center for your data infrastructure.</p>
-<p>A particularly exciting advancement in this area is the introduction of <strong>the REST catalog</strong> in Iceberg version 0.14.0, released in July 2022. This catalog acts as a standardized communication layer — essentially a universal translator — allowing query engines to interact with metadata through a common RESTful API, rather than relying on engine-specific logic embedded in catalog clients. In this model, the logic that handles metadata operations resides on the catalog server, and can be implemented in any language or backed by any technology, as long as it adheres to the <a href="https://github.com/apache/iceberg/blob/main/open-api/rest-catalog-open-api.yaml">Iceberg REST Open API specification</a>.</p>
-<p>One of the most significant benefits of the REST catalog is that <strong>it enables a single, lightweight client to communicate with a wide range of catalog backends</strong>. This decouples clients from the specific implementations of the catalog, <strong>reducing the need to manage multiple dependencies or worry about compatibility issues</strong>. Whether you're using Starburst, Athena, or any other engine that supports the Iceberg REST catalog, the interaction becomes seamless — much like using a single remote control that works across all your devices.</p>
-<p>The REST catalog itself is not a product, but <strong>an API standard</strong>. <strong>The actual server implementation must be built by developers or the community following the specification</strong>. Several open-source projects and products are working to implement or support REST-based catalogs for Iceberg, including <a href="https://projectnessie.org/">Project Nessie</a>, <a href="https://polaris.apache.org/">Apache Polaris</a>, <a href="https://gravitino.apache.org/">Apache Gravitino</a>, and <a href="https://docs.lakekeeper.io/">LakeKeeper</a>, etc.</p>
-<p><a class="glightbox" href="../2025/07-12/apache-iceberg-overview/assets/catalog.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Iceberg Catalog" src="../2025/07-12/apache-iceberg-overview/assets/catalog.excalidraw.svg" /></a></p>
-<p>For more details on Apache Iceberg catalogs, see the <a href="https://iceberg.apache.org/terms/#catalog">official documentation</a>.</p>
-<h3 id="metadata-files">Metadata Files<a class="headerlink" href="#metadata-files" title="Permanent link">&para;</a></h3>
-<p>Metadata files in Iceberg are <strong>JSON files</strong> stored at the <strong>table level</strong>, and they play a critical role in managing the table's structure, state, and data references. These files enable query engines to accurately interpret and interact with the table.</p>
-<p>Key components include:</p>
-<ul>
-<li><strong>Schemas</strong>: Defines the structure of the table, including field names, types, and nullability. Iceberg <strong>retains all historical schemas</strong> - to support schema evolution without disrupting downstream systems.</li>
-<li><strong>Snapshots</strong>: Represent the state of the table at specific points in time. Each snapshot includes a timestamp, a list of data file manifests, and metadata about the change, enabling time travel and strong consistency guarantees.</li>
-<li><strong>Current Snapshot ID</strong>: Identifies the latest active snapshot that query engines should read from.</li>
-<li><strong>Partition Specs</strong>: Specify how data is partitioned, including transformations like bucketing and truncation. Multiple versions can coexist to support evolving partition strategies.</li>
-<li><strong>Location</strong>: Indicates the root path in storage where the table's metadata, manifest files, and data files are stored.</li>
-</ul>
-<h3 id="snapshots">Snapshots<a class="headerlink" href="#snapshots" title="Permanent link">&para;</a></h3>
-<p>A snapshot captures the complete state of a table at a specific point in time, recording which data files were part of the table during that version.</p>
-<p>To efficiently manage large datasets, <strong>A snapshot's data files are organized into multiple manifest files, which are all referenced together in one manifest list file.</strong></p>
-<h3 id="manifest-list-files">Manifest List Files<a class="headerlink" href="#manifest-list-files" title="Permanent link">&para;</a></h3>
-<p>At the <strong>snapshot level</strong>, the <strong>manifest list file</strong> is an Avro-formatted file that records all the <strong>manifest files</strong> associated with a given snapshot.</p>
-<p>Each entry in the manifest list includes:</p>
-<ul>
-<li><code>manifest_path</code>: The file path of the manifest</li>
-<li><code>manifest_length</code>: The size of the manifest file</li>
-<li><code>partition_spec_id</code>: The ID of the partition spec used</li>
-<li><code>added_snapshot_id</code>: The snapshot ID in which the manifest was added</li>
-<li>A count of data files: added, existing, and deleted</li>
-<li>Partition-level statistics used for query pruning</li>
-</ul>
-<p>This structure improves performance by allowing query engines to filter relevant manifests based on metadata without reading every manifest file in full.</p>
-<h3 id="manifest-files">Manifest Files<a class="headerlink" href="#manifest-files" title="Permanent link">&para;</a></h3>
-<p>At the <strong>data level</strong>, <strong>manifest files</strong> are Avro-formatted files that store metadata for each data file included in a snapshot.</p>
-<p>For each data file, a manifest records:</p>
-<ul>
-<li><code>file_path</code>: The physical path to the file</li>
-<li><code>file_format</code>: The file format (e.g., Parquet, ORC, Avro)</li>
-<li><code>partition_data</code>: The partition values of the file</li>
-<li><code>record_count</code>: The number of records in the file</li>
-<li><code>file_size_in_bytes</code>: The size of the file</li>
-<li>Column-level statistics: including value counts, null value counts, and min/max values</li>
-</ul>
-<p>These metadata entries enable query engines to perform <strong>partition pruning</strong> and <strong>skip irrelevant files</strong> during query planning, improving performance.</p>
-<h3 id="putting-all-together">Putting All Together<a class="headerlink" href="#putting-all-together" title="Permanent link">&para;</a></h3>
-<div class="admonition question">
-<p class="admonition-title">What is the relationship between a snapshot and a manifest list file?</p>
-<p>In Apache Iceberg, each snapshot has a corresponding manifest list file. This file lists all the manifest files that belong to that snapshot.</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Can one manifest list file include multiple manifest files?</p>
-<p>Yes. A single manifest list file can include multiple manifest files, each of which tracks a set of data files (e.g., Parquet, ORC, Avro) that belong to the snapshot.</p>
-<p>This design supports query optimization because query engines can use summary information from the manifest list to filter out irrelevant manifest files, reducing unnecessary scans and improving performance.</p>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Do data files listed in manifest files within a single snapshot ever overlap?</p>
-<p>Under normal conditions, no. One of Iceberg's core design principles is that each data file is tracked only once within a single snapshot.</p>
-<p>The manifest files referenced in a snapshot's manifest list cover non-overlapping sets of data files. This ensures:</p>
-<ul>
-<li>Efficient queries: Avoid redundant scans of the same data file.</li>
-<li>Data consistency: Ensure no duplicate records are counted or queried.</li>
-<li>Simplified metadata management: Easier updates and lower risk of errors.</li>
-</ul>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Can a single metadata file (<code>metadata.json</code>) reference multiple manifest list files?</p>
-<p>Yes.</p>
-<p>Each <code>metadata.json</code> file represents one version of the table and tracks all snapshots belonging to that version.</p>
-<p>Since each snapshot has its own manifest list file, a single metadata file can reference multiple manifest list files, one for each snapshot.</p>
-</div>
-<p>For a deeper dive into Apache Iceberg's Storage Layout, I recommend checking out Confluent's article on <a href="https://www.confluent.io/learn/what-is-apache-iceberg/">What is Apache Iceberg™?</a>, which provides detailed explanations, or the video below:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TsmhRZElPvM?si=vriCUbfU_dxfddey" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<h2 id="query-types">Query Types<a class="headerlink" href="#query-types" title="Permanent link">&para;</a></h2>
-<p>Apache Iceberg offers a range of query capabilities that, while not identical to Apache Hudi's, provide robust data management and analysis features:</p>
-<ul>
-<li><strong>Time Travel</strong>: Query historical snapshots of your data using SQL clauses like <code>TIMESTAMP AS OF</code> or <code>VERSION AS OF</code>. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#time-travel">Spark Time travel Queries</a> and <a href="https://trino.io/docs/current/connector/iceberg.html#time-travel-queries">Trino Time Travel Queries</a> for more details.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- time travel to October 26, 1986 at 01:21:00</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;1986-10-26 01:21:00&#39;</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">-- time travel to snapshot with id 10963874102873L</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="mi">10963874102873</span><span class="p">;</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1">-- time travel to the head snapshot of audit-branch</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;audit-branch&#39;</span><span class="p">;</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1">-- time travel to the snapshot referenced by the tag historical-snapshot</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="w"> </span><span class="k">VERSION</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="s1">&#39;historical-snapshot&#39;</span><span class="p">;</span>
-</span></code></pre></div></li>
-<li><strong>Incremental Reads</strong>: Perform incremental data ingestion by scanning snapshots for added or removed files. This is particularly useful for change data capture (CDC) scenarios. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#incremental-read">Spark Incremental Reads</a> for more details (Trino doesn't support incremental reads).
-    <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// get the data added after start-snapshot-id (10963874102873L) until end-snapshot-id (63874143573109L)</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">spark</span><span class="p">.</span><span class="na">read</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">     </span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;iceberg&quot;</span><span class="p">)</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">     </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;start-snapshot-id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10963874102873&quot;</span><span class="p">)</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">     </span><span class="p">.</span><span class="na">option</span><span class="p">(</span><span class="s">&quot;end-snapshot-id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;63874143573109&quot;</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">     </span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="s">&quot;path/to/table&quot;</span><span class="p">)</span><span class="w">    </span>
-</span></code></pre></div></li>
-<li><strong>Metadata Queries</strong>: Access metadata tables such as history, snapshots, and files to gain insights into table versions, schema changes, and data file statistics. See <a href="https://iceberg.apache.org/docs/latest/spark-queries/#inspecting-tables">Spark Metadata Queries</a> and <a href="https://trino.io/docs/current/connector/iceberg.html#metadata-tables">Trino Metadata Queries</a> for more details.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- Spark SQL</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">history</span><span class="p">;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">metadata_log_entries</span><span class="p">;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">snapshots</span><span class="p">;</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">entries</span><span class="p">;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">files</span><span class="p">;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">manifests</span><span class="p">;</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">partitions</span><span class="p">;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">refs</span><span class="p">;</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">TBLPROPERTIES</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">;</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">prod</span><span class="p">.</span><span class="n">db</span><span class="p">.</span><span class="k">table</span><span class="p">.</span><span class="n">position_deletes</span><span class="p">;</span>
+<p>Apache Spark is a powerful data processing framework that allows you to handle both batch and streaming data. It also provides high-level APIs that make it easier to work with datasets intuitively, without needing to worry too much about the underlying details of distributed systems.</p>
+<p>However, as your data scales up significantly, you eventually have to start thinking about how those operations are actually executed under the hood.</p>
+<p>So in this article, I'd like to share five commonly used tips that can help you write more efficient Spark queries and avoid consuming excessive Spark resources. For each tip, I'll start by explaining what an inefficient query looks like and why it performs poorly. Then, I'll walk through how you can rewrite it for better performance. That way, you'll get a clearer sense of the difference between the two approaches.</p>
+<h2 id="filter-early-before-joins">Filter Early Before Joins<a class="headerlink" href="#filter-early-before-joins" title="Permanent link">&para;</a></h2>
+<p>Let's say you're working with an e-commerce platform where you have two main tables: a <code>users</code> table containing customer information (around 1 million records) and an <code>events</code> table that logs all user activities like page views, clicks, and purchases (potentially billions of records). Your goal is to <strong>find all users who have made purchases</strong>, so you need to join these tables and filter for purchase events specifically.</p>
+<div class="admonition failure">
+<p class="admonition-title">Slow Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">users</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">events</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;purchase&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">-- Trino SQL</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$history&quot;</span><span class="p">;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$metadata_log_entries&quot;</span><span class="p">;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$snapshots&quot;</span><span class="p">;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$entries&quot;</span><span class="p">;</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$files&quot;</span><span class="p">;</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$manifests&quot;</span><span class="p">;</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$partitions&quot;</span><span class="p">;</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$refs&quot;</span><span class="p">;</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;test_table$properties&quot;</span><span class="p">;</span>
-</span></code></pre></div></li>
-</ul>
-<p>While Apache Hudi provides specialized query types like <a href="https://hudi.apache.org/docs/next/table_types/#query-types">Read Optimized and CDC Incremental queries</a> tailored for streaming data, Apache Iceberg's approach focuses on <strong>providing a consistent and flexible framework for both batch and streaming workloads, with strong support for schema and partition evolution and concurrent writes</strong>.</p>
-<h2 id="spark-procedures">Spark Procedures<a class="headerlink" href="#spark-procedures" title="Permanent link">&para;</a></h2>
-<h3 id="snapshot-management">Snapshot Management<a class="headerlink" href="#snapshot-management" title="Permanent link">&para;</a></h3>
-<p>Snapshot management in Apache Iceberg is a powerful feature that allows users to manipulate table snapshots, enabling time travel, rollback, and other advanced operations. Spark provides a set of procedures to manage snapshots effectively.</p>
-<ul>
-<li><code>rollback_to_snapshot</code>: Roll back a table to a specific snapshot ID.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rollback_to_snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>rollback_to_timestamp</code>: Roll back a table to the snapshot that was current at some time.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rollback_to_timestamp</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2021-06-30 00:00:00.000&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>set_current_snapshot</code>: Sets the current snapshot ID for a table.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">set_current_snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">set_current_snapshot</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;s1&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>cherrypick_snapshot</code>: Cherry-picks changes from a snapshot into the current table state. Cherry-picking creates a new snapshot from an existing
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">cherrypick_snapshot</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">cherrypick_snapshot</span><span class="p">(</span><span class="n">snapshot_id</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;my_table&#39;</span><span class="w"> </span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>publish_changes</code>: Publish changes from a staged WAP ID into the current table state.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">publish_changes</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;wap_id_1&#39;</span><span class="p">);</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">publish_changes</span><span class="p">(</span><span class="n">wap_id</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;wap_id_2&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;my_table&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>fast_forward</code>: Fast-forward the current snapshot of one branch to the latest snapshot of another.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">fast_forward</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;main&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;audit-branch&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-</ul>
-<h3 id="metadata-management">Metadata Management<a class="headerlink" href="#metadata-management" title="Permanent link">&para;</a></h3>
-<p>Iceberg provides procedures to manage metadata files, including rewriting manifests, removing orphan files, and expiring snapshots. These procedures help maintain the integrity and performance of Iceberg tables.</p>
-<ul>
-<li><code>expire_snapshots</code>: Remove older snapshots and their files which are no longer needed.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">hive_prod</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">expire_snapshots</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="s1">&#39;2021-06-30 00:00:00.000&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">CALL</span><span class="w"> </span><span class="n">hive_prod</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">expire_snapshots</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">snapshot_ids</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">ARRAY</span><span class="p">(</span><span class="mi">123</span><span class="p">));</span>
-</span></code></pre></div></li>
-<li><code>remove_orphan_files</code>: Remove files which are not referenced in any metadata files of an Iceberg table and can thus be considered "orphaned".
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">dry_run</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">true</span><span class="p">);</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">location</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;tablelocation/data&#39;</span><span class="p">);</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix_mismatch_mode</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;IGNORE&#39;</span><span class="p">);</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">prefix_mismatch_mode</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="p">);</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">equal_schemes</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;file1&#39;</span><span class="p">));</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">remove_orphan_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">equal_authorities</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;ns1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ns2&#39;</span><span class="p">));</span>
-</span></code></pre></div></li>
-<li><code>rewrite_data_files</code>: Rewrite the data files of a table to optimize storage layout.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;id DESC NULLS LAST,name ASC NULLS FIRST&#39;</span><span class="p">);</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;zorder(c1,c2)&#39;</span><span class="p">);</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;min-input-files&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;remove-dangling-deletes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">));</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;id = 3 and name = &quot;foo&quot;&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>rewrite_manifests</code>: Rewrite manifests for a table to optimize scan planning.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_manifests</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_manifests</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>rewrite_position_delete_files</code>: Rewrite position delete files for a table to optimize storage layout.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;rewrite-all&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="p">));</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_position_delete_files</span><span class="p">(</span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">options</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;min-input-files&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">));</span>
-</span></code></pre></div></li>
-</ul>
-<h3 id="table-migration">Table Migration<a class="headerlink" href="#table-migration" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>snapshot</code>: Create a light-weight temporary copy of a table for testing, without changing the source table.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;db.snap&#39;</span><span class="p">);</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">snapshot</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;db.snap&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/tmp/temptable/&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>migrate</code>: Replace a table with an Iceberg table, loaded with the source's data files. Table schema, partitioning, properties, and location will be copied from the source table.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">migrate</span><span class="p">(</span><span class="s1">&#39;spark_catalog.db.sample&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bar&#39;</span><span class="p">));</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog_name</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">migrate</span><span class="p">(</span><span class="s1">&#39;db.sample&#39;</span><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>add_files</code>: Attempts to directly add files from a Hive or file based table into a given Iceberg table.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">add_files</span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">source_table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.src_tbl&#39;</span><span class="p">,</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span><span class="n">partition_filter</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="s1">&#39;part_col_1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="p">);</span>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">add_files</span><span class="p">(</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="n">source_table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;`parquet`.`path/to/table`&#39;</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="p">);</span>
-</span></code></pre></div></li>
-<li><code>register_table</code>: Creates a catalog entry for a metadata.json file which already exists but does not have a corresponding catalog identifier.
-    <div class="language-sql highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">spark_catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">register_table</span><span class="p">(</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;db.tbl&#39;</span><span class="p">,</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="n">metadata_file</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;path/to/metadata/file.json&#39;</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">);</span>
-</span></code></pre></div></li>
-</ul>
-<h3 id="others">Others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>ancestors_of</code>: Report the live snapshot IDs of parents of a specified snapshot</li>
-<li><code>create_changelog_view</code>: Creates a view that contains the changes from a given table.</li>
-<li><code>compute_table_stats</code>: Calculates the Number of Distinct Values (NDV) statistics for a specific table.</li>
-<li><code>rewrite_table_path</code>: Stages a copy of the Iceberg table's metadata files where every absolute path source prefix is replaced by the specified target prefix.</li>
-</ul>
-<p>See <a href="https://iceberg.apache.org/docs/latest/spark-procedures/">Spark Procedures</a> for more details on the available procedures and their usage.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://estuary.dev/blog/apache-iceberg-cow-vs-mor/">Apache Iceberg Copy-On-Write (COW) vs Merge-On-Read (MOR): A Deep Dive</a></li>
-<li><a href="https://www.dremio.com/blog/exploring-the-architecture-of-apache-iceberg-delta-lake-and-apache-hudi/">Exploring the Architecture of Apache Iceberg, Delta Lake, and Apache Hudi</a></li>
-<li><a href="https://www.dremio.com/blog/comparison-of-data-lake-table-formats-apache-iceberg-apache-hudi-and-delta-lake/">Comparison of Data Lake Table Formats (Apache Iceberg, Apache Hudi and Delta Lake)</a></li>
-<li><a href="https://www.dremio.com/blog/table-format-governance-and-community-contributions-apache-iceberg-apache-hudi-and-delta-lake/">Table Format Governance and Community Contributions: Apache Iceberg, Apache Hudi, and Delta Lake</a></li>
-<li><a href="https://www.dremio.com/blog/table-format-partitioning-comparison-apache-iceberg-apache-hudi-and-delta-lake/">Table Format Partitioning Comparison: Apache Iceberg, Apache Hudi, and Delta Lake</a></li>
-<li><a href="https://www.youtube.com/watch?v=1eEcWopaFqE">Tampa Bay DE Meetup: The Who, What and Why of Data Lake Table Formats (Iceberg, Hudi, Delta Lake)</a></li>
-<li><a href="https://lakefs.io/blog/hudi-iceberg-and-delta-lake-data-lake-table-formats-compared/">Hudi vs Iceberg vs Delta Lake: Data Lake Table Formats Compared</a></li>
-<li><a href="https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html">What Is a Lakehouse?</a></li>
-</ul>
+</div>
+<p>This code performs a full join operation first before applying the filter condition. When <code>events</code> contains a large amount of data, this approach causes <strong>excessive shuffle operations and memory consumption</strong>. The filter condition could have been applied earlier through <strong>predicate pushdown optimization</strong>, but this optimization doesn't occur in this scenario.</p>
+<div class="admonition success">
+<p class="admonition-title">Fast Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">purchase_events</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;purchase&quot;</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">users</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">purchase_events</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p>By filtering <code>events</code> before the join operation, we significantly reduce the amount of data that needs to be shuffled during the join. This technique implements filter pushdown and early pruning concepts, which minimize the computational overhead and improve query performance.</p>
+<h2 id="avoid-premature-collect-actions">Avoid Premature <code>collect()</code> Actions<a class="headerlink" href="#avoid-premature-collect-actions" title="Permanent link">&para;</a></h2>
+<p>One of the most common mistakes in Spark development is using <code>collect()</code> when you only need to inspect or sample your data. This operation forces all data from distributed executors back to the driver node, creating a severe bottleneck and potentially causing out-of-memory errors.</p>
+<p>Let's say you're analyzing customer purchase patterns in your e-commerce platform. You have a large <code>orders</code> table with millions of records, and you want to quickly examine some sample data to understand the structure before writing more complex analytics queries.</p>
+<div class="admonition failure">
+<p class="admonition-title">Slow Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># This brings all data back to the Driver</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">orders</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<p>The <code>collect()</code> operation pulls the entire DataFrame data back to the Driver's memory, which can cause out-of-memory errors. This approach prevents distributed execution and creates a bottleneck at the Driver node, negating the benefits of Spark's distributed computing architecture.</p>
+<div class="admonition success">
+<p class="admonition-title">Fast Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Use aggregation or sampling instead</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">orders</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<p>The <code>show()</code> operation only displays the first few records and completes the computation on the Executors. By using operations like <code>limit()</code>, <code>sample()</code>, or other batch processing methods, we can examine data incrementally while reducing pressure on the Driver node.</p>
+<h2 id="use-built-in-functions-over-udfs">Use Built-in Functions Over UDFs<a class="headerlink" href="#use-built-in-functions-over-udfs" title="Permanent link">&para;</a></h2>
+<p>Let's say you want to calculate discounted prices for your e-commerce orders. You have an <code>orders</code> table with <code>price</code> and <code>discount_rate</code> columns, and you need to compute the final price after applying the discount.</p>
+<div class="admonition failure">
+<p class="admonition-title">Slow Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">udf</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">DoubleType</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nd">@udf</span><span class="p">(</span><span class="n">DoubleType</span><span class="p">())</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">calculate_discounted_price</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount_rate</span><span class="p">):</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">discount_rate</span><span class="p">)</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">orders</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;final_price&quot;</span><span class="p">,</span> <span class="n">calculate_discounted_price</span><span class="p">(</span><span class="n">orders</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">],</span> <span class="n">orders</span><span class="p">[</span><span class="s2">&quot;discount_rate&quot;</span><span class="p">]))</span>
+</span></code></pre></div>
+</div>
+<p>User Defined Functions (UDFs) act as black boxes that the Spark Catalyst Optimizer <strong>cannot optimize</strong>. During execution, there's <strong>significant overhead from switching between the JVM and Python environments</strong>. Additionally, UDFs bypass Spark's native optimization mechanisms, often resulting in much slower performance.</p>
+<div class="admonition success">
+<p class="admonition-title">Fast Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">col</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">orders</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;final_price&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;discount_rate&quot;</span><span class="p">)))</span>
+</span></code></pre></div>
+</div>
+<p>Using built-in functions allows the Catalyst Optimizer to recognize and optimize operations through <strong>vectorized computations</strong>. This approach eliminates the need for JVM-Python context switching and leverages Spark's internal optimization capabilities.</p>
+<h2 id="choose-broadcast-joins-for-small-tables">Choose Broadcast Joins for Small Tables<a class="headerlink" href="#choose-broadcast-joins-for-small-tables" title="Permanent link">&para;</a></h2>
+<div class="admonition failure">
+<p class="admonition-title">Slow Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p>Spark doesn't know which Data Frame is smaller, so it defaults to using <strong>shuffle hash join</strong>. Even when <code>df2</code> is clearly small, the absence of broadcast hints forces Spark to perform unnecessary shuffle operations, impacting performance significantly.</p>
+<div class="admonition success">
+<p class="admonition-title">Fast Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyspark.sql.functions</span><span class="w"> </span><span class="kn">import</span> <span class="n">broadcast</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">df1</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">broadcast</span><span class="p">(</span><span class="n">df2</span><span class="p">),</span> <span class="s2">&quot;id&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<p>Using broadcast join sends the smaller table directly to each executor, eliminating shuffle operations entirely. This approach is ideal for tables smaller than 10MB or the configured <code>spark.sql.autoBroadcastJoinThreshold</code> value.</p>
+<p>Spark 會根據 <code>spark.sql.autoBroadcastJoinThreshold</code>，自動判斷是否廣播：</p>
+<h2 id="optimize-duplicate-removal">Optimize Duplicate Removal<a class="headerlink" href="#optimize-duplicate-removal" title="Permanent link">&para;</a></h2>
+<div class="admonition failure">
+<p class="admonition-title">Slow Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</span></code></pre></div>
+</div>
+<p>The <code>distinct()</code> operation is equivalent to a <code>groupBy</code> with aggregation, which triggers shuffle operations. When dealing with large datasets, this can cause severe <strong>network I/O bottlenecks</strong> and <strong>memory pressure</strong> across the cluster.</p>
+<div class="admonition success">
+<p class="admonition-title">Fast Query</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">dropDuplicates</span><span class="p">([</span><span class="s2">&quot;user_id&quot;</span><span class="p">])</span>
+</span></code></pre></div>
+</div>
+<p>Using <code>repartition()</code> with a specific key reduces the shuffle volume by creating local data ordering. The <code>dropDuplicates()</code> method provides more semantic clarity for multi-column operations compared to <code>distinct()</code>, enabling better optimization by the Catalyst optimizer.</p>
+<!-- ## Summary: Spark Query Acceleration Principles
+
+| Category | Performance Issue | Fast Approach Principle |
+| -------- | ------------ | ------------------------------ |
+| filter   | Applied after join    | Apply filter early to reduce join data volume         |
+| collect  | Returns all data to driver | Use show/sample/limit for batch processing         |
+| UDF      | Cannot be optimized        | Use built-in functions                          |
+| distinct | Causes shuffle operations   | Use dropDuplicates with repartition |
+| join     | Default shuffle join | Use broadcast join when appropriate               |
+from pyspark.sql.functions import broadcast
+df1.join(broadcast(df2), "id")
+``` -->
 
 
 
@@ -4906,7 +4578,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../apache-hudi-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Lakehouse Series: Apache Hudi Overview">
+          <a href="../apache-iceberg-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Lakehouse Series: Apache Iceberg Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4916,27 +4588,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                The Lakehouse Series: Apache Hudi Overview
+                The Lakehouse Series: Apache Iceberg Overview
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../spark-query-speedup/" class="md-footer__link md-footer__link--next" aria-label="Next: 5 Practical Ways to Speed Up Your Apache Spark Queries">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                5 Practical Ways to Speed Up Your Apache Spark Queries
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
