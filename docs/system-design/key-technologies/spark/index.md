@@ -16,6 +16,14 @@ tags:
     
     This means that **while both can handle streaming data, Flink often achieves lower latency**.
 
+??? question "when you execution a query in spark, how does it work behind the scene?"
+
+    When you run a query in Spark, it first goes through a **few logical and physical planning phases**. Spark builds a logical plan from your code, optimizes it into a physical plan, and then breaks it into stages and tasks. Those tasks are distributed across worker nodes by the driver.
+
+    Each stage corresponds to a set of transformations that can be pipelined together, and between stages, data is **shuffled** if needed. Spark uses **DAG scheduling** to manage dependencies, and **executors** on **worker nodes** run the tasks and return results back to the driver.
+
+## Structure Streaming
+
 ??? question "What is Trigger Types in Apache Spark Structure Streaming"
 
     In Apache Spark Structured Streaming, trigger types determine **how often the streaming query processes data and produces results**. There are a few different trigger types you can use:
