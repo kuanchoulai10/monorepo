@@ -4697,7 +4697,14 @@
 </ul>
 <p>After createing the OAuth 2.0 client, you will be provided with a <strong>client ID</strong> and a <strong>client secret</strong> and you will need to copy these values into the Trino configuration.</p>
 <h2 id="configure-oauth-20-authentication_1">Configure OAuth 2.0 Authentication<a class="headerlink" href="#configure-oauth-20-authentication_1" title="Permanent link">&para;</a></h2>
-<p>To enable OAuth 2.0 authentication in Trino, you will need to configure the OAuth2 properties in the Trino coordinator, which include the client ID, client secret, and authorization server URL. To enable OAuth 2.0 authentication for the Web UI, you also need to set the authentication type of the Web UI to <code>oauth2</code>.</p>
+<p>To activate OAuth 2.0 authentication in Trino, configure the following essential properties in the coordinator settings:</p>
+<ul>
+<li><strong>Client ID</strong>: OAuth 2.0 client identifier obtained from Google Cloud Console</li>
+<li><strong>Client Secret</strong>: OAuth 2.0 client secret obtained from Google Cloud Console  </li>
+<li><strong>Authorization Server URL</strong>: Google's OAuth 2.0 authorization endpoint</li>
+<li><strong>Web UI Authentication Type</strong>: Must be set to <code>oauth2</code> to enable OAuth 2.0 for the Web UI</li>
+</ul>
+<p>These configurations establish the connection between Trino and the OAuth 2.0 provider, enabling secure authentication for both Web UI and programmatic access.</p>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml server</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
@@ -4722,41 +4729,41 @@
 </span></span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="hll"><span class="w">  </span><span class="nt">coordinatorExtraConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span></span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">    </span><span class="no">http-server.https.enabled=true</span>
 </span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">    </span><span class="no">http-server.https.port=8443</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="hll"><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
-</span></span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
 </span></span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
 </span></span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
 </span></span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.principal-field=email</span>
-</span></span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
+</span></span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="hll"><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
+</span></span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="hll"><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
+</span></span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
 </span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
 </span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
 </span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Trino supports reading the Authorization Server configuration from the OIDC provider configuration metadata document. During coordinator startup, Trino retrieves this document and uses the provided values to set the corresponding OAuth2 authentication properties, eliminating the need for additional configuration setup.</p>
-<p>For Google configuration metadata document, see <a href="https://accounts.google.com/.well-known/openid-configuration">here</a>.</p>
+<p>Trino can automatically retrieve OAuth 2.0 configuration settings from the OIDC provider's metadata document (such as Google's <a href="https://accounts.google.com/.well-known/openid-configuration">configuration endpoint</a>). When the coordinator starts up, it fetches this metadata document and automatically configures the necessary OAuth 2.0 authentication properties, removing the need for manual configuration of these settings.</p>
+<p>The sequence diagram below illustrates the OAuth 2.0 authentication flow in Trino:</p>
+<pre class="mermaid"><code>sequenceDiagram
+  participant Browser
+  participant Coordinator as Trino Coordinator
+  participant Server as Google OAuth Server
+
+  Browser-&gt;&gt;Coordinator: 1. Request Trino Web UI
+  Coordinator--&gt;&gt;Browser: 2. Redirect to Google OAuth (auth URL)
+  Browser-&gt;&gt;Server: 3. User login + consent authorization
+  Server--&gt;&gt;Browser: 4. Redirect back to Trino + authorization code
+  Browser-&gt;&gt;Coordinator: 5. Send authorization code to Trino /oauth2/callback
+  Coordinator-&gt;&gt;Server: 6. Exchange authorization code for access token + ID token
+  Server--&gt;&gt;Coordinator: 7. Return token(s)
+  Coordinator--&gt;&gt;Browser: 8. Display Web UI (logged in)
+
+  note right of Coordinator: Trino uses email from ID token as user identity</code></pre>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://trino.io/docs/current/security/tls.html">TLS and HTTPS</a></li>
 <li><a href="https://trino.io/docs/current/security/internal-communication.html">Secure internal communication</a></li>
 <li><a href="https://trino.io/docs/current/security/oauth2.html">OAuth 2.0 authentication</a></li>
 </ul>
-<pre class="mermaid"><code>sequenceDiagram
-    participant Browser
-    participant Trino_Coordinator
-    participant Google_OAuth_Server
-
-    Browser-&gt;&gt;Trino_Coordinator: 1. 請求 Trino Web UI
-    Trino_Coordinator--&gt;&gt;Browser: 2. Redirect 到 Google OAuth (auth URL)
-    Browser-&gt;&gt;Google_OAuth_Server: 3. 使用者登入 + 同意授權
-    Google_OAuth_Server--&gt;&gt;Browser: 4. Redirect 回 Trino + 帶 authorization code
-    Browser-&gt;&gt;Trino_Coordinator: 5. 將 code 發送給 Trino `/oauth2/callback`
-    Trino_Coordinator-&gt;&gt;Google_OAuth_Server: 6. 用 authorization code 換 access token + ID token
-    Google_OAuth_Server--&gt;&gt;Trino_Coordinator: 7. 回傳 token(s)
-    Trino_Coordinator--&gt;&gt;Browser: 8. 顯示 Web UI（已登入）
-
-    note right of Trino_Coordinator: Trino 使用 ID token 中的 email 作為登入身份</code></pre>
 
 
 
