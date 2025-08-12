@@ -4061,6 +4061,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4091,7 +4117,57 @@
   
 
 
-<h1 id="300-longest-increasing-subsequence">300. Longest Increasing Subsequence<a class="headerlink" href="#300-longest-increasing-subsequence" title="Permanent link">&para;</a></h1>
+<h1 id="300-longest-increasing-subsequence"><a href="https://leetcode.com/problems/longest-increasing-subsequence/description/">300. Longest Increasing Subsequence</a><a class="headerlink" href="#300-longest-increasing-subsequence" title="Permanent link">&para;</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cjWnW0hdF1Y?si=nz071fQPELjw4PK3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>Solution Approach</strong></th>
+<th><strong>Explanation (1-minute)</strong></th>
+<th><strong>Time Complexity</strong></th>
+<th><strong>Space Complexity</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brute Force</strong></td>
+<td>Generate all possible subsequences of the array (using recursion or bitmasking). For each subsequence, check if it is strictly increasing by comparing each pair of adjacent elements. Track and return the maximum length among all valid increasing subsequences.</td>
+<td><span class="arithmatex">\(O(2^n \cdot n)\)</span> There are <span class="arithmatex">\(2^n\)</span> possible subsequences for an array of length <span class="arithmatex">\(n\)</span>. For each subsequence, checking if it is increasing takes up to <span class="arithmatex">\(O(n)\)</span> time. So, total time is <span class="arithmatex">\(O(2^n \cdot n)\)</span>.</td>
+<td><span class="arithmatex">\(O(n)\)</span> The recursion stack or temporary storage for a subsequence can take up to <span class="arithmatex">\(O(n)\)</span> space.</td>
+</tr>
+<tr>
+<td><strong>DP (Bottom-Up)</strong></td>
+<td>Use a DP array where each entry <span class="arithmatex">\(dp[i]\)</span> stores the length of the longest increasing subsequence starting at index <span class="arithmatex">\(i\)</span>. Iterate backwards, and for each <span class="arithmatex">\(i\)</span>, check all <span class="arithmatex">\(j &gt; i\)</span>; if <span class="arithmatex">\(nums[j] &gt; nums[i]\)</span>, update <span class="arithmatex">\(dp[i]\)</span>. The answer is the maximum value in <span class="arithmatex">\(dp\)</span>.</td>
+<td><span class="arithmatex">\(O(n^2)\)</span> For each index, we may check all following indices, leading to <span class="arithmatex">\(O(n^2)\)</span> total operations.</td>
+<td><span class="arithmatex">\(O(n)\)</span> The DP array uses <span class="arithmatex">\(O(n)\)</span> space.</td>
+</tr>
+<tr>
+<td><strong>Lorem ipsum dolor</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="python" name="__tabbed_1" type="radio" /><input id="javascript" name="__tabbed_1" type="radio" /><input id="go" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="python">Python</label><label for="javascript">JavaScript</label><label for="go">Go</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-go highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>
+</span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
