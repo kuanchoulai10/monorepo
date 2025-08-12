@@ -4,21 +4,18 @@
 #          1 if num is lower than the picked number
 #          otherwise return 0
 # def guess(num: int) -> int:
-
 class Solution:
     def guessNumber(self, n: int) -> int:
-        upper = n
-        lower = 1
+        l = 1
+        r = n
 
         while True:
-            pick = (lower+upper)//2
+            m = (l + r) // 2
 
-            result = guess(pick)
-            if result==0:
-                return pick
-            elif result==1:
-                lower = pick + 1
-            elif result==-1:
-                upper = pick - 1
+            res = guess(m)
+            if res == -1:
+                r = m - 1
+            elif res == 1:
+                l = m + 1
             else:
-                print('wrong result')
+                return m
