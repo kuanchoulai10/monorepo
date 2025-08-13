@@ -1,23 +1,25 @@
 class Solution:
     def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
-        # sort the potions array
-        potions.sort()
-        ans = []
-        # binary search
-        for s in spells:
-            lower = 0
-            upper = len(potions)-1
+        potions.sort() # O(m log m)
+        result = []
+        for s in spells: # O(n log m)
+            l = 0
+            r = len(potions) - 1
 
-            idx = len(potions) # default: must larger than the biggest index in potions array
+            # idx = float("inf")
+            idx = len(potions)
 
-            while lower <= upper:
-                m = (lower + upper) // 2
+            while l <= r:
+                m = (l + r) // 2
                 if s * potions[m] >= success:
-                    upper = m - 1
+                    r = m - 1
                     idx = m
                 else:
-                    lower = m + 1
-
-            ans.append(len(potions)-idx)
-        
-        return ans
+                    l = m + 1
+            
+            # if idx == float("inf"):
+            #     result.append(0)
+            # else:
+            #     result.append(len(potions)-idx)
+            result.append(len(potions)-idx)
+        return result
