@@ -12,9 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/fault-tolerant/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/join-optimization/">
       
       
+        <link rel="prev" href="../faker/">
+      
+      
+        <link rel="next" href="../../../data-mesh/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Configure Fault Tolerant - KC's Data & Life Notes</title>
+        <title>Join Optimization - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Configure Fault Tolerant - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Join Optimization - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/fault-tolerant.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/join-optimization.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/fault-tolerant/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/join-optimization/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Configure Fault Tolerant - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Join Optimization - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/fault-tolerant.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/join-optimization.png" >
       
     
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configure-fault-tolerant" class="md-skip">
+        <a href="#join-optimization" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configure Fault Tolerant
+              Join Optimization
             
           </span>
         </div>
@@ -287,10 +291,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -486,6 +492,8 @@
       
   
   
+    
+  
   
   
     
@@ -510,14 +518,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -534,13 +545,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -1525,6 +1536,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1546,11 +1559,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           
@@ -1573,7 +1586,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Retail Lakehouse
@@ -1903,10 +1916,20 @@
                 
   
   
+    
   
   
+  
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1922,11 +1945,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
@@ -1941,7 +1964,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3_4">
             <span class="md-nav__icon md-icon"></span>
             Trino
@@ -2021,6 +2044,72 @@
   
   
     <li class="md-nav__item">
+      <a href="../fault-tolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fault-tolerant Execution in Trino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faker/" class="md-nav__link">
         
   
@@ -2031,6 +2120,89 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Join Optimization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Join Optimization
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#join-enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join Enumeration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join Distribution
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4068,9 +4240,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#join-enumeration" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Join Enumeration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join Distribution
     </span>
   </a>
   
@@ -4090,9 +4271,19 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:trino" class="md-tag">Trino</a>
+      
+    
+  </nav>
+
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/fault-tolerant.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/join-optimization.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4101,21 +4292,47 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/fault-tolerant.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/join-optimization.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="configure-fault-tolerant">Configure Fault Tolerant<a class="headerlink" href="#configure-fault-tolerant" title="Permanent link">&para;</a></h1>
-<!-- TODO: Fault Tolerant -->
-<p>retry-policy=TASK</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h1 id="join-optimization">Join Optimization<a class="headerlink" href="#join-optimization" title="Permanent link">&para;</a></h1>
+<h2 id="join-enumeration">Join Enumeration<a class="headerlink" href="#join-enumeration" title="Permanent link">&para;</a></h2>
+<p>Understanding <code>JOIN</code> optimization is crucial because <strong><code>JOIN</code> order significantly impacts performance, particularly affecting intermediate result sizes and network transfer volumes</strong>. Different join orders can lead to vastly different intermediate result sizes. When you start with a <code>JOIN</code> that produces a massive intermediate table, each subsequent step requires moving and processing more data, resulting in slower performance and higher resource consumption. Conversely, starting with a <code>JOIN</code> that produces a small intermediate table leads to much better performance.</p>
+<p>To address this challenge, <strong>Trino includes Cost-Based Join Enumeration by default</strong>. This algorithm uses <strong>table statistics</strong> (row counts, sizes, distributions) to estimate the cost of each possible <code>JOIN</code> order. <strong>It enumerates all possible <code>JOIN</code> execution sequences, compares their costs, and selects the most resource-efficient order.</strong> The system automatically chooses the lowest-cost (fastest) <code>JOIN</code> sequence for execution. <strong>This means the <code>JOIN</code> order you write in your SQL statements won't affect Trino's execution plan, Trino will automatically select the optimal <code>JOIN</code> order</strong>.</p>
+<p>However, accurate table statistics are essential for Trino to correctly estimate costs. <strong>You can initialize these statistics using the <a href="https://trino.io/docs/current/sql/analyze.html"><code>ANALYZE</code></a> command.</strong> This enables Trino to make optimal <code>JOIN</code> order decisions based on the latest data distribution and sizes.</p>
+<h2 id="join-distribution">Join Distribution<a class="headerlink" href="#join-distribution" title="Permanent link">&para;</a></h2>
+<p>Beyond join order optimization, <strong>Trino must also determine how to distribute data across nodes during <code>JOIN</code> execution</strong>. Since Trino is a distributed query engine with multiple nodes processing queries collaboratively, <strong><code>JOIN</code> operations require data from both tables to be located on the same node for comparison and hash table construction.</strong></p>
+<p>Trino uses a <strong>hash-based join algorithm</strong> where the system first designates one side as <strong>the build side</strong>, loading all its data into memory and creating a hash table based on the join key. The other side becomes <strong>the probe side</strong>, with the system reading its data row by row and querying the hash table using the join key to find matching rows and output results. This method is particularly effective when sufficient memory is available, and <strong>typically uses the smaller dataset as the build side to reduce memory usage and improve performance</strong>.</p>
+<p>There are two main types of join distributions:</p>
 <ul>
-<li><a href="https://trino.io/docs/current/installation/query-resiliency.html">Improve query processing resilience</a></li>
-<li><a href="https://trino.io/docs/current/admin/fault-tolerant-execution.html">Fault-tolerant execution</a></li>
+<li><strong>Partitioned joins</strong>: Each node participating in the query builds a hash table from <strong>only a fraction of the data</strong>. This approach requires <strong>redistributing both tables</strong> using a hash of the join key. While these joins can be <strong>slower</strong> than broadcast joins, they enable <strong>much larger joins overall</strong>.</li>
+<li><strong>Broadcast joins</strong>: Each node participating in the query builds a hash table from all the data, with data replicated to each node. <strong>Broadcast joins perform better when the build side is much smaller than the probe side</strong>. However, <strong>they require that build-side tables fit in memory</strong> on each node after filtering, whereas partitioned joins only need to fit in distributed memory across all nodes.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Trino's cost-based optimization automatically handles these decisions. With <strong>cost-based join distribution selection</strong>, Trino automatically chooses between <strong>partitioned and broadcast joins</strong>. Similarly, <strong>cost-based join enumeration</strong> automatically determines which sides serve as <strong>probe and build</strong>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Configuration</p>
+<p>Join enumeration strategy is controlled by <code>join_reordering_strategy</code> session property (or <code>optimizer.join-reordering-strategy</code> config)</p>
+<ul>
+<li><code>AUTOMATIC</code> (default)</li>
+<li><code>ELIMINATE_CROSS_JOINS</code></li>
+<li><code>NONE</code>.</li>
+</ul>
+<p>Join distribution strategy uses <code>join_distribution_type</code> session property (or <code>join-distribution-type</code> config)</p>
+<ul>
+<li><code>AUTOMATIC</code> (default)</li>
+<li><code>BROADCAST</code></li>
+<li><code>PARTITIONED</code>.</li>
+</ul>
+<p>Replicated table size can be capped using <code>join_max_broadcast_table_size</code> session property (or <code>join-max-broadcast-table-size</code> config): defaulting to 100MB.</p>
+<p>See <a href="https://trino.io/docs/current/optimizer/cost-based-optimizations.html">Cost-based optimizations</a> for more details.</p>
+</div>
 
 
 
@@ -4193,6 +4410,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../faker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Faker Connector">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Faker Connector
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../data-mesh/" class="md-footer__link md-footer__link--next" aria-label="Next: Unified SQL-based Data Pipelines">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Unified SQL-based Data Pipelines
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

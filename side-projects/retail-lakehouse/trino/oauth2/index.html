@@ -18,7 +18,7 @@
         <link rel="prev" href="../deployment/">
       
       
-        <link rel="next" href="../faker/">
+        <link rel="next" href="../fault-tolerance/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -1931,6 +1931,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -2157,11 +2165,99 @@
   
   
     <li class="md-nav__item">
+      <a href="../fault-tolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fault-tolerant Execution in Trino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Faker Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../join-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join Optimization
     
   </span>
   
@@ -4330,7 +4426,7 @@
 <li><a href="https://trino.io/docs/current/security/internal-communication.html"><strong>Internal Communication Security</strong></a>: Establishes secure communication channels between Trino cluster nodes, including coordinator and workers (represented by <strong>red lines</strong> in the diagram)</li>
 </ul>
 <figure>
-  <a class="glightbox" href="../static/trino.diagram.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/trino.diagram.svg" width="500" /></a>
+  <a class="glightbox" href="../static/trino.drawio.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/trino.drawio.svg" width="500" /></a>
 </figure>
 <h2 id="configure-tlshttps">Configure TLS/HTTPS<a class="headerlink" href="#configure-tlshttps" title="Permanent link">&para;</a></h2>
 <p>By default, Trino operates without any security measures enabled. This configuration permits connections to the server through HTTP protocol URLs when accessing Trino via the CLI, Web UI, or other client applications.</p>
@@ -4560,7 +4656,10 @@
 <span class="normal"><a href="#__codelineno-10-15">15</a></span>
 <span class="normal"><a href="#__codelineno-10-16">16</a></span>
 <span class="normal"><a href="#__codelineno-10-17">17</a></span>
-<span class="normal"><a href="#__codelineno-10-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -4576,8 +4675,11 @@
 </span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
 </span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
 </span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
-</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
-</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="w">  </span><span class="nt">exchangeManager</span><span class="p">:</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="w">    </span><span class="nt">base-directories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$EXCHANGE_S3_URLS</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="enable-and-expose-the-https-endpoint">Enable and Expose the HTTPS Endpoint<a class="headerlink" href="#enable-and-expose-the-https-endpoint" title="Permanent link">&para;</a></h3>
 <p>To activate HTTPS in Trino, configure the <code>http-server.https.enabled</code> setting to <code>true</code> and specify the <code>http-server.https.port</code> (typically <code>8443</code>). Additionally, expose this port through the Kubernetes service configuration.</p>
@@ -4598,7 +4700,10 @@
 <span class="normal"><a href="#__codelineno-11-15">15</a></span>
 <span class="normal"><a href="#__codelineno-11-16">16</a></span>
 <span class="normal"><a href="#__codelineno-11-17">17</a></span>
-<span class="normal"><a href="#__codelineno-11-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -4614,8 +4719,11 @@
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
 </span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
 </span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
-</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
-</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">  </span><span class="nt">exchangeManager</span><span class="p">:</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">    </span><span class="nt">base-directories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$EXCHANGE_S3_URLS</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml coordinator</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
@@ -4678,9 +4786,11 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>openssl rand 512 | base64
 </span></code></pre></div>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">trino/values-template.yaml additionalConfigProperties</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
-<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="hll"><span class="nt">additionalConfigProperties</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="hll"><span class="nt">additionalConfigProperties</span><span class="p">:</span>
 </span></span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="hll"><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal-communication.shared-secret=$INTERNAL_SHARED_SECRET</span>
-</span></span></code></pre></div></td></tr></table></div>
+</span></span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">retry-policy=TASK</span>
+</span></code></pre></div></td></tr></table></div>
 <p>The configurations under <code>additionalConfigProperties</code> will impact all the nodes in the Trino Cluster.</p>
 <h2 id="create-google-oauth-20-client">Create Google OAuth 2.0 Client<a class="headerlink" href="#create-google-oauth-20-client" title="Permanent link">&para;</a></h2>
 <p>Since we're using Google as our OAuth2 provider, we'll need to set up a Google OAuth 2.0 client. This is a straightforward process, but there are a few specific configuration details to keep in mind for Trino.</p>
@@ -4722,7 +4832,10 @@
 <span class="normal"><a href="#__codelineno-16-15">15</a></span>
 <span class="normal"><a href="#__codelineno-16-16">16</a></span>
 <span class="normal"><a href="#__codelineno-16-17">17</a></span>
-<span class="normal"><a href="#__codelineno-16-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span>
+<span class="normal"><a href="#__codelineno-16-20">20</a></span>
+<span class="normal"><a href="#__codelineno-16-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="hll"><span class="nt">server</span><span class="p">:</span>
 </span></span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="hll"><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 </span></span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="hll"><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
@@ -4738,8 +4851,11 @@
 </span></span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="hll"><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
 </span></span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
 </span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
-</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
-</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
+</span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">  </span><span class="nt">exchangeManager</span><span class="p">:</span>
+</span><span id="__span-16-18"><a id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+</span><span id="__span-16-19"><a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">    </span><span class="nt">base-directories</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$EXCHANGE_S3_URLS</span>
+</span><span id="__span-16-20"><a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
+</span><span id="__span-16-21"><a id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Trino can automatically retrieve OAuth 2.0 configuration settings from the OIDC provider's metadata document (such as Google's <a href="https://accounts.google.com/.well-known/openid-configuration">configuration endpoint</a>). When the coordinator starts up, it fetches this metadata document and automatically configures the necessary OAuth 2.0 authentication properties, removing the need for manual configuration of these settings.</p>
 <p>The sequence diagram below illustrates the OAuth 2.0 authentication flow in Trino:</p>
@@ -4863,13 +4979,13 @@
         
         
           
-          <a href="../faker/" class="md-footer__link md-footer__link--next" aria-label="Next: Faker Connector">
+          <a href="../fault-tolerance/" class="md-footer__link md-footer__link--next" aria-label="Next: Fault-tolerant Execution in Trino">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Faker Connector
+                Fault-tolerant Execution in Trino
               </div>
             </div>
             <div class="md-footer__button md-icon">

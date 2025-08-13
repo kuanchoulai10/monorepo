@@ -12,9 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/what-why-when/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/trino/monitoring/">
       
       
+        <link rel="prev" href="../fault-tolerance/">
+      
+      
+        <link rel="next" href="../catalogs/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>What, Why, When - KC's Data & Life Notes</title>
+        <title>Monitoring with Prometheus and Grafana - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="What, Why, When - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Monitoring with Prometheus and Grafana - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/what-why-when.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/monitoring.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/what-why-when/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/trino/monitoring/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="What, Why, When - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Monitoring with Prometheus and Grafana - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/what-why-when.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/trino/monitoring.png" >
       
     
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-why-when" class="md-skip">
+        <a href="#monitoring-with-prometheus-and-grafana" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              What, Why, When
+              Monitoring with Prometheus and Grafana
             
           </span>
         </div>
@@ -287,10 +291,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -486,6 +492,8 @@
       
   
   
+    
+  
   
   
     
@@ -510,14 +518,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           
@@ -534,13 +545,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -1525,6 +1536,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1546,11 +1559,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           
@@ -1573,7 +1586,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Retail Lakehouse
@@ -1903,10 +1916,20 @@
                 
   
   
+    
   
   
+  
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1922,11 +1945,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
@@ -1941,7 +1964,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3_4">
             <span class="md-nav__icon md-icon"></span>
             Trino
@@ -2021,11 +2044,169 @@
   
   
     <li class="md-nav__item">
+      <a href="../fault-tolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fault-tolerant Execution in Trino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-jmx" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is JMX?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-jmx-exporter" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is JMX Exporter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Faker Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../join-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join Optimization
     
   </span>
   
@@ -4068,42 +4249,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-trino" class="md-nav__link">
+  <a href="#what-is-jmx" class="md-nav__link">
     <span class="md-ellipsis">
-      What is Trino?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="What is Trino?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-not-trino" class="md-nav__link">
-    <span class="md-ellipsis">
-      What is not Trino?
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-trino" class="md-nav__link">
-    <span class="md-ellipsis">
-      Why Trino?
+      What is JMX?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-trino" class="md-nav__link">
+  <a href="#what-is-jmx-exporter" class="md-nav__link">
     <span class="md-ellipsis">
-      When to use Trino?
+      What is JMX Exporter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -4123,9 +4289,19 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:trino" class="md-tag">Trino</a>
+      
+    
+  </nav>
+
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/what-why-when.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/trino/monitoring.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4134,28 +4310,42 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/what-why-when.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/trino/monitoring.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="what-why-when">What, Why, When<a class="headerlink" href="#what-why-when" title="Permanent link">&para;</a></h1>
-<h2 id="what-is-trino">What is Trino?<a class="headerlink" href="#what-is-trino" title="Permanent link">&para;</a></h2>
+<h1 id="monitoring-with-prometheus-and-grafana">Monitoring with Prometheus and Grafana<a class="headerlink" href="#monitoring-with-prometheus-and-grafana" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-jmx">What is JMX?<a class="headerlink" href="#what-is-jmx" title="Permanent link">&para;</a></h2>
+<p><strong>JMX (Java Management Extensions)</strong> is a framework provided by Java for <strong>monitoring and managing resources</strong> while an application is running. When our application enables JMX, it starts a management interface inside the JVM, allowing you to <strong>connect locally or remotely</strong> to read the system and application runtime status, such as memory usage, thread count, and class loading statistics. It can also adjust application settings or execute specific operations without interrupting the service.</p>
+<p>In JMX, an MBean is a managed object. For example, <code>MemoryMXBean</code> provides JVM memory-related information. These MBeans are registered in the <strong>MBean Server</strong> for external access. If remote management is required, JMX uses <strong>RMI (Remote Method Invocation) to expose a remote access endpoint</strong>. The <strong>RMI Registry</strong> records the names and locations of accessible MBean resources, and the <strong>RMI Server</strong> receives commands from remote clients and invokes the corresponding MBean methods.</p>
+<p>In real-world projects, if we need to integrate JMX monitoring data into a monitoring system, a common approach is to deploy the <strong>JMX Exporter</strong>. It runs as a <strong>Java Agent</strong>, converting JMX data into a <code>/metrics</code> format readable by Prometheus, and exposes it over HTTP for Prometheus to scrape. Prometheus periodically collects these metrics, and Grafana uses the data from Prometheus to build visual dashboards, such as showing JVM heap usage, garbage collection counts, and other indicators.</p>
+<figure>
+  <a class="glightbox" href="https://upload.wikimedia.org/wikipedia/commons/2/29/JMX_Architecture.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/2/29/JMX_Architecture.svg" width="500" /></a>
+</figure>
+<p>See <a href="https://www.oracle.com/technical-resources/articles/javase/jmx.html">Getting Started with Java Management Extensions (JMX): Developing Management and Monitoring Solutions</a> for more details on JMX.</p>
+<h2 id="what-is-jmx-exporter">What is JMX Exporter?<a class="headerlink" href="#what-is-jmx-exporter" title="Permanent link">&para;</a></h2>
+<p><strong>JMX Exporter</strong> is a specialized tool that bridges the gap between JMX monitoring data and modern observability platforms. Specifically, it serves as a process for collecting metrics using JMX MBeans and making them available for Prometheus consumption. At its core, the JMX Exporter acts as a collector that captures JMX MBean values and transforms them into a format that Prometheus can understand.</p>
+<p>The JMX Exporter offers three distinct deployment approaches, each suited for different operational requirements:</p>
 <ul>
-<li>Trino is a tool designed to efficiently query vast amounts of data using <strong>distributed queries</strong>.</li>
-<li>Trino was designed to handle data warehousing and analytics (OLAP)</li>
-<li>Trino is a distributed query engine that processes data in parallel across multiple servers</li>
+<li><strong>Java Agent exporter</strong>: First and most importantly, <strong>the JMX Exporter Java agent runs directly as a Java agent within your application and collects JMX MBean values in real-time</strong>. Notably, <strong>the use of the JMX Exporter Java agent is strongly encouraged</strong> due to the complex application RMI configuration that would otherwise be required when running the Standalone JMX Exporter.</li>
+<li><strong>Isolator Java Agent</strong>: <strong>Building upon the Java Agent approach</strong>, the JMX Exporter Isolator Java agent provides enhanced flexibility by allowing you to <strong>run multiple isolated and independent JMX Exporter Java agents simultaneously</strong>. As a result, each isolated JMX Exporter Java agent can <strong>maintain its own distinct configuration</strong>, including separate ports, rules, and other settings.</li>
+<li><strong>Standalone exporter</strong>: Alternatively, the Standalone JMX Exporter operates as a completely separate application that connects to your target application using RMI to collect JMX MBean values. However, this approach requires more complex RMI configuration compared to the Java Agent options.</li>
 </ul>
-<h3 id="what-is-not-trino">What is not Trino?<a class="headerlink" href="#what-is-not-trino" title="Permanent link">&para;</a></h3>
+<p>Furthermore, both the Java Agent exporter and Isolator Java Agent support multiple operational modes to accommodate different monitoring architectures:</p>
 <ul>
-<li>Trino is not a general-purpose relational database</li>
-<li>It is not a replacement for databases</li>
-<li>Trino was not designed to handle Online Transaction Processing (OLTP)</li>
+<li><strong>HTTP mode</strong>: This mode collects metrics on-demand when accessed via HTTP requests, returning the metrics data as HTTP content. This represents a <strong>pull</strong> model where Prometheus actively scrapes the metrics endpoint.</li>
+<li><strong>OpenTelemetry mode</strong>: In contrast, this mode periodically collects metrics and proactively pushes them to an OpenTelemetry endpoint. This follows a <strong>push</strong> model for metric delivery.</li>
+<li><strong>Combined mode</strong>: Finally, this mode provides maximum flexibility by enabling both HTTP mode and OpenTelemetry mode metrics collection methods simultaneously.</li>
 </ul>
-<h2 id="why-trino">Why Trino?<a class="headerlink" href="#why-trino" title="Permanent link">&para;</a></h2>
-<h2 id="when-to-use-trino">When to use Trino?<a class="headerlink" href="#when-to-use-trino" title="Permanent link">&para;</a></h2>
+<p>See <a href="https://github.com/prometheus/jmx_exporter"><code>prometheus/jmx_exporter</code></a> for more details on JMX Exporter.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://trino.io/docs/current/admin/jmx.html">Monitoring with JMX | Trino</a></li>
+<li><a href="https://github.com/nil1729/trino-jmx-monitoring">Trino Monitoring (JMX) with Prometheus and Grafana</a></li>
+</ul>
 
 
 
@@ -4233,6 +4423,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../fault-tolerance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fault-tolerant Execution in Trino">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Fault-tolerant Execution in Trino
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../catalogs/" class="md-footer__link md-footer__link--next" aria-label="Next: Configure Catalogs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Configure Catalogs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

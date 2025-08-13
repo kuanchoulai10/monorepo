@@ -1931,6 +1931,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -2057,6 +2065,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-tls-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up TLS Certificates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-bigquery-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring BigQuery Service Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-trino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Trino
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-the-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying the Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2139,11 +2189,99 @@
   
   
     <li class="md-nav__item">
+      <a href="../fault-tolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fault-tolerant Execution in Trino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Faker Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../join-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join Optimization
     
   </span>
   
@@ -4201,6 +4339,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-tls-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up TLS Certificates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-bigquery-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring BigQuery Service Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-trino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Trino
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-the-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying the Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4283,18 +4463,81 @@
 <ul>
 <li>Kubernetes cluster</li>
 <li>Helm 3.x installed</li>
-<li>kubectl configured to access your cluster</li>
+<li><code>kubectl</code> configured to access your cluster</li>
 <li>Java 11 minimum requirement for JDBC driver compatibility</li>
+<li>Rename <code>.env.template</code> file to <code>.env</code> and configure all the variables in the file</li>
 </ul>
+<details class="info">
+<summary>.env</summary>
+<ul>
+<li>
+<p><strong>OAUTH2_CLIENT_ID</strong><br />
+  The client ID for OAuth 2.0 authentication, used to enable Google login for the Trino Web UI.<br />
+  Referenced in <code>values-template.yaml</code> as <code>http-server.authentication.oauth2.client-id</code>.</p>
+</li>
+<li>
+<p><strong>OAUTH2_CLIENT_SECRET</strong><br />
+  The client secret for OAuth 2.0 authentication, paired with the client ID for secure login.<br />
+  Used in <code>values-template.yaml</code> as <code>http-server.authentication.oauth2.client-secret</code>.</p>
+</li>
+<li>
+<p><strong>INTERNAL_SHARED_SECRET</strong><br />
+  A secret string for internal communication security between Trino nodes.<br />
+  Used in <code>values-template.yaml</code> as <code>internal-communication.shared-secret</code>.</p>
+</li>
+<li>
+<p><strong>SA_INPUT_PATH</strong><br />
+  Path to the service account JSON file for Google Cloud authentication.<br />
+  Used by <code>generate-trino-bigquery-secret.sh</code> to create the BigQuery service account secret.</p>
+</li>
+<li>
+<p><strong>PROJECT_ID</strong><br />
+  The Google Cloud project ID, required for the BigQuery connector in Trino.<br />
+  Used in <code>values-template.yaml</code> as <code>bigquery.project-id</code>.</p>
+</li>
+<li>
+<p><strong>AWS_ACCESS_KEY</strong><br />
+  AWS access key for authenticating to AWS services (S3, Glue, etc.).<br />
+  Used in <code>values-template.yaml</code> for S3 and Glue access, and for exchange manager S3 configuration.</p>
+</li>
+<li>
+<p><strong>AWS_SECRET_KEY</strong><br />
+  AWS secret key, paired with the access key for AWS authentication.<br />
+  Used in <code>values-template.yaml</code> for S3, Glue, and exchange manager S3 configuration.</p>
+</li>
+<li>
+<p><strong>AWS_REGION</strong><br />
+  The AWS region where your S3 buckets and Glue Data Catalog are located.<br />
+  Used in <code>values-template.yaml</code> for S3, Glue, and exchange manager S3 configuration.</p>
+</li>
+<li>
+<p><strong>ICEBERG_S3_URL</strong><br />
+  The S3 URL (bucket path) for storing Iceberg table data.<br />
+  Used in <code>values-template.yaml</code> as <code>hive.metastore.glue.default-warehouse-dir</code>.</p>
+</li>
+<li>
+<p><strong>EXCHANGE_S3_URLS</strong><br />
+  S3 URLs for Trino's exchange manager, which handles intermediate data during distributed query execution.<br />
+  Used in <code>values-template.yaml</code> as <code>exchangeManager.base-directories</code>.</p>
+</li>
+</ul>
+<p>These variables are substituted into the Trino Helm values file and Kubernetes secrets using <code>envsubst</code> to configure authentication, storage, and cloud integration for your Trino deployment.</p>
+</details>
 <h2 id="deployment_1">Deployment<a class="headerlink" href="#deployment_1" title="Permanent link">&para;</a></h2>
 <p>Create the trino namespace, we will deploy Trino in this namespace:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>trino
 </span></code></pre></div>
+<details class="info">
+<summary>Result</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>namespace/trino created
 </span></code></pre></div>
+</details>
+<h3 id="setting-up-tls-certificates">Setting up TLS Certificates<a class="headerlink" href="#setting-up-tls-certificates" title="Permanent link">&para;</a></h3>
 <p>Execute <code>generate-tls-certs.sh</code> to generate TLS certificate and Kubernetes secret:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./generate-tls-certs.sh
 </span></code></pre></div>
+<details class="info">
+<summary>Result</summary>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Creating TLS certificates for Trino...
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Step 1: Creating Private Key...
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Step 2: Creating Certificate...
@@ -4306,8 +4549,11 @@
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  - <mark class="critic">trino-dev.pem</mark> (with private key and certificate)
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  - <mark class="critic">trino-tls-secret.yaml</mark> (Kubernetes secret manifest)
 </span></code></pre></div>
-<p><code>trino-tls-secret.yaml</code> should look like this:</p>
-<div class="language-yaml highlight"><span class="filename">trino-tls-secret.yaml</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</details>
+<p>Once executed, the <code>trino-tls-secret.yaml</code> file will have the following structure:</p>
+<details class="info">
+<summary>trino-tls-secret.yaml</summary>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
@@ -4315,216 +4561,113 @@
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">data</span><span class="p">:</span>
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt"><mark class="critic">trino-dev.pem</mark></span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
 </span></code></pre></div>
+</details>
 <p>Create Kubernetes secret to mount the TLS certificate:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.cert/trino-tls-secret.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
 </span></code></pre></div>
+<h3 id="configuring-bigquery-service-account">Configuring BigQuery Service Account<a class="headerlink" href="#configuring-bigquery-service-account" title="Permanent link">&para;</a></h3>
+<p>Generate the BigQuery service account secret for Trino:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>env<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="k">)</span><span class="w"> </span>envsubst<span class="w"> </span>&lt;<span class="w"> </span>generate-trino-bigquery-secret.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </span></code></pre></div>
+<p>After running the script, you will have a Kubernetes secret manifest file named <code>trino-bigquery-secret.yaml</code> in the current directory. Then apply the secret to the Kubernetes cluster:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-bigquery-secret.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
 </span></code></pre></div>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">image</span><span class="p">:</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;476&quot;</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">server</span><span class="p">:</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="nt">authenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oauth2&quot;</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="nt">coordinatorExtraConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="no">http-server.https.enabled=true</span>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="no">http-server.https.port=8443</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="no">http-server.https.keystore.path=/etc/trino/tls/trino-dev.pem</span>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.issuer=https://accounts.google.com</span>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-id=$OAUTH2_CLIENT_ID</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.client-secret=$OAUTH2_CLIENT_SECRET</span>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.principal-field=email</span>
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="no">http-server.authentication.oauth2.scopes=openid,email</span>
-</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="no">web-ui.authentication.type=oauth2</span>
-</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">  </span><span class="c1">#   distributed-sort=true</span>
-</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">  </span><span class="c1">#   query.max-history=50</span>
-</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">  </span><span class="c1"># workerExtraConfig: |</span>
-</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">  </span><span class="c1">#   discovery.uri=http://trino.trino.svc.cluster.local:8080</span>
-</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
-</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="nt">coordinator</span><span class="p">:</span>
-</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
-</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
-</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
-</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span>
-</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">  </span><span class="nt">secretMounts</span><span class="p">:</span>
-</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls</span>
-</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
-</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/trino/tls</span>
-</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="w">  </span><span class="nt">additionalExposedPorts</span><span class="p">:</span>
-</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="w">    </span><span class="nt">https</span><span class="p">:</span>
-</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="w">      </span><span class="nt">servicePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
-</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
-</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
-</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-</span><span id="__span-8-42"><a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="w">  </span><span class="nt">additionalJVMConfig</span><span class="p">:</span>
-</span><span id="__span-8-43"><a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--add-opens=java.base/java.nio=ALL-UNNAMED</span><span class="w"> </span><span class="c1"># https://trino.io/docs/current/connector/bigquery.html#arrow-serialization-support</span>
-</span><span id="__span-8-44"><a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--sun-misc-unsafe-memory-access=allow</span>
-</span><span id="__span-8-45"><a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a><span class="w">  </span><span class="c1"># access-control.properties: |</span>
-</span><span id="__span-8-46"><a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a><span class="w">  </span><span class="c1">#   access-control.name=file</span>
-</span><span id="__span-8-47"><a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a><span class="w">  </span><span class="c1">#   security.refresh-period=150s</span>
-</span><span id="__span-8-48"><a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="w">  </span><span class="c1">#   security.config-file=/etc/trino/access-control/rules.json</span>
-</span><span id="__span-8-49"><a id="__codelineno-8-49" name="__codelineno-8-49" href="#__codelineno-8-49"></a>
-</span><span id="__span-8-50"><a id="__codelineno-8-50" name="__codelineno-8-50" href="#__codelineno-8-50"></a>
-</span><span id="__span-8-51"><a id="__codelineno-8-51" name="__codelineno-8-51" href="#__codelineno-8-51"></a>
-</span><span id="__span-8-52"><a id="__codelineno-8-52" name="__codelineno-8-52" href="#__codelineno-8-52"></a><span class="nt">worker</span><span class="p">:</span>
-</span><span id="__span-8-53"><a id="__codelineno-8-53" name="__codelineno-8-53" href="#__codelineno-8-53"></a><span class="w">  </span><span class="nt">jvm</span><span class="p">:</span>
-</span><span id="__span-8-54"><a id="__codelineno-8-54" name="__codelineno-8-54" href="#__codelineno-8-54"></a><span class="w">    </span><span class="nt">maxHeapSize</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8G&quot;</span>
-</span><span id="__span-8-55"><a id="__codelineno-8-55" name="__codelineno-8-55" href="#__codelineno-8-55"></a><span class="w">  </span><span class="nt">livenessProbe</span><span class="p">:</span>
-</span><span id="__span-8-56"><a id="__codelineno-8-56" name="__codelineno-8-56" href="#__codelineno-8-56"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-</span><span id="__span-8-57"><a id="__codelineno-8-57" name="__codelineno-8-57" href="#__codelineno-8-57"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span><span id="__span-8-58"><a id="__codelineno-8-58" name="__codelineno-8-58" href="#__codelineno-8-58"></a><span class="w">  </span><span class="nt">readinessProbe</span><span class="p">:</span>
-</span><span id="__span-8-59"><a id="__codelineno-8-59" name="__codelineno-8-59" href="#__codelineno-8-59"></a><span class="w">    </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-</span><span id="__span-8-60"><a id="__codelineno-8-60" name="__codelineno-8-60" href="#__codelineno-8-60"></a><span class="w">    </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-</span><span id="__span-8-61"><a id="__codelineno-8-61" name="__codelineno-8-61" href="#__codelineno-8-61"></a><span class="w">  </span><span class="nt">additionalJVMConfig</span><span class="p">:</span>
-</span><span id="__span-8-62"><a id="__codelineno-8-62" name="__codelineno-8-62" href="#__codelineno-8-62"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--add-opens=java.base/java.nio=ALL-UNNAMED</span><span class="w"> </span><span class="c1"># https://trino.io/docs/current/connector/bigquery.html#arrow-serialization-support</span>
-</span><span id="__span-8-63"><a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--sun-misc-unsafe-memory-access=allow</span>
-</span><span id="__span-8-64"><a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a>
-</span><span id="__span-8-65"><a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="nt">catalogs</span><span class="p">:</span>
-</span><span id="__span-8-66"><a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="w">  </span><span class="nt">faker</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-67"><a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a><span class="w">    </span><span class="no">connector.name=faker</span>
-</span><span id="__span-8-68"><a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a><span class="w">    </span><span class="no">faker.null-probability=0.1</span>
-</span><span id="__span-8-69"><a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a><span class="w">    </span><span class="no">faker.default-limit=1000</span>
-</span><span id="__span-8-70"><a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="w">    </span><span class="no">faker.locale=en</span>
-</span><span id="__span-8-71"><a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a><span class="w">  </span><span class="nt">tpch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-72"><a id="__codelineno-8-72" name="__codelineno-8-72" href="#__codelineno-8-72"></a><span class="w">    </span><span class="no">connector.name=tpch</span>
-</span><span id="__span-8-73"><a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a><span class="w">    </span><span class="no">tpch.splits-per-node=4</span>
-</span><span id="__span-8-74"><a id="__codelineno-8-74" name="__codelineno-8-74" href="#__codelineno-8-74"></a><span class="w">  </span><span class="nt">tpcds</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-75"><a id="__codelineno-8-75" name="__codelineno-8-75" href="#__codelineno-8-75"></a><span class="w">    </span><span class="no">connector.name=tpcds</span>
-</span><span id="__span-8-76"><a id="__codelineno-8-76" name="__codelineno-8-76" href="#__codelineno-8-76"></a><span class="w">    </span><span class="no">tpcds.splits-per-node=4</span>
-</span><span id="__span-8-77"><a id="__codelineno-8-77" name="__codelineno-8-77" href="#__codelineno-8-77"></a><span class="w">  </span><span class="nt">bigquery</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-78"><a id="__codelineno-8-78" name="__codelineno-8-78" href="#__codelineno-8-78"></a><span class="w">    </span><span class="no">connector.name=bigquery</span>
-</span><span id="__span-8-79"><a id="__codelineno-8-79" name="__codelineno-8-79" href="#__codelineno-8-79"></a><span class="w">    </span><span class="no">bigquery.project-id=$PROJECT_ID</span>
-</span><span id="__span-8-80"><a id="__codelineno-8-80" name="__codelineno-8-80" href="#__codelineno-8-80"></a><span class="w">    </span><span class="no">bigquery.credentials-file=/etc/trino/bigquery/trino-sa.json</span>
-</span><span id="__span-8-81"><a id="__codelineno-8-81" name="__codelineno-8-81" href="#__codelineno-8-81"></a><span class="w">  </span><span class="c1"># TODO iceberg</span>
-</span><span id="__span-8-82"><a id="__codelineno-8-82" name="__codelineno-8-82" href="#__codelineno-8-82"></a><span class="w">  </span><span class="nt">iceberg</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-</span><span id="__span-8-83"><a id="__codelineno-8-83" name="__codelineno-8-83" href="#__codelineno-8-83"></a><span class="w">    </span><span class="no">connector.name=bigquery</span>
-</span><span id="__span-8-84"><a id="__codelineno-8-84" name="__codelineno-8-84" href="#__codelineno-8-84"></a><span class="w">    </span><span class="no">iceberg.catalog.type=glue</span>
-</span><span id="__span-8-85"><a id="__codelineno-8-85" name="__codelineno-8-85" href="#__codelineno-8-85"></a><span class="w">    </span><span class="no">iceberg.file-format=parquet</span>
-</span><span id="__span-8-86"><a id="__codelineno-8-86" name="__codelineno-8-86" href="#__codelineno-8-86"></a><span class="w">    </span><span class="no">hive.metastore.glue.region=ap-northeast-1</span>
-</span><span id="__span-8-87"><a id="__codelineno-8-87" name="__codelineno-8-87" href="#__codelineno-8-87"></a><span class="w">    </span><span class="no">hive.metastore.glue.default-warehouse-dir=$ICEBERG_S3_URL</span>
-</span><span id="__span-8-88"><a id="__codelineno-8-88" name="__codelineno-8-88" href="#__codelineno-8-88"></a><span class="w">    </span><span class="no">hive.metastore.glue.aws-access-key=$AWS_ACCESS_KEY</span>
-</span><span id="__span-8-89"><a id="__codelineno-8-89" name="__codelineno-8-89" href="#__codelineno-8-89"></a><span class="w">    </span><span class="no">hive.metastore.glue.aws-secret-key=$AWS_SECRET_KEY</span>
-</span><span id="__span-8-90"><a id="__codelineno-8-90" name="__codelineno-8-90" href="#__codelineno-8-90"></a><span class="w">    </span><span class="no">fs.native-s3.enabled=true</span>
-</span><span id="__span-8-91"><a id="__codelineno-8-91" name="__codelineno-8-91" href="#__codelineno-8-91"></a><span class="w">    </span><span class="no">s3.region=ap-northeast-1</span>
-</span><span id="__span-8-92"><a id="__codelineno-8-92" name="__codelineno-8-92" href="#__codelineno-8-92"></a><span class="w">    </span><span class="no">s3.aws-access-key=$AWS_ACCESS_KEY</span>
-</span><span id="__span-8-93"><a id="__codelineno-8-93" name="__codelineno-8-93" href="#__codelineno-8-93"></a><span class="w">    </span><span class="no">s3.aws-secret-key=$AWS_SECRET_KEY</span>
-</span><span id="__span-8-94"><a id="__codelineno-8-94" name="__codelineno-8-94" href="#__codelineno-8-94"></a>
-</span><span id="__span-8-95"><a id="__codelineno-8-95" name="__codelineno-8-95" href="#__codelineno-8-95"></a><span class="c1"># https://trino.io/docs/current/connector/iceberg.html#authorization</span>
-</span><span id="__span-8-96"><a id="__codelineno-8-96" name="__codelineno-8-96" href="#__codelineno-8-96"></a><span class="c1"># https://trino.io/docs/current/object-storage/file-system-s3.html</span>
-</span><span id="__span-8-97"><a id="__codelineno-8-97" name="__codelineno-8-97" href="#__codelineno-8-97"></a>
-</span><span id="__span-8-98"><a id="__codelineno-8-98" name="__codelineno-8-98" href="#__codelineno-8-98"></a>
-</span><span id="__span-8-99"><a id="__codelineno-8-99" name="__codelineno-8-99" href="#__codelineno-8-99"></a>
-</span><span id="__span-8-100"><a id="__codelineno-8-100" name="__codelineno-8-100" href="#__codelineno-8-100"></a><span class="nt">additionalConfigProperties</span><span class="p">:</span>
-</span><span id="__span-8-101"><a id="__codelineno-8-101" name="__codelineno-8-101" href="#__codelineno-8-101"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal-communication.shared-secret=$INTERNAL_SHARED_SECRET</span>
-</span><span id="__span-8-102"><a id="__codelineno-8-102" name="__codelineno-8-102" href="#__codelineno-8-102"></a>
-</span><span id="__span-8-103"><a id="__codelineno-8-103" name="__codelineno-8-103" href="#__codelineno-8-103"></a><span class="nt">additionalExchangeManagerProperties</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-</span><span id="__span-8-104"><a id="__codelineno-8-104" name="__codelineno-8-104" href="#__codelineno-8-104"></a><span class="c1"># additionalExchangeManagerProperties -- [Exchange manager</span>
-</span><span id="__span-8-105"><a id="__codelineno-8-105" name="__codelineno-8-105" href="#__codelineno-8-105"></a><span class="c1"># properties](https://trino.io/docs/current/admin/fault-tolerant-execution.html#exchange-manager).</span>
-</span><span id="__span-8-106"><a id="__codelineno-8-106" name="__codelineno-8-106" href="#__codelineno-8-106"></a><span class="c1"># @raw</span>
-</span><span id="__span-8-107"><a id="__codelineno-8-107" name="__codelineno-8-107" href="#__codelineno-8-107"></a><span class="c1"># Example:</span>
-</span><span id="__span-8-108"><a id="__codelineno-8-108" name="__codelineno-8-108" href="#__codelineno-8-108"></a><span class="c1"># ```yaml</span>
-</span><span id="__span-8-109"><a id="__codelineno-8-109" name="__codelineno-8-109" href="#__codelineno-8-109"></a><span class="c1">#  - exchange.s3.region=object-store-region</span>
-</span><span id="__span-8-110"><a id="__codelineno-8-110" name="__codelineno-8-110" href="#__codelineno-8-110"></a><span class="c1">#  - exchange.s3.endpoint=your-object-store-endpoint</span>
-</span><span id="__span-8-111"><a id="__codelineno-8-111" name="__codelineno-8-111" href="#__codelineno-8-111"></a><span class="c1">#  - exchange.s3.aws-access-key=your-access-key</span>
-</span><span id="__span-8-112"><a id="__codelineno-8-112" name="__codelineno-8-112" href="#__codelineno-8-112"></a><span class="c1">#  - exchange.s3.aws-secret-key=your-secret-key</span>
-</span><span id="__span-8-113"><a id="__codelineno-8-113" name="__codelineno-8-113" href="#__codelineno-8-113"></a><span class="c1"># ```</span>
-</span><span id="__span-8-114"><a id="__codelineno-8-114" name="__codelineno-8-114" href="#__codelineno-8-114"></a>
-</span><span id="__span-8-115"><a id="__codelineno-8-115" name="__codelineno-8-115" href="#__codelineno-8-115"></a><span class="c1"># Allows mounting additional Trino configuration files from Kubernetes secrets on all nodes.</span>
-</span><span id="__span-8-116"><a id="__codelineno-8-116" name="__codelineno-8-116" href="#__codelineno-8-116"></a><span class="nt">secretMounts</span><span class="p">:</span>
-</span><span id="__span-8-117"><a id="__codelineno-8-117" name="__codelineno-8-117" href="#__codelineno-8-117"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-bigquery</span>
-</span><span id="__span-8-118"><a id="__codelineno-8-118" name="__codelineno-8-118" href="#__codelineno-8-118"></a><span class="w">    </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-bigquery-secret</span>
-</span><span id="__span-8-119"><a id="__codelineno-8-119" name="__codelineno-8-119" href="#__codelineno-8-119"></a><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/trino/bigquery</span>
+<h3 id="installing-trino">Installing Trino<a class="headerlink" href="#installing-trino" title="Permanent link">&para;</a></h3>
+<p>First, add and update the Trino Helm repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>trino<span class="w"> </span>https://trinodb.github.io/charts/
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>OAUTH2_CLIENT_ID=
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>OAUTH2_CLIENT_SECRET=
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>INTERNAL_SHARED_SECRET=
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>SA_INPUT_PATH=
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>PROJECT_ID=
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>AWS_ACCESS_KEY=
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>AWS_SECRET_KEY=
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>ICEBERG_S3_URL=
+<p>Next, generate the Trino Helm values file using variables from the <code>.env</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>env<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="k">)</span><span class="w"> </span>envsubst<span class="w"> </span>&lt;<span class="w"> </span>values-template.yaml<span class="w"> </span>&gt;<span class="w"> </span>values.yaml
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>env<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="k">)</span><span class="w"> </span>envsubst<span class="w"> </span>&lt;<span class="w"> </span>values-template.yaml<span class="w"> </span>&gt;<span class="w"> </span>values.yaml
+<p>Now, deploy Trino in the <code>trino</code> namespace using the provided <code>values.yaml</code> file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>helm<span class="w"> </span>install<span class="w"> </span>trino<span class="w"> </span>trino/trino<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
 </span></code></pre></div>
-<p>Add and update the Trino Helm repository:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>trino<span class="w"> </span>https://trinodb.github.io/charts/
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>NAME: trino
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>LAST DEPLOYED: Fri Jun 13 17:49:52 2025
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>NAMESPACE: trino
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>STATUS: <mark class="critic">deployed</mark>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>REVISION: 1
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>NOTES:
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Get the application URL by running these commands:
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  kubectl --namespace trino port-forward svc/trino 8080:8080
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  echo &quot;Visit http://127.0.0.1:8080 to use your application&quot;
 </span></code></pre></div>
-<p>Deploy Trino in the <code>trino</code> namespace using the provided <code>values.yaml</code> file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>helm<span class="w"> </span>install<span class="w"> </span>trino<span class="w"> </span>trino/trino<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
+</details>
+<h3 id="verifying-the-deployment">Verifying the Deployment<a class="headerlink" href="#verifying-the-deployment" title="Permanent link">&para;</a></h3>
+<p>After the installation completes, verify that Trino has been deployed successfully. Show the deployed Trino release:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>helm list -n trino
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>NAME: trino
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>LAST DEPLOYED: Fri Jun 13 17:49:52 2025
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>NAMESPACE: trino
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>STATUS: deployed
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>REVISION: 1
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>NOTES:
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>Get the application URL by running these commands:
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  kubectl --namespace trino port-forward svc/trino 8080:8080
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>  echo &quot;Visit http://127.0.0.1:8080 to use your application&quot;
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>trino   trino           1               2025-06-13 18:08:54.435442 +0800 CST    <mark class="critic">deployed</mark>        trino-1.39.1    475    
 </span></code></pre></div>
-<p>Show the deployed Trino release:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>helm list -n trino
+</details>
+<p>Then, check the status of all resources in the <code>trino</code> namespace:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>trino
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>trino   trino           1               2025-06-13 18:08:54.435442 +0800 CST    deployed        trino-1.39.1    475    
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>NAME                                     READY   STATUS    RESTARTS   AGE
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>pod/trino-coordinator-6fdfb7bf84-tjwfc   1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>pod/trino-worker-777d595c66-dml67        1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>pod/trino-worker-777d595c66-pv9h2        1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>service/trino          ClusterIP   10.99.208.168   &lt;none&gt;        8080/TCP,<mark class="critic">8443/TCP</mark>   5m38s
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>service/trino-worker   ClusterIP   None            &lt;none&gt;        8080/TCP            5m38s
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>deployment.apps/trino-coordinator   1/1     1            1           5m38s
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>deployment.apps/trino-worker        2/2     2            2           5m38s
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>NAME                                           DESIRED   CURRENT   READY   AGE
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>replicaset.apps/trino-coordinator-6fdfb7bf84   1         1         1       5m38s
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>replicaset.apps/trino-worker-777d595c66        2         2         2       5m38s
 </span></code></pre></div>
-<p>Get the status of all resources in the <code>trino</code> namespace:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>trino
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>NAME                                     READY   STATUS    RESTARTS   AGE
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>pod/trino-coordinator-6fdfb7bf84-tjwfc   1/1     Running   0          5m38s
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>pod/trino-worker-777d595c66-dml67        1/1     Running   0          5m38s
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>pod/trino-worker-777d595c66-pv9h2        1/1     Running   0          5m38s
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>service/trino          ClusterIP   10.99.208.168   &lt;none&gt;        8080/TCP,<mark class="critic">8443/TCP</mark>   5m38s
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>service/trino-worker   ClusterIP   None            &lt;none&gt;        8080/TCP            5m38s
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>deployment.apps/trino-coordinator   1/1     1            1           5m38s
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>deployment.apps/trino-worker        2/2     2            2           5m38s
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>NAME                                           DESIRED   CURRENT   READY   AGE
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>replicaset.apps/trino-coordinator-6fdfb7bf84   1         1         1       5m38s
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>replicaset.apps/trino-worker-777d595c66        2         2         2       5m38s
-</span></code></pre></div>
-<p>It looks like everything is running fine. The Trino coordinator and worker pods are up and running, and the services are created. Next, we will access the Trino Web UI and CLI to interact with the Trino cluster.</p>
+</details>
+<p>Perfect! The deployment is successful. As you can see, the Trino coordinator and worker pods are up and running, and all services have been created correctly. With the cluster now operational, we can proceed to access the Trino Web UI and CLI to interact with the cluster.</p>
 <h2 id="accessing-trino">Accessing Trino<a class="headerlink" href="#accessing-trino" title="Permanent link">&para;</a></h2>
+<p>Now that Trino is successfully deployed and running, you can access it through both the Web UI and CLI. The cluster is configured with OAuth 2.0 authentication and TLS encryption for secure access.</p>
 <h3 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permanent link">&para;</a></h3>
-<p>First, we need to port-forward the Trino service to access the Web UI:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/trino<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span>--namespace<span class="w"> </span>trino
+<p>To access the Trino Web UI, start by port-forwarding the Trino service to your local machine:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/trino<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span>--namespace<span class="w"> </span>trino
 </span></code></pre></div>
-<p>Then visit https://127.0.0.1:8443, in the browser, you will see a warning about the self-signed certificate. You can safely ignore this warning for local development purposes.
-You can proceed to the Trino Web UI by clicking "Advanced" and then "Accept the Risk and Continue".</p>
+<p>Once the port forwarding is active, open your browser and navigate to <code>https://127.0.0.1:8443</code>. Since we're using a self-signed certificate for development purposes, your browser will display a security warning. This is expected behavior and safe to bypass in a development environment.</p>
+<p>To proceed, click <strong>"Advanced"</strong> and then <strong>"Accept the Risk and Continue"</strong> (the exact wording may vary depending on your browser).</p>
 <p><a class="glightbox" href="../static/browser-cert.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/browser-cert.png" /></a></p>
 <p><a class="glightbox" href="../static/browser-continue.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/browser-continue.png" /></a></p>
-<p>because we have configured Trino to use OAuth 2.0 authentication, you will be redirected to the Google login page.</p>
+<p>Since OAuth 2.0 authentication is enabled, you'll be automatically redirected to the Google login page for authentication.</p>
 <p><a class="glightbox" href="../static/google-login-page.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/google-login-page.png" /></a></p>
 <p>After logging in with your Google account, you will be redirected back to the Trino Web UI.</p>
 <p><a class="glightbox" href="../static/trino-web-ui.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../static/trino-web-ui.png" /></a></p>
+<p>Once authenticated successfully, you'll be redirected back to the Trino Web UI where you can monitor queries, view cluster status, and manage your Trino environment.</p>
 <h3 id="trino-cli">Trino CLI<a class="headerlink" href="#trino-cli" title="Permanent link">&para;</a></h3>
-<p>Download the <code>trino-cli-476-executable.jar</code> Trino CLI executable jar file in <a href="https://repo1.maven.org/maven2/io/trino/trino-cli/">Maven repo</a></p>
-<p>Rename it to <code>trino</code> and make it executable and move it to a directory in your PATH, e.g., <code>/usr/local/bin</code>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>trino-cli-476-executable.jar
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>trino-cli-476-executable.jar<span class="w"> </span>/usr/local/bin/trino
+<p>For command-line access to Trino, you'll need to download and install the Trino CLI tool.</p>
+<p>First, download the <code>trino-cli-476-executable.jar</code> file from the <a href="https://repo1.maven.org/maven2/io/trino/trino-cli/">Maven repository</a>.</p>
+<p>Next, rename the file to <code>trino</code>, make it executable, and move it to a directory in your PATH (such as <code>/usr/local/bin</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>trino-cli-476-executable.jar
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>trino-cli-476-executable.jar<span class="w"> </span>/usr/local/bin/trino
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>trino<span class="w"> </span>--version
+<p>Verify the installation by checking the version:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>trino<span class="w"> </span>--version
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Trino CLI 476
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Trino CLI 476
 </span></code></pre></div>
-<p>Access the Trino CLI using <a href="https://trino.io/docs/current/client/cli.html#external-authentication-sso">the external authentication</a>:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>trino<span class="w"> </span>--server<span class="w"> </span>https://127.0.0.1:8443<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">      </span>--external-authentication
+</details>
+<p>To connect to your Trino cluster, use the CLI with <a href="https://trino.io/docs/current/client/cli.html#external-authentication-sso">external authentication</a> enabled:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>trino<span class="w"> </span>--server<span class="w"> </span>https://127.0.0.1:8443<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">      </span>--external-authentication<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">      </span>--insecure<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">      </span>--user<span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span>
 </span></code></pre></div>
-<p>The detailed behavior is as follows:</p>
+<p><strong>Authentication Flow:</strong></p>
+<p>The CLI authentication process works as follows:</p>
 <ul>
 <li>Start the CLI with the <code>--external-authentication</code> option and execute a query.</li>
 <li>The CLI starts and connects to Trino.</li>
@@ -4535,12 +4678,11 @@ You can proceed to the Trino Web UI by clicking "Advanced" and then "Accept the 
 <li>Further queries in the CLI session do not require additional logins while the authentication token remains valid. Token expiration depends on the external authentication type configuration.</li>
 <li>Expired tokens force you to log in again.</li>
 </ul>
+<p>This authentication method ensures secure access to your Trino cluster while maintaining ease of use for interactive queries.</p>
 <h2 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h2>
 <p>To remove the Trino cluster:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>trino<span class="w"> </span>--namespace<span class="w"> </span>trino
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>trino
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>env $(cat .env | xargs) envsubst &lt; values-template.yaml &gt; values.yaml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>trino<span class="w"> </span>--namespace<span class="w"> </span>trino
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>trino
 </span></code></pre></div>
 
 

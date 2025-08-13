@@ -1931,6 +1931,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -2018,15 +2026,6 @@
       On This Page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#key-modules-and-their-roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Modules and Their Roles
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#architecture-components" class="md-nav__link">
@@ -2141,9 +2140,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#clients_1" class="md-nav__link">
+  <a href="#client-protocol" class="md-nav__link">
     <span class="md-ellipsis">
-      Clients
+      Client Protocol
     </span>
   </a>
   
@@ -2151,6 +2150,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -2214,11 +2222,99 @@
   
   
     <li class="md-nav__item">
+      <a href="../fault-tolerance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fault-tolerant Execution in Trino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus and Grafana
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalogs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Faker Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../join-optimization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join Optimization
     
   </span>
   
@@ -4261,15 +4357,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-modules-and-their-roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Modules and Their Roles
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#architecture-components" class="md-nav__link">
     <span class="md-ellipsis">
       Architecture Components
@@ -4382,9 +4469,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#clients_1" class="md-nav__link">
+  <a href="#client-protocol" class="md-nav__link">
     <span class="md-ellipsis">
-      Clients
+      Client Protocol
     </span>
   </a>
   
@@ -4392,6 +4479,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
   
 </li>
       
@@ -4438,55 +4534,71 @@
 
 
 <h1 id="how-it-works">How It Works?<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h1>
-<h2 id="key-modules-and-their-roles">Key Modules and Their Roles<a class="headerlink" href="#key-modules-and-their-roles" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/1-architecture.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/1-architecture.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
 <h2 id="architecture-components">Architecture Components<a class="headerlink" href="#architecture-components" title="Permanent link">&para;</a></h2>
 <h3 id="coordinator">Coordinator<a class="headerlink" href="#coordinator" title="Permanent link">&para;</a></h3>
-<p>The Trino coordinator is the server that is responsible for <strong>parsing statements</strong>, <strong>planning queries</strong>, and <strong>managing Trino worker nodes</strong>. It is also the node to which a client connects to submit statements for execution. The coordinator keeps track of the activity on each worker and coordinates the execution of a query. The coordinator creates a logical model of a query involving a series of stages, which is then translated into a series of connected tasks running on a cluster of Trino workers. Coordinators communicate with workers and clients using a REST API. The coordinator is responsible for fetching results from the workers and returning the final results to the client.</p>
+<dl>
+<dd>The Trino coordinator is the server that is responsible for <strong>parsing statements</strong>, <strong>planning queries</strong>, and <strong>managing Trino worker nodes</strong>. It is also the node to which a client connects to submit statements for execution. The coordinator keeps track of the activity on each worker and coordinates the execution of a query. The coordinator creates a logical model of a query involving a series of stages, which is then translated into a series of connected tasks running on a cluster of Trino workers. Coordinators communicate with workers and clients using a REST API. The coordinator is responsible for fetching results from the workers and returning the final results to the client.</dd>
+</dl>
 <h3 id="worker">Worker<a class="headerlink" href="#worker" title="Permanent link">&para;</a></h3>
-<p>A Trino worker is a server that is responsible for executing tasks and processing data. Worker nodes fetch data from connectors and exchange intermediate data with each other. When a Trino worker process starts up, it advertises itself to the discovery server in the coordinator, which makes it available to the Trino coordinator for task execution.</p>
+<dl>
+<dd>A Trino worker is a server that is responsible for executing tasks and processing data. Worker nodes fetch data from connectors and exchange intermediate data with each other. When a Trino worker process starts up, it advertises itself to the discovery server in the coordinator, which makes it available to the Trino coordinator for task execution.</dd>
+</dl>
 <h3 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>A Trino cluster consists of several Trino nodes - one coordinator and zero or more workers. The coordinator and the workers access the connected <em>data sources</em>. This access is configured in <em>catalogs</em>.</dd>
 </dl>
 <h3 id="clients">Clients<a class="headerlink" href="#clients" title="Permanent link">&para;</a></h3>
-<p>Clients allow you to connect to Trino, submit SQL queries, and receive the results. Clients can access all configured data sources using <em>catalogs</em>. </p>
-<p>Client Drivers:  The Trino project maintains the following client drivers:</p>
-<ul>
-<li>Trino JDBC driver</li>
-<li>trino-go-client</li>
-<li>trino-js-client</li>
-<li>trino-python-client</li>
-<li>trino-csharp-client</li>
-</ul>
-<p>Client Applications: The Trino project maintains the <a href="https://trino.io/docs/current/client/cli.html">Trino command line interface</a> and the <a href="https://github.com/trinodb/grafana-trino">Trino Grafana Data Source Plugin</a> as a client application.</p>
-<p>All client drivers and client applications communicate with the Trino coordinator using the client protocol.</p>
-<p>The Trino client protocol is a HTTP-based protocol that allows clients to submit SQL queries and receive results.</p>
-<p>The protocol is a sequence of REST API calls to the coordinator of the Trino cluster.</p>
+<dl>
+<dd>Clients allow you to connect to Trino, submit SQL queries, and receive the results. Clients can access all configured data sources using <em>catalogs</em>. </dd>
+</dl>
 <h2 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h2>
 <h3 id="data-sources">Data Sources<a class="headerlink" href="#data-sources" title="Permanent link">&para;</a></h3>
-<p>Trino is a query engine that you can use to query many different data sources. They include data lakes and lakehouses, numerous relational database management systems, key-value stores, and many other data stores.</p>
-<p>Configure a catalog with the required Trino connector for the specific data source to access the data.</p>
+<p>Trino serves as a distributed query engine capable of accessing a wide variety of data sources. These encompass data lakes, lakehouses, various relational database management systems, key-value stores, and numerous other storage systems.</p>
+<p>To enable data access, you must configure a catalog with the appropriate Trino connector tailored to your specific data source.</p>
 <h3 id="connectors">Connectors<a class="headerlink" href="#connectors" title="Permanent link">&para;</a></h3>
-<p>A connector adapts Trino to a data source such as a data lake using Hadoop/Hive or Apache Iceberg, or a relational database such as PostgreSQL.</p>
-<p>You can think of a connector the same way you think of a driver for a database. It is an implementation of Trino’s service provider interface (SPI), which allows Trino to interact with a resource using a standard API.</p>
+<p>Connectors serve as adapters that enable Trino to interface with various data sources, including data lakes built on Hadoop/Hive or Apache Iceberg, as well as relational databases like PostgreSQL.</p>
+<p>Think of connectors similarly to database drivers—they are concrete implementations of Trino's service provider interface (SPI) that provide a standardized way for Trino to communicate with external resources through a consistent API.</p>
 <h3 id="catalogs">Catalogs<a class="headerlink" href="#catalogs" title="Permanent link">&para;</a></h3>
-<p>Every catalog uses a specific connector</p>
-<p>If you examine a catalog configuration file, you see that each contains a mandatory property connector.name with the value identifying the connector.</p>
-<p>A Trino catalog is a collection of configuration properties used to access a specific data source, including the required connector and any other details such as credentials and URL.</p>
-<p>Catalogs are defined in properties files stored in the Trino configuration directory.</p>
-<p>You can configure and use many catalogs, with different or identical connectors, to access different data sources.</p>
-<p>A catalog contains one or more schemas, which in turn contain objects such as tables, views, or materialized views.</p>
+<p>A catalog in Trino represents a configuration that enables access to a specific data source through a designated connector. Each catalog is defined by a collection of properties stored in configuration files within the Trino configuration directory.</p>
+<p>The fundamental requirement for any catalog is the <code>connector.name</code> property, which specifies which connector implementation to use for that particular data source. Beyond the connector specification, catalogs also include additional configuration details such as authentication credentials, connection URLs, and other source-specific parameters.</p>
+<p><strong>Multiple catalogs can be configured simultaneously</strong>, allowing Trino to connect to various data sources. These catalogs may utilize different connector types or even multiple instances of the same connector type to access distinct data sources.</p>
+<p><strong>Within each catalog's scope, you'll find a hierarchical structure consisting of schemas</strong>. These schemas serve as organizational containers for database objects including tables, views, and materialized views, providing a logical grouping mechanism for the data accessible through that catalog.</p>
 <h2 id="behind-the-scenes">Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Permanent link">&para;</a></h2>
 <h3 id="query-execution-model">Query Execution Model<a class="headerlink" href="#query-execution-model" title="Permanent link">&para;</a></h3>
-<p>A user starts by sending an SQL <strong><em>statement</em></strong> from a client tool—such as DBeaver, Superset, or a custom application—to the Trino cluster. This <strong><em>statement</em></strong> is a plain-text command like <code>SELECT region, COUNT(*) FROM sales GROUP BY region;</code>. It first arrives at the <strong><em>coordinator</em></strong>, which is the brain of the Trino system.</p>
-<p>The <strong><em>coordinator</em></strong> begins by parsing this <strong><em>statement</em></strong>, checking for syntax and semantic correctness. Once validated, the <strong><em>statement</em></strong> is transformed into a <strong><em>query</em></strong>. This <strong><em>query</em></strong> is more than just text—it’s a fully-formed plan that defines how the cluster will execute the user’s command. The <strong><em>query</em></strong> is broken down into a hierarchy of <strong><em>stages</em></strong>, forming a distributed execution plan. These <strong><em>stages</em></strong> form a tree-like structure, where each <strong><em>stage</em></strong> represents a logical step of the query, such as scanning data, performing aggregation, or returning final results.</p>
-<p>Although <strong><em>stages</em></strong> define what needs to be done, they don’t perform the actual computation. Instead, each <strong><em>stage</em></strong> is implemented through multiple <strong><em>tasks</em></strong>. These <strong><em>tasks</em></strong> are distributed across <strong><em>worker</em></strong> nodes in the cluster. Each <strong><em>task</em></strong> is responsible for executing a portion of its parent <strong><em>stage</em></strong>, and together, the tasks accomplish the overall goal of that stage.</p>
-<p>Each <strong><em>task</em></strong> works on specific chunks of data called <strong><em>splits</em></strong>. A <strong><em>split</em></strong> is a subset of the overall dataset—for example, a single Parquet file or a segment of rows. The <strong><em>coordinator</em></strong> asks the storage connector (such as the Hive connector) for a list of available <strong><em>splits</em></strong> for a given table and then assigns those <strong><em>splits</em></strong> to the <strong><em>tasks</em></strong> running on various workers.</p>
-<p>Within each <strong><em>task</em></strong>, the execution is further broken down into one or more <strong><em>drivers</em></strong>. A <strong><em>driver</em></strong> is essentially a data pipeline that runs in a single thread. Each <strong><em>driver</em></strong> consists of a series of <strong><em>operators</em></strong>. These <strong><em>operators</em></strong> perform concrete operations like scanning a table, filtering rows, applying functions, or aggregating values. You can think of a <strong><em>driver</em></strong> as a physical pipeline built from <strong><em>operator</em></strong> components.</p>
-<p>For example, a <strong><em>driver</em></strong> in this case might include a <strong><em>table scan operator</em></strong> that reads rows from the <code>sales</code> table, followed by a <strong><em>filter operator</em></strong> that removes NULL regions, and an <strong><em>aggregation operator</em></strong> that performs the <code>GROUP BY region</code> logic.</p>
-<p>As data flows upward from lower <strong><em>stages</em></strong> to higher ones, <strong><em>exchanges</em></strong> come into play. These are the network mechanisms that transfer data between nodes. When one <strong><em>stage</em></strong> finishes processing, it places its output into buffers. The next <strong><em>stage</em></strong> pulls data from these buffers using an <strong><em>exchange client</em></strong>, ensuring the distributed stages stay connected even across physical nodes.</p>
-<p>Once the root <strong><em>stage</em></strong> finishes aggregating the results from its child stages, the final output is assembled by the <strong><em>coordinator</em></strong> and returned to the client. What the user sees is a neatly formatted result set with regions and counts, but under the hood, that simple output is the product of a highly parallel and distributed pipeline involving <strong><em>statements</em></strong>, <strong><em>queries</em></strong>, <strong><em>stages</em></strong>, <strong><em>tasks</em></strong>, <strong><em>splits</em></strong>, <strong><em>drivers</em></strong>, <strong><em>operators</em></strong>, and <strong><em>exchanges</em></strong>.</p>
-<h3 id="clients_1">Clients<a class="headerlink" href="#clients_1" title="Permanent link">&para;</a></h3>
+<p>A user starts by sending an SQL statement from a client tool, such as DBeaver, Superset, or a custom application, to the Trino cluster. The <strong>statement is a plain-text command</strong> like <code>SELECT region, COUNT(*) FROM sales GROUP BY region;</code>. It first arrives at the coordinator, which is the brain of the Trino system.</p>
+<p>The coordinator begins by parsing this statement, checking for syntax and semantic correctness. Once validated, the statement is transformed into a query. The <strong>query is more than just text. It's a fully-formed plan that defines how the cluster will execute the user's command</strong>.</p>
+<p><strong>The query is broken down into a hierarchy of stages</strong>, forming a distributed execution plan. These stages form a <strong>tree-like structure</strong>, where each stage represents a logical step of the query, such as scanning data, performing aggregation, or returning final results.</p>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/3-parser-planner.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/3-parser-planner.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/4-distributed-query-plan.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/4-distributed-query-plan.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
+<p>Although stages define what needs to be done, they don't perform the actual computation. Instead, <strong>each stage is implemented through multiple tasks</strong>. These tasks are <strong>distributed</strong> across worker nodes in the cluster. <strong>Each task is responsible for executing a portion of its parent stage</strong>, and together, the tasks accomplish the overall goal of that stage.</p>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/5-task-management.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/5-task-management.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
+<p><strong>Each task works on specific chunks of data called splits. A split is a subset of the overall dataset</strong>. For example, a single Parquet file or a segment of rows. The coordinator asks the storage connector (such as the Hive connector) for a list of available splits for a given table and then assigns those splits to the tasks running on various workers.</p>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/6-splits.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/6-splits.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
+<p><strong>Within each task, the execution is further broken down into one or more drivers. A driver is essentially a data pipeline that runs in a single thread. Each driver consists of a series of operators</strong>. These operators perform concrete operations like scanning a table, filtering rows, applying functions, or aggregating values. You can think of a driver as a physical pipeline built from operator components.</p>
+<p>For example, a driver in this case might include a table scan operator that reads rows from the <code>sales</code> table, followed by a filter operator that removes <code>NULL</code> regions, and an aggregation operator that performs the <code>GROUP BY region</code> logic.</p>
+<figure>
+  <a class="glightbox" href="https://trino.io/assets/episode/29/7-parallelism-over-drivers.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://trino.io/assets/episode/29/7-parallelism-over-drivers.png" /></a>
+  <a href="https://www.oreilly.com/library/view/trino-the-definitive/9781098107703/"><em>Trino: The Definitive Guide</em></a>
+</figure>
+<p>As data flows upward from lower stages to higher ones, <strong>exchanges</strong> come into play. These are the network mechanisms that <strong>transfer data between nodes</strong>. <strong>When one stage finishes processing, it places its output into buffers</strong>. The next stage pulls data from these buffers using an exchange client, ensuring the distributed stages stay connected even across physical nodes.</p>
+<p><strong>Once the root stage finishes aggregating the results from its child stages, the final output is assembled by the coordinator and returned to the client</strong>. What the user sees is a neatly formatted result set with regions and counts, but under the hood, that simple output is the product of <strong>a highly parallel and distributed pipeline involving statements, queries, stages, tasks, splits, drivers, operators, and exchanges</strong>.</p>
+<h3 id="client-protocol">Client Protocol<a class="headerlink" href="#client-protocol" title="Permanent link">&para;</a></h3>
 <pre class="mermaid"><code>sequenceDiagram
     participant Client
     participant Coordinator
@@ -4501,17 +4613,12 @@
     alt Client stops requesting
         Coordinator--&gt;&gt;Client: Return USER_CANCELED
     end</code></pre>
-<p>The protocol is a sequence of REST API calls to the coordinator of the Trino cluster. Following is a high-level overview:</p>
-<ol>
-<li>Client submits SQL query text to the coordinator of the Trino cluster.</li>
-<li>The coordinator starts processing the query.</li>
-<li>The coordinator returns a result set and a URI <code>nextUri</code> on the coordinator.</li>
-<li>The client receives the result set and initiates another request for more data from the URI <code>nextUri</code>.</li>
-<li>The coordinator continues processing the query and returns further data with a new URI.</li>
-<li>The client and coordinator continue with steps 4. and 5. until all result set data is returned to the client or the client stops requesting more data.</li>
-<li>If the client fails to fetch the result set, the coordinator does not initiate further processing, fails the query, and returns a <code>USER_CANCELED</code> error.</li>
-<li>The final response when the query is complete is <code>FINISHED</code>.</li>
-</ol>
+<p>See <a href="https://trino.io/docs/current/client/client-protocol.html">Client Protocol | Trino</a> for more.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://trino.io/episodes/29.html">29: What is Trino and the Hive connector</a></li>
+<li><a href="https://datafinder.ru/files/downloads/01/Trino---The-Definitive-Guide-2023.pdf">Trino: The Definitive Guide</a></li>
+</ul>
 
 
 
