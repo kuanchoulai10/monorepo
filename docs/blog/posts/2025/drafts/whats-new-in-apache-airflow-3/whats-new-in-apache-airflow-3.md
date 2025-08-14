@@ -16,6 +16,8 @@ comments: true
 ---
 # What's New in Apache Airflow 3
 
+<!-- more -->
+
 Apache Airflow 3 was officially released in April 2025, marking one of the most significant updates in Airflow's history. This release introduces numerous new features and improvements aimed at enhancing developer experience and system performance. Let's dive into these exciting updates.
 
 ## The New User Interface
