@@ -10,6 +10,10 @@ tags:
   - Apache Spark
 links:
   - 7 pillars of Apache Spark performance tuning: https://www.instaclustr.com/education/apache-spark/7-pillars-of-apache-spark-performance-tuning/
+  - How Spark Works: https://www.youtube.com/watch?v=nKM4f1olwsI
+  - Spark Join and shuffle: https://www.youtube.com/watch?v=vswrfVkP10Y
+  - Spark Basics | Shuffling: https://www.youtube.com/watch?v=ffHboqNoW_A
+  - Shuffle Partition Spark Optimization - 10x Faster!: https://www.youtube.com/watch?v=q1LtBU_ca20
 comments: true
 ---
 
@@ -136,6 +140,8 @@ Using broadcast join sends the smaller table directly to each executor, eliminat
 Spark 會根據 `spark.sql.autoBroadcastJoinThreshold`，自動判斷是否廣播：
 
 ## Optimize Duplicate Removal
+
+<!-- TODO -->
 
 !!! failure "Slow Query"
 

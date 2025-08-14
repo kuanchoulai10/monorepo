@@ -35,6 +35,8 @@ nav:
         - learning-in-progress/tech-notes/treasure-data/index.md
       - Hive:
         - learning-in-progress/tech-notes/hive/architecture.md
+      - Spark:
+        - learning-in-progress/tech-notes/spark/how-spark-works.md
       - Iceberg:
         - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
