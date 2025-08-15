@@ -6,22 +6,23 @@ tags:
 # How Flink Works
 
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png)
-  Source: [Flink Documentation](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png){width="500"}
+  Source: [Flink Doc](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing)
 </figure>
 
 
-<figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg)
-  Source: [Flink Documentation](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/datastream_api/#stream-execution-environment)
-</figure>
 
 
 
 ## Architecture Components
 
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg){width="500"}
+  Source: [Flink Doc](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/datastream_api/#stream-execution-environment)
+</figure>
+
+<figure markdown="span">
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg){width="500"}
   [*Anatomy of a Flink Cluster*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#anatomy-of-a-flink-cluster)
 </figure>
 
@@ -48,8 +49,8 @@ tasks. Chaining operators together into
 
 
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg)
-  Source: [Flink Documentation](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#tasks-and-operator-chains)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg){width="500"}
+  Source: [Flink Doc](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#tasks-and-operator-chains)
 </figure>
 
 
@@ -62,8 +63,8 @@ tasks. Chaining operators together into
 
 
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg)
-  Source: [*Flink Documentation*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg){width="500"}
+  Source: [*Flink Doc*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources)
 </figure>
 
 - By default, **Flink allows subtasks to share slots** even if they are subtasks of different tasks, so long as **they are from the same job**. 
@@ -71,35 +72,51 @@ tasks. Chaining operators together into
     - A Flink cluster needs exactly as many task slots as the highest parallelism used in the job.
     - It is easier to get better resource utilization.
 
-## Streaming Processing
-
-![Streaming Processing](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png)
-
-![Program to Dataflow](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg)
-
-![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg)
-
-
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg)
-  Source: [*Flink Documentation*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg){width="500"}
+  Source: [*Flink Doc*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources)
 </figure>
 
-![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png)
+
+## Streaming Processing
+
+<figure markdown="span">
+  ![Streaming Processing](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png)
+  Source: [*Flink Doc*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing)
+</figure>
+
+<figure markdown="span">
+  ![Program to Dataflow](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg){width="500"}
+  Source: [*Flink Doc*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing)
+</figure>
+
+<figure markdown="span">
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg){width="500"}
+  Source: [*Flink Docs*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#parallel-dataflows)
+</figure>
+
+<figure markdown="span">
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png){width="500"}
+  Source: [*Flink Docs*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stateful-stream-processing)
+</figure>
+
+<figure markdown="span">
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/state_partitioning.svg)
+  Source: [*Flink Docs*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/stateful-stream-processing/#keyed-state)
+</figure>
 
 ## Flink Application Execution
 
 - Flink Application Cluster
 - Flink Session Cluster
 
-
-
 ## [APIs](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/overview/)
 
 <figure markdown="span">
-  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg)
+  ![](https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg){width="500"}
   [*Flink APIs*](https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/overview/#flinks-apis)
 </figure>
+
 From high to low level:
 
 - SQL: High-level Language
