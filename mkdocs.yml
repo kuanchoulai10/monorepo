@@ -39,6 +39,8 @@ nav:
         - learning-in-progress/tech-notes/spark/how-spark-works.md
       - Flink:
         - learning-in-progress/tech-notes/flink/how-flink-works.md
+      - Airflow:
+        - learning-in-progress/tech-notes/airflow/how-airflow-works.md
       - Iceberg:
         - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
