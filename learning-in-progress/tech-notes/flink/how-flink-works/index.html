@@ -4577,16 +4577,16 @@
 
 <h1 id="how-flink-works">How Flink Works<a class="headerlink" href="#how-flink-works" title="Permanent link">&para;</a></h1>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png" /></a>
-  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing">Flink Documentation</a>
-</figure>
-<figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg" /></a>
-  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/datastream_api/#stream-execution-environment">Flink Documentation</a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/flink-application-sources-sinks.png" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing">Flink Doc</a>
 </figure>
 <h2 id="architecture-components">Architecture Components<a class="headerlink" href="#architecture-components" title="Permanent link">&para;</a></h2>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg" /></a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/distributed-runtime.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/datastream_api/#stream-execution-environment">Flink Doc</a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/processes.svg" width="500" /></a>
   <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#anatomy-of-a-flink-cluster"><em>Anatomy of a Flink Cluster</em></a>
 </figure>
 <h3 id="jobmanager">JobManager<a class="headerlink" href="#jobmanager" title="Permanent link">&para;</a></h3>
@@ -4613,8 +4613,8 @@ tasks. Chaining operators together into</p>
 <li>Chaining operators together into tasks is a useful optimization: it reduces the overhead of thread-to-thread handover and buffering, and increases overall throughput while decreasing latency.</li>
 </ul>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg" /></a>
-  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#tasks-and-operator-chains">Flink Documentation</a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_chains.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#tasks-and-operator-chains">Flink Doc</a>
 </figure>
 <h2 id="task-slots-and-resources">Task Slots and Resources<a class="headerlink" href="#task-slots-and-resources" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4624,8 +4624,8 @@ tasks. Chaining operators together into</p>
 <li>Having <strong>multiple</strong> slots means <strong>more subtasks share the same JVM</strong>. Tasks in the same JVM share TCP connections (via multiplexing) and heartbeat messages. They may also share data sets and data structures, thus <strong>reducing the per-task overhead</strong>.</li>
 </ul>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg" /></a>
-  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources"><em>Flink Documentation</em></a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/tasks_slots.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources"><em>Flink Doc</em></a>
 </figure>
 <ul>
 <li>By default, <strong>Flink allows subtasks to share slots</strong> even if they are subtasks of different tasks, so long as <strong>they are from the same job</strong>. </li>
@@ -4635,15 +4635,31 @@ tasks. Chaining operators together into</p>
 </ul>
 </li>
 </ul>
-<h2 id="streaming-processing">Streaming Processing<a class="headerlink" href="#streaming-processing" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Streaming Processing" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png" /></a></p>
-<p><a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Program to Dataflow" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg" /></a></p>
-<p><a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg" /></a></p>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg" /></a>
-  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources"><em>Flink Documentation</em></a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/slot_sharing.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/flink-architecture/#task-slots-and-resources"><em>Flink Doc</em></a>
 </figure>
-<p><a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png" /></a></p>
+<h2 id="streaming-processing">Streaming Processing<a class="headerlink" href="#streaming-processing" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Streaming Processing" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/bounded-unbounded.png" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing"><em>Flink Doc</em></a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Program to Dataflow" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/program_dataflow.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stream-processing"><em>Flink Doc</em></a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel_dataflow.svg" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#parallel-dataflows"><em>Flink Docs</em></a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/learn-flink/parallel-job.png" width="500" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/learn-flink/overview/#stateful-stream-processing"><em>Flink Docs</em></a>
+</figure>
+<figure>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/state_partitioning.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/state_partitioning.svg" /></a>
+  Source: <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/stateful-stream-processing/#keyed-state"><em>Flink Docs</em></a>
+</figure>
 <h2 id="flink-application-execution">Flink Application Execution<a class="headerlink" href="#flink-application-execution" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Flink Application Cluster</li>
@@ -4651,7 +4667,7 @@ tasks. Chaining operators together into</p>
 </ul>
 <h2 id="apis"><a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/overview/">APIs</a><a class="headerlink" href="#apis" title="Permanent link">&para;</a></h2>
 <figure>
-  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg" /></a>
+  <a class="glightbox" href="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://nightlies.apache.org/flink/flink-docs-release-2.1/fig/concepts/levels_of_abstraction.svg" width="500" /></a>
   <a href="https://nightlies.apache.org/flink/flink-docs-release-2.1/docs/concepts/overview/#flinks-apis"><em>Flink APIs</em></a>
 </figure>
 <p>From high to low level:</p>
