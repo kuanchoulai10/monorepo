@@ -1,22 +1,20 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        l = 0
-        r = len(nums) - 1
+        l, r = 0, len(nums)-1
 
-        ans = nums[0]
+        # Rotated len(nums) times
+        if nums[l] < nums[r]:
+            return nums[l]
+
         while l <= r:
-            if nums[l] < nums[r]:
-                ans = min(ans, nums[l])
-                break
-
             m = (l + r) // 2
-            ans = min(ans, nums[m])
 
-            # left sorted portion
-            if nums[m] >= nums[l]:
+            left_larger_than_curr  = (m == 0           or nums[m-1] > nums[m])
+            right_larger_than_curr = (m == len(nums)-1 or nums[m+1] > nums[m])
+            if left_larger_than_curr and right_larger_than_curr:
+                return nums[m]
+
+            if nums[m] > nums[-1]: # left sorted side
                 l = m + 1
-            # right sorted portion
             else:
                 r = m - 1
-        
-        return ans
