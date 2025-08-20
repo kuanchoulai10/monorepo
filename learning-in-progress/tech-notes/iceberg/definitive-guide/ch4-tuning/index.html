@@ -3417,6 +3417,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cor-vs-mor" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoR vs. MoR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-distribution-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write Distribution Mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datafile-bloom-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datafile Bloom Filters
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4875,6 +4920,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partitioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cor-vs-mor" class="md-nav__link">
+    <span class="md-ellipsis">
+      CoR vs. MoR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-distribution-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write Distribution Mode
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datafile-bloom-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Datafile Bloom Filters
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4999,6 +5089,29 @@
 <p>Z-ordering based on age and height</p>
 </figcaption>
 </figure>
+<h2 id="partitioning">Partitioning<a class="headerlink" href="#partitioning" title="Permanent link">&para;</a></h2>
+<h2 id="cor-vs-mor">CoR vs. MoR<a class="headerlink" href="#cor-vs-mor" title="Permanent link">&para;</a></h2>
+<h2 id="metrics-collection">Metrics Collection<a class="headerlink" href="#metrics-collection" title="Permanent link">&para;</a></h2>
+<h2 id="write-distribution-mode">Write Distribution Mode<a class="headerlink" href="#write-distribution-mode" title="Permanent link">&para;</a></h2>
+<p>Write distribution mode requires an understanding of how massively parallel processing (MPP) systems handle writing files.</p>
+<p>The write distribution is how the records to be written are distributed across these tasks. If no specific write distribution mode is set, data will be distributed arbitrarily. The first X number of records will go to the first task, the next X number to the next task, and so on.</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="n">MyTable</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">TBLPROPERTIES</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="s1">&#39;write.distribution-mode&#39;</span><span class="o">=</span><span class="s1">&#39;hash&#39;</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="s1">&#39;write.delete.distribution-mode&#39;</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="s1">&#39;write.update.distribution-mode&#39;</span><span class="o">=</span><span class="s1">&#39;range&#39;</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="s1">&#39;write.merge.distribution-mode&#39;</span><span class="o">=</span><span class="s1">&#39;hash&#39;</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">);</span>
+</span></code></pre></div>
+<h2 id="datafile-bloom-filters">Datafile Bloom Filters<a class="headerlink" href="#datafile-bloom-filters" title="Permanent link">&para;</a></h2>
+<p>A bloom filter is a way of knowing whether a value possibly exists in a dataset.</p>
+<p>Bloom filters are handy because they can help us avoid unnecessary data scans.</p>
+<p>You can enable the writing of bloom filters for a particular column in your Parquet files (this can also be done for ORC files) via your table properties:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="n">MyTable</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">TBLPROPERTIES</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="s1">&#39;write.parquet.bloom-filter-enabled.column.col1&#39;</span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="s1">&#39;write.parquet.bloom-filter-max-bytes&#39;</span><span class="o">=</span><span class="w"> </span><span class="mi">1048576</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">);</span>
+</span></code></pre></div>
+<p>Then engines querying your data may take advantage of these bloom filters to help make reading the datafiles even faster by skipping datafiles where bloom filters clearly indicate that the data you need doesn't exist.</p>
 
 
 
