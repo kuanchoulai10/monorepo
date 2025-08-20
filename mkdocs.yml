@@ -28,8 +28,10 @@ nav:
         - learning-in-progress/tech-notes/hive/architecture.md
       - Spark:
         - learning-in-progress/tech-notes/spark/how-spark-works.md
+        - learning-in-progress/tech-notes/spark/performance-tuning.md
         - Learning Spark (2020):
           - learning-in-progress/tech-notes/spark/learning-spark/notes.md
+          - learning-in-progress/tech-notes/spark/learning-spark/ch7-tuning.md
       - Flink:
         - learning-in-progress/tech-notes/flink/how-flink-works.md
       - Airflow:
