@@ -33,7 +33,7 @@ nav:
           - learning-in-progress/tech-notes/spark/learning-spark/ch7-tuning.md
       - Iceberg:
         - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
-        - The Definitive Guide:
+        - The Definitive Guide (2020):
           - learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md
         - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
