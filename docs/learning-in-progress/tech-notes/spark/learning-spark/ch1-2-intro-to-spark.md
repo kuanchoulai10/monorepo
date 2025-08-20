@@ -3,7 +3,7 @@ tags:
   - Apache Spark
 ---
 
-## Ch1 & Ch2 Introduction to Spark
+# Ch1 & 2 Introduction to Spark
 
 --8<-- "./docs/disclaimer.md"
 

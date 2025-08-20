@@ -3,13 +3,13 @@ tags:
   - Apache Spark
 ---
 
-## Ch 7 Optimizing and Tuning Spark Applications
+# Ch7 Optimizing and Tuning Spark Applications
 
 --8<-- "./docs/disclaimer.md"
 
 ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0702.png){width="500"}
 /// caption
-Executor memory layout
+Executor Memory Layout
 ///
 
 ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0706.png){width="500"}
