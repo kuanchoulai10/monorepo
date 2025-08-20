@@ -95,3 +95,42 @@ CALL catalog.system.rewrite_data_files(
 /// caption
 Z-ordering based on age and height
 ///
+
+## Partitioning
+
+## CoR vs. MoR
+
+## Metrics Collection
+
+## Write Distribution Mode
+
+Write distribution mode requires an understanding of how massively parallel processing (MPP) systems handle writing files.
+
+The write distribution is how the records to be written are distributed across these tasks. If no specific write distribution mode is set, data will be distributed arbitrarily. The first X number of records will go to the first task, the next X number to the next task, and so on.
+
+
+```sql
+ALTER TABLE catalog.MyTable SET TBLPROPERTIES (
+    'write.distribution-mode'='hash',
+    'write.delete.distribution-mode'='none',
+    'write.update.distribution-mode'='range',
+    'write.merge.distribution-mode'='hash',
+);
+```
+
+## Datafile Bloom Filters
+
+A bloom filter is a way of knowing whether a value possibly exists in a dataset.
+
+Bloom filters are handy because they can help us avoid unnecessary data scans.
+
+You can enable the writing of bloom filters for a particular column in your Parquet files (this can also be done for ORC files) via your table properties:
+
+```sql
+ALTER TABLE catalog.MyTable SET TBLPROPERTIES (
+    'write.parquet.bloom-filter-enabled.column.col1'= true,
+    'write.parquet.bloom-filter-max-bytes'= 1048576
+);
+```
+
+Then engines querying your data may take advantage of these bloom filters to help make reading the datafiles even faster by skipping datafiles where bloom filters clearly indicate that the data you need doesn't exist.
