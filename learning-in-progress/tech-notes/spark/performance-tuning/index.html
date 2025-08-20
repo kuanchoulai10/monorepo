@@ -12,9 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/learning-in-progress/tech-notes/spark/optimization/">
+        <link rel="canonical" href="https://kcl10.com/learning-in-progress/tech-notes/spark/performance-tuning/">
       
       
+        <link rel="prev" href="../how-spark-works/">
+      
+      
+        <link rel="next" href="../learning-spark/notes/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Spark Optimization - KC's Data & Life Notes</title>
+        <title>Spark Performance Tuning - KC's Data & Life Notes</title>
       
     
     
@@ -73,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Spark Optimization - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Spark Performance Tuning - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/spark/optimization.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/spark/performance-tuning.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/learning-in-progress/tech-notes/spark/optimization/" >
+        <meta  property="og:url"  content="https://kcl10.com/learning-in-progress/tech-notes/spark/performance-tuning/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Spark Optimization - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Spark Performance Tuning - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/spark/optimization.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/spark/performance-tuning.png" >
       
     
     
@@ -125,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spark-optimization" class="md-skip">
+        <a href="#spark-performance-tuning" class="md-skip">
           Skip to content
         </a>
       
@@ -188,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Spark Optimization
+              Spark Performance Tuning
             
           </span>
         </div>
@@ -307,10 +311,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -2732,6 +2738,8 @@
       
   
   
+    
+  
   
   
     
@@ -2748,14 +2756,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
@@ -2772,13 +2783,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Learning in Progress
@@ -2912,8 +2923,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2947,11 +2960,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -2966,7 +2979,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Tech Notes
@@ -3050,8 +3063,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3059,17 +3074,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
@@ -3084,7 +3101,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3_2">
             <span class="md-nav__icon md-icon"></span>
             Spark
@@ -3117,10 +3134,44 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Spark Performance Tuning
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
     
+      
+        
       
         
       
@@ -3134,10 +3185,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_3_2_2" id="__nav_3_3_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_3_2_3" id="__nav_3_3_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3149,8 +3200,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3_2_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2_3">
             <span class="md-nav__icon md-icon"></span>
             Learning Spark (2020)
           </label>
@@ -3168,6 +3219,28 @@
   
   <span class="md-ellipsis">
     Learning Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learning-spark/ch7-tuning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch7 tuning
     
   </span>
   
@@ -4656,23 +4729,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On This Page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#adaptive-query-execution-aqe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptive Query Execution (AQE)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -4699,7 +4755,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/learning-in-progress/tech-notes/spark/optimization.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/learning-in-progress/tech-notes/spark/performance-tuning.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4708,15 +4764,34 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/learning-in-progress/tech-notes/spark/optimization.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/learning-in-progress/tech-notes/spark/performance-tuning.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="spark-optimization">Spark Optimization<a class="headerlink" href="#spark-optimization" title="Permanent link">&para;</a></h1>
-<h2 id="adaptive-query-execution-aqe"><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html#adaptive-query-execution">Adaptive Query Execution (AQE)</a><a class="headerlink" href="#adaptive-query-execution-aqe" title="Permanent link">&para;</a></h2>
+<h1 id="spark-performance-tuning"><a href="https://spark.apache.org/docs/latest/sql-performance-tuning.html">Spark Performance Tuning</a><a class="headerlink" href="#spark-performance-tuning" title="Permanent link">&para;</a></h1>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Caching Data</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Tuning Partitions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Leveraging Statistics</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Optimizing the Join Strategy</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Adaptive Query Execution<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Coalescing Post Shuffle Partitions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Splitting skewed shuffle partitions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Converting <em>Shuffle Sort Merge Join</em> (SMJ) to <em>Broadcast Hash Join</em> (BHJ)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Converting <em>Shuffle Sort Merge Join</em> to <em>Shuffle Hash Join</em></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Optimizing Skew Join</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Advanced Customization</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Storage Partition Join</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Storage Partition Join</li>
+</ul>
+</div>
 
 
 
@@ -4788,6 +4863,46 @@
       
         <footer class="md-footer">
   
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../how-spark-works/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How Spark Works">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                How Spark Works
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../learning-spark/notes/" class="md-footer__link md-footer__link--next" aria-label="Next: Learning Notes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Learning Notes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
