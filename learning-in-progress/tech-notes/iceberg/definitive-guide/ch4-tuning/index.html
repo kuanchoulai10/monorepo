@@ -12,28 +12,28 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/learning-in-progress/tech-notes/iceberg/definitive-guide/">
+        <link rel="canonical" href="https://kcl10.com/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning/">
       
       
-        <link rel="prev" href="../iceberg-in-prod-netflix-2023/">
+        <link rel="prev" href="../../iceberg-in-prod-netflix-2023/">
       
       
-        <link rel="next" href="../../polaris/policy/">
+        <link rel="next" href="../../../polaris/policy/">
       
       
-      <link rel="icon" href="../../../../images/avatar.png">
+      <link rel="icon" href="../../../../../images/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>Learning Notes - KC's Data & Life Notes</title>
+        <title>Ch4 tuning - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,13 +52,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../../../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -77,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Learning Notes - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Ch4 tuning - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/iceberg/definitive-guide/index.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -89,19 +89,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/learning-in-progress/tech-notes/iceberg/definitive-guide/" >
+        <meta  property="og:url"  content="https://kcl10.com/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Learning Notes - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Ch4 tuning - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/iceberg/definitive-guide/index.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.png" >
       
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -112,7 +112,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#learning-notes" class="md-skip">
+        <a href="#optimizing-the-performance-of-apache-iceberg" class="md-skip">
           Skip to content
         </a>
       
@@ -173,9 +173,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../../images/avatar.png" alt="logo">
+  <img src="../../../../../images/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -192,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Learning Notes
+              Ch4 tuning
             
           </span>
         </div>
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../.." class="md-tabs__link">
+        <a href="../../../../.." class="md-tabs__link">
           
   
     
@@ -295,7 +295,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../side-projects/" class="md-tabs__link">
+        <a href="../../../../../side-projects/" class="md-tabs__link">
           
   
     
@@ -317,7 +317,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
     
@@ -337,7 +337,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../blog/" class="md-tabs__link">
+        <a href="../../../../../blog/" class="md-tabs__link">
           
   
     
@@ -355,7 +355,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../tags/" class="md-tabs__link">
+      <a href="../../../../../tags/" class="md-tabs__link">
         
   
     
@@ -374,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../about-me/" class="md-tabs__link">
+        <a href="../../../../../about-me/" class="md-tabs__link">
           
   
     
@@ -411,9 +411,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../../../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../../images/avatar.png" alt="logo">
+  <img src="../../../../../images/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -461,7 +461,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../.." class="md-nav__link ">
+            <a href="../../../../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -532,7 +532,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/" class="md-nav__link ">
+            <a href="../../../../../side-projects/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -603,7 +603,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/data2ml-ops/" class="md-nav__link ">
+            <a href="../../../../../side-projects/data2ml-ops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -637,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -777,7 +777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -799,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -872,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -947,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -969,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1052,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1074,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/how-it-works/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1096,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1118,7 +1118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1140,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1162,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1249,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1271,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/how-it-works/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1293,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1315,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1337,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1359,7 +1359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1381,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1403,7 +1403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1478,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/others/istio-introduction/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/others/istio-introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1500,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data2ml-ops/others/knative-introduction/" class="md-nav__link">
+      <a href="../../../../../side-projects/data2ml-ops/others/knative-introduction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1565,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/retail-lakehouse/" class="md-nav__link ">
+            <a href="../../../../../side-projects/retail-lakehouse/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1642,7 +1642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/kafka/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/kafka/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1768,7 +1768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1790,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1812,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1834,7 +1834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1856,7 +1856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1878,7 +1878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1973,7 +1973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1995,7 +1995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2017,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2039,7 +2039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/fault-tolerance/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/fault-tolerance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2061,7 +2061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/monitoring/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2083,7 +2083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/catalogs/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/catalogs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2105,7 +2105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2127,7 +2127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/retail-lakehouse/trino/join-optimization/" class="md-nav__link">
+      <a href="../../../../../side-projects/retail-lakehouse/trino/join-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2194,7 +2194,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/data-mesh/" class="md-nav__link ">
+            <a href="../../../../../side-projects/data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2228,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
+      <a href="../../../../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2250,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
+      <a href="../../../../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2272,7 +2272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data-mesh/combined/" class="md-nav__link">
+      <a href="../../../../../side-projects/data-mesh/combined/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2294,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/data-mesh/rag/" class="md-nav__link">
+      <a href="../../../../../side-projects/data-mesh/rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2345,7 +2345,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/arxiv-analytics-platform/" class="md-nav__link ">
+            <a href="../../../../../side-projects/arxiv-analytics-platform/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2413,7 +2413,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/dcard-hw/" class="md-nav__link ">
+            <a href="../../../../../side-projects/dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2447,7 +2447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../../../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2469,7 +2469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../../../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2491,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../../../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2513,7 +2513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../../../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2535,7 +2535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../../../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2586,7 +2586,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/leetcode/" class="md-nav__link ">
+            <a href="../../../../../side-projects/leetcode/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2648,7 +2648,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../../../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2682,7 +2682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../../../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2704,7 +2704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../../../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2771,7 +2771,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2852,7 +2852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202507/" class="md-nav__link">
+      <a href="../../../../recaps/202507/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2874,7 +2874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202506/" class="md-nav__link">
+      <a href="../../../../recaps/202506/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2896,7 +2896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202505/" class="md-nav__link">
+      <a href="../../../../recaps/202505/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3036,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../hive/architecture/" class="md-nav__link">
+      <a href="../../../hive/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3113,7 +3113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spark/how-spark-works/" class="md-nav__link">
+      <a href="../../../spark/how-spark-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3135,7 +3135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spark/performance-tuning/" class="md-nav__link">
+      <a href="../../../spark/performance-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3202,7 +3202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spark/learning-spark/notes/" class="md-nav__link">
+      <a href="../../../spark/learning-spark/notes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3224,7 +3224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../spark/learning-spark/ch7-tuning/" class="md-nav__link">
+      <a href="../../../spark/learning-spark/ch7-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3305,7 +3305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../flink/how-flink-works/" class="md-nav__link">
+      <a href="../../../flink/how-flink-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3378,7 +3378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../airflow/how-airflow-works/" class="md-nav__link">
+      <a href="../../../airflow/how-airflow-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3463,7 +3463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../migration/" class="md-nav__link">
+      <a href="../../migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3485,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../disaster-recovery/" class="md-nav__link">
+      <a href="../../disaster-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3507,7 +3507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../iceberg-best-practices-in-aws/" class="md-nav__link">
+      <a href="../../iceberg-best-practices-in-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3529,7 +3529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
+      <a href="../../resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3551,7 +3551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../iceberg-in-prod-netflix-2023/" class="md-nav__link">
+      <a href="../../iceberg-in-prod-netflix-2023/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3578,8 +3578,6 @@
     
       
         
-          
-        
       
     
     
@@ -3594,10 +3592,8 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_5_6" checked>
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
-              
+          <label class="md-nav__link" for="__nav_3_3_5_6" id="__nav_3_3_5_6_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     The Definitive Guide
@@ -3605,9 +3601,8 @@
   </span>
   
 
-            </a>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_5_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3_5_6">
@@ -3616,6 +3611,102 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ch4 tuning
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Ch4 tuning
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compaction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Z Order
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
               
             
           </ul>
@@ -3686,7 +3777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../polaris/policy/" class="md-nav__link">
+      <a href="../../../polaris/policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3708,7 +3799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../polaris/resources/" class="md-nav__link">
+      <a href="../../../polaris/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3781,7 +3872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ddia/ch8-transactions/" class="md-nav__link">
+      <a href="../../../ddia/ch8-transactions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3854,7 +3945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sqlmesh/sqlmesh-vs-dbt-core/" class="md-nav__link">
+      <a href="../../../sqlmesh/sqlmesh-vs-dbt-core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3905,7 +3996,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../dbt/" class="md-nav__link ">
+            <a href="../../../dbt/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3985,7 +4076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../streaming-processing-window-types/" class="md-nav__link">
+      <a href="../../../streaming-processing-window-types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4036,7 +4127,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../risingwave/" class="md-nav__link ">
+            <a href="../../../risingwave/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4094,7 +4185,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../treasure-data/" class="md-nav__link ">
+            <a href="../../../treasure-data/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4171,7 +4262,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../blog/" class="md-nav__link ">
+            <a href="../../../../../blog/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4250,7 +4341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/archive/2025/" class="md-nav__link">
+      <a href="../../../../../blog/archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4329,7 +4420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/category/cicd/" class="md-nav__link">
+      <a href="../../../../../blog/category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4353,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/category/data/" class="md-nav__link">
+      <a href="../../../../../blog/category/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4377,7 +4468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../blog/category/mkdocs/" class="md-nav__link">
+      <a href="../../../../../blog/category/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4414,7 +4505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../tags/" class="md-nav__link">
+      <a href="../../../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4460,7 +4551,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../about-me/" class="md-nav__link ">
+            <a href="../../../../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4543,7 +4634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about-me/work-experience/ust/ust/" class="md-nav__link">
+      <a href="../../../../../about-me/work-experience/ust/ust/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4565,7 +4656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
+      <a href="../../../../../about-me/work-experience/tvbs/tvbs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4587,7 +4678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
+      <a href="../../../../../about-me/work-experience/ninox/ninox/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4609,7 +4700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about-me/work-experience/itri/itri/" class="md-nav__link">
+      <a href="../../../../../about-me/work-experience/itri/itri/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4660,7 +4751,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../../../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4728,28 +4819,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#optimizing-the-performance-of-apache-iceberg" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optimizing the Performance of Apache Iceberg
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Optimizing the Performance of Apache Iceberg">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#compaction" class="md-nav__link">
     <span class="md-ellipsis">
       Compaction
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Compaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#z-order" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      Z Order
     </span>
   </a>
   
@@ -4781,14 +4872,14 @@
       
       
       
-        <a href="../../../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
+        <a href="../../../../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
       
     
   </nav>
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/learning-in-progress/tech-notes/iceberg/definitive-guide/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -4797,27 +4888,32 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/learning-in-progress/tech-notes/iceberg/definitive-guide/index.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="learning-notes">Learning Notes<a class="headerlink" href="#learning-notes" title="Permanent link">&para;</a></h1>
 <p><em>Disclaimer: The content on this page is created purely from personal study and self-learning. It is intended as personal notes and reflections, not as professional advice. There is no commercial purpose, financial gain, or endorsement intended. While I strive for accuracy, the information may contain errors or outdated details. Please use the content at your own discretion and verify with authoritative sources when needed.</em></p>
-<h2 id="optimizing-the-performance-of-apache-iceberg">Optimizing the Performance of Apache Iceberg<a class="headerlink" href="#optimizing-the-performance-of-apache-iceberg" title="Permanent link">&para;</a></h2>
+<h1 id="optimizing-the-performance-of-apache-iceberg">Optimizing the Performance of Apache Iceberg<a class="headerlink" href="#optimizing-the-performance-of-apache-iceberg" title="Permanent link">&para;</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Compaction</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Sorting</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Z-order</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Compaction<ul>
+<li>Binpack</li>
+<li>Sorting</li>
+<li>Z-order</li>
+</ul>
+</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Partitioning</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> CoR vs. MoR</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Metric Collection</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Write Distribution Mode</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Datafile Bloom Filters</li>
 </ul>
 </div>
-<h3 id="compaction">Compaction<a class="headerlink" href="#compaction" title="Permanent link">&para;</a></h3>
+<h2 id="compaction">Compaction<a class="headerlink" href="#compaction" title="Permanent link">&para;</a></h2>
 <p>In this scenario, we may have been streaming some data into our <code>musicians</code> table and noticed that a lot of small files were generated for rock bands, so instead of running compaction on the whole table, which can be time-consuming, we targeted just the data that was problematic. We also tell Spark to prioritize file groups that are larger in bytes and to keep files that are around 1 GB each with each file group of around 10 GB.</p>
 <p><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/best-practices-compaction.html">A file group is an Iceberg abstraction that represents a collection of files that will be processed by a single Spark job.</a></p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- Rewrite Data Files CALL Procedure in SparkSQL</span>
@@ -4838,11 +4934,42 @@
 <p>The result of having the max file group and max file size set to 10 GB and 1 GB, respectively</p>
 </figcaption>
 </figure>
-<p><strong>Compaction strategies</strong></p>
-<ul>
-<li>BinPack</li>
-</ul>
-<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="sorting">Sorting<a class="headerlink" href="#sorting" title="Permanent link">&para;</a></h3>
+<figure>
+<p><a class="glightbox" href="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0404.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0404.png" width="500" /></a></p>
+<figcaption>
+<p>Sorted </p>
+</figcaption>
+</figure>
+<p>After creating the table, you set the sort order of the table, which any engine that supports the property will use to sort the data before writing and will also be the default sort field when using the sort compaction strategy</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="n">nfl_teams</span><span class="w"> </span><span class="k">WRITE</span><span class="w"> </span><span class="n">ORDERED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">team</span><span class="p">;</span>
+</span></code></pre></div>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="n">nfl_teams</span><span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">non_iceberg_teams_table</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">team</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="n">nfl_teams</span><span class="w"> </span><span class="k">WRITE</span><span class="w"> </span><span class="n">ORDERED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">team</span><span class="p">;</span><span class="n">s</span>
+</span></code></pre></div>
+<p>if you wanted to rewrite the entire dataset with all players sorted by team globally, you could run the following statement:</p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;nfl_teams&#39;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;team ASC NULLS LAST&#39;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="z-order">Z Order<a class="headerlink" href="#z-order" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0407.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0407.png" width="500" /></a></p>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">CALL</span><span class="w"> </span><span class="k">catalog</span><span class="p">.</span><span class="k">system</span><span class="p">.</span><span class="n">rewrite_data_files</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="k">table</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;people&#39;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="n">strategy</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;sort&#39;</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="n">sort_order</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s1">&#39;zorder(age,height)&#39;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+</span></code></pre></div>
+<figure>
+<p><a class="glightbox" href="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0408.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0408.png" width="500" /></a></p>
+<figcaption>
+<p>Z-ordering based on age and height</p>
+</figcaption>
+</figure>
 
 
 
@@ -4921,7 +5048,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../iceberg-in-prod-netflix-2023/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Apache Iceberg in Production: Insights from Netflix in 2023">
+          <a href="../../iceberg-in-prod-netflix-2023/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Apache Iceberg in Production: Insights from Netflix in 2023">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4938,7 +5065,7 @@
         
         
           
-          <a href="../../polaris/policy/" class="md-footer__link md-footer__link--next" aria-label="Next: Apache Polaris Policy">
+          <a href="../../../polaris/policy/" class="md-footer__link md-footer__link--next" aria-label="Next: Apache Polaris Policy">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
@@ -5012,20 +5139,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
-        <script src="../../../../javascripts/katex.js"></script>
+        <script src="../../../../../javascripts/katex.js"></script>
       
-        <script src="../../../../javascripts/open-in-new-tabs.js"></script>
+        <script src="../../../../../javascripts/open-in-new-tabs.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../../../assets/slides/js/slides.js"></script>
+        <script src="../../../../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>

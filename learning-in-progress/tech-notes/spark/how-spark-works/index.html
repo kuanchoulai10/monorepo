@@ -3697,8 +3697,6 @@
     
       
         
-          
-        
       
     
     
@@ -3713,10 +3711,8 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_5_6" >
         
           
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../../iceberg/definitive-guide/" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_3_3_5_6" id="__nav_3_3_5_6_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     The Definitive Guide
@@ -3724,9 +3720,8 @@
   </span>
   
 
-            </a>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_5_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3_5_6">
@@ -3735,6 +3730,26 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../iceberg/definitive-guide/ch4-tuning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ch4 tuning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
           </ul>
@@ -4970,7 +4985,7 @@
 
 <h1 id="how-spark-works">How Spark Works<a class="headerlink" href="#how-spark-works" title="Permanent link">&para;</a></h1>
 <figure>
-<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/cluster-overview.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/cluster-overview.png" /></a></p>
+<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/cluster-overview.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/cluster-overview.png" width="500" /></a></p>
 <figcaption>
 <p><a href="https://spark.apache.org/docs/latest/cluster-overview.html">Cluster Overview</a></p>
 </figcaption>
@@ -4997,7 +5012,7 @@
 <p>When <a href="https://spark.apache.org/docs/latest/running-on-kubernetes.html">Spark 2.3 introduced Kubernetes</a> as an official scheduler backend, it created challenges in managing Spark application lifecycles on Kubernetes. Unlike traditional workloads such as Deployments and StatefulSets, Spark applications required different approaches for submission, execution, and monitoring, making them difficult to manage idiomatically within Kubernetes environments.</p>
 <p>The <a href="https://www.kubeflow.org/docs/components/spark-operator/overview/">Kubeflow Spark Operator</a> addresses these challenges by implementing <strong>the operator pattern to manage Spark applications declaratively</strong>. It allows users to specify Spark applications in YAML files without dealing with complex <code>spark-submit</code> processes, while <strong>providing native Kubernetes-style status tracking and monitoring capabilities that align with other Kubernetes workloads</strong>.</p>
 <figure>
-<p><a class="glightbox" href="https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png" /></a></p>
+<p><a class="glightbox" href="https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png" width="500" /></a></p>
 <figcaption>
 <p><a href="https://www.kubeflow.org/docs/components/spark-operator/overview/#architecture">Architecture diagram of the Kubeflow Spark Operator</a></p>
 </figcaption>
@@ -5012,19 +5027,19 @@
 </figure>
 <p>The Catalyst Optimizer takes a computational query and converts it into an execution plan. It goes through four transformational phases:</p>
 <ol>
-<li>Analysis<ul>
+<li><strong>Analysis</strong><ul>
 <li>any columns or table names will be resolved by consulting an internal Catalog</li>
 </ul>
 </li>
-<li>Logical optimization<ul>
+<li><strong>Logical Optimization</strong><ul>
 <li>Applying a standard-rule based optimization approach</li>
 <li>the Catalyst optimizer will first construct a set of multiple plans and then</li>
 <li>using its cost-based optimizer (CBO), assign costs to each plan.</li>
 <li>These plans are laid out as operator trees </li>
 </ul>
 </li>
-<li>Physical planning</li>
-<li>Code generation<ul>
+<li><strong>Physical Planning</strong></li>
+<li><strong>Code Generation</strong><ul>
 <li>The final phase of query optimization involves generating efficient Java bytecode to run on each machine. </li>
 </ul>
 </li>
@@ -5047,7 +5062,7 @@
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">events</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s">&quot;2015-01-01&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <figure>
-<p><a class="glightbox" href="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png" /></a></p>
+<p><a class="glightbox" href="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png" width="500" /></a></p>
 <figcaption>
 <p>An example of a specific query transformation</p>
 </figcaption>
@@ -5055,13 +5070,13 @@
 <h2 id="spark-connect">Spark Connect<a class="headerlink" href="#spark-connect" title="Permanent link">&para;</a></h2>
 <p>Introduced in Spark 3.4, <a href="https://spark.apache.org/docs/latest/spark-connect-overview.html">Spark Connect</a>,  decoupled client-server architecture that allows remote connectivity to Spark clusters using the DataFrame API and unresolved logical plans as the protocol</p>
 <figure>
-<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/spark-connect-api.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/spark-connect-api.png" /></a></p>
+<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/spark-connect-api.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/spark-connect-api.png" width="500" /></a></p>
 <figcaption>
 <p><a href="https://spark.apache.org/docs/latest/spark-connect-overview.html#spark-connect-overview">The Spark Connect API is a language-agnostic protocol</a></p>
 </figcaption>
 </figure>
 <figure>
-<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/spark-connect-communication.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/spark-connect-communication.png" /></a></p>
+<p><a class="glightbox" href="https://spark.apache.org/docs/latest/img/spark-connect-communication.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://spark.apache.org/docs/latest/img/spark-connect-communication.png" width="500" /></a></p>
 <figcaption>
 <p><a href="https://spark.apache.org/docs/latest/spark-connect-overview.html#how-spark-connect-works">How Spark Connect Works</a></p>
 </figcaption>
