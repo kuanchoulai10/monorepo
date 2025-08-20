@@ -1,3 +1,8 @@
+---
+tags:
+  - Apache Spark
+---
+
 # Learning Notes
 
 --8<-- "./docs/disclaimer.md"

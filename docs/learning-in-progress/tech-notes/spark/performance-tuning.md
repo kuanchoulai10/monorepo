@@ -3,7 +3,9 @@ tags:
   - Apache Spark
 ---
 
-# [Spark Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html)
+# Spark Performance Tuning
+
+[Spark Performance Tuning](https://spark.apache.org/docs/latest/sql-performance-tuning.html)
 
 !!! tip
 
@@ -18,5 +20,4 @@ tags:
         - [x] Converting *Shuffle Sort Merge Join* to *Shuffle Hash Join*
         - [x] Optimizing Skew Join
         - [x] Advanced Customization
-        - [x] Storage Partition Join
     - [x] Storage Partition Join

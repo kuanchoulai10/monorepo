@@ -30,12 +30,12 @@ Broadcast Hash Join
 - Caching and Persistence of Data
     - DataFrame.cache()
     - DataFrame.persist()
-        - MEMORY_ONLY
-        - MEMORY_ONLY_SER
-        - MEMORY_AND_DISK
-        - MEMORY_AND_DISK_SER
-        - DISK_ONLY
-        - OFF_HEAP
+        - `MEMORY_ONLY`
+        - `MEMORY_ONLY_SER`
+        - `MEMORY_AND_DISK`
+        - `MEMORY_AND_DISK_SER`
+        - `DISK_ONLY`
+        - `OFF_HEAP`
     - When to Cache and Persist
         - Iterative ML training
         - DataFrames accessed commonly

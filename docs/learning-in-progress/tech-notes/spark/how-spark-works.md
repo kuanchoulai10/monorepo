@@ -5,7 +5,7 @@ tags:
 
 # How Spark Works
 
-![](https://spark.apache.org/docs/latest/img/cluster-overview.png)
+![](https://spark.apache.org/docs/latest/img/cluster-overview.png){width="500"}
 /// caption
 [Cluster Overview](https://spark.apache.org/docs/latest/cluster-overview.html)
 ///
@@ -36,7 +36,7 @@ When [Spark 2.3 introduced Kubernetes](https://spark.apache.org/docs/latest/runn
 
 The [Kubeflow Spark Operator](https://www.kubeflow.org/docs/components/spark-operator/overview/) addresses these challenges by implementing **the operator pattern to manage Spark applications declaratively**. It allows users to specify Spark applications in YAML files without dealing with complex `spark-submit` processes, while **providing native Kubernetes-style status tracking and monitoring capabilities that align with other Kubernetes workloads**.
 
-![](https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png)
+![](https://www.kubeflow.org/docs/components/spark-operator/overview/architecture-diagram.png){width="500"}
 /// caption
 [Architecture diagram of the Kubeflow Spark Operator](https://www.kubeflow.org/docs/components/spark-operator/overview/#architecture)
 ///
@@ -52,15 +52,15 @@ Spark SQL and its stack
 
 The Catalyst Optimizer takes a computational query and converts it into an execution plan. It goes through four transformational phases:
 
-1. Analysis
+1. **Analysis**
     - any columns or table names will be resolved by consulting an internal Catalog
-2. Logical optimization
+2. **Logical Optimization**
     - Applying a standard-rule based optimization approach
     - the Catalyst optimizer will first construct a set of multiple plans and then
     - using its cost-based optimizer (CBO), assign costs to each plan.
     - These plans are laid out as operator trees 
-3. Physical planning
-4. Code generation
+3. **Physical Planning**
+4. **Code Generation**
     - The final phase of query optimization involves generating efficient Java bytecode to run on each machine. 
 
 ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0304.png){width="500"}
@@ -82,7 +82,7 @@ val joinedDF = users
   .filter(events("date") > "2015-01-01")
 ```
 
-![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png)
+![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0305.png){width="500"}
 /// caption
 An example of a specific query transformation
 ///
@@ -91,12 +91,12 @@ An example of a specific query transformation
 
 Introduced in Spark 3.4, [Spark Connect](https://spark.apache.org/docs/latest/spark-connect-overview.html),  decoupled client-server architecture that allows remote connectivity to Spark clusters using the DataFrame API and unresolved logical plans as the protocol
 
-![](https://spark.apache.org/docs/latest/img/spark-connect-api.png)
+![](https://spark.apache.org/docs/latest/img/spark-connect-api.png){width="500"}
 /// caption
 [The Spark Connect API is a language-agnostic protocol](https://spark.apache.org/docs/latest/spark-connect-overview.html#spark-connect-overview)
 ///
 
-![](https://spark.apache.org/docs/latest/img/spark-connect-communication.png)
+![](https://spark.apache.org/docs/latest/img/spark-connect-communication.png){width="500"}
 /// caption
 [How Spark Connect Works](https://spark.apache.org/docs/latest/spark-connect-overview.html#how-spark-connect-works)
 ///

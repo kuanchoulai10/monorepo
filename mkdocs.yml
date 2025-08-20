@@ -43,7 +43,7 @@ nav:
         - learning-in-progress/tech-notes/iceberg/resources.md
         - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
         - The Definitive Guide:
-          - learning-in-progress/tech-notes/iceberg/definitive-guide/index.md
+          - learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md
       - Polaris:
         - learning-in-progress/tech-notes/polaris/policy.md
         - learning-in-progress/tech-notes/polaris/resources.md
