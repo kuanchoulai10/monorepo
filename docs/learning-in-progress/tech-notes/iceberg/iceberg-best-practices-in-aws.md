@@ -102,7 +102,7 @@ VACUUM glue_catalog.db.my_table
 
     - [x] Set the Table Distribution Mode
         - [`write.distribution-mode`](https://iceberg.apache.org/docs/latest/spark-writes/#writing-distribution-modes): `none`, `hash`, `range`
-        - Spark Structured Streaming applications --> `set write.distribution-mode` to `none`.
+        - Spark Structured Streaming applications --> set `write.distribution-mode` to `none`.
     - [x] Choose the Right Update Strategy (MoR)
     - [x] Choose the Right File Format
         - Set `write-format` to **Avro** (row-based format) if **write speed** is important for your workload.
