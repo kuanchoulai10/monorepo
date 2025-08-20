@@ -45,6 +45,8 @@ nav:
       - Polaris:
         - learning-in-progress/tech-notes/polaris/policy.md
         - learning-in-progress/tech-notes/polaris/resources.md
+      - DDIA:
+        - learning-in-progress/tech-notes/ddia/ch8-transactions.md
       - SQLMesh:
         - learning-in-progress/tech-notes/sqlmesh/sqlmesh-vs-dbt-core.md
       - dbt:

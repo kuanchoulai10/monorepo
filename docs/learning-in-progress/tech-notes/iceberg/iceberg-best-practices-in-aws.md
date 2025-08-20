@@ -1,6 +1,6 @@
 ---
 tags:
-  - The Data Lakehouse Series
+  - The Lakehouse Series
   - Apache Iceberg
 ---
 # [Best Practices for Optimizing Apache Iceberg Workloads in AWS](https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/best-practices.html)
@@ -79,7 +79,32 @@ VACUUM glue_catalog.db.my_table
             - Choose a low cardinality partition column to avoid creating an excessive number of partitions
         - Use [Hidden Partitioning](https://iceberg.apache.org/docs/latest/partitioning/#icebergs-hidden-partitioning)
         - Use [Partition Evolution](https://iceberg.apache.org/docs/latest/evolution/#partition-evolution)
-    - [x] 
+    - [x] Tuning File Size
+        - Set target file size and row group size: `write.target-file-size-bytes`, `write.parquet.row-group-size-bytes`, `write.distribution-mode`
+        - Run regular compaction
+    - [x] Optimize Column Statistics
+        - `write.metadata.metrics.max-inferred-column-defaults`: `100`
+    - [x] Choose the Right Update Strategy (CoR)
+        - `write.update.mode`, `write.delete.mode`, and `write.merge.mode` can be set at the **table level** or independently on the **application side**.
+    - [x] Use ZSTD Compression
+        - `write.<file_type>.compression-codec`
+    - [x] Set the Sort Order
+        - [`ALTER TABLE ... WRITE ORDERED BY`](https://iceberg.apache.org/docs/latest/spark-ddl/#alter-table-write-ordered-by)
+        - [`ALTER TABLE ... WRITE DISTRIBUTED BY PARTITION`](https://iceberg.apache.org/docs/latest/spark-ddl/#alter-table-write-distributed-by-partition)
+        - `ALTER TABLE prod.db.sample WRITE DISTRIBUTED BY PARTITION LOCALLY ORDERED BY category, id`
 
 
-- As a rule of thumb, "too many partitions" can be defined as a scenario where *the data size in the majority of partitions* is less than 2-5 times *the value set by `target-file-size-bytes`*.
+- As a rule of thumb, "too many partitions" can be defined as a scenario where *the data size in the majority of partitions* is **less than 2-5 times** *the value set by `target-file-size-bytes`*.
+
+## [Optimizing Write Performance](https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/best-practices-write.html)
+
+!!! tip
+
+    - [x] Set the Table Distribution Mode
+        - [`write.distribution-mode`](https://iceberg.apache.org/docs/latest/spark-writes/#writing-distribution-modes): `none`, `hash`, `range`
+        - Spark Structured Streaming applications --> `set write.distribution-mode` to `none`.
+    - [x] Choose the Right Update Strategy (MoR)
+    - [x] Choose the Right File Format
+        - Set `write-format` to **Avro** (row-based format) if **write speed** is important for your workload.
+
+- By default, Iceberg's compaction **doesn't merge delete files** unless you change the default of the `delete-file-threshold property` to a **smaller** value.

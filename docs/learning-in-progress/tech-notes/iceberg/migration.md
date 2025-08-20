@@ -1,6 +1,6 @@
 ---
 tags:
-  - The Data Lakehouse Series
+  - The Lakehouse Series
   - Apache Iceberg
   - Apache Hive
 ---
