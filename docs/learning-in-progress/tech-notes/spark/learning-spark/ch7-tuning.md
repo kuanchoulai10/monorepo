@@ -5,6 +5,8 @@ tags:
 
 ## Ch 7 Optimizing and Tuning Spark Applications
 
+--8<-- "./docs/disclaimer.md"
+
 ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781492050032/files/assets/lesp_0702.png){width="500"}
 /// caption
 Executor memory layout

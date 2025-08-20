@@ -24,31 +24,32 @@ nav:
       - learning-in-progress/recaps/202506.md
       - learning-in-progress/recaps/202505.md
     - Tech Notes:
-      - Hive:
-        - learning-in-progress/tech-notes/hive/architecture.md
       - Spark:
         - learning-in-progress/tech-notes/spark/how-spark-works.md
         - learning-in-progress/tech-notes/spark/performance-tuning.md
         - Learning Spark (2020):
-          - learning-in-progress/tech-notes/spark/learning-spark/notes.md
+          - learning-in-progress/tech-notes/spark/learning-spark/ch1-2-intro-to-spark.md
+          - learning-in-progress/tech-notes/spark/learning-spark/ch3-structured-apis.md
           - learning-in-progress/tech-notes/spark/learning-spark/ch7-tuning.md
+      - Iceberg:
+        - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
+        - The Definitive Guide:
+          - learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md
+        - learning-in-progress/tech-notes/iceberg/migration.md
+        - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
+        - learning-in-progress/tech-notes/iceberg/resources.md
+        - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
       - Flink:
         - learning-in-progress/tech-notes/flink/how-flink-works.md
       - Airflow:
         - learning-in-progress/tech-notes/airflow/how-airflow-works.md
-      - Iceberg:
-        - learning-in-progress/tech-notes/iceberg/migration.md
-        - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
-        - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
-        - learning-in-progress/tech-notes/iceberg/resources.md
-        - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
-        - The Definitive Guide:
-          - learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md
       - Polaris:
         - learning-in-progress/tech-notes/polaris/policy.md
         - learning-in-progress/tech-notes/polaris/resources.md
       - DDIA:
         - learning-in-progress/tech-notes/ddia/ch8-transactions.md
+      - Hive:
+        - learning-in-progress/tech-notes/hive/architecture.md
       - SQLMesh:
         - learning-in-progress/tech-notes/sqlmesh/sqlmesh-vs-dbt-core.md
       - dbt:

@@ -3,9 +3,9 @@ tags:
   - Apache Iceberg
 ---
 
---8<-- "./docs/disclaimer.md"
+# Ch4 Optimizing the Performance of Apache Iceberg
 
-# Optimizing the Performance of Apache Iceberg
+--8<-- "./docs/disclaimer.md"
 
 !!! tip
 
@@ -79,7 +79,9 @@ CALL catalog.system.rewrite_data_files(
 ### Z Order
 
 ![](https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781098148614/files/assets/aidg_0407.png){width="500"}
-
+/// caption
+Z-order
+///
 
 ```sql
 CALL catalog.system.rewrite_data_files(
