@@ -39,6 +39,8 @@ nav:
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
         - learning-in-progress/tech-notes/iceberg/resources.md
         - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
+      - Kafka:
+        - learning-in-progress/tech-notes/kafka/exactly-once.md
       - Flink:
         - learning-in-progress/tech-notes/flink/how-flink-works.md
       - Airflow:
