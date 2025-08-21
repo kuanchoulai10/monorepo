@@ -56,6 +56,7 @@ sequenceDiagram
 
 ## Transactional Producers
 
+```mermaid
 sequenceDiagram
   autonumber
   participant P as Producer (transactional.id)
@@ -149,7 +150,7 @@ sequenceDiagram
     TC-->>P2: ProducerId + 更高 Epoch
     Note over P,P2: 舊 Producer (P) 後續寫入將被 broker 以 INVALID_PRODUCER_EPOCH 拒絕
   end
-
+```
 
 ## Exactly-Once Support for Source Connectors
 
