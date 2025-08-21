@@ -3386,6 +3386,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#maintaining-tables-by-using-compaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintaining Tables by Using Compaction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining Tables by Using Compaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-compaction-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Compaction Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3423,7 +3456,7 @@
             
   
   <span class="md-ellipsis">
-    The Definitive Guide
+    The Definitive Guide (2020)
     
   </span>
   
@@ -3434,7 +3467,7 @@
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3_2_2">
             <span class="md-nav__icon md-icon"></span>
-            The Definitive Guide
+            The Definitive Guide (2020)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -4945,6 +4978,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#maintaining-tables-by-using-compaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintaining Tables by Using Compaction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining Tables by Using Compaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-compaction-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Compaction Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5102,7 +5168,7 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Set the Table Distribution Mode<ul>
 <li><a href="https://iceberg.apache.org/docs/latest/spark-writes/#writing-distribution-modes"><code>write.distribution-mode</code></a>: <code>none</code>, <code>hash</code>, <code>range</code></li>
-<li>Spark Structured Streaming applications &rarr; <code>set write.distribution-mode</code> to <code>none</code>.</li>
+<li>Spark Structured Streaming applications &rarr; set <code>write.distribution-mode</code> to <code>none</code>.</li>
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Choose the Right Update Strategy (MoR)</li>
@@ -5114,6 +5180,35 @@
 </div>
 <ul>
 <li>By default, Iceberg's compaction <strong>doesn't merge delete files</strong> unless you change the default of the <code>delete-file-threshold property</code> to a <strong>smaller</strong> value.</li>
+</ul>
+<h2 id="maintaining-tables-by-using-compaction"><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/best-practices-compaction.html">Maintaining Tables by Using Compaction</a><a class="headerlink" href="#maintaining-tables-by-using-compaction" title="Permanent link">&para;</a></h2>
+<h3 id="common-compaction-properties">Common Compaction Properties<a class="headerlink" href="#common-compaction-properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>max-concurrent-file-group-rewrites</code>: Defaults to <strong>5</strong>. Maximum number of file groups to be simultaneously rewritten.</li>
+<li><code>partial-progress.enabled</code>: Defaults to <strong>false</strong>. Enable committing groups of files prior to the entire rewrite completing</li>
+<li><code>partial-progress.max-commits</code>: Defaults to <strong>10</strong>. Maximum amount of commits that this rewrite is allowed to produce if partial progress is enabled.</li>
+<li><code>rewrite-job-order</code>: Defaults to <strong>None</strong>. Force the rewrite job order based on the value. Options are <code>bytes-asc</code>, <code>bytes-desc</code>, <code>files-asc</code>, and <code>files-desc</code>.</li>
+<li><code>max-file-group-size-bytes</code>: Defaults to <strong>100GB</strong>. Specifies the maximum amount of data that can be rewritten in a single file group.</li>
+<li><code>min-file-size-bytes</code>: Defaults to <strong>75% of target file size</strong>. Files under this threshold will be considered for rewriting regardless of any other criteria.</li>
+<li><code>max-file-size-bytes</code>: Defaults to <strong>180% of target file size</strong>. Files with sizes above this threshold will be considered for rewriting regardless of any other criteria</li>
+<li><code>min-input-files</code>: Defaults to <strong>5</strong>. Any file group exceeding this number of files will be rewritten regardless of other criteria</li>
+<li><code>delete-file-threshold</code>: Defaults to <strong>2147483647</strong>. Minimum number of deletes that needs to be associated with a data file for it to be considered for rewriting.</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<figure>
+<p><a class="glightbox" href="https://docs.aws.amazon.com/images/prescriptive-guidance/latest/apache-iceberg-on-aws/images/compaction.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.aws.amazon.com/images/prescriptive-guidance/latest/apache-iceberg-on-aws/images/compaction.png" /></a></p>
+<figcaption>
+<p>Partitions &amp; File Groups</p>
+</figcaption>
+</figure>
+<ul>
+<li>The Iceberg table consists of <strong>four partitions</strong></li>
+<li>The Spark application creates a total of <strong>four file groups to process</strong>.</li>
+<li><strong>A file group</strong> is an Iceberg abstraction that represents a collection of files that <strong>will be processed by a single Spark job</strong>. That is, <strong>the Spark application</strong> that runs compaction <strong>will create four Spark jobs to process the data</strong>.</li>
+<li>The partition labeled <code>month=01</code> includes <strong>two file groups</strong> because it exceeds the <strong>maximum size constraint of 100 GB</strong>.</li>
+<li>In contrast, the <code>month=02</code> partition contains <strong>a single file group</strong> because it's <strong>under 100 GB</strong>.</li>
+<li>The <code>month=03</code> partition doesn't satisfy the default minimum input file requirement of five files. As a result, it won't be compacted.</li>
+<li>Lastly, although the <code>month=04</code> partition doesn't contain enough data to form a single file of the desired size, the files will be compacted because <strong>the partition includes more than five small files</strong>.</li>
 </ul>
 
 
