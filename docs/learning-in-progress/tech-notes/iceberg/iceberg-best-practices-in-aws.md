@@ -108,3 +108,32 @@ VACUUM glue_catalog.db.my_table
         - Set `write-format` to **Avro** (row-based format) if **write speed** is important for your workload.
 
 - By default, Iceberg's compaction **doesn't merge delete files** unless you change the default of the `delete-file-threshold property` to a **smaller** value.
+
+## [Maintaining Tables by Using Compaction](https://docs.aws.amazon.com/prescriptive-guidance/latest/apache-iceberg-on-aws/best-practices-compaction.html)
+
+### Common Compaction Properties
+
+- `max-concurrent-file-group-rewrites`: Defaults to **5**. Maximum number of file groups to be simultaneously rewritten.
+- `partial-progress.enabled`: Defaults to **false**. Enable committing groups of files prior to the entire rewrite completing
+- `partial-progress.max-commits`: Defaults to **10**. Maximum amount of commits that this rewrite is allowed to produce if partial progress is enabled.
+- `rewrite-job-order`: Defaults to **None**. Force the rewrite job order based on the value. Options are `bytes-asc`, `bytes-desc`, `files-asc`, and `files-desc`.
+- `max-file-group-size-bytes`: Defaults to **100GB**. Specifies the maximum amount of data that can be rewritten in a single file group.
+- `min-file-size-bytes`: Defaults to **75% of target file size**. Files under this threshold will be considered for rewriting regardless of any other criteria.
+- `max-file-size-bytes`: Defaults to **180% of target file size**. Files with sizes above this threshold will be considered for rewriting regardless of any other criteria
+- `min-input-files`: Defaults to **5**. Any file group exceeding this number of files will be rewritten regardless of other criteria
+- `delete-file-threshold`: Defaults to **2147483647**. Minimum number of deletes that needs to be associated with a data file for it to be considered for rewriting.
+
+### Example
+
+![](https://docs.aws.amazon.com/images/prescriptive-guidance/latest/apache-iceberg-on-aws/images/compaction.png)
+/// caption
+Partitions & File Groups
+///
+
+- The Iceberg table consists of **four partitions**
+- The Spark application creates a total of **four file groups to process**.
+- **A file group** is an Iceberg abstraction that represents a collection of files that **will be processed by a single Spark job**. That is, **the Spark application** that runs compaction **will create four Spark jobs to process the data**.
+- The partition labeled `month=01` includes **two file groups** because it exceeds the **maximum size constraint of 100 GB**.
+- In contrast, the `month=02` partition contains **a single file group** because it's **under 100 GB**.
+- The `month=03` partition doesn't satisfy the default minimum input file requirement of five files. As a result, it won't be compacted.
+- Lastly, although the `month=04` partition doesn't contain enough data to form a single file of the desired size, the files will be compacted because **the partition includes more than five small files**.
