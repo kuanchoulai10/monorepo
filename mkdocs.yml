@@ -208,6 +208,7 @@ extra_javascript:
 
 extra_css:
   - stylesheets/neoteroi-mkdocs-v1.0.4.css
+  - stylesheets/extra.css
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 extra:
