@@ -18,7 +18,7 @@
         <link rel="prev" href="../../iceberg/iceberg-in-prod-netflix-2023/">
       
       
-        <link rel="next" href="../../flink/how-flink-works/">
+        <link rel="next" href="../iceberg-kafka-sink-connector/">
       
       
       <link rel="icon" href="../../../../images/avatar.png">
@@ -53,6 +53,8 @@
     
     
       <link rel="stylesheet" href="../../../../stylesheets/neoteroi-mkdocs-v1.0.4.css">
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
@@ -3229,6 +3231,8 @@
       
         
       
+        
+      
     
     
       
@@ -3363,6 +3367,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../iceberg-kafka-sink-connector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deep Dive into Kafka Connect Icerberg Sink Connector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../iceberg/migration/" class="md-nav__link">
         
   
@@ -3465,6 +3491,8 @@
       
         
       
+        
+      
     
     
       
@@ -3560,6 +3588,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Idempotent Producers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-flow-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Flow Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3569,12 +3621,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transactional Producers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group-coordinator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Group Coordinator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-coordinator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction Coordinator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-transaction-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Transaction APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-flow-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Flow Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#exactly-once-support-for-source-connectors" class="md-nav__link">
+  <a href="#faqs" class="md-nav__link">
     <span class="md-ellipsis">
-      Exactly-Once Support for Source Connectors
+      FAQs
     </span>
   </a>
   
@@ -3593,6 +3705,28 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iceberg-kafka-sink-connector/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deep Dive into Kafka Connect Icerberg Sink Connector
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4925,6 +5059,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Idempotent Producers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-flow-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Flow Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4934,12 +5092,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transactional Producers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group-coordinator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Group Coordinator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-coordinator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transaction Coordinator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-transaction-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Transaction APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-flow-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Flow Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#exactly-once-support-for-source-connectors" class="md-nav__link">
+  <a href="#faqs" class="md-nav__link">
     <span class="md-ellipsis">
-      Exactly-Once Support for Source Connectors
+      FAQs
     </span>
   </a>
   
@@ -4999,150 +5217,454 @@
 
 
 <h1 id="exactly-once-semantics-in-kafka">Exactly Once Semantics in Kafka<a class="headerlink" href="#exactly-once-semantics-in-kafka" title="Permanent link">&para;</a></h1>
-<ul>
-<li>Debezium Kafka Connect Source Connectors &rarr; <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-618%3A+Exactly-Once+Support+for+Source+Connectors">KIP-618: Exactly-Once Support for Source Connectors</a> &rarr; <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging">KIP-98: Exactly Once Delivery and Transactional Messaging</a></li>
-<li>Icerberg Kafka Connect Sink Connectors &rarr; <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-447%3A+Producer+scalability+for+exactly+once+semantics">KIP-447: Producer scalability for exactly once semantics</a></li>
-</ul>
-<p><a class="glightbox" href="https://www.tabular.io/wp-content/uploads/2023/12/image-24.jpeg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://www.tabular.io/wp-content/uploads/2023/12/image-24.jpeg" width="500" /></a></p>
 <h2 id="idempotent-producers">Idempotent Producers<a class="headerlink" href="#idempotent-producers" title="Permanent link">&para;</a></h2>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>KRaft</strong> cluster with <strong>3</strong> brokers and <strong>3</strong> controllers, eliminating ZooKeeper dependency</li>
+<li>Replication factor of <strong>3</strong>, ensuring each partition maintains three replicas for fault tolerance</li>
+<li>Minimum In-Sync Replicas (ISR) set to <strong>2</strong>, requiring at least two replicas to acknowledge writes</li>
+<li>Acknowledgment level of <code>acks=all</code>, guaranteeing that producers wait for all in-sync replicas</li>
+<li>Destination topic configured with 2 partitions (A, B) for parallel processing<ul>
+<li>Partition A leadership: Broker 1</li>
+<li>Partition B leadership: Broker 2</li>
+</ul>
+</li>
+<li>Idempotent producers enabled (<code>enable.idempotence=true</code>)</li>
+</ul>
+<h3 id="key-flow-steps">Key Flow Steps<a class="headerlink" href="#key-flow-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>Producer 1</code> initializes and gets PID</li>
+<li><code>Producer 1</code> sends first batch to <code>Partition A</code></li>
+<li>Network jitter, it causes <code>Producer 1</code> to resend the same batch to <code>Partition A</code></li>
+<li><code>Broker 1</code> fails, triggering leader election for <code>Partition A</code></li>
+<li><code>Producer 1</code> sends second batch to new <code>Partition A</code> leader</li>
+<li><code>Producer 2</code> initializes with different PID</li>
+<li><code>Producer 1</code> sends first batch to <code>Partition B</code> (no fencing conflict)</li>
+</ol>
 <pre class="mermaid"><code>sequenceDiagram
-  participant P as Producer (enable.idempotence=true)
-  participant B1 as Broker-1 (Leader P0)
-  participant B2 as Broker-2 (Follower)
-  participant B3 as Broker-3 (Follower)
-  participant C as KRaft Controllers
+    autonumber
 
-  Note over P: 啟動
-  P-&gt;&gt;B1: InitProducerId
-  B1-&gt;&gt;C: 請求分配 ProducerId
-  C--&gt;&gt;B1: 回覆 PID 範圍
-  B1--&gt;&gt;P: PID, epoch
+    participant P2 as Producer 2
+    participant P1 as Producer 1
+    participant B1 as Broker 1 &lt;br/&gt; (Partition A → L) &lt;br/&gt; (Partition B → F)
+    participant B2 as Broker 2 &lt;br/&gt; (Partition A → F) &lt;br/&gt; (Partition B → L)
+    participant B3 as Broker 3 &lt;br/&gt; (Partition A → F) &lt;br/&gt; (Partition B → F)
+    participant C as KRaft Controllers
 
-  Note over P: 針對 Partition-0，sequence=0 組批
-  P-&gt;&gt;B1: Produce(PID,epoch,seq=0,batch)
-  B1-&gt;&gt;B1: 檢查序號=預期？是
-  B1-&gt;&gt;B1: 寫入本地日誌
-  par 複寫到 ISR
-    B1-&gt;&gt;B2: 複寫 batch
-    B1-&gt;&gt;B3: 複寫 batch
-  end
-  B2--&gt;&gt;B1: 複寫完成
-  B3--&gt;&gt;B1: 複寫完成
-  B1--&gt;&gt;P: ACK (acks=all, min.insync.replicas=2 滿足)
+    Note over P1: Initialize
+    rect rgb(245,245,245)
+        P1-&gt;&gt;B1: Send InitProducerId() request
+        B1-&gt;&gt;C: Ask controllers to allocate PIDs
+        C--&gt;&gt;B1: Return a range of PIDs
+        B1--&gt;&gt;P1: PID (1025) + Epoch (0)
+    end
 
-  Note over P: 網路抖動，重送同一批
-  P-&gt;&gt;B1: Produce(PID,epoch,seq=0,batch)  // 重傳
-  B1-&gt;&gt;B1: 看見舊序號→判定重複→不寫盤
-  B1--&gt;&gt;P: ACK (去重成功)
+    Note over P1: Send first batch (seq=0) to Partition A
+    rect rgb(245,245,245)
+        P1-&gt;&gt;B1: Produce(PID=1025, epoch=0, seq=0, batch)
+        B1-&gt;&gt;B1: Check if sequence number matches expected? YES &lt;br/&gt; Write batch to log
+        par Replicate
+            B1-&gt;&gt;B2: Replicate batch
+            B1-&gt;&gt;B3: Replicate batch
+        end
+        B2--&gt;&gt;B1: Replication completed
+        B1--&gt;&gt;P1: Acknowledged
+        B3--&gt;&gt;B1: Replication completed
+    end
 
-  Note over B1: Leader 故障，B2 被選為新 Leader
-  B1-xB1: Down
-  C-&gt;&gt;B2: 升為 Leader
-  B2-&gt;&gt;B2: 從日誌恢復 (PID,seq=0 已存在)
+    Note over P1: Network jitter, resend same batch to Partition A
+    rect rgb(245,245,245)
+        P1-&gt;&gt;B1: Produce(PID=1025, epoch=0, seq=0, batch) (Retry)
+        B1-&gt;&gt;B1: Detect duplicate sequence and skip write
+        B1--&gt;&gt;P1: Acknowledged (duplicate skipped)
+    end
 
-  Note over P: 續傳下一批 seq=1
-  P-&gt;&gt;B2: Produce(PID,epoch,seq=1,batch)
-  B2-&gt;&gt;B2: 檢查序號=預期→寫盤→複寫→ACK
-  B2--&gt;&gt;P: ACK</code></pre>
+    Note over B1: Leader Election (Partition A)
+    rect rgb(245,245,245)
+        B1-xB1: Down
+        C-&gt;&gt;B2: Promote to Leader
+        B2-&gt;&gt;B2: Recover from log (PID=1025, seq=0 already present)
+        B1-&gt;&gt;B1: Up
+    end
+
+    Note over P1: Send second batch (seq=1) to Partition A
+    rect rgb(245,245,245)
+        P1-&gt;&gt;B2: Produce(PID=1025, epoch=0, seq=1, batch)
+        B2-&gt;&gt;B2: Check if sequence number matches expected? YES &lt;br/&gt; Write batch to log
+        par Replicate
+            B2-&gt;&gt;B1: Replicate batch
+            B2-&gt;&gt;B3: Replicate batch
+        end
+        B1--&gt;&gt;B2: Replication completed
+        B2--&gt;&gt;P1: Acknowledged
+        B3--&gt;&gt;B2: Replication completed
+    end
+
+    Note over P2: Initialize
+    rect rgb(245,245,245)
+        P2-&gt;&gt;B1: Send InitProducerId() request
+        B1-&gt;&gt;C: Ask controllers to allocate PIDs
+        C--&gt;&gt;B1: Return a range of PIDs
+        B1--&gt;&gt;P2: PID (8591) + Epoch (0)
+    end
+
+    Note over P1: Send first batch (seq=0) to Partition B (not fenced by Producer 2)
+    rect rgb(245,245,245)
+        P1-&gt;&gt;B2: Produce(PID=1025, epoch=0, seq=0, batch)
+        B2-&gt;&gt;B2: Check if sequence number matches expected? YES &lt;br/&gt; Write batch to log
+        par Replicate
+            B2-&gt;&gt;B1: Replicate batch
+            B2-&gt;&gt;B3: Replicate batch
+        end
+        B1--&gt;&gt;B2: Replication completed
+      B2--&gt;&gt;P1: Acknowledged
+      B3--&gt;&gt;B2: Replication completed
+    end
+</code></pre>
 <h2 id="transactional-producers">Transactional Producers<a class="headerlink" href="#transactional-producers" title="Permanent link">&para;</a></h2>
+<p>Building upon the foundation of idempotent producers, Kafka's transactional producers provide the ultimate guarantee for exactly-once semantics by enabling atomic writes across multiple partitions. This advanced capability transforms Kafka from a reliable message broker into a distributed transaction system, ensuring that either all messages in a transaction are committed together, or none at all.</p>
+<p>To understand the inner workings of Transactional producers, I recommend the following video, which provides a clear and accessible explanation of how Transactional producers operate and their underlying processes.</p>
+<figure>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ki2D2o9aVl8?si=1hY1waYsw26zV4ft" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption>
+<p>Apache Kafka&reg; Transactions: Message Delivery and Exactly-Once Semantics (2022)</p>
+</figcaption>
+</figure>
+<p>After watching the video, you can also refer to the examples and explanations in this article. Having two different sources explaining the same concept will help deepen your understanding.</p>
+<p>Next, we will explain this concept using the following simplified example. This example includes the following key components:</p>
+<ul>
+<li><strong>Source Topic</strong>: the origin of messages to be processed</li>
+<li><strong>Data Processing Application</strong>: the core component that consumes, processes, and produces messages atomically<ul>
+<li><strong>Source Consumer</strong>: reads messages from the source topic</li>
+<li><strong>Transactional Producer</strong>: produces messages to the destination topic within a transaction</li>
+</ul>
+</li>
+<li><strong>Destination Topic</strong>: the target topic for processed messages</li>
+<li><strong>Destination Consumer</strong>: reads messages from the destination topic with <code>read-committed</code> isolation level</li>
+</ul>
+<figure>
+<p><a class="glightbox" href="../assets/eos.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../assets/eos.excalidraw.svg" /></a></p>
+<figcaption>
+<p>Transactional Producer Example</p>
+</figcaption>
+</figure>
+<p>Before diving into how this example works in practice, let's first examine the two important roles behind Transactional Producers: the <em>Group Coordinator</em> and <em>Transaction Coordinator</em>.</p>
+<p>Both <em>Transaction Coordinators</em> and <em>Group Coordinators</em> operate as specialized roles <strong>within existing Kafka brokers</strong> rather than as separate service processes, ensuring efficient resource utilization and simplified deployment. These coordinators rely on <strong>internal topics</strong> to maintain their state and coordinate operations across the cluster.</p>
+<h3 id="group-coordinator">Group Coordinator<a class="headerlink" href="#group-coordinator" title="Permanent link">&para;</a></h3>
+<p>The <strong>Group Coordinator</strong> manages all aspects of consumer group operations through <strong>the <code>__consumer_offsets</code> internal topic</strong>. This compacted topic serves as the persistent storage for consumer group offset information, enabling position tracking across the entire cluster. <strong>Consumer groups periodically commit their reading position (offset) for each partition to this topic</strong>, creating a durable record that enables consumers to <strong>resume from the correct position after restarts or rebalancing scenarios</strong>.</p>
+<p><strong>The <code>__consumer_offsets</code> topic is partitioned using the consumer group ID as the partition key, calculated through <code>hash(group.id)</code></strong>. This partitioning strategy ensures that all offset information for a specific consumer group is consistently stored within the same partition, providing locality and consistency for group-related operations. For example, a consumer group with ID "analytics-group" would always map to the same partition regardless of cluster topology changes.</p>
+<p><strong>The Group Coordinator responsibility is automatically assigned to the broker that serves as the leader for the corresponding <code>__consumer_offsets</code> partition</strong>. This design eliminates the need for separate coordination infrastructure while ensuring that each group has a single authoritative coordinator. The coordinator is responsible for:</p>
+<ul>
+<li>managing consumer group membership through join and leave operations</li>
+<li>orchestrating partition assignment across group members</li>
+<li>handling offset commit and fetch operations</li>
+<li>coordinating the complex rebalancing process when group membership changes or partition assignments need redistribution</li>
+</ul>
+<h3 id="transaction-coordinator">Transaction Coordinator<a class="headerlink" href="#transaction-coordinator" title="Permanent link">&para;</a></h3>
+<p>The <strong>Transaction Coordinator</strong> orchestrates transactional operations through <strong>the <code>__transaction_state</code> internal topic</strong>, which serves as the cornerstone for Kafka's exactly-once semantics. This topic maintains comprehensive transaction metadata including transaction state, associated producers, and all involved partitions. The coordinator records critical commit and abort decisions in this topic, enabling atomic writes across multiple partitions and ensuring that transactions are either fully completed or completely rolled back.</p>
+<p><strong>The <code>__transaction_state</code> topic uses the transactional ID as its partition key, implementing a <code>hash(transactional.id)</code> partitioning scheme.</strong> This approach ensures that all transaction state for a specific transactional producer is consistently managed by the same partition and coordinator. For instance, a transactional producer with ID "order-processor" would always be managed by the same Transaction Coordinator, providing consistency and enabling proper producer fencing mechanisms.</p>
+<p>Similar to Group Coordinators, <strong>the Transaction Coordinator role is automatically assigned to the broker that leads the corresponding <code>__transaction_state</code> partition</strong>. This coordinator is responsible for:</p>
+<ul>
+<li>managing transactional producer state including Producer ID (PID) and epoch tracking</li>
+<li>maintaining detailed records of transaction operations throughout their lifecycle</li>
+<li>generating control batches that mark transaction boundaries in partition logs</li>
+<li>orchestrating the sophisticated two-phase commit protocol across multiple partitions to ensure atomicity</li>
+</ul>
+<h3 id="core-transaction-apis">Core Transaction APIs<a class="headerlink" href="#core-transaction-apis" title="Permanent link">&para;</a></h3>
+<p>Now that we understand the two critical roles operating behind the scenes on brokers in the transaction mechanism, let's shift our focus to producers. Transactional Producers introduce a sophisticated API that orchestrates the entire transaction lifecycle through essential operations:</p>
+<ul>
+<li><code>initTransactions()</code>: Registers the producer with the transaction coordinator</li>
+<li><code>beginTransaction()</code>: Marks the start of a new transaction</li>
+<li><code>send()</code>: Publishes messages within the transaction context</li>
+<li><code>sendOffsetsToTransaction()</code>: Includes consumer offsets in the transaction</li>
+<li><code>commitTransaction()</code>: Atomically commits all transaction operations</li>
+<li><code>abortTransaction()</code>: Cancels the transaction and discards all changes</li>
+</ul>
+<h3 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<figure>
+<p><a class="glightbox" href="../assets/eos.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../assets/eos.excalidraw.svg" width="600" /></a></p>
+<figcaption>
+<p>Transactional Producer Example</p>
+</figcaption>
+</figure>
+<p>Our demonstration environment showcases a robust, production-ready setup that highlights the distributed nature of transactional processing:</p>
+<ul>
+<li><strong>KRaft</strong> cluster with <strong>3</strong> brokers and <strong>3</strong> controllers, eliminating ZooKeeper dependency</li>
+<li>Replication factor of <strong>3</strong>, ensuring each partition maintains three replicas for fault tolerance</li>
+<li>Minimum In-Sync Replicas (ISR) set to <strong>2</strong>, requiring at least two replicas to acknowledge writes</li>
+<li>Acknowledgment level of <code>acks=all</code>, guaranteeing that producers wait for all in-sync replicas</li>
+<li>Destination topic configured with 2 partitions (A, B) for parallel processing<ul>
+<li>Partition A leadership: <code class="red">Broker 1</code></li>
+<li>Partition B leadership: <code class="red">Broker 2</code></li>
+</ul>
+</li>
+<li>Group Coordinator: <code class="orange">Broker 1</code></li>
+<li>Transaction Coordinator: <code class="blue">Broker 3</code></li>
+<li>Transactional identity: <code>transactional.id = my-txn-app</code></li>
+</ul>
+<figure>
+<p><a class="glightbox" href="../assets/eos-breakdown.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../assets/eos-breakdown.excalidraw.svg" width="600" /></a></p>
+<figcaption>
+<p>Kafka Cluster Breakdown</p>
+</figcaption>
+</figure>
+<h3 id="key-flow-steps_1">Key Flow Steps<a class="headerlink" href="#key-flow-steps_1" title="Permanent link">&para;</a></h3>
+<p>The following sequence diagrams illustrate the complete transaction lifecycle, including normal operations, error scenarios, and producer fencing mechanisms.</p>
+<ol>
+<li><strong>Initialization Phase</strong>: Producer configures <code>transactional.id</code> and calls <code>initTransactions()</code> to register with Transaction Coordinator, receiving PID and epoch</li>
+<li><strong>Transaction Boundary</strong>: Producer calls <code>beginTransaction()</code> to mark the start of atomic operation scope</li>
+<li><strong>Partition Registration</strong>: First <code>send()</code> to each partition triggers <code>AddPartitionsToTxn()</code> request to register partition in transaction state</li>
+<li><strong>Message Production</strong>: Non-blocking <code>send()</code> operations write batches to multiple partitions with sequence numbers for idempotence</li>
+<li><strong>Offset Integration</strong>: <code>sendOffsetsToTransaction()</code> includes consumer group offsets in the transaction for exactly-once consumption</li>
+<li><strong>Two-Phase Commit</strong>: <ul>
+<li><strong>Prepare Phase</strong>: Producer calls <code>commitTransaction()</code> or <code>abortTransaction()</code> to initiate coordinator-driven 2PC</li>
+<li><strong>Commit Phase</strong>: Coordinator sends <code>WriteTxnMarker()</code> to all registered partitions in parallel to write control batches</li>
+</ul>
+</li>
+<li><strong>Consumer Isolation</strong>: Read-committed consumers only see data from successfully committed transactions</li>
+<li><strong>Producer Fencing</strong>: New producer with same <code>transactional.id</code> gets incremented epoch, invalidating previous producer instances</li>
+</ol>
 <pre class="mermaid"><code>sequenceDiagram
-  autonumber
-  participant P as Producer (transactional.id)
-  participant TC as Transaction Coordinator
-  participant L0 as Leader: Topic-Partition A
-  participant F0 as Follower: Partition A (replica)
-  participant L1 as Leader: Topic-Partition B
-  participant F1 as Follower: Partition B (replica)
-  participant GC as Group Coordinator
-  participant C as Consumer (isolation=read_committed)
+    autonumber
+    participant P2 as Producer 2&lt;br/&gt;(same transactional.id)
+    participant P1 as Producer 1&lt;br/&gt;(transactional.id="my-txn-app")
+    participant B1 as Broker 1&lt;br/&gt;(Partition A → Leader)&lt;br/&gt;(Group Coordinator)
+    participant B2 as Broker 2&lt;br/&gt;(Partition B → Leader)
+    participant B3 as Broker 3&lt;br/&gt;(Transaction Coordinator)
+    participant C as Destination Consumer&lt;br/&gt;(isolation.level=read_committed)
 
-  rect rgb(245,245,245)
-    Note over P,TC: 初始化：拿 PID 與 Epoch（可被 fencing 的身分）
-    P-&gt;&gt;TC: InitProducerId(transactional.id)
-    TC--&gt;&gt;P: ProducerId + Epoch
-    P-&gt;&gt;P: beginTransaction()
-  end
-
-  rect rgb(240,255,240)
-    Note over P,TC: 觸碰分區時會被加入交易
-    P-&gt;&gt;TC: AddPartitionsToTxn([A,B])
-    TC--&gt;&gt;P: OK
-  end
-
-  rect rgb(235,245,255)
-    par 對 Partition A 寫入（具序號的 idempotent 批次）
-      P-&gt;&gt;L0: Produce(PID,Epoch,Seq... batch)
-      L0-&gt;&gt;F0: Replicate batch
-      F0--&gt;&gt;L0: ACK
-      L0--&gt;&gt;P: ACK（acks=all；ISR≥2 才成功）
-    and 對 Partition B 寫入
-      P-&gt;&gt;L1: Produce(PID,Epoch,Seq... batch)
-      L1-&gt;&gt;F1: Replicate batch
-      F1--&gt;&gt;L1: ACK
-      L1--&gt;&gt;P: ACK（acks=all；ISR≥2 才成功）
+    rect rgb(245,245,245)
+        Note over P1: Initialize
+        P1-&gt;&gt;P1: Configure TRANSACTIONAL_ID_CONFIG="my-txn-app"
+        P1-&gt;&gt;P1: initTransactions()
+        P1-&gt;&gt;B3: InitProducerId(transactional.id="my-txn-app")
+        B3-&gt;&gt;B3: Transaction Coordinator registers or updates transactional ID
+        B3--&gt;&gt;P1: PID (1025) + Epoch (0)
     end
-  end
 
-  rect rgb(255,245,235)
-    Note over P,GC: 將來源位移納入同一交易（CT/P 的 EOS）
-    P-&gt;&gt;GC: sendOffsetsToTransaction(groupId, offsets)
-    GC--&gt;&gt;P: OK（提交時與輸出原子性落地）
-  end
-
-  alt 正常提交 (COMMIT)
-    rect rgb(245,255,245)
-      P-&gt;&gt;TC: EndTxn(COMMIT)
-      TC-&gt;&gt;L0: WriteTxnMarker(COMMIT)
-      L0-&gt;&gt;F0: Replicate ControlBatch(COMMIT)
-      F0--&gt;&gt;L0: ACK
-      L0--&gt;&gt;TC: Marker written
-
-      TC-&gt;&gt;L1: WriteTxnMarker(COMMIT)
-      L1-&gt;&gt;F1: Replicate ControlBatch(COMMIT)
-      F1--&gt;&gt;L1: ACK
-      L1--&gt;&gt;TC: Marker written
-
-      TC--&gt;&gt;P: COMMIT success
+    rect rgb(245,245,245)
+        Note over P1: Begin Transaction
+        P1-&gt;&gt;P1: beginTransaction()
     end
-    rect rgb(240,240,255)
-      C-&gt;&gt;L0: Fetch(read_committed)
-      L0--&gt;&gt;C: 只回「已被 COMMIT 標記」的批次（跳過未決/abort）
-      C-&gt;&gt;L1: Fetch(read_committed)
-      L1--&gt;&gt;C: 同上
-    end
-  else 發生錯誤 → 回滾 (ABORT)
-    rect rgb(255,240,240)
-      P-&gt;&gt;TC: EndTxn(ABORT)
-      TC-&gt;&gt;L0: WriteTxnMarker(ABORT)
-      L0-&gt;&gt;F0: Replicate ControlBatch(ABORT)
-      F0--&gt;&gt;L0: ACK
-      L0--&gt;&gt;TC: Marker written
 
-      TC-&gt;&gt;L1: WriteTxnMarker(ABORT)
-      L1-&gt;&gt;F1: Replicate ControlBatch(ABORT)
-      F1--&gt;&gt;L1: ACK
-      L1--&gt;&gt;TC: Marker written
+    par NON-BLOCKING SENDS
+        rect rgb(245,245,245)
+            Note over P1: Send first batch to Partition A of destination topic (NON-BLOCKING)
+            P1-&gt;&gt;P1: send()
+            P1-&gt;&gt;B3: AddPartitionsToTxn()
+            B3-&gt;&gt;B3: Transaction Coordinator registers Partition A in transaction state topic
+            B3--&gt;&gt;P1: Partition A registered successfully
 
-      TC--&gt;&gt;P: ABORT success
-    end
-    rect rgb(240,240,255)
-      C-&gt;&gt;L0: Fetch(read_committed)
-      L0--&gt;&gt;C: 跳過 ABORT 範圍內的資料
-    end
-  end
+            P1-&gt;&gt;B1: Produce(PID=1025, epoch=0, seq=0, batch)
+            B1-&gt;&gt;B1: Check if sequence number matches expected? YES &lt;br/&gt; Write batch to log
+            par Replicate
+                B1-&gt;&gt;B2: Replicate batch
+                B1-&gt;&gt;B3: Replicate batch
+            end
+            B2--&gt;&gt;B1: Replication completed
+            B1--&gt;&gt;P1: Acknowledge
+            B3--&gt;&gt;B1: Replication completed
+        end
+    and NON-BLOCKING SENDS
+        rect rgb(245,245,245)
+            Note over P1: Send first batch to Partition B of destination topic (NON-BLOCKING)
+            P1-&gt;&gt;P1: send()
+            P1-&gt;&gt;B3: AddPartitionsToTxn()
+            B3-&gt;&gt;B3: Transaction Coordinator registers Partition A in transaction state topic
+            B3--&gt;&gt;P1: Partition B registered successfully
 
-  rect rgb(255,255,235)
-    Note over P,TC: Fencing（同一 transactional.id 被雙活使用）
-    participant P2 as Producer'(同 transactional.id)
-    P2-&gt;&gt;TC: InitProducerId(transactional.id)
-    TC--&gt;&gt;P2: ProducerId + 更高 Epoch
-    Note over P,P2: 舊 Producer (P) 後續寫入將被 broker 以 INVALID_PRODUCER_EPOCH 拒絕
-  end</code></pre>
-<h2 id="exactly-once-support-for-source-connectors">Exactly-Once Support for Source Connectors<a class="headerlink" href="#exactly-once-support-for-source-connectors" title="Permanent link">&para;</a></h2>
+            P1-&gt;&gt;B2: Produce(PID=1025, epoch=0, seq=0, batch)
+            B2-&gt;&gt;B2: Check if sequence number matches expected? YES &lt;br/&gt; Write batch to log
+            par Replicate
+                B2-&gt;&gt;B1: Replicate batch
+                B2-&gt;&gt;B3: Replicate batch
+            end
+            B1--&gt;&gt;B2: Replication completed
+            B2--&gt;&gt;P1: Acknowledged
+            B3--&gt;&gt;B2: Replication completed
+        end
+    end
+
+    rect rgb(245,245,245)
+        Note over P1: Consumer Offset Integration
+        P1-&gt;&gt;P1: sendOffsetsToTransaction()
+        P1-&gt;&gt;B3: AddOffsetsToTxn()
+        B3-&gt;&gt;B3: Transaction Coordinator registers consumer group offsets in transaction state topic
+        B3--&gt;&gt;P1: Consumer offsets registered successfully
+        P1-&gt;&gt;B1: TxnOffsetCommit()
+        B1-&gt;&gt;B1: Group Coordinator commits consumer group offsets in consumer offsets topic
+        B1--&gt;&gt;P1: Offsets registered successfully
+    end
+
+    alt COMMIT
+        rect rgb(245,245,245)
+            Note over P1,B3: 2PC (COMMIT)
+            P1-&gt;&gt;P1: commitTransaction()
+            P1-&gt;&gt;B3: EndTxn(COMMIT)
+
+            par
+                B3-&gt;&gt;B1: WriteTxnMarker(COMMIT) for Partition A
+                B1-&gt;&gt;B1: Write COMMIT control batch to log
+                B1-&gt;&gt;B2: Replicate COMMIT control batch
+                B1-&gt;&gt;B3: Replicate COMMIT control batch
+                B2--&gt;&gt;B1: Replication completed
+                B1--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B1: Replication completed
+            and
+                B3-&gt;&gt;B2: WriteTxnMarker(COMMIT) for Partition B
+                B2-&gt;&gt;B2: Write COMMIT control batch to log
+                B2-&gt;&gt;B1: Replicate COMMIT control batch
+                B2-&gt;&gt;B3: Replicate COMMIT control batch
+                B1--&gt;&gt;B2: Replication completed
+                B2--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B2: Replication completed
+            and
+                B3-&gt;&gt;B1: WriteTxnMarker(COMMIT) for consumer offsets topic
+                B1-&gt;&gt;B1: Write COMMIT control batch to log
+                B1-&gt;&gt;B2: Replicate COMMIT control batch
+                B1-&gt;&gt;B3: Replicate COMMIT control batch
+                B2--&gt;&gt;B1: Replication completed
+                B1--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B1: Replication completed
+            end
+
+            B3-&gt;&gt;B3: Transaction Coordinator updates transaction state to COMMITTED
+            B3--&gt;&gt;P1: Transaction COMMITTED successfully
+        end
+
+
+    else ABORT
+        rect rgb(245,245,245)
+            Note over P1,B3: 2PC (ABORT)
+            P1-&gt;&gt;P1: abortTransaction()
+            P1-&gt;&gt;B3: EndTxn(ABORT)
+
+            par
+                B3-&gt;&gt;B1: WriteTxnMarker(ABORT) for Partition A
+                B1-&gt;&gt;B1: Write ABORT control batch to log
+                B1-&gt;&gt;B2: Replicate ABORT control batch
+                B1-&gt;&gt;B3: Replicate ABORT control batch
+                B2--&gt;&gt;B1: Replication completed
+                B1--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B1: Replication completed
+            and
+                B3-&gt;&gt;B2: WriteTxnMarker(ABORT) for Partition B
+                B2-&gt;&gt;B2: Write ABORT control batch to log
+                B2-&gt;&gt;B1: Replicate ABORT control batch
+                B2-&gt;&gt;B3: Replicate ABORT control batch
+                B1--&gt;&gt;B2: Replication completed
+                B2--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B2: Replication completed
+            and
+                B3-&gt;&gt;B1: WriteTxnMarker(COMMIT) for consumer offsets topic
+                B1-&gt;&gt;B1: Write COMMIT control batch to log
+                B1-&gt;&gt;B2: Replicate COMMIT control batch
+                B1-&gt;&gt;B3: Replicate COMMIT control batch
+                B2--&gt;&gt;B1: Replication completed
+                B1--&gt;&gt;B3: Acknowledged
+                B3--&gt;&gt;B1: Replication completed
+            end
+
+            B3-&gt;&gt;B3: Transaction Coordinator updates transaction state to ABORTED
+            B3--&gt;&gt;P1: Transaction ABORTED successfully
+        end
+    end
+
+
+
+    rect rgb(245,245,245)
+        Note over C,B2: Destination Consumer Skips Aborted Data and Reads Committed Data
+        C-&gt;&gt;B1: Fetch from Partition A
+        C-&gt;&gt;B2: Fetch from Partition B
+        B1--&gt;&gt;C: Return only COMMITTED data (skip uncommitted/aborted)
+        B2--&gt;&gt;C: Return only COMMITTED data (skip uncommitted/aborted)
+    end
+
+    rect rgb(245,245,245)
+        Note over P2: Initialize
+        P2-&gt;&gt;P2: Configure TRANSACTIONAL_ID_CONFIG="my-txn-app"
+        P2-&gt;&gt;P2: initTransactions()
+        P2-&gt;&gt;B3: InitProducerId(transactional.id="my-txn-app")
+        B3-&gt;&gt;B3: Transaction Coordinator registers or updates transactional ID
+        B3--&gt;&gt;P2: New identity: PID (1025) + Epoch (1)
+
+        Note over P1,B3: Old Producer (P1) fenced out&lt;br/&gt;Subsequent writes from Producer 1 are rejected with INVALID_PRODUCER_EPOCH
+    end</code></pre>
+<h3 id="advanced-topics">Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permanent link">&para;</a></h3>
+<p>Kafka's transaction mechanism internally implements the Two-Phase Commit (2PC) protocol, a technique commonly used in distributed systems to ensure data consistency across multiple nodes. The following video provides an in-depth explanation of the two-phase commit concept and how it operates:</p>
+<figure>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-_rdWB9hN1c?si=8A_pZvPZ5IrogW1u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption>
+<p>Distributed Systems 7.1: Two-phase commit</p>
+</figcaption>
+</figure>
+<p>To understand the historical evolution of Kafka's transaction mechanism, you can refer to the following videos and KIPs list. These resources provide a comprehensive explanation of the journey from the initial design to subsequent improvements and optimizations.</p>
+<figure>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OiOdjmW3We8?si=-EkfJBj1WFPK3pRE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption>
+<p>Transactions in Action: the Story of Exactly Once in Apache Kafka (2023)</p>
+</figcaption>
+</figure>
+<details class="info">
+<summary>EOS KIPs</summary>
+<ul>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging">KIP-98: Exactly Once Delivery and Transactional Messaging</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-185:+Make+exactly+once+in+order+delivery+per+partition+the+default+Producer+setting">KIP-185: Make exactly once in order delivery per partition the default Producer setting</a></li>
+<li><a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=89068820">KIP-360: Improve reliability of idempotent/transactional producer</a></li>
+<li><a href="https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=103093950">KIP-447: Producer scalability for exactly once semantics</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-484:+Expose+metrics+for+group+and+transaction+metadata+loading+duration">KIP-484: Expose metrics for group and transaction metadata loading duration</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-618:+Exactly-Once+Support+for+Source+Connectors">KIP-618: Exactly-Once Support for Source Connectors</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-691:+Enhance+Transactional+Producer+Exception+Handling">KIP-691: Enhance Transactional Producer Exception Handling</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-679:+Producer+will+enable+the+strongest+delivery+guarantee+by+default">KIP-679: Producer will enable the strongest delivery guarantee by default</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-854+Separate+configuration+for+producer+ID+expiry">KIP-854: Separate configuration for producer ID expiry</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-890:+Transactions+Server-Side+Defense">KIP-890: Transactions Server-Side Defense</a><ul>
+<li>eliminates hanging transactions on ALL clients</li>
+<li>includes new client changes to strengthen EOS</li>
+</ul>
+</li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-936:+Throttle+number+of+active+PIDs">KIP-936: Throttle number of active PIDs</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-939:+Support+Participation+in+2PC">KIP-939: Support Participation in 2PC</a></li>
+</ul>
+</details>
+<h2 id="faqs">FAQs<a class="headerlink" href="#faqs" title="Permanent link">&para;</a></h2>
+<details class="info">
+<summary>Why PID Ranges Instead of Individual IDs?</summary>
+<p>The evolution from individual Producer ID allocation to range-based distribution represents a crucial scalability optimization introduced in <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-730%3A+Producer+ID+generation+in+KRaft+mode">KIP-730: Producer ID generation in KRaft mode</a>.</p>
+<p><strong>The Bottleneck Problem:</strong></p>
+<p>If every new producer required a separate request to the controller for a unique ID, the controller would become a severe bottleneck, especially in high-throughput environments with frequent producer initialization.</p>
+<p><strong>The Range-Based Solution:</strong></p>
+<p>Kafka's modern approach distributes the allocation burden:</p>
+<ul>
+<li>Controllers allocate <strong>continuous ranges</strong> rather than individual IDs</li>
+<li>Example: Broker-1 receives range [1000, 1999] containing 1000 available IDs</li>
+<li>Each broker's local <code>ProducerIdManager</code> can allocate IDs within its assigned range</li>
+<li>New ranges are requested only when the current range is exhausted</li>
+</ul>
+<p><strong>Benefits of Range-Based Allocation:</strong></p>
+<ul>
+<li>Dramatically reduces controller load (no per-producer coordination required)</li>
+<li>Distributes allocation pressure across all brokers</li>
+<li>Maintains PID uniqueness through non-overlapping ranges</li>
+<li>Enables horizontal scaling of producer initialization</li>
+</ul>
+</details>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="https://kafka.apache.org/protocol#protocol_api_keys">PROTOCOL API KEYS</a><ul>
+<li>FindCoordinator</li>
+<li>InitProducerId</li>
+<li>AddPartitionsToTxn</li>
+<li>Produce</li>
+<li>AddOffsetsToTxn</li>
+<li>TxnOffsetCommit</li>
+<li>EndTxn</li>
+<li>WriteTxnMarker</li>
+</ul>
+</li>
 <li><a href="https://debezium.io/blog/2023/06/22/towards-exactly-once-delivery/">Towards Debezium exactly-once delivery | Debezium Blog</a></li>
 <li><a href="https://debezium.io/documentation//reference/3.3/configuration/eos.html">Exactly once delivery | Debezium Docs</a></li>
+<li><a href="https://www.confluent.io/blog/transactions-apache-kafka/">Transactions in Apache Kafka | Confluent Blog</a></li>
+<li><a href="https://strimzi.io/blog/2023/05/03/kafka-transactions/">Exactly-once semantics with Kafka transactions | Strimzi</a></li>
 </ul>
 
 
@@ -5239,13 +5761,13 @@
         
         
           
-          <a href="../../flink/how-flink-works/" class="md-footer__link md-footer__link--next" aria-label="Next: How Flink Works">
+          <a href="../iceberg-kafka-sink-connector/" class="md-footer__link md-footer__link--next" aria-label="Next: Deep Dive into Kafka Connect Icerberg Sink Connector">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                How Flink Works
+                Deep Dive into Kafka Connect Icerberg Sink Connector
               </div>
             </div>
             <div class="md-footer__button md-icon">
