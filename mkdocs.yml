@@ -35,12 +35,14 @@ nav:
         - learning-in-progress/tech-notes/iceberg/iceberg-best-practices-in-aws.md
         - The Definitive Guide (2020):
           - learning-in-progress/tech-notes/iceberg/definitive-guide/ch4-tuning.md
+        - learning-in-progress/tech-notes/kafka/iceberg-kafka-sink-connector.md
         - learning-in-progress/tech-notes/iceberg/migration.md
         - learning-in-progress/tech-notes/iceberg/disaster-recovery.md
         - learning-in-progress/tech-notes/iceberg/resources.md
         - learning-in-progress/tech-notes/iceberg/iceberg-in-prod-netflix-2023.md
       - Kafka:
         - learning-in-progress/tech-notes/kafka/exactly-once.md
+        - learning-in-progress/tech-notes/kafka/iceberg-kafka-sink-connector.md
       - Flink:
         - learning-in-progress/tech-notes/flink/how-flink-works.md
       - Airflow:

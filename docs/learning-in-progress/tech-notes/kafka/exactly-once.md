@@ -1,9 +1,7 @@
 ---
 tags:
   - Apache Kafka
-  - Apache Iceberg
 ---
-
 # Exactly Once Semantics in Kafka
 
 ## Idempotent Producers
@@ -424,26 +422,6 @@ Transactions in Action: the Story of Exactly Once in Apache Kafka (2023)
         - includes new client changes to strengthen EOS
     - [KIP-936: Throttle number of active PIDs](https://cwiki.apache.org/confluence/display/KAFKA/KIP-936:+Throttle+number+of+active+PIDs)
     - [KIP-939: Support Participation in 2PC](https://cwiki.apache.org/confluence/display/KAFKA/KIP-939:+Support+Participation+in+2PC)
-
-
-## Icerberg Kafka Connect Sink Connector
-
-> [*The sink relies on KIP-447 for exactly-once semantics. This requires Kafka 2.5 or later.*](https://iceberg.apache.org/docs/latest/kafka-connect/#requirements)
-
-In order to understand how Iceberg Kafka Connect Sink Connector achieve exactly-once semantics, we need to first look at KIP-447.
-
-### [KIP-447: Producer scalability for exactly once semantics](https://cwiki.apache.org/confluence/display/KAFKA/KIP-447%3A+Producer+scalability+for+exactly+once+semantics)
-
-After knowing the above, we can now look at how Iceberg Kafka Connect Sink Connectors achieve exactly-once semantics.
-
-### Core Architectural Components
-
-Let's see how it works
-
-![](https://www.tabular.io/wp-content/uploads/2023/12/image-24.jpeg){width="500"}
-
-
-
 
 
 
