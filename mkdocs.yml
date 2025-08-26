@@ -85,7 +85,7 @@ theme:
   favicon: images/avatar.png
   logo: images/avatar.png
   font:
-    text: IBM Plex Sans
+    text: IBM Plex Serif
     code: IBM Plex Mono
   palette:
     primary: white
