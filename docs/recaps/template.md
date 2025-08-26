@@ -3,41 +3,7 @@
 ## Highlight of the Month
 Summarize my biggest breakthrough, project, or insight in this month:
 
-> 
-
-
-## What I Consumed
-A list of articles, papers, courses, or videos I read/watched/completed:
-
-### Read
-
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-
-
-### Watched
-
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-
-
-### Completed Courses
-
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-- [x] []()
-
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ## What I Created or Tried
 What I built, experimented with, or implemented:
@@ -62,6 +28,34 @@ Soft-skill insights or workflow/communication/process reflections:
 - [x] Realized that ____
 - [x] Noticed that ____
 - [x] Started ____
+
+
+## What I Consumed
+A list of articles, papers, courses, or videos I read/watched/completed/attended:
+
+### XXX
+
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
+
+### YYY
+
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
+
+### ZZZ
+
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
+- [x] []()
 
 
 ## Goals for Next Month

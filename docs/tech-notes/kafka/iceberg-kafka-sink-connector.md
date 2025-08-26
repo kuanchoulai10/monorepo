@@ -114,10 +114,10 @@ The Coordinator performs state reset by clearing completion signals, resetting t
 ```mermaid
 sequenceDiagram
     participant ST as Source Topic
-    participant W1 as Worker 1
-    participant W2 as Worker 2
-    participant CT as Control Topic
-    participant C as Coordinator
+    participant W1 as Worker 1<br/>(Node 1)
+    participant W2 as Worker 2<br/>(Node 2)
+    participant CT as Control Topic<br/>(Kafka Cluster)
+    participant C as Coordinator<br/>(Node 2)
     participant T1 as Iceberg Table 1
     participant T2 as Iceberg Table 2
 

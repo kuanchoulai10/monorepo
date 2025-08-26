@@ -10,34 +10,36 @@ Welcome! I'm KC (Kuan-Chou), a software engineer with a passion for data, AI, an
 
 <div class="grid cards" markdown>
 
--   :material-rocket-launch:{ .lg .middle } __Side Projects__
-
-    ---
-
-    Explore my personal projects in data, AI, and programming.
-
-    [:octicons-arrow-right-24:{ .middle } Side Projects](./side-projects/index.md)
-
--   :material-school:{ .lg .middle } __Learning in Progress__
-
-    ---
-
-    What I’m studying, building, and aiming For
-
-    [:octicons-arrow-right-24:{ .middle } Learning Plans](./learning-in-progress/index.md)
-
--   :material-notebook-edit:{ .lg .middle } __Blog__
-
-    ---
-
-    Read my thoughts and insights on data, AI, books, and more.
-
-    [:octicons-arrow-right-24:{ .middle } Blog](./blog/index.md)
-
--   :material-account-circle:{ .lg .middle } __About Me__
+-   :material-account-circle:{ .lg .middle .indigo } __About Me__
 
     ---
 
     Learn more about my background, including education, work experience, public speaking, and other activities.
 
-    [:octicons-arrow-right-24:{ .middle } About Me](./about-me/index.md)
+    [--> About Me](./about-me/index.md)
+
+-   :material-rocket-launch:{ .lg .middle .indigo } __Side Projects__
+
+    ---
+
+    Explore my personal projects in data, AI, and programming.
+
+    [--> Side Projects](./side-projects/index.md)
+
+-   :material-notebook-edit:{ .lg .middle .indigo } __Blog__
+
+    ---
+
+    Read my thoughts and insights on data, AI, books, and more.
+
+    [--> Blog](./blog/index.md)
+
+
+
+-   :material-school:{ .lg .middle .indigo } __Monthly Recaps__
+
+    ---
+
+    What I'm studying, building, and aiming For
+
+    [--> Monthly Recaps](./recaps/index.md)

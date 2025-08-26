@@ -113,15 +113,17 @@ VACUUM glue_catalog.db.my_table
 
 ### Common Compaction Properties
 
-- `max-concurrent-file-group-rewrites`: Defaults to **5**. Maximum number of file groups to be simultaneously rewritten.
-- `partial-progress.enabled`: Defaults to **false**. Enable committing groups of files prior to the entire rewrite completing
-- `partial-progress.max-commits`: Defaults to **10**. Maximum amount of commits that this rewrite is allowed to produce if partial progress is enabled.
-- `rewrite-job-order`: Defaults to **None**. Force the rewrite job order based on the value. Options are `bytes-asc`, `bytes-desc`, `files-asc`, and `files-desc`.
-- `max-file-group-size-bytes`: Defaults to **100GB**. Specifies the maximum amount of data that can be rewritten in a single file group.
-- `min-file-size-bytes`: Defaults to **75% of target file size**. Files under this threshold will be considered for rewriting regardless of any other criteria.
-- `max-file-size-bytes`: Defaults to **180% of target file size**. Files with sizes above this threshold will be considered for rewriting regardless of any other criteria
-- `min-input-files`: Defaults to **5**. Any file group exceeding this number of files will be rewritten regardless of other criteria
-- `delete-file-threshold`: Defaults to **2147483647**. Minimum number of deletes that needs to be associated with a data file for it to be considered for rewriting.
+| Configuration | Default | Description |
+|---------------|---------|-------------|
+| `max-concurrent-file-group-rewrites` | **5** | Maximum number of file groups to be simultaneously rewritten |
+| `partial-progress.enabled` | **false** | Enable committing groups of files prior to the entire rewrite completing |
+| `partial-progress.max-commits` | **10** | Maximum amount of commits that this rewrite is allowed to produce if partial progress is enabled |
+| `rewrite-job-order` | **None** | Force the rewrite job order based on the value. Options are `bytes-asc`, `bytes-desc`, `files-asc`, and `files-desc` |
+| `max-file-group-size-bytes` | **100GB** | Specifies the maximum amount of data that can be rewritten in a single file group |
+| `min-file-size-bytes` | **75% of target file size** | Files under this threshold will be considered for rewriting regardless of any other criteria |
+| `max-file-size-bytes` | **180% of target file size** | Files with sizes above this threshold will be considered for rewriting regardless of any other criteria |
+| `min-input-files` | **5** | Any file group exceeding this number of files will be rewritten regardless of other criteria |
+| `delete-file-threshold` | **2147483647** | Minimum number of deletes that needs to be associated with a data file for it to be considered for rewriting |
 
 ### Example
 

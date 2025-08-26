@@ -9,7 +9,7 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
 <div class="grid cards" markdown>
 
--   :material-folder-heart:{ .lg .middle } __Data2ML Ops__
+-   :material-folder-heart:{ .lg .middle .indigo } __Data2ML Ops__
 
     ---
 
@@ -17,7 +17,7 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
      [--> Data2ML Ops](./data2ml-ops/index.md)
 
--   :material-folder-heart:{ .lg .middle } __Retail Lakehouse__
+-   :material-folder-heart:{ .lg .middle .indigo } __Retail Lakehouse__
 
     ---
 
@@ -25,7 +25,7 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
     [--> Retail Lakehouse](./retail-lakehouse/index.md)
 
--   :material-folder-heart:{ .lg .middle } __Unified SQL-based Data Pipelines__
+-   :material-folder-heart:{ .lg .middle .indigo } __Unified SQL-based Data Pipelines__
 
     ---
 
@@ -33,18 +33,10 @@ I love exploring new ideas and building things in my spare time. Here, you'll fi
 
     [--> Unified SQL-based Data Pipelines](./data-mesh/index.md)
 
--   :material-folder-heart:{ .lg .middle } __Trending Content Prediction__
+-   :material-folder-heart:{ .lg .middle .indigo } __Trending Content Prediction__
 
     ---
 
     Predicting popular content using machine learning and analytics.
 
     [--> Trending Content Prediction](./dcard-hw/README.md)
-
--   :material-folder-heart:{ .lg .middle } __Restful APIs with Flask__
-
-    ---
-
-    Building scalable APIs with Flask and Python for web applications.
-
-    [--> Restful APIs with Flask](./restful-apis-with-flask/README.md)
