@@ -2212,11 +2212,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment-kafka-debezium-mysql-connector.md" class="md-nav__link">
+      <a href="../deployment-debezium-mysql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Debezium MySQL Kafka Connector Deployment
     
   </span>
   
@@ -2234,11 +2234,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployment-kafka-iceberg-connector.md" class="md-nav__link">
+      <a href="../deployment-iceberg-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Kafka Cluster Deployment
     
   </span>
   
@@ -2347,7 +2347,7 @@
         
   
   <span class="md-ellipsis">
-    Deployment
+    Trino Cluster Deployment
     
   </span>
   
@@ -5271,10 +5271,10 @@
 <div class="admonition success">
 <p class="admonition-title">Deployment Steps</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-kafka-cluster.md"><em>Deploy a Kafka Cluster via the Strimzi Operator</em></a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-mysql.md"><em>Deploy a MySQL Database</em></a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-debezium-mysql-connector.md"><em>Deploy a Debezium Kafka Source Connector</em></a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-iceberg-connector.md"><em>Deploy an Iceberg Kafka Sink Connector</em></a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-kafka-cluster.md">Deploy a Kafka Cluster via the Strimzi Operator</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-mysql.md">Deploy a MySQL Database</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-debezium-mysql-connector.md">Deploy a Debezium Kafka Source Connector</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-iceberg-connector.md">Deploy an Iceberg Kafka Sink Connector</a></li>
 </ul>
 </div>
 <p>Without further ado, let's jump straight to the commands:</p>
@@ -5292,21 +5292,22 @@
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>kafka-cdc
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>strimzi<span class="w"> </span>https://strimzi.io/charts/
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>strimzi-cluster-operator<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>oci://quay.io/strimzi-helm/strimzi-kafka-operator<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span>-f<span class="w"> </span>values.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span>-n<span class="w"> </span>strimzi<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">0</span>.46.1
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>sleep<span class="w"> </span><span class="m">5</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="nv">name</span><span class="o">=</span>strimzi-cluster-operator<span class="w"> </span>-n<span class="w"> </span>strimzi<span class="w"> </span>--timeout<span class="o">=</span>1200s
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1"># Deploy Kafka cluster using Strimzi</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>kafka-cluster.yaml<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>sleep<span class="w"> </span><span class="m">5</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>kafka<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>sleep<span class="w"> </span><span class="m">5</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>entity-operator<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span>strimzi-cluster-operator<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span>oci://quay.io/strimzi-helm/strimzi-kafka-operator<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span>-f<span class="w"> </span>values.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>-n<span class="w"> </span>strimzi<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">0</span>.46.1
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>sleep<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="nv">name</span><span class="o">=</span>strimzi-cluster-operator<span class="w"> </span>-n<span class="w"> </span>strimzi<span class="w"> </span>--timeout<span class="o">=</span>1200s
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># Deploy Kafka cluster using Strimzi</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>kafka-cluster.yaml<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>sleep<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>kafka<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>sleep<span class="w"> </span><span class="m">5</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>entity-operator<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
 </span></code></pre></div>
 </details>
 <p>This script will deploy a Kafka Cluster using the Strimzi Operator in the <code>kafka-cdc</code> namespace.</p>
@@ -5328,12 +5329,13 @@
 </span></code></pre></div>
 <p>Next, we need to add the Strimzi Helm repository to our local Helm setup and install the Strimzi operator with our custom values:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>strimzi<span class="w"> </span>https://strimzi.io/charts/
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>strimzi-cluster-operator<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>oci://quay.io/strimzi-helm/strimzi-kafka-operator<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>-f<span class="w"> </span>~/Projects/retail-lakehouse/kafka-cluster/values.yaml<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>-n<span class="w"> </span>strimzi<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">0</span>.46.1
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>strimzi-cluster-operator<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>oci://quay.io/strimzi-helm/strimzi-kafka-operator<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>-f<span class="w"> </span>~/Projects/retail-lakehouse/kafka-cluster/values.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>-n<span class="w"> </span>strimzi<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">0</span>.46.1
 </span></code></pre></div>
 <p>Here's our customized <code>values.yaml</code> file and the most important settings is <code>watchNamespaces</code>, which tells Strimzi to specifically watch the <code>kafka-cdc</code> namespace where we'll deploy our Kafka cluster.</p>
 <details class="info">

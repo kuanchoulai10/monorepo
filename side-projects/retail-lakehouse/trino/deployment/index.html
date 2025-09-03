@@ -26,7 +26,7 @@
     
     
       
-        <title>Deployment - KC's Data & Life Notes</title>
+        <title>Trino Cluster Deployment - KC's Data & Life Notes</title>
       
     
     
@@ -79,7 +79,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Deployment - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Trino Cluster Deployment - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
@@ -95,7 +95,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Deployment - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Trino Cluster Deployment - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
@@ -133,7 +133,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deployment" class="md-skip">
+        <a href="#trino-cluster-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -196,7 +196,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deployment
+              Trino Cluster Deployment
             
           </span>
         </div>
@@ -2074,11 +2074,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cdc/deployment-kafka-debezium-mysql-connector.md" class="md-nav__link">
+      <a href="../../cdc/deployment-debezium-mysql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Debezium MySQL Kafka Connector Deployment
     
   </span>
   
@@ -2096,11 +2096,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cdc/deployment-kafka-iceberg-connector.md" class="md-nav__link">
+      <a href="../../cdc/deployment-iceberg-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Kafka Cluster Deployment
     
   </span>
   
@@ -2220,7 +2220,7 @@
           
   
   <span class="md-ellipsis">
-    Deployment
+    Trino Cluster Deployment
     
   </span>
   
@@ -2232,7 +2232,7 @@
         
   
   <span class="md-ellipsis">
-    Deployment
+    Trino Cluster Deployment
     
   </span>
   
@@ -2257,25 +2257,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#generating-environment-and-values-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Generating Environment and Values Files
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deployment_1" class="md-nav__link">
+  <a href="#loading-environment-variables-from-the-env-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment
+      Loading environment variables from the .env file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the Namespace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-tls-certificates" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up TLS Certificates
@@ -2283,8 +2291,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#configuring-bigquery-service-account" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring BigQuery Service Account
@@ -2292,8 +2300,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#installing-trino" class="md-nav__link">
     <span class="md-ellipsis">
       Installing Trino
@@ -2301,29 +2309,15 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verifying-the-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       Verifying the Deployment
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-trino" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing Trino
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing Trino">
+    <nav class="md-nav" aria-label="Verifying the Deployment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5146,25 +5140,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#generating-environment-and-values-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Generating Environment and Values Files
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deployment_1" class="md-nav__link">
+  <a href="#loading-environment-variables-from-the-env-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment
+      Loading environment variables from the .env file
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the Namespace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#setting-up-tls-certificates" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up TLS Certificates
@@ -5172,8 +5174,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#configuring-bigquery-service-account" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring BigQuery Service Account
@@ -5181,8 +5183,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#installing-trino" class="md-nav__link">
     <span class="md-ellipsis">
       Installing Trino
@@ -5190,29 +5192,15 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verifying-the-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       Verifying the Deployment
     </span>
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-trino" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing Trino
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing Trino">
+    <nav class="md-nav" aria-label="Verifying the Deployment">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5279,184 +5267,320 @@
   
 
 
-<h1 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h1>
-<p>This guide covers the deployment and configuration of a Trino cluster using Helm with the faker connector.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Kubernetes cluster</li>
-<li>Helm 3.x installed</li>
-<li><code>kubectl</code> configured to access your cluster</li>
-<li>Java 11 minimum requirement for JDBC driver compatibility</li>
-<li>Rename <code>.env.template</code> file to <code>.env</code> and configure all the variables in the file</li>
+<h1 id="trino-cluster-deployment">Trino Cluster Deployment<a class="headerlink" href="#trino-cluster-deployment" title="Permanent link">&para;</a></h1>
+<div class="admonition success">
+<p class="admonition-title">Prerequisites</p>
+</div>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Complete all the requirements in the <a href="../../prerequisites/">Prerequisites</a> section.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> OAuth 2.0 Client ID and Client Secret (<code>OAUTH2_CLIENT_ID</code> and <code>OAUTH2_CLIENT_SECRET</code>) for Google authentication. See <a href="../oauth2/#create-google-oauth-20-client">here</a> for instructions.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> GCP service account path in your local machine (<code>GCP_SA_INPUT_PATH</code>) for accessing BigQuery Datasets under your GCP project (<code>GCP_PROJECT_ID</code>). See <a href="../catalogs/#bigquery">here</a> for instructions.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> AWS credentials (<code>AWS_ACCESS_KEY</code> and <code>AWS_SECRET_KEY</code>), regions (<code>AWS_REGION</code>), and S3 bucket (<code>ICEBERG_S3_URL</code>) for accessing Iceberg table and Glue Data Catalog. See <a href="../catalogs/#iceberg">here</a> for instructions.</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> AWS S3 Bucket for Exchange Manager (<code>EXCHANGE_S3_URLS</code>). See <a href="../fault-tolerance/">here</a> for instructions.</li>
 </ul>
+<p>Without further ado, let's get started with the deployment:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/Projects/retail-lakehouse/trino
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>install.sh
+</span></code></pre></div>
+<p>The installation script <code>install.sh</code> will perform the following steps:</p>
+<ol>
+<li>Generate <code>.env</code> and <code>values.yaml</code> files</li>
+<li>Create the <code>trino</code> namespace.</li>
+<li>Generate TLS certificates and create the Kubernetes secret.</li>
+<li>Generate the BigQuery service account secret and create the Kubernetes secret.</li>
+<li>Install Trino using Helm with the generated <code>values.yaml</code>.</li>
+</ol>
+<details class="info">
+<summary>install.sh</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 產生 .env 和 values.yaml 檔案</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>bash<span class="w"> </span>generate-env.sh
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 載入 .env 當作環境變數</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nb">set</span><span class="w"> </span>-a
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># shellcheck disable=SC1090</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;.env&quot;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">set</span><span class="w"> </span>+a
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>trino<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>bash<span class="w"> </span>generate-tls-certs.sh
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-tls-secret.yaml<span class="w"> </span>-n<span class="w"> </span>trino
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating Kubernetes secret for Accessing BigQuery...&quot;</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>trino-bigquery-secret<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span>--from-file<span class="o">=</span>trino-sa.json<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GCP_SA_INPUT_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;./trino-bigquery-secret.yaml&quot;</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;trino-bigquery-secret.yaml generated successfully.&quot;</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-bigquery-secret.yaml<span class="w"> </span>-n<span class="w"> </span>trino
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>trino<span class="w"> </span>https://trinodb.github.io/charts/
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>helm<span class="w"> </span>install<span class="w"> </span>trino<span class="w"> </span>trino/trino<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span>-f<span class="w"> </span>values.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span>-n<span class="w"> </span>trino<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">1</span>.39.1<span class="w"> </span><span class="se">\</span>
+</span></code></pre></div>
+</details>
+<p>For the script to work correctly, you need to set the following environment variables during the execution of the script. Another option is to set them in a <code>.env</code> file in the same directory as the script.</p>
 <details class="info">
 <summary>.env</summary>
 <ul>
 <li>
-<p><strong>OAUTH2_CLIENT_ID</strong><br />
-  The client ID for OAuth 2.0 authentication, used to enable Google login for the Trino Web UI.<br />
-  Referenced in <code>values-template.yaml</code> as <code>http-server.authentication.oauth2.client-id</code>.</p>
+<p><code>INTERNAL_SHARED_SECRET</code>: A secret string for internal communication security between Trino nodes. Used as <code>internal-communication.shared-secret</code>.</p>
 </li>
 <li>
-<p><strong>OAUTH2_CLIENT_SECRET</strong><br />
-  The client secret for OAuth 2.0 authentication, paired with the client ID for secure login.<br />
-  Used in <code>values-template.yaml</code> as <code>http-server.authentication.oauth2.client-secret</code>.</p>
+<p><code>OAUTH2_CLIENT_ID</code>: The client ID for OAuth 2.0 authentication, used to enable Google login for the Trino Web UI. Referenced as <code>http-server.authentication.oauth2.client-id</code>.</p>
 </li>
 <li>
-<p><strong>INTERNAL_SHARED_SECRET</strong><br />
-  A secret string for internal communication security between Trino nodes.<br />
-  Used in <code>values-template.yaml</code> as <code>internal-communication.shared-secret</code>.</p>
+<p><code>OAUTH2_CLIENT_SECRET</code>: The client secret for OAuth 2.0 authentication, paired with the client ID for secure login. Used as <code>http-server.authentication.oauth2.client-secret</code>.</p>
 </li>
 <li>
-<p><strong>SA_INPUT_PATH</strong><br />
-  Path to the service account JSON file for Google Cloud authentication.<br />
-  Used by <code>generate-trino-bigquery-secret.sh</code> to create the BigQuery service account secret.</p>
+<p><code>GCP_BQ_PROJECT_ID</code>: The Google Cloud project ID, required for the BigQuery connector in Trino. Used as <code>bigquery.project-id</code>.</p>
 </li>
 <li>
-<p><strong>PROJECT_ID</strong><br />
-  The Google Cloud project ID, required for the BigQuery connector in Trino.<br />
-  Used in <code>values-template.yaml</code> as <code>bigquery.project-id</code>.</p>
+<p><code>GCP_SA_INPUT_PATH</code>: Path to the service account JSON file for Google Cloud authentication. Used to create the BigQuery service account K8S secret.</p>
 </li>
 <li>
-<p><strong>AWS_ACCESS_KEY</strong><br />
-  AWS access key for authenticating to AWS services (S3, Glue, etc.).<br />
-  Used in <code>values-template.yaml</code> for S3 and Glue access, and for exchange manager S3 configuration.</p>
+<p><code>AWS_ACCESS_KEY</code>: AWS access key for authenticating to AWS services (S3, Glue, etc.). Used for S3 and Glue access, and for exchange manager S3 configuration.</p>
 </li>
 <li>
-<p><strong>AWS_SECRET_KEY</strong><br />
-  AWS secret key, paired with the access key for AWS authentication.<br />
-  Used in <code>values-template.yaml</code> for S3, Glue, and exchange manager S3 configuration.</p>
+<p><code>AWS_SECRET_KEY</code>: AWS secret key, paired with the access key for AWS authentication. Used for S3, Glue, and exchange manager S3 configuration.</p>
 </li>
 <li>
-<p><strong>AWS_REGION</strong><br />
-  The AWS region where your S3 buckets and Glue Data Catalog are located.<br />
-  Used in <code>values-template.yaml</code> for S3, Glue, and exchange manager S3 configuration.</p>
+<p><code>AWS_REGION</code>: The AWS region where your S3 buckets and Glue Data Catalog are located. Used for S3, Glue, and exchange manager S3 configuration.</p>
 </li>
 <li>
-<p><strong>ICEBERG_S3_URL</strong><br />
-  The S3 URL (bucket path) for storing Iceberg table data.<br />
-  Used in <code>values-template.yaml</code> as <code>hive.metastore.glue.default-warehouse-dir</code>.</p>
+<p><code>ICEBERG_S3_URL</code>: The S3 URL (bucket path) for storing Iceberg table data. Used as <code>hive.metastore.glue.default-warehouse-dir</code>.</p>
 </li>
 <li>
-<p><strong>EXCHANGE_S3_URLS</strong><br />
-  S3 URLs for Trino's exchange manager, which handles intermediate data during distributed query execution.<br />
-  Used in <code>values-template.yaml</code> as <code>exchangeManager.base-directories</code>.</p>
+<p><code>EXCHANGE_S3_URLS</code>: S3 URLs for Trino's exchange manager, which handles intermediate data during distributed query execution. Used as <code>exchangeManager.baseDir</code>.</p>
 </li>
 </ul>
 <p>These variables are substituted into the Trino Helm values file and Kubernetes secrets using <code>envsubst</code> to configure authentication, storage, and cloud integration for your Trino deployment.</p>
 </details>
-<h2 id="deployment_1">Deployment<a class="headerlink" href="#deployment_1" title="Permanent link">&para;</a></h2>
-<p>Create the trino namespace, we will deploy Trino in this namespace:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>trino
+<p>If you don't like my script and want to do it step by step manually, please continue reading. This article will walk you through how to deploy a Trino Cluster on Kubernetes step by step, explaining each part along the way.</p>
+<h2 id="generating-environment-and-values-files">Generating Environment and Values Files<a class="headerlink" href="#generating-environment-and-values-files" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><span class="filename">install.sh:env</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 產生 .env 和 values.yaml 檔案</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>bash<span class="w"> </span>generate-env.sh
 </span></code></pre></div>
 <details class="info">
-<summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>namespace/trino created
+<summary>generate-env.sh</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">ENV_FILE</span><span class="o">=</span><span class="s2">&quot;.env&quot;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># 若有舊的 .env，就先載入當作預設值</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="nb">set</span><span class="w"> </span>-a
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="c1"># shellcheck disable=SC1090</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2">&quot;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="nb">set</span><span class="w"> </span>+a
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">fi</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># 定義一個函式來詢問變數</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>ask<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">current</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!name-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># 取目前環境的值（若有）</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span>prompt
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">current</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="nv">prompt</span><span class="o">=</span><span class="s2">&quot;Enter </span><span class="nv">$name</span><span class="s2"> (default: </span><span class="nv">$current</span><span class="s2">): &quot;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="k">else</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="nv">prompt</span><span class="o">=</span><span class="s2">&quot;Enter </span><span class="nv">$name</span><span class="s2">: &quot;</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$prompt</span><span class="s2">&quot;</span><span class="w"> </span>input
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span><span class="c1"># 空輸入就沿用舊值；否則更新</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">input</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">current</span><span class="k">:-</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$name</span><span class="s2">=</span><span class="nv">$current</span><span class="s2">&quot;</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span><span class="k">else</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$name</span><span class="s2">=</span><span class="nv">$input</span><span class="s2">&quot;</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span><span class="k">fi</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="o">}</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating .env file...&quot;</span>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Fill in variables to generate ENV_FILE ===&quot;</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="c1"># 清空並重新創建 .env 檔案</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2">&quot;</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="c1"># 不需要使用者輸入的所有變數</span>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="nv">INTERNAL_SHARED_SECRET</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span><span class="s2">&quot;</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="nb">export</span><span class="w"> </span>INTERNAL_SHARED_SECRET
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;INTERNAL_SHARED_SECRET=%q\n&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INTERNAL_SHARED_SECRET</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2">&quot;</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="c1"># 需要使用者輸入的所有變數（順序決定互動順序）</span>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="nv">VARS</span><span class="o">=(</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span>OAUTH2_CLIENT_ID
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">  </span>OAUTH2_CLIENT_SECRET
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">  </span>GCP_BQ_PROJECT_ID
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">  </span>GCP_SA_INPUT_PATH
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">  </span>AWS_ACCESS_KEY
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="w">  </span>AWS_SECRET_KEY
+</span><span id="__span-3-53"><a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">  </span>AWS_REGION
+</span><span id="__span-3-54"><a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">  </span>ICEBERG_S3_URL
+</span><span id="__span-3-55"><a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">  </span>EXCHANGE_S3_URLS
+</span><span id="__span-3-56"><a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="o">)</span>
+</span><span id="__span-3-57"><a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="k">for</span><span class="w"> </span>v<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VARS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span id="__span-3-58"><a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">  </span>ask<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$v</span><span class="s2">&quot;</span>
+</span><span id="__span-3-59"><a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">  </span><span class="nv">val</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="p">!v-</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="__span-3-60"><a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">  </span><span class="nb">printf</span><span class="w"> </span><span class="s1">&#39;%s=%q\n&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$v</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$val</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2">&quot;</span>
+</span><span id="__span-3-61"><a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="k">done</span>
+</span><span id="__span-3-62"><a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENV_FILE</span><span class="s2"> generated successfully.&quot;</span>
+</span><span id="__span-3-63"><a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>
+</span><span id="__span-3-64"><a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="c1"># 檢查 envsubst command 是否存在</span>
+</span><span id="__span-3-65"><a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="k">if</span><span class="w"> </span>!<span class="w"> </span><span class="nb">command</span><span class="w"> </span>-v<span class="w"> </span>envsubst<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-3-66"><a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Error: envsubst not found. Please install gettext.&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+</span><span id="__span-3-67"><a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-3-68"><a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="k">fi</span>
+</span><span id="__span-3-69"><a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>
+</span><span id="__span-3-70"><a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating values.yaml from values-template.yaml...&quot;</span>
+</span><span id="__span-3-71"><a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>envsubst<span class="w"> </span>&lt;<span class="w"> </span><span class="s2">&quot;values-template.yaml&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;values.yaml&quot;</span>
+</span><span id="__span-3-72"><a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;values.yaml generated successfully.&quot;</span>
 </span></code></pre></div>
 </details>
-<h3 id="setting-up-tls-certificates">Setting up TLS Certificates<a class="headerlink" href="#setting-up-tls-certificates" title="Permanent link">&para;</a></h3>
-<p>Execute <code>generate-tls-certs.sh</code> to generate TLS certificate and Kubernetes secret:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./generate-tls-certs.sh
+<h2 id="loading-environment-variables-from-the-env-file">Loading environment variables from the <code>.env</code> file<a class="headerlink" href="#loading-environment-variables-from-the-env-file" title="Permanent link">&para;</a></h2>
+<p>Load the environment variables from the <code>.env</code> file so that they can be used in subsequent commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span><span class="s2">&quot;.env&quot;</span>
+</span></code></pre></div>
+<h2 id="creating-the-namespace">Creating the Namespace<a class="headerlink" href="#creating-the-namespace" title="Permanent link">&para;</a></h2>
+<p>Create the trino namespace, which is where we deploy our Trino cluster:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>trino
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Creating TLS certificates for Trino...
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Step 1: Creating Private Key...
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Step 2: Creating Certificate...
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Step 3: Combining Private Key and Certificate...
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Step 4: Creating Kubernetes secret...
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Certificate generation completed successfully!
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Generated files in .cert/:
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  - <mark class="critic">trino-dev.pem</mark> (with private key and certificate)
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>  - <mark class="critic">trino-tls-secret.yaml</mark> (Kubernetes secret manifest)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>namespace/trino created
+</span></code></pre></div>
+</details>
+<h2 id="setting-up-tls-certificates">Setting up TLS Certificates<a class="headerlink" href="#setting-up-tls-certificates" title="Permanent link">&para;</a></h2>
+<p>Execute <code>generate-tls-certs.sh</code> to generate TLS certificate and Kubernetes secret and then apply the secret to the <code>trino</code> namespace:</p>
+<div class="language-bash highlight"><span class="filename">install.sh:tls</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bash<span class="w"> </span>generate-tls-certs.sh
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-tls-secret.yaml<span class="w"> </span>-n<span class="w"> </span>trino
+</span></code></pre></div>
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Creating TLS certificates for Trino...
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Step 1: Creating Private Key...
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Step 1: Completed.
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Step 2: Creating Certificate...
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>Step 2: Completed.
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Step 3: Combining Private Key and Certificate...
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Step 3: Completed.
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>Step 4: Creating Kubernetes secret...
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>Step 4: Completed.
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>Certificate generation completed successfully!
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>Generated files:
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  - <mark class="critic">.cert/trino-dev.pem</mark> (with private key and certificate)
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>  - <mark class="critic">trino-tls-secret.yaml</mark> (Kubernetes secret manifest)
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><mark class="critic">secret/trino-tls-secret created</mark>
 </span></code></pre></div>
 </details>
 <p>Once executed, the <code>trino-tls-secret.yaml</code> file will have the following structure:</p>
 <details class="info">
 <summary>trino-tls-secret.yaml</summary>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">metadata</span><span class="p">:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">data</span><span class="p">:</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt"><mark class="critic">trino-dev.pem</mark></span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-tls-secret</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">data</span><span class="p">:</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt"><mark class="critic">trino-dev.pem</mark></span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
 </span></code></pre></div>
 </details>
-<p>Create Kubernetes secret to mount the TLS certificate:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>.cert/trino-tls-secret.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
-</span></code></pre></div>
-<h3 id="configuring-bigquery-service-account">Configuring BigQuery Service Account<a class="headerlink" href="#configuring-bigquery-service-account" title="Permanent link">&para;</a></h3>
-<p>Generate the BigQuery service account secret for Trino:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>env<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="k">)</span><span class="w"> </span>envsubst<span class="w"> </span>&lt;<span class="w"> </span>generate-trino-bigquery-secret.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
-</span></code></pre></div>
-<p>After running the script, you will have a Kubernetes secret manifest file named <code>trino-bigquery-secret.yaml</code> in the current directory. Then apply the secret to the Kubernetes cluster:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-bigquery-secret.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
-</span></code></pre></div>
-<h3 id="installing-trino">Installing Trino<a class="headerlink" href="#installing-trino" title="Permanent link">&para;</a></h3>
-<p>First, add and update the Trino Helm repository:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>trino<span class="w"> </span>https://trinodb.github.io/charts/
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
-</span></code></pre></div>
-<p>Next, generate the Trino Helm values file using variables from the <code>.env</code> file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>env<span class="w"> </span><span class="k">$(</span>cat<span class="w"> </span>.env<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="k">)</span><span class="w"> </span>envsubst<span class="w"> </span>&lt;<span class="w"> </span>values-template.yaml<span class="w"> </span>&gt;<span class="w"> </span>values.yaml
-</span></code></pre></div>
-<p>Now, deploy Trino in the <code>trino</code> namespace using the provided <code>values.yaml</code> file:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>helm<span class="w"> </span>install<span class="w"> </span>trino<span class="w"> </span>trino/trino<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>--namespace<span class="w"> </span>trino
+<h2 id="configuring-bigquery-service-account">Configuring BigQuery Service Account<a class="headerlink" href="#configuring-bigquery-service-account" title="Permanent link">&para;</a></h2>
+<p>Generate the BigQuery service account secret manifest file and apply it to the <code>trino</code> namespace:</p>
+<div class="language-bash highlight"><span class="filename">install.sh:bq</span><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Generating Kubernetes secret for Accessing BigQuery...&quot;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>trino-bigquery-secret<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span>--from-file<span class="o">=</span>trino-sa.json<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$GCP_SA_INPUT_PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span>--dry-run<span class="o">=</span>client<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;./trino-bigquery-secret.yaml&quot;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;trino-bigquery-secret.yaml generated successfully.&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./trino-bigquery-secret.yaml<span class="w"> </span>-n<span class="w"> </span>trino
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>NAME: trino
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>LAST DEPLOYED: Fri Jun 13 17:49:52 2025
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>NAMESPACE: trino
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>STATUS: <mark class="critic">deployed</mark>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>REVISION: 1
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>NOTES:
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>Get the application URL by running these commands:
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  kubectl --namespace trino port-forward svc/trino 8080:8080
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  echo &quot;Visit http://127.0.0.1:8080 to use your application&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Generating Kubernetes secret for Accessing BigQuery...
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>trino-bigquery-secret.yaml generated successfully.
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><mark class="critic">secret/trino-bigquery-secret created</mark>
 </span></code></pre></div>
 </details>
-<h3 id="verifying-the-deployment">Verifying the Deployment<a class="headerlink" href="#verifying-the-deployment" title="Permanent link">&para;</a></h3>
+<p>Once executed, the <code>trino-bigquery-secret.yaml</code> file will have the following structure:</p>
+<details class="info">
+<summary>trino-bigquery-secret.yaml</summary>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">metadata</span><span class="p">:</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trino-bigquery-secret</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nt">data</span><span class="p">:</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">  </span><span class="nt"><mark class="critic">trino-sa.json</mark></span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx</span>
+</span></code></pre></div>
+</details>
+<h2 id="installing-trino">Installing Trino<a class="headerlink" href="#installing-trino" title="Permanent link">&para;</a></h2>
+<p>First, add and update the Trino Helm repository. Then, deploy Trino in the <code>trino</code> namespace using the generated <code>values.yaml</code> file:</p>
+<div class="language-bash highlight"><span class="filename">install.sh:bq</span><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>trino<span class="w"> </span>https://trinodb.github.io/charts/
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>helm<span class="w"> </span>install<span class="w"> </span>trino<span class="w"> </span>trino/trino<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">  </span>-f<span class="w"> </span>values.yaml<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span>-n<span class="w"> </span>trino<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">1</span>.39.1<span class="w"> </span><span class="se">\</span>
+</span></code></pre></div>
+<details class="info">
+<summary>Result</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>NAME: trino
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>LAST DEPLOYED: Fri Jun 13 17:49:52 2025
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>NAMESPACE: trino
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>STATUS: <mark class="critic">deployed</mark>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>REVISION: 1
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>NOTES:
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>Get the application URL by running these commands:
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  kubectl --namespace trino port-forward svc/trino 8080:8080
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  echo &quot;Visit http://127.0.0.1:8080 to use your application&quot;
+</span></code></pre></div>
+</details>
+<h2 id="verifying-the-deployment">Verifying the Deployment<a class="headerlink" href="#verifying-the-deployment" title="Permanent link">&para;</a></h2>
 <p>After the installation completes, verify that Trino has been deployed successfully. Show the deployed Trino release:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>helm list -n trino
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>helm<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span>trino
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>trino   trino           1               2025-06-13 18:08:54.435442 +0800 CST    <mark class="critic">deployed</mark>        trino-1.39.1    475    
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>NAME    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART           APP VERSION
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>trino   trino           1               2025-06-13 18:08:54.435442 +0800 CST    <mark class="critic">deployed</mark>        trino-1.39.1    475    
 </span></code></pre></div>
 </details>
 <p>Then, check the status of all resources in the <code>trino</code> namespace:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>trino
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>trino
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>NAME                                     READY   STATUS    RESTARTS   AGE
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>pod/trino-coordinator-6fdfb7bf84-tjwfc   1/1     <mark class="critic">Running</mark>   0          5m38s
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>pod/trino-worker-777d595c66-dml67        1/1     <mark class="critic">Running</mark>   0          5m38s
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>pod/trino-worker-777d595c66-pv9h2        1/1     <mark class="critic">Running</mark>   0          5m38s
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>service/trino          ClusterIP   10.99.208.168   &lt;none&gt;        8080/TCP,<mark class="critic">8443/TCP</mark>   5m38s
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>service/trino-worker   ClusterIP   None            &lt;none&gt;        8080/TCP            5m38s
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>deployment.apps/trino-coordinator   1/1     1            1           5m38s
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>deployment.apps/trino-worker        2/2     2            2           5m38s
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>NAME                                           DESIRED   CURRENT   READY   AGE
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>replicaset.apps/trino-coordinator-6fdfb7bf84   1         1         1       5m38s
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>replicaset.apps/trino-worker-777d595c66        2         2         2       5m38s
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>NAME                                     READY   STATUS    RESTARTS   AGE
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>pod/trino-coordinator-6fdfb7bf84-tjwfc   1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>pod/trino-worker-777d595c66-dml67        1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>pod/trino-worker-777d595c66-pv9h2        1/1     <mark class="critic">Running</mark>   0          5m38s
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>service/trino          ClusterIP   10.99.208.168   &lt;none&gt;        8080/TCP,<mark class="critic">8443/TCP</mark>   5m38s
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>service/trino-worker   ClusterIP   None            &lt;none&gt;        8080/TCP            5m38s
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>NAME                                READY   UP-TO-DATE   AVAILABLE   AGE
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>deployment.apps/trino-coordinator   1/1     1            1           5m38s
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>deployment.apps/trino-worker        2/2     2            2           5m38s
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>NAME                                           DESIRED   CURRENT   READY   AGE
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>replicaset.apps/trino-coordinator-6fdfb7bf84   1         1         1       5m38s
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>replicaset.apps/trino-worker-777d595c66        2         2         2       5m38s
 </span></code></pre></div>
 </details>
-<p>Perfect! The deployment is successful. As you can see, the Trino coordinator and worker pods are up and running, and all services have been created correctly. With the cluster now operational, we can proceed to access the Trino Web UI and CLI to interact with the cluster.</p>
-<h2 id="accessing-trino">Accessing Trino<a class="headerlink" href="#accessing-trino" title="Permanent link">&para;</a></h2>
-<p>Now that Trino is successfully deployed and running, you can access it through both the Web UI and CLI. The cluster is configured with OAuth 2.0 authentication and TLS encryption for secure access.</p>
+<p>Perfect! The deployment is successful. As you can see, the Trino coordinator and worker pods are up and running, and all services have been created correctly. With the cluster now operational, we can proceed to access the <em>Trino Web UI</em> and <em>Trino CLI</em> to interact with the cluster.</p>
 <h3 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permanent link">&para;</a></h3>
 <p>To access the Trino Web UI, start by port-forwarding the Trino service to your local machine:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/trino<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span>--namespace<span class="w"> </span>trino
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/trino<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span>--namespace<span class="w"> </span>trino
 </span></code></pre></div>
 <p>Once the port forwarding is active, open your browser and navigate to <code>https://127.0.0.1:8443</code>. Since we're using a self-signed certificate for development purposes, your browser will display a security warning. This is expected behavior and safe to bypass in a development environment.</p>
 <p>To proceed, click <strong>"Advanced"</strong> and then <strong>"Accept the Risk and Continue"</strong> (the exact wording may vary depending on your browser).</p>
@@ -5469,26 +5593,29 @@
 <p>Once authenticated successfully, you'll be redirected back to the Trino Web UI where you can monitor queries, view cluster status, and manage your Trino environment.</p>
 <h3 id="trino-cli">Trino CLI<a class="headerlink" href="#trino-cli" title="Permanent link">&para;</a></h3>
 <p>For command-line access to Trino, you'll need to download and install the Trino CLI tool.</p>
-<p>First, download the <code>trino-cli-476-executable.jar</code> file from the <a href="https://repo1.maven.org/maven2/io/trino/trino-cli/">Maven repository</a>.</p>
+<p>First, download the <a href="https://repo1.maven.org/maven2/io/trino/trino-cli/476/trino-cli-476-executable.jar"><code>trino-cli-476-executable.jar</code></a> file from the <a href="https://repo1.maven.org/maven2/io/trino/trino-cli/">Maven repository</a>.</p>
 <p>Next, rename the file to <code>trino</code>, make it executable, and move it to a directory in your PATH (such as <code>/usr/local/bin</code>):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>trino-cli-476-executable.jar
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>trino-cli-476-executable.jar<span class="w"> </span>/usr/local/bin/trino
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>~/Projects/retail-lakehouse/trino
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>trino-cli-476-executable.jar<span class="w"> </span>https://repo1.maven.org/maven2/io/trino/trino-cli/476/trino-cli-476-executable.jar
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>chmod<span class="w"> </span>+x<span class="w"> </span>trino-cli-476-executable.jar
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>sudo<span class="w"> </span>mv<span class="w"> </span>trino-cli-476-executable.jar<span class="w"> </span>/usr/local/bin/trino
 </span></code></pre></div>
 <p>Verify the installation by checking the version:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>trino<span class="w"> </span>--version
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>trino<span class="w"> </span>--version
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Trino CLI 476
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Trino CLI 476
 </span></code></pre></div>
 </details>
 <p>To connect to your Trino cluster, use the CLI with <a href="https://trino.io/docs/current/client/cli.html#external-authentication-sso">external authentication</a> enabled:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>trino<span class="w"> </span>--server<span class="w"> </span>https://127.0.0.1:8443<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">      </span>--external-authentication<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">      </span>--insecure<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">      </span>--user<span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>trino<span class="w"> </span>--server<span class="w"> </span>https://127.0.0.1:8443<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">      </span>--external-authentication<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">      </span>--insecure<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">      </span>--user<span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span>
 </span></code></pre></div>
-<p><strong>Authentication Flow:</strong></p>
+<details class="tip">
+<summary>Authentication Flow</summary>
 <p>The CLI authentication process works as follows:</p>
 <ul>
 <li>Start the CLI with the <code>--external-authentication</code> option and execute a query.</li>
@@ -5501,10 +5628,11 @@
 <li>Expired tokens force you to log in again.</li>
 </ul>
 <p>This authentication method ensures secure access to your Trino cluster while maintaining ease of use for interactive queries.</p>
+</details>
 <h2 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h2>
 <p>To remove the Trino cluster:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>trino<span class="w"> </span>--namespace<span class="w"> </span>trino
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>trino
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>trino<span class="w"> </span>--namespace<span class="w"> </span>trino
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>namespace<span class="w"> </span>trino
 </span></code></pre></div>
 
 

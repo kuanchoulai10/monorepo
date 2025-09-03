@@ -2074,11 +2074,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cdc/deployment-kafka-debezium-mysql-connector.md" class="md-nav__link">
+      <a href="../../cdc/deployment-debezium-mysql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Debezium MySQL Kafka Connector Deployment
     
   </span>
   
@@ -2096,11 +2096,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cdc/deployment-kafka-iceberg-connector.md" class="md-nav__link">
+      <a href="../../cdc/deployment-iceberg-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    None
+    Kafka Cluster Deployment
     
   </span>
   
@@ -2211,7 +2211,7 @@
         
   
   <span class="md-ellipsis">
-    Deployment
+    Trino Cluster Deployment
     
   </span>
   
@@ -2304,6 +2304,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configure Catalogs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -2314,6 +2326,54 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigQuery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iceberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iceberg
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faker
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -5004,6 +5064,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bigquery" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigQuery
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iceberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iceberg
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faker
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5044,7 +5139,7 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="no">faker.locale=en</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">bigquery</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="no">connector.name=bigquery</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="no">bigquery.project-id=$PROJECT_ID</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="no">bigquery.project-id=$GCP_BQ_PROJECT_ID</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="no">bigquery.credentials-file=/etc/trino/bigquery/trino-sa.json</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">iceberg</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="no">connector.name=iceberg</span>
@@ -5062,6 +5157,9 @@
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># https://trino.io/docs/current/connector/iceberg.html#authorization</span>
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1"># https://trino.io/docs/current/object-storage/file-system-s3.html</span>
 </span></code></pre></div>
+<h2 id="bigquery">BigQuery<a class="headerlink" href="#bigquery" title="Permanent link">&para;</a></h2>
+<h2 id="iceberg">Iceberg<a class="headerlink" href="#iceberg" title="Permanent link">&para;</a></h2>
+<h2 id="faker">Faker<a class="headerlink" href="#faker" title="Permanent link">&para;</a></h2>
 
 
 
