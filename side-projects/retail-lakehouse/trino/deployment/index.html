@@ -5270,7 +5270,6 @@
 <h1 id="trino-cluster-deployment">Trino Cluster Deployment<a class="headerlink" href="#trino-cluster-deployment" title="Permanent link">&para;</a></h1>
 <div class="admonition success">
 <p class="admonition-title">Prerequisites</p>
-</div>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Complete all the requirements in the <a href="../../prerequisites/">Prerequisites</a> section.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> OAuth 2.0 Client ID and Client Secret (<code>OAUTH2_CLIENT_ID</code> and <code>OAUTH2_CLIENT_SECRET</code>) for Google authentication. See <a href="../oauth2/#create-google-oauth-20-client">here</a> for instructions.</li>
@@ -5278,6 +5277,7 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> AWS credentials (<code>AWS_ACCESS_KEY</code> and <code>AWS_SECRET_KEY</code>), regions (<code>AWS_REGION</code>), and S3 bucket (<code>ICEBERG_S3_URL</code>) for accessing Iceberg table and Glue Data Catalog. See <a href="../catalogs/#iceberg">here</a> for instructions.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> AWS S3 Bucket for Exchange Manager (<code>EXCHANGE_S3_URLS</code>). See <a href="../fault-tolerance/">here</a> for instructions.</li>
 </ul>
+</div>
 <p>Without further ado, let's get started with the deployment:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/Projects/retail-lakehouse/trino
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>install.sh
