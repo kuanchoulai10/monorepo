@@ -27,6 +27,9 @@ nav:
     # - side-projects/sql-based-rag-application.md
   - Learning Notes:
     - tech-notes/index.md
+    - OpenTelemetry:
+      - tech-notes/opentelemetry/what-otel-is.md
+      - tech-notes/opentelemetry/how-otel-works.md
     - Spark:
       - tech-notes/spark/how-spark-works.md
       - tech-notes/spark/performance-tuning.md
