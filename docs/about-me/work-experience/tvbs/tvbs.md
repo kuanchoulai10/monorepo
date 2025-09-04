@@ -11,7 +11,7 @@
 
 ??? note "About TVBS"
 
-    TVBS is the **leading media group** in Taiwan, with over **1,400 employees**. Around **60** of them work in **software development**.
+    [TVBS](https://www.tvbs.com.tw/ours/en/moment-of-glory) is the **leading media group** in Taiwan, with over **1,400 employees**. Around **60** of them work in **software development**.
 
     **Every month**, we have around **20 million users** visiting our website and mobile apps.
 
