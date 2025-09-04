@@ -11,6 +11,14 @@ Through monthly reviews, I can track my progress, maintain learning momentum, an
 
 <div class="grid cards" markdown>
 
+-   :material-book-open-variant:{ .lg .middle .indigo } __September 2025__
+
+    ---
+
+    Deep diving into system observability and SRE practices, hands-on with OpenTelemetry, Prometheus, Grafana, and Trino to enhance monitoring, tracing, and reliability of distributed systems.
+
+    [--> Observability & SRE Deep-diving Month](./202509.md)
+
 -   :material-book-open-variant:{ .lg .middle .indigo } __August 2025__
 
     ---
