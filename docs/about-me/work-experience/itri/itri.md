@@ -15,4 +15,4 @@ During my time at ITRI, I was part of the interdisciplinary research team at the
 
 One of the most valuable lessons I learned at ITRI is that **studying industry trends requires a holistic approach**. It's not just about understanding the technology; you also need to consider business models, policies, and socio-cultural factors. This experience inspired me to dive deeper into the world of data science. While researching companies in the data-driven space, I realized how much I enjoyed working with data and uncovering insights. This journey has been both challenging and rewarding, and it has shaped my aspirations for the future.
 
-[About Me :material-page-previous-outline:{ .lg .middle }](../../index.md){ .md-button }
+[Work Experience :material-page-previous-outline:{ .lg .middle }](../index.md){ .md-button }

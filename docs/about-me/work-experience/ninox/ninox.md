@@ -22,4 +22,4 @@ See [here](https://kuanchoulai10.github.io/) for the original project documentat
 CI/CD Pipeline for OBI Algorithm Development
 ///
 
-[About Me :material-page-previous-outline:{ .lg .middle }](../../index.md){ .md-button }
+[Work Experience :material-page-previous-outline:{ .lg .middle }](../index.md){ .md-button }
