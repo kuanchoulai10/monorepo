@@ -4,18 +4,18 @@ Hi, I'm *KC*. I'm a *Data Engineer* focused on *building large-scale, distribute
 
 ## 🌱 What I Value
 
-- **Ownership: I take responsibility for business outcomes, not just technical tasks.**{ .orange } For example, I volunteered to own a data domain end-to-end—from gathering requirements and building pipelines to delivering dashboards and running A/B tests. This proactive approach helped teams make data-driven product decisions faster.
-- **Collaboration: I believe diverse perspectives lead to stronger solutions.**{ .orange } At a media company, I led a small cross-functional growth team that designed low-cost, high-impact experiments and built a clear metric system around the North Star goal. This alignment enabled editors and engineers to work toward shared targets with measurable impact.
-- **Transparency: I value clear communication and knowledge sharing.**{ .orange } With a background in psychology and business, I translate technical concepts into language non-technical teams like marketing and editorial can understand. I also give internal tech talks on tools such as dbt, Terraform, and MLOps, which improved cross-team alignment and adoption.
-- **Growth: I seek environments that encourage continuous learning and improvement.**{ .orange } I've pursued self-learning in machine learning and algorithms since grad school, and later introduced dbt and Terraform into production in the company. These initiatives not only advanced my own skills but also modernized the team's workflow, reducing manual effort and improving reliability.
+- *Ownership: I take responsibility for business outcomes, not just technical tasks.*{ .orange } For example, I volunteered to own a data domain end-to-end—from gathering requirements and building pipelines to delivering dashboards and running A/B tests. This proactive approach helped teams make data-driven product decisions faster.
+- *Collaboration: I believe diverse perspectives lead to stronger solutions.*{ .orange } At a media company, I led a small cross-functional growth team that designed low-cost, high-impact experiments and built a clear metric system around the North Star goal. This alignment enabled editors and engineers to work toward shared targets with measurable impact.
+- *Transparency: I value clear communication and knowledge sharing.*{ .orange } With a background in psychology and business, I translate technical concepts into language non-technical teams like marketing and editorial can understand. I also give internal tech talks on tools such as dbt, Terraform, and MLOps, which improved cross-team alignment and adoption.
+- *Growth: I seek environments that encourage continuous learning and improvement.*{ .orange } I've pursued self-learning in machine learning and algorithms since grad school, and later introduced dbt and Terraform into production in the company. These initiatives not only advanced my own skills but also modernized the team's workflow, reducing manual effort and improving reliability.
 
 ## 🚀 My Strengths
 
 Here are three areas where I think I bring the most value:
 
-1. **Data Infrastructure & Lakehouse Expertise**: I have solid experience in building scalable, highly available data platforms and lakehouse architectures, and in choosing the right technology to support both team and organizational needs.
-2. **Cross-functional Collaboration**: With a background in psychology and business management, I work well with colleagues from diverse disciplines.
-3. **Learning Fast and Navigating Ambiguity**: I'm comfortable figuring out what matters most when requirements are unclear, and driving progress toward long-term goals.
+1. *Data Infrastructure & Lakehouse Expertise*{ .orange }: I have solid experience in building scalable, highly available data platforms and lakehouse architectures, and in choosing the right technology to support both team and organizational needs.
+2. *Cross-functional Collaboration*{ .orange }: With a background in psychology and business management, I work well with colleagues from diverse disciplines.
+3. *Learning Fast and Navigating Ambiguity*{ .orange }: I'm comfortable figuring out what matters most when requirements are unclear, and driving progress toward long-term goals.
 
 ## 💬 Communication Style
 
@@ -34,7 +34,7 @@ Also, I enjoy a bit of **small talk** at the beginning of a conversation. As som
 
 ## 🕒 My Rhythm
 
-- I currently based in **Taiwan** and **UST (UTC+8)** is my timezone 🇹🇼.
+- I currently based in **Taiwan** and **UST (UTC+8)** is my timezone.
 - My peak focus time is usually **10:30 AM to 4:30 PM** on weekdays.
 - On weekends, you'll often find me tinkering with personal projects.
 
