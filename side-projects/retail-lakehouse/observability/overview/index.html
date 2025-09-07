@@ -2359,28 +2359,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../prometheus/how-thanos-works/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How Thanos Works?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../prometheus/prometheus-deployment/" class="md-nav__link">
         
   
@@ -2403,7 +2381,29 @@
   
   
     <li class="md-nav__item">
-      <a href="../prometheus/thanos-deployment/" class="md-nav__link">
+      <a href="../thanos/how-thanos-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Thanos Works?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../thanos/thanos-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5177,14 +5177,16 @@
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
-<p><a class="glightbox" href="../assets/metrics.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../assets/metrics.excalidraw.svg" width="600" /></a>
-///
-Architecture Overview
-///</p>
+<figure>
+<p><a class="glightbox" href="../assets/metrics.excalidraw.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../assets/metrics.excalidraw.svg" width="600" /></a></p>
+<figcaption>
+<p>Architecture Overview</p>
+</figcaption>
+</figure>
 <div class="admonition success">
 <p class="admonition-title">Metrics Collection Deployment Steps</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> Deploy a Prometheus Operator using YAML files</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Deploy a Prometheus Operator using YAML files</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Deploy a Thanos using bitnami helm chart (Receiver, Store Gateway, Querier, Compactor, )</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Deploy a Thanos ruler using Prometheus Operator</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Deploy a Prometheus Alertmanager using Prometheus Operator</li>
@@ -5194,7 +5196,7 @@ Architecture Overview
 </ul>
 </div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/Projects/retail-lakehouse/observability
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>/install.sh
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>./install.sh
 </span></code></pre></div>
 <p>The <code>install.sh</code> script in the <code>observability</code> directory is as follows:</p>
 <details class="info">
@@ -5217,10 +5219,14 @@ Architecture Overview
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>sleep<span class="w"> </span><span class="m">5</span>
 </span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pods<span class="w"> </span>-l<span class="w">  </span>app.kubernetes.io/name<span class="o">=</span>prometheus-operator<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>--timeout<span class="o">=</span>180s
 </span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1"># Deploy a Thanos using Bitnami Helm Chart</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># https://artifacthub.io/packages/helm/bitnami/thanos</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span>https://charts.bitnami.com/bitnami
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># Deploy Thanos using kube-thanos jsonnet</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># https://github.com/thanos-io/kube-thanos</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>thanos
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="nb">cd</span><span class="w"> </span>thanos
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>jb<span class="w"> </span>install<span class="w"> </span>github.com/thanos-io/kube-thanos/jsonnet/kube-thanos@main
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>rm<span class="w"> </span>-f<span class="w"> </span>manifests/thanos-*
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>jsonnet<span class="w"> </span>-J<span class="w"> </span>vendor<span class="w"> </span>-m<span class="w"> </span>manifests/<span class="w"> </span>thanos.jsonnet<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-I<span class="o">{}</span><span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cat {} | yq -P &gt; {}.yaml; rm -f {}&quot;</span><span class="w"> </span>--<span class="w"> </span><span class="o">{}</span>
 </span></code></pre></div>
 </details>
 <div class="admonition success">

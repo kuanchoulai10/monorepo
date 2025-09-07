@@ -12,13 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/observability/prometheus/how-thanos-works/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/retail-lakehouse/observability/thanos/thanos-deployment/">
       
       
-        <link rel="prev" href="../how-prometheus-works/">
+        <link rel="prev" href="../how-thanos-works/">
       
       
-        <link rel="next" href="../prometheus-deployment/">
+        <link rel="next" href="../../opentelemetry/what-is-opentelemetry/">
       
       
       <link rel="icon" href="../../../../../assets/avatar.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>How Thanos Works? - KC's Data & Life Notes</title>
+        <title>Thanos Deployment - KC's Data & Life Notes</title>
       
     
     
@@ -79,11 +79,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="How Thanos Works? - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Thanos Deployment - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/observability/prometheus/how-thanos-works.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/observability/thanos/thanos-deployment.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -91,15 +91,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/observability/prometheus/how-thanos-works/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/retail-lakehouse/observability/thanos/thanos-deployment/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="How Thanos Works? - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Thanos Deployment - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/observability/prometheus/how-thanos-works.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/retail-lakehouse/observability/thanos/thanos-deployment.png" >
       
     
     
@@ -133,7 +133,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-thanos-works" class="md-skip">
+        <a href="#thanos-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -196,7 +196,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How Thanos Works?
+              Thanos Deployment
             
           </span>
         </div>
@@ -2327,11 +2327,55 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-prometheus-works/" class="md-nav__link">
+      <a href="../../prometheus/how-prometheus-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     How Prometheus Works?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prometheus/prometheus-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prometheus Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-thanos-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Thanos Works?
     
   </span>
   
@@ -2362,7 +2406,7 @@
           
   
   <span class="md-ellipsis">
-    How Thanos Works?
+    Thanos Deployment
     
   </span>
   
@@ -2374,7 +2418,7 @@
         
   
   <span class="md-ellipsis">
-    How Thanos Works?
+    Thanos Deployment
     
   </span>
   
@@ -2399,44 +2443,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture-overview" class="md-nav__link">
+  <a href="#k8s" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture Overview
+      K8S
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#behind-the-scenes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Behind the Scenes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Behind the Scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#thanos-receiver-deep-dive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thanos Receiver Deep Dive
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-thanos-stores-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Thanos Stores Data
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2453,50 +2464,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prometheus-deployment/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Prometheus Deployment
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../thanos-deployment/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Thanos Deployment
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -5237,44 +5204,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#architecture-overview" class="md-nav__link">
+  <a href="#k8s" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture Overview
+      K8S
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#behind-the-scenes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Behind the Scenes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Behind the Scenes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#thanos-receiver-deep-dive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thanos Receiver Deep Dive
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-thanos-stores-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Thanos Stores Data
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5301,31 +5235,9 @@
                 
                   
 
-  <nav class="md-tags" >
-    
-      
-      
-      
-        <a href="../../../../../tags/#tag:prometheus" class="md-tag">Prometheus</a>
-      
-    
-      
-      
-      
-        <a href="../../../../../tags/#tag:sre" class="md-tag">SRE</a>
-      
-    
-      
-      
-      
-        <a href="../../../../../tags/#tag:thanos" class="md-tag">Thanos</a>
-      
-    
-  </nav>
-
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/observability/prometheus/how-thanos-works.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/retail-lakehouse/docs/retail-lakehouse/observability/thanos/thanos-deployment.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -5334,107 +5246,25 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/observability/prometheus/how-thanos-works.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/retail-lakehouse/docs/retail-lakehouse/observability/thanos/thanos-deployment.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="how-thanos-works">How Thanos Works?<a class="headerlink" href="#how-thanos-works" title="Permanent link">&para;</a></h1>
-<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
+<h1 id="thanos-deployment">Thanos Deployment<a class="headerlink" href="#thanos-deployment" title="Permanent link">&para;</a></h1>
+<h2 id="k8s">K8S<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h2>
+<p>There are 3 ways of deploying Thanos on Kubernetes:</p>
 <ul>
-<li><a href="https://thanos.io/tip/thanos/quick-tutorial.md/">Quick Tutorial</a> has a simple introduction to Thanos architecture and components.</li>
-<li><a href="https://thanos.io/tip/thanos/design.md/">Design</a> has a more detailed description of the architecture and components.</li>
+<li><a href="https://artifacthub.io/packages/search?ts_query_web=thanos">Community Helm charts</a></li>
+<li><a href="https://github.com/coreos/prometheus-operator">prometheus-operator</a></li>
+<li><a href="https://github.com/thanos-io/kube-thanos">kube-thanos</a>: Jsonnet based Kubernetes templates.</li>
 </ul>
-<p>Thanos is comprised of a set of components where each fulfills a specific role</p>
-<ul>
-<li><strong>Sidecar</strong>: connects to Prometheus, <em>remote reads its data for query</em> and/or <em>uploads it to cloud storage</em>.</li>
-<li><strong>Ruler</strong>: <strong>evaluates recording and alerting rules</strong> against data in Thanos for exposition and/or upload. It can <em>discover query nodes</em> to evaluate recording and alerting rules.</li>
-<li><a href="https://thanos.io/tip/thanos/design.md/#stores"><strong>Store Gateway</strong></a>: Since <em>store nodes and data sources expose the same gRPC Store API</em>, clients can largely treat them as equivalent and don't have to be concerned with which specific component they are querying. It is purely a data retrieval API and does <em>not</em> provide complex query execution.</li>
-<li><a href="https://thanos.io/tip/thanos/design.md/#query-layer"><strong>Queriers</strong></a>: Queriers are <strong>stateless and horizontally scalable instances</strong> that implement <strong>PromQL</strong> on top of the Store APIs exposed in the cluster. Queriers participate in the cluster to be able to <strong>resiliently discover all data sources and store nodes</strong>. It implements <strong>Prometheus's v1 API</strong> to aggregate data. It is also capable of <a href="https://thanos.io/tip/thanos/quick-tutorial.md/#deduplicating-data-from-prometheus-ha-pairs"><strong><em>deduplicating</em></strong> data</a> collected from Prometheus HA pairs.</li>
-<li><a href="https://thanos.io/tip/thanos/design.md/#compactor"><strong>Compactor</strong></a>: a singleton process that does not participate in the Thanos cluster. Instead, it is only pointed at an object storage bucket and <strong>continuously consolidates multiple smaller blocks into larger ones</strong>. The compactor also does additional batch processing such as <strong>down-sampling</strong> and <strong>applying retention policies</strong>.</li>
-<li><strong>Receiver</strong>: receives data from Prometheus's remote write WAL, exposes it, and/or uploads it to cloud storage.</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌────────────┬─────────┐         ┌────────────┬─────────┐     ┌─────────┐
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│ Prometheus │ Sidecar │   ...   │ Prometheus │ Sidecar │     │   Rule  │
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>└────────────┴────┬────┘         └────────────┴────┬────┘     └┬────────┘
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                  │                                │           │
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                Blocks                           Blocks      Blocks
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                  │                                │           │
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                  v                                v           v
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>              ┌──────────────────────────────────────────────────┐
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>              │                   Object Storage                 │
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>              └──────────────────────────────────────────────────┘
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>┌──────────────────────┐  ┌────────────┬─────────┐   ┌────────────┐
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>│ Google Cloud Storage │  │ Prometheus │ Sidecar │   │    Rule    │
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>└─────────────────┬────┘  └────────────┴────┬────┘   └─┬──────────┘
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                  │                         │          │
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>         Block File Ranges                  │          │
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                  │                     Store API      │
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                  v                         │          │
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>                ┌──────────────┐            │          │
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>                │     Store    │            │      Store API
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>                └────────┬─────┘            │          │
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>                         │                  │          │
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                     Store API              │          │
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                         │                  │          │
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                         v                  v          v
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                       ┌──────────────────────────────────┐
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                       │              Client              │
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                       └──────────────────────────────────┘
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>┌──────────────────┐  ┌────────────┬─────────┐   ┌────────────┐
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>│    Store Node    │  │ Prometheus │ Sidecar │   │    Rule    │
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>└─────────────┬────┘  └────────────┴────┬────┘   └─┬──────────┘
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>              │                         │          │
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>              │                         │          │
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>              │                         │          │
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>              v                         v          v
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        ┌─────────────────────────────────────────────────────┐
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        │                      Query layer                    │
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        └─────────────────────────────────────────────────────┘
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>                ^                  ^                  ^
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                │                  │                  │
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>       ┌────────┴────────┐  ┌──────┴─────┐       ┌────┴───┐
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>       │ Alert Component │  │ Dashboards │  ...  │ Web UI │
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>       └─────────────────┘  └────────────┘       └────────┘
-</span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul>
-<li>For a given Prometheus instance, it is <em>not</em> recommended to run both <em>Sidecar</em> and <em>Receiver</em> simultaneously.</li>
-<li>If your goal is to have each Prometheus instance <strong>self-manage</strong> while still <strong>allowing Querier to connect directly to each Prometheus for real-time data</strong>, then the most natural choice is to use <strong>Sidecar</strong>. It sits alongside Prometheus, exposing data to Thanos Querier and handling the upload of historical blocks to object storage.</li>
-<li>Conversely, if you want to <strong>centralize the reception of metrics from multiple sources or tenants</strong>, making the front-end Prometheus instances lighter, or planning a centralized write pipeline, then using <strong>Receiver</strong> is more appropriate. It uses <code>remote_write</code> to accept data from each Prometheus and maintains a unified storage and query interface on the backend.</li>
-</ul>
-</div>
-<h2 id="behind-the-scenes">Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Permanent link">&para;</a></h2>
-<h3 id="thanos-receiver-deep-dive">Thanos Receiver Deep Dive<a class="headerlink" href="#thanos-receiver-deep-dive" title="Permanent link">&para;</a></h3>
-<figure>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jn_zIfBuUyE?si=OTRBxGMJg_j87tOc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<figcaption>
-<p>Thanos Receiver Deep Dive - Joel Verezhak, Open Systems (2024)</p>
-</figcaption>
-</figure>
-<h3 id="how-thanos-stores-data">How Thanos Stores Data<a class="headerlink" href="#how-thanos-stores-data" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Chunk Files</strong>: hold a few hundred MB worth of chunks each. Chunks for the same series are sequentially aligned.</li>
-<li><strong>Index File</strong>: holds all information needed to look up specific series</li>
-<li><code>meta.json</code> File: holds meta-information about a block metadata</li>
-</ul>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>01BX6V6TY06G5MFQ0GPH7EMXRH
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── chunks
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│   ├── 000001
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│   ├── 000002
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>│   └── 000003
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>├── index
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>└── meta.json
-</span></code></pre></div>
-<p>See <a href="https://thanos.io/tip/thanos/storage.md/#data-in-object-storage">Data in Object Storage</a> to understand how Thanos organizes data in object storage.</p>
+<p>We use <strong>Bitnami Thanos Helm chart</strong> to deploy Thanos components.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://prometheus-operator.dev/docs/platform/thanos/">Thanos | Prometheus Operator Docs</a></li>
+<li><a href="https://thanos.io/tip/thanos/getting-started.md/#community-thanos-kubernetes-applications">Community Thanos Kubernetes Applications | Thanos Docs</a> </li>
 </ul>
 
 
@@ -5518,7 +5348,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../how-prometheus-works/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How Prometheus Works?">
+          <a href="../how-thanos-works/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How Thanos Works?">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -5528,20 +5358,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                How Prometheus Works?
+                How Thanos Works?
               </div>
             </div>
           </a>
         
         
           
-          <a href="../prometheus-deployment/" class="md-footer__link md-footer__link--next" aria-label="Next: Prometheus Deployment">
+          <a href="../../opentelemetry/what-is-opentelemetry/" class="md-footer__link md-footer__link--next" aria-label="Next: What is OpenTelemetry?">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Prometheus Deployment
+                What is OpenTelemetry?
               </div>
             </div>
             <div class="md-footer__button md-icon">
