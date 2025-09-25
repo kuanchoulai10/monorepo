@@ -5377,7 +5377,7 @@
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>install.sh
 </span></code></pre></div>
 <details class="info">
-<summary>Result</summary>
+<summary>install.sh</summary>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">set</span><span class="w"> </span>-e
@@ -5388,9 +5388,9 @@
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>debezium-role-binding.yaml
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>debezium-connect-cluster.yaml<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sleep<span class="w"> </span><span class="m">5</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>pod/debezium-connect-cluster-connect-build<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>-f
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>pod/debezium-connect-cluster-connect-build<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>sleep<span class="w"> </span><span class="m">5</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>kafka-connect<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>terminated<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>app.kubernetes.io/name<span class="o">=</span>kafka-connect-build<span class="w"> </span>-n<span class="w"> </span>kafka-cdc<span class="w"> </span>--timeout<span class="o">=</span>1200s
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>debezium-connector.yaml<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>kubectl<span class="w"> </span>get<span class="w"> </span>kafkaconnector<span class="w"> </span>-n<span class="w"> </span>kafka-cdc
@@ -5508,7 +5508,7 @@
 </span></code></pre></div>
 <details class="info">
 <summary>Result</summary>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>10.104.128.211
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>10.109.40.28
 </span></code></pre></div>
 </details>
 <details class="info">
@@ -5540,7 +5540,7 @@
 </span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">    </span><span class="nt">output</span><span class="p">:</span>
 </span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">      </span><span class="c1"># https://strimzi.io/docs/operators/latest/configuring.html#type-DockerOutput-reference</span>
 </span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
-</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.104.128.211/debezium-mysql-connector:latest</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.109.40.28/debezium-mysql-connector:latest</span>
 </span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">    </span><span class="nt">plugins</span><span class="p">:</span>
 </span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debezium-mysql-connector</span>
 </span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">        </span><span class="nt">artifacts</span><span class="p">:</span>
