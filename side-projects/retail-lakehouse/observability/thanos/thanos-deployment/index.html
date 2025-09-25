@@ -2452,6 +2452,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -5213,6 +5222,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -5262,6 +5280,7 @@
 <li><a href="https://github.com/thanos-io/kube-thanos">kube-thanos</a>: Jsonnet based Kubernetes templates.</li>
 </ul>
 <p>We use <strong>kube-thanos</strong> to deploy Thanos components in this project.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>When deploying Thanos in Kubernetes, Ruler would hit "too many open files" error. The reason is minikube's default <code>fs.inotify.max_user_instances</code> is <code>128</code>, which is too small. Hence we need to increase it.</p>
 <p>First, ssh into minikube VM:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>minikube<span class="w"> </span>-p<span class="w"> </span>retail-lakehouse<span class="w"> </span>ssh
@@ -5276,7 +5295,7 @@
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fs.inotify.max_user_instances = 128
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>9223372036854775807
 </span></code></pre></div>
-<p>Increase it to <code>1024</code> by running the following command:</p>
+<p>Increase <code>fs.inotify.max_user_instances</code> to <code>1024</code> by running the following command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>fs.inotify.max_user_instances<span class="o">=</span><span class="m">1024</span>
 </span></code></pre></div>
 <p>After that, you can exit minikube VM:</p>
