@@ -16,6 +16,3 @@
 [submodule "retail-lakehouse"]
 	path = retail-lakehouse
 	url = https://github.com/kuanchoulai10/retail-lakehouse.git
-[submodule "arxiv-analytics-platform"]
-	path = arxiv-analytics-platform
-	url = https://github.com/kuanchoulai10/arxiv-analytics-platform.git
