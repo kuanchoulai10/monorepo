@@ -43,6 +43,12 @@ nav:
       - tech-notes/kafka/iceberg-kafka-sink-connector.md
     - Flink:
       - tech-notes/flink/how-flink-works.md
+    - Prometheus:
+      - Up & Running (2023):
+        - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
+    - OpenTelemetry:
+      - Learning OpenTelemetry (2024):
+        - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
     - Airflow:
       - tech-notes/airflow/how-airflow-works.md
     - Polaris:
