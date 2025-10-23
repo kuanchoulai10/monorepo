@@ -49,6 +49,11 @@ nav:
     - OpenTelemetry:
       - Learning OpenTelemetry (2024):
         - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
+    - Karpenter:
+      - tech-notes/karpenter/best-practices.md
+      - tech-notes/karpenter/how-karpenter-works.md
+    - KEDA:
+      - tech-notes/keda/how-keda-works.md
     - Airflow:
       - tech-notes/airflow/how-airflow-works.md
     - Polaris:
