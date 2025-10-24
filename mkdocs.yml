@@ -48,6 +48,11 @@ nav:
         - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
     - OpenTelemetry:
       - Learning OpenTelemetry (2024):
+        - tech-notes/opentelemetry/learning-opentelemetry/ch2-why-use-opentelemetry.md
+        - tech-notes/opentelemetry/learning-opentelemetry/ch3-overview.md
+        - tech-notes/opentelemetry/learning-opentelemetry/ch4-architecture.md
+        - tech-notes/opentelemetry/learning-opentelemetry/ch7-infra-observability.md
+        - tech-notes/opentelemetry/learning-opentelemetry/ch8-designing-telemetry-pipelines.md
         - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
     - Karpenter:
       - tech-notes/karpenter/best-practices.md
