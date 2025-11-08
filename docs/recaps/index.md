@@ -11,11 +11,20 @@ Through monthly reviews, I can track my progress, maintain learning momentum, an
 
 <div class="grid cards" markdown>
 
+-   :material-book-open-variant:{ .lg .middle .indigo } __October 2025__
+
+    ---
+
+    Experimenting with advanced GitOps workflows and continuous deployment strategies using tools like Argo CD and Argo Rollouts.
+
+    [--> GitOps & Continuous Deployment Month](./202510.md)
+
+
 -   :material-book-open-variant:{ .lg .middle .indigo } __September 2025__
 
     ---
 
-    Deep diving into system observability and SRE practices, hands-on with OpenTelemetry, Prometheus, Grafana, and Trino to enhance monitoring, tracing, and reliability of distributed systems.
+    Deep diving into system observability and SRE practices, hands-on with OpenTelemetry, Thanos, Jaeger, Prometheus, Grafana, and Trino to enhance monitoring, tracing, and reliability of distributed systems.
 
     [--> Observability & SRE Deep-diving Month](./202509.md)
 
