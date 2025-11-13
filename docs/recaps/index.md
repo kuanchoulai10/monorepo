@@ -15,7 +15,7 @@ Through monthly reviews, I can track my progress, maintain learning momentum, an
 
     ---
 
-    Experimenting with advanced GitOps workflows and continuous deployment strategies using tools like Argo CD and Argo Rollouts.
+    Experimenting with advanced GitOps workflows and  using tools like Argo CD and Argo Rollouts.
 
     [--> GitOps & Continuous Deployment Month](./202510.md)
 
