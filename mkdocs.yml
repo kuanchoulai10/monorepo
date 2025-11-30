@@ -80,6 +80,10 @@ nav:
       - tech-notes/treasure-data/index.md
     - LeetCode: "!include ./leetcode/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
+    - Shortcuts:
+      - shortcuts/index.md
+      - shortcuts/tmux.md
+      - shortcuts/git.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
