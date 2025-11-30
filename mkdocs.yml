@@ -84,6 +84,7 @@ nav:
       - shortcuts/index.md
       - shortcuts/tmux.md
       - shortcuts/git.md
+      - shortcuts/micro.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
