@@ -23,3 +23,6 @@ If pushed to the remote branch, then you should push
 ```
 git push -f
 ```
+# Vim
+
+`dd` + `P`
