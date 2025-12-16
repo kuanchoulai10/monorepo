@@ -5419,6 +5419,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -5429,6 +5441,36 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-feature-branch-onto-latest-main-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebase Feature Branch onto latest Main Branch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -6013,6 +6055,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-feature-branch-onto-latest-main-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rebase Feature Branch onto latest Main Branch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6058,6 +6117,25 @@
 <p>If pushed to the remote branch, then you should push </p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git push -f
 </span></code></pre></div>
+<h2 id="rebase-feature-branch-onto-latest-main-branch">Rebase Feature Branch onto latest Main Branch<a class="headerlink" href="#rebase-feature-branch-onto-latest-main-branch" title="Permanent link">&para;</a></h2>
+<p>First, make sure you are currently on your feature branch, then fetch the latest changes from the remote repository:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin
+</span></code></pre></div>
+<p>Next, rebase your feature branch onto the updated <code>main</code> branch:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>rebase<span class="w"> </span>origin/main
+</span></code></pre></div>
+<p>If conflicts occur during the rebase, resolve them manually, stage the resolved files, and continue the rebase process:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>add<span class="w"> </span>&lt;resolved-files&gt;
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+</span></code></pre></div>
+<p>After the rebase is completed, push the updated branch to the remote repository. Since rebasing rewrites commit history, use a safe force push:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>push<span class="w"> </span>--force-with-lease
+</span></code></pre></div>
+<p>If you need to stop the rebase process at any point, you can abort it:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>rebase<span class="w"> </span>--abort
+</span></code></pre></div>
+<p><strong>Note:</strong>
+Avoid rebasing branches that are shared with other developers.</p>
 <h1 id="vim">Vim<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h1>
 <p><code>dd</code> + <code>P</code></p>
 
