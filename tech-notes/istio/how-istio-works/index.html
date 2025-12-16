@@ -5997,6 +5997,48 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-main-data-plane-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Main Data Plane Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 Main Data Plane Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sidecar Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambient-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambient Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#crds" class="md-nav__link">
     <span class="md-ellipsis">
       CRDs
@@ -6102,10 +6144,37 @@
 
 
 <h1 id="how-istio-works">How Istio Works<a class="headerlink" href="#how-istio-works" title="Permanent link">&para;</a></h1>
+<h2 id="core-components">Core Components<a class="headerlink" href="#core-components" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>Istio Ingress Gateway</code> is a key component that manages external access to the services within the mesh. It acts as a reverse proxy, routing incoming traffic to the appropriate service based on the defined rules.</li>
-<li><code>Istiod</code> is the control plane component of Istio, responsible for managing the configuration and policy for the service mesh. It handles the distribution of configuration to the data plane proxies and provides APIs for managing the mesh.</li>
+<li><code>Istio Ingress Gateway</code> is a key component that manages external access to the services within the mesh. It acts as a <strong>reverse proxy</strong>, routing incoming traffic to the appropriate service based on the defined rules.</li>
+<li><code>Istiod</code> is the <strong>control plane component of Istio</strong>, responsible for managing the configuration and policy for the service mesh. It handles the distribution of configuration to the data plane proxies and provides APIs for managing the mesh. See <a href="https://istio.io/latest/docs/ops/deployment/architecture/#istiod">here</a> for more details.</li>
 </ul>
+<figure>
+<p><a class="glightbox" href="https://istio.io/latest/docs/ops/deployment/architecture/arch.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://istio.io/latest/docs/ops/deployment/architecture/arch.svg" /></a></p>
+<figcaption>
+<p>Istio Architecture</p>
+</figcaption>
+</figure>
+<p>Along with creating a service mesh, Istio allows you to manage <strong>gateways</strong>, which are <strong>Envoy proxies running at the edge of the mesh, providing fine-grained control over traffic entering and leaving the mesh</strong>.</p>
+<h2 id="2-main-data-plane-modes">2 Main Data Plane Modes<a class="headerlink" href="#2-main-data-plane-modes" title="Permanent link">&para;</a></h2>
+<p>A Istio Service Mesh can be logically divided into two parts: the <strong>data plane</strong> and the <strong>control plane</strong>.</p>
+<p>The <strong>data plane</strong> consists of a set of proxies that mediate and control all network communication between services in the mesh.</p>
+<p>The <strong>control plane</strong> is responsible for managing and configuring the proxies to route traffic, enforce policies, and collect telemetry.</p>
+<p>Istio supports 2 main <strong>data plane modes</strong>:</p>
+<ul>
+<li><strong>Sidecar mode</strong>: each pod has its own sidecar proxy (Envoy) that intercepts and manages traffic for that pod.</li>
+<li><strong>Ambient mode</strong>: it uses a per-node Layer 4 proxy (Envoy) to handle traffic for all pods on that node and optionally a per-namespace Layer 7 proxy to provide additional features like traffic routing and telemetry.</li>
+</ul>
+<h3 id="sidecar-mode">Sidecar Mode<a class="headerlink" href="#sidecar-mode" title="Permanent link">&para;</a></h3>
+<h3 id="ambient-mode">Ambient Mode<a class="headerlink" href="#ambient-mode" title="Permanent link">&para;</a></h3>
+<p>For Istio Ambient mode, it relies on <code>ztunnel</code> (Zero Trust Tunnel) to provide L4</p>
+<figure>
+<p><a class="glightbox" href="https://istio.io/latest/docs/ambient/architecture/control-plane/ztunnel-architecture.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://istio.io/latest/docs/ambient/architecture/control-plane/ztunnel-architecture.svg" /></a></p>
+<figcaption>
+<p>ztunnel architecture</p>
+</figcaption>
+</figure>
+<p><a class="glightbox" href="https://istio.io/latest/docs/ambient/architecture/data-plane/ztunnel-waypoint-datapath.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://istio.io/latest/docs/ambient/architecture/data-plane/ztunnel-waypoint-datapath.png" /></a></p>
 <h2 id="crds">CRDs<a class="headerlink" href="#crds" title="Permanent link">&para;</a></h2>
 <p>Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:</p>
 <ul>
