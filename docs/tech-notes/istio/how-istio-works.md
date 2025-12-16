@@ -7,8 +7,45 @@ tags:
 
 # How Istio Works
 
-- `Istio Ingress Gateway` is a key component that manages external access to the services within the mesh. It acts as a reverse proxy, routing incoming traffic to the appropriate service based on the defined rules.
-- `Istiod` is the control plane component of Istio, responsible for managing the configuration and policy for the service mesh. It handles the distribution of configuration to the data plane proxies and provides APIs for managing the mesh.
+## Core Components
+
+- `Istio Ingress Gateway` is a key component that manages external access to the services within the mesh. It acts as a **reverse proxy**, routing incoming traffic to the appropriate service based on the defined rules.
+- `Istiod` is the **control plane component of Istio**, responsible for managing the configuration and policy for the service mesh. It handles the distribution of configuration to the data plane proxies and provides APIs for managing the mesh. See [here](https://istio.io/latest/docs/ops/deployment/architecture/#istiod) for more details.
+
+![](https://istio.io/latest/docs/ops/deployment/architecture/arch.svg)
+/// caption
+Istio Architecture
+///
+
+Along with creating a service mesh, Istio allows you to manage **gateways**, which are **Envoy proxies running at the edge of the mesh, providing fine-grained control over traffic entering and leaving the mesh**.
+
+
+## 2 Main Data Plane Modes
+
+A Istio Service Mesh can be logically divided into two parts: the **data plane** and the **control plane**.
+
+The **data plane** consists of a set of proxies that mediate and control all network communication between services in the mesh.
+
+The **control plane** is responsible for managing and configuring the proxies to route traffic, enforce policies, and collect telemetry.
+
+Istio supports 2 main **data plane modes**:
+
+- **Sidecar mode**: each pod has its own sidecar proxy (Envoy) that intercepts and manages traffic for that pod.
+- **Ambient mode**: it uses a per-node Layer 4 proxy (Envoy) to handle traffic for all pods on that node and optionally a per-namespace Layer 7 proxy to provide additional features like traffic routing and telemetry.
+
+### Sidecar Mode
+
+### Ambient Mode
+
+For Istio Ambient mode, it relies on `ztunnel` (Zero Trust Tunnel) to provide L4
+
+![](https://istio.io/latest/docs/ambient/architecture/control-plane/ztunnel-architecture.svg)
+/// caption
+ztunnel architecture
+///
+
+![](https://istio.io/latest/docs/ambient/architecture/data-plane/ztunnel-waypoint-datapath.png)
+
 ## CRDs
 
 Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:
