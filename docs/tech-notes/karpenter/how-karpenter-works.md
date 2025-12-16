@@ -1,6 +1,7 @@
 ---
 tags:
   - Karpenter
+  - How It Works
 ---
 
 # How Karpenter Works

@@ -2,6 +2,7 @@
 tags:
   - Istio
   - Service Mesh
+  - How It Works
 ---
 
 # How Istio Works

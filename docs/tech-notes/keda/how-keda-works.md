@@ -1,6 +1,7 @@
 ---
 tags:
   - Keda
+  - How It Works
 ---
 
 # How KEDA Works

@@ -1,6 +1,7 @@
 ---
 tags:
   - Apache Airflow
+  - How It Works
 ---
 
 # How Airflow Works?
