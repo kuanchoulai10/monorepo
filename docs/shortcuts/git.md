@@ -1,8 +1,16 @@
 # Git
 
+## Pull + Rebase
+
+```sh
+git pull --rebase origin
+```
+
+## Squash
+
 Squash the last 3 commits
 
-```bash
+```shell
 git rebase -i HEAD~3
 ```
 
