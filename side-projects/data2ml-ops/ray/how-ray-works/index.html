@@ -12,9 +12,13 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/side-projects/data2ml-ops/others/grpc-introduction/">
+        <link rel="canonical" href="https://kcl10.com/side-projects/data2ml-ops/ray/how-ray-works/">
       
       
+        <link rel="prev" href="../what-why-when/">
+      
+      
+        <link rel="next" href="../in-the-bigger-picture/">
       
       
       <link rel="icon" href="../../../../assets/avatar.png">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Grpc introduction - KC's Data & Life Notes</title>
+        <title>How Ray Works? - KC's Data & Life Notes</title>
       
     
     
@@ -75,11 +79,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Grpc introduction - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="How Ray Works? - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/others/grpc-introduction.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/ray/how-ray-works.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -87,15 +91,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/side-projects/data2ml-ops/others/grpc-introduction/" >
+        <meta  property="og:url"  content="https://kcl10.com/side-projects/data2ml-ops/ray/how-ray-works/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Grpc introduction - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="How Ray Works? - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/others/grpc-introduction.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/side-projects/data2ml-ops/ray/how-ray-works.png" >
       
     
     
@@ -127,6 +131,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#how-ray-works" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -187,7 +196,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Grpc introduction
+              How Ray Works?
             
           </span>
         </div>
@@ -332,10 +341,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
   
@@ -713,6 +724,8 @@
       
   
   
+    
+  
   
   
     
@@ -733,14 +746,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
@@ -757,13 +773,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Side Projects
@@ -775,6 +791,8 @@
               
                 
   
+  
+    
   
   
   
@@ -799,19 +817,17 @@
       
         
       
-        
-      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           
@@ -834,7 +850,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Fraud Detection (Data2ML Ops)
@@ -1209,8 +1225,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1232,11 +1250,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_7" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2_7" id="__nav_3_2_7_label" tabindex="0">
@@ -1251,7 +1269,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2_7">
             <span class="md-nav__icon md-icon"></span>
             Ray
@@ -1265,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ray/what-why-when/" class="md-nav__link">
+      <a href="../what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1284,19 +1302,98 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ray/how-it-works/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How Ray Works?
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    How It Works?
+    How Ray Works?
     
   </span>
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-modules-and-their-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Modules and Their Roles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behind the Scenes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1309,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1331,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ray/deployment/" class="md-nav__link">
+      <a href="../deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1353,7 +1450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ray/ray-tune/" class="md-nav__link">
+      <a href="../ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1375,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ray/ray-job/" class="md-nav__link">
+      <a href="../ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1484,11 +1581,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../kserve/how-it-works/" class="md-nav__link">
+      <a href="../../kserve/how-kserve-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How It Works?
+    How KServe Works?
     
   </span>
   
@@ -1621,103 +1718,6 @@
   
   <span class="md-ellipsis">
     Deploy Your Model on Kubernetes with Feast Transformer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_9" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2_9" id="__nav_3_2_9_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Others
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2_9">
-            <span class="md-nav__icon md-icon"></span>
-            Others
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../istio-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What Is Istio?
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../knative-introduction/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    What Is Knative?
     
   </span>
   
@@ -5982,6 +5982,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-modules-and-their-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Modules and Their Roles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#behind-the-scenes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Behind the Scenes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -5995,9 +6041,25 @@
                 
                   
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:how-it-works" class="md-tag">How It Works</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:ray" class="md-tag">Ray</a>
+      
+    
+  </nav>
+
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data2ml-ops/docs/data2ml-ops/others/grpc-introduction.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/data2ml-ops/docs/data2ml-ops/ray/how-ray-works.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -6006,16 +6068,268 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data2ml-ops/docs/data2ml-ops/others/grpc-introduction.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/data2ml-ops/docs/data2ml-ops/ray/how-ray-works.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-  <h1>Grpc introduction</h1>
-
-
+<h1 id="how-ray-works">How Ray Works?<a class="headerlink" href="#how-ray-works" title="Permanent link">&para;</a></h1>
+<h2 id="key-modules-and-their-roles">Key Modules and Their Roles<a class="headerlink" href="#key-modules-and-their-roles" title="Permanent link">&para;</a></h2>
+<p>Ray Core is a powerful distributed computing framework that provides a small set of essential primitives (tasks, actors, and objects) for building and scaling distributed applications.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+<p>On top of Ray Core, Ray provides different AI libraries for different ML workloads.</p>
+<figure>
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/map-of-ray.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/map-of-ray.svg" /></a>
+  <em>Key Modules</em><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>
+</figure>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ray Data</td>
+<td>Scalable datasets for ML</td>
+<td>Ray Data provides distributed data processing optimized for machine learning and AI workloads. It efficiently streams data through data pipelines.<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>Ray Train</td>
+<td>Distributed model training</td>
+<td>Ray Train makes distributed model training simple. It abstracts away the complexity of setting up distributed training across popular frameworks like PyTorch and TensorFlow.<sup id="fnref3:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>Ray Tune</td>
+<td>Hyperparameter tuning at scale</td>
+<td>Ray Tune is a library for hyperparameter tuning at any scale. It automatically finds the best hyperparameters for your models with efficient distributed search algorithms.<sup id="fnref4:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>Ray Serve</td>
+<td>Scalable model serving</td>
+<td>Ray Serve provides scalable and programmable serving for ML models and business logic. Deploy models from any framework with production-ready performance.<sup id="fnref5:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+<tr>
+<td>Ray RLlib</td>
+<td>Industry-grade reinforcement learning</td>
+<td>RLlib is a reinforcement learning (RL) library that offers high performance implementations of popular RL algorithms and supports various training environments. RLlib offers high scalability and unified APIs for a variety of industry- and research applications.<sup id="fnref6:2"><a class="footnote-ref" href="#fn:2">2</a></sup></td>
+</tr>
+</tbody>
+</table>
+<h2 id="architecture-components">Architecture Components<a class="headerlink" href="#architecture-components" title="Permanent link">&para;</a></h2>
+<figure>
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/ray-cluster.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/ray-cluster.svg" width="500" /></a>
+  <em>Ray Cluster</em><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>
+</figure>
+<dl>
+<dt><em>Ray Cluster</em></dt>
+<dd>
+<p>A Ray cluster consists of a single head node and any number of connected worker nodes. Ray nodes are implemented as pods when running on Kubernetes.<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+</dd>
+<dt><em>Head Node</em></dt>
+<dd>
+<p>Every Ray cluster has one node which is designated as the head node of the cluster. The head node is identical to other worker nodes, except that it also runs singleton processes responsible for cluster management such as the <strong>autoscaler</strong>, <strong>GCS</strong> and the Ray <strong>driver processes</strong> which run Ray jobs.<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+</dd>
+<dt><em>Worker Node</em></dt>
+<dd>
+<p>Worker nodes do not run any head node management processes, and serve only to run user code in Ray tasks and actors.<sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+</dd>
+<dt><em>Autoscaling</em></dt>
+<dd>
+<p>When the resource demands of the Ray workload exceed the current capacity of the cluster, the autoscaler will try to increase the number of worker nodes. When worker nodes sit idle, the autoscaler will remove worker nodes from the cluster.<sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+</dd>
+<dt><em>Ray Jobs</em></dt>
+<dd>
+<p>A Ray job is a single application: it is the collection of Ray tasks, objects, and actors that originate from the same script. There are two ways to run a Ray job on a Ray cluster: (1) Ray Jobs API and (2) Run the driver script directly on the Ray cluster.<sup id="fnref7:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+</dd>
+</dl>
+<figure>
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/ray-job-diagram.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/ray-job-diagram.svg" width="500" /></a>
+  <em>2 Ways of running Ray Jobs</em><sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup>
+</figure>
+<h2 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="ray-core" name="__tabbed_1" type="radio" /><input id="ray-data" name="__tabbed_1" type="radio" /><input id="ray-train" name="__tabbed_1" type="radio" /><input id="ray-tune" name="__tabbed_1" type="radio" /><input id="ray-serve" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="ray-core">Ray Core</label><label for="ray-data">Ray Data</label><label for="ray-train">Ray Train</label><label for="ray-tune">Ray Tune</label><label for="ray-serve">Ray Serve</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<dl>
+<dt><em>Tasks</em></dt>
+<dd>
+<p>Ray enables arbitrary functions to execute asynchronously on separate Python workers. These asynchronous Ray functions are called tasks. Ray enables tasks to specify their resource requirements in terms of CPUs, GPUs, and custom resources.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">7</a></sup></p>
+</dd>
+<dt><em>Actors</em></dt>
+<dd>
+<p>Actors extend the Ray API from functions (tasks) to classes. An actor is essentially a stateful worker (or a service).<sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">7</a></sup></p>
+</dd>
+<dt><em>Objects</em></dt>
+<dd>
+<p>Tasks and actors create objects and compute on objects. You can refer to these objects as remote objects. Ray caches remote objects in its distributed shared-memory object store.<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">7</a></sup></p>
+</dd>
+</dl>
+</div>
+<div class="tabbed-block">
+<dl>
+<dt><em>Datasets</em></dt>
+<dd>
+<p><code>Dataset</code> is the main user-facing Python API. It represents a distributed data collection and define data loading and processing operations. The Dataset API is lazy. Each Dataset consists of blocks.<sup id="fnref7:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+</dd>
+<dt><em>Blocks</em></dt>
+<dd>
+<p>Each Dataset consists of blocks. A block is a contiguous subset of rows from a dataset, which are distributed across the cluster and processed independently in parallel.<sup id="fnref8:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+</dd>
+</dl>
+<p><figure markdown="span">
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/dataset-arch-with-blocks.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/dataset-arch-with-blocks.svg" width="500" /></a>
+<em>Datasets and Blocks</em><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">4</a></sup>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<dl>
+<dt><em>Training Function</em></dt>
+<dd>
+<p>The training function is a user-defined Python function that contains the end-to-end model training loop logic. When launching a distributed training job, each worker executes this training function.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+</dd>
+<dt><em>Workers</em></dt>
+<dd>
+<p>Ray Train distributes model training compute to individual worker processes across the cluster. Each worker is a process that executes the training funciton.<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+</dd>
+<dt><em>Scaling Configuration</em></dt>
+<dd>
+<p>The <code>ScalingConfig</code> is the mechanism for defining the scale of the training job. Two common parameters are <code>num_workers</code> and <code>use_gpu</code>.<sup id="fnref4:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+</dd>
+<dt><em>Trainer</em></dt>
+<dd>
+<p>The Trainer ties the previous three concepts together to launch distributed training jobs.<sup id="fnref5:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+</dd>
+</dl>
+</div>
+<div class="tabbed-block">
+<p><figure markdown="span">
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/tune_flow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/tune_flow.png" width="500" /></a>
+  <em>Ray Tune Configuration</em><sup id="fnref:7"><a class="footnote-ref" href="#fn:7">5</a></sup>
+</figure></p>
+<dl>
+<dt><em>Search Space</em></dt>
+<dd>
+<p>A search space defines valid values for your hyperparameters and can specify how these values are sampled. Tune offers various functions to define search spaces and sampling methods.<sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">5</a></sup><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup></p>
+</dd>
+<dt><em>Search Algorithms</em></dt>
+<dd>
+<p>To optimize the hyperparameters of your training process, you use a Search Algorithm which suggests hyperparameter configurations. Tune has Search Algorithms that integrate with many popular optimization libraries, such as <strong>HyperOpt</strong> or <strong>Optuna</strong>.<sup id="fnref3:7"><a class="footnote-ref" href="#fn:7">5</a></sup> Tune automatically converts the provided search space into the search spaces the search algorithms and underlying libraries expect.</p>
+</dd>
+<dt><em>Schedulers</em></dt>
+<dd>
+<p>In short, schedulers can stop, pause, or tweak the hyperparameters of running trials, potentially making your hyperparameter tuning process much faster. Tune includes distributed implementations of early stopping algorithms such as <strong>Median Stopping Rule</strong>, <strong>HyperBand</strong>, and <strong>ASHA</strong>. Tune also includes a distributed implementation of <strong>Population Based Training (PBT)</strong> and <strong>Population Based Bandits (PB2)</strong>. When using schedulers, you may face compatibility issues<sup id="fnref4:7"><a class="footnote-ref" href="#fn:7">5</a></sup></p>
+</dd>
+<dt><em>Trainables</em></dt>
+<dd>
+<p>In short, a Trainable is an object that you can pass into a Tune run. Ray Tune has two ways of defining a trainable, namely the <strong>Function API</strong> and the <strong>Class API</strong>. The Function API is generally recommended.<sup id="fnref5:7"><a class="footnote-ref" href="#fn:7">5</a></sup></p>
+</dd>
+<dt><em>Trials</em></dt>
+<dd>
+<p>You use <code>Tuner.fit()</code> to execute and manage hyperparameter tuning and generate your trials. The <strong>Tuner.fit()</strong> function also provides many features such as <strong>logging</strong>, <strong>checkpointing</strong>, and <strong>early stopping</strong>.<sup id="fnref6:7"><a class="footnote-ref" href="#fn:7">5</a></sup></p>
+</dd>
+<dt><em>Analyses</em></dt>
+<dd>
+<p><code>Tuner.fit()</code> returns an <code>ResultGrid</code> object which has methods you can use for analyzing your training.<sup id="fnref7:7"><a class="footnote-ref" href="#fn:7">5</a></sup></p>
+</dd>
+</dl>
+</div>
+<div class="tabbed-block">
+<dl>
+<dt><em>Deployment</em></dt>
+<dd>
+<p>A deployment contains business logic or an ML model to handle incoming requests and can be scaled up to run across a Ray cluster. At runtime, a deployment consists of a number of replicas, which are individual copies of the class or function that are started in separate Ray Actors (processes).<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+</dd>
+<dt><em>Application</em></dt>
+<dd>
+<p>An application is the unit of upgrade in a Ray Serve cluster. An application consists of one or more deployments. One of these deployments is considered the “ingress” deployment, which handles all inbound traffic.<sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+</dd>
+<dt><em>DeploymentHandle (composing deployments)</em></dt>
+<dd>
+<p>Ray Serve enables flexible model composition and scaling by allowing multiple independent deployments to call into each other.<sup id="fnref3:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+</dd>
+<dt><em>Ingress deployment (HTTP handling)</em></dt>
+<dd>
+<p>The ingress deployment defines the HTTP handling logic for the application.<sup id="fnref4:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<h2 id="behind-the-scenes">Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="ray-data_1" name="__tabbed_2" type="radio" /><input id="ray-train_1" name="__tabbed_2" type="radio" /><input id="ray-tune_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="ray-data_1">Ray Data</label><label for="ray-train_1">Ray Train</label><label for="ray-tune_1">Ray Tune</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Ray Data uses a two-phase planning process to execute operations efficiently:<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+<ul>
+<li>Logical plans consist of logical operators that describe what operation to perform.</li>
+<li>Physical plans consist of physical operators that describe how to execute the operation.</li>
+</ul>
+<p>The building blocks of these plans are operators:<sup id="fnref3:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+<ul>
+<li>Logical plans consist of logical operators that describe <strong>what</strong> operation to perform.</li>
+<li>Physical plans consist of physical operators that describe <strong>how</strong> to execute the operation.</li>
+</ul>
+<p>Ray Data uses a <strong>streaming execution model</strong> to efficiently process large datasets. It can process data in a streaming fashion through a pipeline of operations.<sup id="fnref4:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+<p><figure markdown="span">
+  <a class="glightbox" href="https://docs.ray.io/en/latest/_images/streaming-topology.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.ray.io/en/latest/_images/streaming-topology.svg" width="500" /></a>
+<em>Streaming Topology</em><sup id="fnref5:5"><a class="footnote-ref" href="#fn:5">4</a></sup>
+</figure></p>
+<p>In the streaming execution model, operators are connected in a pipeline, with each operator’s output queue feeding directly into the input queue of the next downstream operator. This creates an efficient flow of data through the execution plan.<sup id="fnref6:5"><a class="footnote-ref" href="#fn:5">4</a></sup></p>
+</div>
+<div class="tabbed-block">
+<p>Calling the <code>Trainer.fit()</code> method executes the training job by<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>:</p>
+<ol>
+<li>Launching workers as defined by the <code>scaling_config</code>.</li>
+<li>Setting up the framework's distributed environment on all workers.</li>
+<li>Running the training function on all workers.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Calling the <code>Trainer.fit()</code> method executes the tuning job by:</p>
+<ol>
+<li>The driver process launches and schedules trials across the Ray cluster based on the search space and resources defined.</li>
+<li>Each trial runs as a Ray task or actor on worker nodes, executing training functions in parallel.</li>
+<li>Results are collected, and once all trials finish (or meet stop criteria), tuner.fit() returns the best configs and metrics.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://docs.ray.io/en/latest/ray-core/walkthrough.html">Ray Core | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://docs.ray.io/en/latest/ray-overview/getting-started.html">Getting Started | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://docs.ray.io/en/latest/cluster/key-concepts.html">Key Concepts | Ray Cluster | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://docs.ray.io/en/latest/data/key-concepts.html">Key Concepts | Ray Data | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:5" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p><a href="https://docs.ray.io/en/latest/tune/key-concepts.html">Key Concepts | Ray Tune | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:7" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:7" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://docs.ray.io/en/latest/train/overview.html">Overview | Ray Train | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://docs.ray.io/en/latest/ray-core/key-concepts.html">Key Concepts | Ray Core | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p><a href="https://docs.ray.io/en/latest/tune/api/search_space.html#random-distributions-api">Tune Search Space API | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p><a href="https://docs.ray.io/en/latest/serve/key-concepts.html">Key Concepts | Ray Tune | Ray Docs</a>&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -6093,6 +6407,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../what-why-when/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What, Why, When">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                What, Why, When
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../in-the-bigger-picture/" class="md-footer__link md-footer__link--next" aria-label="Next: In the Bigger Picture">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                In the Bigger Picture
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
