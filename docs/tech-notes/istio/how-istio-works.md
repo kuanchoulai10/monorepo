@@ -46,6 +46,112 @@ ztunnel architecture
 
 ![](https://istio.io/latest/docs/ambient/architecture/data-plane/ztunnel-waypoint-datapath.png)
 
+## Deployment Models
+
+See [here](https://istio.io/latest/docs/ops/deployment/deployment-models/) for more details on different deployment models supported by Istio.
+
+### Cluster Models
+
+#### Single cluster
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg)
+/// caption
+A service mesh with a single cluster
+///
+
+#### Multiple clusters
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-cluster.svg)
+/// caption
+A service mesh with multiple clusters
+///
+
+#### DNS with multiple clusters
+
+### Network Models
+
+#### Single network
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-net.svg)
+/// caption
+A service mesh with a single network
+///
+
+#### Multiple networks
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-net.svg)
+/// caption
+A service mesh with multiple networks
+///
+
+### Control Plane Models
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg)
+/// caption
+A single cluster with a control plane
+///
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/shared-control.svg)
+/// caption
+A service mesh with a primary and a remote cluster
+///
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster-external-control-plane.svg)
+/// caption
+A single cluster with an external control plane
+///
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/endpoint-discovery.svg)
+/// caption
+Primary clusters with endpoint discovery
+///
+
+### Identity and trust models
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-trust.svg)
+/// caption
+A service mesh with a common certificate authority (Trust within a mesh)
+///
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-trust.svg)
+/// caption
+Multiple service meshes with different certificate authorities (Trust between meshes)
+///
+
+### Mesh models
+
+#### Single mesh
+
+
+#### Multiple meshes
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-mesh.svg)
+/// caption
+Multiple service meshes
+///
+
+### Tenancy models
+
+#### Namespace tenancy
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/exp-ns.svg)
+/// caption
+A service mesh with two namespaces and an exposed service
+///
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-ns.svg)
+/// caption
+A service mesh with clusters with the same namespace
+///
+#### Cluster tenancy
+
+#### Mesh tenancy
+
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-iso.svg)
+/// caption
+Two isolated service meshes with two clusters and two namespaces
+///
+
 ## CRDs
 
 Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:
