@@ -96,14 +96,14 @@ See [here](https://istio.io/latest/docs/ops/deployment/deployment-models/) for m
 
 #### Single cluster
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg){ width="500" }
 /// caption
 A service mesh with a single cluster
 ///
 
 #### Multiple clusters
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-cluster.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-cluster.svg){ width="500" }
 /// caption
 A service mesh with multiple clusters
 ///
@@ -114,48 +114,48 @@ A service mesh with multiple clusters
 
 #### Single network
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-net.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-net.svg){ width="500" }
 /// caption
 A service mesh with a single network
 ///
 
 #### Multiple networks
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-net.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-net.svg){ width="500" }
 /// caption
 A service mesh with multiple networks
 ///
 
 ### Control Plane Models
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg){ width="500" }
 /// caption
 A single cluster with a control plane
 ///
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/shared-control.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/shared-control.svg){ width="500" }
 /// caption
 A service mesh with a primary and a remote cluster
 ///
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster-external-control-plane.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster-external-control-plane.svg){ width="500" }
 /// caption
 A single cluster with an external control plane
 ///
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/endpoint-discovery.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/endpoint-discovery.svg){ width="500" }
 /// caption
 Primary clusters with endpoint discovery
 ///
 
 ### Identity and trust models
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-trust.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-trust.svg){ width="500" }
 /// caption
 A service mesh with a common certificate authority (Trust within a mesh)
 ///
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-trust.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-trust.svg){ width="500" }
 /// caption
 Multiple service meshes with different certificate authorities (Trust between meshes)
 ///
@@ -167,7 +167,7 @@ Multiple service meshes with different certificate authorities (Trust between me
 
 #### Multiple meshes
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-mesh.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-mesh.svg){ width="500" }
 /// caption
 Multiple service meshes
 ///
@@ -176,12 +176,12 @@ Multiple service meshes
 
 #### Namespace tenancy
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/exp-ns.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/exp-ns.svg){ width="500" }
 /// caption
 A service mesh with two namespaces and an exposed service
 ///
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-ns.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-ns.svg){ width="500" }
 /// caption
 A service mesh with clusters with the same namespace
 ///
@@ -189,7 +189,7 @@ A service mesh with clusters with the same namespace
 
 #### Mesh tenancy
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-iso.svg)
+![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-iso.svg){ width="500" }
 /// caption
 Two isolated service meshes with two clusters and two namespaces
 ///
@@ -216,11 +216,3 @@ The `VirtualService` CRD is used to define the routing rules for traffic within 
 
 The `DestinationRule` CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.
 
-### Traffic Flow
-
-Making it all work together, when a request is made to a service within the mesh, the following sequence occurs:
-
-1. The request first hits the **Istio Ingress Gateway** if it is coming from outside the mesh.
-2. The `Gateway` configuration determines how to handle the incoming request.
-3. The request is then routed to the appropriate service based on the rules defined in the `VirtualService`.
-4. Once the request reaches the service, the `DestinationRule` policies are applied to manage traffic behavior.
