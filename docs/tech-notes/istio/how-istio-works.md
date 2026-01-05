@@ -100,15 +100,15 @@ Other CRDs include `ServiceEntry`, `Sidecar`, and `AuthorizationPolicy`, etc.
 
 ### Gateway
 
-The `Gateway` CRD allows you to configure how traffic enters and exits the service mesh. It defines ports, protocols, and hosts for incoming and outgoing traffic. This is not about deploying a physical gateway but rather configuring the behavior of the Istio Ingress Gateway.
+The `Gateway` CRD allows you to configure **how traffic enters and exits the service mesh**. It defines **ports, protocols, and hosts** for incoming and outgoing traffic. This is not about deploying a physical gateway but rather **configuring the behavior of the Istio Ingress Gateway**.
 
 ### VirtualService
 
-The `VirtualService` CRD is used to define the routing rules for traffic within the service mesh. It allows you to specify how requests to a service are handled, including routing based on HTTP headers, URI paths, or other criteria. This enables advanced traffic management features such as A/B testing, canary releases, and traffic splitting.
+The `VirtualService` CRD is used to **define the routing rules for traffic within the service mesh**. It allows you to specify **how requests to a service are handled**, including **routing** based on HTTP headers, URI paths, or other criteria. This enables **advanced traffic management features** such as A/B testing, canary releases, and traffic splitting.
 
 ### DestinationRule
 
-The `DestinationRule` CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.
+The `DestinationRule` CRD is used to configure policies that **apply to traffic after it has been routed to a service**. This includes **settings for load balancing, connection pool sizes, outlier detection, and circuit breaking**. `DestinationRules` work in conjunction with `VirtualServices` to provide fine-grained control over traffic behavior.
 
 
 ## Deployment Models
