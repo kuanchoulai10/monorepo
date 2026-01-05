@@ -88,6 +88,29 @@ Beyond the control components mentioned above, Istio installation also includes 
 These resources form Istio's core foundation, enabling you to establish a controllable, secure, and traffic-observable service mesh on Kubernetes.
 
 
+## CRDs
+
+Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:
+
+- **VirtualService**: Defines how requests are routed to services within the mesh.
+- **DestinationRule**: Configures policies for traffic to a service after routing has occurred
+- **Gateway**: Manages ingress and egress traffic for the mesh.
+
+Other CRDs include `ServiceEntry`, `Sidecar`, and `AuthorizationPolicy`, etc.
+
+### Gateway
+
+The `Gateway` CRD allows you to configure how traffic enters and exits the service mesh. It defines ports, protocols, and hosts for incoming and outgoing traffic. This is not about deploying a physical gateway but rather configuring the behavior of the Istio Ingress Gateway.
+
+### VirtualService
+
+The `VirtualService` CRD is used to define the routing rules for traffic within the service mesh. It allows you to specify how requests to a service are handled, including routing based on HTTP headers, URI paths, or other criteria. This enables advanced traffic management features such as A/B testing, canary releases, and traffic splitting.
+
+### DestinationRule
+
+The `DestinationRule` CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.
+
+
 ## Deployment Models
 
 See [here](https://istio.io/latest/docs/ops/deployment/deployment-models/) for more details on different deployment models supported by Istio.
@@ -198,26 +221,3 @@ A service mesh with clusters with the same namespace
 /// caption
 [Two isolated service meshes with two clusters and two namespaces](https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy)
 ///
-
-## CRDs
-
-Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:
-
-- **VirtualService**: Defines how requests are routed to services within the mesh.
-- **DestinationRule**: Configures policies for traffic to a service after routing has occurred
-- **Gateway**: Manages ingress and egress traffic for the mesh.
-
-Other CRDs include `ServiceEntry`, `Sidecar`, and `AuthorizationPolicy`, etc.
-
-### Gateway
-
-The `Gateway` CRD allows you to configure how traffic enters and exits the service mesh. It defines ports, protocols, and hosts for incoming and outgoing traffic. This is not about deploying a physical gateway but rather configuring the behavior of the Istio Ingress Gateway.
-
-### VirtualService
-
-The `VirtualService` CRD is used to define the routing rules for traffic within the service mesh. It allows you to specify how requests to a service are handled, including routing based on HTTP headers, URI paths, or other criteria. This enables advanced traffic management features such as A/B testing, canary releases, and traffic splitting.
-
-### DestinationRule
-
-The `DestinationRule` CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.
-
