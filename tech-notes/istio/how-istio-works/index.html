@@ -5949,6 +5949,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#crds" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRDs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRDs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      VirtualService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule" class="md-nav__link">
+    <span class="md-ellipsis">
+      DestinationRule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deployment-models" class="md-nav__link">
     <span class="md-ellipsis">
       Deployment Models
@@ -6131,48 +6173,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#crds" class="md-nav__link">
-    <span class="md-ellipsis">
-      CRDs
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CRDs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      Gateway
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#virtualservice" class="md-nav__link">
-    <span class="md-ellipsis">
-      VirtualService
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#destinationrule" class="md-nav__link">
-    <span class="md-ellipsis">
-      DestinationRule
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -6330,6 +6330,20 @@
 <p>Additionally, if you enable the <strong>Ingress Gateway</strong> (which most people do), you'll also see a deployment, service, and pod called <code>istio-ingressgateway</code>. This is an <strong>Envoy-based proxy server</strong> responsible for <strong>receiving external HTTP/TCP traffic</strong>, typically configured as a <code>NodePort</code> or <code>LoadBalancer</code> service type.</p>
 <p>Beyond the control components mentioned above, Istio installation also includes various extension resources. Most notably, it provides a series of CRDs such as <strong><code>VirtualService</code></strong>, <strong><code>DestinationRule</code></strong>, <strong><code>Gateway</code></strong>, <strong><code>PeerAuthentication</code></strong>, and <strong><code>AuthorizationPolicy</code></strong>. These are the resources you'll use when working with Istio for routing control, traffic splitting, and security policies.</p>
 <p>These resources form Istio's core foundation, enabling you to establish a controllable, secure, and traffic-observable service mesh on Kubernetes.</p>
+<h2 id="crds">CRDs<a class="headerlink" href="#crds" title="Permanent link">&para;</a></h2>
+<p>Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:</p>
+<ul>
+<li><strong>VirtualService</strong>: Defines how requests are routed to services within the mesh.</li>
+<li><strong>DestinationRule</strong>: Configures policies for traffic to a service after routing has occurred</li>
+<li><strong>Gateway</strong>: Manages ingress and egress traffic for the mesh.</li>
+</ul>
+<p>Other CRDs include <code>ServiceEntry</code>, <code>Sidecar</code>, and <code>AuthorizationPolicy</code>, etc.</p>
+<h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
+<p>The <code>Gateway</code> CRD allows you to configure how traffic enters and exits the service mesh. It defines ports, protocols, and hosts for incoming and outgoing traffic. This is not about deploying a physical gateway but rather configuring the behavior of the Istio Ingress Gateway.</p>
+<h3 id="virtualservice">VirtualService<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
+<p>The <code>VirtualService</code> CRD is used to define the routing rules for traffic within the service mesh. It allows you to specify how requests to a service are handled, including routing based on HTTP headers, URI paths, or other criteria. This enables advanced traffic management features such as A/B testing, canary releases, and traffic splitting.</p>
+<h3 id="destinationrule">DestinationRule<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
+<p>The <code>DestinationRule</code> CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.</p>
 <h2 id="deployment-models">Deployment Models<a class="headerlink" href="#deployment-models" title="Permanent link">&para;</a></h2>
 <p>See <a href="https://istio.io/latest/docs/ops/deployment/deployment-models/">here</a> for more details on different deployment models supported by Istio.</p>
 <h3 id="cluster-models">Cluster Models<a class="headerlink" href="#cluster-models" title="Permanent link">&para;</a></h3>
@@ -6438,20 +6452,6 @@
 <p><a href="https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy">Two isolated service meshes with two clusters and two namespaces</a></p>
 </figcaption>
 </figure>
-<h2 id="crds">CRDs<a class="headerlink" href="#crds" title="Permanent link">&para;</a></h2>
-<p>Istio introduces several Custom Resource Definitions (CRDs) to manage and configure the service mesh. Some of the key CRDs include:</p>
-<ul>
-<li><strong>VirtualService</strong>: Defines how requests are routed to services within the mesh.</li>
-<li><strong>DestinationRule</strong>: Configures policies for traffic to a service after routing has occurred</li>
-<li><strong>Gateway</strong>: Manages ingress and egress traffic for the mesh.</li>
-</ul>
-<p>Other CRDs include <code>ServiceEntry</code>, <code>Sidecar</code>, and <code>AuthorizationPolicy</code>, etc.</p>
-<h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
-<p>The <code>Gateway</code> CRD allows you to configure how traffic enters and exits the service mesh. It defines ports, protocols, and hosts for incoming and outgoing traffic. This is not about deploying a physical gateway but rather configuring the behavior of the Istio Ingress Gateway.</p>
-<h3 id="virtualservice">VirtualService<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
-<p>The <code>VirtualService</code> CRD is used to define the routing rules for traffic within the service mesh. It allows you to specify how requests to a service are handled, including routing based on HTTP headers, URI paths, or other criteria. This enables advanced traffic management features such as A/B testing, canary releases, and traffic splitting.</p>
-<h3 id="destinationrule">DestinationRule<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
-<p>The <code>DestinationRule</code> CRD is used to configure policies that apply to traffic after it has been routed to a service. This includes settings for load balancing, connection pool sizes, outlier detection, and circuit breaking. DestinationRules work in conjunction with VirtualServices to provide fine-grained control over traffic behavior.</p>
 
 
 
