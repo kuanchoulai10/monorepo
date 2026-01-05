@@ -5904,12 +5904,63 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crds" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRDs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Istio Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#architecture-components" class="md-nav__link">
+  <a href="#behind-the-scenes" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture Components
+      Behind the Scenes
     </span>
   </a>
   
@@ -5972,7 +6023,79 @@
 <h1 id="how-flagger-works-istio-integration">How Flagger Works? - Istio Integration<a class="headerlink" href="#how-flagger-works-istio-integration" title="Permanent link">&para;</a></h1>
 <p>In this document, we will explore how Flagger integrates with Istio to enable progressive delivery.</p>
 <h2 id="core-concepts">Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h2>
-<h2 id="architecture-components">Architecture Components<a class="headerlink" href="#architecture-components" title="Permanent link">&para;</a></h2>
+<figure>
+<p><a class="glightbox" href="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-overview.png&amp;width=768&amp;dpr=2&amp;quality=100&amp;sign=87fa55d&amp;sv=2" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-overview.png&amp;width=768&amp;dpr=2&amp;quality=100&amp;sign=87fa55d&amp;sv=2" /></a></p>
+<figcaption>
+<p>Flagger overview diagram</p>
+</figcaption>
+</figure>
+<p>Flagger is a <strong>progressive delivery</strong> tool that automates the release process for applications running on Kubernetes. It works by <strong>monitoring application metrics</strong> and <strong>gradually shifting traffic to new versions based on predefined rules and analysis</strong>.</p>
+<p>It supports multiple <strong>routing providers</strong>, all with different levels of integration and features. Some of the supported routing providers include:</p>
+<ul>
+<li><strong>Istio</strong></li>
+<li>Linkerd</li>
+<li>App Mesh</li>
+<li>NGINX</li>
+<li>Skipper</li>
+<li>Contour</li>
+<li>Gloo Edge</li>
+<li>Traefik</li>
+<li>Kuma</li>
+<li>Gateway API</li>
+<li>Apache APISIX</li>
+<li>Knative</li>
+</ul>
+<p>In this document, we will focus on how Flagger works with <strong>Istio</strong> since <strong>it supports a wide range of deployment strategies and advanced traffic management features</strong>. See <a href="https://docs.flagger.app/main/usage/deployment-strategies">Deployment Strategies</a> for more details.</p>
+<h3 id="deployment-strategies">Deployment Strategies<a class="headerlink" href="#deployment-strategies" title="Permanent link">&para;</a></h3>
+<p>Flagger supports various <strong>deployment strategies</strong>, including:</p>
+<ul>
+<li><strong>Canary Release</strong>: Gradually shifts traffic from the stable version to the new version in incremental steps based on predefined rules and metric analysis</li>
+<li><strong>A/B Testing</strong>: Routes traffic to different versions based on HTTP headers or cookies to compare performance and user behavior</li>
+<li><strong>Blue/Green</strong>: Switches traffic instantly from the old version (blue) to the new version (green) after validation</li>
+<li><strong>Blue/Green Mirroring</strong>: Mirrors production traffic to the new version for testing without affecting user requests, then switches when ready</li>
+<li><strong>Canary Release with Session Affinity</strong>: Gradually shifts traffic to the new version while maintaining user sessions on the same version using cookie-based routing</li>
+</ul>
+<figure>
+<p><a class="glightbox" href="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-canary-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=de1f0364&amp;sv=2" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-canary-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=de1f0364&amp;sv=2" /></a></p>
+<figcaption>
+<p><a href="https://docs.flagger.app/main/usage/deployment-strategies#canary-release">Flagger Canary Stages</a></p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-abtest-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=45ebadf7&amp;sv=2" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-abtest-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=45ebadf7&amp;sv=2" /></a></p>
+<figcaption>
+<p><a href="https://docs.flagger.app/main/usage/deployment-strategies#a-b-testing">Flagger A/B Testing Stages</a></p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" href="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-bluegreen-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=ad9af801&amp;sv=2" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-bluegreen-steps.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=ad9af801&amp;sv=2" /></a></p>
+<figcaption>
+<p><a href="https://docs.flagger.app/main/usage/deployment-strategies#blue-green-deployments">Flagger Blue/Green Stages</a></p>
+</figcaption>
+</figure>
+<p>See <a href="https://docs.flagger.app/main/usage/deployment-strategies">Deployment Strategies</a> for more details.</p>
+<h3 id="metrics-analysis">Metrics Analysis<a class="headerlink" href="#metrics-analysis" title="Permanent link">&para;</a></h3>
+<p>During the deployment process, Flagger can <strong>continuously monitor the metrics we care about</strong>, such as error rate percentage, availability, or average response time. Common metric sources include <a href="https://docs.flagger.app/main/usage/metrics#prometheus">Prometheus</a>, <a href="https://docs.flagger.app/main/usage/metrics#amazon-cloudwatch">CloudWatch</a>, Datadog, New Relic, and others. See <a href="https://docs.flagger.app/main/usage/metrics">Metrics Analysis</a> for more details.</p>
+<h3 id="alerting">Alerting<a class="headerlink" href="#alerting" title="Permanent link">&para;</a></h3>
+<p>Flagger supports sending alerts to various channels, including <strong>Slack</strong>, <strong>Microsoft Teams</strong>, <strong>Rocket.Chat</strong>, and <strong>Discord</strong>.</p>
+<p>At the global level, Slack and Microsoft Teams can be configured.</p>
+<p>At the per <code>Canary</code> level, Slack, Microsoft Teams, Rocket.Chat and Discord can be configured. The canary analysis can be extended with a list of alerts that reference an <code>AlertProvider</code>.</p>
+<p>See <a href="https://docs.flagger.app/main/usage/alerting">Alerting</a> for more details.</p>
+<h3 id="crds">CRDs<a class="headerlink" href="#crds" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Canary</code></strong>: The Canary custom resource defines the deployment strategy, analysis metrics, and traffic routing rules for a specific application.</li>
+<li><strong><code>MetricTemplate</code></strong>: This resource allows users to define custom metrics for analysis during the deployment process.</li>
+<li><strong><code>AlertProvider</code></strong>: This resource configures alerting channels for deployment notifications.</li>
+</ul>
+<h3 id="istio-integration">Istio Integration<a class="headerlink" href="#istio-integration" title="Permanent link">&para;</a></h3>
+<p>Flagger uses Istio's traffic management capabilities to perform <strong>canary deployments</strong>, <strong>A/B testing</strong>, <strong>traffic mirroring</strong>, and <strong>blue/green deployments</strong>. It leverages Istio's <code>VirtualServices</code> and <code>DestinationRules</code> to control the flow of traffic between different versions of an application. </p>
+<figure>
+<p><a class="glightbox" href="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-canary-hpa.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=f510931c&amp;sv=2" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="https://docs.flagger.app/~gitbook/image?url=https%3A%2F%2Fraw.githubusercontent.com%2Ffluxcd%2Fflagger%2Fmain%2Fdocs%2Fdiagrams%2Fflagger-canary-hpa.png&amp;width=768&amp;dpr=4&amp;quality=100&amp;sign=f510931c&amp;sv=2" /></a></p>
+<figcaption>
+<p><a href="https://docs.flagger.app/main/tutorials/istio-progressive-delivery">Flagger Canary Process</a></p>
+</figcaption>
+</figure>
+<h2 id="behind-the-scenes">Behind the Scenes<a class="headerlink" href="#behind-the-scenes" title="Permanent link">&para;</a></h2>
 
 
 
