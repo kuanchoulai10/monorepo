@@ -6310,8 +6310,13 @@
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
 <p>This <code>public-gateway</code> Istio Gateway defines an HTTP ingress entry on port 80, allowing requests with any Host header to enter, with traffic being received by the <code>istio-ingressgateway</code> into the Kubernetes Cluster.</p>
+</div>
+<p>Now that you know how to route traffic from outside the cluster to the Istio ingress gateway, you can configure Flagger to create an Istio <code>VirtualService</code> that routes traffic from this gateway to your application and handles canary deployments.</p>
 <h2 id="canary-spec-fields">Canary Spec Fields<a class="headerlink" href="#canary-spec-fields" title="Permanent link">&para;</a></h2>
+<p>This is an example Flagger <code>Canary</code> custom resource (CR) configuration for Istio:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flagger.app/v1beta1</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Canary</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">metadata</span><span class="p">:</span>
@@ -6392,7 +6397,9 @@
 </span><span id="__span-1-78"><a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-1-79"><a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a><span class="w">          </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hey</span><span class="nv"> </span><span class="s">-z</span><span class="nv"> </span><span class="s">1m</span><span class="nv"> </span><span class="s">-q</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">http://podinfo-canary.test:9898/&quot;</span>
 </span></code></pre></div>
-<h3 id="istio-gateway-and-virtualservice-hosts">Istio Gateway and VirtualService Hosts<a class="headerlink" href="#istio-gateway-and-virtualservice-hosts" title="Permanent link">&para;</a></h3>
+<p>It's hard to understand the whole configuration at once, so let's break down and explain some of the important fields one by one.</p>
+<h3 id="istio-gateway-and-virtualservice-hosts">Istio Gateway and <code>VirtualService</code> Hosts<a class="headerlink" href="#istio-gateway-and-virtualservice-hosts" title="Permanent link">&para;</a></h3>
+<p>First, that focus on how to route traffic from the Istio ingress gateway to your application through Flagger's <code>Canary</code> CR.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nn">...</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Canary</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nn">...</span>
@@ -6400,31 +6407,30 @@
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="c1"># Istio gateways (optional)</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">gateways</span><span class="p">:</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system/public-gateway</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1"># Istio virtual service host names (optional)</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.example.com</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="c1"># service port number</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1"># container port number or name (optional)</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="hll"><span class="w">    </span><span class="nt">gateways</span><span class="p">:</span>
+</span></span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system/public-gateway</span>
+</span></span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1"># Istio virtual service host names (optional)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="hll"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span>
+</span></span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.example.com</span>
+</span></span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="c1"># service port number</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="hll"><span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span>
+</span></span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="c1"># container port number or name (optional)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="hll"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9898</span>
+</span></span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="nn">...</span>
 </span></code></pre></div>
-<p>The <code>spec.service.gateways</code> in the Flagger <code>Canary</code> CR configures <strong>which Istio Gateways the Istio <code>VirtualService</code> generated by Flagger should apply traffic rules to.</strong> This is written into the <code>VirtualService</code>'s <code>spec.gateways</code>, meaning <strong>only traffic passing through these Gateways will be subject to this <code>VirtualService</code>'s routing rules, which is traffic splitting for canary deployments</strong>.</p>
-<p>The <code>spec.service.hosts</code> in the Flagger <code>Canary</code> CR configures <strong>which Host headers the Istio <code>VirtualService</code> generated by Flagger should handle.</strong> This is written into the <code>VirtualService</code>'s <code>spec.hosts</code>, meaning <strong>only traffic with Host headers matching these host names will be subject to this <code>VirtualService</code>'s routing rules.</strong></p>
-<p>The <code>spec.service.port</code> and <code>spec.service.targetPort</code> in the Flagger <code>Canary</code> CR will be used in several different places, depending on the context:</p>
-<p>Flagger will automatically create or take over Kubernetes Services for traffic routing. The <code>spec.service.port</code> and <code>spec.service.targetPort</code> in the Flagger <code>Canary</code> CR will be used to configure the ports of these Services.</p>
-<p>Specifically, Flagger will create three Services for you:</p>
+<p>In a Flagger <code>Canary</code> resource, <code>spec.service.gateways</code> tells Flagger <strong>which Istio Gateways should use the traffic-splitting rules</strong>. Flagger copies this setting into the generated Istio <code>VirtualService</code> under <code>spec.gateways</code>. As a result, <strong>only requests that enter the cluster through these Gateways will follow the canary routing rules</strong> (for example, splitting traffic between the primary and canary versions). Traffic that does not go through these <code>Gateways</code> is not affected by this <code>VirtualService</code>.</p>
+<p>In a Flagger <code>Canary</code> resource, <code>spec.service.hosts</code> specifies <strong>which Host headers the generated Istio <code>VirtualService</code> should match</strong>. Flagger writes this configuration into the <code>VirtualService</code>'s <code>spec.hosts</code>. As a result, <strong>only requests whose Host header matches one of these values will be handled by this <code>VirtualService</code> and follow its routing rules</strong>. Requests with other Host headers are not affected by this VirtualService.</p>
+<p>Flagger will automatically create or take over Kubernetes <code>Services</code> for traffic routing. Specifically, Flagger will create three <code>Services</code> for you:</p>
 <ul>
 <li><code>&lt;service-name&gt;</code></li>
 <li><code>&lt;service-name&gt;-primary</code></li>
 <li><code>&lt;service-name&gt;-canary</code></li>
 </ul>
-<p>The <code>spec.service.port</code> in the Flagger <code>Canary</code> CR will become the <code>spec.ports[].port</code> of these Services, while <code>spec.service.targetPort</code> will become the <code>spec.ports[].targetPort</code> of these Services.</p>
+<p>The <code>spec.service.port</code> in the Flagger <code>Canary</code> CR will become the <code>spec.ports[].port</code> of these <code>Services</code>, while <code>spec.service.targetPort</code> will become the <code>spec.ports[].targetPort</code> of these <code>Services</code>.</p>
 <h3 id="progress-deadline-seconds-and-analysis-interval">Progress Deadline Seconds and Analysis Interval<a class="headerlink" href="#progress-deadline-seconds-and-analysis-interval" title="Permanent link">&para;</a></h3>
+<p>Now that you understand how traffic routing works, let's look at how to control the timing of the canary deployment process.</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nn">...</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Canary</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nn">...</span>
@@ -6434,25 +6440,22 @@
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">analysis</span><span class="p">:</span>
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
 </span></code></pre></div>
-<p><code>spec.progressDeadlineSeconds</code> is a Kubernetes <code>Deployment</code> spec field that defines <strong>the maximum time (in seconds) the controller waits for a deployment to make progress</strong> (e.g., new pods becoming ready) <strong>before marking it as failed due to stalled progress</strong>, defaulting to 600 seconds (10 minutes) and triggering a <code>ProgressDeadlineExceeded</code> condition in the deployment status.</p>
-<p><code>spec.analysis.interval</code> defines <strong>how often Flagger performs analysis during the canary deployment process</strong>, defaulting to 1 minute. This interval determines <strong>how frequently Flagger checks the metrics and logs</strong> to evaluate the health and performance of the canary version compared to the stable version.</p>
+<p><code>spec.progressDeadlineSeconds</code> defines <strong>the maximum time allowed for the canary deployment to make progress</strong> before it is considered failed and rolled back, defaulting to <strong>600 seconds (10 minutes)</strong>. This setting ensures that if the canary deployment does not meet the defined success criteria within this timeframe, Flagger will automatically revert to the stable version to maintain application stability.</p>
+<p>Another confusing field is <code>spec.analysis.interval</code>. It defines <strong>how often Flagger performs analysis during the canary deployment process</strong>, defaulting to <strong>1 minute</strong>. This interval determines <strong>how frequently Flagger checks the metrics and logs</strong> to evaluate the health and performance of the canary version compared to the stable version.</p>
 <h3 id="metrics-analysis">Metrics Analysis<a class="headerlink" href="#metrics-analysis" title="Permanent link">&para;</a></h3>
+<p>When performing a canary deployment, Flagger gradually shifts traffic from the stable version to the canary version in increments. During this process, Flagger continuously monitors the defined metrics to ensure that the canary version is performing as expected. How this process is controlled by several fields under <code>spec.analysis</code>. We will explain these fields into three parts.</p>
+<p>First, the overall traffic shifting strategy is defined by the following fields:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nn">...</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">analysis</span><span class="p p-Indicator">:</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="c1"># schedule interval (default 60s)</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="c1"># canary increment step</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="c1"># percentage (0-100)</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">stepWeight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="c1"># max traffic percentage routed to canary</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="c1"># percentage (0-100)</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">maxWeight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="c1"># max number of failed metric checks before rollback</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">stepWeight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">maxWeight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </span></code></pre></div>
 <p>Metrics are checked once per minute (<code>interval: 1m</code>), with each check increasing canary traffic by 10% (<code>stepWeight: 10</code>), up to a maximum of 50% traffic to canary (<code>maxWeight: 50</code>). If 3 checks fail (<code>threshold: 3</code>), a rollback occurs.</p>
+<p>Second, the specific metrics to be monitored during the canary deployment are defined under <code>spec.analysis.metrics</code>:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">analysis</span><span class="p p-Indicator">:</span>
@@ -6473,18 +6476,20 @@
 </span></code></pre></div>
 <p>Each metric check evaluates two metrics:</p>
 <ol>
-<li><code>request-success-rate</code>: Checked once per minute, requiring a success rate of at least 99% (non-5xx responses).</li>
-<li><code>request-duration</code>: Checked every 30 seconds, requiring P99 request duration not to exceed 500 milliseconds.</li>
+<li><code>request-success-rate</code>: <strong>Checked once per minute, requiring a success rate of at least 99% (non-5xx responses)</strong>.</li>
+<li><code>request-duration</code>: <strong>Checked every 30 seconds, requiring P99 request duration not to exceed 500 milliseconds</strong>.</li>
 </ol>
-<p>It's worth noting that <code>request-success-rate</code> and <code>request-duration</code> are predefined metric names in Flagger, and Flagger automatically calculates the corresponding metric values based on these names. Specifically, Flagger uses Prometheus queries to calculate these metrics.</p>
+<p>It's worth noting that <code>request-success-rate</code> and <code>request-duration</code> are <strong>predefined</strong> metric names in Flagger, and Flagger automatically calculates the corresponding metric values based on these names. Specifically, Flagger uses Prometheus queries to calculate these metrics.</p>
 <p>The Prometheus query for <code>request-success-rate</code> is as follows:</p>
+<details class="note">
+<summary>Prometheus Query for Request Success Rate</summary>
 <div class="language-promql highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">sum</span><span class="o">(</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kr">rate</span><span class="o">(</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nv">istio_requests_total</span><span class="p">{</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">          </span><span class="nl">reporter</span><span class="o">=</span><span class="p">&quot;</span><span class="s">destination</span><span class="p">&quot;,</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">          </span><span class="nl">destination_workload_namespace</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ namespace }}</span><span class="p">&quot;,</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">          </span><span class="nl">destination_workload</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ target }}</span><span class="p">&quot;,</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">          </span><span class="nl">response_code</span><span class="o">!~</span><span class="p">&quot;</span><span class="s">5.*</span><span class="p">&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nl">reporter</span><span class="o">=</span><span class="p">&quot;</span><span class="s">destination</span><span class="p">&quot;,</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="nl">destination_workload_namespace</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ namespace }}</span><span class="p">&quot;,</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="nl">destination_workload</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ target }}</span><span class="p">&quot;,</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="nl">response_code</span><span class="o">!~</span><span class="p">&quot;</span><span class="s">5.*</span><span class="p">&quot;</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="p">}[</span><span class="err">{{ interval }}</span><span class="p">]</span>
 </span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="o">)</span>
 </span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="o">)</span>
@@ -6492,37 +6497,43 @@
 </span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">sum</span><span class="o">(</span>
 </span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="kr">rate</span><span class="o">(</span>
 </span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">        </span><span class="nv">istio_requests_total</span><span class="p">{</span>
-</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">          </span><span class="nl">reporter</span><span class="o">=</span><span class="p">&quot;</span><span class="s">destination</span><span class="p">&quot;,</span>
-</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">          </span><span class="nl">destination_workload_namespace</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ namespace }}</span><span class="p">&quot;,</span>
-</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">          </span><span class="nl">destination_workload</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ target }}</span><span class="p">&quot;</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="nl">reporter</span><span class="o">=</span><span class="p">&quot;</span><span class="s">destination</span><span class="p">&quot;,</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="nl">destination_workload_namespace</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ namespace }}</span><span class="p">&quot;,</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">        </span><span class="nl">destination_workload</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ target }}</span><span class="p">&quot;</span>
 </span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">        </span><span class="p">}[</span><span class="err">{{ interval }}</span><span class="p">]</span>
 </span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="o">)</span>
 </span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="o">)</span>
 </span></code></pre></div>
+</details>
 <p>The Prometheus query for <code>request-duration</code> is as follows:</p>
+<details class="note">
+<summary>Prometheus Query for Request Duration</summary>
 <div class="language-promql highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">histogram_quantile</span><span class="o">(</span><span class="mf">0.99</span><span class="p">,</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="k">sum</span><span class="o">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">sum</span><span class="o">(</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kr">irate</span><span class="o">(</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nv">istio_request_duration_milliseconds_bucket</span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nv">istio_request_duration_milliseconds_bucket</span><span class="p">{</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="nl">reporter</span><span class="o">=</span><span class="p">&quot;</span><span class="s">destination</span><span class="p">&quot;,</span>
 </span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="nl">destination_workload</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ target }}</span><span class="p">&quot;,</span>
 </span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="nl">destination_workload_namespace</span><span class="o">=~</span><span class="p">&quot;</span><span class="s">{{ namespace }}</span><span class="p">&quot;</span>
-</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="p">}[</span><span class="err">{{ interval }}</span><span class="p">]</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}[</span><span class="err">{{ interval }}</span><span class="p">]</span>
 </span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="o">)</span>
-</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">  </span><span class="o">)</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">le</span><span class="o">)</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="o">)</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="nv">le</span><span class="o">)</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="o">)</span>
 </span></code></pre></div>
-<p>During the progressive delivery process, Flagger divides each gradual rollout into multiple phases, such as:</p>
+</details>
+<p>Third, Flagger allows you to define custom webhooks to perform additional tests during the canary deployment process. This is done under <code>spec.analysis.webhooks</code>:</p>
+<div class="admonition note">
+<p class="admonition-title">Progressive Stages and Webhooks</p>
+<p>During a progressive deployment, Flagger breaks the overall rollout process into multiple stages. Between each stage, corresponding webhooks can be configured, for example:</p>
 <ul>
 <li><code>confirm-rollout</code> hooks are executed before scaling up the canary deployment and can be used for manual approval.</li>
 <li><code>pre-rollout</code> hooks are executed before routing traffic to canary.</li>
-<li><code>rollout hooks</code> are executed during the analysis on each iteration before the metric checks.</li>
+<li><code>rollout</code> hooks are executed during the analysis on each iteration before the metric checks.</li>
 <li><code>confirm-traffic-increase</code> hooks are executed right before the weight on the canary is increased.</li>
 <li><code>confirm-promotion</code> hooks are executed before the promotion step.</li>
 <li><code>post-rollout</code> hooks are executed after the canary has been promoted or rolled back.</li>
 </ul>
-<p>Before the entire rollout begins, Flagger executes the <code>acceptance-test</code> webhook, calling the URL <code>http://flagger-loadtester.test/</code> and requesting the flagger-loadtester service to execute <code>curl</code> to call the <code>podinfo-canary:9898/token</code> endpoint, checking whether the response contains the string <code>token</code>. If it does, the test passes and traffic routing can proceed to the next step.</p>
-<p>During the rollout loop, Flagger executes the <code>load-test</code> webhook, calling the URL <code>http://flagger-loadtester.test/</code> and requesting the flagger-loadtester service to run the <code>hey</code> tool to perform load testing against the <code>podinfo-canary.test:9898/</code> endpoint, simulating a rate of 10 requests per second for 1 minute with 2 concurrent requests. Through this load testing, the canary version's performance under actual traffic can be observed.</p>
+</div>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">spec</span><span class="p">:</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">analysis</span><span class="p p-Indicator">:</span>
@@ -6543,6 +6554,8 @@
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">          </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hey</span><span class="nv"> </span><span class="s">-z</span><span class="nv"> </span><span class="s">1m</span><span class="nv"> </span><span class="s">-q</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">-c</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">http://podinfo-canary.test:9898/&quot;</span>
 </span></code></pre></div>
+<p>Before the entire rollout begins, Flagger executes the <code>acceptance-test</code> webhook, calling the URL <code>http://flagger-loadtester.test/</code> and requesting the <code>flagger-loadtester</code> application to execute <code>curl</code> to call the <code>podinfo-canary:9898/token</code> endpoint, checking whether the response contains the string <code>token</code>. If it does, the test passes and traffic routing can proceed to the next step, which is scaling up the canary deployment.</p>
+<p>During the rollout loop, Flagger executes the <code>load-test</code> webhook, calling the URL <code>http://flagger-loadtester.test/</code> and requesting the <code>flagger-loadtester</code> application to run the <code>hey</code> tool to perform load testing against the <code>podinfo-canary.test:9898/</code> endpoint, simulating a rate of 10 requests per second for 1 minute with 2 concurrent requests. Through this load testing, the canary version's performance under actual traffic can be observed.</p>
 
 
 
