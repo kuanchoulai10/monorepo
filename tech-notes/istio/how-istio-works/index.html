@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://kcl10.com/tech-notes/istio/how-istio-works/">
       
       
+        <link rel="prev" href="../../flagger/flagger-istio-integration/">
+      
+      
+        <link rel="next" href="../../prometheus/up-and-running/ch3-instrumentation/">
       
       
       <link rel="icon" href="../../../assets/avatar.png">
@@ -357,10 +361,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -3116,6 +3122,8 @@
       
   
   
+    
+  
   
   
     
@@ -3165,17 +3173,24 @@
       
         
       
-    
-    
+        
       
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           
@@ -3192,13 +3207,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Learning Notes
@@ -3876,6 +3891,8 @@
       
         
       
+        
+      
     
     
       
@@ -3893,7 +3910,7 @@
             
   
   <span class="md-ellipsis">
-    Prometheus
+    Flagger
     
   </span>
   
@@ -3903,6 +3920,495 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Flagger
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flagger/how-flagger-works/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How Flagger Works? - Istio Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flagger/flagger-istio-integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flagger Istio Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Istio
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Istio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How Istio Works?
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    How Istio Works?
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On This Page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On This Page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ambient-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambient Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sidecar-vs-ambient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sidecar vs. Ambient
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-just-use-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Not Just Use Kubernetes?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-after-installing-istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Happens After Installing Istio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crds" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRDs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRDs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualservice" class="md-nav__link">
+    <span class="md-ellipsis">
+      VirtualService
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule" class="md-nav__link">
+    <span class="md-ellipsis">
+      DestinationRule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple clusters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-with-multiple-clusters" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS with multiple clusters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple networks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Plane Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-and-trust-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identity and trust models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesh models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mesh models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single mesh
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-meshes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple meshes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tenancy-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenancy models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tenancy models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace tenancy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster tenancy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mesh tenancy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Prometheus
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             Prometheus
           </label>
@@ -3929,10 +4435,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8_1" >
         
           
-          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_8_1" id="__nav_4_8_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3944,8 +4450,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8_1">
             <span class="md-nav__icon md-icon"></span>
             Up & Running (2023)
           </label>
@@ -4010,10 +4516,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4025,8 +4531,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9">
             <span class="md-nav__icon md-icon"></span>
             OpenTelemetry
           </label>
@@ -4063,10 +4569,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9_1" >
         
           
-          <label class="md-nav__link" for="__nav_4_7_1" id="__nav_4_7_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_9_1" id="__nav_4_9_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4078,8 +4584,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_7_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7_1">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_9_1">
             <span class="md-nav__icon md-icon"></span>
             Learning OpenTelemetry (2024)
           </label>
@@ -4256,10 +4762,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
         
           
-          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4271,8 +4777,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_10">
             <span class="md-nav__icon md-icon"></span>
             Karpenter
           </label>
@@ -4351,10 +4857,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
         
           
-          <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4366,8 +4872,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_11">
             <span class="md-nav__icon md-icon"></span>
             KEDA
           </label>
@@ -4424,10 +4930,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
         
           
-          <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4439,8 +4945,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_10">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_12">
             <span class="md-nav__icon md-icon"></span>
             Airflow
           </label>
@@ -4499,10 +5005,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
         
           
-          <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4514,8 +5020,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_13">
             <span class="md-nav__icon md-icon"></span>
             Polaris
           </label>
@@ -4594,10 +5100,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
         
           
-          <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4609,8 +5115,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_14">
             <span class="md-nav__icon md-icon"></span>
             DDIA
           </label>
@@ -4667,10 +5173,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
         
           
-          <label class="md-nav__link" for="__nav_4_13" id="__nav_4_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_15" id="__nav_4_15_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4682,8 +5188,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_15">
             <span class="md-nav__icon md-icon"></span>
             Hive
           </label>
@@ -4740,10 +5246,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
         
           
-          <label class="md-nav__link" for="__nav_4_14" id="__nav_4_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4755,8 +5261,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_14_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_14">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_16">
             <span class="md-nav__icon md-icon"></span>
             SQLMesh
           </label>
@@ -4815,7 +5321,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_17" >
         
           
           
@@ -4833,8 +5339,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_15">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_17">
             <span class="md-nav__icon md-icon"></span>
             dbt
           </label>
@@ -4871,10 +5377,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
         
           
-          <label class="md-nav__link" for="__nav_4_16" id="__nav_4_16_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_18" id="__nav_4_18_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -4886,8 +5392,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_16_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_16">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_18">
             <span class="md-nav__icon md-icon"></span>
             Streaming Processing
           </label>
@@ -4946,7 +5452,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_19" >
         
           
           
@@ -4964,8 +5470,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_17_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_17">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_19">
             <span class="md-nav__icon md-icon"></span>
             RisingWave
           </label>
@@ -5004,7 +5510,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_18" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_20" >
         
           
           
@@ -5022,8 +5528,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_18_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_18">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_20">
             <span class="md-nav__icon md-icon"></span>
             Treasure Data
           </label>
@@ -5062,7 +5568,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_19" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_21" >
         
           
           
@@ -5080,8 +5586,8 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_19_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_19">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_21">
             <span class="md-nav__icon md-icon"></span>
             LeetCode
           </label>
@@ -5124,7 +5630,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_20" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_22" >
         
           
           
@@ -5141,14 +5647,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_20" id="__nav_4_20_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_22" id="__nav_4_22_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_20_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_20">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_22">
             <span class="md-nav__icon md-icon"></span>
             Restful APIs with Flask
           </label>
@@ -5237,7 +5743,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_21" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_23" >
         
           
           
@@ -5254,14 +5760,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4_21" id="__nav_4_21_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_23" id="__nav_4_23_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_21">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_23_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_23">
             <span class="md-nav__icon md-icon"></span>
             Shortcuts
           </label>
@@ -6559,6 +7065,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../flagger/flagger-istio-integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Flagger Istio Integration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Flagger Istio Integration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../prometheus/up-and-running/ch3-instrumentation/" class="md-footer__link md-footer__link--next" aria-label="Next: Ch3 Instrumentation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Ch3 Instrumentation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
