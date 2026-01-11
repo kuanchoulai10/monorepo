@@ -43,6 +43,10 @@ nav:
       - tech-notes/kafka/iceberg-kafka-sink-connector.md
     - Flink:
       - tech-notes/flink/how-flink-works.md
+    - Flagger:
+      - tech-notes/flagger/how-flagger-works.md
+    - Istio:
+      - tech-notes/istio/how-istio-works.md
     - Prometheus:
       - Up & Running (2023):
         - tech-notes/prometheus/up-and-running/ch3-instrumentation.md
