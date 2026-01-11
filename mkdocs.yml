@@ -45,6 +45,7 @@ nav:
       - tech-notes/flink/how-flink-works.md
     - Flagger:
       - tech-notes/flagger/how-flagger-works.md
+      - tech-notes/flagger/flagger-istio-integration.md
     - Istio:
       - tech-notes/istio/how-istio-works.md
     - Prometheus:
