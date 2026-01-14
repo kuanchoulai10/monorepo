@@ -318,3 +318,59 @@ spec:
 Before the entire rollout begins, Flagger executes the `acceptance-test` webhook, calling the URL `http://flagger-loadtester.test/` and requesting the `flagger-loadtester` application to execute `curl` to call the `podinfo-canary:9898/token` endpoint, checking whether the response contains the string `token`. If it does, the test passes and traffic routing can proceed to the next step, which is scaling up the canary deployment.
 
 During the rollout loop, Flagger executes the `load-test` webhook, calling the URL `http://flagger-loadtester.test/` and requesting the `flagger-loadtester` application to run the `hey` tool to perform load testing against the `podinfo-canary.test:9898/` endpoint, simulating a rate of 10 requests per second for 1 minute with 2 concurrent requests. Through this load testing, the canary version's performance under actual traffic can be observed.
+
+### Traffic Mirroring
+
+You can enable mirroring by replacing `stepWeight`/`maxWeight` with `iterations` and by setting `analysis.mirror` to true:
+
+
+
+```yaml hl_lines="9-11"
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+    ...
+spec:
+  ...
+  analysis:
+    ...
+    iterations: 10
+    mirror: true
+    mirrorWeight: 100
+    ...
+  ...
+```
+
+### Session Affinity
+
+While Flagger can perform weighted routing and A/B testing individually, with Istio it can **combine the two leading to a Canary release with session affinity**. See [Canary Release with Session Affinity](https://docs.flagger.app/main/usage/deployment-strategies#canary-release-with-session-affinity) for more details.
+
+```yaml hl_lines="9-13"
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  ...
+spec:
+  ...
+  analysis:
+    ...
+    sessionAffinity:
+      cookieName: flagger-cookie
+      # max age of the cookie (in seconds)
+      # optional; defaults to 86400
+      maxAge: 21600
+    ...
+  ...
+```
+
+
+### A/B Testing
+
+```yaml
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: test
+spec:
+    ...
