@@ -6,5 +6,18 @@ Keys and shortcuts for various tools. For a more comprehensive guide on how to u
 
 Here are some of the documented shortcuts that I use frequently:
 
-- [tmux](./tmux.md)
-- [git](./git.md)
+- [`tmux`](./tmux.md)
+- [`git`](./git.md)
+- [`gh`]()
+
+```bash
+gh repo create <repo> \
+  --source=. \
+  --remote=origin \
+  --push \
+  --public
+
+gh repo edit \
+  --visibility public \
+  --accept-visibility-change-consequences
+```
