@@ -68,6 +68,16 @@ git rebase --abort
 **Note:**
 Avoid rebasing branches that are shared with other developers.
 
+## Delete local branches that are not used in remote
+
+```bash
+git fetch --prune
+
+git branch -vv \
+| grep ': gone]' \
+| awk '{print $1}' \
+| xargs git branch -d
+```
 
 # Vim
 
