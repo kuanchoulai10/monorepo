@@ -65,8 +65,11 @@ If you need to stop the rebase process at any point, you can abort it:
 git rebase --abort
 ```
 
-**Note:**
-Avoid rebasing branches that are shared with other developers.
+**Note:** Avoid rebasing branches that are shared with other developers. Instead, consider merging the `main` branch into your feature branch by using:
+
+```bash
+git merge origin/main
+```
 
 ## Delete local branches that are not used in remote
 
@@ -79,6 +82,9 @@ git branch -vv \
 | xargs git branch -d
 ```
 
-# Vim
+??? note "Detail"
 
-`dd` + `P`
+    This command sequence does the following:
+
+    - `git fetch --prune`: Fetches the latest changes from the remote repository and removes any references to branches that have been deleted on the remote.
+    - `git branch -vv`: Lists all local branches along with their tracking information and the latest commit message. then `grep ': gone]'` filters out branches that are marked as "gone", which indicates that the corresponding remote branch has been deleted. Finally, `awk '{print $1}'` extracts the branch names from the filtered list, and `xargs git branch -d` deletes those local branches that are no longer present on the remote repository.

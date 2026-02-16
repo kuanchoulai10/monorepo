@@ -87,9 +87,15 @@ nav:
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
     - Shortcuts:
       - shortcuts/index.md
-      - shortcuts/tmux.md
       - shortcuts/git.md
-      - shortcuts/micro.md
+      - shortcuts/gh.md
+      - shortcuts/lazygit.md
+      - shortcuts/editors.md
+      - shortcuts/tmux.md
+      - shortcuts/chezmoi.md
+      - shortcuts/gum.md
+      - shortcuts/uv.md
+      - shortcuts/k8s.md
   - Blog: 
     - blog/index.md
   - Tags: tags.md
