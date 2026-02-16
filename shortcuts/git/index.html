@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://kcl10.com/shortcuts/git/">
       
       
-        <link rel="prev" href="../tmux/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../micro/">
+        <link rel="next" href="../gh/">
       
       
       <link rel="icon" href="../../assets/avatar.png">
@@ -5414,6 +5414,18 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
       
@@ -5454,28 +5466,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tmux/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    tmux
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -5586,11 +5576,165 @@
   
   
     <li class="md-nav__item">
-      <a href="../micro/" class="md-nav__link">
+      <a href="../gh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Micro
+    gh
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lazygit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lazygit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Editors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tmux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tmux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chezmoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    chezmoi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gum/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gum
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uv/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    uv
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../k8s/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containers &amp; Kubernetes
     
   </span>
   
@@ -6267,18 +6411,25 @@
 <p>If you need to stop the rebase process at any point, you can abort it:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>rebase<span class="w"> </span>--abort
 </span></code></pre></div>
-<p><strong>Note:</strong>
-Avoid rebasing branches that are shared with other developers.</p>
-<h2 id="delete-local-branches-that-are-not-used-in-remote">Delete local branches that are not used in remote<a class="headerlink" href="#delete-local-branches-that-are-not-used-in-remote" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>fetch<span class="w"> </span>--prune
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-vv<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;: gone]&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d
+<p><strong>Note:</strong> Avoid rebasing branches that are shared with other developers. Instead, consider merging the <code>main</code> branch into your feature branch by using:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>merge<span class="w"> </span>origin/main
 </span></code></pre></div>
-<h1 id="vim">Vim<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h1>
-<p><code>dd</code> + <code>P</code></p>
+<h2 id="delete-local-branches-that-are-not-used-in-remote">Delete local branches that are not used in remote<a class="headerlink" href="#delete-local-branches-that-are-not-used-in-remote" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>fetch<span class="w"> </span>--prune
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>git<span class="w"> </span>branch<span class="w"> </span>-vv<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;: gone]&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d
+</span></code></pre></div>
+<details class="note">
+<summary>Detail</summary>
+<p>This command sequence does the following:</p>
+<ul>
+<li><code>git fetch --prune</code>: Fetches the latest changes from the remote repository and removes any references to branches that have been deleted on the remote.</li>
+<li><code>git branch -vv</code>: Lists all local branches along with their tracking information and the latest commit message. then <code>grep ': gone]'</code> filters out branches that are marked as "gone", which indicates that the corresponding remote branch has been deleted. Finally, <code>awk '{print $1}'</code> extracts the branch names from the filtered list, and <code>xargs git branch -d</code> deletes those local branches that are no longer present on the remote repository.</li>
+</ul>
+</details>
 
 
 
@@ -6391,7 +6542,7 @@ Avoid rebasing branches that are shared with other developers.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../tmux/" class="md-footer__link md-footer__link--prev" aria-label="Previous: tmux">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Shortcuts">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6401,20 +6552,20 @@ Avoid rebasing branches that are shared with other developers.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                tmux
+                Shortcuts
               </div>
             </div>
           </a>
         
         
           
-          <a href="../micro/" class="md-footer__link md-footer__link--next" aria-label="Next: Micro">
+          <a href="../gh/" class="md-footer__link md-footer__link--next" aria-label="Next: gh">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Micro
+                gh
               </div>
             </div>
             <div class="md-footer__button md-icon">
