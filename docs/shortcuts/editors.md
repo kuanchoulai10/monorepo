@@ -25,11 +25,11 @@
 
 ## `vim`
 
-- ++dd++: Delete current line
+- ++d++ ++d++: Delete current line
 - ++p++: Paste the deleted line above the current line
 - ++i++: Enter insert mode to edit text
-- ++:w++: Save file
-- ++:q++: Quit editor
+- ++colon++ ++w++: Save file
+- ++colon++ ++q++: Quit editor
 
 ## `helix`
 
@@ -37,38 +37,38 @@
 
 ### Normal mode
 
-- Undo: ++u++
-- Redo: ++U++
-- Move cursor forward: ++w++
-- Move cursor backward: ++b++
-- Delete highlighted text: ++d++
-- Find next char: ++f++
-- Find previous char: ++F++
-- Go to end of line: ++g++ ++l++
-- Go to beginning of line: ++g++ ++h++
+- Undo: `u
+- Redo: `U
+- Move cursor forward: `w`
+- Move cursor backward: `b`
+- Delete highlighted text: `d`
+- Find next char: `f`
+- Find previous char: ``F``
+- Go to end of line: `g` `l`
+- Go to beginning of line: `g` `h`
 - Show all keybindings: ++space++ ++?++
     - Search for a specific keybinding: type `%bindings <binding>`
-- File picker: ++space++ ++f++
+- File picker: ++space++ `f`
     - Open file in vertical split: ++ctrl+v++
     - Open file in horizontal split: ++ctrl+h++
     - Move to left split: ++ctrl+w++ ++left++
     - Close current split: ++ctrl+w++ ++q++
-- Symbol picker: ++space++ ++s++
-- Diagnostic picker: ++space++ ++d++
-- Project-wide symbol picker: ++space++ ++S++
+- Symbol picker: ++space++ `s`
+- Project-wide symbol picker: ++space++ `S`
+- Diagnostic picker: ++space++ `d`
 - Comment line: ++ctrl+c++
-- Highlight current line and move to next line: ++x++
-- Replace highlighted text (LSP rename): ++space++ ++r++
-- Go to definition: ++g++ ++d++
+- Highlight current line and move to next line: `x`
+- Replace highlighted text (LSP rename): ++space++ `r`
+- Go to definition: `g` d`
     - Go out of definition: ++ctrl+o++
     - Go into definition: ++ctrl+i++
-- Go to references: ++g++ ++r++
-- Jump to a two-character label: ++g++ ++w++
+- Go to references: `g` `r`
+- Jump to a two-character label: `g` `w`
 - Expand selection to the next node in the syntax tree: ++option+up++
 - Shrink selection to the previous node in the syntax tree: ++option+down++
 
 ### Select mode
 
-- Enter select mode: ++v++
-- Move cursor forward with appended selection: ++w++
-- Move cursor backward with appended selection: ++b++
+- Enter select mode: `v`
+- Move cursor forward with appended selection: `w`
+- Move cursor backward with appended selection: `b`
