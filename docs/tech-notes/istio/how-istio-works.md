@@ -96,8 +96,6 @@ Istio introduces several Custom Resource Definitions (CRDs) to manage and config
 - **DestinationRule**: Configures policies for traffic to a service after routing has occurred
 - **Gateway**: Manages ingress and egress traffic for the mesh.
 
-Other CRDs include `ServiceEntry`, `Sidecar`, and `AuthorizationPolicy`, etc.
-
 ### Gateway
 
 The `Gateway` CRD allows you to configure **how traffic enters and exits the service mesh**. It defines **ports, protocols, and hosts** for incoming and outgoing traffic. This is not about deploying a physical gateway but rather **configuring the behavior of the Istio Ingress Gateway**.
@@ -110,114 +108,29 @@ The `VirtualService` CRD is used to **define the routing rules for traffic withi
 
 The `DestinationRule` CRD is used to configure policies that **apply to traffic after it has been routed to a service**. This includes **settings for load balancing, connection pool sizes, outlier detection, and circuit breaking**. `DestinationRules` work in conjunction with `VirtualServices` to provide fine-grained control over traffic behavior.
 
+Other important CRDs include:
 
-## Deployment Models
+- **PeerAuthentication**: Configures **mutual TLS** settings for services.
+- **RequestAuthentication**: Specifies **JWT authentication** policies.
+- **AuthorizationPolicy**: Defines **access control policies** for services.
 
-See [here](https://istio.io/latest/docs/ops/deployment/deployment-models/) for more details on different deployment models supported by Istio.
+### PeerAuthentication
 
-### Cluster Models
-
-#### Single cluster
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg){ width="500" }
-/// caption
-[A service mesh with a single cluster](https://istio.io/latest/docs/ops/deployment/deployment-models/#single-cluster)
-///
-
-#### Multiple clusters
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-cluster.svg){ width="500" }
-/// caption
-[A service mesh with multiple clusters](https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-clusters)
-///
-
-#### DNS with multiple clusters
-
-### Network Models
-
-#### Single network
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-net.svg){ width="500" }
-/// caption
-[A service mesh with a single network](https://istio.io/latest/docs/ops/deployment/deployment-models/#single-network)
-///
-
-#### Multiple networks
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-net.svg){ width="500" }
-/// caption
-[A service mesh with multiple networks](https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-networks)
-///
-
-### Control Plane Models
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster.svg){ width="500" }
-/// caption
-[A single cluster with a control plane](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
-///
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/shared-control.svg){ width="500" }
-/// caption
-[A service mesh with a primary and a remote cluster](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
-///
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-cluster-external-control-plane.svg){ width="500" }
-/// caption
-[A single cluster with an external control plane](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
-///
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-control.svg)
-/// caption
-[A service mesh with control plane instances for each region](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
-///
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/endpoint-discovery.svg){ width="500" }
-/// caption
-[Primary clusters with endpoint discovery](https://istio.io/latest/docs/ops/deployment/deployment-models/#endpoint-discovery-with-multiple-control-planes)
-///
-
-### Identity and trust models
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/single-trust.svg){ width="500" }
-/// caption
-[A service mesh with a common certificate authority (Trust within a mesh)](https://istio.io/latest/docs/ops/deployment/deployment-models/#trust-within-a-mesh)
-///
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-trust.svg){ width="500" }
-/// caption
-[Multiple service meshes with different certificate authorities (Trust between meshes)](https://istio.io/latest/docs/ops/deployment/deployment-models/#trust-between-meshes)
-///
-
-### Mesh models
-
-#### Single mesh
+The `PeerAuthentication` CRD is used to **configure mutual TLS (mTLS) settings for services within the mesh**. It allows you to specify whether mTLS is enabled or disabled for specific services or namespaces, enhancing the security of service-to-service communication.
 
 
-#### Multiple meshes
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/multi-mesh.svg){ width="500" }
-/// caption
-[Multiple service meshes](https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes)
-///
+See [here](https://istio.io/latest/docs/reference/config/security/peer_authentication/) for more details.
 
-### Tenancy models
+### RequestAuthentication
 
-#### Namespace tenancy
+The `RequestAuthentication` CRD is used to **specify JWT authentication policies for services within the mesh**. It allows you to define how incoming requests are authenticated, including the use of JSON Web Tokens (JWTs) for verifying the identity of users or services.
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/exp-ns.svg){ width="500" }
-/// caption
-[A service mesh with two namespaces and an exposed service](https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy)
-///
+- 
+- A policy in the root namespace (“istio-system” by default) applies to workloads in all namespaces in a mesh.
+- 
+See [here](https://istio.io/latest/docs/reference/config/security/request_authentication/) for more details.
 
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-ns.svg){ width="500" }
-/// caption
-A service mesh with clusters with the same namespace
-///
-#### Cluster tenancy
+### AuthorizationPolicy
 
-#### Mesh tenancy
-
-![](https://istio.io/latest/docs/ops/deployment/deployment-models/cluster-iso.svg){ width="500" }
-/// caption
-[Two isolated service meshes with two clusters and two namespaces](https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy)
-///
+The `AuthorizationPolicy` CRD is used to **define access control policies for services within the mesh**. It allows you to specify which users or services are allowed to access specific resources, providing fine-grained control over service interactions and enhancing the overall security of the service mesh.
