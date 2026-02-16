@@ -42,8 +42,8 @@ The Most Underrated IDE
 
 ### Normal mode
 
-- Undo: `u
-- Redo: `U
+- Undo: `u`
+- Redo: `U`
 - Move cursor forward: `w`
 - Move cursor backward: `b`
 - Delete highlighted text: `d`
