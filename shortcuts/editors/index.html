@@ -6450,57 +6450,57 @@
 </ul>
 <h2 id="vim"><code>vim</code><a class="headerlink" href="#vim" title="Permanent link">&para;</a></h2>
 <ul>
-<li>++dd++: Delete current line</li>
+<li><span class="keys"><kbd class="key-d">D</kbd></span> <span class="keys"><kbd class="key-d">D</kbd></span>: Delete current line</li>
 <li><span class="keys"><kbd class="key-p">P</kbd></span>: Paste the deleted line above the current line</li>
 <li><span class="keys"><kbd class="key-i">I</kbd></span>: Enter insert mode to edit text</li>
-<li>++:w++: Save file</li>
-<li>++:q++: Quit editor</li>
+<li><span class="keys"><kbd class="key-colon">:</kbd></span> <span class="keys"><kbd class="key-w">W</kbd></span>: Save file</li>
+<li><span class="keys"><kbd class="key-colon">:</kbd></span> <span class="keys"><kbd class="key-q">Q</kbd></span>: Quit editor</li>
 </ul>
 <h2 id="helix"><code>helix</code><a class="headerlink" href="#helix" title="Permanent link">&para;</a></h2>
 <p><a href="https://docs.helix-editor.com/keymap.html">Keymap</a></p>
 <h3 id="normal-mode">Normal mode<a class="headerlink" href="#normal-mode" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Undo: <span class="keys"><kbd class="key-u">U</kbd></span></li>
-<li>Redo: ++U++</li>
-<li>Move cursor forward: <span class="keys"><kbd class="key-w">W</kbd></span></li>
-<li>Move cursor backward: <span class="keys"><kbd class="key-b">B</kbd></span></li>
-<li>Delete highlighted text: <span class="keys"><kbd class="key-d">D</kbd></span></li>
-<li>Find next char: <span class="keys"><kbd class="key-f">F</kbd></span></li>
-<li>Find previous char: ++F++</li>
-<li>Go to end of line: <span class="keys"><kbd class="key-g">G</kbd></span> <span class="keys"><kbd class="key-l">L</kbd></span></li>
-<li>Go to beginning of line: <span class="keys"><kbd class="key-g">G</kbd></span> <span class="keys"><kbd class="key-h">H</kbd></span></li>
+<li>Undo: `u</li>
+<li>Redo: `U</li>
+<li>Move cursor forward: <code>w</code></li>
+<li>Move cursor backward: <code>b</code></li>
+<li>Delete highlighted text: <code>d</code></li>
+<li>Find next char: <code>f</code></li>
+<li>Find previous char: <code>F</code></li>
+<li>Go to end of line: <code>g</code> <code>l</code></li>
+<li>Go to beginning of line: <code>g</code> <code>h</code></li>
 <li>Show all keybindings: <span class="keys"><kbd class="key-space">Space</kbd></span> ++?++<ul>
 <li>Search for a specific keybinding: type <code>%bindings &lt;binding&gt;</code></li>
 </ul>
 </li>
-<li>File picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <span class="keys"><kbd class="key-f">F</kbd></span><ul>
+<li>File picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <code>f</code><ul>
 <li>Open file in vertical split: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-v">V</kbd></span></li>
 <li>Open file in horizontal split: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-h">H</kbd></span></li>
 <li>Move to left split: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-w">W</kbd></span> <span class="keys"><kbd class="key-arrow-left">Left</kbd></span></li>
 <li>Close current split: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-w">W</kbd></span> <span class="keys"><kbd class="key-q">Q</kbd></span></li>
 </ul>
 </li>
-<li>Symbol picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <span class="keys"><kbd class="key-s">S</kbd></span></li>
-<li>Diagnostic picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <span class="keys"><kbd class="key-d">D</kbd></span></li>
-<li>Project-wide symbol picker: <span class="keys"><kbd class="key-space">Space</kbd></span> ++S++</li>
+<li>Symbol picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <code>s</code></li>
+<li>Project-wide symbol picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <code>S</code></li>
+<li>Diagnostic picker: <span class="keys"><kbd class="key-space">Space</kbd></span> <code>d</code></li>
 <li>Comment line: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span></li>
-<li>Highlight current line and move to next line: <span class="keys"><kbd class="key-x">X</kbd></span></li>
-<li>Replace highlighted text (LSP rename): <span class="keys"><kbd class="key-space">Space</kbd></span> <span class="keys"><kbd class="key-r">R</kbd></span></li>
-<li>Go to definition: <span class="keys"><kbd class="key-g">G</kbd></span> <span class="keys"><kbd class="key-d">D</kbd></span><ul>
+<li>Highlight current line and move to next line: <code>x</code></li>
+<li>Replace highlighted text (LSP rename): <span class="keys"><kbd class="key-space">Space</kbd></span> <code>r</code></li>
+<li>Go to definition: <code>g</code> d`<ul>
 <li>Go out of definition: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-o">O</kbd></span></li>
 <li>Go into definition: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-i">I</kbd></span></li>
 </ul>
 </li>
-<li>Go to references: <span class="keys"><kbd class="key-g">G</kbd></span> <span class="keys"><kbd class="key-r">R</kbd></span></li>
-<li>Jump to a two-character label: <span class="keys"><kbd class="key-g">G</kbd></span> <span class="keys"><kbd class="key-w">W</kbd></span></li>
+<li>Go to references: <code>g</code> <code>r</code></li>
+<li>Jump to a two-character label: <code>g</code> <code>w</code></li>
 <li>Expand selection to the next node in the syntax tree: <span class="keys"><kbd class="key-option">Option</kbd><span>+</span><kbd class="key-arrow-up">Up</kbd></span></li>
 <li>Shrink selection to the previous node in the syntax tree: <span class="keys"><kbd class="key-option">Option</kbd><span>+</span><kbd class="key-arrow-down">Down</kbd></span></li>
 </ul>
 <h3 id="select-mode">Select mode<a class="headerlink" href="#select-mode" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Enter select mode: <span class="keys"><kbd class="key-v">V</kbd></span></li>
-<li>Move cursor forward with appended selection: <span class="keys"><kbd class="key-w">W</kbd></span></li>
-<li>Move cursor backward with appended selection: <span class="keys"><kbd class="key-b">B</kbd></span></li>
+<li>Enter select mode: <code>v</code></li>
+<li>Move cursor forward with appended selection: <code>w</code></li>
+<li>Move cursor backward with appended selection: <code>b</code></li>
 </ul>
 
 
