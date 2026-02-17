@@ -88,3 +88,53 @@ git branch -vv \
 
     - `git fetch --prune`: Fetches the latest changes from the remote repository and removes any references to branches that have been deleted on the remote.
     - `git branch -vv`: Lists all local branches along with their tracking information and the latest commit message. then `grep ': gone]'` filters out branches that are marked as "gone", which indicates that the corresponding remote branch has been deleted. Finally, `awk '{print $1}'` extracts the branch names from the filtered list, and `xargs git branch -d` deletes those local branches that are no longer present on the remote repository.
+
+## Worktrees
+
+Create a worktree folder under `<path/to/worktree>` and create a branch named `<branch-name>` from `main` branch.
+
+```bash
+git worktree add -b <branch-name> <path/to/worktree> main
+```
+
+Move worktree folder from `<path/to/old/worktree>` to `<path/to/new/worktree>`
+
+```bash
+git worktree move <path/to/old/worktree> <path/to/new/worktree>
+```
+
+To show worktree list, in `main` worktree, run:
+
+```bash
+git worktree list
+```
+
+In worktree folder, run:
+
+```
+git branch --show-current
+git status
+```
+
+!!! warning
+
+    同一個 branch 不能同時在兩個 worktree 被 checkout
+
+To prevent a working tree from being pruned:
+
+```bash
+git worktree lock
+```
+
+To allow working tree to be pruned, moved or deleted:
+
+```bash
+git worktree lock
+```
+
+To remove a working tree:
+
+```bash
+git worktree remove <path/to/worktree>
+git worktree prune
+```
