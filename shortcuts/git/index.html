@@ -5560,6 +5560,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#worktrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worktrees
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6343,6 +6352,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#worktrees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worktrees
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6430,6 +6448,34 @@
 <li><code>git branch -vv</code>: Lists all local branches along with their tracking information and the latest commit message. then <code>grep ': gone]'</code> filters out branches that are marked as "gone", which indicates that the corresponding remote branch has been deleted. Finally, <code>awk '{print $1}'</code> extracts the branch names from the filtered list, and <code>xargs git branch -d</code> deletes those local branches that are no longer present on the remote repository.</li>
 </ul>
 </details>
+<h2 id="worktrees">Worktrees<a class="headerlink" href="#worktrees" title="Permanent link">&para;</a></h2>
+<p>Create a worktree folder under <code>&lt;path/to/worktree&gt;</code> and create a branch named <code>&lt;branch-name&gt;</code> from <code>main</code> branch.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> </span>-b<span class="w"> </span>&lt;branch-name&gt;<span class="w"> </span>&lt;path/to/worktree&gt;<span class="w"> </span>main
+</span></code></pre></div>
+<p>Move worktree folder from <code>&lt;path/to/old/worktree&gt;</code> to <code>&lt;path/to/new/worktree&gt;</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>move<span class="w"> </span>&lt;path/to/old/worktree&gt;<span class="w"> </span>&lt;path/to/new/worktree&gt;
+</span></code></pre></div>
+<p>To show worktree list, in <code>main</code> worktree, run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>list
+</span></code></pre></div>
+<p>In worktree folder, run:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git branch --show-current
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git status
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>同一個 branch 不能同時在兩個 worktree 被 checkout</p>
+</div>
+<p>To prevent a working tree from being pruned:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>lock
+</span></code></pre></div>
+<p>To allow working tree to be pruned, moved or deleted:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>lock
+</span></code></pre></div>
+<p>To remove a working tree:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git<span class="w"> </span>worktree<span class="w"> </span>remove<span class="w"> </span>&lt;path/to/worktree&gt;
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>git<span class="w"> </span>worktree<span class="w"> </span>prune
+</span></code></pre></div>
 
 
 
