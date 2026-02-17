@@ -94,7 +94,7 @@ git branch -vv \
 Create a worktree folder under `<path/to/worktree>` and create a branch named `<branch-name>` from `main` branch.
 
 ```bash
-git worktree add -b <branch-name> <path/to/worktree> main
+git worktree add <path/to/worktree> main -b <branch-name>
 ```
 
 Move worktree folder from `<path/to/old/worktree>` to `<path/to/new/worktree>`
