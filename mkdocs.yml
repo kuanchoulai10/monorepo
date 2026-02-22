@@ -85,6 +85,17 @@ nav:
       - tech-notes/treasure-data/index.md
     - LeetCode: "!include ./leetcode/mkdocs.yml"
     - Restful APIs with Flask: "!include ./restful-apis-with-flask/mkdocs.yml"
+    - Rosetta:
+      - tech-notes/rosetta/README.md
+      - tech-notes/rosetta/overview.md
+      - tech-notes/rosetta/types.md
+      - tech-notes/rosetta/collections.md
+      - tech-notes/rosetta/conditionals.md
+      - tech-notes/rosetta/loops.md
+      - tech-notes/rosetta/functions.md
+      - tech-notes/rosetta/classes.md
+      - tech-notes/rosetta/error-handling.md
+      - tech-notes/rosetta/concurrency.md
     - Shortcuts:
       - shortcuts/index.md
       - shortcuts/git.md
