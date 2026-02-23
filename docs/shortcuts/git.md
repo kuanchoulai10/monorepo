@@ -1,5 +1,11 @@
 # Git
 
+## Publish
+
+```bash
+git push -u origin $(git branch --show-current)
+```
+
 ## Pull + Rebase
 
 ```sh
