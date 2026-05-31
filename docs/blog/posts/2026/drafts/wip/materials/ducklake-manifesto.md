@@ -1,3 +1,9 @@
+---
+draft: true
+date:
+  created: 2026-05-30
+---
+
 # DuckLake Manifesto: SQL as a Lakehouse Format
 
 **來源**：[The DuckLake Manifesto: SQL as a Lakehouse Format](https://ducklake.select/manifesto/)

@@ -1,4 +1,10 @@
-27;2;13~27;2;13~# Slack × Iceberg @ Scale
+---
+draft: true
+date:
+  created: 2026-05-31
+---
+
+# Slack × Iceberg @ Scale
 
 **來源**：[Maintaining Iceberg at Scale: Lessons from Slack | 2026 Iceberg Summit](https://youtu.be/NRSlundcwvc?si=NOw46genitJRooXX)
 

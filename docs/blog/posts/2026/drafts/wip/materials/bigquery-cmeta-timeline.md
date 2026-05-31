@@ -1,3 +1,9 @@
+---
+draft: true
+date:
+  created: 2026-05-30
+---
+
 # BigQuery CMETA 的三個時間點
 
 **來源**：

@@ -1,3 +1,9 @@
+---
+draft: true
+date:
+  created: 2026-05-30
+---
+
 # Firebolt × Iceberg @ Trillion Rows
 
 **來源**：[What Breaks at Trillion Rows: Eliminating Iceberg Bottlenecks in Firebolt | May 21, 2026 | 2026 Iceberg Summit](https://youtu.be/anebAxlJhGI?si=hCA_yiSHB7_6_7Yp)
