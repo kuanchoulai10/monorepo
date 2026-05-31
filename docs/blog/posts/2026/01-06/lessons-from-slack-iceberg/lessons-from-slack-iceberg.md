@@ -1,5 +1,4 @@
 ---
-draft: true
 authors:
   - kuanchoulai10
 date:
@@ -22,22 +21,20 @@ comments: true
 
     After reading this article, you will learn:
 
-    - Slack 在 Hive + Parquet 時代踩到的四個瓶頸，以及換成 Iceberg 後分別解決了什麼
-    - 為什麼 Iceberg 採用率在 Slack 內部曾經停在 plateau：**維護就是採用 Iceberg 的成本**
-    - 集中式維護服務 IceChipper 如何在 **4,000 張表**、**99.9% 成功率**、**15 分鐘 batch** 的節奏下，撐起 **180PB**、單表 **17PB** 的數據湖
+    - Slack 如何在每天有超過 300TB 資料流入 180PB 規模的 Data Lakehouse 下，穩定維持 99.9% 的 Iceberg 維護成功率
+    - Slack 在開發 IceChipper 時的思考過程：4 種資料、5 條設計準則、3 條被否決的替代方案
+    - Slack 在維護 4,000 張 Iceberg tables 過程中遇到的 3 大痛點以及他們如何因應
 
 <!-- more -->
 
-<figure markdown="span">
-  ![Lessons from Slack: Maintaining Iceberg at Scale](./assets/cover.png){width="600"}
-  *(cover figure 待補)*
-</figure>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NRSlundcwvc?si=q1bDIgJk901Dwp6c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+/// caption
+[Maintaining Iceberg at Scale: Lessons from Slack](https://youtu.be/NRSlundcwvc?si=x4urD1PX3EK816NX)
+///
 
 Lawrence Weikum 是 Slack 的 Staff Software Engineer。他在 2026 Iceberg Summit 分享了 Slack 那座 **180 PB** 數據湖的 Iceberg 採用經驗，這座湖上跑著 **35,000 張 tables** 與 **29,000 條 pipelines**，每天還在以 **250 TB** 的日誌與 **55 TB** 的 CDC 變更數據持續長大。
 
 規模本身已經夠驚人，但這場 talk 最吸引我的地方，是 Lawrence 把 Slack 一路走來的決策過程都攤了出來：哪些痛點讓他們動手換、為什麼採用率曾經停下來、又怎麼把維護整理成一套能擴展的系統。本文整理自這場分享，從 Slack 用 Hive 時代踩到的瓶頸開始講起。
-
-> 本文素材整理見 [`materials/slack-iceberg-at-scale.md`](materials/slack-iceberg-at-scale.md)。
 
 
 ## Iceberg 之前，Hive + Parquet 的四個瓶頸
@@ -203,7 +200,11 @@ Lock table 解決了「誰來做」的問題，Tracking table 則回答「做了
 
 往更長遠看，Slack 還規劃了兩個方向：
 
-- **從觀察者轉成貢獻者**：把累積的調參與優化經驗反饋回 Apache Iceberg 上游，從目前的 lurker 角色轉成 active contributor。
+- **從觀察者轉成貢獻者**：把累積的調參優化經驗反饋回 Apache Iceberg 社群，從目前的 lurker 角色轉成 active contributor。
 - **AI 介入維護決策**：探索用 AI 自動 tune compaction 的執行頻率與參數，讓系統更聰明地適應每張 table 的特性。
 
-Talk 結尾，Lawrence 對這套系統的未來做了一句直白的總結：「I'm very confident in our future.」他的信心來自一個有趣的內部驗證：Salesforce 旗下另一個技術棧、規模、tables 數量都與 Slack 高度相似、但採用 Iceberg 早了兩年的團隊，獨立開發出了與 IceChipper 幾乎一模一樣的系統，目前已經穩定運作在 Slack **10 倍**的規模上。對 Lawrence 來說，這既是 IceChipper 設計被獨立驗證的訊號，也代表系統還有相當大的擴展空間。
+Talk 結尾，Lawrence 對這套系統的未來做了一句直白的總結
+
+> I'm very confident in our future.
+
+他的信心來自一個有趣的內部驗證：Salesforce 旗下另一個技術棧、規模、tables 數量都與 Slack 高度相似，但採用 Iceberg 早了兩年的團隊，獨立開發出了與 IceChipper 幾乎一模一樣的系統，目前已經穩定運作在 Slack **10 倍**的資料規模上。對 Lawrence 來說，這既是 IceChipper 設計被獨立驗證的訊號，也代表系統還有相當大的擴展空間。
