@@ -164,7 +164,9 @@ theme:
 
 plugins:
   - monorepo
-  - social
+  - social:
+      cards_layout_options:
+        font_family: Noto Sans TC
   - glightbox
   - drawio-exporter
   - slides
