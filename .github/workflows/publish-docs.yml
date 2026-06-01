@@ -62,9 +62,10 @@ jobs:
           sudo apt-get install -y libasound2t64 xvfb ./"$drawio_deb"
       - uses: actions/cache@v3
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-${{ env.cache_id }}-${{ hashFiles('mkdocs.yml') }}
           path: .cache
           restore-keys: |
+            mkdocs-material-${{ env.cache_id }}-
             mkdocs-material-
       - run: pip install -r docs/requirements.txt
       - run: xvfb-run -a mkdocs gh-deploy --force
