@@ -12,28 +12,26 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/blog/category/data/">
+        <link rel="canonical" href="https://kcl10.com/blog/rethinking-iceberg-metadata-v4/">
       
       
-        <link rel="prev" href="../cicd/">
+        <link rel="prev" href="../lessons-from-slack-iceberg/">
       
       
-        <link rel="next" href="../mkdocs/">
       
-      
-      <link rel="icon" href="../../../assets/avatar.png">
+      <link rel="icon" href="../../assets/avatar.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>Data - KC's Data & Life Notes</title>
+        <title>Re-thinking Iceberg Metadata Structure in v4 - KC's Data & Life Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,15 +50,15 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/neoteroi-mkdocs-v1.0.4.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/neoteroi-mkdocs-v1.0.4.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../assets/slides/css/slides.css">
+      <link rel="stylesheet" href="../../assets/slides/css/slides.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -79,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Data - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="Re-thinking Iceberg Metadata Structure in v4 - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/category/data.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/rethinking-iceberg-metadata-v4/rethinking-iceberg-metadata-v4.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -91,19 +89,19 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/blog/category/data/" >
+        <meta  property="og:url"  content="https://kcl10.com/blog/rethinking-iceberg-metadata-v4/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Data - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="Re-thinking Iceberg Metadata Structure in v4 - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/category/data.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/rethinking-iceberg-metadata-v4/rethinking-iceberg-metadata-v4.png" >
       
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -114,7 +112,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -133,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data" class="md-skip">
+        <a href="#re-thinking-iceberg-metadata-structure-in-v4" class="md-skip">
           Skip to content
         </a>
       
@@ -177,9 +175,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-header__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../assets/avatar.png" alt="logo">
+  <img src="../../assets/avatar.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -196,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data
+              Re-thinking Iceberg Metadata Structure in v4
             
           </span>
         </div>
@@ -305,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../.." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
     
@@ -325,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about-me/" class="md-tabs__link">
+        <a href="../../about-me/" class="md-tabs__link">
           
   
     
@@ -345,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../side-projects/" class="md-tabs__link">
+        <a href="../../side-projects/" class="md-tabs__link">
           
   
     
@@ -365,7 +363,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../tech-notes/" class="md-tabs__link">
+        <a href="../../tech-notes/" class="md-tabs__link">
           
   
     
@@ -387,7 +385,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -405,7 +403,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../tags/" class="md-tabs__link">
+      <a href="../../tags/" class="md-tabs__link">
         
   
     
@@ -424,7 +422,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../recaps/" class="md-tabs__link">
+        <a href="../../recaps/" class="md-tabs__link">
           
   
     
@@ -448,7 +446,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -459,9 +459,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
+    <a href="../.." title="KC&#39;s Data &amp; Life Notes" class="md-nav__button md-logo" aria-label="KC's Data & Life Notes" data-md-component="logo">
       
-  <img src="../../../assets/avatar.png" alt="logo">
+  <img src="../../assets/avatar.png" alt="logo">
 
     </a>
     KC's Data & Life Notes
@@ -509,7 +509,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../.." class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -570,7 +570,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/" class="md-nav__link ">
+            <a href="../../about-me/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -625,7 +625,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/work-experience/" class="md-nav__link ">
+            <a href="../../about-me/work-experience/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -683,7 +683,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about-me/public-speakings/" class="md-nav__link ">
+            <a href="../../about-me/public-speakings/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -756,7 +756,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/" class="md-nav__link ">
+            <a href="../../side-projects/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -825,7 +825,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/data2ml-ops/" class="md-nav__link ">
+            <a href="../../side-projects/data2ml-ops/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -859,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/dbt/modeling-data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -999,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/feast/modeling-features/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1021,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/feast/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/mlflow/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1191,7 +1191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/mlflow/hpo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1274,7 +1274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1296,7 +1296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/how-ray-works/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/how-ray-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1318,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1340,7 +1340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1362,7 +1362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/ray-tune/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1384,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/ray/ray-job/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1471,7 +1471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/what-why-when/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1493,7 +1493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/how-kserve-works/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/how-kserve-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/in-the-bigger-picture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1537,7 +1537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1559,7 +1559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1581,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/transformer-advantages/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1603,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/feast-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1625,7 +1625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
+      <a href="../../side-projects/data2ml-ops/kserve/deployment-with-transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1706,7 +1706,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/retail-lakehouse/" class="md-nav__link ">
+            <a href="../../side-projects/retail-lakehouse/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1740,7 +1740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/prerequisites/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/prerequisites/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1762,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1831,7 +1831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/argocd/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/argocd/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1853,7 +1853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/argocd/cli/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/argocd/cli/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1875,7 +1875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/argocd/how-it-works/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/argocd/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1956,7 +1956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/cdc/overview/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/cdc/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1978,7 +1978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/cdc/deployment-kafka-cluster/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/cdc/deployment-kafka-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2000,7 +2000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/cdc/deployment-mysql/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/cdc/deployment-mysql/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2022,7 +2022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/cdc/deployment-debezium-mysql-connector/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/cdc/deployment-debezium-mysql-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2044,7 +2044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/cdc/deployment-iceberg-connector/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/cdc/deployment-iceberg-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2131,7 +2131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/how-it-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2153,7 +2153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2175,7 +2175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/oauth2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2197,7 +2197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/fault-tolerance/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/fault-tolerance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2219,7 +2219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/catalogs/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/catalogs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2241,7 +2241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/faker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2263,7 +2263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/join-optimization/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/join-optimization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2285,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/event-listeners/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/event-listeners/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2358,7 +2358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/minio/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/minio/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2433,7 +2433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/polaris/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/polaris/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2455,7 +2455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/polaris/api/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/polaris/api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2544,7 +2544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/overview/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2566,7 +2566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/prometheus/how-prometheus-works/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/prometheus/how-prometheus-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2588,7 +2588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/prometheus/prometheus-deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/prometheus/prometheus-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2610,7 +2610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/thanos/how-thanos-works/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/thanos/how-thanos-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2632,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/thanos/thanos-deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/thanos/thanos-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2654,7 +2654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/opentelemetry/what-is-opentelemetry/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/opentelemetry/what-is-opentelemetry/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2676,7 +2676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/opentelemetry/how-opentelemetry-works/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/opentelemetry/how-opentelemetry-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2698,7 +2698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/observability/opentelemetry/opentelemetry-deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/observability/opentelemetry/opentelemetry-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2720,7 +2720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/trino/monitoring/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/trino/monitoring/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2795,7 +2795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/table-maintenance/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/table-maintenance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2817,7 +2817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/troubleshooting-spark-runtime-version/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/troubleshooting-spark-runtime-version/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2898,7 +2898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/troubleshooting-minikube-node-recovery/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/troubleshooting-minikube-node-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2920,7 +2920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/troubleshooting-minikube-image-pull/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/troubleshooting-minikube-image-pull/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2942,7 +2942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/troubleshooting-spark-operator-leader-election/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/troubleshooting-spark-operator-leader-election/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2964,7 +2964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/minio/troubleshooting-hostpath-data-recovery/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/minio/troubleshooting-hostpath-data-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2986,7 +2986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/polaris/troubleshooting-catalog-reset/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/polaris/troubleshooting-catalog-reset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3069,7 +3069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3091,7 +3091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/1-iceberg-getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3113,7 +3113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/2-iceberg-integrated-audits-demo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3135,7 +3135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/3-iceberg-table-maintenance-spark-procedures/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3157,7 +3157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/4-iceberg-wap-with-branches/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3179,7 +3179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
+      <a href="../../side-projects/retail-lakehouse/iceberg/spark-quickstart/5-iceberg-view-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3246,7 +3246,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/data-mesh/" class="md-nav__link ">
+            <a href="../../side-projects/data-mesh/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3280,7 +3280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
+      <a href="../../side-projects/data-mesh/products-s3-biglake-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3302,7 +3302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
+      <a href="../../side-projects/data-mesh/images-gcs-object-table/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3324,7 +3324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data-mesh/combined/" class="md-nav__link">
+      <a href="../../side-projects/data-mesh/combined/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3346,7 +3346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/data-mesh/rag/" class="md-nav__link">
+      <a href="../../side-projects/data-mesh/rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3407,7 +3407,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/dcard-hw/" class="md-nav__link ">
+            <a href="../../side-projects/dcard-hw/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3441,7 +3441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
+      <a href="../../side-projects/dcard-hw/docs/1-eda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3463,7 +3463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
+      <a href="../../side-projects/dcard-hw/docs/2-training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3485,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
+      <a href="../../side-projects/dcard-hw/docs/3-evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3507,7 +3507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
+      <a href="../../side-projects/dcard-hw/docs/4-resampling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3529,7 +3529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
+      <a href="../../side-projects/dcard-hw/eda_evaluation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3633,7 +3633,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../tech-notes/" class="md-nav__link ">
+            <a href="../../tech-notes/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3714,7 +3714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/spark/how-spark-works/" class="md-nav__link">
+      <a href="../../tech-notes/spark/how-spark-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3736,7 +3736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/spark/performance-tuning/" class="md-nav__link">
+      <a href="../../tech-notes/spark/performance-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3805,7 +3805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/spark/learning-spark/ch1-2-intro-to-spark/" class="md-nav__link">
+      <a href="../../tech-notes/spark/learning-spark/ch1-2-intro-to-spark/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3827,7 +3827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/spark/learning-spark/ch3-structured-apis/" class="md-nav__link">
+      <a href="../../tech-notes/spark/learning-spark/ch3-structured-apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3849,7 +3849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/spark/learning-spark/ch7-tuning/" class="md-nav__link">
+      <a href="../../tech-notes/spark/learning-spark/ch7-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3942,7 +3942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/iceberg-best-practices-in-aws/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/iceberg-best-practices-in-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4007,7 +4007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/definitive-guide/ch4-tuning/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/definitive-guide/ch4-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4037,7 +4037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/kafka/iceberg-kafka-sink-connector/" class="md-nav__link">
+      <a href="../../tech-notes/kafka/iceberg-kafka-sink-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4059,7 +4059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/migration/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4081,7 +4081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/disaster-recovery/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/disaster-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4103,7 +4103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/resources/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4125,7 +4125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/iceberg/iceberg-in-prod-netflix-2023/" class="md-nav__link">
+      <a href="../../tech-notes/iceberg/iceberg-in-prod-netflix-2023/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4200,7 +4200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/kafka/exactly-once/" class="md-nav__link">
+      <a href="../../tech-notes/kafka/exactly-once/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4222,7 +4222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/kafka/iceberg-kafka-sink-connector/" class="md-nav__link">
+      <a href="../../tech-notes/kafka/iceberg-kafka-sink-connector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4295,7 +4295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/flink/how-flink-works/" class="md-nav__link">
+      <a href="../../tech-notes/flink/how-flink-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4370,7 +4370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/flagger/how-flagger-works/" class="md-nav__link">
+      <a href="../../tech-notes/flagger/how-flagger-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4392,7 +4392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/flagger/flagger-istio-integration/" class="md-nav__link">
+      <a href="../../tech-notes/flagger/flagger-istio-integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4465,7 +4465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/istio/how-istio-works/" class="md-nav__link">
+      <a href="../../tech-notes/istio/how-istio-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4581,7 +4581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/prometheus/up-and-running/ch3-instrumentation/" class="md-nav__link">
+      <a href="../../tech-notes/prometheus/up-and-running/ch3-instrumentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4715,7 +4715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/opentelemetry/learning-opentelemetry/ch2-why-use-opentelemetry/" class="md-nav__link">
+      <a href="../../tech-notes/opentelemetry/learning-opentelemetry/ch2-why-use-opentelemetry/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4737,7 +4737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/opentelemetry/learning-opentelemetry/ch3-overview/" class="md-nav__link">
+      <a href="../../tech-notes/opentelemetry/learning-opentelemetry/ch3-overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4759,7 +4759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/opentelemetry/learning-opentelemetry/ch4-architecture/" class="md-nav__link">
+      <a href="../../tech-notes/opentelemetry/learning-opentelemetry/ch4-architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4781,7 +4781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/opentelemetry/learning-opentelemetry/ch7-infra-observability/" class="md-nav__link">
+      <a href="../../tech-notes/opentelemetry/learning-opentelemetry/ch7-infra-observability/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4803,7 +4803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/opentelemetry/learning-opentelemetry/ch8-designing-telemetry-pipelines/" class="md-nav__link">
+      <a href="../../tech-notes/opentelemetry/learning-opentelemetry/ch8-designing-telemetry-pipelines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4825,7 +4825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/prometheus/up-and-running/ch3-instrumentation/" class="md-nav__link">
+      <a href="../../tech-notes/prometheus/up-and-running/ch3-instrumentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4908,7 +4908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/karpenter/best-practices/" class="md-nav__link">
+      <a href="../../tech-notes/karpenter/best-practices/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4930,7 +4930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/karpenter/how-karpenter-works/" class="md-nav__link">
+      <a href="../../tech-notes/karpenter/how-karpenter-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5003,7 +5003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/keda/how-keda-works/" class="md-nav__link">
+      <a href="../../tech-notes/keda/how-keda-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5076,7 +5076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/airflow/how-airflow-works/" class="md-nav__link">
+      <a href="../../tech-notes/airflow/how-airflow-works/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5151,7 +5151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/polaris/policy/" class="md-nav__link">
+      <a href="../../tech-notes/polaris/policy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5173,7 +5173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/polaris/resources/" class="md-nav__link">
+      <a href="../../tech-notes/polaris/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5246,7 +5246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/ddia/ch8-transactions/" class="md-nav__link">
+      <a href="../../tech-notes/ddia/ch8-transactions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5319,7 +5319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/hive/architecture/" class="md-nav__link">
+      <a href="../../tech-notes/hive/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5392,7 +5392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/sqlmesh/sqlmesh-vs-dbt-core/" class="md-nav__link">
+      <a href="../../tech-notes/sqlmesh/sqlmesh-vs-dbt-core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5443,7 +5443,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../tech-notes/dbt/" class="md-nav__link ">
+            <a href="../../tech-notes/dbt/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5523,7 +5523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/streaming-processing-window-types/" class="md-nav__link">
+      <a href="../../tech-notes/streaming-processing-window-types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5574,7 +5574,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../tech-notes/risingwave/" class="md-nav__link ">
+            <a href="../../tech-notes/risingwave/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5632,7 +5632,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../tech-notes/treasure-data/" class="md-nav__link ">
+            <a href="../../tech-notes/treasure-data/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5690,7 +5690,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/leetcode/" class="md-nav__link ">
+            <a href="../../side-projects/leetcode/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5752,7 +5752,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
+            <a href="../../side-projects/restful-apis-with-flask/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5786,7 +5786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
+      <a href="../../side-projects/restful-apis-with-flask/docs/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5808,7 +5808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
+      <a href="../../side-projects/restful-apis-with-flask/docs/advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5877,7 +5877,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../tech-notes/rosetta/" class="md-nav__link ">
+            <a href="../../tech-notes/rosetta/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -5911,7 +5911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/overview/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5933,7 +5933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/types/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/types/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5955,7 +5955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/collections/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/collections/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5977,7 +5977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/conditionals/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/conditionals/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5999,7 +5999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/loops/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/loops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6021,7 +6021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/functions/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6043,7 +6043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/classes/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/classes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6065,7 +6065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/error-handling/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/error-handling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6087,7 +6087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tech-notes/rosetta/concurrency/" class="md-nav__link">
+      <a href="../../tech-notes/rosetta/concurrency/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6156,7 +6156,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../shortcuts/" class="md-nav__link ">
+            <a href="../../shortcuts/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6190,7 +6190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/git/" class="md-nav__link">
+      <a href="../../shortcuts/git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6212,7 +6212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/gh/" class="md-nav__link">
+      <a href="../../shortcuts/gh/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6234,7 +6234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/lazygit/" class="md-nav__link">
+      <a href="../../shortcuts/lazygit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6256,7 +6256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/editors/" class="md-nav__link">
+      <a href="../../shortcuts/editors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6278,7 +6278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/tmux/" class="md-nav__link">
+      <a href="../../shortcuts/tmux/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6300,7 +6300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/chezmoi/" class="md-nav__link">
+      <a href="../../shortcuts/chezmoi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6322,7 +6322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/gum/" class="md-nav__link">
+      <a href="../../shortcuts/gum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6344,7 +6344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/uv/" class="md-nav__link">
+      <a href="../../shortcuts/uv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6366,7 +6366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../shortcuts/k8s/" class="md-nav__link">
+      <a href="../../shortcuts/k8s/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6433,7 +6433,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6514,7 +6514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2026/" class="md-nav__link">
+      <a href="../archive/2026/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6538,7 +6538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2025/" class="md-nav__link">
+      <a href="../archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6565,10 +6565,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -6584,11 +6582,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
@@ -6603,7 +6601,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             Categories
@@ -6619,7 +6617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cicd/" class="md-nav__link">
+      <a href="../category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6638,35 +6636,12 @@
                 
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Data
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../category/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6676,100 +6651,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On This Page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On This Page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#re-thinking-iceberg-metadata-structure-in-v4" class="md-nav__link">
-    <span class="md-ellipsis">
-      Re-thinking Iceberg Metadata Structure in v4
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lessons-from-slack-180pb-iceberg" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lessons from Slack：在 180PB 規模上維運 Iceberg
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-new-in-apache-airflow-3" class="md-nav__link">
-    <span class="md-ellipsis">
-      What's New in Apache Airflow 3
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-practical-ways-to-speed-up-your-apache-spark-queries" class="md-nav__link">
-    <span class="md-ellipsis">
-      5 Practical Ways to Speed Up Your Apache Spark Queries
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-apache-iceberg-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: Apache Iceberg Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-apache-hudi-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: Apache Hudi Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-from-data-lakes-to-data-lakehouses" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: From Data Lakes to Data Lakehouses
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -6784,7 +6665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mkdocs/" class="md-nav__link">
+      <a href="../category/mkdocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6821,7 +6702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tags/" class="md-nav__link">
+      <a href="../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6877,7 +6758,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../recaps/" class="md-nav__link ">
+            <a href="../../recaps/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6911,7 +6792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202511/" class="md-nav__link">
+      <a href="../../recaps/202511/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6933,7 +6814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202510/" class="md-nav__link">
+      <a href="../../recaps/202510/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6955,7 +6836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202509/" class="md-nav__link">
+      <a href="../../recaps/202509/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6977,7 +6858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202508/" class="md-nav__link">
+      <a href="../../recaps/202508/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6999,7 +6880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202507/" class="md-nav__link">
+      <a href="../../recaps/202507/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7021,7 +6902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202506/" class="md-nav__link">
+      <a href="../../recaps/202506/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7043,7 +6924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../recaps/202505/" class="md-nav__link">
+      <a href="../../recaps/202505/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -7073,6 +6954,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -7094,72 +6977,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#re-thinking-iceberg-metadata-structure-in-v4" class="md-nav__link">
+  <a href="#3-layer-metadata-tree" class="md-nav__link">
     <span class="md-ellipsis">
-      Re-thinking Iceberg Metadata Structure in v4
+      3-Layer Metadata Tree 的五大挑戰
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3-Layer Metadata Tree 的五大挑戰">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequential-io-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      三層 Sequential I/O 拖高 Latency
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#lessons-from-slack-180pb-iceberg" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#cor-manifest-write-amplification" class="md-nav__link">
     <span class="md-ellipsis">
-      Lessons from Slack：在 180PB 規模上維運 Iceberg
+      CoR 行為造成的的 Manifest Write Amplification
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-new-in-apache-airflow-3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#two-phase-planning-file-scan" class="md-nav__link">
     <span class="md-ellipsis">
-      What's New in Apache Airflow 3
+      Two-Phase Planning 拖慢 File Scan 啟動
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#5-practical-ways-to-speed-up-your-apache-spark-queries" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#snapshot-manifest-change-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      5 Practical Ways to Speed Up Your Apache Spark Queries
+      跨 Snapshot 比對 Manifest 拖高 Change Detection 成本
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-apache-iceberg-overview" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#wide-table-full-column-rewrite" class="md-nav__link">
     <span class="md-ellipsis">
-      The Lakehouse Series: Apache Iceberg Overview
+      Wide Table 更新需要 Full Column Rewrite
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-apache-hudi-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: Apache Hudi Overview
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-lakehouse-series-from-data-lakes-to-data-lakehouses" class="md-nav__link">
+  <a href="#adaptive-metadata-tree" class="md-nav__link">
     <span class="md-ellipsis">
-      The Lakehouse Series: From Data Lakes to Data Lakehouses
+      Adaptive Metadata Tree：隨資料規模動態調整
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive Metadata Tree：隨資料規模動態調整">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-level-manifest-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Level Manifest Tree
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#inline-manifest-dv-metadata-write-amp" class="md-nav__link">
+    <span class="md-ellipsis">
+      導入 Inline Manifest DV，改善 Metadata Write Amp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column-file-overlay-dv-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      應用 Column File Overlay，簡化 DV Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-status-diff-dv-change-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      採用 Explicit Status + Diff DV，加速 Change Detection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" class="md-nav__link">
+  <a href="#next-steps" class="md-nav__link">
     <span class="md-ellipsis">
-      The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
+      Next Steps
     </span>
   </a>
   
@@ -7174,47 +7105,169 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-06-02 00:00:00+00:00">Jun 2, 2026</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="./" class="md-meta__link">Data</a></li>
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://github.com/kuanchoulai10">KC Lai</a>
+                        
+                      </strong>
+                      <br>
+                      Creator
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2026-06-02 00:00:00+00:00" class="md-ellipsis">Jun 2, 2026</time>
+                      </div>
+                    </li>
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
+                          <time datetime="2026-06-02 00:00:00+00:00" class="md-ellipsis">Jun 2, 2026</time>
+                        </div>
+                      </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../category/data/">Data</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              5 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      Related links
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://youtu.be/ymUCDJV19tE?si=o0rZjQtx7PYP-iWW" class="md-nav__link">
         
-        
+  
+  <span class="md-ellipsis">
+    Breaking the Mold: Re-thinking Iceberg Metadata Structure in v4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+                      
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
+            
+          </nav>
           
-          <li class="md-meta__item">
-            
-              5 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="re-thinking-iceberg-metadata-structure-in-v4"><a class="toclink" href="../../rethinking-iceberg-metadata-v4/">Re-thinking Iceberg Metadata Structure in v4</a></h2>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
+      
+    
+  </nav>
+
+
+  
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2026/01-06/rethinking-iceberg-metadata-v4/rethinking-iceberg-metadata-v4.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2026/01-06/rethinking-iceberg-metadata-v4/rethinking-iceberg-metadata-v4.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="re-thinking-iceberg-metadata-structure-in-v4">Re-thinking Iceberg Metadata Structure in v4<a class="headerlink" href="#re-thinking-iceberg-metadata-structure-in-v4" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">TLDR</p>
 <p>After reading this article, you will learn:</p>
@@ -7224,410 +7277,239 @@
 <li>v4 這個方向有什麼值得肯定的地方、隱憂在哪裡，以及為什麼 Iceberg community 接下來的演進仍然值得期待</li>
 </ul>
 </div>
+<!-- more -->
 
-    
-      <nav class="md-post__action">
-        <a href="../../rethinking-iceberg-metadata-v4/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-05-31 00:00:00+00:00">May 31, 2026</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              7 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="lessons-from-slack-180pb-iceberg"><a class="toclink" href="../../lessons-from-slack-iceberg/">Lessons from Slack：在 180PB 規模上維運 Iceberg</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<figure>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ymUCDJV19tE?si=o0rZjQtx7PYP-iWW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<figcaption>
+<p><a href="https://youtu.be/ymUCDJV19tE?si=o0rZjQtx7PYP-iWW">Breaking the Mold: Re-thinking Iceberg Metadata Structure in v4</a></p>
+</figcaption>
+</figure>
+<p><a href="https://www.linkedin.com/in/stevenzhenwu/">Steven Wu</a> 與 <a href="https://www.linkedin.com/in/amogh-jahagirdar-aab204b6/">Amogh Jahagirdar</a> 都是 Apache Iceberg PMC member，分別在 Snowflake 與 Databricks 擔任 software engineer。他們在 2026 Iceberg Summit 完整介紹了社群正在討論的 <strong>v4 metadata 重構</strong>：從 metadata JSON、manifest list、manifest file 這套維持多年的<strong>三層結構</strong>，走向會隨資料規模動態調整的 <strong>Adaptive Metadata Tree</strong>。</p>
+<p>原本的三層結構足以支撐 PB 資料規模的 table，但隨著 small commit、頻繁 DML、wide table 更新這些工作負載逐漸變得常見，固定深度的 metadata tree 反而開始拖累 latency 與 write amplification。本文整理自這場分享，先看現有結構在這些場景下面對的五個挑戰，再一條一條看 v4 的對應設計。</p>
+<h2 id="3-layer-metadata-tree">3-Layer Metadata Tree 的五大挑戰<a class="headerlink" href="#3-layer-metadata-tree" title="Permanent link">&para;</a></h2>
+<p>目前的 Iceberg metadata 都建立在同一套三層結構上：</p>
 <ul>
-<li>Slack 如何在每天有超過 300TB 資料流入 180PB 規模的 Data Lakehouse 下，穩定維持 99.9% 的 Iceberg 維護成功率</li>
-<li>Slack 在開發 IceChipper 時的思考過程：4 種資料、5 條設計準則、3 條被否決的替代方案</li>
-<li>Slack 在維護 4,000 張 Iceberg tables 過程中遇到的 3 大痛點以及他們如何因應</li>
+<li>Snapshot 對應一份 <strong>metadata JSON</strong></li>
+<li>Metadata JSON 指向一份 <strong>manifest list</strong></li>
+<li>Manifest list 再指向一批 <strong>manifest files</strong></li>
+<li>Manifest file 裡面存著 <strong>data file entries</strong></li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../lessons-from-slack-iceberg/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-14 00:00:00+00:00">Aug 14, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="whats-new-in-apache-airflow-3"><a class="toclink" href="../../whats-new-in-apache-airflow-3/">What's New in Apache Airflow 3</a></h2>
-
-    
-      <nav class="md-post__action">
-        <a href="../../whats-new-in-apache-airflow-3/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-08-07 00:00:00+00:00">Aug 7, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="5-practical-ways-to-speed-up-your-apache-spark-queries"><a class="toclink" href="../../spark-query-speedup/">5 Practical Ways to Speed Up Your Apache Spark Queries</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn how to:</p>
+<p>這套結構在 PB 資料規模且寫入頻率不高的 big tables 上表現得很好。但隨著 small commit、頻繁 DML、wide table 更新這些工作負載變得常見，固定深度的三層結構就會在以下五個地方面對挑戰：</p>
+<h3 id="sequential-io-latency">三層 Sequential I/O 拖高 Latency<a class="headerlink" href="#sequential-io-latency" title="Permanent link">&para;</a></h3>
+<p>先從 metadata files 的讀寫順序講起。寫入時，每次 commit 至少要寫三份 metadata files：Writer 先寫 manifest file，再寫引用它的 manifest list，最後寫指向 manifest list 的 metadata JSON。<strong>三份檔案之間有引用關係，後一份必須等前一份寫完才能寫，三輪 I/O 沒辦法並行。</strong></p>
+<p>讀取時也是差不多的情況：Reader 拿到 table location 後，先讀 metadata JSON 取得 manifest list 的位置，再讀 manifest list 取得 manifest files 的位置，最後讀 manifest files 才能定位到 data files。<strong>前一輪沒拿到位置，後一輪就不能開始，三輪 I/O 一樣沒辦法並行。</strong></p>
+<p>這套順序在 PB 資料規模的 table 的 batch query 上不會造成太大的瓶頸，metadata I/O 占整體 query 時間的比例本來就不高。<strong>但放到對 sub-second latency 敏感的 read 場景，或一次只寫幾筆 entry 的 small write 場景，三輪 sequential round-trip 就會拖高 latency，光是 metadata 部分就要 500 ms 起跳。</strong></p>
+<h3 id="cor-manifest-write-amplification">CoR 行為造成的的 Manifest Write Amplification<a class="headerlink" href="#cor-manifest-write-amplification" title="Permanent link">&para;</a></h3>
+<p>接著看 manifest file 的更新方式。如果仔細觀察和思考的話，會發現 manifest file 目前採用的是 <strong>copy-on-write 策略</strong>：只要更動其中任何一個 data file 的紀錄，writer 就必須把整份 manifest file 重寫一次。</p>
+<p>舉個例子。假設一份 manifest file 記錄了 1,000 個 data files 的位置與統計資訊，現在 query engine 只想刪掉其中 1 個 data file。Iceberg writer 必須寫一份全新的 manifest file，內容包含另外 999 個沒有變動的 data files 的完整紀錄，加上 1 個被標記為 deleted 的 data file 紀錄。接著 manifest list 也要更新，將 pointer 從舊 manifest file 替換為新 manifest file。</p>
+<p>為了更動 1 個 data file 的紀錄，卻要重寫整份 manifest file，這就是 manifest write amplification 的核心。對 high-frequency DML 與 streaming compaction 這類場景，多寫的 metadata 量會相當可觀。</p>
+<h3 id="two-phase-planning-file-scan">Two-Phase Planning 拖慢 File Scan 啟動<a class="headerlink" href="#two-phase-planning-file-scan" title="Permanent link">&para;</a></h3>
+<p>再來是 file scan 啟動前的成本。</p>
+<p>目前 <strong>data files</strong> 與 <strong>delete files</strong>（positional delete、equality delete、DV）分開存在不同的 manifests 裡。Query engine 要跑 file scan 之前，必須做兩階段 planning：</p>
 <ul>
-<li>Apply filters before joins to reduce data shuffling</li>
-<li>Avoid premature <code>collect()</code> actions that cause memory bottlenecks</li>
-<li>Replace UDFs with built-in functions for better performance</li>
-<li>Optimize duplicate removal using efficient methods</li>
-<li>Implement broadcast joins for small table operations</li>
+<li><strong>Phase 1</strong>：讀取符合條件的 <strong>delete manifests</strong>，建出一份 <strong>Delete File Index</strong>，目的是回答「某個 data file 對應到哪些 delete files 或 deletion vectors」。</li>
+<li><strong>Phase 2</strong>：讀取 <strong>data manifests</strong>，根據 partition info、column stats、query filter 找出實際要掃的 data files。每找到一份 data file，就跟 Phase 1 的 Delete File Index 對照，找出對應的 delete files，組成 scan tasks 交給 query engine。</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../spark-query-speedup/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-15 00:00:00+00:00">Jul 15, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              11 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-lakehouse-series-apache-iceberg-overview"><a class="toclink" href="../../apache-iceberg-overview/">The Lakehouse Series: Apache Iceberg Overview</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<p>兩階段是順序的，phase 1 沒做完，phase 2 就不能開始。對 <strong>time-to-first-task</strong> 敏感的 streaming engine 與互動式 query 場景，這套流程會帶來三個成本：</p>
 <ul>
-<li>Apache Iceberg's 3-tier metadata architecture (metadata files, manifest lists, and manifest files)</li>
-<li>How Iceberg catalogs work, including the REST catalog standard for multi-engine compatibility</li>
-<li>Query capabilities including time travel, incremental reads, and metadata queries</li>
-<li>Spark procedures for snapshot management, metadata maintenance, and table migration</li>
+<li>planner 多一輪 matching 邏輯</li>
+<li>driver 多維護一份 Delete File Index 在 memory 裡</li>
+<li>scan tasks 要等 phase 1 跑完才開始產生。</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../apache-iceberg-overview/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-08 00:00:00+00:00">Jul 8, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-lakehouse-series-apache-hudi-overview"><a class="toclink" href="../../apache-hudi-overview/">The Lakehouse Series: Apache Hudi Overview</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<h3 id="snapshot-manifest-change-detection">跨 Snapshot 比對 Manifest 拖高 Change Detection 成本<a class="headerlink" href="#snapshot-manifest-change-detection" title="Permanent link">&para;</a></h3>
+<p>接下來看 snapshot 之間怎麼比對變更。</p>
+<p>Iceberg 規範允許 writer 在新的 snapshot 裡直接省略已刪除的 entries。舉個例子：舊 manifest 有 100 筆，新 manifest 可能只剩 99 筆，少掉的那一筆就是被刪掉的 data file。</p>
+<p>問題是，reader 只看新 snapshot 沒辦法知道少掉的是哪一筆。要做 change detection，需要拿前後兩個 snapshot 的 manifests 全部讀進來逐一比對，才能還原出「這一輪刪了什麼、新增了什麼」。</p>
+<p>對 streaming reader 與 CDC consumer 這類仰賴 incremental change 的場景，change detection 成本會隨 table 規模放大。table 越大、manifests 越多，每次比對都要再掃一輪完整的 metadata。</p>
+<h3 id="wide-table-full-column-rewrite">Wide Table 更新需要 Full Column Rewrite<a class="headerlink" href="#wide-table-full-column-rewrite" title="Permanent link">&para;</a></h3>
+<p>最後這條落在 data file 層，不在 metadata 層，但同樣是 v4 想處理的對象之一。</p>
+<p>ML 與 feature store 場景常見的需求：在一張 wide table（幾百到幾千個 columns）上新增一個 score column，或更新某個既有 column 的值。Iceberg 目前的 update 是 file 等級的 copy-on-write：要動其中一個 column，writer 必須重寫整份 data file，把其他幾百個沒變動的 columns 也一起重新寫一份。</p>
+<p>對 wide table 來說，<strong>為了動一個 column 就要重寫剩下幾百個 columns，成本顯然不成比例。</strong></p>
+<h2 id="adaptive-metadata-tree">Adaptive Metadata Tree：隨資料規模動態調整<a class="headerlink" href="#adaptive-metadata-tree" title="Permanent link">&para;</a></h2>
+<p>前面五條挑戰看似零散，但 v4 的回應建立在同一個原則上：<strong>metadata tree 的深度與維護方式應該隨資料規模動態調整</strong>。具體做法落在四個機制：一個調整 metadata tree 的結構本身，另外三個調整 manifest 內部該怎麼維護。</p>
+<h3 id="multi-level-manifest-tree">Multi-Level Manifest Tree<a class="headerlink" href="#multi-level-manifest-tree" title="Permanent link">&para;</a></h3>
+<p>先看 metadata tree 的結構本身。前面提到，三層結構不論 table 多大都得寫滿 metadata JSON、manifest list、manifest file 三份，small write 場景的 commit 路徑因此很長、latency 高。</p>
+<p>v4 把 metadata tree 的深度交給 table 規模決定，不再強制走完三層。深度分成三個層級：</p>
 <ul>
-<li>How Apache Hudi's timeline-based architecture tracks all table changes and enables time travel queries</li>
-<li>The difference between Copy-on-Write (COW) and Merge-on-Read (MOR) storage types for different workload patterns</li>
-<li>How Hudi organizes their data in a structured way with table services</li>
-<li>The various query types Hudi supports, including snapshot, incremental, and read-optimized queries</li>
+<li><strong>0-level</strong>：table 只有幾十個 data files。所有 metadata 都存在 <strong>REST Catalog</strong> 的資料庫裡，不寫任何 metadata 檔案到 object store。Commit 就是一次 catalog transaction。</li>
+<li><strong>1-level</strong>：中型 table。只寫一份 <strong>root manifest</strong>，裡面直接列出所有 data file 紀錄，跳過 manifest list 這一層。</li>
+<li><strong>2-level</strong>：大型 table。root manifest 引用一批 <strong>leaf manifests</strong>，跟現在的三層結構類似。</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../apache-hudi-overview/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-07-01 00:00:00+00:00">Jul 1, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-lakehouse-series-from-data-lakes-to-data-lakehouses"><a class="toclink" href="../../from-data-lakes-to-data-lakehouses/">The Lakehouse Series: From Data Lakes to Data Lakehouses</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<p>Table 規模成長時，metadata 結構也跟著加深，不需要 migration 或重建整個 table。對小 table 來說，commit latency 有機會從 ~500ms 級別降到 ~50ms 級別；對大 table 來說，原本的結構就會從 3 層變成 2 層結構，沒有 regression。</p>
+<h3 id="inline-manifest-dv-metadata-write-amp">導入 Inline Manifest DV，改善 Metadata Write Amp<a class="headerlink" href="#inline-manifest-dv-metadata-write-amp" title="Permanent link">&para;</a></h3>
+<p>接著看怎麼處理 manifest write amplification。前面提到，manifest 採用 copy-on-write，只動 1 個 data file 紀錄就要重寫整份 manifest，999 個沒變動的紀錄全部跟著被複製一輪。</p>
+<p><strong>v4 把 data layer 已經在用的 deletion vector 概念套用到 metadata 層</strong>。當某份 manifest file 裡的 data file 紀錄要被刪掉時，writer 不再重寫整份 manifest，而是在<strong>引用該 manifest 的位置</strong>（也就是它的 parent，例如 manifest list 或 root manifest）加上一份 <strong>Inline DV</strong>。這份 DV 是一個 logical bitmap，標出該 manifest 中哪些位置（index）的紀錄已經被刪除。</p>
+<p>Reader 讀那份 manifest file 時會同時讀 parent 上的 Inline DV，知道哪些 entries 要當作 deleted 忽略。</p>
+<p>這帶來兩個直接的好處：</p>
 <ul>
-<li>What limitations traditional data lakes face</li>
-<li>How data lakehouses merge the flexibility of data lakes with the structured management of data warehouses</li>
-<li>What enterprise-grade capabilities define lakehouse architecture</li>
-<li>What the major open-source lakehouse formats are</li>
+<li><strong>Write amplification 大幅降低</strong>：999 個沒變動的紀錄不用再被複製，只多寫一份小的 bitmap。</li>
+<li><strong>Cache 命中率提升</strong>：原本的 manifest file 沒有被改寫，已經 cache 過的 reader 可以繼續使用。</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../from-data-lakes-to-data-lakehouses/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-06-02 00:00:00+00:00">Jun 2, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-lakehouse-series-oltp-vs-olap-a-parquet-primer"><a class="toclink" href="../../oltp-vs-olap-a-parquet-primer/">The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<h3 id="column-file-overlay-dv-update">應用 Column File Overlay，簡化 DV Update<a class="headerlink" href="#column-file-overlay-dv-update" title="Permanent link">&para;</a></h3>
+<p>再來看怎麼簡化 DV update。Inline Manifest DV 處理的是「manifest 中某些 entries 整筆被刪除」的場景，但 entry 本身要更新（例如某個 data file 的 DV 改了）會遇到另一個問題：data file entry 裡包含大量 stats，要動其中一個欄位（DV reference）就得整筆重寫，跟前面 manifest 的 write amplification 是同一個問題。</p>
+<p>v4 的解法是 <strong>Column File Overlay</strong>：要動 entry 中的某一個 column，writer 不重寫整筆 entry，只寫一份只包含那個 column 新值的小檔案。Reader 在讀取 entry 時，會結合 base 上的紀錄與 overlay file 上的對應欄位。</p>
+<p>把這個機制套用在 DV update 上：DV 變成 entry 中的一個 column，每次更新 DV 只要寫一份只含新 DV 的 overlay file，base 的 stats 全部維持不動。</p>
+<p>這套機制還有一個 side effect。因為 column overlay 是個通用機制，<strong>data files 與 metadata files 可以共用同一套 read / write 邏輯</strong>。原本 stats、DV、column updates 散在不同層的處理，可以收斂成同一個 pattern。</p>
+<h3 id="explicit-status-diff-dv-change-detection">採用 Explicit Status + Diff DV，加速 Change Detection<a class="headerlink" href="#explicit-status-diff-dv-change-detection" title="Permanent link">&para;</a></h3>
+<p>最後看怎麼加速 change detection。前面提到，writer 可以在新 snapshot 直接省略已刪除的 entries，reader 只看新 snapshot 沒辦法判斷哪些 data files 被刪了，必須跟前一份 snapshot 的 manifests 做全量比對，成本隨 table 規模放大。</p>
+<p>v4 規範要求 writer 為「被刪除的 entry」保留一個 <strong>explicit deleted status</strong>。這個被刪除的 entry 至少要在下一個 snapshot 之後才會真的從 manifest 中移除。這樣 reader 看新 snapshot 就知道：這個 entry 是「在這一輪刪掉的」，不用比對前一個 snapshot 才能推斷。</p>
+<p>但這還不夠。Manifest 層級的變更（例如 leaf manifest 中哪些 positions 被標記為 deleted）也需要快速可見。v4 在每份 manifest 上引入 <strong>Diff DV</strong>：</p>
 <ul>
-<li>The key differences between <strong>OLTP</strong> and <strong>OLAP</strong> workloads, and why storage format matters</li>
-<li>How <strong>Parquet</strong> organizes data internally and optimizes data storage using compression techniques like dictionary encoding and RLE</li>
-<li>Where Parquet falls short in today's data landscape</li>
+<li><strong>Regular Manifest DV</strong>（前面 Inline Manifest DV 提到的那一份）：記錄該 manifest 中所有被刪除位置的累積狀態。</li>
+<li><strong>Diff DV</strong>：只記錄「在這一輪 snapshot 中」被刪除的位置。</li>
 </ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../oltp-vs-olap-a-parquet-primer/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
-      
-        
-          
+<p>如果一個 snapshot 在 leaf manifest 中刪掉第 2 筆 data file 紀錄，這份 manifest 的 Diff DV 就只標 position 2。Reader 想找出該 snapshot 的變更，讀 Diff DV 一次就知道。</p>
+<p>代價是 manifest 多存一份小的 bitmap。好處是 change detection 不再需要跨 snapshot 比對，streaming reader 與 CDC consumer 可以直接讀新 snapshot 取得 incremental change。</p>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>上面五條挑戰加上四個機制看下來，可以感覺到 Iceberg community 在認真回應 small commit、頻繁 DML、wide table 更新這些新工作負載的需求。這些都是 Iceberg 要從 PB 級 batch table 走向更多應用場景的必要演進。沒有 v4 的 metadata 重構，前面那幾條挑戰會持續限制 Iceberg 在 streaming engine 與 sub-second read 場景上的可用性。</p>
+<p>話說回來，如果你看完上面 v4 的實作細節覺得有點頭暈，這也是我的感受。v4 用了非常多複雜的機制（Inline Manifest DV、Column File Overlay、Diff DV、Adaptive Metadata Tree）來處理同一件事：<strong>metadata 本身已經是一份 big data</strong>。我會感到隱憂的點是，這套複雜度有相當部分來自於 metadata 完全被放在 file system 層級來處理。把每一份 manifest、每一個 DV、每一份 overlay 都當成 object store 上的檔案來操作，自然就會需要這種 big data 等級的設計。這真的是長期最好的方向嗎？未來還有多少彈性可以演進？我目前還沒有答案。</p>
+<p>即便有這層隱憂，我還是很看好 Iceberg 的下一步。Iceberg 對我來說最有價值的地方，是它已經成為一個讓各家把共識凝聚在一起的開源社群。Snowflake、Databricks、Netflix 這些團隊的 PMC member 都在貢獻和討論這套規格。技術上的隱憂可以等社群慢慢驗證和修正，但這個社群本身已經是 Iceberg 最大的資產。我會繼續關注 Iceberg 在 v4 上的進展，期待這些大神能為 Iceberg 帶來更完整的特性。</p>
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+  
+
+
+  <aside class="md-source-file">
+    
+    
+    
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    
+      
+  <span class="md-icon" title="Contributors">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+  </span>
+  <span>GitHub</span>
+
+    
+    <nav>
+      
+        <a href="https://github.com/kuanchoulai10" class="md-author" title="@kuanchoulai10">
+          
+          <img src="https://avatars.githubusercontent.com/u/39903885?v=4&size=72" alt="kuanchoulai10">
+        </a>
+      
+      
+      
+    </nav>
+  </span>
+
+    
+  </aside>
+
+
+  
+
+
+  
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+  <h2 id="__comments">Comments</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+          data-repo="kuanchoulai10/monorepo"
+          data-repo-id="R_kgDOJxzynQ"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOJxzync4CboAx"
+          data-mapping="url"
+          data-strict="0"
+          data-reactions-enabled="0"
+          data-emit-metadata="1"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+      
+    </article>
   </div>
 
           
@@ -7648,10 +7530,12 @@
   
     
       
+        
+      
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../cicd/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CI/CD">
+          <a href="../lessons-from-slack-iceberg/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lessons from Slack：在 180PB 規模上維運 Iceberg">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7661,27 +7545,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                CI/CD
+                Lessons from Slack：在 180PB 規模上維運 Iceberg
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../mkdocs/" class="md-footer__link md-footer__link--next" aria-label="Next: MkDocs">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                MkDocs
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
@@ -7742,20 +7610,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tracking", "navigation.tabs", "header.autohide", "content.action.edit", "content.action.view", "content.code.copy", "content.tabs.link", "toc.follow", "navigation.footer", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
-        <script src="../../../assets/javascripts/katex.js"></script>
+        <script src="../../assets/javascripts/katex.js"></script>
       
-        <script src="../../../assets/javascripts/open-in-new-tabs.js"></script>
+        <script src="../../assets/javascripts/open-in-new-tabs.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
-        <script src="../../../assets/slides/js/slides.js"></script>
+        <script src="../../assets/slides/js/slides.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
