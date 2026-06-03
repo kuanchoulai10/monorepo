@@ -220,10 +220,46 @@ Beyond avoiding the above, match the existing posts: direct second-person ("you"
 
 ## 6. Workflow when drafting a new post
 
-1. **Identify the article type** per §0 — confirm with the author, then read the matching reference file. The type determines the narrative arc; the rest of this skill provides the shared chassis.
-2. Confirm the title, series (if any), and target publish date with the user.
-3. Compute the directory: `docs/blog/posts/{year}/{half}/{slug}/`. Create it along with `assets/`.
-4. Look at one or two sibling posts (same series, or same half-year) to copy the frontmatter shape and `links` set. Update `links` to point both ways once the new post exists.
-5. Scaffold `{slug}.md` from the skeleton in §3, but let the section sequence reflect the type's narrative arc (e.g. problem → previous solutions → tradeoffs → results, for implementation; signals → pattern → projection, for trend; news → why-it-matters → background → impact, for news analysis). Fill the TLDR last, once the outline is stable.
-6. After drafting, re-read the post against both §5 (voice-level anti-patterns) and the third paragraph of the chosen type's reference file (type-specific anti-patterns). Rewrite anything that trips either filter.
-7. If `mkdocs.yml` has a navigation entry that lists posts explicitly (check before publishing), add the new post there. Otherwise the blog plugin picks it up automatically from the directory.
+The author has converged on a specific iterative workflow across multiple posts (most recently `lessons-from-slack-iceberg.md` and `rethinking-iceberg-metadata-v4.md`). Follow it phase by phase — do **not** try to compress phases together or jump straight to drafting. Each phase has an explicit handoff to the author.
+
+### Phase 1 — Set up the workspace
+
+1. **Confirm the slug, target half-year folder, and rough topic.** Ask the author if any of these aren't already given.
+2. **Create the directory `docs/blog/posts/{year}/{half}/{slug}/` and `assets/materials.txt`.** Leave `materials.txt` empty (or with a placeholder). The author will paste in the raw source material — YouTube link, speaker names, talk notes, papers, links, screenshots — directly. Do **not** try to fetch or summarise sources unprompted. Stop after creating the folder and wait for the author to fill `materials.txt`.
+
+### Phase 2 — Identify the article type
+
+3. **Identify the article type** per §0 — confirm with the author, then read the matching reference file. The type determines the narrative arc; the rest of this skill provides the shared chassis.
+
+### Phase 3 — Plan the headings interactively (do not write prose yet)
+
+4. **Propose the full h1 / h2 / h3 heading tree as Options.** Based on `materials.txt`, draft 2–3 candidate heading trees (different ways to slice the topic) and present them via `AskUserQuestion` so the author can pick one. Each Option is a complete h1 + all h2 + their h3s — not just the top level.
+5. **Propose 2–3 heading style options.** Once the structure is picked, offer concrete style variants for the heading wording itself — e.g. 主題陣述式 (subject-first declarative), 動詞開頭式 (verb-led), 問句式 (question-form). Show the same heading tree rewritten in each style so the author can compare. The author strongly prefers **declarative, content-revealing headings** over questions, but always confirm.
+6. **Iterate on headings line by line until the author is satisfied.** Expect detailed feedback: English vs. Chinese term choices, verb refinement (avoid stale verbs like 導入 / 改善 if they repeat), demanding that a heading expose the actual problem rather than name a structure (e.g. "三層 Sequential I/O 拖高 Latency" instead of "固定三層結構開銷"). When the author rejects a heading, offer 2–3 alternatives rather than one replacement. When the author says "改成英文" / "翻成英文" without giving the term, pick one yourself — don't list options (see `feedback_blog_voice_anti_patterns.md` §流程偏好).
+7. **Lock in the opening and closing structure.** Before tasks start, agree on what the opening paragraph introduces and what closing structure the post uses (e.g. sandwich 肯定 → 隱憂 → 看好 for news analysis; a `Putting It All Together` Q&A block; etc.).
+
+### Phase 4 — Draft the post as sequential tasks
+
+8. **Break the draft into tasks at h2-section granularity** using `TaskCreate`. The standard breakdown is:
+    - One task for the **opening** (the paragraph between the cover figure and the first h2).
+    - One task **per h2 section** — each task covers that h2 plus all its h3 subsections as a single deliverable.
+    - One **final TLDR task** that updates the TLDR bullets to match the body that was actually written.
+9. **Complete tasks strictly in order.** For each task:
+    - Mark the task `in_progress` before starting.
+    - Write the full h2 section in one pass — do not stop mid-section to confirm wording (the author wants direct writing, not confirmation-heavy back-and-forth; see memory `feedback_blog_voice_anti_patterns.md` §流程偏好 and prior decision: "以一組 h2+h3 段落為單位，依照順序完成 tasks").
+    - Hand off to the author for review. Apply revisions until the author says to move on.
+    - Only then mark the task `completed` and start the next one.
+10. **Write the TLDR last, as a "why should I read this" hook.** The TLDR is not a table of contents and not a technical summary — it should be three high-level bullets answering "why does this matter to me as a reader". Keep technical terms minimal. Never write "作者" or refer to the author in third person; phrase neutrally.
+
+### Phase 5 — Review and ship
+
+11. **Re-read the full post against the anti-patterns.** Check both §5 (voice-level anti-patterns), the type-specific anti-patterns in the third paragraph of the chosen reference file, and the per-author memories (`feedback_blog_voice_anti_patterns.md`, `feedback_blog_vocabulary.md`). Rewrite anything that trips any filter.
+12. **Check `mkdocs.yml`** — if it has an explicit navigation entry that lists posts, add the new post there. Otherwise the blog plugin picks it up automatically.
+13. **Commit and push only the `.md` file** when the author asks to publish. Do **not** include `assets/materials.txt` or other source material — those stay local. Match the existing commit message style of sibling posts (e.g. `Publish <topic> post under {year}/{half}`).
+
+### Common pitfalls
+
+- **Don't skip Phase 3.** Even if the source material seems to dictate the structure, the author wants to see Options and pick one. Jumping straight to drafting forces rework.
+- **Don't batch tasks.** Writing two h2 sections in one turn breaks the review rhythm. One task per turn, even if a section is short.
+- **Don't pre-fill the TLDR.** A TLDR written before the body is always wrong — the body shifts during drafting, and the TLDR ends up referring to material that isn't there. Leave it as a placeholder until Phase 4's final task.
+- **Don't commit `materials.txt`.** It's a working scratchpad. Stage the `.md` file explicitly rather than using `git add .`.
