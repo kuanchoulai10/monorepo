@@ -6975,6 +6975,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#re-thinking-iceberg-metadata-structure-in-v4" class="md-nav__link">
     <span class="md-ellipsis">
       Re-thinking Iceberg Metadata Structure in v4
@@ -7069,6 +7078,61 @@
       <header class="md-typeset">
         <h1 id="blog">Blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-06-03 00:00:00+00:00">Jun 3, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/data/" class="md-meta__link">Data</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="efficient-column-update-column-familiesiceberg-aiml-wide-table"><a class="toclink" href="iceberg-efficient-column-update-and-column-families/">Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應</a></h2>
+<div class="admonition info">
+<p class="admonition-title">TLDR</p>
+<p>After reading this article, you will learn:</p>
+<ul>
+<li>為什麼 Iceberg 現有以 row 為單位的 update 機制，在 AI/ML feature engineering 帶來的 wide table 場景下會變得非常昂貴</li>
+<li>Iceberg 正在討論的 Flip the Axis 與 Column Families 是什麼，為什麼這個方向同時涵蓋了 column-level update 與 layout flexibility 兩種應用</li>
+<li>為什麼這個方向值得期待，以及它跟新一代 table format（例如 LanceDB）的競爭，對 Iceberg 接下來的位置意味著什麼</li>
+</ul>
+</div>
+
+    
+      <nav class="md-post__action">
+        <a href="iceberg-efficient-column-update-and-column-families/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
