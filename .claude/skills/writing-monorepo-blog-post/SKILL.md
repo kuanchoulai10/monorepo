@@ -208,15 +208,157 @@ SELECT * FROM "test_table$history";
 ![Star History Chart](https://api.star-history.com/svg?repos=org1/repo1,org2/repo2&type=Date)
 ```
 
-## 5. Writing voice — anti-patterns to avoid
+## 5. Writing voice and language preferences
 
-The author has explicitly excluded the following. Do not introduce them when drafting or editing:
+These preferences have converged across multiple posts. They are organised into three layers — **用字 (word choice)**, **句子構造 (sentence structure)**, and **段落安排 (paragraph patterns)** — plus a short **process** note at the end. Every rule has a short reason; understanding the *why* lets you handle edge cases instead of mechanically pattern-matching.
 
-- **No metaphor-first openings.** Do not open a section with "Picture this:", "Imagine a...", a coffee-shop analogy, a detective analogy, or similar. Open with the actual subject — what it is, where it came from, what problem it solves.
-- **No personification of systems.** Tools and formats are not "friends who finish your sentences", "data concierges", "marathon champions", or "speed demons". Describe what they do in direct terms.
-- **No em-dash sentence breaks for rhetorical effect.** Do not use ` — ` to deliver a punchline, contrast, or aside. If a sentence needs a break, end it and start a new one, or use a comma / parenthesis / colon as appropriate. (Em-dashes inside compound noun phrases or inside quoted source material are fine; the anti-pattern is em-dash-as-rhetorical-pause.)
+The general voice to match: direct second-person ("you"), heavy bolding of key terms, concrete examples, and a tendency to finish each section with a sentence that sets up the next one.
 
-Beyond avoiding the above, match the existing posts: direct second-person ("you"), heavy bolding of key terms, concrete examples, and a tendency to finish each section with a sentence that sets up the next one.
+### 5.1 用字 (Word choice)
+
+#### Keep these English terms verbatim — do not translate
+
+In Chinese prose, these terms read more precisely in English. Translating them weakens the technical register the author wants.
+
+| English term | Do NOT write |
+|---|---|
+| `metadata` | 元數據 |
+| `table` / `tables` | 表、資料表 |
+| `partition` / `partitioning` | 分區 |
+| `query planning` | 查詢規劃 |
+| `table format` | (translate) |
+| `Catalog` (Iceberg/Hive Catalog) | 目錄、編目 |
+| `Compute Engine` | 計算引擎 |
+| `Data Mesh` | (translate) |
+| `Data Lakehouse` | 數據湖倉 |
+| `level` (e.g. partition/file level) | 級別 |
+| `centralized` | 集中式、中心化 |
+| `batch` / `batch processing` | 批次、批次處理 |
+| `batch-stacked` | 批次堆疊 |
+| `append-only` | 純追加、僅追加 |
+| `compound` (e.g. cost compounds) | 複合式增長 |
+| `rollback` | 回滾 |
+| `lock` | 鎖 |
+| `parallelism` | 並行能力、平行能力 |
+| `Primary Key` | 主鍵 |
+| `edge case` | 邊角案例、特殊案例、邊緣情況 |
+| `resource pool` | 資源池 |
+| `orchestration tool` | 編排工具 |
+| `required` / `optional` (paired) | 必要 / 選用 |
+| `snapshot` / `manifest files` / `pointer` (scale-related) | (translate) |
+
+Headings already mix English and Chinese; body prose should follow the same register.
+
+#### Avoid these Chinese substitutions
+
+| Avoid | Use instead | Reason |
+|---|---|---|
+| 量級 (when describing scale levels) | 規模 | 量級 has a different register; 規模 reads cleaner |
+| 契機 (when describing why a tech was adopted) | 動機 | 契機 is too literary for engineering writing |
+| 資料表越長越大 | 「隨著資料規模越來越大」/「隨著 tables 越來越多」 | personifies the table |
+| 受控的速度 | 穩定可控的速率 | "速度" is too colloquial here |
+
+#### Avoid body / physical-action verbs for abstract technical behaviour
+
+When describing systems, proposals, workloads, structures, problems, or challenges, do not reach for verbs that imply a physical body or object motion. These read as 擬人化 / 感性 and break the grounded technical voice.
+
+| Don't write | Write instead |
+|---|---|
+| 攤 (spread out) — e.g. 攤了出來 | 介紹、完整介紹 |
+| 浮上來 / 冒出來 / 跳出來 (surface, emerge, jump out) | 出現、變得常見、逐漸變得常見 |
+| 踩到 (step on) — e.g. 踩到的挑戰 | 遇到、面對 |
+| 撐起 (hold up) | 足以支撐 |
+| 站穩 (stand firm) — e.g. pipeline 站穩了 | 完成、穩定、上線 |
+| 拉進 / 拉起來 (drag in / pull up) | 大規模採用、擴展 |
+| 推 / 拉 / 扯 / 塞 / 扛 / 扶 / 托 / 捧 | technical-neutral verbs |
+
+When you catch yourself writing one of these (or a near-cousin not on the list), pause and pick a flat technical verb: 介紹、說明、出現、遇到、面對、支撐、處理、導入.
+
+#### Don't make technology the subject of doing things to people
+
+The team / engineers are the agents; the tools are what they reach for. Flip the subject if it slipped.
+
+- ❌ "Iceberg 把 Slack 從 Hive 時代的瓶頸帶了出來"
+- ✅ "Slack 導入 Iceberg table format 改善了 Hive 時代的問題"
+
+Don't write "Iceberg 拯救了 X" / "Kafka 接管了 Y" / "Hive 困住了 Z".
+
+### 5.2 句子構造 (Sentence structure)
+
+#### No 「並不是 X，而是 Y」 / 「不只是 X，而是 Y」 contrast constructs
+
+These read as 說書腔 — they manufacture tension instead of stating the fact. State the actual position directly.
+
+- ❌ "讀取端最大的成本，並不是 stitch 邏輯本身，而是 row group 不對齊"
+- ✅ "讀取端的主要成本來自 row group 不對齊。stitch 邏輯本身相對便宜。"
+
+The same anti-pattern applies to the English form *"this is not just X, it is Y"*.
+
+#### No metaphor-first openings
+
+Don't open a section with "Picture this:", "Imagine a...", a coffee-shop analogy, a detective analogy, or similar. Open with the actual subject — what it is, where it came from, what problem it solves.
+
+#### No em-dash sentence breaks for rhetorical effect
+
+Don't use ` — ` to deliver a punchline, contrast, or aside. End the sentence and start a new one, or use a comma / parenthesis / colon. Em-dashes inside compound noun phrases or quoted source material are fine; the anti-pattern is em-dash-as-rhetorical-pause.
+
+#### No personification of systems
+
+Tools and formats are not "friends who finish your sentences", "data concierges", "marathon champions", or "speed demons". Describe what they do in direct terms.
+
+#### Adoption-narrative form
+
+When describing "team X adopts technology Y", put the verb on the engineering action, not on an abstract noun.
+
+- ❌ "X 採用 Y 是沿著 N 階段逐步推進的"
+- ✅ "X 是透過 N 階段逐步導入 Y 的"
+
+Avoid noun-ifying the core action ("採用"/"引入"/"導入") and then using "推進"/"沿著"/"根據 X 推進" as the actual verb.
+
+#### Be concrete about phase transitions
+
+Don't say "起步 / 開始 / 起點" without naming what changed. Name the from→to fact.
+
+- ❌ "先從一條 streaming pipeline 起步"
+- ✅ "先從轉換 batch 到 streaming pipeline 開始"
+
+#### SQL keywords use backticks, not bold
+
+`MERGE`, `SELECT`, `INSERT` use backticks. **Bold** is for emphasising concept names; code style is for program syntax.
+
+### 5.3 段落安排 (Paragraph patterns)
+
+#### Each h3: 承接句 + problem recap → solution
+
+Do not jump straight into the solution. Open each h3 with:
+
+1. A short **承接句** that bridges from the previous h3 or section.
+2. A brief **problem recap** specific to this h3 — what is the concrete pain this h3's mechanism addresses?
+3. Then the **solution / mechanism / detail**.
+
+This pacing was developed during `rethinking-iceberg-metadata-v4.md` and is the author's standard h3 shape. Skipping straight to mechanism reads as abrupt.
+
+#### No 「伏筆」 narrative tricks
+
+Avoid phrases like "這也是後來 X 的伏筆之一", "為日後埋下伏筆", "這就是後來 X 的起點". These are 說書腔 / 預告片話術. Let the reader connect the dots; don't add 旁白.
+
+#### Each h2: short prose intro before details
+
+Open each h2 with one short prose paragraph that introduces the section's purpose and how it connects to what came before. Then move into h3 subsections or bullet lists. Don't lead with bullets directly under an h2.
+
+#### Object references must be explicit
+
+When writing "重寫整份檔案", say *which* file. `data file`, `manifest file`, `metadata file`, `column update file` all behave differently and the reader can't infer which one from context. The same rule applies to `row` vs `column`, `entry` vs `data file`, etc. — pick the precise term, not the generic one.
+
+### 5.4 Process preferences
+
+#### Don't list options for English-translation choices
+
+When the author says "改成英文" / "翻成英文" / "我不知道要翻譯成什麼" without giving the term, pick a sensible English term and apply it. Don't list 2–3 options and ask. Prioritise (1) terms already in §5.1's table, (2) the standard Iceberg / data-engineering term, (3) the shortest direct word.
+
+#### Don't over-confirm during drafting
+
+Phase 4 of §6 already says this, but it's worth repeating here as a voice rule: once the headings and structure are locked, write a full h2 section in one pass and hand off for review. Confirmation-heavy back-and-forth in the middle of a section breaks the author's review rhythm.
 
 ## 6. Workflow when drafting a new post
 
@@ -235,7 +377,7 @@ The author has converged on a specific iterative workflow across multiple posts 
 
 4. **Propose the full h1 / h2 / h3 heading tree as Options.** Based on `materials.txt`, draft 2–3 candidate heading trees (different ways to slice the topic) and present them via `AskUserQuestion` so the author can pick one. Each Option is a complete h1 + all h2 + their h3s — not just the top level.
 5. **Propose 2–3 heading style options.** Once the structure is picked, offer concrete style variants for the heading wording itself — e.g. 主題陣述式 (subject-first declarative), 動詞開頭式 (verb-led), 問句式 (question-form). Show the same heading tree rewritten in each style so the author can compare. The author strongly prefers **declarative, content-revealing headings** over questions, but always confirm.
-6. **Iterate on headings line by line until the author is satisfied.** Expect detailed feedback: English vs. Chinese term choices, verb refinement (avoid stale verbs like 導入 / 改善 if they repeat), demanding that a heading expose the actual problem rather than name a structure (e.g. "三層 Sequential I/O 拖高 Latency" instead of "固定三層結構開銷"). When the author rejects a heading, offer 2–3 alternatives rather than one replacement. When the author says "改成英文" / "翻成英文" without giving the term, pick one yourself — don't list options (see `feedback_blog_voice_anti_patterns.md` §流程偏好).
+6. **Iterate on headings line by line until the author is satisfied.** Expect detailed feedback: English vs. Chinese term choices, verb refinement (avoid stale verbs like 導入 / 改善 if they repeat), demanding that a heading expose the actual problem rather than name a structure (e.g. "三層 Sequential I/O 拖高 Latency" instead of "固定三層結構開銷"). When the author rejects a heading, offer 2–3 alternatives rather than one replacement. When the author says "改成英文" / "翻成英文" without giving the term, pick one yourself — don't list options (see §5.4).
 7. **Lock in the opening and closing structure.** Before tasks start, agree on what the opening paragraph introduces and what closing structure the post uses (e.g. sandwich 肯定 → 隱憂 → 看好 for news analysis; a `Putting It All Together` Q&A block; etc.).
 
 ### Phase 4 — Draft the post as sequential tasks
@@ -246,14 +388,14 @@ The author has converged on a specific iterative workflow across multiple posts 
     - One **final TLDR task** that updates the TLDR bullets to match the body that was actually written.
 9. **Complete tasks strictly in order.** For each task:
     - Mark the task `in_progress` before starting.
-    - Write the full h2 section in one pass — do not stop mid-section to confirm wording (the author wants direct writing, not confirmation-heavy back-and-forth; see memory `feedback_blog_voice_anti_patterns.md` §流程偏好 and prior decision: "以一組 h2+h3 段落為單位，依照順序完成 tasks").
+    - Write the full h2 section in one pass — do not stop mid-section to confirm wording (see §5.4: the author wants direct writing, not confirmation-heavy back-and-forth).
     - Hand off to the author for review. Apply revisions until the author says to move on.
     - Only then mark the task `completed` and start the next one.
 10. **Write the TLDR last, as a "why should I read this" hook.** The TLDR is not a table of contents and not a technical summary — it should be three high-level bullets answering "why does this matter to me as a reader". Keep technical terms minimal. Never write "作者" or refer to the author in third person; phrase neutrally.
 
 ### Phase 5 — Review and ship
 
-11. **Re-read the full post against the anti-patterns.** Check both §5 (voice-level anti-patterns), the type-specific anti-patterns in the third paragraph of the chosen reference file, and the per-author memories (`feedback_blog_voice_anti_patterns.md`, `feedback_blog_vocabulary.md`). Rewrite anything that trips any filter.
+11. **Re-read the full post against §5 and the type-specific anti-patterns.** Check §5.1–5.3 (word choice, sentence structure, paragraph patterns) and the third paragraph of the chosen article-type reference file. Rewrite anything that trips any filter.
 12. **Check `mkdocs.yml`** — if it has an explicit navigation entry that lists posts, add the new post there. Otherwise the blog plugin picks it up automatically.
 13. **Commit and push only the `.md` file** when the author asks to publish. Do **not** include `assets/materials.txt` or other source material — those stay local. Match the existing commit message style of sibling posts (e.g. `Publish <topic> post under {year}/{half}`).
 
