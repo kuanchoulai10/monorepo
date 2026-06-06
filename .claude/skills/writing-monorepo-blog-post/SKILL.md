@@ -18,6 +18,7 @@ The author has defined three types so far (the list is open-ended; new types may
 | 實戰經驗型 (Implementation Article) | [`references/article-type-implementation.md`](references/article-type-implementation.md) | 我做了什麼，以及我是怎麼做到的。 |
 | 趨勢觀察型 (Trend Analysis Article) | [`references/article-type-trend-analysis.md`](references/article-type-trend-analysis.md) | 我看到了什麼，以及這些事情之間有什麼關聯。 |
 | 技術新聞解析型 (Technical News Analysis Article) | [`references/article-type-news-analysis.md`](references/article-type-news-analysis.md) | 最近發生了什麼，以及這件事情為什麼重要。 |
+| 借鏡反推型 (Case Study Synthesis Article) | [`references/article-type-case-study-synthesis.md`](references/article-type-case-study-synthesis.md) | 別人在用這項技術時都遇到了什麼共同問題，這些問題反映該技術本身有什麼設計挑戰。 |
 
 **Workflow:**
 
@@ -116,16 +117,6 @@ Use this exact skeleton. The TLDR admonition and `<!-- more -->` marker are requ
 ### <Subsection>
 
 <...>
-
-## Putting It All Together
-
-!!! question "<A natural follow-up question a reader would ask>"
-
-    <Direct answer.>
-
-!!! question "<Another follow-up question>"
-
-    <Direct answer, optionally with a short bullet list.>
 ```
 
 Notes on structure:
@@ -134,7 +125,7 @@ Notes on structure:
 - TLDR bullets are takeaways, not a table of contents. Phrase them as "you will learn X" items.
 - After `<!-- more -->`, lead with a cover figure when one exists, then an opening paragraph that states what the thing is and why it matters. Do not open with a metaphor or analogy.
 - Within each `##` section: one short prose paragraph to set context, then a bulleted list of properties / steps / components. This pattern repeats throughout the post.
-- The post often closes with a `Putting It All Together` (or similar) section that uses `!!! question` admonitions for FAQ-style clarifications.
+- The post ends after its final substantive `##` section. Do **not** add a generic closing section (e.g. `Putting It All Together`, `Conclusion`, `Wrapping Up`) by default — only include one when the author explicitly asks for it. If they do, two valid forms exist: (1) an FAQ-style block using `!!! question` admonitions; (2) a short `Future Plans`-style outlook section. The outlook form must be **short flowing prose with references embedded inline as markdown links — never a bulleted list of references**. It should end with an explicit forward-looking sentiment (「我非常看好」/「期待這個方向最終會延伸到什麼位置」 etc.), not a flat observation. The goal is "next-stop recommendations for readers who want to dig further", framed as a hopeful close, not an info dump.
 
 ## 4. MkDocs Material syntax used in this blog
 
@@ -223,9 +214,14 @@ In Chinese prose, these terms read more precisely in English. Translating them w
 | English term | Do NOT write |
 |---|---|
 | `metadata` | 元數據 |
-| `table` / `tables` | 表、資料表 |
+| `table` / `tables` (including compounds like `wide table`, `SQL table`, `Iceberg table`) | 表、資料表、寬表、SQL 表、Iceberg 表 |
+| `Reader` / `Writer` / `Serializer` / `Compactor` and similar software component names (capitalize as if proper noun) | 讀取器、寫入器、序列化器、壓縮器 |
+| `index` (including compounds like `inverted index`, `secondary index`, `vector index`) | 索引、倒排索引、二級索引、向量索引 |
+| `background` (when paired with `thread` / `process` / `job` / `fetch` etc.) | 背景線程、背景行程 |
 | `partition` / `partitioning` | 分區 |
 | `query planning` | 查詢規劃 |
+| `metadata planning` | 中繼資料規劃 |
+| `cache` / `caching` | 快取 |
 | `table format` | (translate) |
 | `Catalog` (Iceberg/Hive Catalog) | 目錄、編目 |
 | `Compute Engine` | 計算引擎 |
@@ -257,6 +253,15 @@ Headings already mix English and Chinese; body prose should follow the same regi
 | 契機 (when describing why a tech was adopted) | 動機 | 契機 is too literary for engineering writing |
 | 資料表越長越大 | 「隨著資料規模越來越大」/「隨著 tables 越來越多」 | personifies the table |
 | 受控的速度 | 穩定可控的速率 | "速度" is too colloquial here |
+| 引擎 (e.g. OLAP 引擎、查詢引擎、資料庫引擎) | 產品 — or keep the technical term in English (`Compute Engine`, `query engine`) | the author dislikes 引擎 in body prose; use 產品 when referring to a vendor/product, keep English when naming the technical role |
+| 兆級 / 兆級資料 | `trillion-row` / `trillion-scale` / `trillion rows` | scale descriptors stay in English; 兆級 reads as overly translated |
+| 自研 (e.g. 自研 reader) | 自行研發 | the spelled-out form matches the author's prose register; 自研 reads as a hurried abbreviation |
+| 對讀 / 對讀之後 | 仔細研究 / 仔細研究之後 | 對讀 carries a literary register that doesn't match engineering prose |
+| 刷新 (when describing cache / metadata refresh) | 更新 | 刷新 evokes browser-page-refresh; 更新 is the standard technical register |
+| 缺口 / 空缺 (when describing gaps in a spec or design) | 不足 | the author prefers the analytical "insufficiency" framing; 缺口 carries a breach-like, structurally-judgmental tone |
+| 線 / 條線 (when used as a metaphor for "thematic thread" / "work stream") | 面向 (e.g. 「在 metadata 這個面向上」) | the author dislikes 線 as a thematic-thread metaphor; 面向 reads as a flat structural noun |
+| 位置 (when used as a metaphor for "area / aspect of design", e.g. 「在同樣幾個位置」) | 層面 (e.g. 「在同樣幾個層面」) | 位置 is too spatial / literal for an abstract aspect; 層面 reads as a flat structural noun. Note: 位置 in concrete senses (a spec slot, a UI position) is fine; only the metaphorical "area-of-work" sense should swap |
+| 展開 (when meaning "elaborate again on something already covered") | 贅述 (e.g. 「這裡不再贅述」) | 展開 in this rhetorical sense is filler; 贅述 explicitly acknowledges that further explanation would be redundant. Note: 展開 in technical senses (e.g. 「tree 展開」, 「rollout」) is fine |
 
 #### Avoid body / physical-action verbs for abstract technical behaviour
 
@@ -302,9 +307,23 @@ Don't open a section with "Picture this:", "Imagine a...", a coffee-shop analogy
 
 Don't use ` — ` to deliver a punchline, contrast, or aside. End the sentence and start a new one, or use a comma / parenthesis / colon. Em-dashes inside compound noun phrases or quoted source material are fine; the anti-pattern is em-dash-as-rhetorical-pause.
 
+#### No double-negative framing
+
+Don't write 「不是 X 沒看見的」 / 「不是不知道」 / 「並非沒有意識到」 or similar double negatives. State the position directly.
+
+- ❌ "這三個不足都不是 Iceberg community 沒看見的"
+- ✅ "面對先天上的不足，Iceberg community 也正積極著手這些面向"
+
+Double negatives force the reader to mentally invert twice and feel like 說書腔 hedging. Direct positive framing is shorter and lands harder.
+
 #### No personification of systems
 
 Tools and formats are not "friends who finish your sentences", "data concierges", "marathon champions", or "speed demons". Describe what they do in direct terms.
+
+The same rule applies to abstract subjects like queries, requests, jobs, events: they don't 「到達」 ("arrive"), 「等候」 ("wait"), 「跑進來」 ("come in"), 「跑掉」 ("leave"). Use temporal phrasing instead.
+
+- ❌ "查詢到達時 metadata 已在記憶體裡"
+- ✅ "到時候查詢時 metadata 已在記憶體裡" / "查詢發生時 metadata 已在記憶體裡"
 
 #### Adoption-narrative form
 
@@ -389,7 +408,10 @@ The author has converged on a specific iterative workflow across multiple posts 
 9. **Complete tasks strictly in order.** For each task:
     - Mark the task `in_progress` before starting.
     - Write the full h2 section in one pass — do not stop mid-section to confirm wording (see §5.4: the author wants direct writing, not confirmation-heavy back-and-forth).
-    - Hand off to the author for review. Apply revisions until the author says to move on.
+    - Hand off by pointing the author to the file — do **not** re-paste the full drafted section into the conversation. The author reads from disk. When asking about a specific change mid-iteration, quote only the contested phrase (or describe the proposed change inline), never the surrounding paragraph. Re-pasting the full draft wastes the author's context budget.
+    - Do **not** narrate your own writing decisions back to the author. No "conscious choices I made" trailers, no listing of voice-rule compliance, no rationalising of structural decisions. The author reacts to the output text itself, not to your meta-explanation.
+    - When the author gives concrete feedback ("change X to Y", "I dislike Z"), treat it as evidence of an **abstract preference** that probably applies more broadly. Reverse-infer the rule, confirm the inferred abstraction with the author inline (e.g. "so the rule is: prefer flat technical verbs over body-action verbs — is that right?"), and once they confirm, write the rule into the appropriate section of this skill (§5.1, §5.2, or §5.3 most often). One piece of feedback should turn into one persistent skill update — never just a one-off in-conversation fix.
+    - Apply revisions until the author says to move on.
     - Only then mark the task `completed` and start the next one.
 10. **Write the TLDR last, as a "why should I read this" hook.** The TLDR is not a table of contents and not a technical summary — it should be three high-level bullets answering "why does this matter to me as a reader". Keep technical terms minimal. Never write "作者" or refer to the author in third person; phrase neutrally.
 
