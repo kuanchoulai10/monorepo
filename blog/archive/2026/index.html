@@ -6568,6 +6568,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#olap-iceberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      從三家 OLAP 產品反推 Iceberg 的設計挑戰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" class="md-nav__link">
     <span class="md-ellipsis">
       Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
@@ -7049,6 +7058,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#olap-iceberg" class="md-nav__link">
+    <span class="md-ellipsis">
+      從三家 OLAP 產品反推 Iceberg 的設計挑戰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" class="md-nav__link">
     <span class="md-ellipsis">
       Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
@@ -7089,6 +7107,61 @@
       <header class="md-typeset">
         <h1 id="2026">2026<a class="headerlink" href="#2026" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-06-06 00:00:00+00:00">Jun 6, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/data/" class="md-meta__link">Data</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="olap-iceberg"><a class="toclink" href="../../iceberg-challenges-from-the-field/">從三家 OLAP 產品反推 Iceberg 的設計挑戰</a></h2>
+<div class="admonition info">
+<p class="admonition-title">TLDR</p>
+<p>After reading this article, you will learn:</p>
+<ul>
+<li>ClickHouse、Firebolt、StarTree 這類低延遲 OLAP 產品在整合 Iceberg 時，會在同樣幾個層面自己加 cache、自行研發 Reader、把 metadata planning 分散化，這些不約而同的選擇背後是 Iceberg 規範本身的不足</li>
+<li>哪些是目前 Iceberg 的三個結構性不足</li>
+<li>Iceberg community 已經在 v4 metadata、File Format API、index first-class 這幾個面向上實質前進，正在逐步補上規範本身的不足</li>
+</ul>
+</div>
+
+    
+      <nav class="md-post__action">
+        <a href="../../iceberg-challenges-from-the-field/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

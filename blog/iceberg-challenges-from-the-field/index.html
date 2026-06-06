@@ -12,13 +12,11 @@
         <meta name="author" content="KC Lai">
       
       
-        <link rel="canonical" href="https://kcl10.com/blog/iceberg-efficient-column-update-and-column-families/">
+        <link rel="canonical" href="https://kcl10.com/blog/iceberg-challenges-from-the-field/">
       
       
-        <link rel="prev" href="../rethinking-iceberg-metadata-v4/">
+        <link rel="prev" href="../iceberg-efficient-column-update-and-column-families/">
       
-      
-        <link rel="next" href="../iceberg-challenges-from-the-field/">
       
       
       <link rel="icon" href="../../assets/avatar.png">
@@ -26,7 +24,7 @@
     
     
       
-        <title>Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應 - KC's Data & Life Notes</title>
+        <title>從三家 OLAP 產品反推 Iceberg 的設計挑戰 - KC's Data & Life Notes</title>
       
     
     
@@ -79,11 +77,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應 - KC's Data & Life Notes" >
+        <meta  property="og:title"  content="從三家 OLAP 產品反推 Iceberg 的設計挑戰 - KC's Data & Life Notes" >
       
         <meta  property="og:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/iceberg-efficient-column-update-and-column-families/iceberg-efficient-column-update-and-column-families.png" >
+        <meta  property="og:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/iceberg-challenges-from-the-field/iceberg-challenges-from-the-field.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -91,15 +89,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://kcl10.com/blog/iceberg-efficient-column-update-and-column-families/" >
+        <meta  property="og:url"  content="https://kcl10.com/blog/iceberg-challenges-from-the-field/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應 - KC's Data & Life Notes" >
+        <meta  name="twitter:title"  content="從三家 OLAP 產品反推 Iceberg 的設計挑戰 - KC's Data & Life Notes" >
       
         <meta  name="twitter:description"  content="A blog at the crossroads of data engineering, machine learning, AI, cloud architecture — with reflections on growth." >
       
-        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/iceberg-efficient-column-update-and-column-families/iceberg-efficient-column-update-and-column-families.png" >
+        <meta  name="twitter:image"  content="https://kcl10.com/assets/images/social/blog/posts/2026/01-06/iceberg-challenges-from-the-field/iceberg-challenges-from-the-field.png" >
       
     
     
@@ -133,7 +131,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" class="md-skip">
+        <a href="#olap-iceberg" class="md-skip">
           Skip to content
         </a>
       
@@ -196,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
+              從三家 OLAP 產品反推 Iceberg 的設計挑戰
             
           </span>
         </div>
@@ -6979,37 +6977,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aiml-feature-engineering-iceberg-wide-table" class="md-nav__link">
+  <a href="#talks" class="md-nav__link">
     <span class="md-ellipsis">
-      AI/ML Feature Engineering 帶給 Iceberg Wide Table 的三個挑戰
+      三場 Talks 指向同一組挑戰
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AI/ML Feature Engineering 帶給 Iceberg Wide Table 的三個挑戰">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#talks_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三場 Talks 各自在解什麼問題
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三場 Talks 各自在解什麼問題">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#column-feature" class="md-nav__link">
+  <a href="#clickhouse-iceberg-sub-second" class="md-nav__link">
     <span class="md-ellipsis">
-      需要以 Column 為單位頻繁更新 Feature
+      ClickHouse：在 Iceberg 上做到 sub-second 查詢延遲
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#column-wide-table" class="md-nav__link">
+  <a href="#firebolt-trillion-row-metadata" class="md-nav__link">
     <span class="md-ellipsis">
-      面對上萬個 Column 的 Wide Table 規模壓力
+      Firebolt：在 trillion-row 規模下，metadata 本身已經是需要被處理的大數據
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#startree-iceberg" class="md-nav__link">
     <span class="md-ellipsis">
-      遵循快速迭代的實驗節奏
+      StarTree：在不搬離 Iceberg 的前提下，把全文檢索做到亞秒級
     </span>
   </a>
   
@@ -7021,28 +7028,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cow-mor" class="md-nav__link">
+  <a href="#patterns" class="md-nav__link">
     <span class="md-ellipsis">
-      重新檢視現有 CoW 與 MoR 的不足
+      三家不約而同投入的共同 Patterns
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="重新檢視現有 CoW 與 MoR 的不足">
+    <nav class="md-nav" aria-label="三家不約而同投入的共同 Patterns">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#copy-on-write" class="md-nav__link">
+  <a href="#pattern-1s3-metadata-cache" class="md-nav__link">
     <span class="md-ellipsis">
-      Copy-on-Write 的寫入放大
+      Pattern 1：S3 的 metadata 讀取延遲，三家都另加一層 cache 規避
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#merge-on-read" class="md-nav__link">
+  <a href="#pattern-2-parquet-reader-reader" class="md-nav__link">
     <span class="md-ellipsis">
-      Merge-on-Read 的讀取開銷
+      Pattern 2：標準 Parquet Reader 控制力不足，三家都自行研發 Reader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-3-metadata-planning-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 3：單機 metadata planning 在大規模下成為瓶頸，三家都把 planning 分散化
     </span>
   </a>
   
@@ -7054,37 +7070,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#flip-the-axis-vertical-split" class="md-nav__link">
+  <a href="#patterns-iceberg" class="md-nav__link">
     <span class="md-ellipsis">
-      Flip the Axis：用 Vertical Split 重新思考更新
+      這些 Patterns 反推出的 Iceberg 設計不足
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Flip the Axis：用 Vertical Split 重新思考更新">
+    <nav class="md-nav" aria-label="這些 Patterns 反推出的 Iceberg 設計不足">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#column-update-file" class="md-nav__link">
+  <a href="#sequential-metadata" class="md-nav__link">
     <span class="md-ellipsis">
-      只寫入被更新的 Column Update File
+      Sequential metadata 路徑與雲端儲存延遲不相容
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#composite-reader-stitch" class="md-nav__link">
+  <a href="#parquet-iceberg" class="md-nav__link">
     <span class="md-ellipsis">
-      用 Composite Reader 在讀取時 stitch
+      讀 Parquet 仍需大量優化，但 Iceberg 規範沒提供標準路徑
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#row-group" class="md-nav__link">
+  <a href="#iceberg-puffin-index-first-class" class="md-nav__link">
     <span class="md-ellipsis">
-      處理 Row Group 對齊帶來的讀取開銷
+      Iceberg 透過 Puffin 為 index 留了空間，但離 first-class 還有距離
     </span>
   </a>
   
@@ -7096,69 +7112,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#column-families-layout" class="md-nav__link">
+  <a href="#future-plans" class="md-nav__link">
     <span class="md-ellipsis">
-      Column Families：重新定義的 Layout 設計
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Column Families：重新定義的 Layout 設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      提升讀取效能
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      降低存儲成本
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      增強安全控管
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      改善壓縮效率
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      驗證整體可行性
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Next Steps
+      Future Plans
     </span>
   </a>
   
@@ -7220,14 +7176,14 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2026-06-03 00:00:00+00:00" class="md-ellipsis">Jun 3, 2026</time>
+                        <time datetime="2026-06-06 00:00:00+00:00" class="md-ellipsis">Jun 6, 2026</time>
                       </div>
                     </li>
                     
                       <li class="md-nav__item">
                         <div class="md-nav__link">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
-                          <time datetime="2026-06-03 00:00:00+00:00" class="md-ellipsis">Jun 3, 2026</time>
+                          <time datetime="2026-06-06 00:00:00+00:00" class="md-ellipsis">Jun 6, 2026</time>
                         </div>
                       </li>
                     
@@ -7298,11 +7254,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://youtu.be/YS8HtMJZCnk?si=9BXuR6e-OE6c6O1T" class="md-nav__link">
+      <a href="../iceberg-efficient-column-update-and-column-families/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Efficient Column Updates and Column Families in Apache Iceberg
+    Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
     
   </span>
   
@@ -7319,11 +7275,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html" class="md-nav__link">
+      <a href="../lessons-from-slack-iceberg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    What is a Data Lakehouse?
+    Lessons from Slack：在 180PB 規模上維運 Iceberg
     
   </span>
   
@@ -7340,11 +7296,53 @@
   
   
     <li class="md-nav__item">
-      <a href="https://www.lancedb.com/blog/lance-v2" class="md-nav__link">
+      <a href="https://youtu.be/s_eZph1loeA?si=8esDigQ6DGV82rIY" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Lance v2: A Columnar Container Format
+    Iceberg with ClickHouse: A One-Year Development Retrospective
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://youtu.be/KO04A2uEa0E?si=Q7DkM3q6P1UGkPnC" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    High-Performance Full Text Search Directly on Iceberg via Lucene-Integrated Indexing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+                      
+                        
+                        
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://youtu.be/anebAxlJhGI?si=A5s_0u5iy4O_OTOG" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What Breaks at Trillion Rows: Eliminating Iceberg Bottlenecks in Firebolt
     
   </span>
   
@@ -7382,7 +7380,7 @@
 
 
   
-    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2026/01-06/iceberg-efficient-column-update-and-column-families/iceberg-efficient-column-update-and-column-families.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/edit/main/docs/blog/posts/2026/01-06/iceberg-challenges-from-the-field/iceberg-challenges-from-the-field.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -7391,92 +7389,105 @@
     
       
     
-    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2026/01-06/iceberg-efficient-column-update-and-column-families/iceberg-efficient-column-update-and-column-families.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/kuanchoulai10/monorepo/raw/main/docs/blog/posts/2026/01-06/iceberg-challenges-from-the-field/iceberg-challenges-from-the-field.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="efficient-column-update-column-familiesiceberg-aiml-wide-table">Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應<a class="headerlink" href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" title="Permanent link">&para;</a></h1>
+<h1 id="olap-iceberg">從三家 OLAP 產品反推 Iceberg 的設計挑戰<a class="headerlink" href="#olap-iceberg" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
 <p class="admonition-title">TLDR</p>
 <p>After reading this article, you will learn:</p>
 <ul>
-<li>為什麼 Iceberg 現有以 row 為單位的 update 機制，在 AI/ML feature engineering 帶來的 wide table 場景下會變得非常昂貴</li>
-<li>Iceberg 正在討論的 Flip the Axis 與 Column Families 是什麼，為什麼這個方向同時涵蓋了 column-level update 與 layout flexibility 兩種應用</li>
-<li>為什麼這個方向值得期待，以及它跟新一代 table format（例如 LanceDB）的競爭，對 Iceberg 接下來的位置意味著什麼</li>
+<li>ClickHouse、Firebolt、StarTree 這類低延遲 OLAP 產品在整合 Iceberg 時，會在同樣幾個層面自己加 cache、自行研發 Reader、把 metadata planning 分散化，這些不約而同的選擇背後是 Iceberg 規範本身的不足</li>
+<li>哪些是目前 Iceberg 的三個結構性不足</li>
+<li>Iceberg community 已經在 v4 metadata、File Format API、index first-class 這幾個面向上實質前進，正在逐步補上規範本身的不足</li>
 </ul>
 </div>
 <!-- more -->
 
-<figure>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YS8HtMJZCnk?si=9BXuR6e-OE6c6O1T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<figcaption>
-<p><a href="https://youtu.be/YS8HtMJZCnk?si=9BXuR6e-OE6c6O1T">Efficient Column Updates and Column Families in Apache Iceberg</a></p>
-</figcaption>
-</figure>
-<p>Gabor 與 Peter 都在 Microsoft 的一個研究小組工作，大部分時間都投入在開源 Apache Iceberg 的開發上。他們在 2026 Iceberg Summit 完整介紹了一項仍在早期階段的提案：<strong>Efficient Column Updates</strong> 與 <strong>Column Families</strong>。這個提案要回答的問題是，當 AI/ML feature engineering 讓 Iceberg table 動輒擁有上萬個 column、而且需要頻繁地以 column 為單位更新時，現有以 row 為單位設計的 Copy-on-Write 與 Merge-on-Read 都會變得非常昂貴。提案的核心想法是 <strong>Flip the Axis</strong>：把 update 操作改以 column 為單位進行；而 column-level 拆分一旦成立，這個機制就能繼續推廣到 cache、cold storage、access control 等更多 layout 用途。</p>
-<p>我之所以特別想分享這場 talk，是因為雖然自己才剛開始在工作上接觸這塊，就已經實際遇到相同的問題。每次想為一張既有的 wide table 加一個新 column，或更新某個 feature 的計算結果，整張 table 都得重新寫一遍。這個寫入動作的成本會直接反映在 compute 用量與 object storage 的存取費用上，當 column 數量越多、更新頻率越高，這筆成本就越難忽略。talk 裡提到「寫入時間縮短 90%」的數字，背後對應到的就是這筆成本的縮減。</p>
-<h2 id="aiml-feature-engineering-iceberg-wide-table">AI/ML Feature Engineering 帶給 Iceberg Wide Table 的三個挑戰<a class="headerlink" href="#aiml-feature-engineering-iceberg-wide-table" title="Permanent link">&para;</a></h2>
-<p><a href="https://www.databricks.com/blog/2020/01/30/what-is-a-data-lakehouse.html">Lakehouse 一開始的願景</a>就是要在同一份資料上同時支撐 BI、analytics 與 AI/ML 等各種 workload，但 Iceberg 的現有設計在那時並沒有把 AI/ML feature engineering 的需求一起納入。在 ML training pipeline 裡，每個 column 都對應到一個 feature，而 feature engineering 這件事本身就需要持續地加新 column、更新舊 column；這種以 column 為單位的 update pattern，跟 Iceberg 為 row-level update 預設的 Copy-on-Write 與 Merge-on-Read 並不對齊。當 ML workload 越來越常見，Iceberg 在 Lakehouse 願景裡原本應該支援的 AI/ML 場景上，就出現了三個具體的挑戰。</p>
-<h3 id="column-feature">需要以 Column 為單位頻繁更新 Feature<a class="headerlink" href="#column-feature" title="Permanent link">&para;</a></h3>
-<p>ML 模型輸入的每一個 feature，本質上就是 table 裡的一個 column：可能是某個聚合數值（例如使用者在過去 30 天的消費總額）、某個 embedding 向量、或是某個機率分數。這些 feature 都有時效性，例如「過去 7 天消費總額」每天的數值都不同，舊值不再有意義，必須整批換成新算好的值。</p>
-<p>對 Iceberg 而言，這意味著 update 的單位從以前的「整 row 換掉」變成「整個 column 換掉」。原本以 row 為單位設計的 Copy-on-Write 與 Merge-on-Read 在這個情境下就會變得相當昂貴：為了更新 1 個 column，要把與它寫在同一個 data file 裡的 999 個 column 都讀進來再寫出去，沒有任何一行資料的 row identity 改變。</p>
-<h3 id="column-wide-table">面對上萬個 Column 的 Wide Table 規模壓力<a class="headerlink" href="#column-wide-table" title="Permanent link">&para;</a></h3>
-<p>特徵工程很容易讓 column 數量一路成長到上千、上萬個，這在傳統 BI 的 table 上幾乎見不到。例如一張 user profile table，可能會同時存放數百個 categorical feature、數百個 aggregate feature，再加上一兩個 dimension 為 512 或 1024 的 embedding 向量。</p>
-<p>這個規模直接放大了前一個挑戰的代價。當 column 數量從 50 變成 10,000，每次「更新 1 個 column 就要重寫整個 data file」的 write amplification 也跟著線性放大，連帶把運算成本與儲存成本都提升一個數量級。</p>
-<h3 id="_1">遵循快速迭代的實驗節奏<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>Feature engineering 本質上是一個實驗性的過程：今天試一個新的 time window，明天試一組新的 categorical encoding，後天又想把某個 aggregate 換成另一種演算法。每一次嘗試都會產生新的 column，每一次驗證都可能需要刷新一批舊的 column。</p>
-<p>這種節奏代表 Iceberg 在這個場景下面對的每一次 update，都是高頻率、小規模、且 column 維度會持續往上成長的型態。在這種節奏下，每一次 update 的開銷都會被乘上實驗次數，最終決定了團隊一天能跑幾輪實驗、能驗證多少個 hypothesis。</p>
-<h2 id="cow-mor">重新檢視現有 CoW 與 MoR 的不足<a class="headerlink" href="#cow-mor" title="Permanent link">&para;</a></h2>
-<p>Iceberg 目前處理 update 的兩種策略 Copy-on-Write 與 Merge-on-Read，本來都是針對 row-level update 設計的：你修改某一筆 row 上的某個欄位，CoW 會把整個 data file 重寫一次、MoR 則會把舊 row 標記成 deleted、把新 row 寫到另一個 file。這套以 row 為單位的設計，在 narrow &amp; deep table 上面對的更新通常也都是 row-level 的，運作得很順。可是一旦把 update 換成「整個 column 換掉」的情境，這兩種策略就會把成本花在不該花的地方。</p>
-<h3 id="copy-on-write">Copy-on-Write 的寫入放大<a class="headerlink" href="#copy-on-write" title="Permanent link">&para;</a></h3>
-<p>承接上一節的場景，假設你有一張 wide table 共 1000 個 column，現在只想把 col5 換成新算好的值。Copy-on-Write 的語意是「把更新後的內容寫成新的 data file，舊的 data file 整份淘汰」，所以它不會只寫 col5，而是會把這個 data file 裡所有 row、所有 column 全部重新讀出來、計算出新版的 col5，再把完整的 1000 個 column 寫回一份新的 data file。</p>
-<p>這意味著為了動 1 個 column，要付出 1000 個 column 的寫入成本。如果 table 規模是 N 個 data file，這份 write amplification 會隨 N 線性放大。對於每天可能要更新數十個 feature 的 ML pipeline 而言，這個成本是難以接受的。</p>
-<h3 id="merge-on-read">Merge-on-Read 的讀取開銷<a class="headerlink" href="#merge-on-read" title="Permanent link">&para;</a></h3>
-<p>Merge-on-Read 降低寫入成本的方式，是讓寫入只負責產生兩樣東西：一個 position delete file（標記哪些 row 在 base file 的位置已經被淘汰），以及一個只含更新後 row 的新 data file。代價則是 query 時的讀取邏輯變複雜：reader 必須同時讀 base file、套用 position delete、再 merge 新 data file，才能還原出當下這份 table 的內容。</p>
-<p>問題是這套機制依然是 row-centric 的。即使你只更新了 col5，新寫出來的 data file 仍然得帶上完整的 1000 個 column，因為 stitch 的單位是 row，少了任何 column 都會讓 row 不完整。寫入端的 write amplification 沒有真的消失，只是部分轉嫁到了讀取端；並且每多累積一份 delete file，後續每一次 query 的 merge 成本就會跟著上升。</p>
-<h2 id="flip-the-axis-vertical-split">Flip the Axis：用 Vertical Split 重新思考更新<a class="headerlink" href="#flip-the-axis-vertical-split" title="Permanent link">&para;</a></h2>
-<p>如果以上挑戰的共同根源都是「以 row 為單位處理 column-level update」，那很自然的下一個問題就是：能不能把這個軸線翻轉過來，讓 update 從一開始就以 column 為單位進行？這場 talk 的核心提案 <strong>Flip the Axis</strong> 就是這條路的具體實踐：透過 <strong>Vertical Split</strong>，把 update 行為從橫向的「整 row 換掉」改成縱向的「只寫被動到的那幾個 column」，並把跨檔案的 stitch 邏輯延後到讀取時才處理。</p>
-<p>關於這個方向的具體成效，talk 後段分享了一份與 Apple 團隊合作的 Spark POC，分別針對寫入端的節省與讀取端的代價做了量測，下面引用的數字都來自這份 POC。</p>
-<h3 id="column-update-file">只寫入被更新的 Column Update File<a class="headerlink" href="#column-update-file" title="Permanent link">&para;</a></h3>
-<p>承接 CoW 重寫整份 data file 的情境，假設你執行 <code>UPDATE tbl SET col1 = concat('new', id)</code>，過去得把所有 row、所有 column 都重寫一遍。Vertical Split 想做的事情很簡單：既然只有 col1 的值會變，那麼產出的檔案就只該包含 col1，其餘 999 個 column 完全不必碰。</p>
-<p>實際的 write path 大致是這樣：scan 階段只讀計算 col1 所需的最小欄位集合（在這個例子裡是 <code>_file</code>、<code>_pos</code>、<code>_partition</code> 與 <code>id</code>），算出新的 col1 之後，依照 <code>_file</code> shuffle 分組、依照 <code>(_file, _pos)</code> 排序，最後為每一份原始 data file 各寫出一份只含 col1 的 column update file。寫完之後再透過類似下面這段 API 把 mapping 一次 commit 到 metadata：</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">table</span><span class="p">.</span><span class="na">newColumnUpdate</span><span class="p">()</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p">.</span><span class="na">withFieldIds</span><span class="p">(</span><span class="n">fieldIds</span><span class="p">)</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="p">.</span><span class="na">addColumnUpdate</span><span class="p">(</span><span class="n">FILE_A</span><span class="p">,</span><span class="w"> </span><span class="n">updateFileA</span><span class="p">)</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p">.</span><span class="na">addColumnUpdate</span><span class="p">(</span><span class="n">FILE_B</span><span class="p">,</span><span class="w"> </span><span class="n">updateFileB</span><span class="p">)</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p">.</span><span class="na">commit</span><span class="p">();</span>
-</span></code></pre></div>
-<p>從寫入端的角度看，原本「動 1 個 column 等於寫 1000 個 column」的 write amplification 直接降為「動 1 個 column 就只寫 1 個 column」。對應到 POC 的數字，在 R1W1（輸入 1 個 column、輸出 1 個 column）的情境下，寫入時間縮短超過 90%；即使提高到 R20W20，也仍能省下約 75%。</p>
-<h3 id="composite-reader-stitch">用 Composite Reader 在讀取時 stitch<a class="headerlink" href="#composite-reader-stitch" title="Permanent link">&para;</a></h3>
-<p>承接寫入端的設計，讀取端要解決的問題就變得明確：當一份 table 的某些 column 散落在 base file、某些 column 散落在多份 column update file 時，reader 必須能在 query 執行階段，把這些散落的 column 重新組合回完整的 row。Iceberg 在這條路上引入的關鍵元件是 <strong>Composite Reader</strong>。</p>
-<p>以 <code>SELECT col1, col2, col4 FROM tbl</code> 為例，Composite Reader 會先讀 metadata 來判斷每個 column 的來源：col1 沒被更新，從 base file 讀；col2 被某份 update file 覆寫過，要去那份 update file 讀；col4 完全是新增的，只存在另一份 update file 裡。確定好來源之後，Composite Reader 會為每個來源建立各自的 reader、平行讀出資料，再用一個 row identity（例如 <code>__row_id</code> 或 <code>_file + _pos</code>）把同一個邏輯 row 的 column 對齊、stitch 成最終結果。對 query 端而言，整個過程看起來跟讀一份普通的 Parquet 檔案沒有差別。</p>
-<h3 id="row-group">處理 Row Group 對齊帶來的讀取開銷<a class="headerlink" href="#row-group" title="Permanent link">&para;</a></h3>
-<p>讀取端的主要成本來自底層 Parquet 結構不對齊。stitch 邏輯本身相對便宜，真正昂貴的是 row group 邊界無法在 update file 上對齊：base data file 通常很大，例如 512MB，內部會被切成多個 row group 以方便平行讀取；column update file 則通常很小，往往只有一個 row group。當 reader 想要平行掃 base file 後半段的 row group 時，它在 update file 裡找不到對應的起始 offset 可以直接 seek 過去，必須先從 update file 開頭一路遍歷下去，才能定位到正確的縫合點。</p>
-<p>POC 也量出讀取端的代價：當 query 只需要 stitch 一份 column update file 時，整體讀取會多出約 10% 的開銷；當 update 累積到 20 份 column update file 時，這個開銷會上升到約 35%。Talk 裡也提到這部分的優化方向，例如善用 dictionary encoding 讓 update file 進一步縮小，或從 file format 層級提供更友善的 offset metadata。整體看來，Vertical Split 把 column-level update 的寫入成本降低了一個量級，代價是讀取端被引入了一個目前在 10–35% 量級、且仍有改善空間的 overhead。</p>
-<h2 id="column-families-layout">Column Families：重新定義的 Layout 設計<a class="headerlink" href="#column-families-layout" title="Permanent link">&para;</a></h2>
-<p>到這裡為止，Vertical Split 都還只是一個讓 column-level update 變便宜的機制。Talk 後半段由 Peter 接手，他提出的觀察是：既然系統已經能把同一張 table 的不同 column 物理拆到不同檔案、再於讀取時 stitch 回完整 row，那這份能力其實也可以被當作一種 <strong>layout 工具</strong>，不必只用在 update 場景上。Peter 把這個概念稱為 <strong>Column Families</strong>，讓使用者依照 access pattern 主動把 column 分群、選擇要落在什麼樣的檔案上，並以此推導出下面幾種具體的用法，最後再透過一份微基準測試來驗證整體可行性。</p>
-<h3 id="_2">提升讀取效能<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>承接 Vertical Split 的能力，假設一張 user profile table 有 1000 個 column，但日常 query 真正會碰到的可能只是其中幾十個 hot column（例如使用者 ID、年齡、最近一次活躍時間、目前等級等）。在原本的單檔案 layout 下，這些 hot column 與其他冷門 column 物理混雜在同一份 Parquet 檔案裡，cache 也只能粗粒度地以整份檔案為單位：要嘛整份載入 cache，要嘛完全沒上 cache。</p>
-<p>把這些 hot column 獨立成一個 column family、物理上拆到專屬的檔案後，cache 層就可以只服務這個小而集中的子集：檔案大小通常只有原本的幾十分之一，能完整放進 cache；其他不需要 cache 的 column 則自然落在比較慢、比較便宜的 storage 上。query 在大多數情況下只需要打到 hot column 檔案，cache hit rate 上升，整體 latency 自然下降。</p>
-<h3 id="_3">降低存儲成本<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>對應 hot column 的另一面是 cold column：某些 audit log、debug-only metadata、或久遠的歷史 feature，可能一個月只被讀到幾次，卻佔據了不小的儲存體積。如果它們混在主要的 Parquet 檔案裡，整份檔案就只能放在比較昂貴的高速 storage tier 上，等於是讓不常用的資料一起付高 storage 費用。</p>
-<p>把 cold column 獨立成一個 column family 檔案後，這份檔案就可以直接放到便宜的 cold storage（例如 S3 Glacier 或對應的低頻存取等級），只在真的需要時才付出 retrieval 成本，平常的 storage 帳單則大幅下降。當 wide table 規模一旦進到 TB、PB 等級，這種冷熱分層帶來的成本節省會非常可觀。</p>
-<h3 id="_4">增強安全控管<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>身分證字號、信用卡號、銀行帳戶這類敏感欄位，在傳統 Parquet layout 下會跟其他 column 一起寫在同一個檔案裡。即使上層 catalog 或 query engine 有 column-level access control，底層只要任何流程能讀到那份檔案，技術上就有可能解析出敏感欄位：query engine 漏洞、或某段 log 不小心 dump 整個 row，都可能成為突破口。</p>
-<p>Column Families 讓這類欄位可以被指定為一個獨立的 column family，物理上落在一個只有特定身份才能讀的檔案夾或 bucket 內，並由 object storage 既有的 file-level ACL 處理權限控管。一般的 ML training pipeline 連那份檔案的 read permission 都沒有，從物理層級就排除了存取的可能；同時 audit log 上也能直接看到誰存取了 sensitive column family，合規回報相對單純。</p>
-<h3 id="_5">改善壓縮效率<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Parquet 的壓縮機制是以 column chunk 為單位，當同一份檔案裡混雜了寬度差異極大的 column（例如只有 4 byte 的 integer，與動輒幾 KB 的長字串或 JSON blob），壓縮演算法很難對所有 column 都做到理想的壓縮率。寬的 column 會佔掉大部分檔案空間，連帶讓整份檔案的 metadata 變得龐大；窄的 column 即使有重複模式可以高度壓縮，也享受不到同等程度的編碼最佳化。</p>
-<p>把寬度相近、資料模式接近的 column 分成同一個 column family、各自寫到專屬的檔案，每份檔案內部的 column 就會比較同質，編碼與壓縮選擇也比較容易最佳化。不過 Peter 也誠實指出，總體壓縮率最終仍然會取決於實際資料模式：在完全隨機的資料上，把一張 10,000 個 column 的 table 拆成 10 個各 1,000 個 column 的 column family 檔案，總大小跟維持單檔基本不會差太多；只有當資料本身具備可以被壓縮的 pattern 時，異質性切開帶來的差距才會明顯。使用者必須自行 benchmark 過才知道在自家資料上是否真的划算。</p>
-<h3 id="_6">驗證整體可行性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>除了上面四個應用場景，Peter 還針對 Column Family 整體的讀寫成本做了一份微基準測試：把一張 10,000 個 column 的 table 切成 1、2、5、10 個 column family，分別量測單執行緒與多執行緒讀取下的表現。結論是這套設計在不同 compute 環境下的表現落差非常明顯。</p>
-<p>在單執行緒模式下，Column Family 的讀取效能與原始 Iceberg 大致相當：stitch 帶來的額外開銷剛好被 metadata 變小帶來的節省抵銷掉。把讀取改成平行（每個 column family 各自一個 reader）後，微基準測試裡的效能可以提升 80–90%。但同樣的設計在 Spark 上實測時，效能卻反過來下降了 30–40%，原因是測試環境的 CPU 核心數不足，平行 reader 競爭核心反而造成額外的 scheduling 開銷。這個結果也反映了一件事：Column Family 要在分散式 compute engine 上真正發揮潛力，前提是底層有足夠的並行運算資源，這也是社群接下來需要繼續處理的方向。</p>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>整體看下來，Efficient Column Update 與 Column Families 是一個我非常看好的方向。它把 column-level update 與 layout flexibility 直接做進 table format 的底層，而不是靠應用層或 compute engine 去迴避 row-centric 的限制。這是 Iceberg 在 AI/ML workload 上真正補齊 Lakehouse 願景的關鍵一步。</p>
-<p>值得對照的是，新一代的 table format 例如 <strong><a href="https://www.lancedb.com/blog/lance-v2">LanceDB</a></strong> 早就把這類 column-level 的能力做成核心特色之一。它原生就以 column 為單位處理 update、cache 與儲存策略，這也是 LanceDB 在目前 lakehouse 競爭格局裡成長最快、最多人看好的原因之一。當 AI/ML 工作流逐漸主導 lakehouse 上的 read/write pattern，誰能把 column-level 的成本降到合理區間，誰就會被選為新一代基礎建設的預設選項。</p>
-<p>面對這樣的壓力，期待 Iceberg community 能盡早把 Efficient Column Update 與 Column Families 納入正式版本。這對既有使用者是一個明顯的改善，也是 Iceberg 維持 Lakehouse 主流地位的必要動作。</p>
+<p>Iceberg 已經是現在 open table format 的事實標準。從 Snowflake、Databricks、AWS 到 BigQuery，幾乎所有主流分析平台都把 Iceberg 列為支援對象；社群裡的規範討論、提案與各種整合工作也維持著高頻率產出。</p>
+<p>但實際把 Iceberg 整合進產品時，能不能直接使用標準實作、又能讓查詢延遲降到 sub-second，是另一回事。最近三場 talks 從不同角度，記錄了三家以低延遲查詢為核心的 OLAP 產品在做這件事情時遇到的挑戰：</p>
+<ul>
+<li><a href="https://youtu.be/s_eZph1loeA">Iceberg with ClickHouse: A One-Year Development Retrospective</a>，由 ClickHouse 的 Director of Product Malvyn Peignon 主講，回顧他們投入 Iceberg 整合一年半的經驗</li>
+<li><a href="https://youtu.be/anebAxlJhGI">What Breaks at Trillion Rows: Eliminating Iceberg Bottlenecks in Firebolt</a>，由 Firebolt CTO Mosha Pasumansky 主講，討論 trillion-row 規模下他們遇到的瓶頸</li>
+<li><a href="https://youtu.be/KO04A2uEa0E">High-Performance Full Text Search Directly on Iceberg via Lucene-Integrated Indexing</a>，由 StarTree.ai 的 Xiang Fu 與 Raghav Yadav 共同主講，討論在 Iceberg 之上直接支援全文檢索</li>
+</ul>
+<p>三場 talks 的主題乍看沒有什麼共通之處。但仔細研究之後會發現，三家公司投入的工程資源高度重疊：都在同樣幾個層面自行研發 Reader、加 cache、把單機 metadata planning 改成分散式 metadata planning。</p>
+<p>這篇文章的目的，是把這三場 talks 放在一起仔細研究。先看三家公司各自要解的問題，再萃取它們不約而同投入的共同 patterns，最後從這些 patterns 反推 Iceberg 目前還沒解決的設計不足。</p>
+<h2 id="talks">三場 Talks 指向同一組挑戰<a class="headerlink" href="#talks" title="Permanent link">&para;</a></h2>
+<p>要解釋為什麼這三場 talks 值得放在一起仔細研究，需要先把三家公司各自的定位看清楚。它們在 OLAP 領域起點不同、產品形態也不同，但都同時把 Iceberg 作為近期的重點整合對象：</p>
+<ul>
+<li><strong>ClickHouse</strong> 是 open-source columnar OLAP database，以極低查詢延遲和高吞吐量寫入著稱，常被用在 observability、event analytics 等 append-heavy 場景。原本以自家儲存格式為主，最近一年半開始正式投入 Iceberg 整合。</li>
+<li><strong>Firebolt</strong> 是面向工程團隊的 cloud-native analytical database（Postgres 相容），主打 sub-second 查詢、高並發、price-performance，常用來支撐 customer-facing analytics 與 data application backend。它把 Iceberg 應用在 trillion-row 規模與上萬欄位的 wide table 場景。</li>
+<li><strong>StarTree.ai</strong> 是 Apache Pinot 的商業化平台，主打 streaming data 上的 sub-second 與高並發 user-facing analytics。它把 Iceberg 與全文檢索結合在一起，讓使用者不必再額外維護一套 Elasticsearch。</li>
+</ul>
+<p>三家的產品形態、客戶群、原本擅長的場景都不同。但只要主題是「把 Iceberg 整合進產品時要解決什麼」，三場 talks 的內容立刻開始重疊。在 Iceberg 與底層 Parquet 的設計下，所有低延遲查詢產品都會在同樣幾個層面遇到相同的限制。</p>
+<h2 id="talks_1">三場 Talks 各自在解什麼問題<a class="headerlink" href="#talks_1" title="Permanent link">&para;</a></h2>
+<p>把三家公司各自的整體取捨先看清楚，後面要歸納共同 patterns 時才不會把不同的問題混在一起。三場 talks 雖然都圍繞「在 Iceberg 上做查詢」這件事，但各自的起點與要解的關鍵問題完全不同。</p>
+<h3 id="clickhouse-iceberg-sub-second">ClickHouse：在 Iceberg 上做到 sub-second 查詢延遲<a class="headerlink" href="#clickhouse-iceberg-sub-second" title="Permanent link">&para;</a></h3>
+<p>ClickHouse 原本以自家 columnar 儲存格式提供 sub-second 查詢延遲。要把它整合到 Iceberg 上，問題在於 Iceberg 的標準讀取路徑（從 metadata files、manifest list 到 data files）原本是為 batch 分析設計的，每一層都依賴對 cloud object storage 的請求。標準路徑下的延遲，遠遠超過 sub-second 能容忍的範圍。</p>
+<p>所以 ClickHouse 過去一年半的整體取捨是：<strong>所有原本由通用程式庫承擔的 I/O 與 metadata 邏輯，都改由 ClickHouse 自己實作</strong>。用 C++ 重新實作 Iceberg 規範、為 Parquet 寫原生 Reader、為 metadata 與 footer 各自設計 cache 層。這些工作都把「整合 Iceberg 後仍要 sub-second」當作不可妥協的設計前提。</p>
+<h3 id="firebolt-trillion-row-metadata">Firebolt：在 trillion-row 規模下，metadata 本身已經是需要被處理的大數據<a class="headerlink" href="#firebolt-trillion-row-metadata" title="Permanent link">&para;</a></h3>
+<p>Firebolt 面對的問題在另一側。它的客戶常用 Firebolt 在 trillion-row 規模、20PB 量、上萬欄位的 wide table 上做 sub-second 查詢。在這種規模下，Iceberg metadata 自己也會變得非常龐大：一張 table 可能對應數百萬個 data files、數萬份 manifest，連單純列出檔案這件事都足以讓 query planning 顯著變慢。</p>
+<p>所以 Firebolt 的整體取捨是：<strong>直接把 metadata 視為另一種大數據來處理</strong>。它不再讓單一節點循序掃描 manifest，而是把 metadata 建模成一張 SQL table，用 Firebolt 自己的 query engine 去掃。同時針對 wide table 的 Parquet footer 那種「上萬欄位、上百 MB」的情況自寫 serializer，只解析查詢真正用到的欄位。</p>
+<h3 id="startree-iceberg">StarTree：在不搬離 Iceberg 的前提下，把全文檢索做到亞秒級<a class="headerlink" href="#startree-iceberg" title="Permanent link">&para;</a></h3>
+<p>StarTree 的問題定義跟前面兩家不太一樣。它的客戶要在同一份資料上同時做傳統的 OLAP 聚合與全文檢索類的查詢（fuzzy search、phrase query 等）。過去的做法是把資料同時寫進一個 OLAP 系統與一個 Elasticsearch，由應用層自己 join。這意味著兩套系統的維運、資料同步、一致性處理都要自己負責。</p>
+<p>所以 StarTree 的整體取捨是：<strong>在不搬離 Iceberg 的前提下，把全文檢索能力放回 Pinot 的查詢路徑裡</strong>。具體做法是用一個 Watcher 任務監控 Iceberg table 的檔案目錄，每當新的 Parquet 檔案出現就建立一個輕量的 pseudo segment（只記錄檔案 URL），同時 in-line 為這個檔案產生 Lucene index，允許使用者把 index pin 在本地。查詢端就能用 Lucene index 先找出符合條件的記錄，再從 Iceberg 讀取對應的 page。</p>
+<h2 id="patterns">三家不約而同投入的共同 Patterns<a class="headerlink" href="#patterns" title="Permanent link">&para;</a></h2>
+<p>三家公司的整體取捨不一樣，但實際做出的工程動作卻在同樣三個層面高度重疊。下面依序拆開來看每一個層面，以及每一家在這個層面上做了什麼。</p>
+<h3 id="pattern-1s3-metadata-cache">Pattern 1：S3 的 metadata 讀取延遲，三家都另加一層 cache 規避<a class="headerlink" href="#pattern-1s3-metadata-cache" title="Permanent link">&para;</a></h3>
+<p>第一個重疊層面是 metadata 讀取。Iceberg 的標準讀取路徑是 sequential 三層（metadata files → manifest list → manifest files），每一層都對 cloud object storage 發請求。S3 對單一物件的存取延遲通常在 100-200ms 之間，三層串連起來，光是 query planning 就要花幾百毫秒，sub-second 完全做不到。</p>
+<ul>
+<li><strong>ClickHouse</strong>：把 Iceberg metadata 解析後留在記憶體 cache，並用 background thread 定期（例如每 30 秒）非同步更新。到時候查詢時 metadata 已在記憶體裡。</li>
+<li><strong>Firebolt</strong>：以 max-staleness 為單位 cache 整套 metadata，另外引入 sub-result caching 跨查詢復用中間結果（例如 pruning 後的 file list），讓相似查詢直接跳過 metadata scan。</li>
+<li><strong>StarTree</strong>：實作 data cache 與 index cache，並允許使用者把 index pin 在本地（記憶體或磁碟），讓 Lucene index 與相關 metadata 都不必重新讀 S3。</li>
+</ul>
+<p>三家做法的細節不同，但本質都是把 Iceberg metadata 從「跟 S3 同步、每次查詢都重新讀」改成「在本地 cache、按 freshness 規則更新」。Iceberg 規範並沒有規定 metadata 應該怎麼被讀取或 cache，這層是三家在自家系統裡自己補上的。</p>
+<h3 id="pattern-2-parquet-reader-reader">Pattern 2：標準 Parquet Reader 控制力不足，三家都自行研發 Reader<a class="headerlink" href="#pattern-2-parquet-reader-reader" title="Permanent link">&para;</a></h3>
+<p>第二個重疊層面在 Parquet 的讀取層。Iceberg 的 data files 是 Parquet 格式，多數 query engine 早期依賴 Apache Arrow 或其他通用 Parquet 函式庫來讀取。但這些通用函式庫的粒度停在 file 或 row group level，缺少 page level 的 I/O 控制；序列化路徑要把資料從 Parquet 經 Arrow 再轉成系統自己的格式，每一道轉換都會疊加延遲。對追求 sub-second 的 OLAP 產品而言，這條路徑無法滿足。</p>
+<ul>
+<li><strong>ClickHouse</strong>：用 C++ 重新實作 Parquet Reader，完全去除對 Arrow 的依賴。新 Reader 更有效利用 Bloom Filter 與檔案統計做 skipping，並把任務粒度細化到 row group level，讓多個 replica 共同分擔讀取。</li>
+<li><strong>Firebolt</strong>：針對 wide table（成千上萬個 column）寫自定義的 Parquet serializer。標準 Reader 必須先解析整份 footer 才能定位欄位，這在 wide table 場景動輒上百 MB；Firebolt 的 Reader 能直接跳過不需要的欄位 metadata，只解析查詢真正用到的 column。</li>
+<li><strong>StarTree</strong>：自寫 Parquet Reader 取得 page level 的 I/O 控制，能把 predicate 下推到 page level、只讀必要的 page，並與 Pinot 自己的非同步 prefetch / pipelining 機制深度整合。</li>
+</ul>
+<p>三家寫出來的 Parquet Reader 細節不一樣，但都對「通用函式庫不夠用」這件事達成了共識。Arrow 的中介轉換、缺少 page level 控制、wide table 場景下的 footer 開銷，這三件事讓三家都選擇自行實作 Reader。</p>
+<h3 id="pattern-3-metadata-planning-planning">Pattern 3：單機 metadata planning 在大規模下成為瓶頸，三家都把 planning 分散化<a class="headerlink" href="#pattern-3-metadata-planning-planning" title="Permanent link">&para;</a></h3>
+<p>第三個重疊層面是 metadata planning 本身的 scaling。Iceberg 規範描述了 metadata 的 layout，但沒有規定 query engine 該如何分配 planning 工作。多數實作的預設是「由一個 coordinator 節點讀完所有 metadata，再分發實際的 data read」。當 metadata 規模從幾百份 manifest 變成數萬份、數百萬個 data files，這個 coordinator 就變成 single point of bottleneck。</p>
+<ul>
+<li><strong>ClickHouse</strong>：已意識到單一 coordinator 是瓶頸，目前正在開發把 metadata 讀取分散到多個 replica 的方案。同時把 data 讀取的任務粒度細化到 row group level，避免某個巨大的 file 讓單一 replica 成為瓶頸。</li>
+<li><strong>Firebolt</strong>：呼應 Google 在 2021 年論文中提出的「metadata as data」概念。在自家系統中，manifest 不再被當成「需要循序掃描的小檔案」，而是建模成 SQL table，用 Firebolt 既有的分散式 SQL 機制去 scan、prune、distribute。整套 metadata planning 變成一個分散式 SQL job。</li>
+<li><strong>StarTree</strong>：把每個 Parquet 檔案抽象成輕量的 pseudo segment（只記 URL 與 metadata），於是 Pinot 原本針對 segment 設計的 Broker → Server 兩層 pruning 架構可以直接套用：Broker 在分發查詢前先剔除不符合的 segment，Server 再做 file 內部的 predicate 過濾。整套 planning 自然就分散到 Broker 與 Server 上。</li>
+</ul>
+<p>三家用了不同的抽象（replica、SQL table、pseudo segment），但解的是同一個問題：把原本集中在一個 coordinator 上的 metadata planning 拆解到多個節點上。Iceberg 規範本身對這件事沒有規定，三家都用自家既有的分散式機制各自重新設計了一套。</p>
+<h2 id="patterns-iceberg">這些 Patterns 反推出的 Iceberg 設計不足<a class="headerlink" href="#patterns-iceberg" title="Permanent link">&para;</a></h2>
+<p>如果只是一家公司在某個層面上投入額外工程，那可以解釋為他們的場景特殊。但同一個層面上同時有三家公司、用三種不同抽象解決同一個問題，比較像是 Iceberg 規範本身在這幾個層面做得不夠。下面把這幾個不足整理出來，並區分：哪些是 Iceberg / Parquet 本身的設計限制、哪些其實是整合方面對自家場景的特殊需求。</p>
+<h3 id="sequential-metadata">Sequential metadata 路徑與雲端儲存延遲不相容<a class="headerlink" href="#sequential-metadata" title="Permanent link">&para;</a></h3>
+<p>第一個不足直接源自 Pattern 1。Iceberg 的 metadata 結構在設計時假設 metadata 讀取相對廉價：依序讀 metadata.json、manifest list 與 manifest files 三層 sequential 路徑，在本地或低延遲儲存上沒有問題。但 cloud object storage 對單一物件的存取延遲落在 100-200ms 之間，光是讀取這三層檔案本身就要花掉幾百毫秒。</p>
+<p>而且這幾百毫秒只是「拿到 bytes」的成本。把這些 bytes 解析成 Avro / JSON 結構、抽出 data file list 與相關 statistics、提供給 query planner 做 pruning，這些工作都還沒開始。當整體時間預算只有 sub-second 時，這個假設就無法成立。</p>
+<p>這個問題不會因為換家公司就消失。任何想在 cloud object storage 上做低延遲查詢的產品都會面對相同的瓶頸。因此這算是 Iceberg metadata layout 在 cloud-native 場景下的設計限制，屬於規範層面的不足。</p>
+<h3 id="parquet-iceberg">讀 Parquet 仍需大量優化，但 Iceberg 規範沒提供標準路徑<a class="headerlink" href="#parquet-iceberg" title="Permanent link">&para;</a></h3>
+<p>第二個不足涵蓋 Pattern 2 與 Pattern 3 共同呈現的事實：讀完 metadata 之後，真正去讀 Parquet 這件事還需要大量優化，三家公司都得從頭實作一遍 Reader 才能達到 sub-second 目標。</p>
+<p>不夠用的層面散落在好幾個面向：</p>
+<ul>
+<li>footer 整份解析的成本不容忽視，標準 Reader 沒提供跳過不必要部分的方式</li>
+<li>page level 的 I/O 控制不在 Parquet 標準 API 裡，無法只讀必要的 page、無法做 pipelining 與非同步 prefetch</li>
+<li>file 內部 row group 級的任務切分不在 Iceberg 規範裡，一個巨大的 file 容易讓單一節點成為瓶頸</li>
+<li>通用中介層（例如 Arrow）為了適配多種 query engine 而付出的格式轉換成本，在 sub-second 場景下會被放大</li>
+</ul>
+<p>Iceberg 對 file 層級的 read pattern 給出了完整規範（manifest 列出 files、column stats 落在 file 或 row group level、partition pruning 與 column projection 都有對應規則），但 file 之內如何被讀取，幾乎沒有任何規定。這個範圍可以理解為規範刻意留白，也可以理解為不足。我傾向把它視為不足：cloud-native + sub-second 已經是查詢場景的主流，每家公司都各自重新設計一套 sub-file 讀取模型，對 Iceberg 生態而言這個工程成本相當顯著。</p>
+<h3 id="iceberg-puffin-index-first-class">Iceberg 透過 Puffin 為 index 留了空間，但離 first-class 還有距離<a class="headerlink" href="#iceberg-puffin-index-first-class" title="Permanent link">&para;</a></h3>
+<p>第三個不足的證據主要來自 StarTree 在 Pattern 1 與 Pattern 2 中所有 index 相關的努力：把 Lucene index pin 在本地、用 Watcher 任務同步 index、自行研發 Reader 整合 index 查詢。</p>
+<p>要說 Iceberg 完全沒有 index 概念並不公平。Iceberg 透過 <strong>Puffin file</strong> 這個 sidecar 容器，為 statistics 與 index 類資料留了空間。Puffin 目前 spec 上明確支援的 blob type 包含 Theta sketch（用來估 NDV）與 deletion vector，並透過 metadata.json 的 <code>statistics</code> 欄位連結到對應的 snapshot。</p>
+<p>但 Puffin 的角色還在很早的階段。它在 spec 上是 optional 的，reader 可以選擇忽略，這意味著不同 query engine 對 Puffin 的支援程度落差很大。spec 明確列出的 blob type 也只有兩種，全文檢索、向量檢索、inverted index 這類其他類型的 index 沒有對應的標準化容器。想做 Lucene 之類的 index 時，整合方仍然得回到 StarTree 那套自己做的路徑：自己管理 index file、自己處理同步、自己定義跨 catalog 跨 query engine 的讀取協定。</p>
+<p>所以這個不足準確的描述是：Iceberg 已經透過 Puffin 為 index 留了空間，但這個空間還不夠 first-class、覆蓋範圍也還窄。下一個整合方做 Iceberg 上不在 Puffin spec 內的 index 時，仍然要從頭設計一輪。</p>
+<h2 id="future-plans">Future Plans<a class="headerlink" href="#future-plans" title="Permanent link">&para;</a></h2>
+<p>面對先天上的不足，Iceberg community 也正積極著手這些面向。在 metadata 路徑這個面向上，Iceberg v4 已經在重新設計整套 metadata layout，把原本 sequential 的三層讀取改成 adaptive tree，讓 metadata 結構本身可以隨 table 體量伸縮。這個方向我之前在 <a href="../rethinking-iceberg-metadata-v4/">Iceberg v4 的 metadata 重新設計</a> 那篇寫過，這裡不再贅述。同一個面向上，<a href="https://www.youtube.com/watch?v=U5yvmq7S8Js">Understanding Column Statistics in v4</a> 進一步討論 column statistics 在新結構下要怎麼分層、什麼時候放進 Puffin、什麼時候做 on-demand 載入。整體上，這個面向的轉變是：正視 metadata 本身就是 big data，用同樣分散式、按需處理的思路來管理。</p>
+<p>在 Parquet 讀取這個面向上，community 同時在兩個方向上進行。一個方向是改進 Parquet 自身，例如 <a href="https://www.youtube.com/watch?v=OiowtisBGIw">The Decompression Bottleneck: Evolving Parquet with PFOR and ALP</a> 提到的新編碼與解壓縮路徑，目標是用更少 CPU cycles 完成讀取；另一個方向是讓 Iceberg 能用 Parquet 以外的 file format，例如 <a href="https://youtu.be/5x4ppDPuliE">Vortex 這個被設計為 Parquet 後繼者的格式</a>，原生支援 SIMD filtering、GPU decompression、AI workload 場景。能讓這兩個方向並存的關鍵基礎，是 Iceberg 1.11.0（2026 年 5 月）finalize 的 <a href="https://iceberg.apache.org/blog/apache-iceberg-file-format-api/">File Format API</a>：透過 pluggable 介面把 file format 抽象出來，Iceberg 不再 hard-code Parquet。這個改動在規範層級把「file format 是什麼」變成了一個可替換的維度，整合方可以針對自家 workload 選擇最合適的格式。</p>
+<p>在 index 這個面向上，<a href="https://youtu.be/vB63kyYm4ks">secondary index framework</a> 已經有正式提案，並有初步 PoC 的結果（point lookup 把讀取的 file 數從 50 降到 1、equality delete 場景達到約 5x 的速度差距）；<a href="https://youtu.be/kwjNer5q0bg">vector / ANN index</a> 的底層算法由 Microsoft 開源的 DiskANN 提供，目前在補上 Iceberg 端的 Reader / Writer 與 index 生命週期管理。整體目標是把 index 升級成 Iceberg 的 first-class concept，讓 Iceberg 之上的全文檢索、向量、secondary index 查詢都能像 partition pruning 一樣由規範統一定義。</p>
+<p>把這三個面向放在一起看，未來的 Iceberg 會同時是 sub-second 查詢、cloud-native infrastructure、AI 與搜尋的共用 lakehouse 基礎。對這個方向我非常看好，也很期待 lakehouse 的能力最終能延伸到什麼形態。對這幾個面向有興趣的讀者，上面這幾個 references 是很好的下一站。</p>
 
 
 
@@ -7647,7 +7658,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../rethinking-iceberg-metadata-v4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Re-thinking Iceberg Metadata Structure in v4">
+          <a href="../iceberg-efficient-column-update-and-column-families/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7657,27 +7668,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Re-thinking Iceberg Metadata Structure in v4
+                Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../iceberg-challenges-from-the-field/" class="md-footer__link md-footer__link--next" aria-label="Next: 從三家 OLAP 產品反推 Iceberg 的設計挑戰">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                從三家 OLAP 產品反推 Iceberg 的設計挑戰
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
