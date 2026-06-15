@@ -6695,6 +6695,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#netflix-iceberg-exabyte" class="md-nav__link">
+    <span class="md-ellipsis">
+      從 Netflix 看 Iceberg 在 Exabyte 規模下還沒解決的問題
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#olap-iceberg" class="md-nav__link">
     <span class="md-ellipsis">
       從三家 OLAP 產品反推 Iceberg 的設計挑戰
@@ -6770,15 +6779,6 @@
   <a href="#the-lakehouse-series-from-data-lakes-to-data-lakehouses" class="md-nav__link">
     <span class="md-ellipsis">
       The Lakehouse Series: From Data Lakes to Data Lakehouses
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
     </span>
   </a>
   
@@ -7112,6 +7112,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#netflix-iceberg-exabyte" class="md-nav__link">
+    <span class="md-ellipsis">
+      從 Netflix 看 Iceberg 在 Exabyte 規模下還沒解決的問題
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#olap-iceberg" class="md-nav__link">
     <span class="md-ellipsis">
       從三家 OLAP 產品反推 Iceberg 的設計挑戰
@@ -7192,15 +7201,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#the-lakehouse-series-oltp-vs-olap-a-parquet-primer" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -7215,6 +7215,61 @@
       <header class="md-typeset">
         <h1 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-06-15 00:00:00+00:00">Jun 15, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Data</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              8 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="netflix-iceberg-exabyte"><a class="toclink" href="../../what-iceberg-doesnt-solve-for-netflix/">從 Netflix 看 Iceberg 在 Exabyte 規模下還沒解決的問題</a></h2>
+<div class="admonition info">
+<p class="admonition-title">TLDR</p>
+<p>After reading this article, you will learn:</p>
+<ul>
+<li>為什麼 Netflix 這種大規模採用 Iceberg 的公司，反而在好幾個情境下還要在 Iceberg 外面另外建立新的系統</li>
+<li>Netflix 在 Trino、ClickHouse、LanceDB 三個 use cases 上的取捨，反應出 Iceberg 目前在哪些場景上仍有不足</li>
+<li>一般資料平台團隊在導入 Iceberg 前，可以從哪兩個角度先把問題想清楚</li>
+</ul>
+</div>
+
+    
+      <nav class="md-post__action">
+        <a href="../../what-iceberg-doesnt-solve-for-netflix/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -7707,61 +7762,6 @@
   </div>
 </article>
       
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/39903885" alt="KC Lai">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-06-02 00:00:00+00:00">Jun 2, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">Data</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="the-lakehouse-series-oltp-vs-olap-a-parquet-primer"><a class="toclink" href="../../oltp-vs-olap-a-parquet-primer/">The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)</a></h2>
-<div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
-<ul>
-<li>The key differences between <strong>OLTP</strong> and <strong>OLAP</strong> workloads, and why storage format matters</li>
-<li>How <strong>Parquet</strong> organizes data internally and optimizes data storage using compression techniques like dictionary encoding and RLE</li>
-<li>Where Parquet falls short in today's data landscape</li>
-</ul>
-</div>
-
-    
-      <nav class="md-post__action">
-        <a href="../../oltp-vs-olap-a-parquet-primer/">
-          Continue reading
-        </a>
-      </nav>
-    
-  </div>
-</article>
-      
       
         
           
@@ -7769,7 +7769,7 @@
 
 
 <nav class="md-pagination">
-  
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
 </nav>
         
       
