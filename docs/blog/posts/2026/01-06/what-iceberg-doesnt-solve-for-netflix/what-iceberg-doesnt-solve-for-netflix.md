@@ -11,18 +11,18 @@ links:
   - blog/posts/2026/01-06/rethinking-iceberg-metadata-v4/rethinking-iceberg-metadata-v4.md
   - blog/posts/2026/01-06/lessons-from-slack-iceberg/lessons-from-slack-iceberg.md
   - blog/posts/2026/01-06/iceberg-efficient-column-update-and-column-families/iceberg-efficient-column-update-and-column-families.md
-  - "AWS re:Invent 2023 - Netflix's journey to an Apache Iceberg–only data lake (NFX306): https://youtu.be/jMFMEk8jFu8"
-  - "AWS re:Invent 2024 - Efficient incremental processing with Apache Iceberg at Netflix (NFX303): https://youtu.be/s1ySnxVg5rk"
-  - "Running Trino as exabyte-scale data warehouse: https://youtu.be/WuUS73QPuZE"
-  - "ClickHouse at Netflix: Petabyte-Scale Log Storage for Microservices: https://youtu.be/64TFG_Qt5r4"
-  - "How Netflix ingests 10 Million events per second with ClickHouse: https://youtu.be/CNdA0r6zbe4"
-  - "Lakehouses: A Path to Low-Cost, Scalable, No-Lock-in Observability (ClickHouse blog): https://clickhouse.com/blog/lakehouses-path-to-low-cost-scalable-no-lockin-observability"
-  - "Scaling Multimodal Data Curation with Ray and LanceDB (Ray Summit 2025): https://youtu.be/1hBesu2Erg0"
-  - "Leveraging Iceberg in Netflix Studio and Creative Production: https://youtu.be/xrMaG2G7KX0"
-  - "Netflix Case Study (LanceDB blog): https://www.lancedb.com/blog/case-study-netflix"
-  - "AWS re:Invent 2025 - How Netflix uses Amazon S3 Storage Lens to track exabytes of data (STG214): https://youtu.be/Q2YoHfhFuI8"
-  - "Data Mesh Principles and Logical Architecture: https://martinfowler.com/articles/data-mesh-principles.html"
-  - "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh: https://martinfowler.com/articles/data-monolith-to-mesh.html"
+  - "AWS re:Invent 2023 - Netflix's journey to an Apache Iceberg–only data lake (NFX306)": https://youtu.be/jMFMEk8jFu8
+  - "AWS re:Invent 2024 - Efficient incremental processing with Apache Iceberg at Netflix (NFX303)": https://youtu.be/s1ySnxVg5rk
+  - "Running Trino as exabyte-scale data warehouse": https://youtu.be/WuUS73QPuZE
+  - "ClickHouse at Netflix: Petabyte-Scale Log Storage for Microservices": https://youtu.be/64TFG_Qt5r4
+  - "How Netflix ingests 10 Million events per second with ClickHouse": https://youtu.be/CNdA0r6zbe4
+  - "Lakehouses: A Path to Low-Cost, Scalable, No-Lock-in Observability (ClickHouse blog)": https://clickhouse.com/blog/lakehouses-path-to-low-cost-scalable-no-lockin-observability
+  - "Scaling Multimodal Data Curation with Ray and LanceDB (Ray Summit 2025)": https://youtu.be/1hBesu2Erg0
+  - "Leveraging Iceberg in Netflix Studio and Creative Production": https://youtu.be/xrMaG2G7KX0
+  - "Netflix Case Study (LanceDB blog)": https://www.lancedb.com/blog/case-study-netflix
+  - "AWS re:Invent 2025 - How Netflix uses Amazon S3 Storage Lens to track exabytes of data (STG214)": https://youtu.be/Q2YoHfhFuI8
+  - "Data Mesh Principles and Logical Architecture": https://martinfowler.com/articles/data-mesh-principles.html
+  - "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh": https://martinfowler.com/articles/data-monolith-to-mesh.html
 tags:
   - Apache Iceberg
 comments: true
