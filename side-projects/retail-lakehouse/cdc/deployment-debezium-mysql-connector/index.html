@@ -7202,10 +7202,10 @@
 <div class="admonition success">
 <p class="admonition-title">Deployment Steps</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-kafka-cluster.md">Deploy a Kafka Cluster via the Strimzi Operator</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-mysql.md">Deploy a MySQL Database</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-debezium-mysql-connector.md">Deploy a Debezium Kafka Source Connector</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./cdc/deployment-iceberg-connector.md">Deploy an Iceberg Kafka Sink Connector</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="../deployment-kafka-cluster/">Deploy a Kafka Cluster via the Strimzi Operator</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" checked/><span class="task-list-indicator"></span></label> <a href="../deployment-mysql/">Deploy a MySQL Database</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="./">Deploy a Debezium Kafka Source Connector</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="../deployment-iceberg-connector/">Deploy an Iceberg Kafka Sink Connector</a></li>
 </ul>
 </div>
 <p>After the Kafka cluster and MySQL database are up and running, you can deploy the Debezium MySQL Kafka Connector by running the following commands:</p>
@@ -7246,7 +7246,7 @@
 <p><strong>Strimzi also can be used for building and pushing the required container image for us</strong>. In fact, both tasks can be merged together and instructions for building the container image can be provided directly within the <code>KafkaConnect</code> object specification:</p>
 <details class="info">
 <summary>Prerequisite</summary>
-<p>Make sure you have <strong>enabled the local registry and set up <code>insecure-registry</code> in your Minikube cluster</strong>. If you have followed the instructions in the <a href="../../prerequisites/#setting-up-a-local-kubernetes-cluster">Prerequisites</a> section, you should have already done this step. If not, you can enable it now by running the following command:</p>
+<p>Make sure you have <strong>enabled the local registry and set up <code>insecure-registry</code> in your Minikube cluster</strong>. If you have followed the instructions in the <a href="../../prerequisites/">Prerequisites</a> section, you should have already done this step. If not, you can enable it now by running the following command:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>minikube<span class="w"> </span>addons<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>registry<span class="w"> </span>-p<span class="w"> </span>retail-lakehouse
 </span></code></pre></div>
 <details class="info">

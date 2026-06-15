@@ -3132,7 +3132,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#common-errors" class="md-nav__link">
     <span class="md-ellipsis">
       常見錯誤排查
     </span>
@@ -3174,7 +3174,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       未來改善方向
     </span>
@@ -7247,7 +7247,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#common-errors" class="md-nav__link">
     <span class="md-ellipsis">
       常見錯誤排查
     </span>
@@ -7289,7 +7289,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       未來改善方向
     </span>
@@ -7423,7 +7423,7 @@
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">pathStyleAccess: true 是必要的</p>
-<p>如果忘記設定 <code>s3.pathStyleAccess: true</code>，Polaris 在嘗試 register table 時會發生 <code>UnknownHostException</code>。這是因為 MinIO 預設使用 path-style URL（<code>http://minio:9000/bucket/key</code>），而不是 virtual-hosted style（<code>http://bucket.minio:9000/key</code>）。後者在本地叢集中無法解析，導致 DNS 查找失敗。詳見下方的 <a href="#_6">常見錯誤排查</a>。</p>
+<p>如果忘記設定 <code>s3.pathStyleAccess: true</code>，Polaris 在嘗試 register table 時會發生 <code>UnknownHostException</code>。這是因為 MinIO 預設使用 path-style URL（<code>http://minio:9000/bucket/key</code>），而不是 virtual-hosted style（<code>http://bucket.minio:9000/key</code>）。後者在本地叢集中無法解析，導致 DNS 查找失敗。詳見下方的 <a href="#common-errors">常見錯誤排查</a>。</p>
 </div>
 <hr />
 <h3 id="step-3-service_admin-catalog">Step 3：授予 service_admin 對 Catalog 的管理權限<a class="headerlink" href="#step-3-service_admin-catalog" title="Permanent link">&para;</a></h3>
@@ -7485,7 +7485,7 @@
 </span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span>
 </span></code></pre></div>
 <hr />
-<h2 id="_2">常見錯誤排查<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="common-errors">常見錯誤排查<a class="headerlink" href="#common-errors" title="Permanent link">&para;</a></h2>
 <h3 id="unknownhostexceptiontable-registration">UnknownHostException：table registration 失敗<a class="headerlink" href="#unknownhostexceptiontable-registration" title="Permanent link">&para;</a></h3>
 <p><strong>錯誤訊息：</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>java.net.UnknownHostException: retail-lakehouse-7dj2.minio-api.minio.svc.cluster.local
@@ -7504,7 +7504,7 @@
 <h3 id="namespace">Namespace 已存在<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
 <p>如果 namespace 已存在（有時重啟後部分狀態殘留），POST 會回傳 409 Conflict，可以忽略此錯誤直接繼續 Step 5。</p>
 <hr />
-<h2 id="_3">未來改善方向<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">未來改善方向<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>如果 catalog reset 問題影響開發效率，可以考慮以下方向：</p>
 <ul>
 <li><strong>改用持久化後端</strong>：設定 <code>persistence.type: eclipse-link</code> 搭配 PostgreSQL，catalog 狀態就能在重啟後保留</li>
