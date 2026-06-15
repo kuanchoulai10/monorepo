@@ -16,7 +16,7 @@
 - [x] [CAP Theorem](./core-concepts/cap/index.md)
 - [x] [Consistent Hashing](./core-concepts/consistent-hashing/index.md)
 - [ ] [Indexing](./core-concepts/indexing/index.md)
-- [ ] [Locking](./core-concepts/locking/index.md)
+- [ ] [Locking](./core-concepts/locking.md)
 - [ ] [Consensus Algorithms](./core-concepts/consensus-algorithms/index.md)
 - [ ] [API Performance Optimization](./core-concepts/api-perf-opt/index.md)
 - [ ] [Database Performance Optimization](./core-concepts/db-perf-opt/index.md)

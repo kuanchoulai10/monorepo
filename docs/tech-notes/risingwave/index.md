@@ -19,7 +19,7 @@ tags:
 
 ## RisingWave vs. Apache Flink
 
-![RisingWave vs. flink](risingwave-vs-flink.png)
+![RisingWave vs. flink](assets/risingwave-vs-flink.png)
 
 > *For an easy **on-ramp to real-time processing**, RisingWave is an excellent choice. It offers a **simple**, **cost-efficient**, **SQL-based** solution that can be quickly deployed. This makes it ideal for data-driven businesses of any size that require real-time processing capabilities.*
 > *Alternatively, if you require **low-level API** access that integrates seamlessly into your **JVM-based technical stack**, Apache Flink is the preferred option. Flink is well-suited for businesses with large teams that prefer building custom solutions tailored to their specific needs.*

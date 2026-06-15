@@ -41,7 +41,7 @@ hide:
 - [PayPal](#paypal)
 - [LinkedIn](#linkedin)
 - [Walmart](#walmart)
-- [Honeycomb](#honeycomb)
+- Honeycomb (TBD)
 
 ## Agoda
 

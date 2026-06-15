@@ -210,7 +210,7 @@ Remember to commit and push when you're done setting up this automation masterpi
 
 Now comes the exciting part – teaching our sub-repository how to use that universal remote we just created! But first, we need to create a special key (Personal Access Token) that gives our automation the right permissions.
 
-Head over to GitHub's top-right corner: click your profile picture > Settings > Developer Settings > Personal access tokens > Fine-grained tokens. Think of this token as a VIP pass that allows reading metadata from the monorepo and pushing code with new submodule commits. Make sure to grant "Contents" repository permissions (write)[^5] – it's like giving your automation assistant the keys to the filing cabinet.
+Head over to GitHub's top-right corner: click your profile picture > Settings > Developer Settings > Personal access tokens > Fine-grained tokens[^7]. Think of this token as a VIP pass that allows reading metadata from the monorepo and pushing code with new submodule commits. Make sure to grant "Contents" repository permissions (write)[^5] – it's like giving your automation assistant the keys to the filing cabinet.
 
 ![](./assets/pat.png){ width=600 }
 
