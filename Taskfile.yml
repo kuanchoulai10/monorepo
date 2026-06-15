@@ -1,0 +1,12 @@
+version: '3'
+
+output:
+  group:
+    begin: "::group::{{.TASK}}"
+    end: "::endgroup::"
+
+tasks:
+  serve-docs:
+    desc: Serve the MkDocs site locally with live reload
+    cmds:
+      - uv run mkdocs serve
