@@ -20,13 +20,11 @@ comments: true
 
 # Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - 為什麼 Iceberg 現有以 row 為單位的 update 機制，在 AI/ML feature engineering 帶來的 wide table 場景下會變得非常昂貴
-    - Iceberg 正在討論的 Flip the Axis 與 Column Families 是什麼，為什麼這個方向同時涵蓋了 column-level update 與 layout flexibility 兩種應用
-    - 為什麼這個方向值得期待，以及它跟新一代 table format（例如 LanceDB）的競爭，對 Iceberg 接下來的位置意味著什麼
+    - 為什麼 Iceberg 現有的 row-level update 在 wide table 場景下會變得很貴？
+    - Flip the Axis 跟 Column Families 想解決什麼問題？怎麼解？
+    - 這個方向對 Iceberg 跟新一代 table format（例如 LanceDB）的競爭代表著什麼？
 
 <!-- more -->
 

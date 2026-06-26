@@ -18,13 +18,11 @@ comments: true
 
 # Lessons from Slack：在 180PB 規模上維運 Iceberg
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - Slack 如何在每天有超過 300TB 資料流入 180PB 規模的 Data Lakehouse 下，穩定維持 99.9% 的 Iceberg 維護成功率
-    - Slack 在開發 IceChipper 時的思考過程：4 種資料、5 條設計準則、3 條被否決的替代方案
-    - Slack 在維護 4,000 張 Iceberg tables 過程中遇到的 3 大痛點以及他們如何因應
+    - 在 180PB、每天 300TB 流入的規模下，Slack 怎麼做到 99.9% 的 Iceberg 維護成功率？
+    - IceChipper 的設計為什麼長這樣？哪些替代方案被否決了，為什麼？
+    - 維護 4,000 張 Iceberg tables 會踩到哪些坑？
 
 <!-- more -->
 

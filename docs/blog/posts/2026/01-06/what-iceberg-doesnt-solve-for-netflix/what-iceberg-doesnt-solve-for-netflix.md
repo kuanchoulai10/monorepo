@@ -34,13 +34,11 @@ comments: true
 
 # 從 Netflix 看 Iceberg 在 Exabyte 規模下還沒解決的問題
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - 為什麼 Netflix 這種大規模採用 Iceberg 的公司，反而在好幾個情境下還要額外引入新的系統
-    - Netflix 在 table maintenance、Trino、ClickHouse、LanceDB 四個 use cases 上的取捨，反應出 Iceberg 目前在哪些場景上仍有不足
-    - 一般資料平台團隊在導入 Iceberg 前，可以從哪兩個角度先把問題想清楚
+    - 為什麼 Netflix 全面採用 Iceberg 之後，還需要額外引入這麼多系統？
+    - Table maintenance、Trino、ClickHouse、LanceDB 這四個 use cases 反映了 Iceberg 的哪些不足？
+    - 資料平台團隊在導入 Iceberg 前，應該先想清楚哪些問題？
 
 <!-- more -->
 

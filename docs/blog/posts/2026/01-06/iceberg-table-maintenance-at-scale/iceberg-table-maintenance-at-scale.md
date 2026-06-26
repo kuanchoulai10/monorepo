@@ -36,19 +36,17 @@ comments: true
 
 # Iceberg Table Maintenance at Scale: Lessons from 6 Big Companies
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - 為什麼這 6 家規模、形態、出發點都不同的公司，最後在 TMS 上做出來的東西結構驚人相似
-    - Iceberg spec 沒寫進去的 maintenance 職責，6 家公司分別用什麼方式接管
-    - 如果今天要從零設計一個 TMS，從這幾家的取捨可以反推出哪些核心 building blocks
+    - 6 家公司各自蓋出來的 TMS，在架構上有什麼異同？
+    - 這些獨立發展的系統收斂出了哪些共同 patterns？
+    - 如果從零設計一個 TMS，哪些 building blocks 是非有不可的？
 
 <!-- more -->
 
 過去幾年裡，Iceberg tables 被許多大公司大規模採用。但採用之後馬上就要面對一個問題：Iceberg spec 本身只定義 table format，沒有規定誰來負責 compaction、snapshot expiry、orphan file cleanup 這些長期必須做的維護工作。community 也沒有提供一套 out-of-the-box 的方案，讓所有使用 Iceberg 的公司可以用同一套標準來處理。
 
-結果就是各家大公司分別在 Iceberg 周圍蓋出自己的 Table Maintenance Service (TMS)，自動化、cost-effective 地維護上萬張 tables。各家蓋出來的細節不同，但承擔的工作高度重疊。
+結果就是各家大公司分別在 Iceberg 周圍打造出適合自家公司的 Table Maintenance Service (TMS)，自動化、cost-effective 地維護上萬張 tables。每家公司打造出來的細節不同，但承擔的工作高度重疊。
 
 我寫這篇文章是因為最近自己在研究怎麼設計一個好的 TMS。把這幾家公司公開的做法擺在一起看，能不能找出共同的 patterns？也讓其他在處理同樣問題的團隊有經驗可以借鏡。
 

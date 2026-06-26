@@ -22,13 +22,11 @@ comments: true
 
 # 從三家 OLAP 產品反推 Iceberg 的設計挑戰
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - ClickHouse、Firebolt、StarTree 這類低延遲 OLAP 產品在整合 Iceberg 時，會在同樣幾個層面自己加 cache、自行研發 Reader、把 metadata planning 分散化，這些共同的選擇背後反映的是 Iceberg spec 本身的不足
-    - 哪些是目前 Iceberg 的三個結構性不足
-    - Iceberg community 已經在 v4 metadata、File Format API、index first-class 這幾個面向上實質前進，正在逐步補上 spec 本身的不足
+    - ClickHouse、Firebolt、StarTree 在整合 Iceberg 時，為什麼不約而同做了類似的選擇？
+    - 這些選擇背後反映的是 Iceberg spec 的哪些結構性不足？
+    - Iceberg community 正在怎麼補上這些不足？
 
 <!-- more -->
 

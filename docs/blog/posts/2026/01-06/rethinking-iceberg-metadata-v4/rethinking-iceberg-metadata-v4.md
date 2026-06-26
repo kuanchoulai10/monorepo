@@ -17,13 +17,11 @@ comments: true
 
 # Re-thinking Iceberg Metadata Structure in v4
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - 為什麼原本支撐 PB 資料規模的三層 metadata 結構，在 small commit、streaming 與 wide table 這些新場景下顯得不夠用
-    - Iceberg v4 提出的 Adaptive Metadata Tree 是什麼，為什麼這是 Iceberg community 認為值得做的方向
-    - v4 這個方向有什麼值得肯定的地方、隱憂在哪裡，以及為什麼 Iceberg community 接下來的演進仍然值得期待
+    - 為什麼沿用多年的三層 metadata 結構，在新場景下開始不夠用了？
+    - Iceberg v4 提出的 Adaptive Metadata Tree 想解決什麼？怎麼解？
+    - 這個方向有什麼值得期待的地方？隱憂在哪裡？
 
 <!-- more -->
 

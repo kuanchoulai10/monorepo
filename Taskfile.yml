@@ -11,4 +11,4 @@ tasks:
     env:
       JUPYTER_PLATFORM_DIRS: "1"
     cmds:
-      - uv run mkdocs serve --livereload --dirty --open
+      - uv run mkdocs serve --livereload --open
