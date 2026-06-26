@@ -19,14 +19,11 @@ comments: true
 
 # The Lakehouse Series: Apache Hudi Overview
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - How Apache Hudi's timeline-based architecture tracks all table changes and enables time travel queries
-    - The difference between Copy-on-Write (COW) and Merge-on-Read (MOR) storage types for different workload patterns
-    - How Hudi organizes their data in a structured way with table services
-    - The various query types Hudi supports, including snapshot, incremental, and read-optimized queries
+    - How does Hudi's timeline-based architecture track table changes and enable time travel?
+    - When should you choose Copy-on-Write (COW) vs. Merge-on-Read (MOR), and what are the trade-offs?
+    - What query types does Hudi support — snapshot, incremental, read-optimized — and how do they differ?
 
 
 <!-- more -->

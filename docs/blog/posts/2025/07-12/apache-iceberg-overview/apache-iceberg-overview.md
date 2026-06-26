@@ -20,14 +20,11 @@ comments: true
 
 # The Lakehouse Series: Apache Iceberg Overview
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - Apache Iceberg's 3-tier metadata architecture (metadata files, manifest lists, and manifest files)
-    - How Iceberg catalogs work, including the REST catalog standard for multi-engine compatibility
-    - Query capabilities including time travel, incremental reads, and metadata queries
-    - Spark procedures for snapshot management, metadata maintenance, and table migration
+    - How does Iceberg's 3-tier metadata architecture (metadata files, manifest lists, manifest files) work together?
+    - What role do catalogs play in Iceberg, and why does the REST catalog standard matter for multi-engine compatibility?
+    - What query capabilities does Iceberg unlock — time travel, incremental reads, metadata queries — and when would you use each?
 
 
 <!-- more -->

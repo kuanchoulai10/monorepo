@@ -19,14 +19,11 @@ comments: true
 
 # The Lakehouse Series: From Data Lakes to Data Lakehouses
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - What limitations traditional data lakes face
-    - How data lakehouses merge the flexibility of data lakes with the structured management of data warehouses
-    - What enterprise-grade capabilities define lakehouse architecture
-    - What the major open-source lakehouse formats are
+    - What limitations do traditional data lakes face, and why aren't they enough?
+    - How do data lakehouses merge the flexibility of data lakes with the structured management of data warehouses?
+    - What are the major open-source lakehouse formats, and what enterprise-grade capabilities define the architecture?
 
 <!-- more -->
 

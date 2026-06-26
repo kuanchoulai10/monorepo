@@ -19,13 +19,11 @@ comments: true
 
 # The Lakehouse Series: OLTP vs. OLAP (A Parquet Primer)
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn:
-
-    - The key differences between **OLTP** and **OLAP** workloads, and why storage format matters
-    - How **Parquet** organizes data internally and optimizes data storage using compression techniques like dictionary encoding and RLE
-    - Where Parquet falls short in today's data landscape
+    - What are the key differences between OLTP and OLAP workloads, and why does storage format matter?
+    - How does Parquet organize data internally and optimize storage using techniques like dictionary encoding and RLE?
+    - Where does Parquet fall short in today's data landscape?
 
 
 <!-- more -->

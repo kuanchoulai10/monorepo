@@ -16,14 +16,11 @@ comments: true
 
 # How to Use MkDocs to Integrate GitHub Actions and Git Submodule for Cross-repo Documentation
 
-!!! info "TLDR"
+!!! info "After reading this article, you will be able to answer..."
 
-    After reading this article, you will learn how to:
-
-    - Use **Git Submodule** to centrally manage documentation sources across multiple projects  
-    - Configure **GitHub Actions** for cross-project automation and integration workflows  
-    - Utilize **Reusable Workflows** to reuse CI/CD scripts and reduce maintenance costs  
-    - Leverage **MkDocs Monorepo Plugin** to merge documentation from multiple projects into a single website
+    - How can Git Submodules centrally manage documentation sources across multiple projects?
+    - How do GitHub Actions and Reusable Workflows automate cross-project CI/CD while reducing maintenance costs?
+    - How does the MkDocs Monorepo Plugin merge documentation from multiple projects into a single website?
 
 <!-- more -->
 
