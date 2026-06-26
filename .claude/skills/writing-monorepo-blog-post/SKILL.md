@@ -9,7 +9,7 @@ This skill encodes the author's own conventions for posts under `docs/blog/posts
 
 ## 0. Pick the article type first
 
-Before touching the file structure or the skeleton, identify which kind of article the author is writing. Different types answer different reader questions and demand different structures, hooks, and anti-patterns. The skeleton in §3 is a **shared baseline** (frontmatter, TLDR, `<!-- more -->`, figure, section pattern) — the article-type reference adds the **narrative arc** on top.
+Before touching the file structure or the skeleton, identify which kind of article the author is writing. Different types answer different reader questions and demand different structures, hooks, and anti-patterns. The skeleton in §3 is a **shared baseline** (frontmatter, TLDR, `<!-- more -->`, section pattern) — the article-type reference adds the **narrative arc** on top.
 
 The author has defined three types so far (the list is open-ended; new types may be added later):
 
@@ -100,11 +100,6 @@ Use this exact skeleton. The TLDR admonition and `<!-- more -->` marker are requ
 
 <!-- more -->
 
-<figure markdown="span">
-  ![<alt text>](./assets/<cover>.drawio.svg){width="600"}
-  *<short caption>*
-</figure>
-
 <Opening paragraph: history / motivation / problem statement. No metaphor opener.>
 
 ## <First major section>
@@ -123,8 +118,9 @@ Notes on structure:
 
 - Title is either `<Series>: <Topic>` or an actionable phrase (`N Practical Ways to ...`, `What's New in ...`). Keep it concrete.
 - TLDR bullets are takeaways, not a table of contents. Phrase them as "you will learn X" items.
-- After `<!-- more -->`, lead with a cover figure when one exists, then an opening paragraph that states what the thing is and why it matters. Do not open with a metaphor or analogy.
+- After `<!-- more -->`, go straight into the opening paragraph that states what the thing is and why it matters. Do not open with a metaphor or analogy. **Do not add a cover figure by default** — posts ship without one unless the author explicitly says they have one to add. Never insert a placeholder, TODO, or commented-out figure block hoping the author will fill it in; if they want a cover, they'll bring the file.
 - Within each `##` section: one short prose paragraph to set context, then a bulleted list of properties / steps / components. This pattern repeats throughout the post.
+- **Don't add a source-list table to the body.** The frontmatter `links:` block is the canonical place for sources (talks, papers, repos, related posts) — mkdocs Material renders it as a sidebar block on the post. The body should only inline-link a source when the prose actually references that source for a specific claim. Never construct a "table of sources" / "main references" table just to enumerate what you read; that duplicates the sidebar and bloats the body.
 - The post ends after its final substantive `##` section. Do **not** add a generic closing section (e.g. `Putting It All Together`, `Conclusion`, `Wrapping Up`) by default — only include one when the author explicitly asks for it. If they do, two valid forms exist: (1) an FAQ-style block using `!!! question` admonitions; (2) a short `Future Plans`-style outlook section. The outlook form must be **short flowing prose with references embedded inline as markdown links — never a bulleted list of references**. It should end with an explicit forward-looking sentiment (「我非常看好」/「期待這個方向最終會延伸到什麼位置」 etc.), not a flat observation. The goal is "next-stop recommendations for readers who want to dig further", framed as a hopeful close, not an info dump.
 
 ## 4. MkDocs Material syntax used in this blog
@@ -156,22 +152,22 @@ These are the elements the author actually uses. Prefer them over inventing new 
     ```
 ```
 
-**Figures with captions** — always use `<figure markdown="span">` so the caption renders:
+**Figures with captions** — use the `/// caption` block syntax (from mkdocs-material's blocks extension). Do **not** use `<figure markdown="span">` HTML wrappers — the author dislikes that form.
 
 ```markdown
-<figure markdown="span">
-  ![Iceberg Storage Layout](./assets/iceberg.drawio.svg){width="600"}
-  *Iceberg Storage Layout*
-</figure>
+![Iceberg Storage Layout](./assets/iceberg.drawio.svg){width="600"}
+/// caption
+Iceberg Storage Layout
+///
 ```
 
-For external images with a clickable caption, wrap the caption in a link:
+For a clickable caption (typical when the figure comes from a talk or external source), put the link inside the caption block:
 
 ```markdown
-<figure markdown="span">
-  ![Data Lakehouse](https://example.com/img.png)
-  [*Data Architecture Evolution*](https://example.com/source)
-</figure>
+![Data Lakehouse](https://example.com/img.png){width="600"}
+/// caption
+[Data Architecture Evolution](https://example.com/source)
+///
 ```
 
 **Inline emphasis** — `**bold**` for key terms (used heavily, multiple per paragraph), `*italic*` for filenames, captions, and softer emphasis. Inline code with backticks for identifiers, paths, SQL keywords.
@@ -274,8 +270,9 @@ Headings already mix English and Chinese; body prose should follow the same regi
 | 意味著 | 代表著 | 意味著 has a slightly literary / inferential tone; 代表著 reads as everyday spoken Chinese and matches the author's conversational register |
 | 擴散 (when used as abstract metaphor for "proliferation / spreading", e.g. 「資料來源的擴散」/「消費者的擴散」) | 「越來越多」/「越來越分歧」/「種類越來越雜」 — plain spoken phrasing | 擴散 is abstract translation-ese; the author wants plain spoken Chinese for these qualitative descriptions. Note: 擴散 in literal physics / chemistry / epidemiology contexts is fine |
 | 技術 X (used as a label-noun for "the technical/quantitative side", e.g. 「技術 scale」/「技術指標」) | name the axis directly (e.g. 「資料規模」/「資料量、tables 數、metadata 大小」) | 「技術 X」 as a category label reads as forced and unspecific in Chinese; naming the actual axis is clearer and more concrete |
-
-#### Avoid body / physical-action verbs for abstract technical behaviour
+| 發源地 / 誕生地 / 起源所在 (and the broader 「X 是 Y 的 [literary place-noun]」 sentence pattern) | name the people and the act directly (e.g. 「Y 這個 X 最早是 [people] 在 [company] 內部設計出來的」) | place-noun framings carry a tourist-guide / 文藝 register that doesn't match engineering prose; the underlying fact (who designed it, where) is more clearly conveyed by a flat agentive sentence |
+| 程序 (when referring to a sequence of operational steps, e.g. 「maintenance 程序」) | 做法 / 流程 | 程序 reads as overly formal / 公文 register; 做法 is conversational, 流程 keeps the operational meaning without the formality |
+| 單表 (and similar 「單 + Chinese-abbreviated-noun」 compounds like 單表掃描、單表維護) | 單張 table / 一張 table (keep the unit word + English noun) | 單表 is spec-sheet shorthand; spelling out the unit word and keeping the English noun matches the author's mixed-register prose |
 
 When describing systems, proposals, workloads, structures, problems, or challenges, do not reach for verbs that imply a physical body or object motion. These read as 擬人化 / 感性 and break the grounded technical voice.
 
@@ -535,7 +532,7 @@ The author has converged on a specific iterative workflow across multiple posts 
 ### Phase 4 — Draft the post as sequential tasks
 
 8. **Break the draft into tasks at h2-section granularity** using `TaskCreate`. The standard breakdown is:
-    - One task for the **opening** (the paragraph between the cover figure and the first h2).
+    - One task for the **opening** (the paragraph between `<!-- more -->` and the first h2).
     - One task **per h2 section** — each task covers that h2 plus all its h3 subsections as a single deliverable.
     - One **final TLDR task** that updates the TLDR bullets to match the body that was actually written.
 9. **Complete tasks strictly in order.** For each task:
