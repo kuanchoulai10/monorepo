@@ -13,6 +13,7 @@ links:
   - "Lance v2: A Columnar Container Format": https://www.lancedb.com/blog/lance-v2
 tags:
   - Apache Iceberg
+  - The Lakehouse Series
 comments: true
 ---
 

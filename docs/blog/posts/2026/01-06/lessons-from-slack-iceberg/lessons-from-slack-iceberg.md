@@ -11,6 +11,7 @@ links:
 tags:
   - Apache Iceberg
   - Slack
+  - The Lakehouse Series
 comments: true
 ---
 

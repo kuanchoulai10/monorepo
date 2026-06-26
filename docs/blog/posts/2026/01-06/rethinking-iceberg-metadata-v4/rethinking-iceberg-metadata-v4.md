@@ -10,6 +10,7 @@ links:
   - "Breaking the Mold: Re-thinking Iceberg Metadata Structure in v4": https://youtu.be/ymUCDJV19tE?si=o0rZjQtx7PYP-iWW
 tags:
   - Apache Iceberg
+  - The Lakehouse Series
 comments: true
 ---
 

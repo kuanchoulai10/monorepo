@@ -26,6 +26,11 @@ links:
   - "LakeOps": https://lakeops.dev/
 tags:
   - Apache Iceberg
+  - The Lakehouse Series
+  - LinkedIn
+  - Netflix
+  - Slack
+  - Apple
 comments: true
 ---
 

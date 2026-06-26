@@ -26,6 +26,8 @@ links:
   - "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh": https://martinfowler.com/articles/data-monolith-to-mesh.html
 tags:
   - Apache Iceberg
+  - The Lakehouse Series
+  - Netflix
 comments: true
 ---
 

@@ -15,6 +15,7 @@ links:
   - "High-Performance Full Text Search Directly on Iceberg via Lucene-Integrated Indexing": https://youtu.be/KO04A2uEa0E?si=Q7DkM3q6P1UGkPnC
 tags:
   - Apache Iceberg
+  - The Lakehouse Series
 comments: true
 ---
 
