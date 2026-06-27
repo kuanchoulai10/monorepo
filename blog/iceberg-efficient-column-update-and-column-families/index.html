@@ -7227,7 +7227,7 @@
                       <li class="md-nav__item">
                         <div class="md-nav__link">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 13h1.5v2.82l2.44 1.41-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>
-                          <time datetime="2026-06-03 00:00:00+00:00" class="md-ellipsis">Jun 3, 2026</time>
+                          <time datetime="2026-06-26 00:00:00+00:00" class="md-ellipsis">Jun 26, 2026</time>
                         </div>
                       </li>
                     
@@ -7378,6 +7378,12 @@
         <a href="../../tags/#tag:apache-iceberg" class="md-tag">Apache Iceberg</a>
       
     
+      
+      
+      
+        <a href="../../tags/#tag:the-lakehouse-series" class="md-tag">The Lakehouse Series</a>
+      
+    
   </nav>
 
 
@@ -7400,12 +7406,11 @@
 
 <h1 id="efficient-column-update-column-familiesiceberg-aiml-wide-table">Efficient Column Update 與 Column Families：Iceberg 對 AI/ML Wide Table 的回應<a class="headerlink" href="#efficient-column-update-column-familiesiceberg-aiml-wide-table" title="Permanent link">&para;</a></h1>
 <div class="admonition info">
-<p class="admonition-title">TLDR</p>
-<p>After reading this article, you will learn:</p>
+<p class="admonition-title">After reading this article, you will be able to answer...</p>
 <ul>
-<li>為什麼 Iceberg 現有以 row 為單位的 update 機制，在 AI/ML feature engineering 帶來的 wide table 場景下會變得非常昂貴</li>
-<li>Iceberg 正在討論的 Flip the Axis 與 Column Families 是什麼，為什麼這個方向同時涵蓋了 column-level update 與 layout flexibility 兩種應用</li>
-<li>為什麼這個方向值得期待，以及它跟新一代 table format（例如 LanceDB）的競爭，對 Iceberg 接下來的位置意味著什麼</li>
+<li>為什麼 Iceberg 現有的 row-level update 在 wide table 場景下會變得很貴？</li>
+<li>Flip the Axis 跟 Column Families 想解決什麼問題？怎麼解？</li>
+<li>這個方向對 Iceberg 跟新一代 table format（例如 LanceDB）的競爭代表著什麼？</li>
 </ul>
 </div>
 <!-- more -->
