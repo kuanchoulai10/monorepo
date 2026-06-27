@@ -40,7 +40,7 @@ comments: true
 
     - 6 家公司各自打造出來的 Iceberg Table Maintenance Service (TMS)，在架構上有什麼異同？
     - 這些獨立發展的系統收斂出了哪些共同 patterns？
-    - 如果從零設計一個 TMS，哪些 building blocks 是非有不可的？
+    - 如果從零設計一個能在多團隊、大規模下擴展的 TMS，哪些 building blocks 是非有不可的？
 
 <!-- more -->
 
@@ -52,23 +52,30 @@ comments: true
 
 ## 這 6 家公司在 Iceberg 上的進度跟規模
 
-這 6 家公司我會把它們分成兩種。一種是在自家環境打造 TMS 的大公司；另一種則是專門以 TMS 為設計目標的開源 / 商業產品，目的是服務其他導入 Iceberg 但沒有資源自行維運、打造 TMS 的公司。兩種一起觀察，我覺得更可以看出「實際跑久了、規模變大了之後，哪些 building blocks 非有不可？」
+這 6 家公司我會把它們分成兩種：
 
-**In-house 系統**
+- 一種是在自家環境打造 Iceberg TMS 的大公司，像是 Netflix、Apple、LinkedIn、Slack；
+- 另一種則是專門以 Iceberg TMS 為設計目標的開源 / 商業產品，像是 Floe 跟 LakeOps，服務「已經導入 Iceberg 但沒有資源自行維運、打造 TMS」的公司
+
+兩種一起觀察，我覺得更可以看出「實際跑久了、規模變大了之後，哪些 building blocks 非有不可？哪些問題是每家公司導入 Iceberg 時都會遇到的？」
+
+### In-house 系統
+
+**Netflix** 跟 Iceberg 的關係很深厚：Iceberg 這個 table format 最早就是 Ryan Blue 等人在 Netflix 內部設計出來的。後來他們把整個 data lake 全面轉成 Iceberg-only，規模接近 1 EB，超過 1.5M Iceberg tables，是公開資料裡規模最大的 Iceberg 部署。Janitor、Autotune、Autolift 這幾個 maintenance 服務也是這個長期維運過程裡打造出來的。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jMFMEk8jFu8?si=iF9W2fxk2duse2xU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 /// caption
 [AWS re:Invent 2023 - Netflix’s journey to an Apache Iceberg–only data lake (NFX306)](https://www.youtube.com/watch?v=jMFMEk8jFu8)
 ///
 
-**Netflix** 跟 Iceberg 的關係很深厚：Iceberg 這個 table format 最早就是 Ryan Blue 等人在 Netflix 內部設計出來的。後來他們把整個 data lake 全面轉成 Iceberg-only，規模接近 1 EB，超過 1.5M Iceberg tables，是公開資料裡規模最大的 Iceberg 部署。Janitor、Autotune、Autolift 這幾個 maintenance 服務也是這個長期維運過程裡打造出來的。
+**Apple** 同樣也導入了 Iceberg。當 tables 數量從幾十張增加到幾百張、再到上千張之後，原本針對單張 table 的 maintenance 做法就不夠用了，因此建了一個專門的 TMS，背後管的是數百個 catalogs、上萬張 tables；control plane 統一處理數萬個 maintenance workloads，data plane 則交給 Spark 執行。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JN6K1pdFImc?si=DxCNON-ZPvvuMzid" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 /// caption
 [Learnings from Running Large-scale Apache Iceberg™ Table Management Service](https://www.youtube.com/watch?v=JN6K1pdFImc)
 ///
 
-**Apple** 同樣也導入了 Iceberg。當 tables 數量從幾十張增加到幾百張、再到上千張之後，原本針對單張 table 的 maintenance 做法就不夠用了，因此建了一個專門的 TMS，背後管的是數百個 catalogs、上萬張 tables；control plane 統一處理數萬個 maintenance workloads，data plane 則交給 Spark 執行。
+**LinkedIn** [OpenHouse](https://github.com/linkedin/openhouse) 是 LinkedIn 內部的 declarative table catalog 兼 maintenance control plane。2024 年公開分享時，LinkedIn 已經透過 OpenHouse 管理超過 15k 張 tables，並提到未來預期擴展到 100k - 200k 張 tables 的規模。隨後 LinkedIn 也在2025 和 2026年 分別發表 [AutoComp](https://arxiv.org/abs/2504.04186) 跟 [Zero-Scan Data Quality](https://arxiv.org/abs/2605.30308) 兩篇 arXiv 論文，把他們在 compaction 排序跟 metadata 觀測上的做法整理成可被其他公司借鏡的寶貴經驗。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Gjmg8aPJeIk?si=3LQ8ShtSRUS_ilav" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 /// caption
@@ -80,100 +87,42 @@ comments: true
 [Taking Charge of Tables with OpenHouse](https://www.youtube.com/watch?v=5fubVf6E3PM)
 ///
 
-**LinkedIn** [OpenHouse](https://github.com/linkedin/openhouse) 是 LinkedIn 內部的 declarative table catalog 兼 maintenance control plane。2024 年公開分享時，LinkedIn 已經透過 OpenHouse 管理超過 15k 張 tables，並提到未來預期擴展到 100k - 200k 張 tables 的規模。隨後 LinkedIn 也在2025 和 2026年 分別發表 [AutoComp](https://arxiv.org/abs/2504.04186) 跟 [Zero-Scan Data Quality](https://arxiv.org/abs/2605.30308) 兩篇 arXiv 論文，把他們在 compaction 排序跟 metadata 觀測上的做法整理成可被其他公司借鏡的寶貴經驗。
+**Slack** 從 Hive 遷到 Iceberg 之後，建立 IceChipper 這個內部服務來處理維護工作。IceChipper 目前維護超過 4,000 張 tables，所有 maintenance operations 的成功率達到 99.9%。它把所有 maintenance activity 寫進另一個 Iceberg table 當 tracking backend，鎖定機制也是透過對 lock table 跑 `MERGE` 完成。整套設計繞回 Iceberg 自己。
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NRSlundcwvc?si=xa6cp1-jKymhJiRd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 /// caption
 [Maintaining Iceberg at Scale: Lessons from Slack](https://www.youtube.com/watch?v=NRSlundcwvc)
 ///
 
-**Slack** 從 Hive 遷到 Iceberg 之後，建立 IceChipper 這個內部服務來處理維護工作。IceChipper 目前維護超過 4,000 張 tables，所有 maintenance operations 的成功率達到 99.9%。它把所有 maintenance activity 寫進另一個 Iceberg table 當 tracking backend，鎖定機制也是透過對 lock table 跑 `MERGE` 完成。整套設計繞回 Iceberg 自己。
+### Dedicated TMS 專案 / 產品
 
-**Dedicated TMS 專案 / 產品**
+[**Floe**](https://github.com/nssalian/floe) 是 Neelesh Salian 個人發起的開源 TMS framework。Neelesh 在 Iceberg community 是長期 contributor，把過去在 data platform 團隊裡反覆遇到「catalogs 不執行 maintenance、engines 不 orchestrate」的痛點整理出來，做成一個 declarative 的 policy 系統。使用者用 glob patterns 對 tables 套規則，Floe 會根據表的健康指標（小檔比例、snapshot 數、delete file 比例、partition skew）決定要不要實際跑 compaction、expire snapshot 等操作。目前支援 REST、Polaris、Lakekeeper、Gravitino、DataHub、Hive Metastore、Nessie 共 7 種 catalogs，執行引擎則可以接 Spark 或 Trino。
 
-![Floe](https://github.com/nssalian/floe/blob/main/docs/assets/dashboard.png?raw=true)
+![Floe](https://github.com/nssalian/floe/blob/main/docs/assets/dashboard.png?raw=true){width="600"}
 /// caption
 Floe Dashboard
 ///
 
-[**Floe**](https://github.com/nssalian/floe) 是 Neelesh Salian 個人發起的開源 TMS framework。Neelesh 在 Iceberg community 是長期 contributor，把過去在 data platform 團隊裡反覆遇到「catalogs 不執行 maintenance、engines 不 orchestrate」的痛點整理出來，做成一個 declarative 的 policy 系統。使用者用 glob patterns 對 tables 套規則，Floe 會根據表的健康指標（小檔比例、snapshot 數、delete file 比例、partition skew）決定要不要實際跑 compaction、expire snapshot 等操作。目前支援 REST、Polaris、Lakekeeper、Gravitino、DataHub、Hive Metastore、Nessie 共 7 種 catalogs，執行引擎則可以接 Spark 或 Trino。
+[**LakeOps**](https://lakeops.dev/) 是商業化的 lakehouse control plane，把 Iceberg 的 compaction、snapshot expiry、orphan cleanup、manifest 重寫包成 managed service。除了基本的 maintenance，他們還做 cross-engine 的 query routing（Trino、Spark、Snowflake）跟一層 lakehouse observability。網站定位是「無需改變 code 或基礎設施」的 drop-in control plane。
 
-![LakeOps](assets/lakeops.png)
+![LakeOps](assets/lakeops.png){width="600"}
 /// caption
 [LakeOps](https://lakeops.dev/)
 ///
 
-[**LakeOps**](https://lakeops.dev/) 是商業化的 lakehouse control plane，把 Iceberg 的 compaction、snapshot expiry、orphan cleanup、manifest 重寫包成 managed service。除了基本的 maintenance，他們還做 cross-engine 的 query routing（Trino、Spark、Snowflake）跟一層 lakehouse observability。網站定位是「無需改變 code 或基礎設施」的 drop-in control plane。
+## 1. 減少使用者導入 Iceberg 時的維護負擔
 
-## 每家都把 Iceberg Catalog 擴充成了 Control Plane
+這幾家公司在設計 TMS 時，不約而同地把一件事當成設計目標：讓使用者不需要理解 Iceberg 維護的細節就能用 Iceberg。資料的價值來自背後要解決的問題跟商業目標，不是來自搞懂 compaction 跟 snapshot expiry 怎麼運作。如果每個團隊要把資料 onboard 到 Iceberg 時都得先學會這些，Iceberg 就很難被大規模採用。
 
-看完這 6 家在做什麼之後，第一個明顯的共同 pattern 是：每家都從 Iceberg Catalog 這個位置往外擴充，把 policies、events、state management 加上去，讓 catalog 不再只是 metadata store，而是整個 TMS 的中樞。
+**Slack**
 
-### Netflix 的 Metacat 同時承擔 Catalog 跟 Control Plane 的角色
-
-![Netflix Metadata Services Layer](./assets/netflix-metadata-service.png){width="600"}
+![Slack IceChipper Arhitecture](assets/slack-architecture-diagram.png){width="600"}
 /// caption
-[Netflix's metadata services layer with Metacat](https://youtu.be/jMFMEk8jFu8)
+[Slack IceChipper Architecture](https://www.youtube.com/watch?v=NRSlundcwvc)
 ///
+Slack 在 IceChipper 裡建了一個 **discovery service**，自動從 catalog 掃描 Iceberg tables 並納入維護範圍。團隊不需要手動註冊，tables 建立後就會被自動發現、自動維護。
 
-Netflix 在 2023 年的演講提到，他們用的是內部的 **Metacat** 當 metadata 抽象層。Metacat 是一個 federated metadata store，底下整合了 Hive Metastore、Netflix 自己客製的 Polaris Iceberg REST Catalog、以及 Druid 跟 Snowflake 等其他資料來源，對上層提供統一的 API 跟 type system，讓公司內部的人可以用同一套 metadata system 查詢，不需要知道底層的資料儲存細節。
-
-所有 maintenance 服務（Autotune、Janitor、Autolift）都跑在 Metacat 之上，透過開源 Iceberg API 操作 metadata。從架構上看，Metacat 在 Netflix 系統裡承擔的就是「catalog 兼 control plane」這個角色。
-
-### Apple 在 REST Catalog 上加入 Policy Store
-
-![Apple TMS Architecture](./assets/apple-architecture.png){width="600"}
-/// caption
-[Apple TMS architecture](https://youtu.be/JN6K1pdFImc)
-///
-
-Apple 的 TMS 設計從一開始就把 REST Catalog 放在最核心的位置。他們明確說，TMS 必須能跨 catalog 實作運作，而 REST Catalog 剛好提供了這層抽象，把 catalog 實作從 service interface 解耦。
-
-![Apple TMS enhancements: event-driven architecture](./assets/apple-tms-enhancements.png){width="600"}
-/// caption
-[Apple TMS enhancements: event-driven architecture](https://youtu.be/JN6K1pdFImc)
-///
-
-光是 abstraction 還不夠。Apple 進一步把 REST Catalog **擴充成 policy store**：table-level 的 maintenance 設定（例如哪些 tables 要 compaction、什麼閾值觸發、誰有權限改）都寫進 catalog，讓 catalog 變成 TMS 的 single source of truth。這個設計在 table owner 跟 admin 不是同一群人的環境特別關鍵：owner 設定 policy，admin 不用個別協調就能知道每張 table 該怎麼維護。
-
-Apple 也指出 catalog 雖然成了中心，但核心 Iceberg engine 在高併發寫入時的 conflict resolution 還是下一個瓶頸，目前還是 open work。
-
-### LinkedIn OpenHouse 把 Catalog 設計成 declarative control plane
-
-如果 Apple 是把現成的 REST Catalog 擴充使用，LinkedIn OpenHouse 則是把這個思路推到極致：直接把 catalog 設計成一個 declarative control plane。
-
-在 OpenHouse 的世界裡，使用者用 SQL 宣告他們想要的 table 狀態（schema、policy、retention、sharing 等），不需要操心後面怎麼實現。OpenHouse 的 control plane 負責持續對齊「desired state」跟「observed state」，背後一群 data services 負責執行實際的 reconciliation。這個 reconcile 模式正是 Kubernetes 的設計哲學，只是套用在 lakehouse 上。
-
-![OpenHouse Control Plane](https://github.com/linkedin/openhouse/blob/main/docs/images/openhouse-controlplane.jpeg?raw=true){width="600"}
-/// caption
-[OpenHouse 的 declarative control plane 架構](https://github.com/linkedin/openhouse)
-///
-
-在 LinkedIn 內部，OpenHouse 已經實際取代了 Hive Metastore，承擔 catalog 角色，並透過 4 套 API（core / sharing / governance / policy）對外服務。REST Catalog spec 原本留白的「catalog 該管多少事」這個問題，OpenHouse 給出的答案是「幾乎全部都該管」。
-
-## 維護任務的觸發從固定排程轉向 event-driven
-
-Catalog 成為 control plane 中心之後，下一個自然要問的問題是：maintenance 任務該什麼時候跑？傳統做法是 cron，固定 schedule、每天或每小時掃一遍所有 tables。但在數萬張 tables 的環境下，cron 的兩個缺點會放大：不需要 maintenance 的 tables 也照樣排進去浪費資源；而真的需要 maintenance 的 tables 又可能要等到下一個排程才跑。這幾家的共同解法是把觸發的方式從 wall-clock 換成 table 上實際發生的事件。
-
-### Apple 的 4 種 catalog event types
-
-Apple 在 TMS 設計裡把這個轉變講得最明確。原本的 maintenance 觸發是從 policy store 取靜態 schedule，現在改成從 data ingestion pipelines 跟 metadata catalogs 取 real-time events。他們明確列出優先支援的 **4 種核心 event types**：
-
-- **Ingestion Volume**：寫入資料量超過閾值。
-- **Ingestion Count**：寫入次數累積到一定數量。
-- **Small File Count**：累積的小檔達到一定數量。
-- **Metadata Changes**：catalog 上的 schema / table 變更事件。
-
-這 4 種 events 分別連到 compaction、snapshot expiry、orphan file removal 這幾個 maintenance 操作。Apple 在 talk 裡把這個設計形容為「從 reactive 到 proactive」：TMS 不再被動等到排程才檢查 table 狀態，而是看到指標越界就立刻反應。
-
-Apple 也明確提到 TMS 同時保留**手動觸發 ad-hoc run** 的能力，方便處理 outlier 情況（一張 table 突然需要重建），維運人員可以直接呼 API 觸發，不用等下一個事件。事件驅動跟手動觸發是兩個並存的入口，不是互斥。
-
-### Netflix 怎麼把 snapshot commit 串到 Autotune
-
-Netflix 走的路線非常類似，只是事件 channel 用的是 AWS 自家的 SQS。每當 user 寫入 Iceberg table，Metacat（前面提到的 metadata service）就會發一個 event 到 SQS，內容是「這張 table 剛 commit 了這些 snapshots」。
-
-**Autotune** 在背景跑，subscribe 那個 SQS queue。收到事件之後查自己存的 compaction config（哪些 tables、什麼策略），決定要不要啟動 Spark application 重寫資料。整套設計把 Autotune 跟使用者完全解耦：使用者只管寫入，後續的優化交給 Autotune，使用者不需要知道這個服務存在。
-
+**Netflix**
 
 ![Janitors](../what-iceberg-doesnt-solve-for-netflix/assets/janitors.png){width="600"}
 /// caption
@@ -185,132 +134,223 @@ Netflix 走的路線非常類似，只是事件 channel 用的是 AWS 自家的 
 [AutoTune](https://youtu.be/jMFMEk8jFu8)
 ///
 
-類似的 pattern 也用在 **Autolift** 上：它掃描傳入的 snapshot 流，識別需要從遠端 region 搬到本地 region 的檔案，然後用 Iceberg API 做 atomic replacement。同一條 SQS 事件流被多個下游服務消費，每個服務根據自己的邏輯反應。
+Netflix 把維護工作拆成三個獨立的 **Janitor** 服務（TTL janitor、snapshot janitor、orphan file janitor），使用者只需要透過 portal 設定一個 TTL，背後的 data expiry、snapshot cleanup 跟 orphan file deletion 就會自動處理。另一個服務 **Autotune** 則完全在背景跑 compaction 跟 file layout 優化，使用者甚至不需要知道這個服務的存在。
 
-### LinkedIn AutoComp 的 push + pull 雙模式
+**LinkedIn**
 
-LinkedIn AutoComp 比前兩家走得更遠：它設計上同時支援兩種觸發模式，並把它們整合在同一個決策框架（OODA）裡。
+LinkedIn 的 **OpenHouse** 更進一步：使用者用 SQL 宣告 `retention = 30 days` 或 `replication = 'clusterB'`，整個 maintenance lifecycle 就交給平台。背後的 data services 會自動處理 data expiry、跨 data center 的 incremental replication、snapshot expiry、orphan file deletion 等工作。使用者不需要知道哪個 Spark application 在跑、排程是怎麼決定的，只要表達 desired state 就好。OpenHouse 在分享中把這個設計理念稱為「control that liberates」：平台拿回控制權，反而讓使用者不用再操心低層級的基礎設施。
 
-在 **pull 模式**下，AutoComp 以獨立 service 跑，按 periodic schedule（LinkedIn 內部最初是每天一次）從 catalog 跟 Iceberg system tables 主動 pull 統計資料，evaluate 全部候選 tables，排出 top-k 該做 compaction 的，送去執行。這條 path 不需要修改 query engine 或 ingestion 程式碼，部署到 OpenHouse control plane 就行。
+!!! success "Takeaway"
 
-**push 模式**則是把 hook 嵌進 Spark 寫入路徑：寫入完成後 Spark 直接通知 AutoComp，AutoComp 根據當下的 file distribution 決定要不要立刻做 compaction。延遲低，適合 critical tables；缺點是需要可用的 compute budget，否則會跟正常 ingestion workload 搶資源。
+    三家的做法不同，但方向一致：maintenance workload 集中到平台層處理，讓每個使用資料的團隊可以專注在自己的業務上。
 
-![AutoComp end-to-end workflow](./assets/linkedin-autocomp-end-to-end-workflow.png){width="600"}
+## 2. 去耦合 Control Plane 跟 Data Plane
+
+每家公司的架構裡都可以觀察到同一個現象：「決定要做什麼、什麼時候做、用什麼規格做、持續管理任務生命週期」的 Control Plane 跟「真正去跑 compaction、snapshot expiry、orphan cleanup」的 Data Plane 被拆成兩層。即使不是每家公司都在分享裡用了 control plane / data plane 這套說法，實際的架構也都有這個分離。有了這個分層，兩邊可以各自獨立演進：升級調度策略時不用動 Spark，想把 Data Plane 從 Spark 換成其他 compute engine 時也不用重寫調度邏輯。
+
+**Apple**
+
+Apple 在這件事上講得最具體。他們在分享中比較了兩種 Control Plane 跟 Data Plane 之間的溝通方式。
+
+![Apple Push-based Workload Scaling](./assets/apple-push-based.png){width="600"}
 /// caption
-[AutoComp end-to-end workflow (OODA loop)](https://arxiv.org/pdf/2504.04186)
+[Apple Push-based Workload Scaling](https://youtu.be/JN6K1pdFImc)
 ///
 
-兩條 path 走的都是同一個 OODA workflow（Observe、Orient、Decide、Act）。觸發來源是 push 還是 pull 是 input 層的差異，後續的 decision logic 完全共用。意思是同一套 framework 可以對 critical tables 用 push 確保即時性、對其他 tables 用 pull 控成本。
+第一種是 Control Plane 直接透過 lightweight REST server 跟 Spark driver 溝通，簡單直接但兩邊耦合度高，難以各自擴展。
 
-## 資源受限下的維護任務需要分級與調度
-
-事件驅動解決了「什麼時候開始」的問題，但同時製造了一個新的麻煩：事件累積的速度可能比 maintenance 跑完的速度更快。如果不做分級調度，要嘛資源被低價值的任務吃光、要嘛真正關鍵的 table 永遠排不到。這幾家的解法各有風格，但都把同一件事當成 TMS 的核心責任：明確設計一套抽象，決定誰先做、用什麼規格做、什麼條件下能跳過。
-
-### Apple 的 t-shirt sizing 跟 shared Spark applications
-
-Apple 在這個問題上做了 3 件事，每一件都解一個具體的資源浪費。
-
-第一件是 **shared Spark applications**（Apple talk 裡用的詞是 "Spark job"，但實際指的是 driver + executors 的長駐 application，本文沿用嚴格術語）。原本每個 maintenance workload 起一個專屬 Spark application，但 bootstrapping 一個 application 本身（JVM 啟動、SparkContext init、executor 配置）要花掉相當可觀的時間，在數萬個 workload / 天的規模下光是 bootstrap 就是顯著的成本。Apple 的做法是讓同一個 catalog 內的所有 tables 共用一個 Spark application 處理 maintenance，前提是這些 tables 共用同一組 security credentials（catalog 作為 tenant boundary）。
-
-第二件是 **t-shirt sizing**。Share Spark applications 之後，下一個問題是怎麼讓不同 size 的 workload 配到適合的 application 規格。Apple 把 Spark application 規格分成 small / medium / large 幾個固定 size（透過 executor 數 + memory 配置），每個 incoming workload 評估之後分配到對應 t-shirt size。例如 small 是 16GB × 5 executors、medium 是 24GB × 10 executors。這樣小任務不會吃掉大規格的資源，大任務也不會被小規格卡住。
-
-第三件是 **DRA + workload forecasting**。Spark application 內部開 DRA（dynamic resource allocation）讓 executor 數量隨 runtime 需求自動伸縮；同時 control plane 根據 ingestion rate、data volume、metadata changes 預測未來資源需求，動態啟動足量的 Spark applications。三件事加起來，TMS 在資源使用上做到了 Apple 自己形容的「lean and responsive」。
-
-![Apple t-shirt sizing + Spark job priorities](./assets/apple-spark-job-tshirt-sizing.png){width="600"}
+![Apple Pull-based Workload Scaling](./assets/apple-pull-based.png){width="600"}
 /// caption
-[Apple — t-shirt sizing 跟 workload priorities](https://youtu.be/JN6K1pdFImc)
+[Apple Pull-based Workload Scaling](https://youtu.be/JN6K1pdFImc)
 ///
 
-### LinkedIn 的 declarative policy 加 MOOP top-K 排序
+另一種則是在中間加上 queue，Control Plane 把 workloads 放進 queue，Spark applications 主動 pull 出來執行。Queue-based 的做法讓兩邊徹底解耦：Control Plane 不用直接管理 Spark application 的 lifecycle，Data Plane 也可以根據自身的資源狀況決定什麼時候拿下一個 workload。
 
-LinkedIn 把分級問題分兩層處理：上層用 **OpenHouse** 收使用者意圖、下層用 **AutoComp** 解 compaction 排序。
+**LinkedIn**
 
-**OpenHouse** 提供 4 種 policy APIs（retention、replication、Iceberg maintenance、data layout optimization）。使用者只要 set `retention = 30 days`，背後就有對應的 data service 跑 background job 把過期 partition 處理掉。使用者不用知道 schedule 是怎麼決定的，也不用知道是哪個 Spark application 跑的，只要表達 desired state 就好。Policy API 本身只負責收意圖，**真正在資源受限下決定該做哪些 compaction、用什麼粒度做**，是 OpenHouse 底下 data layout optimization 那個 data service（也就是 AutoComp）在處理。
+![OpenHouse Control Plane](https://github.com/linkedin/openhouse/blob/main/docs/images/openhouse-controlplane.jpeg?raw=true){width="350"}
+/// caption
+[OpenHouse Architecture](https://github.com/linkedin/openhouse)
+///
 
-AutoComp 直接把「該維護哪些 tables」當成 **multi-objective optimization problem (MOOP)** 處理。
+LinkedIn 的 OpenHouse 在架構上把 Control Plane（declarative catalog + API 層）跟 Data Plane（一組獨立運作的 data services）明確分開。Control Plane 負責收 policies 跟追蹤 desired state，Data Plane 的 data services（retention、replication、Iceberg maintenance、data layout optimization）各自以獨立的 background jobs 跑在 Spark 上，自行決定什麼時候執行、怎麼 reconcile。兩邊透過 reconcile 模式溝通，不直接耦合。
 
-問題的數學形式是：在數十萬張候選 tables 之中、固定 compute budget 之下，挑出 top-K 個能帶來最大 benefit 的 tables 去做 compaction。Benefit 跟 cost 是兩個衝突的目標：benefit 包含 small file count reduction、query latency 改善；cost 是 GBHr（compute hours）。MOOP 在這兩個目標之間找 Pareto 最優。
+!!! success "Takeaway"
 
-另外 AutoComp 還有一個關鍵設計：**hybrid scoping**。原本是在 table-level 排名 top-K，但對大 table 來說整張表 rewrite 太貴；他們改成可以在 **table-partition 層級**做排名，把大 table 拆成以 partition 為粒度的候選。production 比較三種設定（no compaction / table-only top-10 / hybrid top-500），hybrid 的執行時間最穩定、效益最高。
+    兩家的做法風格不同，但都指向同一個設計原則：Control Plane 跟 Data Plane 之間不應該有直接的依賴，去耦合讓兩邊可以各自 scale、各自演進。
+
+## 3. 以 Iceberg Rest Catalog (IRC) 為中心建構 Control Plane
+
+每家的 Control Plane 都選擇從 IRC 這個位置往外擴充，把 policy store、orchestrator、workload scheduler 等元件加上去，讓 catalog 不再只是 metadata store，而是整個 TMS 調度邏輯的起點。
+
+**Netflix**
+
+![Netflix Metadata Services Layer](./assets/netflix-metadata-service.png){width="600"}
+/// caption
+[Netflix's metadata services layer with Metacat](https://youtu.be/jMFMEk8jFu8)
+///
+
+Netflix 在 2023 年的演講提到，他們用的是內部的 **Metacat** 當 metadata 抽象層。Metacat 是一個 federated metadata store，底下整合了 Hive Metastore、Netflix 自己客製的 Polaris IRC、以及 Druid 跟 Snowflake 等其他資料來源，對上層提供統一的 API 跟 type system，讓公司內部的人可以用同一套 metadata system 查詢，不需要知道底層的資料儲存細節。
+
+所有 maintenance 服務（Autotune、Janitor、Autolift）都跑在 Metacat 之上，透過開源 Iceberg API 操作 metadata。從架構上看，Metacat 在 Netflix 系統裡承擔的就是「catalog 兼 control plane」這個角色。
+
+**Apple**
+
+![Apple TMS Architecture](./assets/apple-architecture.png){width="600"}
+/// caption
+[Apple TMS architecture](https://youtu.be/JN6K1pdFImc)
+///
+
+Apple 的 TMS 設計從一開始就把 IRC 放在最核心的位置。他們明確說，TMS 必須能跨 catalog 實作運作，而 IRC 剛好提供了這層抽象，把 catalog 實作從 service interface 解耦。
+
+![Apple TMS enhancements: event-driven architecture](./assets/apple-tms-enhancements.png){width="600"}
+/// caption
+[Apple TMS enhancements: event-driven architecture](https://youtu.be/JN6K1pdFImc)
+///
+
+光是解耦還不夠。Apple 進一步在 IRC 之上**擴充 policy store**：table-level 的 maintenance 設定（例如哪些 tables 要 compaction、什麼情況下該觸發 maintenance workloads、誰有權限改等）都寫進 catalog，讓 catalog 變成 TMS 的 single source of truth。這麼設計的好處是，table owner 設定 policy，control plane 就能知道自動化維護每張 table。
+
+!!! success "Takeaway"
+
+    兩家走的路徑不同，但都從 catalog 出發往外擴充 Control Plane 元件。Catalog 作為 TMS 的 single source of truth，是目前看到最自然的起點。
+
+## 4. 根據 table 的實際變化觸發維護，不只靠固定排程
+
+固定排程（cron）是最基本的觸發機制，但單靠排程在數萬張 tables 的規模下有兩個不足：
+
+- 不需要 maintenance 的 tables 照樣被排進去浪費資源
+- 真正需要 maintenance 的 tables 卻得等到下一個排程才能跑
+
+這幾家公司所建立的 TMS 都在固定排程之外**加上了 event-driven 的觸發方式，讓 TMS 可以根據 table 上實際發生的變化即時回應。**
+
+**Netflix**
+
+仔細看 Netflix 的 Autotune 服務，你會發現有 AWS SQS 的身影：每當 user 寫入 Iceberg table，Metacat（前面提到的 metadata service）就會發一個 event 到 SQS，內容是「這張 table 剛 commit 了這些 snapshots」。
+
+Autotune 在背景跑，subscribe 那個 SQS queue。收到事件之後查自己存的 compaction config 以決定要不要啟動 Spark application 重寫資料。整套設計把 Autotune 跟使用者完全解耦：使用者只管寫入，後續的優化交給 Autotune，使用者不需要知道這個服務存在。
+
+
+![AutoTune](../what-iceberg-doesnt-solve-for-netflix/assets/autotune.png){width="600"}
+/// caption
+[AutoTune](https://youtu.be/jMFMEk8jFu8)
+///
+
+**Apple**
+
+![Apple TMS enhancements: event-driven architecture](./assets/apple-tms-enhancements.png){width="600"}
+/// caption
+[Apple TMS enhancements: event-driven architecture](https://youtu.be/JN6K1pdFImc)
+///
+
+Apple 的 TMS 也有類似的 event-driven 的設計。他們的 TMS 原本從 policy store 取靜態 schedule 來觸發 maintenance，後來在這基礎上加入了從 data ingestion pipelines 跟 metadata catalogs 取 real-time events 的能力。他們明確列出優先支援的 **4 種核心 event types**：
+
+- **Ingestion Volume**：寫入資料量超過閾值。
+- **Ingestion Count**：寫入次數累積到一定數量。
+- **Small File Count**：累積的小檔達到一定數量。
+- **Metadata Changes**：catalog 上的 schema / table 變更事件。
+
+這 4 種 events 分別連到不同的 maintenance 操作。Apple 在 talk 裡把這個設計形容為「**從 reactive 到 proactive**」：排程仍然在跑，但 TMS 不需要被動等到下一個排程才能反應，看到指標越界就可以立刻觸發 maintenance。
+
+Apple 也明確提到 TMS 同時保留**手動觸發 ad-hoc run** 的能力，方便處理 outlier 情況（一張 table 突然需要重建），維運人員可以直接呼叫 API 觸發，不用等下一個排程或事件。排程、event-driven、手動觸發三種入口並存，不是互斥。
+
+**LinkedIn**
 
 ![AutoComp cluster integration](./assets/linkedin-autocomp-cluster-integration.png){width="600"}
 /// caption
 [AutoComp cluster integration](https://arxiv.org/pdf/2504.04186)
 ///
 
-### Floe 的 health-driven debt score 排程
+**AutoComp** 是 LinkedIn 在 OpenHouse 裡打造的 automated compaction service，負責在數萬張 Iceberg tables 中決定哪些該做 compaction、什麼時候做。在觸發機制上，AutoComp 同時支援 push 跟 pull 兩種模式：
 
-Floe 也採 declarative 設計，但把 health-driven 邏輯做得最具體。它定義了 maintenance **debt score** 跟 **severity levels**（critical 10x、warning 3x、info 1x），系統根據每張 table 的真實健康指標（小檔比例、snapshot 數、delete file ratio、partition skew）算出 score，sicker tables 排在前面跑。同一個 policy file 可以用 glob pattern 套到多張 tables，priority 跟 schedule 都是 policy 的一部分。
+**Push 模式**是把 hook 嵌進 Spark ingestion pipeline，每當寫入完成後，若小檔數量超過閾值、或新寫入的資料量達到一定規模，就直接通知 AutoComp 觸發 compaction。延遲低，適合需要即時維護的 critical tables。
+
+**Pull 模式**則是 AutoComp 以獨立 service 跑，按固定排程（例如每天一次、或每小時一次）從 catalog 跟 Iceberg system tables 主動蒐集統計資料，找出需要維護的 tables。這條 path 不需要修改 ingestion pipeline 的程式碼，部署成本低，適合大量但不急迫的 tables。
+
+LinkedIn 可以根據需求搭配：critical tables 用 push 確保即時性，其他 tables 用 pull 控成本。
+
+!!! success "Takeaway"
+
+    三家的做法各有側重，但都認同同一件事：觸發機制不能只有一種，排程、event-driven、手動觸發各有適用的情境，並存才能覆蓋不同需求。
+
+## 5. 發展出綜合多個目標的調度機制來排序 maintenance workloads
+
+Maintenance workload 被觸發之後不是馬上執行。在 trigger 跟 execution 之間，這幾家 TMS 都加入了一層調度邏輯：根據 table 的狀態、業務重要性、預估成本等多個目標綜合評估，決定哪些先做、用什麼規格做、什麼條件下可以跳過。之所以非做不可，是因為 maintenance 需求永遠大於可用的 compute 資源；如果不做分級，低價值的任務會吃光資源，真正關鍵的 table 反而永遠排不到。
+
+**Floe**
+
+![Health assessment, auto-mode status, thresholds, and recommendations](https://nssalian.github.io/floe/assets/table_metadata_2.png){width="600"}
+/// caption
+[Health assessment, auto-mode status, thresholds, and recommendations](https://nssalian.github.io/floe/operations/dashboard/)
+///
+
+Floe 採 declarative 設計，它定義了 maintenance **debt score** 跟 **severity levels**（critical 10x、warning 3x、info 1x），系統根據每張 table 的真實健康指標（小檔比例、snapshot 數、delete file ratio、partition skew）算出分數，sicker tables 排在前面跑。同一個 policy file 可以用 glob pattern 套到多張 tables，priority 跟 schedule 都是 policy 的一部分。
 
 Floe 還在 policy 上面再加了一層 maintenance planner：在真正 trigger job 之前，根據當下指標再判斷一次「這張 table 真的需要 maintenance 嗎」，避免 cron-triggered 但其實沒必要跑的 no-op job 浪費 compute。
 
-這幾家在 scheduling 上的具體做法不同：Apple 把重心放在 infrastructure-level 優化、LinkedIn 用 declarative policy 收意圖再以 MOOP 排序執行、Floe 用 health-driven debt score 主動避免 no-op。但都認同同一個前提：maintenance workload 永遠大於資源，決定誰先做、用多大規格做，是 TMS 不能不做的核心職責。
+**LinkedIn**
 
-## Control plane 自己也需要 source of truth
-
-前面 3 個 patterns（catalog 收斂、事件驅動、分級調度）都是在說 control plane 如何**做事**。但 control plane 自己也需要記憶力：它得知道哪些 workloads 已經跑完、哪些失敗、哪些卡住中、上一輪 metric 是什麼樣子。沒有可靠的 state，scheduling 會缺乏依據、observability 會缺角、failure recovery 也無從談起。這 4 家在「state 放哪裡」這個問題上各自給出不同答案。
-
-### Apple 的 durable store 跟雙向 REST
-
-Apple 把這件事當成 TMS architecture 裡明確的一塊：「control plane 必須把每個 workload 的 lifecycle 跟每一次系統變更都持久化到 durable store，並透過 API 對使用者跟其他工具 expose 查詢介面」。沒有這個 durable store，每天上萬個 workloads 跑下去就會徹底失控。
-
-承擔這個責任的元件叫 **Workload Manager**，是 control plane 的中樞。Workload Manager 從 policy store 讀取 policies，組合成具體的 workloads，交給 orchestrator 派去 Spark application 執行；Spark 那邊執行時，狀態回流到 Workload Manager。這樣它隨時都有「目前每個 workload 處於什麼狀態」的完整視圖。
-
-Spark 那邊回流狀態的具體做法是：每個 Spark application 內部都跑一個 **lightweight REST server**，讓 TMS control plane 可以直接 query Spark driver 內部狀態（執行進度、metrics、observability data）。這條 REST channel 是雙向的，control plane 也能透過它對 driver 下指令。這比傳統的「control plane 先寫資料庫、driver 再 poll」設計直接很多。
-
-### LinkedIn 的 Kafka 三條 topics
-
-LinkedIn 把這個問題拆得最徹底：control plane 的 state 用 Kafka 持續往外流，每個下游消費者建立自己需要的視角。
-
-具體做法是用一組「零掃描」(zero-scan) Spark applications 跑在每張 table 上：它們不讀 Parquet/ORC 資料、只讀 Iceberg 的 manifest 跟 snapshot metadata，把抽取到的資訊發成 **3 條 Kafka topics**：
-
-- **Commit Metadata**：每次 commit 的 snapshot ID、timestamp、**Writer Identity**（區分這個 commit 是來自使用者寫入還是 maintenance 操作，讓監控可以過濾掉系統噪音）。
-- **Per-partition Commit Detail**：每個 partition 的檔案數量跟大小變化。「Arrival Metrics」pipeline 靠這條 topic 監控資料是否如期抵達跟 partition 碎片化。
-- **Column-level Stats**：record count、null counts、欄位上下界。這條是 DQ 規則的主要原料。
-
-這套設計讓 LinkedIn 在 200,000+ tables 上做即時 DQ 監控，p50 警報時間從傳統 scan-based profiling 的 2~24 小時壓到 5 分鐘以內，計算成本省 50%、HDFS 讀取省 45%。光是 manifest 統計資訊就覆蓋約 60% 的使用者定義 DQ 規則，加上 Theta sketches 可以擴展到 90%。
-
-### Slack 把 Iceberg 自己當成 tracking backend
-
-Slack 的解法最務實：要存 control plane state，**就在 Iceberg 上開一張 table 存**。他們考慮過架一個獨立的 Aurora 資料庫，但最後決定既然整套 lakehouse 已經是 Iceberg，索性就「dogfood」自家 stack。
-
-Ice Chipper 的 state 拆成兩張 Iceberg table：
-
-- **Tracking table**：記錄每次 maintenance operation 的全部 metadata（operation 開始時間、結束時間、成功/失敗狀態、stack trace、相關 table 資訊）。所有 dashboard 都從這張 table 讀。
-- **Locking table**：用來確保同一張 table 同時只有一個 maintenance operation 在跑。獲取 lock 的方式是 `MERGE` 進 locking table，release 也是 `MERGE`，靠 Iceberg 的 ACID commit 保證 lock 的正確性。
-
-![Slack Ice Chipper components](./assets/slack-components.png){width="600"}
+![AutoComp E2E workflow](./assets/linkedin-autocomp-end-to-end-workflow.png){width="600"}
 /// caption
-[Slack Ice Chipper — locking table + tracking table 都是 Iceberg table](https://www.youtube.com/watch?v=NRSlundcwvc)
+[AutoComp E2E workflow (OODA loop)](https://arxiv.org/pdf/2504.04186)
 ///
 
-這個設計有個二階問題：tracking table 跟 locking table 自己也是 Iceberg table，也會累積 snapshots、需要 maintenance。Slack 在 talk 裡承認他們漏看過這件事一次，差點把 Ice Chipper 自己卡死。修一次就學會了。
+LinkedIn 的 AutoComp 是我覺得做得最極致的一家公司。E2E workflow 套用 **OODA** feedback loop（Observe、Orient、Decide、Act 四個階段不斷循環）：
 
-### Netflix 用 SQS 串起整條事件流
+- 先從 Iceberg tables 蒐集每張 table 的統計資料（Observe）
+- 根據成本與效益，算出標準化的分數（Orient）
+- 在固定 compute budget 內排出 top-K（Decide）
+- 執行 table compaction（Act）
 
-Netflix 的取捨跟前面 3 家不太一樣：他們沒有單獨建一個 control plane state store。Iceberg metadata + Metacat 本身就是 source of truth，maintenance 服務（Janitor / Autotune / Autolift）設計成大致無狀態的 worker，靠 SQS 把事件串起來、靠 Iceberg snapshot history 做最終的對帳。
+在 Decide 這一步，AutoComp 直接把「該維護哪些 tables」當成 **multi-objective optimization problem (MOOP)** 處理。
 
-舉例來說，Janitor 從 SQS queue 收到「這個 snapshot 要清理」的訊息，去 S3 列出對應的 orphan files，發到下一個 SQS queue 給 deletion service；deletion service 讀訊息、執行刪除。整條 path 沒有 Janitor 自己的「現在做到哪了」state，重做也是冪等的（list + delete 都看現實 S3 狀態，不依賴 in-flight state）。
+問題的數學形式是：在數十萬張候選 tables 之中、固定 compute budget 之下，挑出 top-K 個能帶來最大 benefit 的 tables 去做 compaction。成本與效益是兩個衝突的目標：
 
-![Netflix Janitor architecture](./assets/netflix-janitor.png){width="600"}
+- 成本是 GBHr（compute hours）
+- 效益包含 small file count reduction、query latency 改善等
+
+MOOP 在這兩個目標之間找 Pareto 最優。
+
+另外 AutoComp 還有一個關鍵設計：**hybrid scoping**。原本是在 table-level 排名 top-K，但對大 table 來說整張表 rewrite 太貴；他們改成可以在 **table-partition 層級**做排名，把大 table 拆成以 partition 為粒度的候選。production 比較三種設定（no compaction / table-only top-10 / hybrid top-500），hybrid 的執行時間最穩定、效益最高。
+
+!!! success "Takeaway"
+
+    兩家的做法各有側重：Floe 用 health-driven debt score 根據 table 的即時狀態決定優先順序；LinkedIn 則用 MOOP 把調度問題提升到數學最佳化的層次。但都認同同一個前提：maintenance 需求永遠大於可用的 compute 資源，智慧調度是 TMS 不能不做的核心職責。
+
+## 6. 提升 Data Plane 的資源利用率
+
+**Apple**
+
+Data Plane 這邊也有很多可以優化的空間。以 Apple 為例，他們做了 3 件事來提升 Data Plane 的資源效率：
+
+第一件是 **shared Spark applications**。原本每個 maintenance workload 起一個專屬 Spark application，但 bootstrapping 一個 application 本身（JVM 啟動、SparkContext init、executor 配置）要花掉相當可觀的時間，在數萬個 workload / 天的規模下光是 bootstrap 就是顯著的成本。Apple 的做法是讓同一個 catalog 內的所有 tables 共用一個 Spark application 處理 maintenance，前提是這些 tables 共用同一組 security credentials（catalog 作為 tenant boundary）。
+
+![Apple t-shirt sizing + Spark job priorities](./assets/apple-spark-job-tshirt-sizing.png){width="600"}
 /// caption
-[Netflix Janitor — stateless workers connected via SQS](https://youtu.be/jMFMEk8jFu8)
+[Apple — t-shirt sizing 跟 workload priorities](https://youtu.be/JN6K1pdFImc)
 ///
 
-這個設計的好處是元件之間零耦合、隨意 scale；代價是要做 monitoring 跟 debugging 時，必須跨多個 service log 跟 SQS queue 拼湊一個完整 picture。是另一種設計取捨。
+第二件是 **t-shirt sizing**。Share Spark applications 之後，下一個問題是怎麼讓不同 size 的 workload 配到適合的 application 規格。Apple 把 Spark application 規格分成 small / medium / large 幾個固定 size（透過 executor 數 + memory 配置），每個 incoming workload 評估之後分配到對應 t-shirt size。例如 small 是 16GB × 5 executors、medium 是 24GB × 10 executors。這樣小任務不會吃掉大規格的資源，大任務也不會被小規格卡住。
 
-4 家給出 4 種非常不同的 state 設計：Apple 用 durable store + 雙向 REST 做主動管理、LinkedIn 用 Kafka topics 做持續流出、Slack 把 Iceberg 自己當 backend、Netflix 直接讓 Iceberg metadata + Metacat 兼任 source of truth。沒有哪個是「正解」，4 個答案對應的是各家在「主動掌控 state vs. 信任 source data」這條 trade-off 上的不同取捨。
+第三件是 **DRA + workload forecasting**。Spark application 內部開 DRA（dynamic resource allocation）讓 executor 數量隨 runtime 需求自動伸縮；同時 control plane 根據 ingestion rate、data volume、metadata changes 預測未來資源需求，動態啟動足量的 Spark applications。三件事加起來，TMS 在資源使用上做到了 Apple 自己形容的「lean and responsive」。
 
-## 反推一個能 work 的 TMS 該長什麼樣
+!!! success "Takeaway"
 
-回到一開始的問題：一個能管好上萬張 Iceberg tables 的 TMS 該長什麼樣？把這 4 個 patterns 串起來，藍圖其實已經浮現。
+    這些做法的目標一致：在有限的 compute 資源內，把 Iceberg tables 的維護做到最有效率。Apple 用 shared Spark applications、t-shirt sizing 跟 DRA 從 infrastructure 層面優化，LinkedIn 的 AutoComp 則透過 OODA workflow 持續根據即時狀態動態調整資源分配，方向相同。
 
-**中心要落在 Iceberg Catalog**。Apple 跟 LinkedIn 已經用兩種方式驗證了這點（前者擴充 REST Catalog 當 policy 儲存層、後者把 OpenHouse 設計成完整的 declarative control plane），Netflix 跟 Slack 即使從別的起點出發（Metacat、Hive on REST）也都在朝同個架構角色收斂。如果今天從零開始，可以直接把 REST Catalog 當 control plane 的中軸來設計，不用走一遍 Metacat 那段歷史路徑。
+## 反推一個能在多團隊、大規模下擴展的 TMS 該長什麼樣？
 
-**觸發改成 event-driven**。Apple 列出的 4 種 event types（ingestion volume / count / small file count / metadata changes）跟 Netflix 的 snapshot-commit-on-SQS 模式給了一個很具體的起點。LinkedIn AutoComp 的 push + pull 雙模式則展示了「同一套 framework 兩種觸發來源」這個更成熟的設計目標。Cron 不需要完全消失，但應該退居 fallback，不是主要 trigger。
+回到一開始的問題：一個能管好上萬張 Iceberg tables 的 TMS 該長什麼樣？從前面幾個觀察裡反推回來，如果從零開始設計一個能擴展到數萬張 tables、同時服務多個團隊跟不同 workload 需求的 TMS，我覺得至少需要這幾個 building blocks：
 
-**Scheduling 必須是 first-class concern**。決定誰先做、用多大規格做、什麼條件下能跳過，這幾個問題不可能在 production 規模下「順其自然」。Apple 的 infrastructure-level 優化（shared Spark applications + t-shirt sizing）、LinkedIn 的 MOOP top-K、Floe 的 debt score 都是合理的設計起點，挑哪個看團隊對 declarative vs. imperative 的偏好。
+!!! success "Building Blocks"
+    - [x] **Onboarding 的摩擦成本要夠低**。資料的價值來自背後要解決的問題跟商業目標，不是來自搞懂 Iceberg 的維護機制。如果每個團隊要把資料 onboard 到 Iceberg 時都得先理解 compaction、snapshot expiry、orphan cleanup 這些維護細節，這件事就很難被大規模採用。一個好的 TMS 應該讓其他團隊幾乎感覺不到它的存在，讓他們可以專注在自己的業務上。
+    - [x] **Control Plane 跟 Data Plane 去耦合**，讓調度邏輯跟執行層可以各自獨立演進。其中一個常見的做法是在兩者之間加上 queue，讓 Control Plane 不需要直接管理 Spark application 的 lifecycle，Data Plane 也可以根據自身的資源狀況主動 pull workloads。
+    - [x] **Control Plane 要能跨 catalog 運作、統一管理 policies 跟 workload lifecycle**。具體來說，需要 **policy store** 集中定義每張 table 的 maintenance 規則（什麼時候做、做哪些操作、用什麼規格做）、**workload manager** 追蹤每個 workload 的狀態跟執行歷史、**scheduler / orchestrator** 負責把 workloads 分配到合適的 Data Plane 資源上。從 IRC 為中心往外擴充這些元件，是目前看到最自然的起點。
+    - [x] **Maintenance workload 的觸發機制要多元**，除了固定排程之外，還需要 event-driven 跟手動觸發等不同入口，讓 TMS 能根據不同情境選擇最合適的觸發方式。
+    - [x] **Control Plane 裡要有智慧調度的能力**。Maintenance workload 被觸發之後不是馬上執行，中間要有一層智慧調度，綜合多種資訊來排序：table 目前的健康狀態（小檔比例、snapshot 數量）、table 的業務重要性（P0 table 必須優先）、是否有突發事件需要插隊（例如剛發生的 incident 需要立刻對某張 table 做 compaction）、以及當下 Data Plane 的 resource capacity 還剩多少，從候選裡挑出最值得先做的送去執行。
+    - [x] **Data Plane 也要考慮資源效率**。目標是在有限的 compute 資源內把 Iceberg tables 的維護做到最有效率。共用 Spark applications 減少 bootstrapping 成本、用 t-shirt sizing 讓不同規模的 workload 配到合適的資源規格、用 DRA 讓 executor 數量隨需求伸縮，都是可行的做法。
 
-**Control plane 自己的 state 要明確設計**。Apple 用 durable store 主動管理、LinkedIn 用 Kafka 持續流出、Slack dogfood Iceberg、Netflix 走純無狀態 worker，4 種都 work，但都不是「免費」的選擇。要在設計初期就決定走哪一條，不要等到 production 才開始想。
+研究完這 6 家公司之後，我自己最大的感受是：從零自建一個能 scale 的 TMS 真的不是簡單的事，需要考量的層面很多。那就會有一個自然的疑問：既然 Iceberg spec 留白了這麼多東西，為什麼這些大公司還願意把自己的資料全面遷到 Iceberg 上？
 
-這 4 個 building blocks 加起來，已經是一個能 work 的 TMS 的最小骨架。剩下的差異是規模壓出來的細節，不是設計層面的根本選擇。我自己覺得很令人期待的是，Iceberg community 也在朝這個方向動：[REST Catalog spec](https://iceberg.apache.org/docs/latest/) 持續加入 catalog-level events、[OpenHouse](https://github.com/linkedin/openhouse) 跟 [Floe](https://github.com/nssalian/floe) 把這些 patterns 開源讓更多公司直接借鏡。我非常看好這個收斂方向：3 年內這套設計藍圖很有機會從「大公司公開的做法」沉澱成「community 提供的標準 TMS reference architecture」，到時候每個用 Iceberg 的團隊都不需要再從零做這些 building blocks 了。
+我這一個月一直在想這個問題。我目前的想法是：因為 Iceberg 是開源的，大家信任的不只是 table format 本身，更是背後那套跨公司凝聚共識的治理制度和流程。沒有任何一家公司可以單方面主導 spec 的走向，技術不會被綁定在單一廠商上。我想這應該是為什麼這麼多公司願意承擔自建 TMS 的成本、也要大規模導入 Iceberg 的其中一個原因。
+
+好在這些公司願意把自己的經驗公開分享，加上越來越多開源專案跟商業產品的出現，後來的團隊不需要再完全從零開始。希望這篇整理對正在面對同樣問題的你有幫助。
